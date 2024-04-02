@@ -74,6 +74,45 @@ FP_LIB_TABLE* PROJECT_PCB::PcbFootprintLibs( PROJECT* aProject )
 }
 
 
+// FP_LIB_TABLE* PROJECT_PCB::HQPcbFootprintLibs( PROJECT* aProject )
+// {
+//     // This is a lazy loading function, it loads the project specific table when
+//     // that table is asked for, not before.
+
+//     FP_LIB_TABLE* tbl = (FP_LIB_TABLE*) aProject->GetElem( PROJECT::ELEM_FPTBL );
+
+//     // its gotta be NULL or a FP_LIB_TABLE, or a bug.
+//     wxASSERT( !tbl || tbl->Type() == FP_LIB_TABLE_T );
+
+//     if( !tbl )
+//     {
+//         // Stack the project specific FP_LIB_TABLE overlay on top of the global table.
+//         // ~FP_LIB_TABLE() will not touch the fallback table, so multiple projects may
+//         // stack this way, all using the same global fallback table.
+//         tbl = new FP_LIB_TABLE( &GFootprintTable );
+
+//         aProject->SetElem( PROJECT::ELEM_FPTBL, tbl );
+
+//         wxString projectFpLibTableFileName = aProject->FootprintLibTblName();
+
+//         try
+//         {
+//             tbl->Load( projectFpLibTableFileName );
+//         }
+//         catch( const IO_ERROR& ioe )
+//         {
+//             DisplayErrorMessage( nullptr, _( "Error loading project footprint libraries." ),
+//                                  ioe.What() );
+//         }
+//         catch( ... )
+//         {
+//             DisplayErrorMessage( nullptr, _( "Error loading project footprint library table." ) );
+//         }
+//     }
+
+//     return tbl;
+// }
+
 S3D_CACHE* PROJECT_PCB::Get3DCacheManager( PROJECT* aProject, bool aUpdateProjDir )
 {
     std::lock_guard<std::mutex> lock( mutex3D_cacheManager );

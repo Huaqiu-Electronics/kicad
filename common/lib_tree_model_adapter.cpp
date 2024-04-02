@@ -232,6 +232,36 @@ LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::DoAddLibraryNode( const wxString&
 }
 
 
+LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::AddSubLibraryNode( const wxString& aNodeName,
+                                                                 const wxString& aDesc,
+                                                                 bool pinned )
+{
+    return DoAddLibraryNode( aNodeName, aDesc, pinned );
+}
+
+LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::AddSubLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
+                                                                 const wxString& aNodeName,
+                                                                 const wxString& aDesc,
+                                                                 bool pinned )
+{
+    LIB_TREE_NODE_LIBRARY& lib_node = aNode.AddLib( &aNode, aNodeName, aDesc );
+
+    lib_node.m_Pinned = pinned;
+
+    return lib_node;
+}
+
+
+void LIB_TREE_MODEL_ADAPTER::AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
+                                           const std::vector<LIB_TREE_ITEM*>& aItemList,
+                                           bool pinned, bool presorted )
+{
+    for( LIB_TREE_ITEM* item: aItemList )
+        aNode.AddItem( item );
+
+    aNode.AssignIntrinsicRanks( presorted );
+}
+
 void LIB_TREE_MODEL_ADAPTER::DoAddLibrary( const wxString& aNodeName, const wxString& aDesc,
                                            const std::vector<LIB_TREE_ITEM*>& aItemList,
                                            bool pinned, bool presorted )
@@ -341,6 +371,36 @@ void LIB_TREE_MODEL_ADAPTER::UpdateSearchString( const wxString& aSearch, bool a
         }
 
         m_widget->EnsureVisible( item );
+    }
+}
+
+//todo  move to symbol adapter
+void LIB_TREE_MODEL_ADAPTER::UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode )
+{
+    {
+        wxWindowUpdateLocker updateLock( m_widget );
+
+        // m_widget->UnselectAll();
+        resortTree();
+    }
+
+    if( aNode )
+    {
+        
+        wxDataViewItem item = ToItem( aNode );
+        if( item.IsOk() )
+        {
+            m_widget->UnselectAll();
+            m_widget->Expand( item );
+            m_widget->Select( item );
+        }
+
+        wxDataViewItem parent = GetParent( item );
+
+        if( parent.IsOk() )
+            m_widget->EnsureVisible( parent );
+
+        m_widget->EnsureVisible( item );      
     }
 }
 

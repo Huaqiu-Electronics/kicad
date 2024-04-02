@@ -58,6 +58,8 @@ public:
      */
     void DisplaySymbol( const LIB_ID& aSymbolID, int aUnit, int aBodyStyle = 0 );
 
+    void DisplayHQSymbol( const LIB_ID& aSymbolID, int aUnit, int aBodyStyle = 0 );
+
     void DisplayPart( LIB_SYMBOL* aSymbol, int aUnit, int aBodyStyle = 0 );
 
 protected:

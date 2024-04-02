@@ -47,6 +47,7 @@ using namespace LIB_TABLE_T;
 
 
 static const wxString global_tbl_name( "sym-lib-table" );
+static const wxString hq_global_tbl_name( "hq-sym-lib-table" );
 
 
 const char* SYMBOL_LIB_TABLE::PropPowerSymsOnly = "pwr_sym_only";
@@ -59,6 +60,7 @@ int SYMBOL_LIB_TABLE::m_modifyHash = 1;     // starts at 1 and goes up
 /// the fallback table for multiple projects).
 SYMBOL_LIB_TABLE    g_symbolLibraryTable;
 
+SYMBOL_LIB_TABLE    g_hq_symbolLibraryTable;
 
 bool SYMBOL_LIB_TABLE_ROW::operator==( const SYMBOL_LIB_TABLE_ROW& aRow ) const
 {
@@ -138,6 +140,11 @@ SYMBOL_LIB_TABLE& SYMBOL_LIB_TABLE::GetGlobalLibTable()
     return g_symbolLibraryTable;
 }
 
+
+SYMBOL_LIB_TABLE& SYMBOL_LIB_TABLE::GetHQGlobalLibTable()
+{
+    return g_hq_symbolLibraryTable;
+}
 
 void SYMBOL_LIB_TABLE::Parse( LIB_TABLE_LEXER* in )
 {
@@ -678,8 +685,8 @@ bool SYMBOL_LIB_TABLE::LoadGlobalTable( SYMBOL_LIB_TABLE& aTable )
     if( settings->m_PcmLibAutoAdd )
     {
         // Scan for libraries in PCM packages directory
-        wxFileName d( packagesPath, "" );
-        d.AppendDir( "symbols" );
+        wxFileName d( packagesPath, wxS( "" ) );
+        d.AppendDir( wxS( "symbols" ) );
 
         if( d.DirExists() )
         {
@@ -718,6 +725,122 @@ bool SYMBOL_LIB_TABLE::LoadGlobalTable( SYMBOL_LIB_TABLE& aTable )
 }
 
 
+bool SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE& aTable )
+{
+    wxFileName  fn = GetHQGlobalTableFileName();
+
+    if( !fn.FileExists() )
+    {
+
+        if( !fn.DirExists() && !fn.Mkdir( 0x777, wxPATH_MKDIR_FULL ) )
+        {
+            THROW_IO_ERROR( wxString::Format( _( "Cannot create global library table path '%s'." ),
+                                              fn.GetPath() ) );
+        }
+
+        SYMBOL_LIB_TABLE    emptyTable;
+
+        emptyTable.Save( fn.GetFullPath() );
+    }
+
+    aTable.Clear();
+    aTable.Load( fn.GetFullPath() );
+
+    // To auto add loaded hq symbol libs to global hq lib table
+    wxString packagesPath;
+    const ENV_VAR_MAP& vars = Pgm().GetLocalEnvVariables();
+
+    if( std::optional<wxString> v = ENV_VAR::GetVersionedEnvVarValue( vars, wxT( "3RD_PARTY" ) ) )
+        packagesPath = *v;
+
+    wxFileName cacheDir( packagesPath, wxS( "" ) );
+    cacheDir.AppendDir( wxS( "symbols" ) );
+    cacheDir.AppendDir( wxS( "hq_symbols" ) );
+
+    if( !cacheDir.DirExists() && !cacheDir.Mkdir( 0x777, wxPATH_MKDIR_FULL ) )
+    {
+        THROW_IO_ERROR( wxString::Format( _( "Cannot create hq http symbols libs path '%s'." ),
+                                            cacheDir.GetPath() ) );
+    }
+
+    PCM_SYM_LIB_TRAVERSER traverser( packagesPath, aTable, wxEmptyString );
+    wxDir                 dir( cacheDir.GetPath() );
+
+    dir.Traverse( traverser );
+
+    // To remove hq libraries that no longer exist
+    std::vector<wxString> to_remove;
+
+    for( size_t i = 0; i < aTable.GetCount(); i++ )
+    {
+        LIB_TABLE_ROW& row = aTable.At( i );
+        wxString       path = row.GetFullURI( true );
+
+        if( path.StartsWith( cacheDir.GetPath() ) && !wxFile::Exists( path ) )
+            to_remove.push_back( row.GetNickName() );
+    }
+
+    for( const wxString& nickName : to_remove )
+    {
+        SYMBOL_LIB_TABLE_ROW* row = aTable.FindRow( nickName );
+
+        wxCHECK2( row, continue );
+
+        aTable.RemoveRow( row );
+    }
+
+    return true;
+}
+
+
+bool SYMBOL_LIB_TABLE::LoadFileToInserterRow( SYMBOL_LIB_TABLE& aTable, wxString aFilePath )
+{
+    wxFileName file = wxFileName::FileName( aFilePath );
+
+    // consider a file to be a lib if it's name ends with .kicad_sym and
+    // it is under $KICADn_3RD_PARTY/symbols/<pkgid>/ i.e. has nested level of at least +2
+    if( file.GetExt() == wxT( "kicad_sym" ) )
+    {
+        wxString packagesPath;
+        const ENV_VAR_MAP& vars = Pgm().GetLocalEnvVariables();
+
+        if( std::optional<wxString> v = ENV_VAR::GetVersionedEnvVarValue( vars, wxT( "3RD_PARTY" ) ) )
+            packagesPath = *v;
+
+        wxString versionedPath = wxString::Format( wxS( "${%s}" ),
+                                       ENV_VAR::GetVersionedEnvVarName( wxS( "3RD_PARTY" ) ) );
+
+        wxArrayString parts = file.GetDirs();
+        parts.RemoveAt( 0, wxFileName::DirName( packagesPath ).GetDirCount() );
+        parts.Insert( versionedPath, 0 );
+        parts.Add( file.GetFullName() );
+
+        wxString libPath = wxJoin( parts, '/' );
+
+        if( !aTable.HasLibraryWithPath( libPath ) )
+        {
+            wxString name = parts.Last().substr( 0, parts.Last().length() - 10 );
+            wxString nickname = wxString::Format( "%s", name );
+
+            // DO NOT REPEAT LIB IN THIS SITUATION
+            if( aTable.HasLibrary( nickname ) )
+            {
+                // not symbol name but has lib path, consider this situation.
+                return false;
+            }
+
+            aTable.InsertRow(
+                    new SYMBOL_LIB_TABLE_ROW( nickname, libPath, wxT( "KiCad" ), wxEmptyString,
+                                                _( "Added by HQ HTTP SYMBOLS" ) ) );
+        }
+
+        // not symbol name but has lib path, consider this situation.
+        return true;
+    }
+    return false;
+}
+
+
 bool SYMBOL_LIB_TABLE::operator==( const SYMBOL_LIB_TABLE& aOther ) const
 {
     if( m_rows.size() != aOther.m_rows.size() )
@@ -748,8 +871,22 @@ wxString SYMBOL_LIB_TABLE::GetGlobalTableFileName()
     return fn.GetFullPath();
 }
 
+wxString SYMBOL_LIB_TABLE::GetHQGlobalTableFileName()
+{
+    wxFileName fn;
+
+    fn.SetPath( PATHS::GetUserSettingsPath() );
+    fn.SetName( hq_global_tbl_name );
+
+    return fn.GetFullPath();
+}
 
 const wxString& SYMBOL_LIB_TABLE::GetSymbolLibTableFileName()
 {
     return global_tbl_name;
+}
+
+const wxString& SYMBOL_LIB_TABLE::GetHQSymbolLibTableFileName()
+{
+    return hq_global_tbl_name;
 }

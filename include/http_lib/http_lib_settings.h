@@ -41,6 +41,18 @@ struct HTTP_LIB_SOURCE
     int                  timeout_categories;
 };
 
+struct HTTP_HQ_LIB_SOURCE : public HTTP_LIB_SOURCE
+{
+    // HTTP_LIB_SOURCE_TYPE type;
+    // std::string          root_url;
+    // std::string          api_version;
+    // std::string          token;
+    // int                  timeout_parts = 1000;
+    // int                  timeout_categories = 1000;
+    
+    std::map<std::string, std::string> params;
+};
+
 
 struct HTTP_LIB_PART
 {
@@ -68,6 +80,38 @@ struct HTTP_LIB_CATEGORY
     std::time_t lastCached = 0;
 
     std::vector<HTTP_LIB_PART> cachedParts;
+};
+
+
+struct HTTP_HQ_PART
+{
+    std::string id;   ///<  component_id 
+    std::string mpn;
+    std::string manufacturerId;
+    std::string pkg;
+    std::string description;
+    std::string datasheet;
+    std::string createTime;  ///< to check if outdate
+    std::string symbol_lib_name; //*.kicad_sym
+    std::string fp_lib_name; //*.kicad_mod
+    std::string pretty_name; ///<  *.pretty
+
+    std::time_t lastCached = 0;
+
+    std::map<std::string, std::string> fields; ///< additional generic fields
+};
+
+struct HTTP_HQ_CATEGORY
+{
+    std::string id;          ///< id of category
+    std::string name;        ///< name of category
+    std::string displayName; ///< display name of category
+    std::string parentId;    ///< id of parent category
+    std::string level;       ///< category level
+
+    std::time_t lastCached = 0;
+
+    std::vector<HTTP_HQ_PART> cachedParts;
 };
 
 

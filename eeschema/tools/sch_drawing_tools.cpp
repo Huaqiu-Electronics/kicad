@@ -370,9 +370,19 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
                 PICKED_SYMBOL sel = m_frame->PickSymbolFromLibrary( &filter, *historyList,
                                                                     alreadyPlaced,
                                                                     footprintPreviews );
-
-                LIB_SYMBOL* libSymbol = sel.LibId.IsValid() ? m_frame->GetLibSymbol( sel.LibId )
-                                                            : nullptr;
+                
+                LIB_SYMBOL* libSymbol = nullptr;
+                if( sel.LibId.IsValid() )
+                {
+                    if( m_frame->GetLibSymbol( sel.LibId ) )
+                    {
+                        libSymbol = m_frame->GetLibSymbol( sel.LibId );
+                    }
+                    else if( m_frame->GetHQLibSymbol( sel.LibId ) )
+                    {
+                        libSymbol = m_frame->GetHQLibSymbol( sel.LibId );
+                    }
+                }
 
                 if( !libSymbol )
                     continue;

@@ -294,6 +294,13 @@ LIB_TREE_NODE_ITEM& LIB_TREE_NODE_LIBRARY::AddItem( LIB_TREE_ITEM* aItem )
     return *item;
 }
 
+LIB_TREE_NODE_LIBRARY& LIB_TREE_NODE_LIBRARY::AddLib( LIB_TREE_NODE_LIBRARY* aNode,
+                                    wxString const& aName, wxString const& aDesc )
+{
+    LIB_TREE_NODE_LIBRARY* lib = new LIB_TREE_NODE_LIBRARY( aNode, aName, aDesc );
+    m_Children.push_back( std::unique_ptr<LIB_TREE_NODE>( lib ) );
+    return *lib;
+}
 
 void LIB_TREE_NODE_LIBRARY::UpdateScore( EDA_COMBINED_MATCHER* aMatcher, const wxString& aLib,
                                          std::function<bool( LIB_TREE_NODE& aNode )>* aFilter )

@@ -217,6 +217,8 @@ public:
      */
     void UpdateSearchString( const wxString& aSearch, bool aState );
 
+    void UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode );
+
     /**
      * Attach to a wxDataViewCtrl and initialize it. This will set up columns
      * and associate the model via the adapter.
@@ -320,6 +322,22 @@ public:
     void ShowChangedLanguage()
     {
         recreateColumns();
+    }
+
+    LIB_TREE_NODE_LIBRARY& AddSubLibraryNode( LIB_TREE_NODE_LIBRARY& aNode, 
+                                            const wxString& aNodeName, const wxString& aDesc,
+                                            bool pinned );
+
+    LIB_TREE_NODE_LIBRARY& AddSubLibraryNode( const wxString& aNodeName, const wxString& aDesc,
+                                        bool pinned );
+
+    void AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
+                                const std::vector<LIB_TREE_ITEM*>& aItemList,
+                                bool pinned, bool presorted );
+
+    void ClearRootTreeNodes()
+    {
+        m_tree.m_Children.clear();
     }
 
 protected:

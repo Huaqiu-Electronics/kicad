@@ -23,6 +23,9 @@
 #define SYMBOL_TREE_MODEL_ADAPTER_H
 
 #include <lib_tree_model_adapter.h>
+#include <http_lib/http_hq_connection.h>
+#include <symbol_library_common.h>
+
 
 class LIB_TABLE;
 class SYMBOL_LIB_TABLE;
@@ -58,6 +61,20 @@ public:
 
     wxString GenerateInfo( LIB_ID const& aLibId, int aUnit ) override;
 
+    void InitConnection( const HTTP_HQ_LIB_SOURCE& aSource );
+    bool RequestCategories();
+    void LoadCategories();
+    bool RequestQueryParts( const std::string& aCateId = "", const std::string& aCateDisplayName = "",
+                            const std::string& aDesc = "", const std::string& aPageNum = "1",
+                            const std::string& aPageSize = "10" );
+
+    bool RequestPartDetail( const std::string& aMpn, bool onlyDownloadFP = false );
+    
+    void AddHQPartsToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode, bool pinned );
+    void UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aItem );
+    
+    HTTP_HQ_CATEGORY GetHQCategory( const wxString& aDisplayname );
+
 protected:
     /**
      * Constructor; takes a set of libraries to be included in the search.
@@ -74,6 +91,14 @@ private:
     static bool        m_show_progress;
 
     SYMBOL_LIB_TABLE*  m_libs;
+
+    std::unique_ptr<HTTP_HQ_CONNECTION> m_conn;
+    const std::string m_hqRootUrl = "http://www.fdatasheets.com";
+    std::vector<HTTP_HQ_CATEGORY> m_categories;
+    std::map<wxString, HTTP_HQ_CATEGORY> m_name_category_map;
+    std::vector<HTTP_HQ_PART> m_query_cache_parts;  /// for every time we query to cache, clear when query again 
+    std::map<wxString, HTTP_HQ_PART> m_mpn_part_map;  /// for all time query parts to storage
+    // LIB_SYMBOL_MAP m_symbolLibMap;
 };
 
 #endif // SYMBOL_TREE_MODEL_ADAPTER_H

@@ -114,7 +114,7 @@ PANEL_SYMBOL_CHOOSER::PANEL_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWindow* aP
                     []( LIB_TREE_NODE& aNode ) -> bool
                     {
                         return true;
-                    };
+                    }; 
 
             adapter->SetFilter( &powerFilter );
 

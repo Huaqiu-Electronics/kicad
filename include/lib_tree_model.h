@@ -250,6 +250,9 @@ public:
      */
     LIB_TREE_NODE_LIBRARY( LIB_TREE_NODE* aParent, const wxString& aName, const wxString& aDesc );
 
+    LIB_TREE_NODE_LIBRARY& AddLib( LIB_TREE_NODE_LIBRARY* aNode,
+                        wxString const& aName, wxString const& aDesc );
+
     /**
      * Construct a new alias node, add it to this library, and return it.
      *

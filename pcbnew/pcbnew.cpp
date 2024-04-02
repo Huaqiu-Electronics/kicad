@@ -369,6 +369,8 @@ KIFACE_API KIFACE* KIFACE_GETTER( int* aKIFACEversion, int aKiwayVersion, PGM_BA
 /// the fallback table for multiple projects).
 FP_LIB_TABLE          GFootprintTable;
 
+FP_LIB_TABLE          GHQFootprintTable;
+
 /// The global footprint info table.  This is performance-intensive to build so we
 /// keep a hash-stamped global version.  Any deviation from the request vs. stored
 /// hash will result in it being rebuilt.

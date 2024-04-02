@@ -64,6 +64,7 @@ public:
                           std::function<void()> aAcceptHandler,
                           std::function<void()> aEscapeHandler );
 
+
     ~PANEL_SYMBOL_CHOOSER();
 
     void OnChar( wxKeyEvent& aEvent );

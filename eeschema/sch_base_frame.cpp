@@ -237,6 +237,14 @@ LIB_SYMBOL* SCH_BASE_FRAME::GetLibSymbol( const LIB_ID& aLibId, bool aUseCacheLi
 }
 
 
+LIB_SYMBOL* SCH_BASE_FRAME::GetHQLibSymbol( const LIB_ID& aLibId, bool aShowErrorMsg )
+{
+
+    return SchGetLibSymbol( aLibId, &SYMBOL_LIB_TABLE::GetHQGlobalLibTable(), nullptr, this,
+                            aShowErrorMsg );
+}
+
+
 bool SCH_BASE_FRAME::saveSymbolLibTables( bool aGlobal, bool aProject )
 {
     wxString msg;

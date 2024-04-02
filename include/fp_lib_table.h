@@ -274,10 +274,17 @@ public:
      */
     static bool LoadGlobalTable( FP_LIB_TABLE& aTable );
 
+    static bool LoadHQGlobalTable( FP_LIB_TABLE& aTable );
+
+    static bool LoadFileToInserterRow( FP_LIB_TABLE& aTable, wxString aFilePath );
+
+
     /**
      * @return the platform specific global footprint library path and file name.
      */
     static wxString GetGlobalTableFileName();
+
+    static wxString GetHQGlobalTableFileName();
 
     /**
      * Return the name of the environment variable used to hold the directory of
@@ -293,6 +300,7 @@ private:
     friend class FP_LIB_TABLE_GRID;
 };
 
+extern FP_LIB_TABLE GHQFootprintTable;
 
 extern FP_LIB_TABLE GFootprintTable;        // KIFACE scope.
 

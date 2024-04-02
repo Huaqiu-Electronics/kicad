@@ -81,6 +81,8 @@ public:
      */
     void DisplayFootprint( const LIB_ID& aFPID );
 
+    void DisplayHQFootprint( const LIB_ID& aFPID );
+
     /**
      * Display a pair of footprints.  (Normally used for diff'ing.)
      */
@@ -128,6 +130,8 @@ public:
      * passed to CacheFootprint before.
      */
     virtual bool DisplayFootprint( LIB_ID const& aFPID ) = 0;
+
+    virtual bool DisplayHQFootprint( LIB_ID const& aFPID ) { return false; }
 
     /**
      * Display a pair of footprints.  (Normally used for diff'ing.)

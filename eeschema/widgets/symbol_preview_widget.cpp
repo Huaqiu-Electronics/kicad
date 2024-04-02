@@ -265,6 +265,82 @@ void SYMBOL_PREVIEW_WIDGET::DisplaySymbol( const LIB_ID& aSymbolID, int aUnit, i
 }
 
 
+void SYMBOL_PREVIEW_WIDGET::DisplayHQSymbol( const LIB_ID& aSymbolID, int aUnit, int aBodyStyle )
+{
+    KIGFX::VIEW* view = m_preview->GetView();
+    auto settings = static_cast<KIGFX::SCH_RENDER_SETTINGS*>( view->GetPainter()->GetSettings() );
+    std::unique_ptr< LIB_SYMBOL > symbol;
+
+    try
+    {
+        LIB_SYMBOL* tmp = SYMBOL_LIB_TABLE::GetHQGlobalLibTable().LoadSymbol( aSymbolID );
+
+        if( tmp )
+            symbol = tmp->Flatten();
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Error loading symbol %s from library '%s'." ) + wxS( "\n%s" ),
+                    aSymbolID.GetLibItemName().wx_str(),
+                    aSymbolID.GetLibNickname().wx_str(),
+                    ioe.What() );
+    }
+
+    if( m_previewItem )
+    {
+        view->Remove( m_previewItem );
+        delete m_previewItem;
+        m_previewItem = nullptr;
+    }
+
+    if( symbol )
+    {
+        // This will flatten derived parts so that the correct final symbol can be shown.
+        m_previewItem = symbol.release();
+
+        // Hide fields that were added automatically by the library (for example, when using
+        // database libraries) as they don't have a valid position yet, and we don't support
+        // autoplacing fields on library symbols yet.
+        std::vector<LIB_FIELD*> previewFields;
+        m_previewItem->GetFields( previewFields );
+
+        for( LIB_FIELD* field : previewFields )
+        {
+            if( field->IsAutoAdded() )
+                field->SetVisible( false );
+        }
+
+        // If unit isn't specified for a multi-unit part, pick the first.  (Otherwise we'll
+        // draw all of them.)
+        settings->m_ShowUnit = ( m_previewItem->IsMulti() && aUnit == 0 ) ? 1 : aUnit;
+
+        // For symbols having a De Morgan body style, use the first style
+        settings->m_ShowBodyStyle =
+                ( m_previewItem->HasAlternateBodyStyle() && aBodyStyle == 0 ) ? 1 : aBodyStyle;
+
+        view->Add( m_previewItem );
+
+        // Get the symbol size, in internal units
+        m_itemBBox = m_previewItem->GetUnitBoundingBox( settings->m_ShowUnit,
+                                                        settings->m_ShowBodyStyle );
+
+        if( !m_preview->IsShownOnScreen() )
+        {
+            m_preview->Show();
+
+            if( m_statusPanel )
+                m_statusPanel->Hide();
+
+            Layout();   // Ensure panel size is up to date.
+        }
+
+        // Calculate the draw scale to fit the drawing area
+        fitOnDrawArea();
+    }
+
+    m_preview->ForceRefresh();
+}
+
 void SYMBOL_PREVIEW_WIDGET::DisplayPart( LIB_SYMBOL* aSymbol, int aUnit, int aBodyStyle )
 {
     KIGFX::VIEW* view = m_preview->GetView();

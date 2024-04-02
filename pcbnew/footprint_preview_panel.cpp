@@ -196,6 +196,44 @@ bool FOOTPRINT_PREVIEW_PANEL::DisplayFootprint( const LIB_ID& aFPID )
     return m_currentFootprint != nullptr;
 }
 
+bool FOOTPRINT_PREVIEW_PANEL::DisplayHQFootprint( const LIB_ID& aFPID )
+{
+    if( m_currentFootprint )
+    {
+        GetView()->Remove( m_currentFootprint.get() );
+        GetView()->Clear();
+        m_currentFootprint->SetParent( nullptr );
+    }
+
+    FP_LIB_TABLE::LoadHQGlobalTable( GHQFootprintTable );
+
+    FP_LIB_TABLE* fptbl = &GHQFootprintTable;
+
+    try
+    {
+        const FOOTPRINT* fp = fptbl->GetEnumeratedFootprint( aFPID.GetLibNickname(),
+                                                             aFPID.GetLibItemName() );
+
+        if( fp )
+            m_currentFootprint.reset( static_cast<FOOTPRINT*>( fp->Duplicate() ) );
+        else
+            m_currentFootprint.reset();
+    }
+    catch( ... )
+    {
+        m_currentFootprint.reset();
+    }
+
+    if( m_currentFootprint )
+    {
+        renderFootprint( m_currentFootprint );
+        fitToCurrentFootprint();
+    }
+
+    ForceRefresh();
+
+    return m_currentFootprint != nullptr;
+}
 
 void FOOTPRINT_PREVIEW_PANEL::DisplayFootprints( std::shared_ptr<FOOTPRINT> aFootprintA,
                                                  std::shared_ptr<FOOTPRINT> aFootprintB )

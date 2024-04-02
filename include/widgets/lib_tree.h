@@ -115,6 +115,7 @@ public:
      */
     void CenterLibId( const LIB_ID& aLibId );
 
+    virtual void UpdateSelectItem() {}
     /**
      * Unselect currently selected item in wxDataViewCtrl
      */
@@ -143,7 +144,7 @@ public:
     /**
      * Regenerate the tree.
      */
-    void Regenerate( bool aKeepState );
+    virtual void Regenerate( bool aKeepState );
 
     /**
      * Refreshes the tree (mainly to update highlighting and asterisking)
@@ -215,7 +216,7 @@ protected:
     void hidePreview();
     void destroyPreview();
 
-    void onQueryText( wxCommandEvent& aEvent );
+    virtual void onQueryText( wxCommandEvent& aEvent );
     void onQueryCharHook( wxKeyEvent& aEvent );
     void onQueryMouseMoved( wxMouseEvent& aEvent );
 

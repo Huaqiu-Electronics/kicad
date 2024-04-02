@@ -621,6 +621,7 @@ bool SETTINGS_MANAGER::MigrateIfNeeded()
             wxT( "KICAD8_3DMODEL_DIR" ),
             wxT( "KICAD8_FOOTPRINT_DIR" ),
             wxT( "KICAD8_TEMPLATE_DIR" ),
+            wxT( "KICAD_HQ_LIB_CACHE_DIR" ),
 
             // Deprecated keys
             wxT( "KICAD_PTEMPLATES" ),

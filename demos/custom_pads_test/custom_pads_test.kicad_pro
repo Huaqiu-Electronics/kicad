@@ -422,10 +422,12 @@
       "duplicate_sheet_names": "error",
       "endpoint_off_grid": "warning",
       "extra_units": "error",
+      "footprint_link_issues": "warning",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
       "label_dangling": "error",
       "lib_symbol_issues": "warning",
+      "lib_symbol_mismatch": "warning",
       "missing_bidi_pin": "warning",
       "missing_input_pin": "warning",
       "missing_power_pin": "error",
@@ -609,7 +611,7 @@
   "sheets": [
     [
       "2323577b-cad3-4f70-b734-06368b53e30c",
-      ""
+      "Root"
     ]
   ],
   "text_variables": {}

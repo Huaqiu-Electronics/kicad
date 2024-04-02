@@ -128,6 +128,24 @@ void FOOTPRINT_PREVIEW_WIDGET::DisplayFootprint( const LIB_ID& aFPID )
     }
 }
 
+void FOOTPRINT_PREVIEW_WIDGET::DisplayHQFootprint( const LIB_ID& aFPID )
+{
+    if( !m_prev_panel || m_libid == aFPID )
+        return;
+
+    wxBusyCursor busy;
+
+    if( m_prev_panel->DisplayHQFootprint( aFPID ) )
+    {
+        ClearStatus();
+        m_libid = aFPID;
+    }
+    else
+    {
+        SetStatusText( _( "Footprint not found." ) );
+        m_libid.clear();
+    }
+}
 
 void FOOTPRINT_PREVIEW_WIDGET::DisplayFootprints( std::shared_ptr<FOOTPRINT> aFootprintA,
                                                   std::shared_ptr<FOOTPRINT> aFootprintB )

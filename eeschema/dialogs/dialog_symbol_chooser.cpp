@@ -24,6 +24,7 @@
 #include <symbol_library.h>
 #include <dialog_symbol_chooser.h>
 #include <widgets/panel_symbol_chooser.h>
+#include <widgets/panel_hq_symbol_chooser.h>
 #include <eeschema_settings.h>
 #include <kiface_base.h>
 #include <sch_base_frame.h>
@@ -47,7 +48,9 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
                      wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER )
 {
     wxBoxSizer* sizer = new wxBoxSizer( wxVERTICAL );
-    m_chooserPanel = new PANEL_SYMBOL_CHOOSER( aParent, this, aFilter, aHistoryList, aAlreadyPlaced,
+    m_notebook = new wxNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+
+    m_chooserPanel = new PANEL_SYMBOL_CHOOSER( aParent, m_notebook, aFilter, aHistoryList, aAlreadyPlaced,
                                                aAllowFieldEdits, aShowFootprints,
                                                [this]()
                                                {
@@ -58,7 +61,22 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
                                                    EndModal( wxID_CANCEL );
                                                } );
 
-    sizer->Add( m_chooserPanel, 1, wxEXPAND, 5 );
+    m_chooserPanel_HQ = new PANEL_HQ_SYMBOL_CHOOSER( aParent, m_notebook, aFilter, aHistoryList, aAlreadyPlaced,
+                                               aAllowFieldEdits, aShowFootprints,
+                                               [this]()
+                                               {
+                                                   EndModal( wxID_OK );
+                                               },
+                                               [this]()
+                                               {
+                                                   EndModal( wxID_CANCEL );
+                                               } );
+
+    m_notebook->AddPage( m_chooserPanel, wxT("KiCad Symbols"), true );
+    
+	m_notebook->AddPage( m_chooserPanel_HQ, wxT("HQ Symbols"), false );
+	
+    sizer->Add( m_notebook, 1, wxEXPAND, 5 );
 
     if( aPreselect && aPreselect->IsValid() )
         m_chooserPanel->SetPreselect( *aPreselect );
@@ -103,9 +121,12 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
     SetupStandardButtons();
 
     m_chooserPanel->FinishSetup();
+    m_chooserPanel_HQ->FinishSetup();
     Layout();
 
     Bind( wxEVT_CHAR_HOOK, &PANEL_SYMBOL_CHOOSER::OnChar, m_chooserPanel );
+    Bind( wxEVT_CHAR_HOOK, &PANEL_HQ_SYMBOL_CHOOSER::OnChar, m_chooserPanel_HQ );
+
 }
 
 
@@ -121,13 +142,22 @@ DIALOG_SYMBOL_CHOOSER::~DIALOG_SYMBOL_CHOOSER()
 
 LIB_ID DIALOG_SYMBOL_CHOOSER::GetSelectedLibId( int* aUnit ) const
 {
-    return m_chooserPanel->GetSelectedLibId( aUnit );
+    const int pageIndex = m_notebook->GetSelection();
+    
+    if( pageIndex == wxNOT_FOUND )
+        return LIB_ID();
+    
+    return pageIndex == 0 ? m_chooserPanel->GetSelectedLibId( aUnit )
+                : m_chooserPanel_HQ->GetSelectedLibId( aUnit );
 }
 
 
 std::vector<std::pair<int, wxString>> DIALOG_SYMBOL_CHOOSER::GetFields() const
 {
-    return m_chooserPanel->GetFields();
+    const int pageIndex = m_notebook->GetSelection();
+    
+    return pageIndex == 0 ? m_chooserPanel->GetFields()
+                : m_chooserPanel_HQ->GetFields();
 }
 
 

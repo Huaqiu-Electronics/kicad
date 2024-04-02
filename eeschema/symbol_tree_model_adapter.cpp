@@ -238,4 +238,286 @@ wxString SYMBOL_TREE_MODEL_ADAPTER::GenerateInfo( LIB_ID const& aLibId, int aUni
     return GenerateAliasInfo( m_libs, aLibId, aUnit );
 }
 
+void SYMBOL_TREE_MODEL_ADAPTER::InitConnection( const HTTP_HQ_LIB_SOURCE& aSource )
+{
+    if( !m_conn )
+    {
+        m_conn = std::make_unique<HTTP_HQ_CONNECTION>( aSource );
+    }
+
+}
+bool SYMBOL_TREE_MODEL_ADAPTER::RequestCategories()
+{
+    HTTP_HQ_LIB_SOURCE src;
+    src.root_url = m_hqRootUrl;
+    InitConnection( src );
+    
+    if( !m_conn->RequestCategories() )
+    {
+        m_conn.reset();
+        return false;
+    }
+
+    m_categories = m_conn->getCategories();
+    return true;
+}
+
+bool SYMBOL_TREE_MODEL_ADAPTER::RequestQueryParts( const std::string& aCateId,
+                            const std::string& aCateDisplayName,
+                            const std::string& aDesc, const std::string& aPageNum,
+                            const std::string& aPageSize )
+{
+    HTTP_HQ_LIB_SOURCE src;
+    src.root_url = m_hqRootUrl;
+    InitConnection( src );
+
+    std::vector<std::pair<std::string, std::string>> fields;
+    fields.push_back( std::make_pair( "cateId", aCateId ) );
+    fields.push_back( std::make_pair( "categoryName", aCateDisplayName ) );
+    fields.push_back( std::make_pair( "desc", aDesc ) );
+    fields.push_back( std::make_pair( "pageNum", aPageNum ) );
+    fields.push_back( std::make_pair( "pageSize", aPageSize ) );
+
+    if( !m_conn->QueryParts( fields ) )
+    {
+        m_conn.reset();
+        return false;
+    }
+
+    m_query_cache_parts = m_conn->getParts();
+
+    for( auto part : m_conn->getParts() )
+    {
+        m_mpn_part_map[part.mpn] = part;
+    }
+
+    return true;
+}
+
+bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn, bool onlyDownloadFP )
+{
+    HTTP_HQ_LIB_SOURCE src;
+    src.root_url = m_hqRootUrl;
+    InitConnection( src );
+
+    HTTP_HQ_PART& part = m_mpn_part_map.at( aMpn );
+
+    if( !onlyDownloadFP )
+    {
+        if( !m_conn->RequestPartDetails( part ) )
+        {
+            m_conn.reset();
+            return false;
+        }
+
+        /// only download when table do not have the symbol name
+        if( !m_libs->HasLibrary( part.symbol_lib_name ) )
+        {
+            if( !m_conn->DownloadLibs( "symbol", part ) )
+            {
+                m_conn.reset();
+                return false;
+            }
+
+            // update sym table every time download symbol file.
+            SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
+
+            // file do exist or download success
+            // file now exist but no in table, both try load lib add row
+            return SYMBOL_LIB_TABLE::LoadFileToInserterRow( 
+                            SYMBOL_LIB_TABLE::GetHQGlobalLibTable(), m_conn->GetLibSavePath( "symbol", part ) );
+
+        }
+    }
+    else
+    {
+        // NOTE: footprint table not LoadFileToInserterRow here, as KiCad construct FP_LIB_TABLE should not be included
+        // in eeschema here. It use kiway.
+        // Should consider differrnt parts with same symbol lib file but not same fp lib file.
+        if( !m_conn->DownloadLibs( "footprint", part ) )
+        {
+            m_conn.reset();
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+void SYMBOL_TREE_MODEL_ADAPTER::AddHQPartsToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode, bool pinned )
+{
+    std::vector<LIB_SYMBOL*>    symbols;
+    std::vector<LIB_TREE_ITEM*> comp_list;
+    wxString name;
+
+    try
+    {
+        for( auto& part : m_query_cache_parts )
+        {
+            std::unique_ptr<LIB_SYMBOL> symbol = std::make_unique<LIB_SYMBOL>( part.mpn );
+
+            symbol->SetUnitCount( 1 );
+
+            name = wxString::FromUTF8( symbol->GetName().c_str() );
+
+            // Some symbol LIB_IDs have the '/' character escaped which can break derived symbol links.
+            // The '/' character is no longer an illegal LIB_ID character so it doesn't need to be
+            // escaped.
+            name.Replace( wxS( "{slash}" ), wxT( "/" ) );
+
+            LIB_ID id;
+            int bad_pos = id.Parse( name );
+
+            if( bad_pos >= 0 )
+            {
+                if( static_cast<int>( name.size() ) > bad_pos )
+                {
+                    wxString msg = wxString::Format(
+                            _( "Symbol %s contains invalid character '%c'" ), name,
+                            name[bad_pos] );
+
+                }
+            }
+
+            symbol->SetName( id.GetLibItemName().wx_str() );
+            symbol->SetLibId( id );
+
+            // m_libsymbol_part_map[symbol->GetName()] = part;
+            symbols.push_back( symbol.release() );
+        }
+        
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Error loading HQ symbol of '%s'." ) + wxS( "\n%s" ),
+                    name, ioe.What() );
+        return;
+    }
+
+    if( symbols.size() > 0 )
+    {
+        comp_list.assign( symbols.begin(), symbols.end() );
+        
+        AddItemToLibraryNode( aNode, comp_list, pinned, false );
+    }
+}
+
+void SYMBOL_TREE_MODEL_ADAPTER::UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aItem )
+{
+    if( m_mpn_part_map.find( aItem->m_Name ) == m_mpn_part_map.end() )
+    {
+        wxLogError( _( "Error loading HQ symbol to update tree item." ) );
+        return;
+    }
+    HTTP_HQ_PART& part = m_mpn_part_map.at( aItem->m_Name );
+
+    std::vector<LIB_SYMBOL*>    symbols;
+    std::vector<LIB_TREE_ITEM*> comp_list;
+    wxString libname = part.symbol_lib_name;
+    wxString nickname = libname.substr( 0, libname.length() - 10 );
+
+    try
+    {
+        m_libs->LoadSymbolLib( symbols, nickname, false );
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Error loading HQ symbol library '%s'." ) + wxS( "\n%s" ),
+                    libname,
+                    ioe.What() );
+        return;
+    }
+
+    if( symbols.size() > 0 )
+    {
+        // for download footprint file, need to get *.pretty name and update *.kicad_mod name
+        LIB_FIELD* fp_field = symbols.at(0)->GetFieldById( FOOTPRINT_FIELD );
+        wxString   fp_name = fp_field ? fp_field->GetFullText() : wxString( "" );
+        LIB_ID lib_id;
+
+        if( lib_id.Parse( fp_name ) == -1 && lib_id.IsValid() )
+        {
+            part.pretty_name = lib_id.GetLibNickname();
+        }
+
+        comp_list.assign( symbols.begin(), symbols.end() );
+        
+        for( LIB_TREE_ITEM* item: comp_list )
+        {
+            aItem->Update( item );
+            aItem->m_Name = part.mpn;
+        }
+    }
+}
+
+
+
+void SYMBOL_TREE_MODEL_ADAPTER::LoadCategories()
+{
+    if( !m_categories.empty() )
+    {
+        m_name_category_map.clear();
+        std::vector<HTTP_HQ_CATEGORY> level1_vec;
+        std::vector<HTTP_HQ_CATEGORY> level2_vec;
+        std::vector<HTTP_HQ_CATEGORY> level3_vec;
+        for( auto& category : m_categories )
+        {
+            if( category.level == "1" )
+            {
+                level1_vec.push_back( category );
+
+            }
+            else if( category.level == "2" )
+            {
+                level2_vec.push_back( category );
+
+            }
+            else if( category.level == "3" )
+            {
+                level3_vec.push_back( category );
+            }
+            m_name_category_map[category.displayName] = category;
+        }
+
+        for( auto& level1  : level1_vec )
+        {
+            LIB_TREE_NODE_LIBRARY& level1_node = 
+                AddSubLibraryNode( level1.displayName, wxEmptyString, false);
+
+            for( auto& level2  : level2_vec )
+            {
+                if( level1.id == level2.parentId )
+                {
+                    LIB_TREE_NODE_LIBRARY& level2_node =
+                        AddSubLibraryNode( level1_node, level2.displayName,
+                                                       wxEmptyString, false);
+                    for( auto& level3  : level3_vec )
+                    {
+                        if( level2.id == level3.parentId )
+                        {
+                            // LIB_TREE_NODE_LIBRARY& level3_node =
+                            AddSubLibraryNode( level2_node, level3.displayName,
+                                                            wxEmptyString, false);
+                        }
+                    }
+                }
+            }
+
+            level1_node.AssignIntrinsicRanks( true );
+        }
+    }
+}
+
+HTTP_HQ_CATEGORY SYMBOL_TREE_MODEL_ADAPTER::GetHQCategory( const wxString& aDisplayname )
+{
+    if ( m_name_category_map.find( aDisplayname ) != m_name_category_map.end() )
+    {
+        return m_name_category_map[aDisplayname];
+    }
+    else
+    {
+        return HTTP_HQ_CATEGORY();
+    }
+}
 

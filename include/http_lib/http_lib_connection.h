@@ -35,6 +35,7 @@ public:
     static const long DEFAULT_TIMEOUT = 10;
 
     HTTP_LIB_CONNECTION( const HTTP_LIB_SOURCE& aSource, bool aTestConnectionNow );
+    HTTP_LIB_CONNECTION() = default;
 
     ~HTTP_LIB_CONNECTION();
 
@@ -67,10 +68,11 @@ public:
 
     auto getCachedParts() { return m_cache; }
 
-private:
+protected:
+
     // This is clunky but at the moment the only way to free the pointer after use without KiCad crashing.
     // at this point we can't use smart pointers as there is a problem with the order of how things are deleted/freed
-    std::unique_ptr<KICAD_CURL_EASY> createCurlEasyObject()
+    virtual std::unique_ptr<KICAD_CURL_EASY> createCurlEasyObject()
     {
         std::unique_ptr<KICAD_CURL_EASY> aCurl( new KICAD_CURL_EASY() );
 
@@ -81,17 +83,17 @@ private:
         return aCurl;
     }
 
-    bool ValidateHTTPLibraryEndpoints();
+    virtual bool ValidateHTTPLibraryEndpoints();
 
-    bool syncCategories();
+    virtual bool syncCategories();
 
     bool checkServerResponse( std::unique_ptr<KICAD_CURL_EASY>& aCurl );
 
     bool boolFromString( const std::any& aVal, bool aDefaultValue = false );
 
     wxString httpErrorCodeDescription( uint16_t aHttpCode );
-
-    HTTP_LIB_SOURCE m_source;
+// private:
+    HTTP_LIB_SOURCE      m_source;
 
     //          part.id     part
     std::map<std::string, HTTP_LIB_PART> m_cachedParts;

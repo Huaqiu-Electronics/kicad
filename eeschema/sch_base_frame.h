@@ -185,6 +185,9 @@ public:
     LIB_SYMBOL* GetLibSymbol( const LIB_ID& aLibId, bool aUseCacheLib = false,
                               bool aShowErrorMsg = false );
 
+    LIB_SYMBOL* GetHQLibSymbol( const LIB_ID& aLibId, bool aShowErrorMsg = false );
+
+
     /**
      * Display a list of loaded libraries and allows the user to select a library.
      *
