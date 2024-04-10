@@ -429,7 +429,6 @@
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
-      "lib_symbol_mismatch": "warning",
       "missing_bidi_pin": "warning",
       "missing_input_pin": "warning",
       "missing_power_pin": "error",
@@ -633,7 +632,7 @@
   "sheets": [
     [
       "3bb135b1-15ed-43fe-a7bd-da79c3cfcb8b",
-      "Root"
+      "Racine"
     ],
     [
       "00000000-0000-0000-0000-000048553e53",
