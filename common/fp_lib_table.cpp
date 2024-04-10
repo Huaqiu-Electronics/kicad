@@ -580,6 +580,68 @@ private:
     size_t        m_prefix_dir_count;
 };
 
+class HQ_FP_LIB_TRAVERSER final : public wxDirTraverser
+{
+public:
+    explicit HQ_FP_LIB_TRAVERSER( const wxString& aPath, FP_LIB_TABLE& aTable,
+                                   const wxString& aPrefix ) :
+            m_lib_table( aTable ),
+            m_path_prefix( aPath ),
+            m_lib_prefix( aPrefix )
+    {
+        wxFileName f( aPath, wxS( "" ) );
+        m_prefix_dir_count = f.GetDirCount();
+    }
+
+    wxDirTraverseResult OnFile( const wxString& aFilePath ) override { return wxDIR_CONTINUE; }
+
+    wxDirTraverseResult OnDir( const wxString& dirPath ) override
+    {
+        wxFileName dir = wxFileName::DirName( dirPath );
+
+        // consider a directory to be a lib if it's name ends with .pretty and
+        // it is under $KICADn_3RD_PARTY/hq_footprints/<pkgid>/ i.e. has nested level of at least +3
+        if( dirPath.EndsWith( wxS( ".pretty" ) ) && dir.GetDirCount() >= m_prefix_dir_count + 2 )
+        {
+            wxString versionedPath = wxString::Format( wxS( "${%s}" ),
+                                       ENV_VAR::GetVersionedEnvVarName( wxS( "3RD_PARTY" ) ) );
+
+            wxArrayString parts = dir.GetDirs();
+            parts.RemoveAt( 0, m_prefix_dir_count );
+            parts.Insert( versionedPath, 0 );
+
+            wxString libPath = wxJoin( parts, '/' );
+
+            if( !m_lib_table.HasLibraryWithPath( libPath ) )
+            {
+                wxString name = parts.Last().substr( 0, parts.Last().length() - 7 );
+                wxString nickname = wxString::Format( wxS( "%s%s" ), m_lib_prefix, name );
+
+                if( m_lib_table.HasLibrary( nickname ) )
+                {
+                    int increment = 1;
+                    do
+                    {
+                        nickname = wxString::Format( wxS( "%s%s_%d" ), m_lib_prefix, name, increment );
+                        increment++;
+                    } while( m_lib_table.HasLibrary( nickname ) );
+                }
+
+                m_lib_table.InsertRow(
+                        new FP_LIB_TABLE_ROW( nickname, libPath, wxT( "KiCad" ), wxEmptyString,
+                                              _( "Added by HQ Online Symbol" ) ) );
+            }
+        }
+
+        return wxDIR_CONTINUE;
+    }
+
+private:
+    FP_LIB_TABLE& m_lib_table;
+    wxString      m_path_prefix;
+    wxString      m_lib_prefix;
+    size_t        m_prefix_dir_count;
+};
 
 bool FP_LIB_TABLE::LoadGlobalTable( FP_LIB_TABLE& aTable )
 {
@@ -698,7 +760,6 @@ bool FP_LIB_TABLE::LoadHQGlobalTable( FP_LIB_TABLE& aTable )
         packagesPath = *v;
 
     wxFileName cacheDir( packagesPath, wxS( "" ) );
-    cacheDir.AppendDir( wxS( "footprints" ) );
     cacheDir.AppendDir( wxT( "hq_footprints" ) );
 
 
@@ -708,7 +769,7 @@ bool FP_LIB_TABLE::LoadHQGlobalTable( FP_LIB_TABLE& aTable )
                                             cacheDir.GetPath() ) );
     }
 
-    PCM_FP_LIB_TRAVERSER traverser( packagesPath, aTable, wxEmptyString );
+    HQ_FP_LIB_TRAVERSER traverser( packagesPath, aTable, wxEmptyString );
     wxDir                 dir( cacheDir.GetPath() );
 
     dir.Traverse( traverser );

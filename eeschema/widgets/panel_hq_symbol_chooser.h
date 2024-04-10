@@ -218,7 +218,7 @@ public:
         {
             std::string args = "";
             adapter->RequestQueryParts( args, args, filter.ToStdString() );
-            wxString hq_node = wxT("HQ Online Search Results");
+            wxString hq_node = wxT( "-- " ) + wxT("HQ Online Search Results") + wxT( " --" );
             //to check node in m_tree.m_children,if dont't exist,add it .
             //if exist, do not add twice
             wxDataViewItem item = adapter->FindItem( LIB_ID( hq_node, wxEmptyString ) );
@@ -265,6 +265,11 @@ public:
         // // Restore the state
         // if( aKeepState )
         //     setState( current );
+    }
+
+    wxString GetSearchString() const
+    {
+        return m_query_ctrl->GetValue();
     }
 
     // virtual void Regenerate( bool aKeepState )

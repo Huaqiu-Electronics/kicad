@@ -35,6 +35,9 @@
 #include <symbol_async_loader.h>
 #include <symbol_lib_table.h>
 #include <string_utils.h>
+#include <wildcards_and_files_ext.h>
+#include <widgets/footprint_preview_widget.h>
+
 
 bool SYMBOL_TREE_MODEL_ADAPTER::m_show_progress = true;
 
@@ -311,7 +314,7 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn, bool
         }
 
         /// only download when table do not have the symbol name
-        if( !m_libs->HasLibrary( part.symbol_lib_name ) )
+        if( !m_libs->HasLibrary( aMpn ) )
         {
             if( !m_conn->DownloadLibs( "symbol", part ) )
             {
@@ -322,10 +325,14 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn, bool
             // update sym table every time download symbol file.
             SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
 
+            // update HQ symbol lib file of lib name, symbol name, and some fields
+            SaveHQSymbolFields( aMpn );
+
+
             // file do exist or download success
             // file now exist but no in table, both try load lib add row
-            return SYMBOL_LIB_TABLE::LoadFileToInserterRow( 
-                            SYMBOL_LIB_TABLE::GetHQGlobalLibTable(), m_conn->GetLibSavePath( "symbol", part ) );
+            // return SYMBOL_LIB_TABLE::LoadFileToInserterRow( 
+            //                 SYMBOL_LIB_TABLE::GetHQGlobalLibTable(), m_conn->GetLibSavePath( "symbol", part ) );
 
         }
     }
@@ -340,6 +347,124 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn, bool
             return false;
         }
     }
+
+    return true;
+}
+
+
+bool SYMBOL_TREE_MODEL_ADAPTER::MoveHQLibsToPrjLibs( const wxString& aMpn,
+                         SCH_BASE_FRAME* aFrame, FOOTPRINT_PREVIEW_WIDGET* aWidget )
+{
+    if( m_mpn_part_map.find( aMpn ) == m_mpn_part_map.end() )
+    {
+        wxLogError( _( "Error loading HQ part to move libs to project." ) );
+        return false;
+    }
+    HTTP_HQ_PART& part = m_mpn_part_map.at( aMpn );
+
+    SYMBOL_LIB_TABLE_ROW* row = m_libs->FindRow( symfn.GetName() );
+    SYMBOL_LIB_TABLE* sym_table = PROJECT_SCH::SchSymbolLibTable( &aFrame->Prj() );
+
+    if( row )
+    {
+        // copy symbol to prj hq_libs
+        wxFileName symfn = m_conn->GetLibSavePath( "symbol", part );
+        wxFileName fpfn = m_conn->GetLibSavePath( "footprint", part );
+        wxFileName prjfn;
+        prjfn.AssignDir( aFrame->Prj().GetProjectDirectory() );
+        prjfn.AppendDir( "hq_libs" );
+        prjfn.SetFullName( symfn.GetFullName() );
+
+        if( !KiCopyFile( symfn.GetFullPath(), prjfn.GetFullPath() ) )
+            return false;
+
+        wxString fp_pretty = wxString::Format( "%s.%s", part.pretty_name,
+                FILEEXT::KiCadFootprintLibPathExtension );
+
+        prjfn.AppendDir( fp_pretty );
+
+        prjfn.SetFullName( fpfn.GetFullName() );
+
+        if( !KiCopyFile( fpfn.GetFullPath(), prjfn.GetFullPath() ) )
+            return false;
+
+        // to insert prj table row
+        wxString uri = wxS( "${KIPRJMOD}/hq_libs/" ) + symfn.GetFullName();
+        wxString fp_uri = wxString::Format( "${KIPRJMOD}/hq_libs/%s", fp_pretty );
+
+        bool ret = aWidget->UpdateHQPrjFPLibTable( fp_uri, part.pretty_name );
+        // the row was inserted before, not need to insert again,
+        // just overwrite the libs files and update
+        if( sym_table->HasLibraryWithPath( uri ) && ret )
+            return true;
+
+        wxString libNickname = symfn.GetName();
+
+        SYMBOL_LIB_TABLE_ROW* row = new SYMBOL_LIB_TABLE_ROW( libNickname, uri, wxT( "KiCad" ), wxEmptyString,
+                                                _( "Added by HQ Online Symbol" ) );
+        sym_table->InsertRow( row, true );
+
+        sym_table->Save( aFrame->Prj().SymbolLibTableName() );
+
+        // try save 
+        aFrame->SavePrjSymbolLibTables();
+
+        return true;
+    }
+
+    return false;
+
+}
+
+bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
+{
+    if( m_mpn_part_map.find( aMpn ) == m_mpn_part_map.end() )
+    {
+        wxLogError( _( "Error loading HQ symbol to update tree item." ) );
+        return false;
+    }
+    HTTP_HQ_PART& part = m_mpn_part_map.at( aMpn );
+    std::vector<LIB_SYMBOL*>    symbols;
+    wxString lib_nick_name = aMpn;
+    // wxString nickname = libname.substr( 0, libname.length() - 10 );
+
+    try
+    {
+        m_libs->LoadSymbolLib( symbols, lib_nick_name, false );
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Error loading HQ symbol library '%s'." ) + wxS( "\n%s" ),
+                    lib_nick_name,
+                    ioe.What() );
+        return false;
+    }
+
+    LIB_SYMBOL* lib_sym = symbols.at( 0 );
+    lib_sym->SetName( lib_nick_name );
+    // TODO update fields
+    std::vector<LIB_FIELD>& fields;
+    LIB_FIELD* fp_field = lib_sym->GetFieldById( FOOTPRINT_FIELD );
+    fp_field->SetText( part.pretty_name );
+    lib_sym->SetFields( fields );
+    wxFileName fn( m_conn->GetLibSavePath( "symbol", part ) );
+
+    try
+    {
+        IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) );
+
+        // for( const std::unique_ptr<LIB_SYMBOL>& symbol : m_rescueLibSymbols )
+        pi->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ), nullptr );
+
+        pi->SaveLibrary( fn.GetFullPath() );
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Failed to save HQ library %s. %s" ), fn.GetFullPath(), ioe.What() );
+        return false;
+    }
+
+    SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
 
     return true;
 }
@@ -383,6 +508,9 @@ void SYMBOL_TREE_MODEL_ADAPTER::AddHQPartsToLibraryNode( LIB_TREE_NODE_LIBRARY& 
             symbol->SetName( id.GetLibItemName().wx_str() );
             symbol->SetLibId( id );
 
+            // update item description before click to query part details
+            symbol->SetDescription( part.description );
+
             // m_libsymbol_part_map[symbol->GetName()] = part;
             symbols.push_back( symbol.release() );
         }
@@ -397,6 +525,7 @@ void SYMBOL_TREE_MODEL_ADAPTER::AddHQPartsToLibraryNode( LIB_TREE_NODE_LIBRARY& 
 
     if( symbols.size() > 0 )
     {
+        symbols.push_back( new LIB_SYMBOL( "more results" ) );
         comp_list.assign( symbols.begin(), symbols.end() );
         
         AddItemToLibraryNode( aNode, comp_list, pinned, false );
@@ -414,17 +543,17 @@ void SYMBOL_TREE_MODEL_ADAPTER::UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aIt
 
     std::vector<LIB_SYMBOL*>    symbols;
     std::vector<LIB_TREE_ITEM*> comp_list;
-    wxString libname = part.symbol_lib_name;
-    wxString nickname = libname.substr( 0, libname.length() - 10 );
+    wxString lib_nick_name = part.mpn;
+    // wxString nickname = libname.substr( 0, libname.length() - 10 );
 
     try
     {
-        m_libs->LoadSymbolLib( symbols, nickname, false );
+        m_libs->LoadSymbolLib( symbols, lib_nick_name, false );
     }
     catch( const IO_ERROR& ioe )
     {
         wxLogError( _( "Error loading HQ symbol library '%s'." ) + wxS( "\n%s" ),
-                    libname,
+                    lib_nick_name,
                     ioe.What() );
         return;
     }
@@ -446,7 +575,7 @@ void SYMBOL_TREE_MODEL_ADAPTER::UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aIt
         for( LIB_TREE_ITEM* item: comp_list )
         {
             aItem->Update( item );
-            aItem->m_Name = part.mpn;
+            // aItem->m_Name = part.mpn;
         }
     }
 }

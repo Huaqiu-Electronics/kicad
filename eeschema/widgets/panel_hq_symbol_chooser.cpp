@@ -71,7 +71,6 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
         m_allow_field_edits( aAllowFieldEdits ),
         m_show_footprints( aShowFootprints )
 {
-    // SYMBOL_LIB_TABLE*         libs = PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() );
     // SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
     SYMBOL_LIB_TABLE::GetHQGlobalLibTable().Clear();
     SYMBOL_LIB_TABLE*         libs = &SYMBOL_LIB_TABLE::GetHQGlobalLibTable();
@@ -696,6 +695,50 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
         // to query product details, after download, reload lib symbols
         SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
         
+        // more results be clicked
+        if( "more results" == node->m_Name && node->m_Parent )
+        {
+            size_t itemCounts = node->m_Parent->m_Children.size();
+            size_t pageNum = itemCounts % 10 == 0 ? itemCounts / 10  + 1 : itemCounts / 10 + 2;
+
+            if( node->m_Parent->m_Name.Contains( "HQ Online") )
+            {
+                HQ_LIB_TREE* libTree = static_cast<HQ_LIB_TREE*>( m_tree );
+                
+                std::string args = "";
+                
+                adapter->RequestQueryParts( args, args, libTree->GetSearchString().ToStdString(), pageNum.to_string() );
+
+            }
+            else if( node->m_Parent && !node->m_Parent->m_Name.IsEmpty() )
+            {
+                
+                auto category = adapter->GetHQCategory( node->m_Parent->m_Name );
+                adapter->RequestQueryParts( category.id, category.displayName, "", pageNum.to_string() );
+
+            }
+            else
+            {
+                // just for default and protect no crash, will not happen
+                return;
+            }
+
+            LIB_TREE_NODE_LIBRARY* node_lib = static_cast<LIB_TREE_NODE_LIBRARY*>( node->m_Parent );
+
+            adapter->AddHQPartsToLibraryNode( *node_lib, true );
+            adapter->UpdateSearchString( "", true );
+            adapter->UpdateTreeAfterAddHQPart( node->m_Parent->m_Children.at( itemCounts ) );
+
+            m_symbol_preview->SetStatusText( _( "No symbol selected" ) );
+
+            if( m_fp_preview && m_fp_preview->IsInitialized() )
+                m_fp_preview->SetStatusText( wxEmptyString );
+
+            populateFootprintSelector( LIB_ID() );
+            return;
+        }
+
+
         if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
         {
             // to make lib id valid after request
@@ -740,6 +783,11 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolChosen( wxCommandEvent& aEvent )
 {
     if( m_tree->GetSelectedLibId().IsValid() )
     {
+        // if copy symbols libs to prj libs success and then save new row to prj table
+        wxString lib_nickname = m_tree->GetSelectedLibId().GetLibNickname().wx_str();
+        SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
+        adapter->MoveHQLibsToPrjLibs( lib_nickname, m_frame, m_fp_preview );
+
         // Got a selection. We can't just end the modal dialog here, because wx leaks some events
         // back to the parent window (in particular, the MouseUp following a double click).
         //

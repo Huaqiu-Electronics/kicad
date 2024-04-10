@@ -188,6 +188,9 @@ public:
     LIB_SYMBOL* GetHQLibSymbol( const LIB_ID& aLibId, bool aShowErrorMsg = false );
 
 
+    bool SavePrjSymbolLibTables() { return saveSymbolLibTables( false, true ); }
+
+
     /**
      * Display a list of loaded libraries and allows the user to select a library.
      *

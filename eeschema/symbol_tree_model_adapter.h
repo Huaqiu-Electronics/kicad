@@ -30,6 +30,8 @@
 class LIB_TABLE;
 class SYMBOL_LIB_TABLE;
 class SCH_BASE_FRAME;
+class FOOTPRINT_PREVIEW_WIDGET;
+
 
 class SYMBOL_TREE_MODEL_ADAPTER : public LIB_TREE_MODEL_ADAPTER
 {
@@ -74,6 +76,9 @@ public:
     void UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aItem );
     
     HTTP_HQ_CATEGORY GetHQCategory( const wxString& aDisplayname );
+
+    bool MoveHQLibsToPrjLibs( const wxString& aMpn,
+                SCH_BASE_FRAME* aFrame, FOOTPRINT_PREVIEW_WIDGET* aWidget );
 
 protected:
     /**

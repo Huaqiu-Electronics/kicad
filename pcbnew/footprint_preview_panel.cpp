@@ -196,6 +196,30 @@ bool FOOTPRINT_PREVIEW_PANEL::DisplayFootprint( const LIB_ID& aFPID )
     return m_currentFootprint != nullptr;
 }
 
+bool FOOTPRINT_PREVIEW_PANEL::UpdateHQPrjFPLibTable( const wxString& aUri, const wxString& aLibName )
+{
+    FP_LIB_TABLE* fptbl = PROJECT_PCB::PcbFootprintLibs( &Prj() );
+
+    FP_LIB_TABLE_ROW* row = GHQFootprintTable.FindRow( aLibName );
+
+    if( row )
+    {
+        // the row was inserted before, not need to insert again,
+        // just overwrite the libs files and update
+        if( fptbl->HasLibraryWithPath( aUri ) )
+            return true;
+
+        FP_LIB_TABLE_ROW* row = new FP_LIB_TABLE_ROW( aLibName, aUri, wxT( "KiCad" ), wxEmptyString,
+                                                _( "Added by HQ Online Symbol" ) );
+        fptbl->InsertRow( row, true );
+        
+        fptbl->Save( Prj().FootprintLibTblName() );
+
+        return true;
+    }
+    return false;
+}
+
 bool FOOTPRINT_PREVIEW_PANEL::DisplayHQFootprint( const LIB_ID& aFPID )
 {
     if( m_currentFootprint )

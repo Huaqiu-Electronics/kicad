@@ -147,6 +147,15 @@ void FOOTPRINT_PREVIEW_WIDGET::DisplayHQFootprint( const LIB_ID& aFPID )
     }
 }
 
+bool FOOTPRINT_PREVIEW_WIDGET::UpdateHQPrjFPLibTable( const wxString& aUri, const wxString& aName )
+{
+    if( !m_prev_panel->UpdateHQPrjFPLibTable( aUri, aName ) )
+        return false;
+    
+    return true;
+    
+}
+
 void FOOTPRINT_PREVIEW_WIDGET::DisplayFootprints( std::shared_ptr<FOOTPRINT> aFootprintA,
                                                   std::shared_ptr<FOOTPRINT> aFootprintB )
 {

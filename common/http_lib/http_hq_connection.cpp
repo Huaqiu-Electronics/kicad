@@ -37,6 +37,7 @@
 #include <string_utils.h>
 #include <pgm_base.h>
 #include <env_vars.h>
+#include <wildcards_and_files_ext.h>
 
 
 
@@ -230,11 +231,16 @@ bool HTTP_HQ_CONNECTION::RequestPartDetails( HTTP_HQ_PART& aPart )
                 std::string type = item["type"].get<std::string>();
                 if( type != "symbol" && type != "footprint" )
                     continue;
-                std::string url = item["fileUrl"].get<std::string>();;
+                std::string url = item["fileUrl"].get<std::string>();
                 aPart.fields[type] = url;
                 // GetLibSavePath( type, aPart );
             }
+        
         }
+
+        aPart.pretty_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();   // *.kicad_mod
+        aPart.fp_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
+        aPart.symbol_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
     }
     catch( const std::exception& e )
     {
@@ -263,25 +269,26 @@ wxString HTTP_HQ_CONNECTION::GetLibSavePath( std::string aType, HTTP_HQ_PART& aP
 
     wxFileName fn( packagesPath, wxS( "" ) );
 
-    wxArrayString words;
-    wxStringSplit( aPart.fields[aType], words, wxT( '/' ) );
-    wxString filename = words.Last();
+    // wxArrayString words;
+    // wxStringSplit( aPart.fields[aType], words, wxT( '/' ) );
+    wxString filename;
     
     if( aType == "symbol" )
     {
-        fn.AppendDir( wxS( "symbols" ) );
         fn.AppendDir( wxS( "hq_symbols" ) );
-        aPart.symbol_lib_name = filename.ToStdString();  // *.kicad_symbol
+        aPart.symbol_lib_name = aPart.mpn;  // *.kicad_sym
+        filename = aPart.mpn + FILEEXT::KiCadSymbolLibFileExtension;
     }
     else if( aType == "footprint" )
     {
-        fn.AppendDir( wxS( "footprints" ) );
         fn.AppendDir( wxS( "hq_footprints" ) );
-        fn.AppendDir( wxString::Format( "%s.pretty", aPart.pretty_name ) );
-        aPart.fp_lib_name = filename.ToStdString();   // *.kicad_mod
+        fn.AppendDir( wxString::Format( "%s.%s", aPart.pretty_name,
+                     FILEEXT::KiCadFootprintLibPathExtension ) );
+        filename = aPart.fp_lib_name + FILEEXT::KiCadFootprintFileExtension;
     }
     
     fn.SetFullName( filename );
+
     return fn.GetFullPath();
 }
 

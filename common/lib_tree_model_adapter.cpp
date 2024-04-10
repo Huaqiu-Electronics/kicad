@@ -256,10 +256,13 @@ void LIB_TREE_MODEL_ADAPTER::AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
                                            const std::vector<LIB_TREE_ITEM*>& aItemList,
                                            bool pinned, bool presorted )
 {
+    if( "more results" == aNode.m_Children.crend()->m_Name )
+        aNode.m_Children.pop_back();
+
     for( LIB_TREE_ITEM* item: aItemList )
         aNode.AddItem( item );
 
-    aNode.AssignIntrinsicRanks( presorted );
+    // aNode.AssignIntrinsicRanks( presorted );
 }
 
 void LIB_TREE_MODEL_ADAPTER::DoAddLibrary( const wxString& aNodeName, const wxString& aDesc,
@@ -381,7 +384,7 @@ void LIB_TREE_MODEL_ADAPTER::UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNod
         wxWindowUpdateLocker updateLock( m_widget );
 
         // m_widget->UnselectAll();
-        resortTree();
+        // resortTree();
     }
 
     if( aNode )
