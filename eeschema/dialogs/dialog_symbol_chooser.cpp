@@ -121,7 +121,7 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
     SetupStandardButtons();
 
     m_chooserPanel->FinishSetup();
-    m_chooserPanel_HQ->FinishSetup();
+    m_chooserPanel_HQ->FinishSetup( this );
     Layout();
 
     Bind( wxEVT_CHAR_HOOK, &PANEL_SYMBOL_CHOOSER::OnChar, m_chooserPanel );

@@ -102,6 +102,8 @@ public:
      */
     void SortNodes( bool aUseScores );
 
+    void SortLibraryNodes( bool aUseScores );
+
     /**
      * Compare two nodes. Returns true if aNode1 < aNode2.
      */
@@ -120,8 +122,8 @@ public:
         INVALID
     };
 
-    typedef std::vector<std::unique_ptr<LIB_TREE_NODE>> PTR_VECTOR;
 
+    typedef std::vector<std::unique_ptr<LIB_TREE_NODE>> PTR_VECTOR;
     LIB_TREE_NODE*  m_Parent;     // Parent node or null
     PTR_VECTOR      m_Children;   // List of child nodes
     enum TYPE       m_Type;       // Node type

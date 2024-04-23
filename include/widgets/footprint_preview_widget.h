@@ -96,6 +96,8 @@ public:
 
     FOOTPRINT_PREVIEW_PANEL_BASE* GetPreviewPanel() { return m_prev_panel; }
 
+    bool UpdateHQPrjFPLibTable( const wxString& aUri, const wxString& aName );
+
 protected:
     FOOTPRINT_PREVIEW_PANEL_BASE* m_prev_panel;
 
@@ -132,6 +134,8 @@ public:
     virtual bool DisplayFootprint( LIB_ID const& aFPID ) = 0;
 
     virtual bool DisplayHQFootprint( LIB_ID const& aFPID ) { return false; }
+    virtual bool UpdateHQPrjFPLibTable( const wxString& aUri, const wxString& aName ) { return false; }
+
 
     /**
      * Display a pair of footprints.  (Normally used for diff'ing.)

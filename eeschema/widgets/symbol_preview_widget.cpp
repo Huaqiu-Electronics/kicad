@@ -308,6 +308,8 @@ void SYMBOL_PREVIEW_WIDGET::DisplayHQSymbol( const LIB_ID& aSymbolID, int aUnit,
         {
             if( field->IsAutoAdded() )
                 field->SetVisible( false );
+            // field->SetShowInChooser( false );
+            // field->SetVisible( false );
         }
 
         // If unit isn't specified for a multi-unit part, pick the first.  (Otherwise we'll

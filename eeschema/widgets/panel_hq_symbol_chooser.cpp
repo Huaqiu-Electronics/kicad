@@ -1,7 +1,6 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2014 Henner Zeller <h.zeller@acm.org>
  * Copyright (C) 2016-2023 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
@@ -45,8 +44,6 @@
 #include <wx/wxhtml.h>
 
 
-// wxString PANEL_HQ_SYMBOL_CHOOSER::g_symbolSearchString;
-// wxString PANEL_HQ_SYMBOL_CHOOSER::g_powerSearchString;
 
 
 PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWindow* aParent,
@@ -122,59 +119,59 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
         }
     }
 
-    std::vector<LIB_SYMBOL>     history_list_storage;
-    std::vector<LIB_TREE_ITEM*> history_list;
-    std::vector<LIB_SYMBOL>     already_placed_storage;
-    std::vector<LIB_TREE_ITEM*> already_placed;
+    // std::vector<LIB_SYMBOL>     history_list_storage;
+    // std::vector<LIB_TREE_ITEM*> history_list;
+    // std::vector<LIB_SYMBOL>     already_placed_storage;
+    // std::vector<LIB_TREE_ITEM*> already_placed;
 
     // Lambda to encapsulate the common logic
-    auto processList =
-            [&]( const std::vector<PICKED_SYMBOL>& inputList,
-                 std::vector<LIB_SYMBOL>&          storageList,
-                 std::vector<LIB_TREE_ITEM*>&      resultList )
-            {
-                storageList.reserve( inputList.size() );
+    // auto processList =
+    //         [&]( const std::vector<PICKED_SYMBOL>& inputList,
+    //              std::vector<LIB_SYMBOL>&          storageList,
+    //              std::vector<LIB_TREE_ITEM*>&      resultList )
+    //         {
+    //             storageList.reserve( inputList.size() );
 
-                for( const PICKED_SYMBOL& i : inputList )
-                {
-                    LIB_SYMBOL* symbol = m_frame->GetLibSymbol( i.LibId );
+    //             for( const PICKED_SYMBOL& i : inputList )
+    //             {
+    //                 LIB_SYMBOL* symbol = m_frame->GetLibSymbol( i.LibId );
 
-                    if( symbol )
-                    {
-                        storageList.emplace_back( *symbol );
+    //                 if( symbol )
+    //                 {
+    //                     storageList.emplace_back( *symbol );
 
-                        for( const std::pair<int, wxString>& fieldDef : i.Fields )
-                        {
-                            LIB_FIELD* field = storageList.back().GetFieldById( fieldDef.first );
+    //                     for( const std::pair<int, wxString>& fieldDef : i.Fields )
+    //                     {
+    //                         LIB_FIELD* field = storageList.back().GetFieldById( fieldDef.first );
 
-                            if( field )
-                                field->SetText( fieldDef.second );
-                        }
+    //                         if( field )
+    //                             field->SetText( fieldDef.second );
+    //                     }
 
-                        resultList.push_back( &storageList.back() );
-                    }
-                }
-            };
+    //                     resultList.push_back( &storageList.back() );
+    //                 }
+    //             }
+    //         };
 
     // Sort the already placed list since it is potentially from multiple sessions,
     // but not the most recent list since we want this listed by most recent usage.
-    std::sort( aAlreadyPlaced.begin(), aAlreadyPlaced.end(),
-               []( PICKED_SYMBOL const& a, PICKED_SYMBOL const& b )
-               {
-                   return a.LibId.GetLibItemName() < b.LibId.GetLibItemName();
-               } );
+    // std::sort( aAlreadyPlaced.begin(), aAlreadyPlaced.end(),
+    //            []( PICKED_SYMBOL const& a, PICKED_SYMBOL const& b )
+    //            {
+    //                return a.LibId.GetLibItemName() < b.LibId.GetLibItemName();
+    //            } );
 
-    processList( aHistoryList, history_list_storage, history_list );
-    processList( aAlreadyPlaced, already_placed_storage, already_placed );
+    // processList( aHistoryList, history_list_storage, history_list );
+    // processList( aAlreadyPlaced, already_placed_storage, already_placed );
 
-    adapter->DoAddLibrary( wxT( "-- " ) + _( "Recently Used" ) + wxT( " --" ), wxEmptyString,
-                           history_list, false, true );
+    // adapter->DoAddLibrary( wxT( "-- " ) + _( "Recently Used" ) + wxT( " --" ), wxEmptyString,
+    //                        history_list, false, true );
 
-    if( !aHistoryList.empty() )
-        adapter->SetPreselectNode( aHistoryList[0].LibId, aHistoryList[0].Unit );
+    // if( !aHistoryList.empty() )
+    //     adapter->SetPreselectNode( aHistoryList[0].LibId, aHistoryList[0].Unit );
 
-    adapter->DoAddLibrary( wxT( "-- " ) + _( "Already Placed" ) + wxT( " --" ), wxEmptyString,
-                           already_placed, false, true );
+    // adapter->DoAddLibrary( wxT( "-- " ) + _( "Already Placed" ) + wxT( " --" ), wxEmptyString,
+    //                        already_placed, false, true );
     
     adapter->RequestCategories();
     adapter->LoadCategories();
@@ -420,7 +417,7 @@ wxPanel* PANEL_HQ_SYMBOL_CHOOSER::constructRightPanel( wxWindow* aParent )
 }
 
 
-void PANEL_HQ_SYMBOL_CHOOSER::FinishSetup()
+void PANEL_HQ_SYMBOL_CHOOSER::FinishSetup( wxWindow* aParent )
 {
     if( EESCHEMA_SETTINGS* cfg = dynamic_cast<EESCHEMA_SETTINGS*>( Kiface().KifaceSettings() ) )
     {
@@ -438,6 +435,8 @@ void PANEL_HQ_SYMBOL_CHOOSER::FinishSetup()
 
         GetParent()->SetSize( wxSize( w, h ) );
         GetParent()->Layout();
+        aParent->SetSize( wxSize( w, h ) );
+        aParent->Layout();
 
         // We specify the width of the right window (m_symbol_view_panel), because specify
         // the width of the left window does not work as expected when SetSashGravity() is called
@@ -680,7 +679,6 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
         LIB_TREE_NODE_LIBRARY* node_lib = static_cast<LIB_TREE_NODE_LIBRARY*>( node );
 
         adapter->AddHQPartsToLibraryNode( *node_lib, true );
-        adapter->UpdateSearchString( "", true );
         adapter->UpdateTreeAfterAddHQPart( node );
 
         m_symbol_preview->SetStatusText( _( "No symbol selected" ) );
@@ -695,39 +693,46 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
         // to query product details, after download, reload lib symbols
         SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
         
-        // more results be clicked
-        if( "more results" == node->m_Name && node->m_Parent )
-        {
-            size_t itemCounts = node->m_Parent->m_Children.size();
-            size_t pageNum = itemCounts % 10 == 0 ? itemCounts / 10  + 1 : itemCounts / 10 + 2;
+        if( "-- No more results --" == node->m_Name && node->m_Parent )
+            return;
 
-            if( node->m_Parent->m_Name.Contains( "HQ Online") )
+        // more results be clicked
+        if( "-- More results --" == node->m_Name && node->m_Parent )
+        {
+            size_t itemCounts = node->m_Parent->m_Children.size() - 1;  // "more results" not on count
+            size_t pageNum = 0;
+            // only for still has more results
+            if( itemCounts % 10 == 0 )
+                pageNum =  itemCounts / 10 + 1;
+            else
+                return;
+ 
+            if( pageNum != 0 && node->m_Parent->m_Name.Contains( "HQ Online") )
             {
                 HQ_LIB_TREE* libTree = static_cast<HQ_LIB_TREE*>( m_tree );
                 
                 std::string args = "";
                 
-                adapter->RequestQueryParts( args, args, libTree->GetSearchString().ToStdString(), pageNum.to_string() );
+                adapter->RequestQueryParts( args, args, libTree->GetSearchString().ToStdString(), std::to_string( pageNum ) );
 
             }
-            else if( node->m_Parent && !node->m_Parent->m_Name.IsEmpty() )
+            else if( pageNum != 0 && node->m_Parent && !node->m_Parent->m_Name.IsEmpty() )
             {
                 
                 auto category = adapter->GetHQCategory( node->m_Parent->m_Name );
-                adapter->RequestQueryParts( category.id, category.displayName, "", pageNum.to_string() );
+                adapter->RequestQueryParts( category.id, category.displayName, "", std::to_string( pageNum ) );
 
             }
             else
             {
-                // just for default and protect no crash, will not happen
+                // for no more results 
                 return;
             }
 
             LIB_TREE_NODE_LIBRARY* node_lib = static_cast<LIB_TREE_NODE_LIBRARY*>( node->m_Parent );
 
             adapter->AddHQPartsToLibraryNode( *node_lib, true );
-            adapter->UpdateSearchString( "", true );
-            adapter->UpdateTreeAfterAddHQPart( node->m_Parent->m_Children.at( itemCounts ) );
+            adapter->UpdateTreeAfterAddHQPart( node_lib->m_Children.at( itemCounts ).get() );
 
             m_symbol_preview->SetStatusText( _( "No symbol selected" ) );
 
@@ -745,17 +750,8 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
             LIB_TREE_NODE_ITEM* node_item = static_cast<LIB_TREE_NODE_ITEM*>( node );
             adapter->UpdateTreeItemLibSymbol( node_item );
             adapter->UpdateTreeAfterAddHQPart( node );
+            m_tree->UpdateSelectItem();
 
-            if( node->m_LibId.IsValid() )
-            {
-                // to download footprint file after UpdateTreeItemLibSymbol 
-                // because need to use valid part.pretty_name to mkdir *.pretty
-
-                adapter->RequestPartDetail( ( node->m_Name ).ToStdString(), true );
-
-                // to re-entry onSymbolSelected, to display symbol and showFootprint
-                m_tree->UpdateSelectItem();
-            }
         }
         else
         {

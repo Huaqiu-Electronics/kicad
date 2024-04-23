@@ -79,6 +79,14 @@ void LIB_TREE_NODE::SortNodes( bool aUseScores )
         node->SortNodes( aUseScores );
 }
 
+void LIB_TREE_NODE::SortLibraryNodes( bool aUseScores )
+{
+    std::sort( m_Children.begin(), m_Children.end(),
+            [&]( std::unique_ptr<LIB_TREE_NODE>& a, std::unique_ptr<LIB_TREE_NODE>& b )
+            {
+                return Compare( *a, *b, aUseScores );
+            } );
+}
 
 bool LIB_TREE_NODE::Compare( LIB_TREE_NODE const& aNode1, LIB_TREE_NODE const& aNode2,
                              bool aUseScores )

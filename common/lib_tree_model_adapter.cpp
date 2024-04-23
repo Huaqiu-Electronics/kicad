@@ -256,7 +256,8 @@ void LIB_TREE_MODEL_ADAPTER::AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
                                            const std::vector<LIB_TREE_ITEM*>& aItemList,
                                            bool pinned, bool presorted )
 {
-    if( "more results" == aNode.m_Children.crend()->m_Name )
+    if( !aNode.m_Children.empty() && 
+        "-- More results --" == aNode.m_Children.back().get()->m_Name )
         aNode.m_Children.pop_back();
 
     for( LIB_TREE_ITEM* item: aItemList )
@@ -378,14 +379,113 @@ void LIB_TREE_MODEL_ADAPTER::UpdateSearchString( const wxString& aSearch, bool a
 }
 
 //todo  move to symbol adapter
-void LIB_TREE_MODEL_ADAPTER::UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode )
+void LIB_TREE_MODEL_ADAPTER::UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode, bool aResort )
 {
     {
         wxWindowUpdateLocker updateLock( m_widget );
 
-        // m_widget->UnselectAll();
-        // resortTree();
+        // Even with the updateLock, wxWidgets sometimes ties its knickers in a knot trying to
+        // run a wxdataview_selection_changed_callback() on a row that has been deleted.
+        // https://bugs.launchpad.net/kicad/+bug/1756255
+        m_widget->UnselectAll();
+
+        // This collapse is required before the call to "Freeze()" below.  Once Freeze()
+        // is called, GetParent() will return nullptr.  While this works for some calls, it
+        // segfaults when we have any expanded elements b/c the sub units in the tree don't
+        // have explicit references that are maintained over a search
+        // The tree will be expanded again below when we get our matches
+        //
+        // Also note that this cannot happen when we have deleted a symbol as GTK will also
+        // iterate over the tree in this case and find a symbol that has an invalid link
+        // and crash https://gitlab.com/kicad/code/kicad/-/issues/6910
+        // if( !aState && !aSearch.IsNull() && m_tree.m_Children.size() )
+        // {
+        //     for( std::unique_ptr<LIB_TREE_NODE>& child: m_tree.m_Children )
+        //         m_widget->Collapse( wxDataViewItem( &*child ) );
+        // }
+
+        // DO NOT REMOVE THE FREEZE/THAW. This freeze/thaw is a flag for this model adapter
+        // that tells it when it shouldn't trust any of the data in the model. When set, it will
+        // not return invalid data to the UI, since this invalid data can cause crashes.
+        // This is different than the update locker, which locks the UI aspects only.
+        Freeze();
+        BeforeReset();
+
+        m_tree.ResetScore();
+
+        // wxStringTokenizer tokenizer( aSearch );
+        // bool              firstTerm = true;
+
+        // while( tokenizer.HasMoreTokens() )
+        // {
+        //     // First search for the full token, in case it appears in a search string
+        //     wxString             term = tokenizer.GetNextToken().Lower();
+        //     EDA_COMBINED_MATCHER termMatcher( term, CTX_LIBITEM );
+
+        //     m_tree.UpdateScore( &termMatcher, wxEmptyString, firstTerm ? m_filter : nullptr );
+        //     firstTerm = false;
+
+        //     if( term.Contains( ":" ) )
+        //     {
+        //         // Next search for the library:item_name
+        //         wxString             lib = term.BeforeFirst( ':' );
+        //         wxString             itemName = term.AfterFirst( ':' );
+        //         EDA_COMBINED_MATCHER itemNameMatcher( itemName, CTX_LIBITEM );
+
+        //         m_tree.UpdateScore( &itemNameMatcher, lib, nullptr );
+        //     }
+        // }
+
+        // if( firstTerm )
+        // {
+        //     // No terms processed; just run the filter
+            
+        // }
+        m_tree.UpdateScore( nullptr, wxEmptyString, nullptr );
+
+        if( aResort )
+        {
+            m_tree.SortLibraryNodes( true );
+        }
+            
+        AfterReset();
+        Thaw();
     }
+
+    // const LIB_TREE_NODE* firstMatch = ShowResults();
+
+    // if( firstMatch )
+    // {
+    //     wxDataViewItem item = ToItem( firstMatch );
+    //     m_widget->Select( item );
+
+    //     // Make sure the *parent* item is visible. The selected item is the first (shown) child
+    //     // of the parent. So it's always right below the parent, and this way the user can also
+    //     // see what library the selected part belongs to, without having a case where the selection
+    //     // is off the screen (unless the window is a single row high, which is unlikely).
+    //     //
+    //     // This also happens to circumvent https://bugs.launchpad.net/kicad/+bug/1804400 which
+    //     // appears to be a GTK+3 bug.
+    //     {
+    //         wxDataViewItem parent = GetParent( item );
+
+    //         if( parent.IsOk() )
+    //             m_widget->EnsureVisible( parent );
+    //     }
+
+    //     m_widget->EnsureVisible( item );
+    // }
+
+
+
+
+
+    // {
+    //     wxWindowUpdateLocker updateLock( m_widget );
+
+    //     // m_widget->UnselectAll();
+    //     // resortTree();
+    // }
 
     if( aNode )
     {

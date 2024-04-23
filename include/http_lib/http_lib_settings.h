@@ -85,7 +85,6 @@ struct HTTP_LIB_CATEGORY
 
 struct HTTP_HQ_PART
 {
-    std::string id;   ///<  component_id 
     std::string mpn;
     std::string manufacturerId;
     std::string pkg;
@@ -93,11 +92,12 @@ struct HTTP_HQ_PART
     std::string datasheet;
     std::string createTime;  ///< to check if outdate
     std::string symbol_lib_name; //*.kicad_sym
-    std::string fp_lib_name; //*.kicad_mod
-    std::string pretty_name; ///<  *.pretty
+    std::string fp_lib_name; // lib name inside the fp lib file, not used yet. *.kicad_mod
+    std::string fp_lib_filename; // fp lib file name, so sym lib fp property: pretty_name:fp_lib_filename remove ".kicad_mod"
+    std::string pretty_name = "kicad_community_lib"; ///<  *.pretty 
 
     std::time_t lastCached = 0;
-
+    std::map<std::string, std::string> attrs;  // to override symbol lib properties
     std::map<std::string, std::string> fields; ///< additional generic fields
 };
 

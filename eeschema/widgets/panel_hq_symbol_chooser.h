@@ -1,8 +1,7 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2014 Henner Zeller <h.zeller@acm.org>
- * Copyright (C) 2014-2023 KiCad Developers, see AUTHORS.txt for contributors.
+ * Copyright (C) 2016-2023 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -68,7 +67,7 @@ public:
 
     void OnChar( wxKeyEvent& aEvent );
 
-    void FinishSetup();
+    void FinishSetup( wxWindow* aParent );
 
     void SetPreselect( const LIB_ID& aPreselect );
 
@@ -218,7 +217,7 @@ public:
         {
             std::string args = "";
             adapter->RequestQueryParts( args, args, filter.ToStdString() );
-            wxString hq_node = wxT( "-- " ) + wxT("HQ Online Search Results") + wxT( " --" );
+            wxString hq_node = wxT( "-- HQ Online Search Results --" );
             //to check node in m_tree.m_children,if dont't exist,add it .
             //if exist, do not add twice
             wxDataViewItem item = adapter->FindItem( LIB_ID( hq_node, wxEmptyString ) );
@@ -226,6 +225,12 @@ public:
             if( !item.IsOk() )
             {
                 http_node = &( adapter->AddSubLibraryNode( hq_node, wxEmptyString, false) );
+
+                // std::sort( http_node->m_Parent->m_Children.begin(), http_node->m_Parent->m_Children.m_Children.end(),
+                // [&]( std::unique_ptr<LIB_TREE_NODE>& a, std::unique_ptr<LIB_TREE_NODE>& b )
+                // {
+                //     return Compare( *a, *b, true );
+                // } );
             }
             else
             {
@@ -234,55 +239,21 @@ public:
             }
             adapter->AddHQPartsToLibraryNode( *http_node, true );
 
-            // m_adapter->UpdateSearchString( filter, aKeepState );
-            adapter->UpdateSearchString( "", true );
-            adapter->UpdateTreeAfterAddHQPart( http_node );
+            adapter->UpdateTreeAfterAddHQPart( http_node->m_Children.at( 0 ).get(), true );
 
-        
-            // postPreselectEvent();
-
-            // // Restore the state
-            // if( aKeepState )
-            //     setState( current );
         }
     }
 
 
     virtual void UpdateSelectItem()
     {
-        // SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
         selectIfValid( m_tree_ctrl->GetSelection() );
-        // STATE current;
-
-        // // Store the state
-        // if( aKeepState )
-        //     current = getState();
-
-        // wxString filter = m_query_ctrl->GetValue();
-        // m_adapter->UpdateSearchString( filter, aKeepState );
-        // postPreselectEvent();
-
-        // // Restore the state
-        // if( aKeepState )
-        //     setState( current );
     }
 
     wxString GetSearchString() const
     {
         return m_query_ctrl->GetValue();
     }
-
-    // virtual void Regenerate( bool aKeepState )
-    // {
-    //     if( aKeepState )
-    //     {
-    //         LIB_TREE::Regenerate( aKeepState );
-    //     }
-    //     else
-    //     {
-    //         
-    //     }
-    // }
 
 };
 

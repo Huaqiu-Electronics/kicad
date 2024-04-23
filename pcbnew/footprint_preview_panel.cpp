@@ -200,7 +200,7 @@ bool FOOTPRINT_PREVIEW_PANEL::UpdateHQPrjFPLibTable( const wxString& aUri, const
 {
     FP_LIB_TABLE* fptbl = PROJECT_PCB::PcbFootprintLibs( &Prj() );
 
-    FP_LIB_TABLE_ROW* row = GHQFootprintTable.FindRow( aLibName );
+    const FP_LIB_TABLE_ROW* row = GHQFootprintTable.FindRow( aLibName );
 
     if( row )
     {
@@ -209,9 +209,9 @@ bool FOOTPRINT_PREVIEW_PANEL::UpdateHQPrjFPLibTable( const wxString& aUri, const
         if( fptbl->HasLibraryWithPath( aUri ) )
             return true;
 
-        FP_LIB_TABLE_ROW* row = new FP_LIB_TABLE_ROW( aLibName, aUri, wxT( "KiCad" ), wxEmptyString,
+        FP_LIB_TABLE_ROW* newRow = new FP_LIB_TABLE_ROW( aLibName, aUri, wxT( "KiCad" ), wxEmptyString,
                                                 _( "Added by HQ Online Symbol" ) );
-        fptbl->InsertRow( row, true );
+        fptbl->InsertRow( newRow, true );
         
         fptbl->Save( Prj().FootprintLibTblName() );
 

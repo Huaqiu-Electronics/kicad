@@ -70,7 +70,7 @@ public:
                             const std::string& aDesc = "", const std::string& aPageNum = "1",
                             const std::string& aPageSize = "10" );
 
-    bool RequestPartDetail( const std::string& aMpn, bool onlyDownloadFP = false );
+    bool RequestPartDetail( const std::string& aMpn );
     
     void AddHQPartsToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode, bool pinned );
     void UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aItem );
@@ -79,6 +79,9 @@ public:
 
     bool MoveHQLibsToPrjLibs( const wxString& aMpn,
                 SCH_BASE_FRAME* aFrame, FOOTPRINT_PREVIEW_WIDGET* aWidget );
+                
+    bool SaveHQSymbolFields( const std::string& aMpn );
+
 
 protected:
     /**

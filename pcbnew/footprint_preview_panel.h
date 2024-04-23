@@ -62,6 +62,8 @@ public:
 
     virtual bool DisplayFootprint( const LIB_ID& aFPID ) override;
     virtual bool DisplayHQFootprint( const LIB_ID& aFPID ) override;
+    virtual bool UpdateHQPrjFPLibTable( const wxString& aUri, const wxString& aLibName );
+
 
     virtual void DisplayFootprints( std::shared_ptr<FOOTPRINT> aFootprintA,
                                     std::shared_ptr<FOOTPRINT> aFootprintB ) override;

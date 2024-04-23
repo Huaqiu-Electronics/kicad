@@ -217,7 +217,7 @@ public:
      */
     void UpdateSearchString( const wxString& aSearch, bool aState );
 
-    void UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode );
+    void UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode, bool aResort = false );
 
     /**
      * Attach to a wxDataViewCtrl and initialize it. This will set up columns

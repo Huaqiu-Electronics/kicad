@@ -1,7 +1,7 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2023 Andre F. K. Iwers <iwers11@gmail.com>
+ * Copyright (C) 2016-2023 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -161,22 +161,27 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
         if( !response.contains("result") || !response["result"].is_array() )
             return false;
 
-        for( const auto& item : response["result"] )
+        for( const auto& part : response["result"] )
         {
-            if( item.contains( "queryPartVO" ) )
+            HTTP_HQ_PART hq_part;
+            // const auto& part = item["queryPartVO"]["part"];
+            hq_part.manufacturerId = part["manufacturer_id"].get<std::string>();
+            hq_part.mpn = part["mpn"].get<std::string>();
+            hq_part.datasheet = part["Datasheet"].get<std::string>();
+            hq_part.description = part["Description"].get<std::string>();
+            hq_part.symbol_lib_name = part["Value"].get<std::string>();
+            hq_part.fp_lib_filename = part["footprintFileUrl"].get<std::string>();
+            hq_part.fp_lib_name = part["footprintName"].get<std::string>();
+            hq_part.pkg = part["package"].get<std::string>();
+            for( const auto& attr : part["attrs"] )
             {
-                HTTP_HQ_PART hq_part;
-                const auto& part = item["queryPartVO"]["part"];
-                hq_part.manufacturerId = part["manufacturer_id"].get<std::string>();
-                hq_part.mpn = part["mpn"].get<std::string>();
-                hq_part.id = part["component_id"].get<std::string>();
-                hq_part.datasheet = part["datasheet"].get<std::string>();
-                hq_part.description = part["part_desc"].get<std::string>();
-                hq_part.pkg = part["pkg"].get<std::string>();
-                
-                m_parts.push_back( hq_part );
-                // m_parts[hq_part.mpn] = hq_part;
+                hq_part.attrs[attr["name_display"].get<std::string>()] = attr["value_display"].get<std::string>();
             }
+            hq_part.attrs["Datasheet"] = hq_part.datasheet;
+            hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" 
+                            + hq_part.fp_lib_filename.substr( 0, hq_part.fp_lib_filename.find_last_of( '.' ) );
+            hq_part.attrs["Value"] = hq_part.symbol_lib_name;
+            m_parts.push_back( hq_part );
         }
     }
     catch( const std::exception& e )
@@ -238,9 +243,9 @@ bool HTTP_HQ_CONNECTION::RequestPartDetails( HTTP_HQ_PART& aPart )
         
         }
 
-        aPart.pretty_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();   // *.kicad_mod
-        aPart.fp_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
-        aPart.symbol_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
+        // aPart.pretty_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();   // *.kicad_mod
+        // aPart.fp_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
+        // aPart.symbol_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
     }
     catch( const std::exception& e )
     {
@@ -269,22 +274,20 @@ wxString HTTP_HQ_CONNECTION::GetLibSavePath( std::string aType, HTTP_HQ_PART& aP
 
     wxFileName fn( packagesPath, wxS( "" ) );
 
-    // wxArrayString words;
-    // wxStringSplit( aPart.fields[aType], words, wxT( '/' ) );
     wxString filename;
     
     if( aType == "symbol" )
     {
         fn.AppendDir( wxS( "hq_symbols" ) );
-        aPart.symbol_lib_name = aPart.mpn;  // *.kicad_sym
-        filename = aPart.mpn + FILEEXT::KiCadSymbolLibFileExtension;
+        filename = wxString::Format( "%s.%s", aPart.symbol_lib_name,
+                     FILEEXT::KiCadSymbolLibFileExtension );
     }
     else if( aType == "footprint" )
     {
         fn.AppendDir( wxS( "hq_footprints" ) );
         fn.AppendDir( wxString::Format( "%s.%s", aPart.pretty_name,
                      FILEEXT::KiCadFootprintLibPathExtension ) );
-        filename = aPart.fp_lib_name + FILEEXT::KiCadFootprintFileExtension;
+        filename = aPart.fp_lib_filename;
     }
     
     fn.SetFullName( filename );
