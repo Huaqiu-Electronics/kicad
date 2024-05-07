@@ -315,39 +315,32 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn )
         return false;
     }
 
+    // bool need_reload_tbl = false;
+    // TODO: check if the file is expired, need a outdate flag
     /// only download when table do not have the symbol name
-    if( !m_libs->HasLibrary( part.symbol_lib_name ) )
+    // if( !m_libs->HasLibrary( part.symbol_lib_name ) 
+    if( !m_conn->DownloadLibs( "symbol", part ) )
     {
-        if( !m_conn->DownloadLibs( "symbol", part ) )
-        {
-            m_conn.reset();
-            return false;
-        }
-
-        // update sym table every time download symbol file.
-        SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
-
-        // update HQ symbol lib file of lib name, symbol name, and some fields
-        if( !SaveHQSymbolFields( aMpn ) )
-            return false;
-
-
-        // file do exist or download success
-        // file now exist but no in table, both try load lib add row
-        // return SYMBOL_LIB_TABLE::LoadFileToInserterRow( 
-        //                 SYMBOL_LIB_TABLE::GetHQGlobalLibTable(), m_conn->GetLibSavePath( "symbol", part ) );
-
-
-
-        // NOTE: footprint table not LoadFileToInserterRow here, as KiCad construct FP_LIB_TABLE should not be included
-        // in eeschema here. It use kiway.
-        // Should consider differrnt parts with same symbol lib file but not same fp lib file.
-        if( !m_conn->DownloadLibs( "footprint", part ) )
-        {
-            m_conn.reset();
-            return false;
-        }
+        m_conn.reset();
+        return false;
     }
+
+    // if( need_reload_tbl )
+    SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
+
+    // update HQ symbol lib file of lib name, symbol name, and some fields
+    if( !SaveHQSymbolFields( aMpn ) )
+        return false;
+
+    // NOTE: footprint table not LoadFileToInserterRow here, as KiCad construct FP_LIB_TABLE 
+    // should not be included in eeschema here. It use kiway.
+    // Should consider differrnt parts with same symbol lib file but not same fp lib file.
+    if( !m_conn->DownloadLibs( "footprint", part ) )
+    {
+        m_conn.reset();
+        return false;
+    }
+    // }
 
     return true;
 }
@@ -648,7 +641,9 @@ void SYMBOL_TREE_MODEL_ADAPTER::UpdateTreeItemLibSymbol( LIB_TREE_NODE_ITEM* aIt
         for( LIB_TREE_ITEM* item: comp_list )
         {
             aItem->Update( item );
-            // aItem->m_Name = part.mpn;
+            // for some mpn name may be illegal for lib name,
+            // they will not be equal
+            aItem->m_Name = part.mpn;
         }
     }
 }

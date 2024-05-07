@@ -162,6 +162,12 @@ public:
 
     void ShowChangedLanguage();
 
+    void OnQueryText( wxCommandEvent& aEvent )
+    {
+        onQueryText( aEvent );
+    }
+
+
 protected:
     /**
      * Expand or collapse a node, switching it to the opposite state.
@@ -216,7 +222,7 @@ protected:
     void hidePreview();
     void destroyPreview();
 
-    virtual void onQueryText( wxCommandEvent& aEvent );
+    void onQueryText( wxCommandEvent& aEvent );
     void onQueryCharHook( wxKeyEvent& aEvent );
     void onQueryMouseMoved( wxMouseEvent& aEvent );
 

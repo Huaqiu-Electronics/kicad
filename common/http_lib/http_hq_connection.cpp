@@ -38,7 +38,7 @@
 #include <pgm_base.h>
 #include <env_vars.h>
 #include <wildcards_and_files_ext.h>
-
+#include <lib_id.h>
 
 
 
@@ -158,7 +158,7 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
 
         nlohmann::json response = nlohmann::json::parse( res );
 
-        if( !response.contains("result") || !response["result"].is_array() )
+        if( !response.contains( "result" ) || !response["result"].is_array() )
             return false;
 
         for( const auto& part : response["result"] )
@@ -167,20 +167,34 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
             // const auto& part = item["queryPartVO"]["part"];
             hq_part.manufacturerId = part["manufacturer_id"].get<std::string>();
             hq_part.mpn = part["mpn"].get<std::string>();
-            hq_part.datasheet = part["Datasheet"].get<std::string>();
-            hq_part.description = part["Description"].get<std::string>();
-            hq_part.symbol_lib_name = part["Value"].get<std::string>();
-            hq_part.fp_lib_filename = part["footprintFileUrl"].get<std::string>();
-            hq_part.fp_lib_name = part["footprintName"].get<std::string>();
-            hq_part.pkg = part["package"].get<std::string>();
-            for( const auto& attr : part["attrs"] )
+            hq_part.datasheet = SafeGetString( part, "Datasheet" );
+            hq_part.description = SafeGetString( part, "Description" );
+            // to fix lib name with '/' and other illegal chars, mostly equal to mpn
+            // TODO : to add a hq part FixIllegalChars method
+            wxString lib_name = SafeGetString( part, "Value" );
+            lib_name.Replace( "/", "_" );
+            hq_part.symbol_lib_name = lib_name.ToStdString();
+            hq_part.fp_lib_filename = SafeGetString( part, "footprintFileUrl" );
+            hq_part.fp_lib_name = SafeGetString( part, "footprintName" );
+            hq_part.pkg = SafeGetString( part, "package" );
+            
+            if( part.contains( "attrs" ) )
             {
-                hq_part.attrs[attr["name_display"].get<std::string>()] = attr["value_display"].get<std::string>();
+                for( const auto& attr : part["attrs"] )
+                {
+                    hq_part.attrs[SafeGetString( attr, "name_display" )] = SafeGetString( attr, "value_display" );
+                }
+
+                if( !hq_part.datasheet.empty() && hq_part.datasheet.find( "http" ) == std::string::npos )
+                    hq_part.attrs["Datasheet"] = "https:" + hq_part.datasheet;
+                else
+                    hq_part.attrs["Datasheet"] = hq_part.datasheet;
+
+                hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" 
+                                + hq_part.fp_lib_filename.substr( 0, hq_part.fp_lib_filename.find_last_of( '.' ) );
+                hq_part.attrs["Value"] = hq_part.symbol_lib_name;
             }
-            hq_part.attrs["Datasheet"] = hq_part.datasheet;
-            hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" 
-                            + hq_part.fp_lib_filename.substr( 0, hq_part.fp_lib_filename.find_last_of( '.' ) );
-            hq_part.attrs["Value"] = hq_part.symbol_lib_name;
+            
             m_parts.push_back( hq_part );
         }
     }
@@ -189,9 +203,8 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
         m_lastError += wxString::Format( _( "Error: %s" ) + "\n" + _( "API Response:  %s" ) + "\n",
                                          e.what(), res );
 
-        wxLogTrace( traceHTTPLib,
-                    wxT( "Exception occurred while query parts: %s" ),
-                    m_lastError );
+        wxLogError( wxString::Format( _( "Exception occurred when parsing response of query-parts API: '%s'." ),
+                                            m_lastError ) );
 
         m_parts.clear();
 
@@ -199,6 +212,17 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
     }
 
     return true;
+}
+
+std::string HTTP_HQ_CONNECTION::SafeGetString( const nlohmann::json& obj,
+        const std::string& key, const std::string& defaultValue )
+{
+    if( obj.contains( key ) && obj[key].is_string() )
+    {
+        return obj[key].get<std::string>();
+    }
+
+    return defaultValue;
 }
 
 bool HTTP_HQ_CONNECTION::RequestPartDetails( HTTP_HQ_PART& aPart )
@@ -238,14 +262,10 @@ bool HTTP_HQ_CONNECTION::RequestPartDetails( HTTP_HQ_PART& aPart )
                     continue;
                 std::string url = item["fileUrl"].get<std::string>();
                 aPart.fields[type] = url;
-                // GetLibSavePath( type, aPart );
             }
         
         }
 
-        // aPart.pretty_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();   // *.kicad_mod
-        // aPart.fp_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
-        // aPart.symbol_lib_name = response["result"]["cadUrlList"]["fileUrl"].get<std::string>();
     }
     catch( const std::exception& e )
     {
@@ -291,8 +311,8 @@ wxString HTTP_HQ_CONNECTION::GetLibSavePath( std::string aType, HTTP_HQ_PART& aP
     }
     
     fn.SetFullName( filename );
-
-    return fn.GetFullPath();
+    wxString f = fn.GetFullPath();
+    return f;
 }
 
 bool HTTP_HQ_CONNECTION::DownloadLibs( std::string aType, HTTP_HQ_PART& aPart )
@@ -360,9 +380,13 @@ bool HTTP_HQ_CONNECTION::DownloadLibs( std::string aType, HTTP_HQ_PART& aPart )
                         fn.GetFullPath(), e.what() );
             return false;
         }
-    }
-    return true;
 
+        // reload sym table every time download symbol file.
+        // if( aType == "symbol" )
+        //     aNeedReload = true;
+    }
+
+    return true;
 }
 
 std::string HTTP_HQ_CONNECTION::GetJsonPostFields(

@@ -43,9 +43,6 @@
 #include <wx/timer.h>
 #include <wx/wxhtml.h>
 
-
-
-
 PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWindow* aParent,
                                             const SYMBOL_LIBRARY_FILTER* aFilter,
                                             std::vector<PICKED_SYMBOL>&  aHistoryList,
@@ -496,6 +493,17 @@ void PANEL_HQ_SYMBOL_CHOOSER::SetPreselect( const LIB_ID& aPreselect )
 
 LIB_ID PANEL_HQ_SYMBOL_CHOOSER::GetSelectedLibId( int* aUnit ) const
 {
+    if( m_tree->GetSelectedLibId().IsValid() )
+    {
+        // if copy symbols libs to prj libs success and then save new row to prj table
+        wxString mpn = m_tree->GetCurrentTreeNode()->m_Name;
+        SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
+        if( !adapter->MoveHQLibsToPrjLibs( mpn, m_frame, m_fp_preview ) )
+        {
+            wxLogError( _( "Failed to auto-move HQ online libs to project." ) );
+        }
+    }
+
     return m_tree->GetSelectedLibId( aUnit );
 }
 
@@ -779,11 +787,6 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolChosen( wxCommandEvent& aEvent )
 {
     if( m_tree->GetSelectedLibId().IsValid() )
     {
-        // if copy symbols libs to prj libs success and then save new row to prj table
-        wxString lib_nickname = m_tree->GetSelectedLibId().GetLibNickname().wx_str();
-        SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
-        adapter->MoveHQLibsToPrjLibs( lib_nickname, m_frame, m_fp_preview );
-
         // Got a selection. We can't just end the modal dialog here, because wx leaks some events
         // back to the parent window (in particular, the MouseUp following a double click).
         //

@@ -279,6 +279,8 @@ public:
      */
     bool IsPath( const wxString& aPath ) const;
 
+    bool IsHQLibPath( const wxString& aPath ) const;
+
     void SetPath( const wxString& aPath );
 };
 

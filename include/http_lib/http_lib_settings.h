@@ -91,7 +91,7 @@ struct HTTP_HQ_PART
     std::string description;
     std::string datasheet;
     std::string createTime;  ///< to check if outdate
-    std::string symbol_lib_name; //*.kicad_sym
+    std::string symbol_lib_name; //*.kicad_sym, this maybe different from mpn
     std::string fp_lib_name; // lib name inside the fp lib file, not used yet. *.kicad_mod
     std::string fp_lib_filename; // fp lib file name, so sym lib fp property: pretty_name:fp_lib_filename remove ".kicad_mod"
     std::string pretty_name = "kicad_community_lib"; ///<  *.pretty 

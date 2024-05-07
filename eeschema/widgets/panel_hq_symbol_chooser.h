@@ -28,6 +28,7 @@
 #include <footprint_info.h>
 #include <widgets/html_window.h>
 #include <wx/srchctrl.h>
+#include <widgets/std_bitmap_button.h>
 
 class wxPanel;
 class wxTimer;
@@ -176,61 +177,63 @@ public:
               HTML_WINDOW* aDetails = nullptr )
        : LIB_TREE( aParent, aRecentSearchesKey, aLibTable, aAdapter, aFlags, aDetails )
     {
-        // m_query_ctrl->Unbind( wxEVT_TEXT, &LIB_TREE::onQueryText, this );
-        // m_query_ctrl->Unbind( wxEVT_SEARCH_CANCEL, &LIB_TREE::onQueryText, this );
+        if( m_query_ctrl )
+        {
+            m_query_ctrl->Unbind( wxEVT_TEXT, &LIB_TREE::OnQueryText, this );
+            m_query_ctrl->Unbind( wxEVT_SEARCH_CANCEL, &LIB_TREE::OnQueryText, this );   
+        }
+        m_query_ctrl->ShowCancelButton( false );
+        m_query_ctrl->Bind( wxEVT_TEXT, &HQ_LIB_TREE::QueryText, this );
+        m_query_ctrl->Bind( wxEVT_SEARCH_CANCEL, &HQ_LIB_TREE::QueryText, this );
 
-        // m_query_ctrl->Bind( wxEVT_TEXT, &HQ_LIB_TREE::onQueryText, this );
-        // m_query_ctrl->Bind( wxEVT_SEARCH_CANCEL, &HQ_LIB_TREE::onQueryText, this );
-
+        if( m_sort_ctrl )
+            delete m_sort_ctrl;
 
     }
 
     ~HQ_LIB_TREE()
     {
-        m_query_ctrl->Unbind( wxEVT_TEXT, &HQ_LIB_TREE::onQueryText, this );
-        m_query_ctrl->Unbind( wxEVT_SEARCH_CANCEL, &HQ_LIB_TREE::onQueryText, this );
+        m_query_ctrl->Unbind( wxEVT_TEXT, &HQ_LIB_TREE::QueryText, this );
+        m_query_ctrl->Unbind( wxEVT_SEARCH_CANCEL, &HQ_LIB_TREE::QueryText, this );
 
     }
 
-public:
+protected:
     /**
      * Regenerate the tree.
      */
 
-    virtual void onQueryText( wxCommandEvent& aEvent )
+    void QueryText( wxCommandEvent& aEvent )
     {
         wxString filter = m_query_ctrl->GetValue();
         SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
+        wxString hq_node = wxT( "-- HQ Online Search Results --" );
+
+        wxDataViewItem item = adapter->FindItem( LIB_ID( hq_node, wxEmptyString ) );
+        LIB_TREE_NODE_LIBRARY* http_node = nullptr;
         if( filter.IsEmpty() )
         {
-            //TODO: to remove HQ HTTP node in m_tree.m_children if exist
-            adapter->UpdateSearchString( filter, true );
-            postPreselectEvent();
+            //to remove HQ HTTP node in m_tree.m_children if exist
+            if( item.IsOk() )
+            {
+                http_node = static_cast<LIB_TREE_NODE_LIBRARY*>( adapter->GetTreeNodeFor( item ) );
+                http_node->m_Children.clear();
 
-            // m_debounceTimer->StartOnce( 200 );
+                adapter->UpdateTreeAfterAddHQPart( http_node, true );
+            }
+            // postPreselectEvent();
 
-            // // Required to avoid interaction with SetHint()
-            // // See documentation for wxTextEntry::SetHint
-            // aEvent.Skip();
         }
         else
         {
             std::string args = "";
             adapter->RequestQueryParts( args, args, filter.ToStdString() );
-            wxString hq_node = wxT( "-- HQ Online Search Results --" );
             //to check node in m_tree.m_children,if dont't exist,add it .
             //if exist, do not add twice
-            wxDataViewItem item = adapter->FindItem( LIB_ID( hq_node, wxEmptyString ) );
-            LIB_TREE_NODE_LIBRARY* http_node = nullptr;
+            
             if( !item.IsOk() )
             {
                 http_node = &( adapter->AddSubLibraryNode( hq_node, wxEmptyString, false) );
-
-                // std::sort( http_node->m_Parent->m_Children.begin(), http_node->m_Parent->m_Children.m_Children.end(),
-                // [&]( std::unique_ptr<LIB_TREE_NODE>& a, std::unique_ptr<LIB_TREE_NODE>& b )
-                // {
-                //     return Compare( *a, *b, true );
-                // } );
             }
             else
             {
@@ -239,11 +242,12 @@ public:
             }
             adapter->AddHQPartsToLibraryNode( *http_node, true );
 
-            adapter->UpdateTreeAfterAddHQPart( http_node->m_Children.at( 0 ).get(), true );
+            adapter->UpdateTreeAfterAddHQPart( http_node, true );
 
         }
     }
 
+public:
 
     virtual void UpdateSelectItem()
     {

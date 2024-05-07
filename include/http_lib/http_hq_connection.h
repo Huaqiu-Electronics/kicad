@@ -77,6 +77,8 @@ public:
     bool DownloadLibs( std::string aType, HTTP_HQ_PART& aPart );
     wxString GetLibSavePath( std::string aType, HTTP_HQ_PART& aPart );
 
+    std::string SafeGetString( const nlohmann::json& obj,
+        const std::string& key, const std::string& defaultValue = "" );
 
 protected:
 
