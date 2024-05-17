@@ -181,6 +181,9 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
             
             if( part.contains( "attrs" ) )
             {
+                hq_part.attrs["Mpn"] = hq_part.mpn;
+                hq_part.attrs["Manufacturer"] = hq_part.manufacturer;
+                
                 for( const auto& attr : part["attrs"] )
                 {
                     hq_part.attrs[SafeGetString( attr, "name_display" )] = SafeGetString( attr, "value_display" );
@@ -194,8 +197,6 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
                 hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" 
                                 + hq_part.fp_lib_filename.substr( 0, hq_part.fp_lib_filename.find_last_of( '.' ) );
                 hq_part.attrs["Value"] = hq_part.symbol_lib_name;
-                hq_part.attrs["mpn"] = hq_part.mpn;
-                hq_part.attrs["manufacturer"] = hq_part.manufacturer;
             }
             
             m_parts.push_back( hq_part );
