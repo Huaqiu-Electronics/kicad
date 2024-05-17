@@ -42,6 +42,7 @@
 #include <wx/splitter.h>
 #include <wx/timer.h>
 #include <wx/wxhtml.h>
+#include <core/thread_pool.h>
 
 PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWindow* aParent,
                                             const SYMBOL_LIBRARY_FILTER* aFilter,
@@ -496,7 +497,12 @@ LIB_ID PANEL_HQ_SYMBOL_CHOOSER::GetSelectedLibId( int* aUnit ) const
     if( m_tree->GetSelectedLibId().IsValid() )
     {
         // if copy symbols libs to prj libs success and then save new row to prj table
-        wxString mpn = m_tree->GetCurrentTreeNode()->m_Name;
+        wxString mpn;
+        if( LIB_TREE_NODE::TYPE::UNIT == m_tree->GetCurrentTreeNode()->m_Type )
+            mpn = m_tree->GetCurrentTreeNode()->m_Parent->m_Name;
+        else
+            mpn = m_tree->GetCurrentTreeNode()->m_Name;
+
         SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
         if( !adapter->MoveHQLibsToPrjLibs( mpn, m_frame, m_fp_preview ) )
         {
@@ -751,25 +757,78 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
             return;
         }
 
-
-        if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
+        auto request_details = [node, adapter, this]() -> void
         {
-            // to make lib id valid after request
-            LIB_TREE_NODE_ITEM* node_item = static_cast<LIB_TREE_NODE_ITEM*>( node );
-            adapter->UpdateTreeItemLibSymbol( node_item );
-            adapter->UpdateTreeAfterAddHQPart( node );
-            m_tree->UpdateSelectItem();
 
-        }
-        else
-        {
-            m_symbol_preview->SetStatusText( _( "No symbol selected" ) );
+            if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
+            {
+                try
+                {
+                    
+                    this->CallAfter(
+                            [adapter, this, node]()
+                            {
+                                // to make lib id valid after request
+                                LIB_TREE_NODE_ITEM* node_item = static_cast<LIB_TREE_NODE_ITEM*>( node );
+                                adapter->UpdateTreeItemLibSymbol( node_item );
+                                adapter->UpdateTreeAfterAddHQPart( node );
+                                m_tree->UpdateSelectItem();
+                            } );
+                }
+                catch( const IO_ERROR& ioe )
+                {
+                    wxLogError( wxString::Format( _( "Failed to load part %s details : %s" ),
+                                                node->m_Name,
+                                                ioe.What() ) );
+                }
+            }
+            else
+            {
+                this->CallAfter(
+                    [=]()
+                    {
+                        m_symbol_preview->SetStatusText( _( "Loading time out." ) );
 
-            if( m_fp_preview && m_fp_preview->IsInitialized() )
-                m_fp_preview->SetStatusText( wxEmptyString );
+                        if( m_fp_preview && m_fp_preview->IsInitialized() )
+                            m_fp_preview->SetStatusText( wxEmptyString );
 
-            populateFootprintSelector( LIB_ID() );
-        }
+                        populateFootprintSelector( LIB_ID() );
+
+                    } );
+
+            }
+
+        };
+
+        thread_pool& tp = GetKiCadThreadPool();
+        tp.push_task( request_details );
+
+        m_symbol_preview->SetStatusText( _( "Loading part..." ) );
+
+        if( m_fp_preview && m_fp_preview->IsInitialized() )
+            m_fp_preview->SetStatusText( wxEmptyString );
+
+        populateFootprintSelector( LIB_ID() );
+
+
+        // if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
+        // {
+        //     // to make lib id valid after request
+        //     LIB_TREE_NODE_ITEM* node_item = static_cast<LIB_TREE_NODE_ITEM*>( node );
+        //     adapter->UpdateTreeItemLibSymbol( node_item );
+        //     adapter->UpdateTreeAfterAddHQPart( node );
+        //     m_tree->UpdateSelectItem();
+
+        // }
+        // else
+        // {
+        //     m_symbol_preview->SetStatusText( _( "No symbol selected" ) );
+
+        //     if( m_fp_preview && m_fp_preview->IsInitialized() )
+        //         m_fp_preview->SetStatusText( wxEmptyString );
+
+        //     populateFootprintSelector( LIB_ID() );
+        // }
     }
     else
     {

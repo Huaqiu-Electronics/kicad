@@ -86,6 +86,7 @@ struct HTTP_LIB_CATEGORY
 struct HTTP_HQ_PART
 {
     std::string mpn;
+    std::string manufacturer;
     std::string manufacturerId;
     std::string pkg;
     std::string description;

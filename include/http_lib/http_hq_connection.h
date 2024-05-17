@@ -114,7 +114,7 @@ protected:
 
     std::vector<HTTP_HQ_PART> m_parts;
 
-    const std::string http_categories = "/api/chiplet/products/cateTree";
+    const std::string http_categories = "/api/chiplet/kicad/cateTree";
     const std::string http_product_details = "/api/chiplet/products/productDetail";
     const std::string http_query_parts = "/api/chiplet/products/kicad/queryPage";
 

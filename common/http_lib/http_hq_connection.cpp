@@ -167,6 +167,7 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
             // const auto& part = item["queryPartVO"]["part"];
             hq_part.manufacturerId = part["manufacturer_id"].get<std::string>();
             hq_part.mpn = part["mpn"].get<std::string>();
+            hq_part.manufacturer = SafeGetString( part, "manufacturer" );
             hq_part.datasheet = SafeGetString( part, "Datasheet" );
             hq_part.description = SafeGetString( part, "Description" );
             // to fix lib name with '/' and other illegal chars, mostly equal to mpn
@@ -193,6 +194,8 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
                 hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" 
                                 + hq_part.fp_lib_filename.substr( 0, hq_part.fp_lib_filename.find_last_of( '.' ) );
                 hq_part.attrs["Value"] = hq_part.symbol_lib_name;
+                hq_part.attrs["mpn"] = hq_part.mpn;
+                hq_part.attrs["manufacturer"] = hq_part.manufacturer;
             }
             
             m_parts.push_back( hq_part );
