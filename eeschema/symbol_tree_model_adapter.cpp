@@ -325,13 +325,6 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn )
         return false;
     }
 
-    // if( need_reload_tbl )
-    SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
-
-    // update HQ symbol lib file of lib name, symbol name, and some fields
-    if( !SaveHQSymbolFields( aMpn ) )
-        return false;
-
     // NOTE: footprint table not LoadFileToInserterRow here, as KiCad construct FP_LIB_TABLE 
     // should not be included in eeschema here. It use kiway.
     // Should consider differrnt parts with same symbol lib file but not same fp lib file.
@@ -340,11 +333,20 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn )
         m_conn.reset();
         return false;
     }
-    // }
 
     return true;
 }
 
+bool SYMBOL_TREE_MODEL_ADAPTER::UpdateHQSymbolLib( const std::string& aMpn )
+{
+    SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
+
+    // update HQ symbol lib file of lib name, symbol name, and some fields
+    if( !SaveHQSymbolFields( aMpn ) )
+        return false;
+
+    return true;
+}
 
 bool SYMBOL_TREE_MODEL_ADAPTER::MoveHQLibsToPrjLibs( const wxString& aMpn,
                          SCH_BASE_FRAME* aFrame, FOOTPRINT_PREVIEW_WIDGET* aWidget )
@@ -468,7 +470,30 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
     lib_sym->SetName( lib_nick_name );
     std::vector<LIB_FIELD> fields;
     int field_id = 5;
-    // FIX: to change logic for situation lib_sym fields don't has not MANDATORY_FIELDS in order.
+    // TODO: to change logic for situation lib_sym fields don't has not MANDATORY_FIELDS in order.
+    // Set fields order by manual.
+    if( part.attrs.find( "Mpn" ) != part.attrs.end() )
+    {
+        LIB_FIELD* field = new LIB_FIELD();
+        field->SetId( field_id++ );
+        field->SetName( "Mpn" );
+        field->SetShowInChooser( false );
+        field->SetVisible( false );
+        field->SetText( part.attrs["Mpn"] );
+        fields.push_back( *field );
+    }
+
+    if( part.attrs.find( "Manufacturer" ) != part.attrs.end() )
+    {
+        LIB_FIELD* field = new LIB_FIELD();
+        field->SetId( field_id++ );
+        field->SetName( "Manufacturer" );
+        field->SetShowInChooser( false );
+        field->SetVisible( false );
+        field->SetText( part.attrs["Manufacturer"] );
+        fields.push_back( *field );
+    }
+
     for( auto& [name, text] : part.attrs )
     {
         LIB_FIELD* field = new LIB_FIELD();
@@ -495,7 +520,7 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
-        else
+        else if( name != "Manufacturer" && name != "Mpn" )
         {
             field->SetId( field_id++ );
             field->SetName( name );
@@ -511,21 +536,18 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
     ref_field->SetVisible( true );
     fields.push_back( *ref_field );
     // replace old fields
-    lib_sym->SetFields( fields );
+    lib_sym->SetHqPartsFields( fields );
 
     wxFileName fn( m_conn->GetLibSavePath( "symbol", part ) );
 
     try
     {
         IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) );
-        // pi->DeleteLibrary( fn.GetFullPath() );
+        
         pi->DeleteSymbol( fn.GetFullPath(), old_symName );
-        // pi->CreateLibrary( fn.GetFullPath() );
 
-        // for( const std::unique_ptr<LIB_SYMBOL>& symbol : m_rescueLibSymbols )
         pi->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ) );
 
-        // pi->SaveLibrary( fn.GetFullPath() );
     }
     catch( const IO_ERROR& ioe )
     {

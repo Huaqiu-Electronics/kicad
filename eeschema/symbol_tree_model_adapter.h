@@ -81,6 +81,7 @@ public:
                 SCH_BASE_FRAME* aFrame, FOOTPRINT_PREVIEW_WIDGET* aWidget );
                 
     bool SaveHQSymbolFields( const std::string& aMpn );
+    bool UpdateHQSymbolLib( const std::string& aMpn );
 
 
 protected:

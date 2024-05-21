@@ -62,6 +62,8 @@ SYMBOL_LIB_TABLE    g_symbolLibraryTable;
 
 SYMBOL_LIB_TABLE    g_hq_symbolLibraryTable;
 
+std::mutex g_hq_tableMutex;
+
 bool SYMBOL_LIB_TABLE_ROW::operator==( const SYMBOL_LIB_TABLE_ROW& aRow ) const
 {
     return LIB_TABLE_ROW::operator == ( aRow ) && type == aRow.type;
@@ -792,6 +794,8 @@ bool SYMBOL_LIB_TABLE::LoadGlobalTable( SYMBOL_LIB_TABLE& aTable )
 bool SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE& aTable )
 {
     wxFileName  fn = GetHQGlobalTableFileName();
+
+    std::lock_guard<std::mutex> lock( g_hq_tableMutex );
 
     if( !fn.FileExists() )
     {

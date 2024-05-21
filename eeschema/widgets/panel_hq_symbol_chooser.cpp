@@ -44,6 +44,9 @@
 #include <wx/wxhtml.h>
 #include <core/thread_pool.h>
 
+
+std::mutex g_hq_updateMutex;
+
 PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWindow* aParent,
                                             const SYMBOL_LIBRARY_FILTER* aFilter,
                                             std::vector<PICKED_SYMBOL>&  aHistoryList,
@@ -768,6 +771,8 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
                     this->CallAfter(
                             [adapter, this, node]()
                             {
+                                std::lock_guard<std::mutex> lock( g_hq_updateMutex );
+                                adapter->UpdateHQSymbolLib( ( node->m_Name ).ToStdString() );
                                 // to make lib id valid after request
                                 LIB_TREE_NODE_ITEM* node_item = static_cast<LIB_TREE_NODE_ITEM*>( node );
                                 adapter->UpdateTreeItemLibSymbol( node_item );
@@ -810,25 +815,6 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
 
         populateFootprintSelector( LIB_ID() );
 
-
-        // if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
-        // {
-        //     // to make lib id valid after request
-        //     LIB_TREE_NODE_ITEM* node_item = static_cast<LIB_TREE_NODE_ITEM*>( node );
-        //     adapter->UpdateTreeItemLibSymbol( node_item );
-        //     adapter->UpdateTreeAfterAddHQPart( node );
-        //     m_tree->UpdateSelectItem();
-
-        // }
-        // else
-        // {
-        //     m_symbol_preview->SetStatusText( _( "No symbol selected" ) );
-
-        //     if( m_fp_preview && m_fp_preview->IsInitialized() )
-        //         m_fp_preview->SetStatusText( wxEmptyString );
-
-        //     populateFootprintSelector( LIB_ID() );
-        // }
     }
     else
     {
