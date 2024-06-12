@@ -155,7 +155,7 @@ void DIALOG_MANAGE_REPOSITORIES::addRepository( const wxString& aUrl )
 
 void DIALOG_MANAGE_REPOSITORIES::OnAddDefault( wxCommandEvent& event )
 {
-    addRepository( PCM_DEFAULT_REPOSITORY_URL );
+    addRepository( PCM_HQ_DEFAULT_REPOSITORY_URL );
 }
 
 

@@ -23,7 +23,7 @@
 
 #include <settings/app_settings.h>
 #define PCM_DEFAULT_REPOSITORY_URL "https://repository.kicad.org/repository.json"
-
+#define PCM_HQ_DEFAULT_REPOSITORY_URL "https://gitee.com/kicad-mirror/kicad-addons/raw/master/repository.json"
 
 class KICOMMON_API KICAD_SETTINGS : public APP_SETTINGS_BASE
 {
