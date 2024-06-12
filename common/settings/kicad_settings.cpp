@@ -36,6 +36,13 @@ const nlohmann::json PCM_DEFAULT_REPOSITORIES = nlohmann::json::array( {
     } )
 } );
 
+// for mainland China users can not access github.com, so we need a mirror repository
+const nlohmann::json PCM_HQ_DEFAULT_REPOSITORIES = nlohmann::json::array( {
+    nlohmann::json( {
+        { "name", "KiCad official repository mirror" },
+        { "url", PCM_HQ_DEFAULT_REPOSITORY_URL },
+    } )
+} );
 
 KICAD_SETTINGS::KICAD_SETTINGS() :
         APP_SETTINGS_BASE( "kicad", kicadSchemaVersion ), m_LeftWinWidth( 200 )
@@ -93,7 +100,7 @@ KICAD_SETTINGS::KICAD_SETTINGS() :
                                             wxString( entry["url"].get<std::string>() ) ) );
                 }
             },
-            PCM_DEFAULT_REPOSITORIES ) );
+            PCM_HQ_DEFAULT_REPOSITORIES ) );
 
     m_params.emplace_back(
             new PARAM<wxString>( "pcm.last_download_dir", &m_PcmLastDownloadDir, "" ) );
