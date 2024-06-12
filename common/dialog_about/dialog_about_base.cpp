@@ -25,6 +25,12 @@ DIALOG_ABOUT_BASE::DIALOG_ABOUT_BASE( wxWindow* parent, wxWindowID id, const wxS
 	m_bitmapApp = new wxStaticBitmap( this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizerTitle->Add( m_bitmapApp, 1, wxALIGN_CENTER|wxALL, 5 );
 
+
+	bSizerTitle->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_bitmapHQ = new wxStaticBitmap( this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizerTitle->Add( m_bitmapHQ, 1, wxALIGN_CENTER|wxALL, 5 );
+
 	wxBoxSizer* b_apptitleSizer;
 	b_apptitleSizer = new wxBoxSizer( wxVERTICAL );
 

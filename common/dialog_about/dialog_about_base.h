@@ -36,6 +36,7 @@ class DIALOG_ABOUT_BASE : public wxDialog
 
 	protected:
 		wxStaticBitmap* m_bitmapApp;
+		wxStaticBitmap* m_bitmapHQ;
 		wxStaticText* m_staticTextAppTitle;
 		wxStaticText* m_staticTextBuildVersion;
 		wxStaticText* m_staticTextLibVersion;
