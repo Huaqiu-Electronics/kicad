@@ -594,6 +594,7 @@ set( BMAPS_32
     icon_pagelayout_editor_32
     icon_pcbcalculator_32
     icon_pcbnew_32
+    icon_hq_32
     )
 
 # 48 x 48 for now

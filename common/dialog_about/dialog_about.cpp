@@ -105,6 +105,10 @@ DIALOG_ABOUT::DIALOG_ABOUT( EDA_BASE_FRAME *aParent, ABOUT_APP_INFO& aAppInfo ) 
         m_bitmapApp->SetBitmap( icon );
     }
 
+    wxIcon hq_icon;
+    hq_icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_hq_32, 32 ) );
+    m_bitmapHQ->SetBitmap( hq_icon );
+
     m_titleName = aParent->GetAboutTitle();
     m_untranslatedTitleName = aParent->GetUntranslatedAboutTitle();
     m_staticTextAppTitle->SetLabel( m_titleName );
