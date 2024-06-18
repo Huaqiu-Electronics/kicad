@@ -177,6 +177,11 @@ public:
         bool enable_server;
     };
 
+    struct HQ_PLUGINS
+    {
+        bool is_installed;
+    };
+
     COMMON_SETTINGS();
 
     virtual ~COMMON_SETTINGS() {}
@@ -230,6 +235,8 @@ public:
     GIT m_Git;
 
     API m_Api;
+    
+    HQ_PLUGINS m_HqPlugins;
 };
 
 #endif

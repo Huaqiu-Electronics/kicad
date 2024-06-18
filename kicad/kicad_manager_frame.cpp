@@ -25,6 +25,8 @@
 
 #include "kicad_id.h"
 #include "pcm.h"
+#include "pcm_task_manager.h"
+#include <paths.h>
 #include "pgm_kicad.h"
 #include "project_tree_pane.h"
 #include "widgets/bitmap_button.h"
@@ -1081,6 +1083,28 @@ void KICAD_MANAGER_FRAME::OnIdle( wxIdleEvent& aEvent )
         prompt->ShowModal();
 
         Pgm().GetCommonSettings()->m_DoNotShowAgain.update_check_prompt = true;
+    }
+
+    if( !Pgm().GetCommonSettings()->m_HqPlugins.is_installed )
+    {
+        if( !m_pcm )
+            CreatePCM();
+
+        PCM_TASK_MANAGER task_manager( m_pcm );
+
+        wxFileName path( PATHS::GetStockDataPath() + wxT( "/resources/hqplugins" ), "" );
+
+        wxArrayString files;
+
+        task_manager.GetInstallHQPluginFilePaths( path.GetFullPath(), files );
+
+        for( const wxString& file : files )
+        {
+            task_manager.InstallFromFile( this, file );
+
+        }
+
+        Pgm().GetCommonSettings()->m_HqPlugins.is_installed = true;
     }
 
     if( KIPLATFORM::POLICY::GetPolicyBool( POLICY_KEY_PCM ) != KIPLATFORM::POLICY::PBOOL::DISABLED

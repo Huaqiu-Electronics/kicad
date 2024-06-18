@@ -55,6 +55,7 @@ COMMON_SETTINGS::COMMON_SETTINGS() :
         m_NetclassPanel(),
         m_PackageManager(),
         m_Api()
+        m_HqPlugins()
 {
     /*
      * Automatic dark mode detection works fine on Mac.
@@ -421,6 +422,9 @@ COMMON_SETTINGS::COMMON_SETTINGS() :
 
     m_params.emplace_back( new PARAM<wxString>( "api.interpreter_path",
             &m_Api.python_interpreter, wxS( "" ) ) );
+            
+    m_params.emplace_back( new PARAM<bool>( "hq_plugins.is_installed",
+        &m_HqPlugins.is_installed, false ) );
 
     m_params.emplace_back( new PARAM<bool>( "api.enable_server",
             &m_Api.enable_server, false ) );

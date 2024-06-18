@@ -559,6 +559,41 @@ void PCM_TASK_MANAGER::deletePackageDirectories( const wxString&                
     }
 }
 
+void PCM_TASK_MANAGER::GetInstallHQPluginFilePaths( const wxString& aDir, wxArrayString& aFilePaths )
+{
+    auto sort_func = []( const wxString& a, const wxString& b )
+    {
+        if( a.length() > b.length() )
+            return true;
+        if( a.length() < b.length() )
+            return false;
+
+        if( a != b )
+            return a < b;
+
+        return false;
+    };
+
+    std::vector<wxString> files;
+    std::vector<wxString> dirs;
+
+    PATH_COLLECTOR collector( files, dirs );
+
+    wxDir( aDir )
+        .Traverse( collector, wxEmptyString, wxDIR_DEFAULT | wxDIR_NO_FOLLOW );
+
+    std::sort( files.begin(), files.end(), sort_func );
+
+    for( const wxString& file : files )
+    {
+        wxFileName fn( file );
+        if( fn.GetName().Contains( "HQ" ) && wxS( "zip") == fn.GetExt() )
+        {
+            aFilePaths.push_back( file );
+        }
+    }
+}
+
 
 PCM_TASK_MANAGER::STATUS PCM_TASK_MANAGER::Uninstall( const PCM_PACKAGE& aPackage )
 {
