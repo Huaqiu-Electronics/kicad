@@ -186,6 +186,11 @@ public:
         bool enable_server;
     };
 
+    struct HQ_PLUGINS
+    {
+        bool is_installed;
+    };
+
     COMMON_SETTINGS();
 
     virtual ~COMMON_SETTINGS() {}
@@ -232,4 +237,6 @@ public:
 
     /// Persistent dialog control values
     std::map<std::string, std::map<std::string, nlohmann::json>> m_dialogControlValues;
+
+    HQ_PLUGINS m_HqPlugins;
 };

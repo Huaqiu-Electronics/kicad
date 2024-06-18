@@ -124,6 +124,8 @@ public:
         return m_changed_package_types;
     };
 
+    void GetInstallHQPluginFilePaths( const wxString& aDir, wxArrayString& aFilePaths );
+
 private:
     /**
      * @brief Download URL to a file
