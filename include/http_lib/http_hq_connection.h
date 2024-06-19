@@ -97,7 +97,7 @@ protected:
 
     virtual bool ValidateHTTPLibraryEndpoints() { return true; }
 
-    virtual bool syncCategories();
+    virtual bool syncCategories() override;
 
     HTTP_HQ_LIB_SOURCE      m_source;
 

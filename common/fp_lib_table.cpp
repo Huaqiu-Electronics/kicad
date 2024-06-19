@@ -832,13 +832,12 @@ bool FP_LIB_TABLE::LoadFileToInserterRow( FP_LIB_TABLE& aTable, wxString aFilePa
 
             aTable.InsertRow(
                     new FP_LIB_TABLE_ROW( nickname, libPath, wxT( "KiCad" ), wxEmptyString,
-                                                _( "Added by HQ HTTP SYMBOLS" ) ) );
-        }
-        else
-        {
-            return false;
+                                                _( "Added by HQ HTTP SYMBOLS" ) ) );       
+            return true;
         }
     }
+    
+    return false;
 }
 
 
