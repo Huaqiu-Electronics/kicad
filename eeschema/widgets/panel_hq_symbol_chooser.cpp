@@ -119,60 +119,6 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
             m_show_footprints = false;
         }
     }
-
-    // std::vector<LIB_SYMBOL>     history_list_storage;
-    // std::vector<LIB_TREE_ITEM*> history_list;
-    // std::vector<LIB_SYMBOL>     already_placed_storage;
-    // std::vector<LIB_TREE_ITEM*> already_placed;
-
-    // Lambda to encapsulate the common logic
-    // auto processList =
-    //         [&]( const std::vector<PICKED_SYMBOL>& inputList,
-    //              std::vector<LIB_SYMBOL>&          storageList,
-    //              std::vector<LIB_TREE_ITEM*>&      resultList )
-    //         {
-    //             storageList.reserve( inputList.size() );
-
-    //             for( const PICKED_SYMBOL& i : inputList )
-    //             {
-    //                 LIB_SYMBOL* symbol = m_frame->GetLibSymbol( i.LibId );
-
-    //                 if( symbol )
-    //                 {
-    //                     storageList.emplace_back( *symbol );
-
-    //                     for( const std::pair<int, wxString>& fieldDef : i.Fields )
-    //                     {
-    //                         LIB_FIELD* field = storageList.back().GetFieldById( fieldDef.first );
-
-    //                         if( field )
-    //                             field->SetText( fieldDef.second );
-    //                     }
-
-    //                     resultList.push_back( &storageList.back() );
-    //                 }
-    //             }
-    //         };
-
-    // Sort the already placed list since it is potentially from multiple sessions,
-    // but not the most recent list since we want this listed by most recent usage.
-    // std::sort( aAlreadyPlaced.begin(), aAlreadyPlaced.end(),
-    //            []( PICKED_SYMBOL const& a, PICKED_SYMBOL const& b )
-    //            {
-    //                return a.LibId.GetLibItemName() < b.LibId.GetLibItemName();
-    //            } );
-
-    // processList( aHistoryList, history_list_storage, history_list );
-    // processList( aAlreadyPlaced, already_placed_storage, already_placed );
-
-    // adapter->DoAddLibrary( wxT( "-- " ) + _( "Recently Used" ) + wxT( " --" ), wxEmptyString,
-    //                        history_list, false, true );
-
-    // if( !aHistoryList.empty() )
-    //     adapter->SetPreselectNode( aHistoryList[0].LibId, aHistoryList[0].Unit );
-
-    // adapter->DoAddLibrary( wxT( "-- " ) + _( "Already Placed" ) + wxT( " --" ), wxEmptyString,
-    //                        already_placed, false, true );
     
     adapter->RequestCategories();
     adapter->LoadCategories();
