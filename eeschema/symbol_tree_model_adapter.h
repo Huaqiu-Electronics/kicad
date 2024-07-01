@@ -102,7 +102,7 @@ private:
     SYMBOL_LIB_TABLE*  m_libs;
 
     std::unique_ptr<HTTP_HQ_CONNECTION> m_conn;
-    const std::string m_hqRootUrl = "http://www.fdatasheets.com";
+    const std::string m_hqRootUrl = "http://www.eda.cn";
     std::vector<HTTP_HQ_CATEGORY> m_categories;
     std::map<wxString, HTTP_HQ_CATEGORY> m_name_category_map;
     std::vector<HTTP_HQ_PART> m_query_cache_parts;  /// for every time we query to cache, clear when query again 
