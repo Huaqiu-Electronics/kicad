@@ -174,9 +174,9 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
             // TODO : to add a hq part FixIllegalChars method
             wxString lib_name = SafeGetString( part, "Value" );
             lib_name.Replace( "/", "_" );
-            hq_part.symbol_lib_name = lib_name.ToStdString();
-            hq_part.fp_lib_filename = SafeGetString( part, "footprintFileUrl" );
-            hq_part.fp_lib_name = SafeGetString( part, "footprintName" );
+            hq_part.symbol_lib_name = hq_part.mpn;
+            hq_part.fp_lib_filename = hq_part.mpn;
+            hq_part.fp_lib_name = hq_part.mpn;
             hq_part.pkg = SafeGetString( part, "package" );
             
             if( part.contains( "attrs" ) )
@@ -191,9 +191,8 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
                 else
                     hq_part.attrs["Datasheet"] = hq_part.datasheet;
 
-                hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" 
-                                + hq_part.fp_lib_filename.substr( 0, hq_part.fp_lib_filename.find_last_of( '.' ) );
-                hq_part.attrs["Value"] = hq_part.symbol_lib_name;
+                hq_part.attrs["Footprint"] = hq_part.pretty_name + ":" + hq_part.fp_lib_filename;
+                hq_part.attrs["Value"] = lib_name;
                 hq_part.attrs["Mpn"] = hq_part.mpn;
                 hq_part.attrs["Manufacturer"] = hq_part.manufacturer;
             }
@@ -253,7 +252,8 @@ bool HTTP_HQ_CONNECTION::RequestPartDetails( HTTP_HQ_PART& aPart )
 
         nlohmann::json response = nlohmann::json::parse( res );
 
-        if( !response.contains("result") || !response["result"].contains("cadUrlList") )
+        if( !response.contains("result") || !response["result"].contains("cadUrlList")
+            || response["result"]["cadUrlList"].empty() )
             return false;
         
         for( const auto& item : response["result"]["cadUrlList"] )
@@ -265,6 +265,8 @@ bool HTTP_HQ_CONNECTION::RequestPartDetails( HTTP_HQ_PART& aPart )
                     continue;
                 std::string url = item["fileUrl"].get<std::string>();
                 aPart.fields[type] = url;
+                if( !aPart.fields["symbol"].empty() && !aPart.fields["footprint"].empty() )
+                    break;
             }
         
         }
@@ -310,7 +312,8 @@ wxString HTTP_HQ_CONNECTION::GetLibSavePath( std::string aType, HTTP_HQ_PART& aP
         fn.AppendDir( wxS( "hq_footprints" ) );
         fn.AppendDir( wxString::Format( "%s.%s", aPart.pretty_name,
                      FILEEXT::KiCadFootprintLibPathExtension ) );
-        filename = aPart.fp_lib_filename;
+        filename = wxString::Format( "%s.%s", aPart.fp_lib_filename,
+                     FILEEXT::KiCadFootprintFileExtension );
     }
     
     fn.SetFullName( filename );

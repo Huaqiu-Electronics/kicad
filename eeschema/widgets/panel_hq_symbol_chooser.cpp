@@ -738,7 +738,7 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
                 this->CallAfter(
                     [=]()
                     {
-                        m_symbol_preview->SetStatusText( _( "Loading time out." ) );
+                        m_symbol_preview->SetStatusText( _( "Load failed" ) );
 
                         if( m_fp_preview && m_fp_preview->IsInitialized() )
                             m_fp_preview->SetStatusText( wxEmptyString );
