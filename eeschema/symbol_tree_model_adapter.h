@@ -101,7 +101,7 @@ private:
 
     SYMBOL_LIB_TABLE*  m_libs;
 
-    std::unique_ptr<HTTP_HQ_CONNECTION> m_conn;
+    std::shared_ptr<HTTP_HQ_CONNECTION> m_conn;
     const std::string m_hqRootUrl = "http://www.eda.cn";
     std::vector<HTTP_HQ_CATEGORY> m_categories;
     std::map<wxString, HTTP_HQ_CATEGORY> m_name_category_map;

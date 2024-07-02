@@ -43,6 +43,7 @@
 #include <wx/timer.h>
 #include <wx/wxhtml.h>
 #include <core/thread_pool.h>
+#include <confirm.h>
 
 
 std::mutex g_hq_updateMutex;
@@ -708,12 +709,10 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
 
         auto request_details = [node, adapter, this]() -> void
         {
-
-            if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
+            try
             {
-                try
+                if( adapter->RequestPartDetail( ( node->m_Name ).ToStdString() ) )
                 {
-                    
                     this->CallAfter(
                             [adapter, this, node]()
                             {
@@ -726,27 +725,26 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
                                 m_tree->UpdateSelectItem();
                             } );
                 }
-                catch( const IO_ERROR& ioe )
+                else
                 {
-                    wxLogError( wxString::Format( _( "Failed to load part %s details : %s" ),
-                                                node->m_Name,
-                                                ioe.What() ) );
+                    this->CallAfter(
+                        [=]()
+                        {
+                            m_symbol_preview->SetStatusText( _( "Load failed" ) );
+
+                            if( m_fp_preview && m_fp_preview->IsInitialized() )
+                                m_fp_preview->SetStatusText( wxEmptyString );
+
+                            populateFootprintSelector( LIB_ID() );
+
+                        } );
                 }
             }
-            else
+            catch( const std::exception& e  )
             {
-                this->CallAfter(
-                    [=]()
-                    {
-                        m_symbol_preview->SetStatusText( _( "Load failed" ) );
-
-                        if( m_fp_preview && m_fp_preview->IsInitialized() )
-                            m_fp_preview->SetStatusText( wxEmptyString );
-
-                        populateFootprintSelector( LIB_ID() );
-
-                    } );
-
+                DisplayErrorMessage( this, wxString::Format( _( "Failed to load part '%s' details. You can wait for the response or request later. \n%s" ),
+                                                  node->m_Name,
+                                                   e.what() ) );
             }
 
         };

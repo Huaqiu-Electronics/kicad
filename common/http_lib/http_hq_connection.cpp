@@ -174,9 +174,12 @@ bool HTTP_HQ_CONNECTION::QueryParts( const std::vector<std::pair<std::string, st
             // TODO : to add a hq part FixIllegalChars method
             wxString lib_name = SafeGetString( part, "Value" );
             lib_name.Replace( "/", "_" );
-            hq_part.symbol_lib_name = hq_part.mpn;
-            hq_part.fp_lib_filename = hq_part.mpn;
-            hq_part.fp_lib_name = hq_part.mpn;
+            wxString mpn_legal = hq_part.mpn;
+            mpn_legal.Replace( "/", "_" );
+            std::string mpn_legal_name = mpn_legal.ToStdString();
+            hq_part.symbol_lib_name = mpn_legal_name;
+            hq_part.fp_lib_filename = mpn_legal_name;
+            hq_part.fp_lib_name = mpn_legal_name;
             hq_part.pkg = SafeGetString( part, "package" );
             
             if( part.contains( "attrs" ) )

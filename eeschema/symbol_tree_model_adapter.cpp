@@ -248,7 +248,7 @@ void SYMBOL_TREE_MODEL_ADAPTER::InitConnection( const HTTP_HQ_LIB_SOURCE& aSourc
 {
     if( !m_conn )
     {
-        m_conn = std::make_unique<HTTP_HQ_CONNECTION>( aSource );
+        m_conn = std::make_shared<HTTP_HQ_CONNECTION>( aSource );
     }
 
 }
@@ -286,7 +286,6 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestQueryParts( const std::string& aCateId,
 
     if( !m_conn->QueryParts( fields ) )
     {
-        m_conn.reset();
         return false;
     }
 
@@ -311,7 +310,6 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn )
 
     if( !m_conn->RequestPartDetails( part ) )
     {
-        m_conn.reset();
         return false;
     }
 
@@ -321,7 +319,6 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn )
     // if( !m_libs->HasLibrary( part.symbol_lib_name ) 
     if( !m_conn->DownloadLibs( "symbol", part ) )
     {
-        m_conn.reset();
         return false;
     }
 
@@ -330,7 +327,6 @@ bool SYMBOL_TREE_MODEL_ADAPTER::RequestPartDetail( const std::string& aMpn )
     // Should consider differrnt parts with same symbol lib file but not same fp lib file.
     if( !m_conn->DownloadLibs( "footprint", part ) )
     {
-        m_conn.reset();
         return false;
     }
 
