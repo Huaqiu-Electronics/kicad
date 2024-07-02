@@ -334,7 +334,7 @@ wxPanel* PANEL_HQ_SYMBOL_CHOOSER::constructRightPanel( wxWindow* aParent )
     {
         FOOTPRINT_LIST* fp_list = FOOTPRINT_LIST::GetInstance( m_frame->Kiway() );
 
-        sizer->Add( m_symbol_preview, 11, wxEXPAND | wxBOTTOM, 5 );
+        sizer->Add( m_symbol_preview, 11, wxEXPAND | wxALL, 5 );
 
         if ( fp_list )
         {
@@ -346,14 +346,14 @@ wxPanel* PANEL_HQ_SYMBOL_CHOOSER::constructRightPanel( wxWindow* aParent )
         }
 
         if( m_fp_sel_ctrl )
-            sizer->Add( m_fp_sel_ctrl, 0, wxEXPAND | wxTOP | wxBOTTOM, 4 );
+            sizer->Add( m_fp_sel_ctrl, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5 );
 
         if( m_fp_preview )
-            sizer->Add( m_fp_preview, 10, wxEXPAND, 5 );
+            sizer->Add( m_fp_preview, 10, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5 );
     }
     else
     {
-        sizer->Add( m_symbol_preview, 1, wxEXPAND, 5 );
+        sizer->Add( m_symbol_preview, 1, wxEXPAND | wxALL, 5 );
     }
 
     panel->SetSizer( sizer );
