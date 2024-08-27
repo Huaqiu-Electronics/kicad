@@ -33,7 +33,9 @@
 #include <utility>
 #include <vector>
 #include <wx/msgdlg.h>
-
+#include <wx/filename.h>
+#include <wx/stdpaths.h>
+#include <windows.h>
 
 using std::pair;
 using std::vector;
@@ -58,6 +60,25 @@ static const std::wstring kKey2 = L"CHS";
 
 class WINREG_EDITOR
 {
+    static void RunAsAdmin(const wxString& programPath, const wxString& params) {
+    SHELLEXECUTEINFO shExInfo = {0};
+    shExInfo.cbSize = sizeof(SHELLEXECUTEINFO);
+    shExInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
+    shExInfo.hwnd = NULL;
+    shExInfo.lpVerb = _T("runas");  // 以管理员权限运行
+    shExInfo.lpFile = programPath.c_str();  // 目标程序路径
+    shExInfo.lpParameters = params.c_str();  // 传递给程序的参数
+    shExInfo.lpDirectory = NULL;  // 目标程序的工作目录
+    shExInfo.nShow = SW_SHOWNORMAL;
+    shExInfo.hInstApp = NULL;
+
+    if (ShellExecuteEx(&shExInfo)) {
+        // 等待程序完成执行（可选）
+        WaitForSingleObject(shExInfo.hProcess, INFINITE);
+        CloseHandle(shExInfo.hProcess);
+    } else {
+    }
+}
     static auto doEnable( bool aEnable )
     {
         for( const auto& it : { std::pair( kSubKeyL0, kKey0 ), std::pair( kSubKeyL1, kKey1 ),
@@ -97,22 +118,14 @@ public:
         return true;
     }
 
-    static auto SetMicrosoftPinYinCompatibilityMode( bool aEnable )
-    {
-        if( doEnable( aEnable ) )
-        {
-            wxMessageBox( wxString::Format( _( "成功%s微软拼音输入法兼容模式" ),
-                                            !aEnable ? wxT( "禁用" ) : wxT( "启用" ) ),
-                          _( "提示" ), wxOK | wxICON_INFORMATION );
-        }
-        else
-        {
-            wxMessageBox( wxString::Format( _( "%s微软拼音输入法兼容模式失败" ),
-                                            !aEnable ? wxT( "禁用" ) : wxT( "启用" ) ),
-                          _( "错误" ), wxOK | wxICON_ERROR );
-        }
-    }
 
+    static auto RunEditor()
+    {
+        // Call msw_reg_editor.exe under the same dir of the current exe
+        wxFileName f( wxStandardPaths::Get().GetExecutablePath() );
+        wxString   appPath( f.GetPath() );
+        RunAsAdmin( wxString::Format( wxT( "%s\\msw_reg_editor.exe" ), appPath ) ,{});
+    }
 
 private:
 };
