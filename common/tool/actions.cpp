@@ -1198,6 +1198,13 @@ TOOL_ACTION ACTIONS::about( TOOL_ACTION_ARGS()
         .UIId( wxID_ABOUT )
         .Icon( BITMAPS::about ) );
 
+TOOL_ACTION ACTIONS::microsoftPinYinCompatibilityMode( TOOL_ACTION_ARGS()
+        .Name( "common.SuiteControl.microsoftPinYinCompatibilityMode" )
+        .Scope( AS_GLOBAL )
+        .FriendlyName( _( "开启/禁用微软拼音输入法兼容模式" ) )
+        .Tooltip( _( "开启/禁用微软拼音输入法兼容模式" ) )
+        .Icon( BITMAPS::language ) );        
+
 TOOL_ACTION ACTIONS::listHotKeys( TOOL_ACTION_ARGS()
         .Name( "common.SuiteControl.listHotKeys" )
         .Scope( AS_GLOBAL )

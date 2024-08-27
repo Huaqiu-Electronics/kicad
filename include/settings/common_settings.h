@@ -182,6 +182,11 @@ public:
         bool is_installed;
     };
 
+    struct WarnMicrosoftPinYinCompatibilityMode
+    {
+        bool show_warning;
+    };
+
     COMMON_SETTINGS();
 
     virtual ~COMMON_SETTINGS() {}
@@ -237,6 +242,8 @@ public:
     API m_Api;
     
     HQ_PLUGINS m_HqPlugins;
+
+    WarnMicrosoftPinYinCompatibilityMode m_warnMicrosoftPinYinCompatibilityMode;
 };
 
 #endif
