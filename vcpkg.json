@@ -52,7 +52,8 @@
     },
     "nng",
     "protobuf",
-    "zstd"
+    "zstd",
+    "winreg"
   ],
   "overrides": [
     {
