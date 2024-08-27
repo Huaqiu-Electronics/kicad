@@ -288,7 +288,7 @@ int COMMON_CONTROL::About( const TOOL_EVENT& aEvent )
 
 int COMMON_CONTROL::MicrosoftPinYinCompatibilityMode( const TOOL_EVENT& aEvent )
 {    
-    WINREG_EDITOR::SetMicrosoftPinYinCompatibilityMode(!WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled());
+    WINREG_EDITOR::RunEditor();
     return 0;
 }
 

@@ -1191,6 +1191,23 @@ add_subdirectory( kicad )               # should follow pcbnew, eeschema, api
 add_subdirectory( tools )
 add_subdirectory( utils )
 
+
+add_executable(msw_reg_editor
+    reg_editor/main.cpp
+)
+target_include_directories(msw_reg_editor PRIVATE "${CMAKE_SOURCE_DIR}/include")
+set(msw_reg_editor_MANIFEST_FILE "${CMAKE_SOURCE_DIR}/msw_reg_editor.manifest")
+add_custom_command(TARGET msw_reg_editor POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${msw_reg_editor_MANIFEST_FILE} ${KICAD_BIN}/msw_reg_editor.manifest
+    COMMAND mt -nologo -manifest ${KICAD_BIN}/msw_reg_editor.manifest -outputresource:$<TARGET_FILE:msw_reg_editor>;
+    VERBATIM
+)
+install( TARGETS msw_reg_editor
+    DESTINATION ${KICAD_BIN}
+    COMPONENT binary
+)
+
+
 if( KICAD_BUILD_QA_TESTS )
     add_subdirectory( qa )
 endif()
