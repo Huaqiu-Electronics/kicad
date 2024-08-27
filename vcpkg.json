@@ -45,7 +45,8 @@
     "libgit2",
     "nng",
     "protobuf",
-    "zstd"
+    "zstd",
+    "winreg"
   ],
   "overrides": [
     {
