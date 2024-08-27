@@ -34,6 +34,7 @@
 #include <wx/stdpaths.h>
 #include <wx/msgdlg.h>
 #include <wx/cmdline.h>
+#include <wx/msgdlg.h>
 
 #include <env_vars.h>
 #include <file_history.h>
@@ -67,6 +68,8 @@
 
 // a dummy to quiet linking with EDA_BASE_FRAME::config();
 #include <kiface_base.h>
+#include <tool/winreg_editor.h>
+
 
 #include <libraries/library_manager.h>
 
@@ -93,6 +96,7 @@ PGM_KICAD& PgmTop()
 bool PGM_KICAD::OnPgmInit()
 {
     App().SetAppDisplayName( wxT( "KiCad" ) );
+
 
 #if defined(DEBUG)
     wxString absoluteArgv0 = wxStandardPaths::Get().GetExecutablePath();
@@ -279,6 +283,17 @@ bool PGM_KICAD::OnPgmInit()
 #endif
 
     wxString projToLoad;
+
+    if(Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning){
+        if(!WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled())
+        {
+            auto it = wxMessageBox( _( "是否开启微软拼音输入法的兼容模式以避免其导致KiCad卡死?\n后续您依然可以在\"帮助\"->\"开启/禁用微软拼音输入法兼容模式\"中修改此配置"),"提示", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            
+            if(it == wxYES)
+                WINREG_EDITOR::SetMicrosoftPinYinCompatibilityMode( true );
+        }
+        Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning = false;
+    }        
 
     HideSplash();
 

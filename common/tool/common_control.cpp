@@ -42,6 +42,8 @@
 #include <dialogs/dialog_configure_paths.h>
 #include <eda_doc.h>
 #include <wx/msgdlg.h>
+#include <tool/winreg_editor.h>
+
 #include <executable_names.h>
 #include <gestfich.h>
 #include <tools/kicad_manager_actions.h>
@@ -367,6 +369,12 @@ int COMMON_CONTROL::About( const TOOL_EVENT& aEvent )
     return 0;
 }
 
+int COMMON_CONTROL::MicrosoftPinYinCompatibilityMode( const TOOL_EVENT& aEvent )
+{    
+    WINREG_EDITOR::SetMicrosoftPinYinCompatibilityMode(!WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled());
+    return 0;
+}
+
 
 int COMMON_CONTROL::ListHotKeys( const TOOL_EVENT& aEvent )
 {
@@ -448,6 +456,7 @@ void COMMON_CONTROL::setTransitions()
     Go( &COMMON_CONTROL::Donate,             ACTIONS::donate.MakeEvent() );
     Go( &COMMON_CONTROL::ReportBug,          ACTIONS::reportBug.MakeEvent() );
     Go( &COMMON_CONTROL::About,              ACTIONS::about.MakeEvent() );
+    Go( &COMMON_CONTROL::MicrosoftPinYinCompatibilityMode,   ACTIONS::microsoftPinYinCompatibilityMode.MakeEvent() );
 }
 
 

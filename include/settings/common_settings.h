@@ -191,6 +191,11 @@ public:
         bool is_installed;
     };
 
+    struct WarnMicrosoftPinYinCompatibilityMode
+    {
+        bool show_warning;
+    };
+
     COMMON_SETTINGS();
 
     virtual ~COMMON_SETTINGS() {}
@@ -239,4 +244,6 @@ public:
     std::map<std::string, std::map<std::string, nlohmann::json>> m_dialogControlValues;
 
     HQ_PLUGINS m_HqPlugins;
+
+    WarnMicrosoftPinYinCompatibilityMode m_warnMicrosoftPinYinCompatibilityMode;
 };

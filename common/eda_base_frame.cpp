@@ -710,6 +710,9 @@ void EDA_BASE_FRAME::AddStandardHelpMenu( wxMenuBar* aMenuBar )
 
     helpMenu->AppendSeparator();
     helpMenu->Add( ACTIONS::about );
+    helpMenu->AppendSeparator();
+    helpMenu->Add( ACTIONS::microsoftPinYinCompatibilityMode );
+
 
     aMenuBar->Append( helpMenu, _( "&Help" ) );
 }
