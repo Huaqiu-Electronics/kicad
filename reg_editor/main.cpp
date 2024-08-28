@@ -97,15 +97,15 @@ public:
     {
         if( doEnable( aEnable ) )
         {
-            wxMessageBox( wxString::Format( _( "成功%s微软拼音输入法兼容模式" ),
-                                            !aEnable ? wxT( "禁用" ) : wxT( "启用" ) ),
-                          _( "提示" ), wxOK | wxICON_INFORMATION );
+            wxMessageBox( wxString::Format( u8"成功%s微软拼音输入法兼容模式" ,
+                                            !aEnable ? u8"禁用"  : u8"启用"  ),
+                           u8"提示" , wxOK | wxICON_INFORMATION );
         }
         else
         {
-            wxMessageBox( wxString::Format( _( "%s微软拼音输入法兼容模式失败" ),
-                                            !aEnable ? wxT( "禁用" ) : wxT( "启用" ) ),
-                          _( "错误" ), wxOK | wxICON_ERROR );
+            wxMessageBox( wxString::Format( u8"%s微软拼音输入法兼容模式失败" ,
+                                            !aEnable ? u8"禁用"  : u8"启用"  ),
+                          u8"错误" , wxOK | wxICON_ERROR );
         }
     }
 

@@ -253,16 +253,20 @@ bool PGM_KICAD::OnPgmInit()
 
     wxString projToLoad;
 
-    if(Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning){
-        if(!WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled())
+    if ( wxCheckOsVersion(10, 0 ,0) &&  ! wxCheckOsVersion(11, 0, 0) )
+    {
+        if(Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning)
         {
-            auto it = wxMessageBox( _( "是否开启微软拼音输入法的兼容模式以避免其导致KiCad卡死?\n后续您依然可以在\"帮助\"->\"开启/禁用微软拼音输入法兼容模式\"中修改此配置"),"提示", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            if(!WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled())
+            {
+                auto it = wxMessageBox(  u8"是否开启微软拼音输入法的兼容模式以避免其导致KiCad卡死?\n后续您依然可以在\"帮助\"->\"开启/禁用微软拼音输入法兼容模式\"中修改此配置",u8"提示", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
 
-            if(it == wxYES)
-                WINREG_EDITOR::RunEditor();
-        }
-        Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning = false;
-    }        
+                if(it == wxYES)
+                    WINREG_EDITOR::RunEditor();
+            }
+            Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning = false;
+        }        
+    }
 
     HideSplash();
 
