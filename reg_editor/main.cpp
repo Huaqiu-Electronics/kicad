@@ -22,7 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-
+#include <wx/wx.h>
 #include "tool/WinReg.hpp"
 #include <iostream>
 #include <string>
@@ -97,11 +97,15 @@ public:
     {
         if( doEnable( aEnable ) )
         {
-        
+            wxMessageBox( wxString::Format( _( "成功%s微软拼音输入法兼容模式" ),
+                                            !aEnable ? wxT( "禁用" ) : wxT( "启用" ) ),
+                          _( "提示" ), wxOK | wxICON_INFORMATION );
         }
         else
         {
-
+            wxMessageBox( wxString::Format( _( "%s微软拼音输入法兼容模式失败" ),
+                                            !aEnable ? wxT( "禁用" ) : wxT( "启用" ) ),
+                          _( "错误" ), wxOK | wxICON_ERROR );
         }
     }
 
@@ -110,11 +114,9 @@ private:
 };
 
 
-
-
- int main() {
+int main()
+{
     const auto enabled = WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled();
-    WINREG_EDITOR::SetMicrosoftPinYinCompatibilityMode(!enabled);
+    WINREG_EDITOR::SetMicrosoftPinYinCompatibilityMode( !enabled );
     return 0;
 }
-
