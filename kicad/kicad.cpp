@@ -259,7 +259,7 @@ bool PGM_KICAD::OnPgmInit()
         {
             if(!WINREG_EDITOR::IsMicrosoftPinYinCompatibilityModeEnabled())
             {
-                auto it = wxMessageBox(  u8"是否开启微软拼音输入法的兼容模式以避免其导致KiCad卡死?\n后续您依然可以在\"帮助\"->\"开启/禁用微软拼音输入法兼容模式\"中修改此配置",u8"提示", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+                auto it = wxMessageBox(  L"是否开启微软拼音输入法的兼容模式以避免其导致KiCad卡死?\n后续您依然可以在\"帮助\"->\"开启/禁用微软拼音输入法兼容模式\"中修改此配置",L"提示", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
 
                 if(it == wxYES)
                     WINREG_EDITOR::RunEditor();
