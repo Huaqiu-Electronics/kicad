@@ -612,7 +612,12 @@ void APPEARANCE_CONTROLS::createControls()
     m_paneLayerDisplayOptions = new WX_COLLAPSIBLE_PANE( m_panelLayers, wxID_ANY,
                                                          _( "Layer Display Options" ) );
     m_paneLayerDisplayOptions->Collapse();
+    
+#ifdef __WXMSW__
+    m_paneLayerDisplayOptions->SetBackgroundColour( m_frame->GetBackgroundColour() );
+#else
     m_paneLayerDisplayOptions->SetBackgroundColour( m_notebook->GetThemeBackgroundColour() );
+#endif // __WXMSW__
 
     wxWindow* layerDisplayPane = m_paneLayerDisplayOptions->GetPane();
 
@@ -687,7 +692,12 @@ void APPEARANCE_CONTROLS::createControls()
     m_paneNetDisplayOptions = new WX_COLLAPSIBLE_PANE( m_panelNetsAndClasses, wxID_ANY,
                                                        _( "Net Display Options" ) );
     m_paneNetDisplayOptions->Collapse();
+
+#ifdef __WXMSW__
+    m_paneNetDisplayOptions->SetBackgroundColour( m_frame->GetBackgroundColour() );
+#else
     m_paneNetDisplayOptions->SetBackgroundColour( m_notebook->GetThemeBackgroundColour() );
+#endif // __WXMSW__
 
     wxWindow* netDisplayPane = m_paneNetDisplayOptions->GetPane();
     wxBoxSizer* netDisplayOptionsSizer = new wxBoxSizer( wxVERTICAL );
