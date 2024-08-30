@@ -77,6 +77,8 @@ public:
 
     int DdAddLibrary( const TOOL_EVENT& aEvent );
 
+    int ShowLibraryTable( const TOOL_EVENT& aEvent );
+
     int ShowCopilot( const TOOL_EVENT& aEvent );
     int ToggleCopilot( const TOOL_EVENT& aEvent );
 
