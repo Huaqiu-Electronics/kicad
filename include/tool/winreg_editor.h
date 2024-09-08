@@ -22,6 +22,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#ifndef _WIN32
+#define WINREG_EDITOR_H
+#endif 
 
 #ifndef WINREG_EDITOR_H
 #define WINREG_EDITOR_H
