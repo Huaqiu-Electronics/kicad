@@ -54,7 +54,11 @@ public:
 
     int ShowHelp( const TOOL_EVENT& aEvent );
     int About( const TOOL_EVENT& aEvent );
+
+#ifdef _WIN32
     int MicrosoftPinYinCompatibilityMode( const TOOL_EVENT& aEvent );
+#endif // _WIN32
+
     int ListHotKeys( const TOOL_EVENT& aEvent );
     int GetInvolved( const TOOL_EVENT& aEvent );
     int Donate( const TOOL_EVENT& aEvent );

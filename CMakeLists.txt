@@ -1191,11 +1191,12 @@ add_subdirectory( kicad )               # should follow pcbnew, eeschema, api
 add_subdirectory( tools )
 add_subdirectory( utils )
 
-
-add_executable(msw_reg_editor
-    reg_editor/main.cpp
-    ${CMAKE_SOURCE_DIR}/resources/msw/msw_reg_editor.rc
-)
+if(MSVC)
+    add_executable(msw_reg_editor
+        reg_editor/main.cpp
+        ${CMAKE_SOURCE_DIR}/resources/msw/msw_reg_editor.rc
+    )
+endif()
 
 target_include_directories(msw_reg_editor PRIVATE "${CMAKE_SOURCE_DIR}/include")
 target_link_libraries(msw_reg_editor  PRIVATE ${wxWidgets_LIBRARIES})

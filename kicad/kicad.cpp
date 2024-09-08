@@ -253,6 +253,7 @@ bool PGM_KICAD::OnPgmInit()
 
     wxString projToLoad;
 
+#ifdef _WIN32
     if (! wxCheckOsVersion(11, 0, 0) )
     {
         if(Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning)
@@ -267,6 +268,7 @@ bool PGM_KICAD::OnPgmInit()
             Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning = false;
         }        
     }
+#endif 
 
     HideSplash();
 

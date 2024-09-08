@@ -286,12 +286,14 @@ int COMMON_CONTROL::About( const TOOL_EVENT& aEvent )
     return 0;
 }
 
+#ifdef _WIN32
+
 int COMMON_CONTROL::MicrosoftPinYinCompatibilityMode( const TOOL_EVENT& aEvent )
 {    
     WINREG_EDITOR::RunEditor();
     return 0;
 }
-
+#endif
 
 int COMMON_CONTROL::ListHotKeys( const TOOL_EVENT& aEvent )
 {
@@ -370,7 +372,11 @@ void COMMON_CONTROL::setTransitions()
     Go( &COMMON_CONTROL::Donate,             ACTIONS::donate.MakeEvent() );
     Go( &COMMON_CONTROL::ReportBug,          ACTIONS::reportBug.MakeEvent() );
     Go( &COMMON_CONTROL::About,              ACTIONS::about.MakeEvent() );
+
+#ifdef _WIN32
     Go( &COMMON_CONTROL::MicrosoftPinYinCompatibilityMode,   ACTIONS::microsoftPinYinCompatibilityMode.MakeEvent() );
+#endif // _WIN32
+
 }
 
 
