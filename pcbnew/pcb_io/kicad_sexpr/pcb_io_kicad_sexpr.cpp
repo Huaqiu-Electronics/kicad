@@ -256,6 +256,10 @@ bool FP_CACHE::IsPath( const wxString& aPath ) const
     return aPath == m_lib_raw_path;
 }
 
+bool FP_CACHE::IsHQLibPath( const wxString& aPath ) const
+{
+    return aPath.EndsWith( wxT( "kicad_community_lib.pretty" ) );
+}
 
 void FP_CACHE::SetPath( const wxString& aPath )
 {
