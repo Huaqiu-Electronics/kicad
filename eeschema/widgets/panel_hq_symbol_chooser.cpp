@@ -44,6 +44,7 @@
 #include <wx/wxhtml.h>
 #include <core/thread_pool.h>
 #include <confirm.h>
+#include <paths.h>
 
 
 std::mutex g_hq_updateMutex;
@@ -82,6 +83,14 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
 
     m_adapter = SYMBOL_TREE_MODEL_ADAPTER::Create( m_frame, libs );
     SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
+
+    std::string domain;
+
+    if( CheckIniFile( domain ) )
+    {
+        adapter->SetApiDomain( domain );
+    }
+
     bool loaded = false;
 
     if( aFilter )
@@ -787,4 +796,31 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolChosen( wxCommandEvent& aEvent )
         // See PANEL_HQ_SYMBOL_CHOOSER::onCloseTimer for the other end of this spaghetti noodle.
         m_dbl_click_timer->StartOnce( PANEL_HQ_SYMBOL_CHOOSER::DBLCLICK_DELAY );
     }
+}
+
+bool PANEL_HQ_SYMBOL_CHOOSER::CheckIniFile( std::string& aPath )
+{
+    wxFileName iniFile( PATHS::GetUserSettingsPath(), "hq-config.ini" );
+
+    if( !iniFile.FileExists() )
+    {
+        return false;
+    }
+
+    wxFile file( iniFile.GetFullPath(), wxFile::read );
+
+    if( !file.IsOpened() )
+    {
+        return false;
+    }
+
+    wxString fileContent;
+
+    if( !file.ReadAll( &fileContent ) )
+    {
+        return false;
+    }
+
+    aPath = fileContent.ToStdString();
+    return true;
 }

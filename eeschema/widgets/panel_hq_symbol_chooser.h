@@ -136,6 +136,8 @@ protected:
      */
     void populateFootprintSelector( const LIB_ID& aLibId );
 
+    bool CheckIniFile( std::string& aPath );
+
 public:
     static std::mutex g_Mutex;
 
