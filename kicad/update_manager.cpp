@@ -227,7 +227,7 @@ void UPDATE_MANAGER::CheckForUpdate( wxWindow* aNoticeParent )
                 if( response.version != settings->m_lastReceivedUpdate )
                 {
 #if defined( __WXMSW__ )
-                    response.downloads_url = wxString::Format( wxS( "https://kicaddownload.elecfans.com/kicad-huaqiu-%s-x86_64.exe" ),
+                    response.downloads_url = wxString::Format( wxS( "https://www.eda.cn/data/kicad-release/kicad-huaqiu-%s-x86_64.exe.zip" ),
                                                                  response.version );
 #endif
                     aNoticeParent->CallAfter(
