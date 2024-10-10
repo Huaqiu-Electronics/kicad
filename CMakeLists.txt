@@ -1196,20 +1196,19 @@ if(MSVC)
         reg_editor/main.cpp
         ${CMAKE_SOURCE_DIR}/resources/msw/msw_reg_editor.rc
     )
+    target_include_directories(msw_reg_editor PRIVATE "${CMAKE_SOURCE_DIR}/include")
+    target_link_libraries(msw_reg_editor  PRIVATE ${wxWidgets_LIBRARIES})
+    set(msw_reg_editor_MANIFEST_FILE "${CMAKE_SOURCE_DIR}/msw_reg_editor.manifest")
+    add_custom_command(TARGET msw_reg_editor POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy ${msw_reg_editor_MANIFEST_FILE} ${KICAD_BIN}/msw_reg_editor.manifest
+        COMMAND mt -nologo -manifest ${KICAD_BIN}/msw_reg_editor.manifest -outputresource:$<TARGET_FILE:msw_reg_editor>;
+        VERBATIM
+    )
+    install( TARGETS msw_reg_editor
+        DESTINATION ${KICAD_BIN}
+        COMPONENT binary
+    )
 endif()
-
-target_include_directories(msw_reg_editor PRIVATE "${CMAKE_SOURCE_DIR}/include")
-target_link_libraries(msw_reg_editor  PRIVATE ${wxWidgets_LIBRARIES})
-set(msw_reg_editor_MANIFEST_FILE "${CMAKE_SOURCE_DIR}/msw_reg_editor.manifest")
-add_custom_command(TARGET msw_reg_editor POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy ${msw_reg_editor_MANIFEST_FILE} ${KICAD_BIN}/msw_reg_editor.manifest
-    COMMAND mt -nologo -manifest ${KICAD_BIN}/msw_reg_editor.manifest -outputresource:$<TARGET_FILE:msw_reg_editor>;
-    VERBATIM
-)
-install( TARGETS msw_reg_editor
-    DESTINATION ${KICAD_BIN}
-    COMPONENT binary
-)
 
 
 if( KICAD_BUILD_QA_TESTS )
