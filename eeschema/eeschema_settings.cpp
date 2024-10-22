@@ -676,6 +676,9 @@ EESCHEMA_SETTINGS::EESCHEMA_SETTINGS() :
 
     m_params.emplace_back( new PARAM<bool>( "design_block_chooser.keep_annotations",
             &m_DesignBlockChooserPanel.keep_annotations, false ) );
+            
+    m_params.emplace_back( new PARAM<bool>( "symbol_chooser.show_hq_page",
+            &m_SymChooserPanel.show_hq_page, true ) );
 
     m_params.emplace_back( new PARAM<bool>( "import_graphics.interactive_placement",
             &m_ImportGraphics.interactive_placement, true ) );

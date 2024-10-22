@@ -274,6 +274,7 @@ public:
         int  sort_mode;
         bool keep_symbol;
         bool place_all_units;
+        bool show_hq_page;
     };
 
     struct PANEL_DESIGN_BLOCK_CHOOSER

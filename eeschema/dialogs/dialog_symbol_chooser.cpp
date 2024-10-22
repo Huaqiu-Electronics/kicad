@@ -71,10 +71,16 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
                                                {
                                                    EndModal( wxID_CANCEL );
                                                } );
-
-    m_notebook->AddPage( m_chooserPanel, wxT("KiCad Symbols"), true );
     
-	m_notebook->AddPage( m_chooserPanel_HQ, wxT("HQ Symbols"), false );
+    bool show_hq = true;
+    if( EESCHEMA_SETTINGS* cfg = dynamic_cast<EESCHEMA_SETTINGS*>( Kiface().KifaceSettings() ) )
+    {
+        show_hq = cfg->m_SymChooserPanel.show_hq_page;
+    }
+
+    m_notebook->AddPage( m_chooserPanel, wxT("KiCad Symbols"), !show_hq );
+    
+	m_notebook->AddPage( m_chooserPanel_HQ, wxT("HQ Symbols"), show_hq );
 	
     sizer->Add( m_notebook, 1, wxEXPAND, 5 );
 
@@ -136,6 +142,13 @@ DIALOG_SYMBOL_CHOOSER::~DIALOG_SYMBOL_CHOOSER()
     {
         cfg->m_SymChooserPanel.keep_symbol = m_keepSymbol->GetValue();
         cfg->m_SymChooserPanel.place_all_units = m_useUnits->GetValue();
+        
+        const int pageIndex = m_notebook->GetSelection();
+    
+        if( pageIndex == wxNOT_FOUND )
+            cfg->m_SymChooserPanel.show_hq_page = true;
+        else
+            cfg->m_SymChooserPanel.show_hq_page = pageIndex == 1;
     }
 }
 
