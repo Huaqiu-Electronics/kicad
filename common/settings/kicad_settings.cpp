@@ -100,6 +100,15 @@ KICAD_SETTINGS::KICAD_SETTINGS() :
                                             wxString( entry["url"].get<std::string>() ) ) );
                 }
 
+                std::pair<wxString, wxString> kicad_official( 
+                        PCM_DEFAULT_REPOSITORIES[0]["name"].get<std::string>(),
+                        PCM_DEFAULT_REPOSITORIES[0]["url"].get<std::string>() );
+
+                if( std::count( m_PcmRepositories.begin(), m_PcmRepositories.end(), kicad_official ) == 0 )
+                {
+                    m_PcmRepositories.emplace_back( kicad_official );
+                }
+
                 std::pair<wxString, wxString> hq_mirror( 
                         PCM_HQ_DEFAULT_REPOSITORIES[0]["name"].get<std::string>(),
                         PCM_HQ_DEFAULT_REPOSITORIES[0]["url"].get<std::string>() );
