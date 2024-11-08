@@ -50,6 +50,10 @@
 #include <wildcards_and_files_ext.h>
 #include <confirm.h>
 
+#ifdef _WIN32
+    #include <check_win_ver.h>
+#endif
+
 #include <git2.h>
 #include <stdexcept>
 
@@ -254,7 +258,7 @@ bool PGM_KICAD::OnPgmInit()
     wxString projToLoad;
 
 #ifdef _WIN32
-    if (! wxCheckOsVersion(11, 0, 0) )
+    if (! IsWindows11OrGreater() )
     {
         if(Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning)
         {
