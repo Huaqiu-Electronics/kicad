@@ -293,7 +293,7 @@ bool PGM_KICAD::OnPgmInit()
     wxString projToLoad;
 
 #ifdef _WIN32
-    if (! IsWindows11OrGreater() )
+    if (! WinVersion::IsWindow11OrLater() )
     {
         if(Pgm().GetCommonSettings()->m_warnMicrosoftPinYinCompatibilityMode.show_warning)
         {
