@@ -1,24 +1,87 @@
-#ifndef CAF5A0B3_2520_4DFE_B379_885504035123
-#define CAF5A0B3_2520_4DFE_B379_885504035123
+// The MIT License (MIT)
+// Windows Version Detection 1.2.0
+// Copyright (C) 2022 - 2023 by Shao Voon Wong (shaovoon@yahoo.com)
+//
+// http://opensource.org/licenses/MIT
 
+// History
+// 1.0.0: First Releease
+// 1.1.0: Added IsBuildNumGreaterOrEqual()
+// 1.2.0: Removed the Windows 11 build number check to set major version to 11.
 
-#include <windows.h>
-#include <VersionHelpers.h>
+#include <Windows.h>
+#pragma once
 
-inline bool IsWindows11OrGreater()
+#pragma comment( lib, "ntdll" )
+
+extern "C" NTSTATUS __stdcall RtlGetVersion( OSVERSIONINFOEXW* lpVersionInformation );
+
+struct VersionInfo
 {
-    OSVERSIONINFOEXW osvi = {};
-    osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEXW);
-    osvi.dwMajorVersion = 10; // Windows 10 起始主版本号为10
-    osvi.dwMinorVersion = 0;  // Windows 10 和 11 都是 Minor Version 为 0
-    osvi.dwBuildNumber = 22000; // Windows 11 起始内部版本号为22000
+    VersionInfo() : Major( 0 ), Minor( 0 ), BuildNum( 0 ) {}
+    unsigned int Major;
+    unsigned int Minor;
+    unsigned int BuildNum;
+};
 
-    DWORDLONG conditionMask = 0;
-    conditionMask = VerSetConditionMask(conditionMask, VER_MAJORVERSION, VER_GREATER_EQUAL);
-    conditionMask = VerSetConditionMask(conditionMask, VER_MINORVERSION, VER_GREATER_EQUAL);
-    conditionMask = VerSetConditionMask(conditionMask, VER_BUILDNUMBER, VER_GREATER_EQUAL);
+struct BuildNumber
+{
+    enum BN : unsigned int
+    {
+        Windows_Vista = 6002,
+        Windows_7 = 7601,
+        Windows_8 = 9200,
+        Windows_8_1 = 9600,
+        Windows_10_1507 = 10240,
+        Windows_10_1511 = 10586,
+        Windows_10_1607 = 14393,
+        Windows_10_1703 = 15063,
+        Windows_10_1709 = 16299,
+        Windows_10_1803 = 17134,
+        Windows_10_1809 = 17763,
+        Windows_10_1903 = 18362,
+        Windows_10_1909 = 18363,
+        Windows_10_2004 = 19041,
+        Windows_10_20H2 = 19042,
+        Windows_10_21H1 = 19043,
+        Windows_10_21H2 = 19044,
+        Windows_10_22H2 = 19045,
+        Windows_11_21H2 = 22000,
+        Windows_11_22H2 = 22621,
+    };
+};
 
-    return VerifyVersionInfoW(&osvi, VER_MAJORVERSION | VER_MINORVERSION | VER_BUILDNUMBER, conditionMask);
-}
+class WinVersion
+{
+public:
+    static bool GetVersion( VersionInfo& info )
+    {
+        OSVERSIONINFOEXW osv;
+        osv.dwOSVersionInfoSize = sizeof( OSVERSIONINFOEXW );
+        if( RtlGetVersion( &osv ) == 0 )
+        {
+            info.Major = osv.dwMajorVersion;
+            info.Minor = osv.dwMinorVersion;
+            info.BuildNum = osv.dwBuildNumber;
 
-#endif /* CAF5A0B3_2520_4DFE_B379_885504035123 */
+            return true;
+        }
+        return false;
+    }
+
+    static bool IsWindow11OrLater()
+    {
+        return WinVersion::IsBuildNumGreaterOrEqual( BuildNumber::Windows_11_21H2 );
+    }
+
+
+    static bool IsBuildNumGreaterOrEqual( unsigned int buildNumber )
+    {
+        VersionInfo info;
+        if( GetVersion( info ) )
+        {
+            return ( info.BuildNum >= buildNumber );
+        }
+        return false;
+    }
+};
