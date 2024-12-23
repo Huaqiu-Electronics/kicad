@@ -85,6 +85,9 @@
 #include "settings/kicad_settings.h"
 
 
+#define EDITORS_CAPTION _( "Editors" )
+#define PROJECT_FILES_CAPTION _( "Project Files" )
+
 #define SEP()   wxFileName::GetPathSeparator()
 
 
@@ -216,7 +219,7 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
     // A trick is to use MinSize() to set the required pane width,
     // and after give a reasonable MinSize value
     m_auimgr.AddPane( m_leftWin, EDA_PANE().Palette().Name( "ProjectTree" ).Left().Layer( 1 )
-                      .Caption( _( "Project Files" ) ).PaneBorder( false )
+                      .Caption( PROJECT_FILES_CAPTION ).PaneBorder( false )
                       .MinSize( m_leftWinWidth, -1 ).BestSize( m_leftWinWidth, -1 ) );
 
     wxSize client_size = GetClientSize();
@@ -233,14 +236,14 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
 
     m_notebook->Freeze();
     m_launcher->SetClosable( false );
-    m_notebook->AddPage( m_launcher, _( "Editors" ), false );
+    m_notebook->AddPage( m_launcher, EDITORS_CAPTION, false );
     m_notebook->Thaw();
 
     m_auimgr.AddPane( m_notebook, EDA_PANE()
                                           .Canvas()
                                           .Name( "Editors" )
                                           .Center()
-                                          .Caption( _( "Editors" ) )
+                                          .Caption( EDITORS_CAPTION )
                                           .PaneBorder( false )
                                           .MinSize( m_notebook->GetBestSize() ) );
 
@@ -935,6 +938,17 @@ void KICAD_MANAGER_FRAME::ShowChangedLanguage()
     // tooltips in toolbars
     RecreateBaseLeftToolbar();
     m_launcher->CreateLaunchers();
+
+    // update captions
+    int pageId = m_notebook->FindPage( m_launcher );
+
+    if( pageId != wxNOT_FOUND )
+        m_notebook->SetPageText( pageId, EDITORS_CAPTION );
+
+    m_auimgr.GetPane( m_leftWin ).Caption( PROJECT_FILES_CAPTION );
+    m_auimgr.Update();
+
+    m_leftWin->FileWatcherReset();
 
     PrintPrjInfo();
 }
