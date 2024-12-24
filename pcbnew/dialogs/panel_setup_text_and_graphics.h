@@ -1,7 +1,7 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2018-2022 KiCad Developers, see AUTHORS.txt for contributors.
+ * Copyright (C) 2018-2024 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,9 +21,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#pragma once
 
-#ifndef PANEL_SETUP_TEXT_AND_GRAPHICS_H
-#define PANEL_SETUP_TEXT_AND_GRAPHICS_H
+#include <memory>
 
 #include <board.h>
 #include <widgets/unit_binder.h>
@@ -31,9 +31,9 @@
 
 #include <panel_setup_text_and_graphics_base.h>
 
-class PCB_EDIT_FRAME;
 class BOARD_DESIGN_SETTINGS;
-
+class PANEL_SETUP_DIMENSIONS;
+class PCB_EDIT_FRAME;
 
 class PANEL_SETUP_TEXT_AND_GRAPHICS : public PANEL_SETUP_TEXT_AND_GRAPHICS_BASE
 {
@@ -52,8 +52,6 @@ private:
 private:
     PCB_EDIT_FRAME*         m_Frame;
     BOARD_DESIGN_SETTINGS*  m_BrdSettings;
-    UNIT_BINDER             m_arrowLength;
-    UNIT_BINDER             m_extensionOffset;
-};
 
-#endif //PANEL_SETUP_TEXT_AND_GRAPHICS_H
+    std::unique_ptr<PANEL_SETUP_DIMENSIONS> m_dimensionsPanel;
+};
