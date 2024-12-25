@@ -1195,4 +1195,6 @@ void KICAD_MANAGER_FRAME::onToolbarSizeChanged()
     RecreateBaseLeftToolbar();
     m_auimgr.AddPane( m_mainToolBar, EDA_PANE().HToolbar().Name( "MainToolbar" ).Left()
                       .Layer( 2 ) );
+
+    m_auimgr.Update();
 }
