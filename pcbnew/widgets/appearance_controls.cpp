@@ -3046,6 +3046,7 @@ void APPEARANCE_CONTROLS::OnColorSwatchChanged( wxCommandEvent& aEvent )
         view->UpdateLayerColor( ZONE_LAYER_FOR( layer ) );
         view->UpdateLayerColor( VIA_COPPER_LAYER_FOR( layer ) );
         view->UpdateLayerColor( PAD_COPPER_LAYER_FOR( layer ) );
+        view->UpdateLayerColor( CLEARANCE_LAYER_FOR( layer ) );
     }
 
     // Update the bitmap of the layer box
