@@ -313,7 +313,7 @@ private:
     wxDateTime                              m_watcherLastModified;
     wxTimer                                 m_watcherDebounceTimer;
 
-    NL_SCHEMATIC_PLUGIN* m_spaceMouse;
+    std::unique_ptr<NL_SCHEMATIC_PLUGIN>    m_spaceMouse;
 };
 
 #endif // SCH_BASE_FRAME_H_
