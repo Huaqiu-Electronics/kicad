@@ -1925,6 +1925,7 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
         }
         else if( evt->IsClick( BUT_LEFT ) || evt->IsDblClick( BUT_LEFT ) || isSyntheticClick )
         {
+        PLACE_NEXT:
             // First click creates...
             if( !item )
             {
@@ -2093,9 +2094,16 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
 
                 if( m_dialogSyncSheetPin && m_dialogSyncSheetPin->GetPlacementTemplate() )
                 {
+                    m_dialogSyncSheetPin->EndPlaceItem( item );
+
+                    if( m_dialogSyncSheetPin->CanPlaceMore() )
+                    {
+                        item = nullptr;
+                        goto PLACE_NEXT;
+                    }
+
                     m_frame->PopTool( aEvent );
                     m_toolMgr->RunAction( EE_ACTIONS::clearSelection );
-                    m_dialogSyncSheetPin->EndPlaceItem( item );
                     m_dialogSyncSheetPin->Show( true );
                     break;
                 }
@@ -2192,9 +2200,9 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
     controls->ForceCursorPosition( false );
     m_frame->GetCanvas()->SetCurrentCursor( KICURSOR::ARROW );
 
-    if( m_dialogSyncSheetPin && m_dialogSyncSheetPin->GetPlacementTemplate() )
+    if( m_dialogSyncSheetPin && m_dialogSyncSheetPin->CanPlaceMore() )
     {
-        m_dialogSyncSheetPin->EndPlaceItem( nullptr );
+        m_dialogSyncSheetPin->EndPlacement();
         m_dialogSyncSheetPin->Show( true );
     }
 
@@ -3231,7 +3239,7 @@ int SCH_DRAWING_TOOLS::doSyncSheetsPins( std::list<SCH_SHEET_PATH> sheetPaths )
                     },
                     [&]( SCH_SHEET* aItem, SCH_SHEET_PATH aPath,
                          SHEET_SYNCHRONIZATION_AGENT::SHEET_SYNCHRONIZATION_PLACEMENT aOp,
-                         EDA_ITEM*                                                    aTemplate )
+                         std::set<EDA_ITEM*>                                          aTemplates )
                     {
                         switch( aOp )
                         {
@@ -3239,9 +3247,9 @@ int SCH_DRAWING_TOOLS::doSyncSheetsPins( std::list<SCH_SHEET_PATH> sheetPaths )
                         {
                             SCH_SHEET* sheet = static_cast<SCH_SHEET*>( aItem );
                             m_dialogSyncSheetPin->Hide();
-                            m_dialogSyncSheetPin->BeginPlaceItem(
+                            m_dialogSyncSheetPin->PreparePlacementTemplate(
                                     sheet, DIALOG_SYNC_SHEET_PINS::PlaceItemKind::HIERLABEL,
-                                    aTemplate );
+                                    aTemplates );
                             m_frame->GetToolManager()->RunAction<SCH_SHEET_PATH*>(
                                     EE_ACTIONS::changeSheet, &aPath );
                             m_toolMgr->RunAction( EE_ACTIONS::placeHierLabel );
@@ -3251,9 +3259,9 @@ int SCH_DRAWING_TOOLS::doSyncSheetsPins( std::list<SCH_SHEET_PATH> sheetPaths )
                         {
                             SCH_SHEET* sheet = static_cast<SCH_SHEET*>( aItem );
                             m_dialogSyncSheetPin->Hide();
-                            m_dialogSyncSheetPin->BeginPlaceItem(
+                            m_dialogSyncSheetPin->PreparePlacementTemplate(
                                     sheet, DIALOG_SYNC_SHEET_PINS::PlaceItemKind::SHEET_PIN,
-                                    aTemplate );
+                                    aTemplates );
                             m_frame->GetToolManager()->RunAction<SCH_SHEET_PATH*>(
                                     EE_ACTIONS::changeSheet, &aPath );
                             m_toolMgr->GetTool<EE_SELECTION_TOOL>()->SyncSelection( {}, nullptr,
