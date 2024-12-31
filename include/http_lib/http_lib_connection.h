@@ -66,7 +66,7 @@ public:
         return m_categoryDescriptions.at( aCategoryName );
     }
 
-    auto getCachedParts() { return m_cache; }
+    auto& getCachedParts() { return m_cache; }
 
 protected:
 
