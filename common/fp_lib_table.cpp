@@ -671,7 +671,7 @@ bool FP_LIB_TABLE::LoadGlobalTable( FP_LIB_TABLE& aTable )
         if( v && !v->IsEmpty() )
             ss.AddPaths( *v, 0 );
 
-        wxString fileName = ss.FindValidPath( global_tbl_name );
+        wxString fileName = ss.FindValidPath( FILEEXT::FootprintLibraryTableFileName );
 
         // The fallback is to create an empty global footprint table for the user to populate.
         if( fileName.IsEmpty() || !::wxCopyFile( fileName, fn.GetFullPath(), false ) )
@@ -846,7 +846,7 @@ wxString FP_LIB_TABLE::GetGlobalTableFileName()
     wxFileName fn;
 
     fn.SetPath( PATHS::GetUserSettingsPath() );
-    fn.SetName( global_tbl_name );
+    fn.SetName( FILEEXT::FootprintLibraryTableFileName );
 
     return fn.GetFullPath();
 }

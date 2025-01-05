@@ -327,7 +327,7 @@ public:
 
     static SYMBOL_LIB_TABLE& GetHQGlobalLibTable();
 
-    static const wxString& GetSymbolLibTableFileName();
+    static const wxString GetSymbolLibTableFileName();
 
     static const wxString& GetHQSymbolLibTableFileName();
    /**

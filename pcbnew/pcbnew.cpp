@@ -549,7 +549,7 @@ void IFACE::SaveFileAs( const wxString& aProjectBasePath, const wxString& aSrcPr
         // name.
         KiCopyFile( aSrcFilePath, destFile.GetFullPath(), aErrors );
     }
-    else if( destFile.GetName() == wxT( "fp-lib-table" ) )
+    else if( destFile.GetName() == FILEEXT::FootprintLibraryTableFileName )
     {
         try
         {

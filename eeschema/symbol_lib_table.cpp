@@ -724,7 +724,7 @@ bool SYMBOL_LIB_TABLE::LoadGlobalTable( SYMBOL_LIB_TABLE& aTable )
         if( v && !v->IsEmpty() )
             ss.AddPaths( *v, 0 );
 
-        wxString fileName = ss.FindValidPath( global_tbl_name );
+        wxString fileName = ss.FindValidPath( FILEEXT::SymbolLibraryTableFileName );
 
         // The fallback is to create an empty global symbol table for the user to populate.
         if( fileName.IsEmpty() || !::wxCopyFile( fileName, fn.GetFullPath(), false ) )
@@ -933,7 +933,7 @@ wxString SYMBOL_LIB_TABLE::GetGlobalTableFileName()
     wxFileName fn;
 
     fn.SetPath( PATHS::GetUserSettingsPath() );
-    fn.SetName( global_tbl_name );
+    fn.SetName( FILEEXT::SymbolLibraryTableFileName );
 
     return fn.GetFullPath();
 }
@@ -948,9 +948,9 @@ wxString SYMBOL_LIB_TABLE::GetHQGlobalTableFileName()
     return fn.GetFullPath();
 }
 
-const wxString& SYMBOL_LIB_TABLE::GetSymbolLibTableFileName()
+const wxString SYMBOL_LIB_TABLE::GetSymbolLibTableFileName()
 {
-    return global_tbl_name;
+    return FILEEXT::SymbolLibraryTableFileName;
 }
 
 const wxString& SYMBOL_LIB_TABLE::GetHQSymbolLibTableFileName()
