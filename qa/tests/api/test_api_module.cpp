@@ -19,11 +19,16 @@
 
 #include <boost/test/unit_test.hpp>
 #include <wx/app.h>
+
+#include <mock_pgm_base.h>
+#include <pgm_base.h>
 #include <qa_utils/wx_utils/wx_assert.h>
 
 
 bool init_unit_test()
 {
+    SetPgm( new MOCK_PGM_BASE() );
+
     boost::unit_test::framework::master_test_suite().p_name.value = "IPC API tests";
 
     wxApp::SetInstance( new wxAppConsole );
@@ -31,7 +36,12 @@ bool init_unit_test()
     bool ok = wxInitialize( boost::unit_test::framework::master_test_suite().argc,
                             boost::unit_test::framework::master_test_suite().argv );
 
-    wxSetAssertHandler( &KI_TEST::wxAssertThrower );
+    if( ok )
+    {
+        wxSetAssertHandler( &KI_TEST::wxAssertThrower );
+
+        Pgm().InitPgm( true, true, true );
+    }
 
     return ok;
 }
