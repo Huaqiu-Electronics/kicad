@@ -1672,10 +1672,10 @@ void PCB_IO_KICAD_SEXPR::format( const PAD* aPad ) const
                       static_cast<int>( aPad->GetLocalZoneConnection() ) );
     }
 
-    if( aPad->GetThermalSpokeWidth() != 0 )
+    if( aPad->GetLocalThermalSpokeWidthOverride().has_value() )
     {
         m_out->Print( "(thermal_bridge_width %s)",
-                      formatInternalUnits( aPad->GetThermalSpokeWidth() ).c_str() );
+                      formatInternalUnits( aPad->GetLocalThermalSpokeWidthOverride().value() ).c_str() );
     }
 
     EDA_ANGLE defaultThermalSpokeAngle = ANGLE_90;
@@ -1693,10 +1693,10 @@ void PCB_IO_KICAD_SEXPR::format( const PAD* aPad ) const
                       EDA_UNIT_UTILS::FormatAngle( aPad->GetThermalSpokeAngle() ).c_str() );
     }
 
-    if( aPad->GetThermalGap() != 0 )
+    if( aPad->GetLocalThermalGapOverride().has_value() )
     {
         m_out->Print( "(thermal_gap %s)",
-                      formatInternalUnits( aPad->GetThermalGap() ).c_str() );
+                      formatInternalUnits( aPad->GetLocalThermalGapOverride().value() ).c_str() );
     }
 
     auto anchorShape =
