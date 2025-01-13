@@ -169,6 +169,11 @@ public:
     }
 
 
+    void BlockPreview( bool aBlock )
+    {
+        m_previewDisabled = aBlock;
+    }
+
 protected:
     /**
      * Expand or collapse a node, switching it to the opposite state.
