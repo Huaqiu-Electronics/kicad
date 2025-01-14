@@ -1827,10 +1827,10 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
             [&]()
             {
                 m_view->ClearPreview();
-                m_view->AddToPreview( item->Clone() );
+                m_view->AddToPreview( item, false );
                 item->RunOnChildren( [&]( SCH_ITEM* aChild )
                                      {
-                                         m_view->AddToPreview( aChild->Clone() );
+                                         m_view->AddToPreview( aChild, false );
                                      } );
                 m_frame->SetMsgPanel( item );
             };
@@ -1862,6 +1862,8 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
         m_toolMgr->PrimeTool( { 0, 0 } );
         ignorePrimePosition = true;
     }
+
+    SCH_COMMIT commit( m_toolMgr );
 
     // Main loop: keep receiving events
     while( TOOL_EVENT* evt = Wait() )
@@ -2066,8 +2068,6 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
             }
             else            // ... and second click places:
             {
-                SCH_COMMIT commit( m_toolMgr );
-
                 item->ClearFlags( IS_MOVING );
 
                 if( item->IsConnectable() )
@@ -2152,6 +2152,11 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
             {
                 item = nullptr;
             }
+        }
+        else if( evt->IsAction( &ACTIONS::increment ) )
+        {
+            m_toolMgr->RunSynchronousAction( ACTIONS::increment, &commit,
+                                             evt->Parameter<ACTIONS::INCREMENT>() );
         }
         else if( evt->IsAction( &ACTIONS::duplicate )
                  || evt->IsAction( &EE_ACTIONS::repeatDrawItem ) )
