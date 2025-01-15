@@ -112,11 +112,21 @@ void WX_AUI_TOOLBAR_ART::DrawButton( wxDC& aDc, wxWindow* aWindow, const wxAuiTo
     const wxBitmapBundle& bundle = ( aItem.GetState() & wxAUI_BUTTON_STATE_DISABLED )
                                    ? aItem.GetDisabledBitmapBundle()
                                    : aItem.GetBitmapBundle();
-    wxBitmap bmp = bundle.GetBitmap( bmpSize * scale );
+
+    auto tool_id = aItem.GetId();
+
+    if(m_bitmapCache.find(tool_id) == m_bitmapCache.end())
+    {
+        auto bb = bundle.GetBitmap( bmpSize * scale );
+        bb.SetScaleFactor(scale);
+        m_bitmapCache.try_emplace(tool_id , bb );
+    }
+
+    const auto& bmp = m_bitmapCache[tool_id];
 
     // wxBitmapBundle::GetBitmap thinks we need this rescaled to match the base size, which we don't
-    if( bmp.IsOk() )
-        bmp.SetScaleFactor( scale );
+    // if( bmp.IsOk() )
+    //     bmp.SetScaleFactor( scale );
 
     if( m_textOrientation == wxAUI_TBTOOL_TEXT_BOTTOM )
     {

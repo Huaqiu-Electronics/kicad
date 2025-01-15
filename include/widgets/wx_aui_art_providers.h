@@ -22,10 +22,13 @@
 
 #include <wx/aui/auibar.h>
 #include <wx/aui/dockart.h>
+#include <map>
+#include <wx/msw/bitmap.h>
 
 
 class WX_AUI_TOOLBAR_ART : public wxAuiDefaultToolBarArt
 {
+    std::map<int, wxBitmap> m_bitmapCache;
 public:
     WX_AUI_TOOLBAR_ART() : wxAuiDefaultToolBarArt() {}
 
