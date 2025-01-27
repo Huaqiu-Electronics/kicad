@@ -1702,6 +1702,7 @@ SCH_TEXT* SCH_DRAWING_TOOLS::createNewText( const VECTOR2I& aPosition, int aType
         // QuasiModal required for syntax help and Scintilla auto-complete
         if( dlg.ShowQuasiModal() != wxID_OK )
         {
+            dlg.GetFieldsGridTable()->DetachFields();
             delete labelItem;
             return nullptr;
         }
@@ -1745,6 +1746,7 @@ SCH_TEXT* SCH_DRAWING_TOOLS::createNewText( const VECTOR2I& aPosition, int aType
     return textItem;
 }
 
+
 SCH_SHEET_PIN* SCH_DRAWING_TOOLS::createNewSheetPin( SCH_SHEET* aSheet, const VECTOR2I& aPosition )
 {
     SCHEMATIC_SETTINGS& settings = aSheet->Schematic()->Settings();
@@ -1760,6 +1762,7 @@ SCH_SHEET_PIN* SCH_DRAWING_TOOLS::createNewSheetPin( SCH_SHEET* aSheet, const VE
 
     return pin;
 }
+
 
 SCH_SHEET_PIN* SCH_DRAWING_TOOLS::createNewSheetPinFromLabel( SCH_SHEET*      aSheet,
                                                               const VECTOR2I& aPosition,
