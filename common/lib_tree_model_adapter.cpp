@@ -266,9 +266,11 @@ void LIB_TREE_MODEL_ADAPTER::AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
     // aNode.AssignIntrinsicRanks( presorted );
 }
 
-void LIB_TREE_MODEL_ADAPTER::DoAddLibrary( const wxString& aNodeName, const wxString& aDesc,
-                                           const std::vector<LIB_TREE_ITEM*>& aItemList,
-                                           bool pinned, bool presorted )
+
+LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::DoAddLibrary( const wxString& aNodeName,
+                                                             const wxString& aDesc,
+                                                             const std::vector<LIB_TREE_ITEM*>& aItemList,
+                                                             bool pinned, bool presorted )
 {
     LIB_TREE_NODE_LIBRARY& lib_node = DoAddLibraryNode( aNodeName, aDesc, pinned );
 
@@ -276,12 +278,14 @@ void LIB_TREE_MODEL_ADAPTER::DoAddLibrary( const wxString& aNodeName, const wxSt
         lib_node.AddItem( item );
 
     lib_node.AssignIntrinsicRanks( presorted );
+
+    return lib_node;
 }
 
 
-void LIB_TREE_MODEL_ADAPTER::DoRemoveLibrary( const wxString& aNodeName )
+void LIB_TREE_MODEL_ADAPTER::RemoveGroup( bool aRecentGroup, bool aPlacedGroup )
 {
-    m_tree.RemoveLib( aNodeName );
+    m_tree.RemoveGroup( aRecentGroup, aPlacedGroup );
 }
 
 
@@ -491,6 +495,20 @@ void LIB_TREE_MODEL_ADAPTER::UnpinLibrary( LIB_TREE_NODE* aTreeNode )
 
     resortTree();
     // Keep focus at top when unpinning
+}
+
+
+void LIB_TREE_MODEL_ADAPTER::ShowChangedLanguage()
+{
+    recreateColumns();
+
+    for( const std::unique_ptr<LIB_TREE_NODE>& lib: m_tree.m_Children )
+    {
+        if( lib->m_IsRecentlyUsedGroup )
+            lib->m_Name = wxT( "-- " ) + _( "Recently Used" ) + wxT( " --" );
+        else if( lib->m_IsAlreadyPlacedGroup )
+            lib->m_Name = wxT( "-- " ) + _( "Already Placed" ) + wxT( " --" );
+    }
 }
 
 

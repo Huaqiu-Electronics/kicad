@@ -181,16 +181,14 @@ public:
      * @param aDesc        the description field of the parent node
      * @param aItemList    list of symbols
      */
-    void DoAddLibrary( const wxString& aNodeName, const wxString& aDesc,
-                       const std::vector<LIB_TREE_ITEM*>& aItemList,
-                       bool pinned, bool presorted );
+    LIB_TREE_NODE_LIBRARY& DoAddLibrary( const wxString& aNodeName, const wxString& aDesc,
+                                         const std::vector<LIB_TREE_ITEM*>& aItemList,
+                                         bool pinned, bool presorted );
 
     /**
-     * Remove the library by name.
-     *
-     * @param aNodeName    the name of the library to remove
+     * Remove one of the system groups from the library.
      */
-    void DoRemoveLibrary( const wxString& aNodeName );
+    void RemoveGroup( bool aRecentlyUsedGroup, bool aAlreadyPlacedGroup );
 
     std::vector<wxString> GetAvailableColumns() const { return m_availableColumns; }
 
@@ -320,10 +318,7 @@ public:
     void PinLibrary( LIB_TREE_NODE* aTreeNode );
     void UnpinLibrary( LIB_TREE_NODE* aTreeNode );
 
-    void ShowChangedLanguage()
-    {
-        recreateColumns();
-    }
+    void ShowChangedLanguage();
 
     LIB_TREE_NODE_LIBRARY& AddSubLibraryNode( LIB_TREE_NODE_LIBRARY& aNode, 
                                             const wxString& aNodeName, const wxString& aDesc,
