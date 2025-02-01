@@ -564,9 +564,9 @@ void EDA_BASE_FRAME::ShowChangedLanguage()
 }
 
 
-void EDA_BASE_FRAME::CommonSettingsChanged( bool aEnvVarsChanged, bool aTextVarsChanged )
+void EDA_BASE_FRAME::CommonSettingsChanged( int aFlags )
 {
-    TOOLS_HOLDER::CommonSettingsChanged( aEnvVarsChanged, aTextVarsChanged );
+    TOOLS_HOLDER::CommonSettingsChanged( aFlags );
 
     COMMON_SETTINGS* settings = Pgm().GetCommonSettings();
 
@@ -800,7 +800,7 @@ void EDA_BASE_FRAME::LoadWindowSettings( const WINDOW_SETTINGS* aCfg )
     m_perspective = aCfg->perspective;
     m_mruPath = aCfg->mru_path;
 
-    TOOLS_HOLDER::CommonSettingsChanged( false, false );
+    TOOLS_HOLDER::CommonSettingsChanged();
 }
 
 
@@ -1297,7 +1297,7 @@ void EDA_BASE_FRAME::ShowPreferences( wxString aStartPage, wxString aStartParent
         // Update our grids that are cached in the tool
         m_toolManager->ResetTools( TOOL_BASE::REDRAW );
         Pgm().GetSettingsManager().Save();
-        dlg.Kiway().CommonSettingsChanged( false, false );
+        dlg.Kiway().CommonSettingsChanged( HOTKEYS_CHANGED );
     }
 
 }
