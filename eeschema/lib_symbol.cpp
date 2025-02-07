@@ -2501,3 +2501,22 @@ static struct LIB_SYMBOL_DESC
                         } );
     }
 } _LIB_SYMBOL_DESC;
+
+
+
+void LIB_SYMBOL::SetHqPartsFields( const std::vector<SCH_FIELD>& aFields )
+{
+    deleteAllFields();
+
+    for( size_t ii = 0; ii < aFields.size(); ++ii )
+    {
+        // drawings is a ptr_vector, new and copy an object on the heap.
+        SCH_FIELD* field = new SCH_FIELD( aFields[ ii ] );
+
+        field->SetParent( this );
+        m_drawings.push_back( field );
+    }
+
+    // m_drawings.sort();
+}
+

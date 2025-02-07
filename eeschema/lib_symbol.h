@@ -293,6 +293,8 @@ public:
      */
     void SetFields( const std::vector<SCH_FIELD>& aFieldsList );
 
+    void SetHqPartsFields( const std::vector<SCH_FIELD>& aFields );
+
     /**
      * Populate a std::vector with SCH_FIELDs, sorted in ordinal order.
      *
