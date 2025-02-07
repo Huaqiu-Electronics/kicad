@@ -39,6 +39,7 @@
 #include <widgets/footprint_preview_widget.h>
 #include <project_sch.h>
 #include <gestfich.h>
+#include "sch_field.h"
 #include <confirm.h>
 
 
@@ -341,6 +342,7 @@ bool SYMBOL_TREE_MODEL_ADAPTER::UpdateHQSymbolLib( const std::string& aMpn )
     if( !SaveHQSymbolFields( aMpn ) )
         return false;
 
+    SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
     return true;
 }
 
@@ -464,15 +466,15 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
     LIB_SYMBOL* lib_sym = symbols.at( 0 );
     wxString old_symName = lib_sym->GetName();
     lib_sym->SetName( lib_nick_name );
-    std::vector<LIB_FIELD> fields;
+    std::vector<SCH_FIELD> fields;
     int field_id = 5;
     // TODO: to change logic for situation lib_sym fields don't has not MANDATORY_FIELDS in order.
     // Set fields order by manual.
     if( part.attrs.find( "Mpn" ) != part.attrs.end() )
     {
-        LIB_FIELD* field = new LIB_FIELD();
-        field->SetId( field_id++ );
-        field->SetName( "Mpn" );
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, "Mpn" );
+        // field->SetId(  );
+        // field->SetName();
         field->SetShowInChooser( false );
         field->SetVisible( false );
         field->SetText( part.attrs["Mpn"] );
@@ -481,9 +483,9 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
 
     if( part.attrs.find( "Manufacturer" ) != part.attrs.end() )
     {
-        LIB_FIELD* field = new LIB_FIELD();
-        field->SetId( field_id++ );
-        field->SetName( "Manufacturer" );
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, "Manufacturer" );
+        // field->SetId( field_id++ );
+        // field->SetName( "Manufacturer" );
         field->SetShowInChooser( false );
         field->SetVisible( false );
         field->SetText( part.attrs["Manufacturer"] );
@@ -492,42 +494,46 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
 
     for( auto& [name, text] : part.attrs )
     {
-        LIB_FIELD* field = new LIB_FIELD();
+        SCH_FIELD* field = nullptr;
         if( name == "Value" )
         {
-            *field = lib_sym->GetValueField();
+            field = new SCH_FIELD( lib_sym->GetValueField() );
             field->SetVisible( false );
         }
         else if( name == "Footprint" )
         {
-            *field = lib_sym->GetFootprintField();
+            field = new SCH_FIELD( lib_sym->GetFootprintField() );
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
         else if( name == "Datasheet" )
         {
-            *field = lib_sym->GetDatasheetField();
+            field = new SCH_FIELD( lib_sym->GetDatasheetField() );
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
         else if( name == "Description" )
         {
-            *field = lib_sym->GetDescriptionField();
+            field = new SCH_FIELD( lib_sym->GetDescriptionField() );
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
         else if( name != "Manufacturer" && name != "Mpn" )
         {
-            field->SetId( field_id++ );
-            field->SetName( name );
+            field = new SCH_FIELD( lib_sym, field_id++, name );
+            // field->SetId( field_id++ );
+            // field->SetName( name );
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
 
-        field->SetText( text );
-        fields.push_back( *field );
+        if( name != "Manufacturer" && name != "Mpn" )
+        {
+            field->SetText( text );
+            fields.push_back( *field );
+        }
     }
-    LIB_FIELD* ref_field = new LIB_FIELD( lib_sym->GetReferenceField() );
+    SCH_FIELD* ref_field = new SCH_FIELD( lib_sym->GetReferenceField() );
     ref_field->SetShowInChooser( true );
     ref_field->SetVisible( true );
     fields.push_back( *ref_field );
@@ -550,8 +556,6 @@ bool SYMBOL_TREE_MODEL_ADAPTER::SaveHQSymbolFields( const std::string& aMpn )
         wxLogError( _( "Failed to save HQ library %s. %s" ), fn.GetFullPath(), ioe.What() );
         return false;
     }
-
-    SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
 
     return true;
 }

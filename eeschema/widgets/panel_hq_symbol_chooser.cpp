@@ -42,7 +42,9 @@
 #include <wx/splitter.h>
 #include <wx/timer.h>
 #include <wx/wxhtml.h>
-#include <core/thread_pool.h>
+#include <wx/log.h>
+#include <symbol_lib_table.h>
+#include <thread_pool.h>
 #include <confirm.h>
 #include <paths.h>
 
@@ -72,14 +74,14 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
         m_show_footprints( aShowFootprints )
 {
     // SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
-    SYMBOL_LIB_TABLE::GetHQGlobalLibTable().Clear();
+    // SYMBOL_LIB_TABLE::GetHQGlobalLibTable().Clear();
     SYMBOL_LIB_TABLE*         libs = &SYMBOL_LIB_TABLE::GetHQGlobalLibTable();
     COMMON_SETTINGS::SESSION& session = Pgm().GetCommonSettings()->m_Session;
     PROJECT_FILE&             project = m_frame->Prj().GetProjectFile();
 
     // Make sure settings are loaded before we start running multi-threaded symbol loaders
-    Pgm().GetSettingsManager().GetAppSettings<EESCHEMA_SETTINGS>();
-    Pgm().GetSettingsManager().GetAppSettings<SYMBOL_EDITOR_SETTINGS>();
+    Pgm().GetSettingsManager().GetAppSettings<EESCHEMA_SETTINGS>( "eeschema" );
+    Pgm().GetSettingsManager().GetAppSettings<SYMBOL_EDITOR_SETTINGS>( "symbol_editor" );
 
     m_adapter = SYMBOL_TREE_MODEL_ADAPTER::Create( m_frame, libs );
     SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
@@ -330,7 +332,8 @@ wxPanel* PANEL_HQ_SYMBOL_CHOOSER::constructRightPanel( wxWindow* aParent )
     }
     else
     {
-        EESCHEMA_SETTINGS* cfg = Pgm().GetSettingsManager().GetAppSettings<EESCHEMA_SETTINGS>();
+        EESCHEMA_SETTINGS* cfg = Pgm().GetSettingsManager().GetAppSettings<EESCHEMA_SETTINGS>( "eeschema" );
+
         backend = (EDA_DRAW_PANEL_GAL::GAL_TYPE) cfg->m_Graphics.canvas_type;
     }
 
@@ -523,7 +526,7 @@ void PANEL_HQ_SYMBOL_CHOOSER::showFootprintFor( LIB_ID const& aLibId )
     if( !symbol )
         return;
 
-    LIB_FIELD* fp_field = symbol->GetFieldById( FOOTPRINT_FIELD );
+    SCH_FIELD* fp_field = symbol->GetFieldById( FOOTPRINT_FIELD );
     wxString   fp_name = fp_field ? fp_field->GetFullText() : wxString( "" );
 
     showFootprint( fp_name );
@@ -582,28 +585,15 @@ void PANEL_HQ_SYMBOL_CHOOSER::populateFootprintSelector( LIB_ID const& aLibId )
 
     if( symbol != nullptr )
     {
-        LIB_PINS   temp_pins;
-        LIB_FIELD* fp_field = symbol->GetFieldById( FOOTPRINT_FIELD );
+        int        pinCount = symbol->GetPins( 0 /* all units */, 1 /* single bodyStyle */ ).size();
+        SCH_FIELD* fp_field = symbol->GetFieldById( FOOTPRINT_FIELD );
         wxString   fp_name = fp_field ? fp_field->GetFullText() : wxString( "" );
 
-        // All units, but only a single De Morgan variant.
-        if( symbol->HasAlternateBodyStyle() )
-            symbol->GetPins( temp_pins, 0, 1 );
-        else
-            symbol->GetPins( temp_pins );
-
-        m_fp_sel_ctrl->FilterByPinCount( temp_pins.size() );
+        m_fp_sel_ctrl->FilterByPinCount( pinCount );
         m_fp_sel_ctrl->FilterByFootprintFilters( symbol->GetFPFilters(), true );
         m_fp_sel_ctrl->SetDefaultFootprint( fp_name );
         m_fp_sel_ctrl->UpdateList();
         m_fp_sel_ctrl->Enable();
-
-        alg::delete_if( m_field_edits, []( std::pair<int, wxString> const& i )
-                                   {
-                                       return i.first == FOOTPRINT_FIELD;
-                                   } );
-
-        m_field_edits.emplace_back( std::make_pair( FOOTPRINT_FIELD, fp_name ) );
     }
     else
     {

@@ -811,7 +811,6 @@ bool SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE& aTable )
         emptyTable.Save( fn.GetFullPath() );
     }
 
-    aTable.Clear();
     aTable.Load( fn.GetFullPath() );
 
     // To auto add loaded hq symbol libs to global hq lib table

@@ -1064,14 +1064,14 @@ void LIB_SYMBOL::SetFields( const std::vector<SCH_FIELD>& aFieldsList )
     m_drawings.sort();
 }
 
-void LIB_SYMBOL::SetHqPartsFields( const std::vector<LIB_FIELD>& aFields )
+void LIB_SYMBOL::SetHqPartsFields( const std::vector<SCH_FIELD>& aFields )
 {
     deleteAllFields();
 
     for( size_t ii = 0; ii < aFields.size(); ++ii )
     {
         // drawings is a ptr_vector, new and copy an object on the heap.
-        LIB_FIELD* field = new LIB_FIELD( aFields[ ii ] );
+        SCH_FIELD* field = new SCH_FIELD( aFields[ ii ] );
 
         field->SetParent( this );
         m_drawings.push_back( field );

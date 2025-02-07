@@ -266,7 +266,7 @@ void SYMBOL_PREVIEW_WIDGET::DisplaySymbol( const LIB_ID& aSymbolID, int aUnit, i
 void SYMBOL_PREVIEW_WIDGET::DisplayHQSymbol( const LIB_ID& aSymbolID, int aUnit, int aBodyStyle )
 {
     KIGFX::VIEW* view = m_preview->GetView();
-    auto settings = static_cast<KIGFX::SCH_RENDER_SETTINGS*>( view->GetPainter()->GetSettings() );
+    auto settings = static_cast<SCH_RENDER_SETTINGS*>( view->GetPainter()->GetSettings() );
     std::unique_ptr< LIB_SYMBOL > symbol;
 
     try
@@ -299,10 +299,10 @@ void SYMBOL_PREVIEW_WIDGET::DisplayHQSymbol( const LIB_ID& aSymbolID, int aUnit,
         // Hide fields that were added automatically by the library (for example, when using
         // database libraries) as they don't have a valid position yet, and we don't support
         // autoplacing fields on library symbols yet.
-        std::vector<LIB_FIELD*> previewFields;
+        std::vector<SCH_FIELD*> previewFields;
         m_previewItem->GetFields( previewFields );
 
-        for( LIB_FIELD* field : previewFields )
+        for( SCH_FIELD* field : previewFields )
         {
             if( field->IsAutoAdded() )
                 field->SetVisible( false );
