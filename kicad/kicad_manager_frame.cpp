@@ -684,7 +684,7 @@ void KICAD_MANAGER_FRAME::SaveOpenJobSetsToLocalSettings( bool aIsExplicitUserSa
 {
     PROJECT_LOCAL_SETTINGS& cfg = Prj().GetLocalSettings();
 
-    if( !aIsExplicitUserSave && cfg.WasMigrated() )
+    if( !aIsExplicitUserSave && !cfg.ShouldAutoSave() )
         return;
 
     cfg.m_OpenJobSets.clear();
@@ -714,8 +714,8 @@ bool KICAD_MANAGER_FRAME::CloseProject( bool aSave )
     if( !Kiway().PlayersClose( false ) )
         return false;
 
-    bool shouldSaveProject = !Prj().GetLocalSettings().WasMigrated()
-                             && !Prj().GetProjectFile().WasMigrated();
+    bool shouldSaveProject = Prj().GetLocalSettings().ShouldAutoSave()
+                             && Prj().GetProjectFile().ShouldAutoSave();
 
     // Save the project file for the currently loaded project.
     if( m_active_project )
