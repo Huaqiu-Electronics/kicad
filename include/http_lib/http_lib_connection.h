@@ -66,7 +66,10 @@ public:
 
     std::string getCategoryDescription( const std::string& aCategoryName ) const
     {
-        return m_categoryDescriptions.at( aCategoryName );
+        if( m_categoryDescriptions.contains( aCategoryName ) )
+           return m_categoryDescriptions.at( aCategoryName );
+        else
+           return "";
     }
 
     auto& getCachedParts() { return m_cache; }
