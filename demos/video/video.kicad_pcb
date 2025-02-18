@@ -1,5 +1,5 @@
 (kicad_pcb
-	(version 20241228)
+	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(general
@@ -107,8 +107,8 @@
 		(tenting front back)
 		(aux_axis_origin 40.9 173.1)
 		(pcbplotparams
-			(layerselection 0x000010fc_ffffffff)
-			(plot_on_all_layers_selection 0x00001000_00000000)
+			(layerselection 0x00000000_00000000_000010fc_ffffffff)
+			(plot_on_all_layers_selection 0x00000000_00000000_00001000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
 			(usegerberattributes yes)
@@ -126,11 +126,13 @@
 			(pdf_front_fp_property_popups yes)
 			(pdf_back_fp_property_popups yes)
 			(pdf_metadata yes)
+			(pdf_single_document no)
 			(dxfpolygonmode yes)
 			(dxfimperialunits yes)
 			(dxfusepcbnewfont yes)
 			(psnegative no)
 			(psa4output no)
+			(plot_black_and_white yes)
 			(plotinvisibletext no)
 			(sketchpadsonfab no)
 			(plotpadnumbers no)
@@ -1944,7 +1946,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402caa6")
 		(at 358.521 58.293)
@@ -2145,14 +2147,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cabc")
 		(at 358.14 73.787 -90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C3"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "F.SilkS")
 			(uuid "ab5ecf5e-a665-4dcf-a382-424760bf024c")
 			(effects
@@ -2163,7 +2165,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "F.Fab")
 			(uuid "8fe7acd3-4a8d-40fa-88cb-de5b79854f71")
 			(effects
@@ -2174,7 +2176,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -2187,7 +2189,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -2305,7 +2307,7 @@
 			(uuid "63fd08e3-448c-4c55-8863-13c084fe4b24")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "b1c6cf81-cb31-4a47-9bd9-6ea37e583c7d")
 			(effects
@@ -2346,7 +2348,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc49")
 		(at 333.248 131.699)
@@ -2547,7 +2549,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc55")
 		(at 307.086 131.699)
@@ -2748,7 +2750,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc61")
 		(at 300.355 131.572 180)
@@ -2949,7 +2951,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cca5")
 		(at 358.521 60.833)
@@ -3150,7 +3152,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm"
+	(footprint "footprints:C_Disc_D3.0mm_W2.0mm_P2.50mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ccbb")
 		(at 116.459 64.643 180)
@@ -3393,7 +3395,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm"
+	(footprint "footprints:C_Disc_D3.0mm_W2.0mm_P2.50mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ccc5")
 		(at 107.569 64.643)
@@ -3636,7 +3638,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd20")
 		(at 82.169 92.71)
@@ -3837,7 +3839,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd36")
 		(at 81.432003 100.609389)
@@ -4038,7 +4040,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd41")
 		(at 68.707 102.235 180)
@@ -4239,7 +4241,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd58")
 		(at 123.825 60.092628)
@@ -5971,7 +5973,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
+	(footprint "footprints:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ce1f")
 		(at 80.137 107.061)
@@ -6173,7 +6175,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
+	(footprint "footprints:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ce2b")
 		(at 84.455 61.976 180)
@@ -6375,7 +6377,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
+	(footprint "footprints:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ce37")
 		(at 70.866 106.934)
@@ -6577,7 +6579,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
+	(footprint "footprints:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ce43")
 		(at 345.313 97.155)
@@ -6779,7 +6781,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
+	(footprint "footprints:R_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ce4f")
 		(at 326.009 131.572 180)
@@ -6997,7 +6999,7 @@
 			)
 		)
 		(property "Value" "470ns"
-			(at 7.009684 -13.020603 -90)
+			(at 7.009684 -13.020603 270)
 			(layer "F.SilkS")
 			(uuid "7ef07416-0cad-4e05-94e8-2925fddeab47")
 			(effects
@@ -7008,7 +7010,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -7021,7 +7023,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -7142,7 +7144,7 @@
 			)
 		)
 		(property "Value" "BNC"
-			(at -6.731 -3.556 -90)
+			(at -6.731 -3.556 270)
 			(layer "F.SilkS")
 			(uuid "b038b044-0413-4de4-a39b-2b2761e1546d")
 			(effects
@@ -7867,7 +7869,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x02_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ceac")
 		(at 105.664 70.358 180)
@@ -8076,7 +8078,7 @@
 			(uuid "4ddb7186-5576-4d92-af34-88708f4bc878")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 1.27 -90)
+			(at 0 1.27 270)
 			(layer "F.Fab")
 			(uuid "a519ddec-0200-4b42-b2f5-fc9d5cf78137")
 			(effects
@@ -8121,7 +8123,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x05_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ceb5")
 		(at 93.345 61.595 90)
@@ -8651,7 +8653,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x01_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ced7")
 		(at 114.3 74.93)
@@ -8894,7 +8896,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x01_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cedc")
 		(at 89.535 59.055)
@@ -9137,7 +9139,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x01_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cee1")
 		(at 89.535 63.5)
@@ -9380,7 +9382,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x01_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cee6")
 		(at 82.423 57.912)
@@ -9623,7 +9625,7 @@
 			)
 		)
 	)
-	(footprint "Potentiometer_SMD:Potentiometer_Bourns_3314G_Vertical"
+	(footprint "footprints:Potentiometer_Bourns_3314G_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cef3")
 		(at 84.539957 82.042 180)
@@ -9906,7 +9908,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf1e")
 		(at 123.825 63.119)
@@ -10119,7 +10121,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf3f")
 		(at 67.945 111.887)
@@ -10332,7 +10334,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf6b")
 		(at 348.234 131.699 180)
@@ -10533,7 +10535,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf81")
 		(at 70.739 76.835 180)
@@ -10734,7 +10736,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf8c")
 		(at 77.343 76.835)
@@ -10935,7 +10937,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfad")
 		(at 358.521 63.627 180)
@@ -11136,7 +11138,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d005")
 		(at 294.767 131.572)
@@ -11337,7 +11339,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d010")
 		(at 313.69 132.08 180)
@@ -11538,7 +11540,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d01b")
 		(at 339.598 131.318 180)
@@ -11739,7 +11741,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d047")
 		(at 111.76 114.935)
@@ -11940,7 +11942,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d052")
 		(at 114.3 111.76)
@@ -12141,7 +12143,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d102")
 		(at 67.945 116.205)
@@ -12342,7 +12344,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d12e")
 		(at 188.595 142.621 180)
@@ -12663,7 +12665,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d13f")
 		(at 188.595 137.795 180)
@@ -12984,7 +12986,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d150")
 		(at 188.595 134.112 180)
@@ -13305,7 +13307,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d161")
 		(at 85.09 142.875)
@@ -13626,7 +13628,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d172")
 		(at 85.09 135.89)
@@ -13947,7 +13949,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d183")
 		(at 84.8 127)
@@ -14268,7 +14270,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d194")
 		(at 92.075 120.015 90)
@@ -14589,14 +14591,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_THT:R_Array_SIP9"
+	(footprint "footprints:R_Array_SIP9"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d1a5")
 		(at 88.773 79.375 -90)
 		(descr "9-pin Resistor SIP pack")
 		(tags "R")
 		(property "Reference" "RR8"
-			(at 15.625 2.373 -90)
+			(at 15.625 2.373 270)
 			(layer "F.SilkS")
 			(uuid "abf43c15-5f42-4788-80ea-c540595791ec")
 			(effects
@@ -14607,7 +14609,7 @@
 			)
 		)
 		(property "Value" "8x10K"
-			(at 11.43 2.4 -90)
+			(at 11.43 2.4 270)
 			(layer "F.Fab")
 			(uuid "7199364e-4f13-4006-ac79-6d6a72a2360f")
 			(effects
@@ -14618,7 +14620,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -14631,7 +14633,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -14788,7 +14790,7 @@
 			(uuid "166067ef-117c-4b6d-9dde-8dd8ca4106ab")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 10.16 0 -90)
+			(at 10.16 0 270)
 			(layer "F.Fab")
 			(uuid "c0ad03e1-b189-4fe5-83b4-694fcdadb85a")
 			(effects
@@ -14910,7 +14912,7 @@
 			)
 		)
 	)
-	(footprint "Package_DIP:DIP-8_W7.62mm"
+	(footprint "footprints:DIP-8_W7.62mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d1b6")
 		(at 108.585 125.73 90)
@@ -15231,7 +15233,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm"
+	(footprint "footprints:SOIC-28W_7.5x17.9mm_P1.27mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d1c8")
 		(at 148.717 63.246 90)
@@ -15751,7 +15753,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
+	(footprint "footprints:SOIC-20W_7.5x12.8mm_P1.27mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d249")
 		(at 197.739 138.811)
@@ -16215,7 +16217,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SSOP-8_3.95x5.21x3.27mm_P1.27mm"
+	(footprint "footprints:SSOP-8_3.95x5.21x3.27mm_P1.27mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d267")
 		(at 130.175 61.595 90)
@@ -17714,7 +17716,7 @@
 		(descr "Support Plcc 68 pins, pads ronds")
 		(tags "PLCC")
 		(property "Reference" "U9"
-			(at 0 -2.54 -90)
+			(at 0 -2.54 270)
 			(layer "F.SilkS")
 			(uuid "6aa799c1-d3ae-4950-9a92-bd8bef0a87c7")
 			(effects
@@ -17725,7 +17727,7 @@
 			)
 		)
 		(property "Value" "BT473"
-			(at 0 2.54 -90)
+			(at 0 2.54 270)
 			(layer "F.SilkS")
 			(uuid "1e57ed23-a890-45d0-bbca-432f320fd556")
 			(effects
@@ -17736,7 +17738,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -17749,7 +17751,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -18627,14 +18629,14 @@
 			)
 		)
 	)
-	(footprint "Package_QFP:PQFP-160_28x28mm_P0.65mm"
+	(footprint "footprints:PQFP-160_28x28mm_P0.65mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d32a")
 		(at 335.407 76.327 -90)
 		(descr "PQFP, 160 Pin (http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=131095), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "PQFP QFP")
 		(property "Reference" "U10"
-			(at 0 -17 -90)
+			(at 0 -17 270)
 			(layer "F.SilkS")
 			(uuid "d5c27ed2-1c3e-4420-909d-609137fa6505")
 			(effects
@@ -18645,7 +18647,7 @@
 			)
 		)
 		(property "Value" "BT812"
-			(at 0 1.5 -90)
+			(at 0 1.5 270)
 			(layer "F.Fab")
 			(uuid "f6dc257e-3c97-469c-9096-278502cedbb3")
 			(effects
@@ -18656,7 +18658,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -18669,7 +18671,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -19068,7 +19070,7 @@
 			(uuid "b0a727af-e65e-42a7-b330-20a36d1c021f")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "fc3153b4-e719-494c-9698-643afd7b2753")
 			(effects
@@ -20631,7 +20633,7 @@
 			)
 		)
 	)
-	(footprint "Package_QFP:PQFP-160_28x28mm_P0.65mm"
+	(footprint "footprints:PQFP-160_28x28mm_P0.65mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d3d4")
 		(at 141.605 129.44 90)
@@ -30271,7 +30273,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Package_SO:SOIC-24W_7.5x15.4mm_P1.27mm"
+	(footprint "footprints:SOIC-24W_7.5x15.4mm_P1.27mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d71e")
 		(at 73.914 85.09 90)
@@ -30775,7 +30777,7 @@
 			)
 		)
 	)
-	(footprint "Package_DIP:DIP-8_W7.62mm"
+	(footprint "footprints:DIP-8_W7.62mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d740")
 		(at 94.615 73.025 90)
@@ -31096,14 +31098,14 @@
 			)
 		)
 	)
-	(footprint "Package_QFP:TQFP-100_14x14mm_P0.5mm"
+	(footprint "footprints:TQFP-100_14x14mm_P0.5mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d752")
 		(at 304.927 74.422 -90)
 		(descr "TQFP, 100 Pin (http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=131095), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "TQFP QFP")
 		(property "Reference" "U22"
-			(at 0 -9.45 -90)
+			(at 0 -9.45 270)
 			(layer "F.SilkS")
 			(uuid "005256a1-92aa-46be-9895-dff1a24fa4bf")
 			(effects
@@ -31114,7 +31116,7 @@
 			)
 		)
 		(property "Value" "XC4003-VQ100"
-			(at 0 9.45 -90)
+			(at 0 9.45 270)
 			(layer "F.Fab")
 			(uuid "5cffaee4-e116-4e80-be1b-e0d3ca02f135")
 			(effects
@@ -31125,7 +31127,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -31138,7 +31140,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -31537,7 +31539,7 @@
 			(uuid "22d0bb87-e9b3-470b-b68a-5ff54db4b823")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(uuid "4465822d-6515-4941-a350-2cd42ad28d4a")
 			(effects
@@ -32560,7 +32562,7 @@
 			)
 		)
 	)
-	(footprint "Package_QFP:PQFP-100_14x20mm_P0.65mm"
+	(footprint "footprints:PQFP-100_14x20mm_P0.65mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d7c2")
 		(at 103.505 86.868 90)
@@ -34021,7 +34023,7 @@
 			)
 		)
 	)
-	(footprint "Package_QFP:PQFP-160_28x28mm_P0.65mm"
+	(footprint "footprints:PQFP-160_28x28mm_P0.65mm"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d82f")
 		(at 141.605 88.165 90)
@@ -36063,7 +36065,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -36076,7 +36078,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -36221,7 +36223,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -36234,7 +36236,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -36350,7 +36352,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x02_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d8fd")
 		(at 88.9 147.955 90)
@@ -36604,7 +36606,7 @@
 			)
 		)
 	)
-	(footprint "Crystal:Crystal_HC18-U_Vertical"
+	(footprint "footprints:Crystal_HC18-U_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d906")
 		(at 114.427 59.69 180)
@@ -36874,14 +36876,14 @@
 			)
 		)
 	)
-	(footprint "Crystal:Crystal_HC18-U_Vertical"
+	(footprint "footprints:Crystal_HC18-U_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d913")
 		(at 357.632 91.948 -90)
 		(descr "Crystal THT HC-18/U, http://5hertz.com/pdfs/04404_D.pdf")
 		(tags "THT crystalHC-18/U")
 		(property "Reference" "X2"
-			(at 2.45 -3.525 -90)
+			(at 2.45 -3.525 270)
 			(layer "F.SilkS")
 			(uuid "d1563502-e63c-4cb0-a129-7753437e24b3")
 			(effects
@@ -36892,7 +36894,7 @@
 			)
 		)
 		(property "Value" "30MHz"
-			(at 2.45 3.525 -90)
+			(at 2.45 3.525 270)
 			(layer "F.Fab")
 			(uuid "9cbaa34a-96be-4c18-b327-7384900dd4f4")
 			(effects
@@ -36903,7 +36905,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -36916,7 +36918,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -37099,7 +37101,7 @@
 			(uuid "1b11f80d-728e-4801-beb7-d98fb079c0b3")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 2.45 0 -90)
+			(at 2.45 0 270)
 			(layer "F.Fab")
 			(uuid "e52170c4-90c3-4482-93a9-8f7040507c4a")
 			(effects
@@ -37144,14 +37146,14 @@
 			)
 		)
 	)
-	(footprint "Crystal:Crystal_HC18-U_Horizontal"
+	(footprint "footprints:Crystal_HC18-U_Horizontal"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d920")
 		(at 75.565 73.025 180)
 		(descr "Crystal THT HC-18/U http://5hertz.com/pdfs/04404_D.pdf")
 		(tags "THT crystal")
 		(property "Reference" "X3"
-			(at -4.375 3.3125 -90)
+			(at -4.375 3.3125 270)
 			(layer "F.SilkS")
 			(uuid "89bbd023-5fa4-4c16-9aae-211bff518103")
 			(effects
@@ -37162,7 +37164,7 @@
 			)
 		)
 		(property "Value" "4.433618MHz"
-			(at 9.275 3.3125 -90)
+			(at 9.275 3.3125 270)
 			(layer "F.Fab")
 			(uuid "60e6c4a3-681b-4d96-9e99-4c1d938704f4")
 			(effects
@@ -37528,7 +37530,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005b22196e")
 		(at 353.5 59.2925 90)
@@ -37729,7 +37731,7 @@
 			)
 		)
 	)
-	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+	(footprint "footprints:PinHeader_1x02_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00005bd17697")
 		(at 109.22 142.875)
@@ -37983,7 +37985,7 @@
 			)
 		)
 	)
-	(footprint "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset14.56mm_Housed_MountingHolesOffset15.98mm"
+	(footprint "footprints:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset14.56mm_Housed_MountingHolesOffset15.98mm"
 		(locked yes)
 		(layer "F.Cu")
 		(uuid "00000000-0000-0000-0000-00007fffffff")
@@ -37991,7 +37993,7 @@
 		(descr "9-pin D-Sub connector, horizontal/angled (90 deg), THT-mount, female, pitch 2.77x2.84mm, pin-PCB-offset 14.56mm, distance of mounting holes 25mm, distance of mounting holes to PCB edge 15.98mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf")
 		(tags "9-pin D-Sub connector horizontal angled 90deg THT female pitch 2.77x2.84mm pin-PCB-offset 14.56mm mounting-holes-distance 25mm mounting-hole-offset 15.98mm")
 		(property "Reference" "J4"
-			(at -5.54 -2.8 -90)
+			(at -5.54 -2.8 270)
 			(layer "F.SilkS")
 			(uuid "e338436d-ebe7-4d87-af0d-6366369f93bf")
 			(effects
@@ -38002,7 +38004,7 @@
 			)
 		)
 		(property "Value" "DB9FEM"
-			(at -5.54 25.47 -90)
+			(at -5.54 25.47 270)
 			(layer "F.Fab")
 			(uuid "eeae8fcf-2e31-48e9-9b3d-c9dc4a567770")
 			(effects
@@ -38013,7 +38015,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -38026,7 +38028,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -38406,7 +38408,7 @@
 			(uuid "9f194836-a233-4320-ac83-f2c38e48910a")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -5.54 20.885 -90)
+			(at -5.54 20.885 270)
 			(layer "F.Fab")
 			(uuid "af44d102-208b-4983-979e-a575cc8e9313")
 			(effects
@@ -38430,7 +38432,7 @@
 			(drill 3.2)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(uuid "2298691b-629e-457e-8706-53bb5d1fdb38")
+			(uuid "d5d7f0ff-7d6c-496c-8107-fc1febb7aed5")
 		)
 		(pad "1" thru_hole rect
 			(at 0 0 270)
@@ -38544,14 +38546,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cab1")
 		(at 345.567 67.437 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C2"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "5d71ab01-f966-4a01-b996-a70637a531db")
 			(effects
@@ -38563,7 +38565,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "8fca7bfa-f9a3-4040-8def-f9905c4ca1f1")
 			(effects
@@ -38706,7 +38708,7 @@
 			(uuid "4633517d-4af3-46ac-a0dc-a0fa40190cc0")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "87bd5799-5cde-43e6-b850-53e5d2575069")
 			(effects
@@ -38748,7 +38750,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cac7")
 		(at 355.981 78.105)
@@ -38952,7 +38954,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cad2")
 		(at 346.202 97.282 -90)
@@ -38983,7 +38985,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -38996,7 +38998,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -39156,14 +39158,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cadd")
 		(at 345.567 73.279 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C6"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "b895d067-e48e-4f84-a69b-41cc80526237")
 			(effects
@@ -39175,7 +39177,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "1f274a50-b735-4b87-aaf3-f11cc0d8a891")
 			(effects
@@ -39318,7 +39320,7 @@
 			(uuid "3745142a-795f-4c1c-91bc-9197aa387bc3")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "b9c826f8-49c3-459d-be6b-be1fa7926953")
 			(effects
@@ -39360,7 +39362,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cae8")
 		(at 338.201 87.757 180)
@@ -39564,7 +39566,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402caf3")
 		(at 349.123 58.039 180)
@@ -39768,7 +39770,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cafe")
 		(at 333.883 64.897)
@@ -39972,7 +39974,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb09")
 		(at 344.297 87.757)
@@ -40176,14 +40178,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb14")
 		(at 319.278 69.977 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C11"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "f8e47e57-0a48-4321-9427-576bba5c6e80")
 			(effects
@@ -40195,7 +40197,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "d938fab6-1696-45a5-9b9b-b4e3e46721f6")
 			(effects
@@ -40338,7 +40340,7 @@
 			(uuid "b6ce9cd8-3957-4be3-8776-12865250ba43")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "abe9cf87-f499-4a7c-a0c7-611f2a5f860a")
 			(effects
@@ -40380,14 +40382,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb1f")
 		(at 345.567 80.391 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C12"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "97b332f2-3819-4b7e-937e-5c65236597c9")
 			(effects
@@ -40399,7 +40401,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "ca0cb4bb-17a9-404a-aad3-0dbf2d7db064")
 			(effects
@@ -40542,7 +40544,7 @@
 			(uuid "ac60acc5-9e50-4c88-a616-6fa76d53ea52")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "ea318d1c-1bf4-419c-b174-cb092c88a455")
 			(effects
@@ -40584,7 +40586,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb2a")
 		(at 326.009 64.643)
@@ -40788,14 +40790,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb35")
 		(at 324.231 81.915 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C14"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "a81926fb-4239-4166-8884-b8c1a8dee353")
 			(effects
@@ -40807,7 +40809,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "e2d25624-728d-48d5-83fd-1ab30da9a60e")
 			(effects
@@ -40950,7 +40952,7 @@
 			(uuid "d9effb3d-4a01-4a6d-8095-f195d4e75791")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "3c4b406b-9806-4736-977d-ade7d5ada83c")
 			(effects
@@ -40992,7 +40994,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb40")
 		(at 325.755 87.249)
@@ -41196,7 +41198,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb4b")
 		(at 338.201 84.709 180)
@@ -41400,14 +41402,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb56")
 		(at 155.194 85.344 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C17"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "e3467c36-1358-49ba-8b76-a83439d5713d")
 			(effects
@@ -41419,7 +41421,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "f62b9fa3-8b2e-4f24-bcff-d16a8e7cb52e")
 			(effects
@@ -41562,7 +41564,7 @@
 			(uuid "ef1eab94-65e1-4682-9919-94a09470657a")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "2d4c5fb9-beaa-4128-ba6d-34f8a5f45b56")
 			(effects
@@ -41604,7 +41606,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb61")
 		(at 157.48 74.295 -90)
@@ -41635,7 +41637,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -41648,7 +41650,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -41808,7 +41810,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb6c")
 		(at 140.97 73.66 180)
@@ -42012,7 +42014,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb77")
 		(at 130.81 73.025)
@@ -42216,7 +42218,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb82")
 		(at 124.714 90.805)
@@ -42420,7 +42422,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb8d")
 		(at 127 104.14)
@@ -42624,7 +42626,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cb98")
 		(at 130.175 61.595)
@@ -42828,7 +42830,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cba3")
 		(at 138.049 116.84)
@@ -43032,7 +43034,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbae")
 		(at 146.431 114.935 180)
@@ -43236,7 +43238,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbb9")
 		(at 150.622 122.936 180)
@@ -43440,7 +43442,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbc4")
 		(at 132.334 123.19)
@@ -43644,7 +43646,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbcf")
 		(at 150.241 135.89 180)
@@ -43848,7 +43850,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbda")
 		(at 147.066 139.7 180)
@@ -44052,7 +44054,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbe5")
 		(at 136.779 139.7)
@@ -44256,7 +44258,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cbfb")
 		(at 357.759 127.635 180)
@@ -44460,7 +44462,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc06")
 		(at 345.313 111.76)
@@ -44664,7 +44666,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc11")
 		(at 343.789 117.602)
@@ -44868,7 +44870,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc1c")
 		(at 353.949 131.699)
@@ -45072,7 +45074,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc27")
 		(at 313.944 120.015 -90)
@@ -45103,7 +45105,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -45116,7 +45118,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -45276,7 +45278,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc32")
 		(at 318.9 120.015 -90)
@@ -45307,7 +45309,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -45320,7 +45322,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -45480,7 +45482,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc3d")
 		(at 150.241 132.08 180)
@@ -45684,7 +45686,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc6d")
 		(at 343.916 120.396)
@@ -45888,7 +45890,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc79")
 		(at 79.121 88.011)
@@ -46092,14 +46094,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc84")
 		(at 74.041 85.344 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C44"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "2c3135af-6a0e-4689-86fa-7ab01197e873")
 			(effects
@@ -46111,7 +46113,7 @@
 			)
 		)
 		(property "Value" "220nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "c4251170-b5e1-4376-8d9c-8e14137e9edd")
 			(effects
@@ -46254,7 +46256,7 @@
 			(uuid "2c6b85ce-bca2-4d34-a38b-e8ba04804148")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "6f2bdad7-9297-4506-8bd5-b0568da9869c")
 			(effects
@@ -46296,7 +46298,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc8f")
 		(at 79.121 85.471)
@@ -46500,7 +46502,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cc9a")
 		(at 80.391 114.935)
@@ -46704,7 +46706,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ccb0")
 		(at 79.121 82.931)
@@ -46908,7 +46910,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cccf")
 		(at 345.44 108.585)
@@ -47112,7 +47114,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ccdb")
 		(at 310.261 117.729)
@@ -47316,7 +47318,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cce6")
 		(at 80.391 111.887)
@@ -47520,7 +47522,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ccf1")
 		(at 78.613 66.04 -90)
@@ -47551,7 +47553,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -47564,7 +47566,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -47724,7 +47726,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402ccfc")
 		(at 75.946 100.457 -90)
@@ -47755,7 +47757,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -47768,7 +47770,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -47928,7 +47930,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd2b")
 		(at 82.169 96.647)
@@ -48132,7 +48134,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd4c")
 		(at 356.235 66.167)
@@ -48336,7 +48338,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
+	(footprint "footprints:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd64")
 		(at 84.201 88.519 -90)
@@ -48367,7 +48369,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -48380,7 +48382,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -48540,7 +48542,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd70")
 		(at 351.409 93.091)
@@ -48744,7 +48746,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd7b")
 		(at 351.409 95.885)
@@ -48948,7 +48950,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd86")
 		(at 99.441 149.733 180)
@@ -49152,7 +49154,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd91")
 		(at 117.983 148.463 180)
@@ -49356,7 +49358,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cd9c")
 		(at 151.638 148.463)
@@ -49560,14 +49562,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cda7")
 		(at 97.536 85.09 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "C70"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "cc34730c-bfe1-452f-98f3-29f089508266")
 			(effects
@@ -49579,7 +49581,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "6490c312-8f49-4c63-9759-0a3500817acf")
 			(effects
@@ -49722,7 +49724,7 @@
 			(uuid "7c62bdca-e486-451d-93f8-ce91b1af8b36")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "ea68f2ab-0052-4845-a5e0-dfe2a6927100")
 			(effects
@@ -49764,7 +49766,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cdb2")
 		(at 106.426 83.185 180)
@@ -49968,7 +49970,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cdbd")
 		(at 110.236 90.805 180)
@@ -50172,7 +50174,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cdc8")
 		(at 94.615 94.615)
@@ -50835,7 +50837,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf29")
 		(at 355.981 81.153)
@@ -51039,7 +51041,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf34")
 		(at 358.14 72.263 -90)
@@ -51070,7 +51072,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -51083,7 +51085,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -51243,7 +51245,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf4a")
 		(at 163.449 134.62)
@@ -51447,7 +51449,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf55")
 		(at 114.935 123.19 180)
@@ -51651,7 +51653,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf60")
 		(at 118.745 120.65 180)
@@ -51855,7 +51857,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf76")
 		(at 67.945 85.217 -90)
@@ -51886,7 +51888,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -51899,7 +51901,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -52059,14 +52061,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cf97")
 		(at 355.727 72.263 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R12"
-			(at -0.237 -1.727 -90)
+			(at -0.237 -1.727 270)
 			(layer "B.SilkS")
 			(uuid "631c1dd4-3aa5-45ff-92fa-dcc5ae563f90")
 			(effects
@@ -52078,7 +52080,7 @@
 			)
 		)
 		(property "Value" "1K"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "f4076951-2349-4f60-baef-15e953a148de")
 			(effects
@@ -52221,7 +52223,7 @@
 			(uuid "448cd3f5-4997-46b9-8fc4-dabbb7e500ed")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "e7b76b43-76cc-498d-8904-511d84071c78")
 			(effects
@@ -52263,7 +52265,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfa2")
 		(at 85.895255 75.541162)
@@ -52467,7 +52469,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfb8")
 		(at 321.437 120.015 -90)
@@ -52498,7 +52500,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -52511,7 +52513,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -52671,14 +52673,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfc3")
 		(at 79.883 122.555 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R16"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "b0970ac2-d740-4344-b8df-898e9ab72475")
 			(effects
@@ -52690,7 +52692,7 @@
 			)
 		)
 		(property "Value" "220"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "0fc55a5a-fc0c-469e-8f5f-125c8d5c3824")
 			(effects
@@ -52833,7 +52835,7 @@
 			(uuid "0273f140-25e5-4f5e-b56e-2e6e50521aca")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "43eb0216-baa0-4921-93c0-e072a8932f5e")
 			(effects
@@ -52875,14 +52877,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfce")
 		(at 75.565 122.555 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R17"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "025ed323-3ef2-4145-b338-c2bfdf8ecf0b")
 			(effects
@@ -52894,7 +52896,7 @@
 			)
 		)
 		(property "Value" "220"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "929019fd-3a40-4131-afab-aa18f0fcd500")
 			(effects
@@ -53037,7 +53039,7 @@
 			(uuid "53034740-3aa0-4f29-864f-09409d2c1f98")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "e5f9b0d0-cbda-4724-8d97-d3d24d281966")
 			(effects
@@ -53079,7 +53081,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfd9")
 		(at 70.739 85.217 -90)
@@ -53110,7 +53112,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -53123,7 +53125,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -53283,14 +53285,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfe4")
 		(at 343.408 97.282 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R19"
-			(at -0.118 -1.708 -90)
+			(at -0.118 -1.708 270)
 			(layer "B.SilkS")
 			(uuid "eb95fded-70bf-4ba8-ba3b-c3f094b27b3b")
 			(effects
@@ -53302,7 +53304,7 @@
 			)
 		)
 		(property "Value" "220"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "f3694f88-14b3-435c-a566-b4ba0310d82f")
 			(effects
@@ -53445,7 +53447,7 @@
 			(uuid "c8b4149d-4337-4179-912d-7360ec00576b")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "8e0c4c9e-2046-46dd-bc8f-45faff6679d1")
 			(effects
@@ -53487,7 +53489,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cfef")
 		(at 343.027 58.039)
@@ -53691,7 +53693,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402cffa")
 		(at 109.855 67.564 180)
@@ -53895,14 +53897,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d026")
 		(at 355.346 94.615 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R25"
-			(at 0 1.82 -90)
+			(at 0 1.82 270)
 			(layer "B.SilkS")
 			(uuid "86d8047e-5357-4722-b968-75377f70b512")
 			(effects
@@ -53914,7 +53916,7 @@
 			)
 		)
 		(property "Value" "220K"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "c631597c-c3d6-4597-9be5-6b46e0c99b04")
 			(effects
@@ -54057,7 +54059,7 @@
 			(uuid "b1a6fc70-88e3-4ab4-a2d0-c09d8a768606")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "c8d339be-41a8-4a62-ab44-e1f35db39cac")
 			(effects
@@ -54099,7 +54101,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d031")
 		(at 111.887 62.103)
@@ -54303,7 +54305,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d03c")
 		(at 344.297 84.709)
@@ -54507,7 +54509,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d05d")
 		(at 81.407 99.441)
@@ -54711,7 +54713,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d068")
 		(at 81.407 102.743 180)
@@ -54915,7 +54917,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d073")
 		(at 80.391 136.779)
@@ -55119,7 +55121,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d07e")
 		(at 80.391 133.731)
@@ -55323,7 +55325,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d089")
 		(at 68.707 98.933 180)
@@ -55527,14 +55529,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d09f")
 		(at 316.357 120.015 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R36"
-			(at 3.815 0.043 -90)
+			(at 3.815 0.043 270)
 			(layer "B.SilkS")
 			(uuid "7c1dab2c-c353-4e24-9f74-202b6cb6844d")
 			(effects
@@ -55546,7 +55548,7 @@
 			)
 		)
 		(property "Value" "470"
-			(at 0 -1.82 -90)
+			(at 0 -1.82 270)
 			(layer "B.Fab")
 			(uuid "48bde959-d181-459d-9441-30ce933712b9")
 			(effects
@@ -55689,7 +55691,7 @@
 			(uuid "49a32d3b-8f3b-472b-b8ef-0ae6e085ea49")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 -90)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "ef36c4ff-0b1d-4d72-8359-8e220d6cac44")
 			(effects
@@ -55731,7 +55733,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0aa")
 		(at 309.372 121.285 180)
@@ -55935,7 +55937,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0b5")
 		(at 304.165 117.729)
@@ -56139,14 +56141,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0c0")
 		(at 75.057 136.779)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R39"
-			(at -2.757 -0.079 -90)
+			(at -2.757 -0.079 270)
 			(layer "B.SilkS")
 			(uuid "e0b64a35-878a-4242-aa68-18605c58a69f")
 			(effects
@@ -56343,7 +56345,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0cb")
 		(at 75.057 133.731 180)
@@ -56547,7 +56549,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0d6")
 		(at 68.707 95.631)
@@ -56751,7 +56753,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0e1")
 		(at 75.057 145.923 180)
@@ -56955,7 +56957,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0ec")
 		(at 75.057 142.875 180)
@@ -57159,7 +57161,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d0f7")
 		(at 75.057 139.827 180)
@@ -57363,7 +57365,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d10d")
 		(at 66.548 107.696 -90)
@@ -57394,7 +57396,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -57407,7 +57409,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 -90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -57567,7 +57569,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d118")
 		(at 67.945 114.046)
@@ -57771,7 +57773,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d123")
 		(at 108.331 86.741)
@@ -57988,7 +57990,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
+	(footprint "footprints:SOIC-20W_7.5x12.8mm_P1.27mm"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d1ef")
 		(at 168.783 106.553)
@@ -58455,7 +58457,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
+	(footprint "footprints:SOIC-20W_7.5x12.8mm_P1.27mm"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d20d")
 		(at 168.783 91.567)
@@ -58922,7 +58924,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
+	(footprint "footprints:SOIC-20W_7.5x12.8mm_P1.27mm"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005402d22b")
 		(at 168.783 121.031)
@@ -59549,7 +59551,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder"
+	(footprint "footprints:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005bd17772")
 		(at 148.59 61.341)
@@ -59773,7 +59775,7 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+	(footprint "footprints:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005bd1f59a")
 		(at 132.334 136.525)
@@ -59977,7 +59979,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder"
+	(footprint "footprints:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "00000000-0000-0000-0000-00005bd21865")
 		(at 125.73 85.09)
