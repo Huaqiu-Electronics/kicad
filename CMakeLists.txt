@@ -1263,6 +1263,8 @@ list( APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure" )
 #================================================
 
 # Binaries ( CMake targets )
+include_directories( SYSTEM copilot )
+add_subdirectory( copilot )
 add_subdirectory( api )
 add_subdirectory( resources )
 add_subdirectory( thirdparty )
