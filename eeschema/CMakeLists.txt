@@ -585,7 +585,7 @@ target_link_libraries( eeschema
     kicommon
     pcm
     ${wxWidgets_LIBRARIES}
-    copilot
+    assistant
     )
 
 # the main Eeschema program, in DSO form.
@@ -649,7 +649,7 @@ target_link_libraries( eeschema_kiface
         Boost::headers
         ${wxWidgets_LIBRARIES}
         ${NGSPICE_LIBRARY}
-        copilot
+        assistant
     )
 
 if( MSVC )

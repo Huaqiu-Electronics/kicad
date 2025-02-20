@@ -52,7 +52,9 @@
     },
     "nng",
     "protobuf",
-    "zstd"
+    "zstd",
+    "socket-io-client",
+    "dylib"
   ],
   "overrides": [
     {
