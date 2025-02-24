@@ -25,7 +25,7 @@
 #include "assistant_launcher.h"
 #include <iostream>
 
-void ASSISTANT_LAUNCHER::launch_assistant()
+void COPILOT_API launch_assistant()
 {
-    std::cout << "Launching Assistant" << std::endl;
+    std::cout << "Launching assistant..." << std::endl;
 }
