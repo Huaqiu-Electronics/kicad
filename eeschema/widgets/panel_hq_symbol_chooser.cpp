@@ -74,7 +74,7 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
         m_show_footprints( aShowFootprints )
 {
     // SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
-    // SYMBOL_LIB_TABLE::GetHQGlobalLibTable().Clear();
+    SYMBOL_LIB_TABLE::GetHQGlobalLibTable().Clear();
     SYMBOL_LIB_TABLE*         libs = &SYMBOL_LIB_TABLE::GetHQGlobalLibTable();
     COMMON_SETTINGS::SESSION& session = Pgm().GetCommonSettings()->m_Session;
     PROJECT_FILE&             project = m_frame->Prj().GetProjectFile();

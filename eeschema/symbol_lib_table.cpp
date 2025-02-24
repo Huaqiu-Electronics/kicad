@@ -859,6 +859,12 @@ bool SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE& aTable )
     return true;
 }
 
+void SYMBOL_LIB_TABLE::Clear()
+{
+    std::lock_guard<std::mutex> lock( g_hq_tableMutex );
+    LIB_TABLE::clear();
+}
+
 
 bool SYMBOL_LIB_TABLE::LoadFileToInserterRow( SYMBOL_LIB_TABLE& aTable, wxString aFilePath )
 {

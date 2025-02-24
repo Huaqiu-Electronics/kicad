@@ -301,6 +301,8 @@ public:
 
     static bool LoadHQGlobalTable( SYMBOL_LIB_TABLE& aTable );
 
+    void Clear();
+
     static bool LoadFileToInserterRow( SYMBOL_LIB_TABLE& aTable, wxString aFilePath );
 
     /**
