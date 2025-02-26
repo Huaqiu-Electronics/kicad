@@ -53,7 +53,7 @@
     "nng",
     "protobuf",
     "zstd",
-    "socket-io-client"
+    "websocketpp"
   ],
   "overrides": [
     {
