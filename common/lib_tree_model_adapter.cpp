@@ -257,7 +257,7 @@ void LIB_TREE_MODEL_ADAPTER::AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
                                            bool pinned, bool presorted )
 {
     if( !aNode.m_Children.empty() && 
-        "-- More results --" == aNode.m_Children.back().get()->m_Name )
+        "- More results -" == aNode.m_Children.back().get()->m_Name )
         aNode.m_Children.pop_back();
 
     for( LIB_TREE_ITEM* item: aItemList )

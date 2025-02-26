@@ -236,6 +236,7 @@ protected:
             if( !item.IsOk() )
             {
                 http_node = &( adapter->AddSubLibraryNode( hq_node, wxEmptyString, false) );
+                http_node->m_IsRecentlyUsedGroup = true;
             }
             else
             {

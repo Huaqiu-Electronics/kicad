@@ -635,6 +635,8 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
     }
     else if( node && node->m_Type == LIB_TREE_NODE::TYPE::LIBRARY && node->m_Children.empty() )
     {
+        if( wxT( "-- HQ Online Search Results --" ) == node->m_Name )
+            return;
         // query parts by open category
         SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
         auto category = adapter->GetHQCategory( node->m_Name );
@@ -656,11 +658,11 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
         // to query product details, after download, reload lib symbols
         SYMBOL_TREE_MODEL_ADAPTER* adapter = static_cast<SYMBOL_TREE_MODEL_ADAPTER*>( m_adapter.get() );
         
-        if( "-- No more results --" == node->m_Name && node->m_Parent )
+        if( "- No more results -" == node->m_Name && node->m_Parent )
             return;
 
         // more results be clicked
-        if( "-- More results --" == node->m_Name && node->m_Parent )
+        if( "- More results -" == node->m_Name && node->m_Parent )
         {
             size_t itemCounts = node->m_Parent->m_Children.size() - 1;  // "more results" not on count
             size_t pageNum = 0;

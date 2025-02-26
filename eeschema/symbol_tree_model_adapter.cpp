@@ -618,13 +618,13 @@ void SYMBOL_TREE_MODEL_ADAPTER::AddHQPartsToLibraryNode( LIB_TREE_NODE_LIBRARY& 
     if( symbols.size() > 0 )
     {
         if( symbols.size() < 10 )
-            symbols.push_back( new LIB_SYMBOL( "-- No more results --" ) );
+            symbols.push_back( new LIB_SYMBOL( "- No more results -" ) );
         else
-            symbols.push_back( new LIB_SYMBOL( "-- More results --" ) );  
+            symbols.push_back( new LIB_SYMBOL( "- More results -" ) );  
     }
     else
     {
-        symbols.push_back( new LIB_SYMBOL( "-- No more results --" ) );
+        symbols.push_back( new LIB_SYMBOL( "- No more results -" ) );
     }
     
     comp_list.assign( symbols.begin(), symbols.end() );
