@@ -25,6 +25,7 @@
 #ifndef WEBSOCKET_WORKER_H
 #define WEBSOCKET_WORKER_H
 
+#include <wx/event.h>
 #include <wx/thread.h>
 #include <string>
 #include <memory>
@@ -32,12 +33,11 @@
 #include <atomic>
 #include "assistant/client/chat_cmd_queue.h"
 
-
 class WEBSOCKET_CLIENT;
 class WEBSOCKET_WORKER : public wxThread
 {
 public:
-    WEBSOCKET_WORKER( CHAT_CMDS & cmds );
+    WEBSOCKET_WORKER( wxEvtHandler* eventSink, CHAT_CMDS& cmds );
     ~WEBSOCKET_WORKER();
 
     void* Entry() override;
@@ -47,9 +47,10 @@ public:
     auto quit() { _should_quit.store( true ); }
 
 private:
+    CHAT_CMDS&                        _cmds;
+    wxEvtHandler*                     _event_sink;
     std::unique_ptr<WEBSOCKET_CLIENT> _client;
-    CHAT_CMDS &                  _cmds;
-    std::atomic_bool                  _should_quit{false};
+    std::atomic_bool                  _should_quit{ false };
 };
 
 #endif
