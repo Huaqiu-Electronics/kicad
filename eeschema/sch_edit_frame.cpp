@@ -123,6 +123,8 @@
 #include <wx/generic/treectlg.h>
 
 #include <cmd/copilot_cmd.h>
+#include <assistant_interface.h>
+#include <copilot_aui_info.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
@@ -242,6 +244,12 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_selectionFilterPanel = new PANEL_SCH_SELECTION_FILTER( this );
     m_designBlocksPane = new SCH_DESIGN_BLOCK_PANE( this, nullptr, m_designBlockHistoryList );
 
+    
+    if( ASSISTANT_INTERFACE::get_instance().is_assistant_available() ){
+        m_copilotPanel = ASSISTANT_INTERFACE::get_instance().create_chat_panel(this);
+    }
+
+
     m_auimgr.SetManagedWindow( this );
 
     CreateInfoBar();
@@ -276,6 +284,13 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
     m_auimgr.AddPane( m_designBlocksPane, defaultDesignBlocksPaneInfo( this ) );
     m_auimgr.AddPane( m_remoteSymbolPane, defaultRemoteSymbolPaneInfo( this ) );
+
+
+    if( m_copilotPanel )
+        m_auimgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( this ) );
+
+    if( m_copilotPanel )
+        m_auimgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( this ) );
 
     m_auimgr.AddPane( createHighlightedNetNavigator(), defaultNetNavigatorPaneInfo() );
 
@@ -2033,6 +2048,13 @@ void SCH_EDIT_FRAME::ShowChangedLanguage()
     bool panel_shown = design_blocks_pane_info.IsShown();
     design_blocks_pane_info.Caption( _( "Design Blocks" ) );
     design_blocks_pane_info.Show( panel_shown );
+
+    if(m_copilotPanel){
+        wxAuiPaneInfo& copilot_panel_info = m_auimgr.GetPane( m_copilotPanel );
+        bool is_shown = copilot_panel_info.IsShown();
+        copilot_panel_info.Caption( _( "Copilot" ) );
+        copilot_panel_info.Show( is_shown );
+    }
 
     m_auimgr.GetPane( m_hierarchy ).Caption( _( "Schematic Hierarchy" ) );
     m_auimgr.GetPane( m_selectionFilterPanel ).Caption( _( "Selection Filter" ) );

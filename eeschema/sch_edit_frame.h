@@ -762,6 +762,9 @@ public:
 
     SCH_DESIGN_BLOCK_PANE* GetDesignBlockPane() const { return m_designBlocksPane; }
 
+    wxPanel* GetCopilotPane() const { return m_copilotPanel; }
+
+
     void SetNetListerCommand( const wxString& aCommand ) { m_netListerCommand = aCommand; }
 
     /**
@@ -1102,6 +1105,8 @@ private:
     PANEL_REMOTE_SYMBOL*        m_remoteSymbolPane;
 
     wxChoice*                   m_currentVariantCtrl;
+
+    wxPanel* m_copilotPanel {};
 
 #ifdef KICAD_IPC_API
     std::unique_ptr<API_HANDLER_SCH> m_apiHandler;
