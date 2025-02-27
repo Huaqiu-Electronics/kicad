@@ -33,10 +33,12 @@
 #include <tool/tool_manager.h>
 #include <tools/sch_selection_tool.h>
 #include <tools/sch_actions.h>
+#include "assistant_interface.h"
 #include "eeschema_id.h"
 #include "sch_edit_frame.h"
 #include <widgets/wx_menubar.h>
 #include <advanced_config.h>
+#include <assistant_interface.h>
 
 
 void SCH_EDIT_FRAME::doReCreateMenuBar()
@@ -190,6 +192,10 @@ void SCH_EDIT_FRAME::doReCreateMenuBar()
     if( ADVANCED_CFG::GetCfg().m_EnableDesignBlocks )
         showHidePanels->Add( SCH_ACTIONS::showDesignBlockPanel, ACTION_MENU::CHECK,
                              _( "Design Blocks" ) );
+
+    if( ASSISTANT_INTERFACE::get_instance().is_assistant_available() )
+        showHidePanels->Add( EE_ACTIONS::showCopilotPanel, ACTION_MENU::CHECK,
+                        _( "Copilot" ) );                                                          
 
     viewMenu->Add( showHidePanels );
 
