@@ -31,13 +31,14 @@
 #include <wx/aui/auibar.h>
 #include <wx/aui/auibook.h>
 #include <wx/chartype.h>
+#include <copilot_panel_name.h>
 
 const wxAuiPaneInfo& defaultCopilotPaneInfo( wxWindow* aWindow )
 {
     static wxAuiPaneInfo paneInfo;
 
-    paneInfo.Name( _("Copilot") )
-            .Caption( _( "Copilot" ) )
+    paneInfo.Name( CopilotPanelName() )
+            .Caption( CopilotPanelName() )
             .CaptionVisible( true )
             .PaneBorder( true )
             .Right().Layer( 3 ).Position( 2 )

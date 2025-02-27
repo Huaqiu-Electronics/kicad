@@ -855,6 +855,8 @@ public:
     void ToggleRemoteSymbolPanel();
 
 
+    void ToggleCopilot() ;
+
     DIALOG_BOOK_REPORTER* GetSymbolDiffDialog();
 
     DIALOG_ERC* GetErcDialog();
