@@ -32,6 +32,7 @@
 #include <tool/tool_action.h>
 
 class DESIGN_BLOCK;
+#include <copilot/sch_copilot_actions.h>
 
 // Actions, being statically-defined, require specialized I18N handling.  We continue to
 // use the _() macro so that string harvesting by the I18N framework doesn't have to be
@@ -122,7 +123,7 @@ TOOL_ACTION SCH_ACTIONS::showDesignBlockPanel( TOOL_ACTION_ARGS()
         .Scope( AS_GLOBAL )
         .FriendlyName( _( "Design Blocks" ) )
         .Tooltip( _( "Show/hide design blocks library" ) )
-        .Icon( BITMAPS::search_tree ) );
+        .Icon( BITMAPS::search_tree ) );   
 
 TOOL_ACTION SCH_ACTIONS::showRemoteSymbolPanel( TOOL_ACTION_ARGS()
         .Name( "eeschema.RemoteSymbols.showPanel" )

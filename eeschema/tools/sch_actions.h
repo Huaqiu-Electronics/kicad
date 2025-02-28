@@ -104,6 +104,9 @@ public:
     static TOOL_ACTION deleteLastPoint;
     static TOOL_ACTION closeOutline;
 
+    static TOOL_ACTION copilotDesignIntention;
+    static TOOL_ACTION copilotCoreComponents;
+
     // Symbol Tools
     static TOOL_ACTION placeSymbolPin;
     static TOOL_ACTION placeSymbolText;
@@ -179,6 +182,12 @@ public:
 
     static TOOL_ACTION nextNetItem;
     static TOOL_ACTION previousNetItem;
+
+    static TOOL_ACTION copilotCurrentSymbol;
+    static TOOL_ACTION copilotSimilarComponents;
+    static TOOL_ACTION copilotCheckSymbolConnections;
+    static TOOL_ACTION copilotComponentPinsDetails;
+    static TOOL_ACTION copilotSymbolUnconnectedPins;
 
     // Suite operations
     static TOOL_ACTION editWithLibEdit;
