@@ -239,6 +239,7 @@ set( BMAPS_MID
     config
     contrast_mode
     convert
+    copilot
     copy
     copy_pad_settings
     cursor_fullscreen
