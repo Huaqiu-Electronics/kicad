@@ -131,14 +131,19 @@ TOOL_ACTION SCH_ACTIONS::showRemoteSymbolPanel( TOOL_ACTION_ARGS()
         .Tooltip( _( "Show/hide the remote symbol panel" ) )
         .Icon( BITMAPS::library_browser ) );
 
-// SCH_DESIGN_BLOCK_CONTROL
-TOOL_ACTION EE_ACTIONS::showCopilotPanel( TOOL_ACTION_ARGS()
-        .Name( "eeschema.SchDesignBlockControl.showCopilotPanel" )
+TOOL_ACTION EE_ACTIONS::toggleCopilotPanel( TOOL_ACTION_ARGS()
+        .Name( "eeschema.SchDesignBlockControl.toggleCopilotPanel" )
         .Scope( AS_GLOBAL )
-        .FriendlyName( _( "Copilot" ) )
+        .FriendlyName( _( "Show/hide copilot" ) )
         .Tooltip( _( "Show/hide copilot panel" ) )
         .Icon( BITMAPS::copilot ) );
 
+TOOL_ACTION EE_ACTIONS::showCopilotPanel( TOOL_ACTION_ARGS()
+        .Name( "eeschema.SchDesignBlockControl.showCopilotPanel" )
+        .Scope( AS_GLOBAL )
+        .FriendlyName( _( "Show copilot" ) )
+        .Tooltip( _( "Show copilot panel" ) )
+        .Icon( BITMAPS::copilot ) );        
 
 TOOL_ACTION SCH_ACTIONS::saveSheetAsDesignBlock( TOOL_ACTION_ARGS()
         .Name( "eeschema.SchDesignBlockControl.saveSheetAsDesignBlock" )
