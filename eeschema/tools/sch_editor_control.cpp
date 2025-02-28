@@ -2560,6 +2560,11 @@ int SCH_EDITOR_CONTROL::ToggleCopilot( const TOOL_EVENT& aEvent )
     return 0;
 }
 
+int SCH_EDITOR_CONTROL::ShowCopilot( const TOOL_EVENT& aEvent )
+{
+    getEditFrame<SCH_EDIT_FRAME>()->ShowCopilot();
+    return 0;
+}
 
 int SCH_EDITOR_CONTROL::ToggleHiddenPins( const TOOL_EVENT& aEvent )
 {
@@ -2955,7 +2960,8 @@ void SCH_EDITOR_CONTROL::setTransitions()
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,      SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,      SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
 
-    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     EE_ACTIONS::showCopilotPanel.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     EE_ACTIONS::toggleCopilotPanel.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ShowCopilot,     EE_ACTIONS::showCopilotPanel.MakeEvent() );
 
     Go( &SCH_EDITOR_CONTROL::ToggleHiddenPins,       SCH_ACTIONS::toggleHiddenPins.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleHiddenFields,     SCH_ACTIONS::toggleHiddenFields.MakeEvent() );
