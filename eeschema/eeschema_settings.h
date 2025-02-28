@@ -349,6 +349,8 @@ private:
     nlohmann::json netlistSettingsToJson() const;
     static std::vector<NETLIST_PLUGIN_SETTINGS> netlistSettingsFromJson( const nlohmann::json& aObj );
 
+    void initCopilotSettings();
+
 public:
     APPEARANCE                m_Appearance;
     AUI_PANELS                m_AuiPanels;
