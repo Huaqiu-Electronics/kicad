@@ -386,6 +386,18 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     if( aui_cfg.remote_symbol_show )
         SetAuiPaneSize( m_auimgr, remoteSymbolPane, aui_cfg.remote_symbol_panel_docked_width, -1 );
 
+
+    if( m_copilotPanel )
+    {
+        wxAuiPaneInfo& copilotPane = m_auimgr.GetPane( CopilotPanelName() );
+        copilotPane.Show( aui_cfg.copilot_panel_show );
+        if( aui_cfg.copilot_panel_show )
+        {
+            SetAuiPaneSize( m_auimgr, copilotPane, cfg->m_AuiPanels.copilot_panel_docked_width, -1 );                        
+        }
+
+    }                        
+
     if( aui_cfg.hierarchy_panel_docked_width > 0 )
     {
         // If the net navigator is not show, let the hierarchy navigator take all of the vertical
