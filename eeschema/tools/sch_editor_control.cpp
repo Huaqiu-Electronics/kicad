@@ -2955,7 +2955,7 @@ void SCH_EDITOR_CONTROL::setTransitions()
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,      SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,      SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
 
-    Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,     EE_ACTIONS::showCopilotPanel.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     EE_ACTIONS::showCopilotPanel.MakeEvent() );
 
     Go( &SCH_EDITOR_CONTROL::ToggleHiddenPins,       SCH_ACTIONS::toggleHiddenPins.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleHiddenFields,     SCH_ACTIONS::toggleHiddenFields.MakeEvent() );
