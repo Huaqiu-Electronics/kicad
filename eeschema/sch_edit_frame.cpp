@@ -209,6 +209,14 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
     LoadSettings( eeconfig() );
 
+    // NB: also links the schematic to the loaded project
+    CreateScreens();
+
+    SCH_SHEET_PATH root;
+    root.push_back( &Schematic().Root() );
+    SetCurrentSheet( root );
+
+    InitCopilotPanel();
     setupTools();
     setupUIConditions();
     ReCreateMenuBar();
