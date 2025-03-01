@@ -122,7 +122,9 @@
 #include <wx/textdlg.h>
 #include <wx/generic/treectlg.h>
 
-#include <copilot/sch_copilot_handle.h>
+#include <copilot/sch_copilot_ui.h>
+#include <copilot/sch_copilot_context.h>
+#include <copilot/sch_copilot_cmd.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
