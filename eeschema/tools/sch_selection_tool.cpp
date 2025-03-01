@@ -66,6 +66,7 @@
 #include <view/view_controls.h>
 #include <wx/log.h>
 
+#include "assistant_interface.h"
 #include "symb_transforms_utils.h"
 
 
@@ -361,6 +362,13 @@ bool SCH_SELECTION_TOOL::Init()
     menu.AddSeparator( 100 );
     menu.AddItem( SCH_ACTIONS::drawWire,              schEditCondition && SCH_CONDITIONS::Empty, 100 );
     menu.AddItem( SCH_ACTIONS::drawBus,               schEditCondition && SCH_CONDITIONS::Empty, 100 );
+
+    if(ASSISTANT_INTERFACE::get_instance().is_assistant_available())
+    {
+        menu.AddSeparator( 100 );
+        menu.AddItem( EE_ACTIONS::copilotDesignIntention,           schEditCondition && EE_CONDITIONS::Empty, 100 );
+        menu.AddItem( EE_ACTIONS::copilotCoreComponents,            schEditCondition && EE_CONDITIONS::Empty, 100 );    
+    }
 
     menu.AddSeparator( 100 );
     menu.AddItem( ACTIONS::finishInteractive,         SCH_LINE_WIRE_BUS_TOOL::IsDrawingLineWireOrBus, 100 );
