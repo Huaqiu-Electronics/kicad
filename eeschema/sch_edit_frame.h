@@ -885,7 +885,7 @@ public:
 
     wxString GetSymbol() const;
 
-    wxString GetSymbolNetList() const;
+    wxString GetSymbolNetList(wxString const& aDesignator) const;
      
     /**
      * Copilot Commands
