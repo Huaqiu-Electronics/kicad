@@ -22,6 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "assistant_interface.h"
 #include <algorithm>
 #include <api/api_handler_sch.h>
 #include <api/api_server.h>
@@ -189,6 +190,9 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     root.push_back( &Schematic().Root() );
     SetCurrentSheet( root );
 
+    ASSISTANT_INTERFACE::get_instance().set_copilot_global_ctx_hdl([&]{
+        return this->GetCopilotContextCache();
+    });
     InitCopilotPanel();
     setupTools();
     setupUIConditions();
@@ -1179,6 +1183,7 @@ void SCH_EDIT_FRAME::OnModify()
         GetScreen()->SetContentModified();
 
     m_autoSaveRequired = true;
+    m_copilotContextCache.is_newest = false;
 
     if( GetCanvas() )
         GetCanvas()->Refresh();

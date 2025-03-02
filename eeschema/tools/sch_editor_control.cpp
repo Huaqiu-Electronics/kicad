@@ -2566,6 +2566,41 @@ int SCH_EDITOR_CONTROL::ShowCopilot( const TOOL_EVENT& aEvent )
     return 0;
 }
 
+int SCH_EDITOR_CONTROL:: DesignIntention( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->DesignIntention();
+    return 0;
+}
+
+int SCH_EDITOR_CONTROL:: CoreComponents( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->CoreComponents();
+    return 0;
+}
+
+int SCH_EDITOR_CONTROL:: CurrentComponent( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->CurrentComponent();
+    return 0;
+}
+
+int SCH_EDITOR_CONTROL:: SimilarComponents( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->SimilarComponents();
+    return 0;
+}
+
+int SCH_EDITOR_CONTROL:: CheckSymbolConnections( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->CheckSymbolConnections();
+    return 0;
+}
+
+int SCH_EDITOR_CONTROL:: ComponentPinsDetails( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->ComponentPinsDetails();
+    return 0;
+}
+
+int SCH_EDITOR_CONTROL:: SymbolUnconnectedPins( const TOOL_EVENT& aEvent ){
+    getEditFrame<SCH_EDIT_FRAME>()->SymbolUnconnectedPins();
+    return 0;
+}
+
 int SCH_EDITOR_CONTROL::ToggleHiddenPins( const TOOL_EVENT& aEvent )
 {
     EESCHEMA_SETTINGS* cfg = m_frame->eeconfig();
@@ -2960,24 +2995,33 @@ void SCH_EDITOR_CONTROL::setTransitions()
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,      SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,      SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
 
-    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     EE_ACTIONS::toggleCopilotPanel.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ShowCopilot,     EE_ACTIONS::showCopilotPanel.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     SCH_ACTIONS::toggleCopilotPanel.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ShowCopilot,     SCH_ACTIONS::showCopilotPanel.MakeEvent() );
 
-    Go( &SCH_EDITOR_CONTROL::ToggleHiddenPins,       SCH_ACTIONS::toggleHiddenPins.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleHiddenFields,     SCH_ACTIONS::toggleHiddenFields.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleDirectiveLabels,  SCH_ACTIONS::toggleDirectiveLabels.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleERCWarnings,      SCH_ACTIONS::toggleERCWarnings.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleERCErrors,        SCH_ACTIONS::toggleERCErrors.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleERCExclusions,    SCH_ACTIONS::toggleERCExclusions.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::MarkSimExclusions,      SCH_ACTIONS::markSimExclusions.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleOPVoltages,       SCH_ACTIONS::toggleOPVoltages.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleOPCurrents,       SCH_ACTIONS::toggleOPCurrents.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::TogglePinAltIcons,      SCH_ACTIONS::togglePinAltIcons.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ChangeLineMode,         SCH_ACTIONS::lineModeFree.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ChangeLineMode,         SCH_ACTIONS::lineMode90.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ChangeLineMode,         SCH_ACTIONS::lineMode45.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::NextLineMode,           SCH_ACTIONS::lineModeNext.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ToggleAnnotateAuto,     SCH_ACTIONS::toggleAnnotateAuto.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::CurrentComponent,     SCH_ACTIONS::copilotCurrentSymbol.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::SimilarComponents,     SCH_ACTIONS::copilotSimilarComponents.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::CheckSymbolConnections,     SCH_ACTIONS::copilotCheckSymbolConnections.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ComponentPinsDetails,     SCH_ACTIONS::copilotComponentPinsDetails.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::SymbolUnconnectedPins,     SCH_ACTIONS::copilotSymbolUnconnectedPins.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::DesignIntention,     SCH_ACTIONS::copilotDesignIntention.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::CoreComponents,     SCH_ACTIONS::copilotCoreComponents.MakeEvent() );
+
+
+    Go( &SCH_EDITOR_CONTROL::ToggleHiddenPins,      SCH_ACTIONS::toggleHiddenPins.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleHiddenFields,    SCH_ACTIONS::toggleHiddenFields.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleDirectiveLabels, SCH_ACTIONS::toggleDirectiveLabels.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleERCWarnings,     SCH_ACTIONS::toggleERCWarnings.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleERCErrors,       SCH_ACTIONS::toggleERCErrors.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleERCExclusions,   SCH_ACTIONS::toggleERCExclusions.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::MarkSimExclusions,     SCH_ACTIONS::markSimExclusions.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleOPVoltages,      SCH_ACTIONS::toggleOPVoltages.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleOPCurrents,      SCH_ACTIONS::toggleOPCurrents.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::TogglePinAltIcons,     SCH_ACTIONS::togglePinAltIcons.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ChangeLineMode,        SCH_ACTIONS::lineModeFree.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ChangeLineMode,        SCH_ACTIONS::lineMode90.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ChangeLineMode,        SCH_ACTIONS::lineMode45.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::NextLineMode,          SCH_ACTIONS::lineModeNext.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ToggleAnnotateAuto,    SCH_ACTIONS::toggleAnnotateAuto.MakeEvent() );
 
     Go( &SCH_EDITOR_CONTROL::ReloadPlugins,          ACTIONS::pluginsReload.MakeEvent() );
 
