@@ -179,6 +179,9 @@ public:
     static TOOL_ACTION rescueSymbols;
     static TOOL_ACTION remapSymbols;
 
+    static TOOL_ACTION nextNetItem;
+    static TOOL_ACTION previousNetItem;
+
     static TOOL_ACTION copilotCurrentSymbol;
     static TOOL_ACTION copilotSimilarComponents;
     static TOOL_ACTION copilotCheckSymbolConnections;
