@@ -25,12 +25,15 @@
 #ifndef SCH_COPILOT_CONTEXT_CACHE_H
 #define SCH_COPILOT_CONTEXT_CACHE_H
 
-#include <wx/string.h>
-#include <copilot_context.h>
+#include <string>
+#include <nlohmann/json.hpp>
 
-struct SCH_COPILOT_CONTEXT_CACHE : DESIGN_GLOBAL_CONTEXT
+struct SCH_COPILOT_CONTEXT_CACHE 
 {
-    bool is_newest{ false };
+    std::string bom;
+    std::string net_list;
+    bool is_newest {};
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SCH_COPILOT_CONTEXT_CACHE, bom, net_list )
 };
 
 #endif
