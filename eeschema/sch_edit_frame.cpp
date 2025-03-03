@@ -126,6 +126,8 @@
 #include <copilot/sch_copilot_ui.h>
 #include <copilot/sch_copilot_context.h>
 #include <copilot/sch_copilot_cmd.h>
+#include <copilot/sch_copilot_context_cache.h>
+
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
@@ -176,6 +178,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         m_netNavigatorMenuNetName(),
         m_highlightedConnChanged( false ),
         m_designBlocksPane( nullptr ),
+        m_copilotContextCache(new SCH_COPILOT_CONTEXT_CACHE ),
         m_remoteSymbolPane( nullptr ),
         m_currentVariantCtrl( nullptr )
 {
@@ -1333,7 +1336,7 @@ void SCH_EDIT_FRAME::OnModify()
     if( m_isClosing )
         return;
     
-    m_copilotContextCache.is_newest = false;
+    m_copilotContextCache->is_newest = false;
 
     if( GetCanvas() )
         GetCanvas()->Refresh();
