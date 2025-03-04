@@ -23,6 +23,7 @@
  */
 
 #include "assistant_interface.h"
+#include "copilot/sch_copilot_context_cache.h"
 #include <algorithm>
 #include <api/api_handler_sch.h>
 #include <api/api_server.h>
@@ -179,7 +180,9 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         m_highlightedConnChanged( false ),
         m_designBlocksPane( nullptr ),
         m_remoteSymbolPane( nullptr ),
-        m_currentVariantCtrl( nullptr )
+        m_currentVariantCtrl( nullptr ),
+        m_copilotContextCache(new SCH_COPILOT_CONTEXT_CACHE ),
+        m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)        
 {
     m_maximizeByDefault = true;
     m_schematic = new SCHEMATIC( &Prj() );
@@ -1335,7 +1338,7 @@ void SCH_EDIT_FRAME::OnModify()
     if( m_isClosing )
         return;
     
-    m_copilotContextCache.is_newest = false;
+    m_copilotContextCache->is_newest = false;
 
     if( GetCanvas() )
         GetCanvas()->Refresh();

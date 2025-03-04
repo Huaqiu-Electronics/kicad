@@ -45,8 +45,6 @@
 #include <math/box2.h>
 #include <sch_base_frame.h>
 #include <template_fieldnames.h>
-#include <copilot_context.h>
-#include <copilot/sch_copilot_context_cache.h>
 
 class SCH_ITEM;
 class EDA_ITEM;
@@ -75,6 +73,10 @@ class wxSearchCtrl;
 class wxGenericTreeCtrl;
 class BITMAP_BUTTON;
 enum class COPILOT_CMD_TYPE;
+struct SCH_COPILOT_CONTEXT_CACHE;
+struct DESIGN_GLOBAL_CONTEXT;
+struct SYMBOL_CMD_CONTEXT;
+
 
 /// Schematic search type used by the socket link with Pcbnew
 enum SCH_SEARCH_T
@@ -886,9 +888,9 @@ public:
 
     wxString GetNetList() ;
 
-    SYMBOL_CMD_CONTEXT GetSelectedSymbolContext() ;
+    SYMBOL_CMD_CONTEXT const& GetSelectedSymbolContext() ;
 
-    DESIGN_GLOBAL_CONTEXT GetGlobalContext() ;
+    DESIGN_GLOBAL_CONTEXT const& GetGlobalContext() ;
 
     wxString GetSymbolNetList(wxString const& aDesignator) ;
 
@@ -1164,7 +1166,8 @@ private:
 
     wxPanel* m_copilotPanel {};
 
-    SCH_COPILOT_CONTEXT_CACHE m_copilotContextCache;
+    std::unique_ptr< SCH_COPILOT_CONTEXT_CACHE > m_copilotContextCache;
+    std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
 
 #ifdef KICAD_IPC_API
     std::unique_ptr<API_HANDLER_SCH> m_apiHandler;
