@@ -25,24 +25,8 @@
 #ifndef COPILOT_CMD_H
 #define COPILOT_CMD_H
 
-#include "copilot_cmd_type.h"
-#include <optional_context.h>
-#include <nlohmann/json.hpp>
-#include <copilot_context.h>
-#include <kicad_version_info.h>
-
-
-static const char kKiCadVersionInfo[] = "kicad_version_info";
-using ADDITIONAL_INFO = OPTIONAL_CONTEXT<kKiCadVersionInfo, KICAD_VERSION_INFO>;
-
-template <auto CMD, typename CONTEXT>
-struct CMD_BASE
-{
-    CONTEXT                context;
-    ADDITIONAL_INFO        additional;
-    const COPILOT_CMD_TYPE type = CMD;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( CMD_BASE, additional, context, type )
-};
+#include "cmd_base.h"
+#include <context/copilot_context.h>
 
 struct DESIGN_INTENTION : CMD_BASE<COPILOT_CMD_TYPE::DESIGN_INTENTION, DESIGN_GLOBAL_CONTEXT>
 {
@@ -75,9 +59,6 @@ struct SYMBOL_UNCONNECTED_PINS
 {
 };
 
-struct GENERIC_CHAT : CMD_BASE<COPILOT_CMD_TYPE::GENERIC_CHAT, GENERAL_CHAT_CONTEXT>
-{
-};
 
 
 #endif // COPILOT_CMD_H
