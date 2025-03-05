@@ -1473,3 +1473,6 @@ wxString SETTINGS_MANAGER::GetUserSettingsPath()
 {
     return PATHS::GetUserSettingsPath();
 }
+
+
+#include "copilot_setting_path.cpp"
