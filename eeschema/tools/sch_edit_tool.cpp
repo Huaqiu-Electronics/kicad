@@ -76,6 +76,7 @@
 #include <wx/msgdlg.h>
 #include <project/net_settings.h>
 #include <tools/sch_tool_utils.h>
+#include "copilot/sch_copilot_ctx_menu.h"
 
 
 class SYMBOL_UNIT_MENU : public ACTION_MENU
@@ -706,11 +707,7 @@ bool SCH_EDIT_TOOL::Init()
     if(ASSISTANT_INTERFACE::get_instance().is_assistant_available())
     {
         selToolMenu.AddSeparator( 275 );
-        selToolMenu.AddItem( EE_ACTIONS::copilotCurrentSymbol,                 E_C::SingleSymbol, 275 );
-        selToolMenu.AddItem( EE_ACTIONS::copilotSimilarComponents,             E_C::SingleSymbol, 275 );    
-        selToolMenu.AddItem( EE_ACTIONS::copilotCheckSymbolConnections,        E_C::SingleSymbol, 275 );    
-        selToolMenu.AddItem( EE_ACTIONS::copilotComponentPinsDetails,          E_C::SingleSymbol, 275 );    
-        selToolMenu.AddItem( EE_ACTIONS::copilotSymbolUnconnectedPins,         E_C::SingleSymbol, 275 );    
+        selToolMenu.AddMenu(new SCH_COPILOT_CTX_MENU( m_selectionTool ) ,  E_C::SingleSymbol, 275);
     }                  
 
 
