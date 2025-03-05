@@ -25,43 +25,26 @@
 #ifndef COPILOT_CONTEXT_H
 #define COPILOT_CONTEXT_H
 
-#include "optional_context.h"
 #include "sch/symbol_properties.h"
 #include <nlohmann/json.hpp>
 #include <string>
-#include <chrono>
-
+#include <kicad_version_info.h>
 
 struct DESIGN_GLOBAL_CONTEXT
 {
-    std::string net_list;
-    long long   timestamp{ (
-            []
-            {
-                return std::chrono::duration_cast<std::chrono::milliseconds>(
-                               std::chrono::system_clock::now().time_since_epoch() )
-                        .count();
-            } )() };
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( DESIGN_GLOBAL_CONTEXT, timestamp, net_list )
+    std::string        uuid;
+    std::string        bom;
+    std::string        net_list;
+    KICAD_VERSION_INFO kicad_version_info;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( DESIGN_GLOBAL_CONTEXT, bom, net_list, kicad_version_info, uuid )
 };
 
-
-struct SYMBOL_CMD_CONTEXT_BASE
-{
-    std::string       designator;
-    SYMBOL_PROPERTIES symbol_properties;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SYMBOL_CMD_CONTEXT_BASE, designator, symbol_properties )
-};
-
-
-static const char kDesignGlobalCtx[] = "design_global_ctx";
-using OPTIONAL_DESIGN_GLOBAL_CONTEXT = OPTIONAL_CONTEXT<kDesignGlobalCtx, DESIGN_GLOBAL_CONTEXT>;
 
 struct SYMBOL_CMD_CONTEXT
 {
-    SYMBOL_CMD_CONTEXT_BASE        symbol_ctx;
-    OPTIONAL_DESIGN_GLOBAL_CONTEXT global_ctx;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SYMBOL_CMD_CONTEXT, global_ctx, symbol_ctx )
+    std::string       designator;
+    SYMBOL_PROPERTIES symbol_properties;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SYMBOL_CMD_CONTEXT, designator, symbol_properties )
 };
 
 
