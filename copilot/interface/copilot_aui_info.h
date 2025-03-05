@@ -38,7 +38,7 @@ const wxAuiPaneInfo& defaultCopilotPaneInfo( wxWindow* aWindow )
     static wxAuiPaneInfo paneInfo;
 
     paneInfo.Name( CopilotPanelName() )
-            .Caption( CopilotPanelName() )
+            .Caption( _("Copilot") )
             .CaptionVisible( true )
             .PaneBorder( true )
             .Right().Layer( 3 ).Position( 2 )
