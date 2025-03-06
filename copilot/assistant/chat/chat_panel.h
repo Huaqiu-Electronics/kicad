@@ -27,7 +27,7 @@
 
 
 #include "chat_panel_base.h"
-#include "assistant/client/chat_cmd_queue.h"
+#include "assistant/chat/chat_cmd_queue.h"
 #include "assistant/assistant.h"
 #include "assistant/assistant_view.h"
 
