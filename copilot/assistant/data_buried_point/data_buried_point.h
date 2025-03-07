@@ -33,8 +33,8 @@
 
 struct DATA_BURIED_POINT
 {
-    std::string name = "kicad_client";
-    std::string doc = "kicad_client_copilot";
+    std::string name = "kicad_client_copilot_launch";
+    std::string doc = "user_launch_copilot";
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( DATA_BURIED_POINT, name, doc )
 };
 
