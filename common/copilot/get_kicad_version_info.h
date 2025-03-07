@@ -26,8 +26,9 @@
 #define GET_KICAD_VERSION_INFO_H
 
 #include <kicad_version_info.h>
+#include <kicommon.h>
 
 
-KICAD_VERSION_INFO get_kicad_version_info();
+KICOMMON_API KICAD_VERSION_INFO get_kicad_version_info();
 
 #endif
