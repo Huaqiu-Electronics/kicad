@@ -53,6 +53,10 @@ public:
 
 private:
     wxWebView* m_browser;
+
+    
+
+
 };
 
 #endif
