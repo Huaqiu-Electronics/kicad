@@ -34,7 +34,10 @@ enum class WEBVIEW_MSG_HANDLES
 
 enum class WEBVIEW_FUNCTIONS
 {
-    fire_cmd,
+    fire_copilot_cmd,
+    fire_session_cmd,
+    new_session,
+    get_current_session_id
 };
 
 #endif
