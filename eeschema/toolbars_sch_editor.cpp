@@ -277,6 +277,7 @@ void SCH_EDIT_FRAME::ToggleSearch()
         }
 
         m_searchPane->FocusSearch();
+        m_searchPane->RefreshSearch();
     }
     else
     {
