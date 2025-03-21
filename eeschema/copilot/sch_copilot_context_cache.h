@@ -25,7 +25,7 @@
 #ifndef SCH_COPILOT_CONTEXT_CACHE_H
 #define SCH_COPILOT_CONTEXT_CACHE_H
 
-#include <context/copilot_context.h>
+#include <context/design_global_context.h>
 
 
 struct SCH_COPILOT_CONTEXT_CACHE : DESIGN_GLOBAL_CONTEXT
