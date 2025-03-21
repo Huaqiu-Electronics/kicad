@@ -73,7 +73,6 @@ class wxSearchCtrl;
 class wxGenericTreeCtrl;
 class BITMAP_BUTTON;
 struct SCH_COPILOT_GLOBAL_CONTEXT;
-struct COPILOT_GLOBAL_CONTEXT;
 struct SYMBOL_CMD_CONTEXT;
 
 
@@ -1171,6 +1170,67 @@ private:
 #ifdef KICAD_IPC_API
     std::unique_ptr<API_HANDLER_SCH> m_apiHandler;
 #endif
+
+public:
+    /**
+     * Copilot UI interfaces
+     */
+    void InitCopilotPanel();
+
+    void InitCopilotAui();
+
+    void RecreateCopilotToolBar();
+
+    void CopilotPanelShowChangedLanguage();
+
+    void ToggleCopilot();
+
+    void ShowCopilot( bool show = true );
+
+    void SaveCopilotCnf();
+
+    void LoadCopilotCnf();
+
+    /**
+      * Copilot context interfaces
+      */
+
+    void UpdateCopilotContextCache();
+
+    const char* GetCopilotContextCache();
+
+    wxString GetBomList();
+
+    wxString GetNetList();
+
+    SYMBOL_CMD_CONTEXT const& GetSelectedSymbolContext();
+
+    wxString GetSymbolNetList( wxString const& aDesignator );
+
+    /**
+      * Copilot Commands
+      */
+
+    void FireCopilotCommand( std::string const& aCmdType );
+
+    void DesignIntention();
+
+    void CoreComponents();
+
+    void CurrentComponent();
+
+    void SimilarComponents();
+
+    void CheckSymbolConnections();
+
+    void ComponentPinsDetails();
+
+    void SymbolUnconnectedPins();
+
+private:
+    wxPanel*                                    m_copilotPanel{};
+    std::unique_ptr<SCH_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
+    std::unique_ptr<SYMBOL_CMD_CONTEXT>         m_symbolCmdContext;
 };
 
 
