@@ -26,7 +26,7 @@
 #define COPILOT_CMD_H
 
 #include "copilot_cmd_base.h"
-#include <context/design_global_context.h>
+#include <context/copilot_global_context.h>
 #include <context/symbol_context.h>
 #include <cmd/copilot_cmd_type.h>
 

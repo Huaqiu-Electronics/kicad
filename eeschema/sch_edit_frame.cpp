@@ -22,8 +22,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "assistant_interface.h"
-#include "copilot/sch_copilot_context_cache.h"
 #include <algorithm>
 #include <api/api_handler_sch.h>
 #include <api/api_server.h>
@@ -124,11 +122,13 @@
 #include <wx/textdlg.h>
 #include <wx/generic/treectlg.h>
 
+
 #include <copilot/sch_copilot_ui.h>
-#include <copilot/sch_copilot_context.h>
 #include <copilot/sch_copilot_cmd.h>
-#include <copilot/sch_copilot_context_cache.h>
 #include <copilot/get_kicad_version_info.h>
+#include <assistant_interface.h>
+#include <copilot/sch_copilot_global_context.h>
+#include <copilot/sch_copilot_context_interface.h>
 
 
 #ifdef KICAD_IPC_API
@@ -182,7 +182,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         m_designBlocksPane( nullptr ),
         m_remoteSymbolPane( nullptr ),
         m_currentVariantCtrl( nullptr ),
-        m_copilotContextCache(new SCH_COPILOT_CONTEXT_CACHE ),
+        m_copilotContextCache(new SCH_COPILOT_GLOBAL_CONTEXT ),
         m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)        
 {
     m_copilotContextCache->kicad_version_info = get_kicad_version_info();
