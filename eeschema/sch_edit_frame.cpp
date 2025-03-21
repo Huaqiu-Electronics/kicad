@@ -1091,6 +1091,8 @@ void SCH_EDIT_FRAME::CreateDefaultScreens()
         SCH_SCREEN* screen = new SCH_SCREEN( m_schematic );
         SetScreen( screen );
     }
+    
+    m_copilotContextCache->is_newest = false;
 }
 
 
