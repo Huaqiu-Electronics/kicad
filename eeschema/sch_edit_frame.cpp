@@ -1196,8 +1196,11 @@ void SCH_EDIT_FRAME::OnModify()
     if( GetScreen() )
         GetScreen()->SetContentModified();
 
-    m_autoSaveRequired = true;
+    if( m_isClosing )
+        return;
+    
     m_copilotContextCache->is_newest = false;
+
 
     if( GetCanvas() )
         GetCanvas()->Refresh();
