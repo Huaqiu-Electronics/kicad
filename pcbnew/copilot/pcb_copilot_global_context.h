@@ -32,6 +32,20 @@
 
 struct PCB_COPILOT_GLOBAL_CONTEXT : COPILOT_GLOBAL_CONTEXT, VARIABLE_CONTEXT
 {
+    std::string bom;
+    friend void to_json( nlohmann ::json&                  nlohmann_json_j,
+                         const PCB_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
+    {
+        to_json( nlohmann_json_j, static_cast<COPILOT_GLOBAL_CONTEXT const&>( nlohmann_json_t ) );
+        nlohmann_json_j["bom"] = nlohmann_json_t.bom;
+
+    }
+    friend void from_json( const nlohmann ::json&      nlohmann_json_j,
+                           PCB_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
+    {
+        from_json( nlohmann_json_j, static_cast<COPILOT_GLOBAL_CONTEXT&>( nlohmann_json_t ) );
+        nlohmann_json_j.at( "bom" ).get_to( nlohmann_json_t.bom );
+    }
     std::string dump() const override { return nlohmann::json( *this ).dump(); }
 };
 
