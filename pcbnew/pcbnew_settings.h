@@ -156,6 +156,12 @@ public:
         bool  show_properties;
         bool  show_search;
         bool  show_net_inspector;
+
+        bool copilot_panel_show;
+        int  copilot_panel_docked_width;
+        int  copilot_panel_float_width;
+        int  copilot_panel_float_height;
+
         bool  design_blocks_show;
         int   design_blocks_panel_docked_width;
         int   design_blocks_panel_float_width;
@@ -271,5 +277,10 @@ public:
     wxString  m_LastFootprint3dDir;
 
     ACTION_PLUGIN_SETTINGS_LIST m_VisibleActionPlugins;
+
+protected:
+
+    virtual std::string getLegacyFrameName() const override { return "PcbFrame"; }
+
 };
 

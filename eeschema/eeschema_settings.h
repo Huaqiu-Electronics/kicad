@@ -128,6 +128,7 @@ public:
         void ResetToDefaults();
         static wxString DefaultDestinationDir();
         static wxString DefaultLibraryPrefix();
+
         bool copilot_panel_show;
         int  copilot_panel_docked_width;
         int  copilot_panel_float_width;
