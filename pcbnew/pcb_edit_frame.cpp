@@ -207,7 +207,8 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_boardSetupDlg( nullptr ),
     m_designBlocksPane( nullptr ),
     m_importProperties( nullptr ),
-    m_eventCounterTimer( nullptr )
+    m_eventCounterTimer( nullptr ),
+    m_copilotGlobalContextHdl(std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>( [&]{  UpdateCopilotContextCache(); return *m_copilotContextCache;  } ))
 {
     m_maximizeByDefault = true;
     m_showBorderAndTitleBlock = true;   // true to display sheet references
