@@ -372,7 +372,7 @@ bool SYMBOL_TREE_MODEL_ADAPTER::MoveHQLibsToPrjLibs( const wxString& aMpn,
 
         if( !prjfn.FileExists() )
         {
-            if( !prjfn.DirExists() && !prjfn.Mkdir( 0x777, wxPATH_MKDIR_FULL ) )
+            if( !prjfn.DirExists() && !prjfn.Mkdir( wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL ) )
             {
                 THROW_IO_ERROR( wxString::Format( _( "Cannot create project hq_libs path '%s'." ),
                                                 prjfn.GetPath() ) );
@@ -398,7 +398,7 @@ bool SYMBOL_TREE_MODEL_ADAPTER::MoveHQLibsToPrjLibs( const wxString& aMpn,
 
         if( !prjfn.FileExists() )
         {
-            if( !prjfn.DirExists() && !prjfn.Mkdir( 0x777, wxPATH_MKDIR_FULL ) )
+            if( !prjfn.DirExists() && !prjfn.Mkdir( wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL ) )
             {
                 THROW_IO_ERROR( wxString::Format( _( "Cannot create project hq_libs path '%s'." ),
                                                 prjfn.GetPath() ) );
