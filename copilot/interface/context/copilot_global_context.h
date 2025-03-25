@@ -25,7 +25,6 @@
 #ifndef COPILOT_GLOBAL_CONTEXT_H
 #define COPILOT_GLOBAL_CONTEXT_H
 
-#include "cmd/copilot_cmd_base.h"
 #include "nlohmann/json_fwd.hpp"
 #include <nlohmann/json.hpp>
 #include <string>
@@ -66,7 +65,7 @@ struct COPILOT_GLOBAL_CONTEXT
                                     project_context )
 
 
-    virtual std::string dump() const = 0;
+    virtual std::string dump() const { return nlohmann::json( *this ).dump(); }
     virtual ~COPILOT_GLOBAL_CONTEXT() = default;
 };
 ;
