@@ -102,6 +102,7 @@
 #include <wx/mstream.h>
 #include <wx/clipbrd.h>
 #include <wx/imagpng.h>
+#include "copilot/sch_copilot_control.h"
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
@@ -3115,50 +3116,10 @@ int SCH_EDITOR_CONTROL::ToggleRemoteSymbolPanel( const TOOL_EVENT& aEvent )
     return 0;
 }
 
-int SCH_EDITOR_CONTROL::ToggleCopilot( const TOOL_EVENT& aEvent )
+
+int SCH_EDITOR_CONTROL::ToggleRemoteSymbolPanel( const TOOL_EVENT& aEvent )
 {
-    getEditFrame<SCH_EDIT_FRAME>()->ToggleCopilot();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL::ShowCopilot( const TOOL_EVENT& aEvent )
-{
-    getEditFrame<SCH_EDIT_FRAME>()->ShowCopilot();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: DesignIntention( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->DesignIntention();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: CoreComponents( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->CoreComponents();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: CurrentComponent( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->CurrentComponent();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: SimilarComponents( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->SimilarComponents();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: CheckSymbolConnections( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->CheckSymbolConnections();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: ComponentPinsDetails( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->ComponentPinsDetails();
-    return 0;
-}
-
-int SCH_EDITOR_CONTROL:: SymbolUnconnectedPins( const TOOL_EVENT& aEvent ){
-    getEditFrame<SCH_EDIT_FRAME>()->SymbolUnconnectedPins();
+    getEditFrame<SCH_EDIT_FRAME>()->ToggleRemoteSymbolPanel();
     return 0;
 }
 

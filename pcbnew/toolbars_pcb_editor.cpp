@@ -372,6 +372,7 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
         break;
     }
 
+    RecreateCopilotToolBar();
     // clang-format on
     return config;
 }
