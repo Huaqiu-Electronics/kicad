@@ -28,6 +28,8 @@
 struct VARIABLE_CONTEXT
 {
     bool is_newest{};
+
+    virtual ~VARIABLE_CONTEXT() = default;
 };
 
 #endif
