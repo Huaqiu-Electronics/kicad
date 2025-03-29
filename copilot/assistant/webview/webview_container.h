@@ -40,7 +40,7 @@ public:
     WEBVIEW_CONTAINER( wxWindow* parent, COPILOT_GLOBAL_CONTEXT_HDL get_design_global_context_hdl );
     ~WEBVIEW_CONTAINER();
 
-    void fire_copilot_cmd( const char* cmd ) override;
+    void fire_host_active_cmd( const char* cmd ) override;
 
     void OnNavigationRequest( wxWebViewEvent& evt );
     void OnNavigationComplete( wxWebViewEvent& evt );
