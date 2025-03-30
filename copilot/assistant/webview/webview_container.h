@@ -27,7 +27,7 @@
 
 
 #include "assistant/assistant.h"
-#include <context/copilot_global_context_handle.h>
+#include <host_copilot_handles.h>
 #include <string>
 #include <wx/panel.h>
 #include <wx/log.h>
@@ -37,7 +37,7 @@
 class WEBVIEW_CONTAINER : public wxPanel, public ASSISTANT
 {
 public:
-    WEBVIEW_CONTAINER( wxWindow* parent, COPILOT_GLOBAL_CONTEXT_HDL get_design_global_context_hdl );
+    WEBVIEW_CONTAINER( wxWindow* parent, HOST_COPILOT_HANDLES host_copilot_handles );
     ~WEBVIEW_CONTAINER();
 
     void fire_host_active_cmd( const char* cmd ) override;
@@ -56,7 +56,7 @@ public:
 private:
     std::set<std::string>      _consumed_global_ctx_keys{};
     wxWebView*                 _browser;
-    COPILOT_GLOBAL_CONTEXT_HDL _get_design_global_context_hdl;
+    HOST_COPILOT_HANDLES       _host_copilot_handles;
 };
 
 #endif
