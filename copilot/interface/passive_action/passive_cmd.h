@@ -30,7 +30,7 @@
 
 struct PASSIVE_CMD
 {
-    bool triggered_by_passive_action = true;
+    bool triggered_by_passive_action = false;
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PASSIVE_CMD, triggered_by_passive_action )
 };
