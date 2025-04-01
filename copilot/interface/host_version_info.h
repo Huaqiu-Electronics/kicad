@@ -26,16 +26,12 @@
 #define HOST_VERSION_INFO_H
 
 #include <kicad_version_info.h>
-#include <string>
+#include "host_type.h"
 
-struct HOST_VERSION_INFO
+struct HOST_VERSION_INFO : HOST_TYPE
 {
-    std::string host_name = "kicad_desktop";
-    // schematic pcb footprint symbol 
-    std::string editor_name = "schematic";
     KICAD_VERSION_INFO details;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_VERSION_INFO, host_name, editor_name,  details )
-
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_VERSION_INFO, host_name, editor_name, details )
 };
 
 #endif
