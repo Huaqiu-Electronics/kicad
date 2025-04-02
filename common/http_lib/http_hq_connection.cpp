@@ -360,7 +360,7 @@ bool HTTP_HQ_CONNECTION::DownloadLibs( std::string aType, HTTP_HQ_PART& aPart )
             return false;
         }
 
-        if( !fn.DirExists() && !fn.Mkdir( wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL ) )
+        if( !fn.DirExists() && !fn.Mkdir( wxS_DIR_DEFAULT, 0755 ) )
         {
             wxLogError( wxString::Format( _( "Cannot create hq library path '%s'." ),
                                             fn.GetPath() ) );
