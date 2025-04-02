@@ -77,6 +77,9 @@ public:
      */
     std::vector<std::pair<int, wxString>> GetFields() const;
 
+private:
+    void OnButton( wxCommandEvent& aEvent );
+
 public:
     static std::mutex         g_Mutex;
 

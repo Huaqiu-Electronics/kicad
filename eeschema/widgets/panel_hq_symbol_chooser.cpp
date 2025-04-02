@@ -50,6 +50,7 @@
 
 
 std::mutex g_hq_updateMutex;
+std::mutex g_hq_taskMutex;
 
 PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWindow* aParent,
                                             const SYMBOL_LIBRARY_FILTER* aFilter,
@@ -71,7 +72,8 @@ PANEL_HQ_SYMBOL_CHOOSER::PANEL_HQ_SYMBOL_CHOOSER( SCH_BASE_FRAME* aFrame, wxWind
         m_escapeHandler( std::move( aEscapeHandler ) ),
         m_showPower( false ),
         m_allow_field_edits( aAllowFieldEdits ),
-        m_show_footprints( aShowFootprints )
+        m_show_footprints( aShowFootprints ),
+        m_tasksRunning( 0 )
 {
     // SYMBOL_LIB_TABLE::LoadHQGlobalTable( SYMBOL_LIB_TABLE::GetHQGlobalLibTable() );
     SYMBOL_LIB_TABLE::GetHQGlobalLibTable().Clear();
@@ -491,7 +493,15 @@ void PANEL_HQ_SYMBOL_CHOOSER::onCloseTimer( wxTimerEvent& aEvent )
     }
     else
     {
-        m_acceptHandler();
+        if( !CheckTaskIsRunning() )
+        {
+            m_acceptHandler();
+        }
+        else
+        {
+            DisplayInfoMessage( this, wxString::Format( _( "Task in Progress. "
+                "\nPlease wait for the current loading tasks to complete." ) ) );
+        }
     }
 }
 
@@ -708,6 +718,11 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
             return;
         }
 
+        {
+            std::lock_guard<std::mutex> lock( g_hq_taskMutex );
+            ++m_tasksRunning;
+        }
+
         auto request_details = [node, adapter, this]() -> void
         {
             try
@@ -724,6 +739,10 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
                                 adapter->UpdateTreeItemLibSymbol( node_item );
                                 adapter->UpdateTreeAfterAddHQPart( node );
                                 m_tree->UpdateSelectItem();
+                                {
+                                    std::lock_guard<std::mutex> tasklock( g_hq_taskMutex );
+                                    --m_tasksRunning;
+                                }
                             } );
                 }
                 else
@@ -737,15 +756,28 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
                                 m_fp_preview->SetStatusText( wxEmptyString );
 
                             populateFootprintSelector( LIB_ID() );
+                            {
+                                std::lock_guard<std::mutex> lock( g_hq_taskMutex );
+                                --m_tasksRunning;
+                            }
 
                         } );
                 }
             }
             catch( const std::exception& e  )
             {
-                DisplayErrorMessage( this, wxString::Format( _( "Failed to load part '%s' details. You can wait for the response or request later. \n%s" ),
+                CallAfter(
+                    [=]()
+                    {
+                        DisplayErrorMessage( this, wxString::Format( _( "Failed to load part '%s' details. You can wait for the response or request later. \n%s" ),
                                                   node->m_Name,
                                                    e.what() ) );
+                        {
+                            std::lock_guard<std::mutex> lock( g_hq_taskMutex );
+                            --m_tasksRunning;
+                        }
+                    } );
+                
             }
 
         };
@@ -775,7 +807,7 @@ void PANEL_HQ_SYMBOL_CHOOSER::onSymbolSelected( wxCommandEvent& aEvent )
 
 void PANEL_HQ_SYMBOL_CHOOSER::onSymbolChosen( wxCommandEvent& aEvent )
 {
-    if( m_tree->GetSelectedLibId().IsValid() )
+    if( m_tree->GetSelectedLibId().IsValid() && !CheckTaskIsRunning() )
     {
         // Got a selection. We can't just end the modal dialog here, because wx leaks some events
         // back to the parent window (in particular, the MouseUp following a double click).
@@ -815,4 +847,10 @@ bool PANEL_HQ_SYMBOL_CHOOSER::CheckIniFile( std::string& aPath )
 
     aPath = fileContent.ToStdString();
     return true;
+}
+
+bool PANEL_HQ_SYMBOL_CHOOSER::CheckTaskIsRunning() const
+{
+    std::lock_guard<std::mutex> lock( g_hq_taskMutex );
+    return 0 != m_tasksRunning;
 }

@@ -34,8 +34,10 @@
 #include <widgets/footprint_select_widget.h>
 #include <widgets/symbol_preview_widget.h>
 #include <wx/button.h>
+#include <confirm.h>
 #include <wx/checkbox.h>
 #include <wx/sizer.h>
+
 
 std::mutex DIALOG_SYMBOL_CHOOSER::g_Mutex;
 
@@ -132,6 +134,7 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
 
     Bind( wxEVT_CHAR_HOOK, &PANEL_SYMBOL_CHOOSER::OnChar, m_chooserPanel );
     Bind( wxEVT_CHAR_HOOK, &PANEL_HQ_SYMBOL_CHOOSER::OnChar, m_chooserPanel_HQ );
+    Bind( wxEVT_BUTTON, &DIALOG_SYMBOL_CHOOSER::OnButton, this );
 
 }
 
@@ -173,4 +176,20 @@ std::vector<std::pair<int, wxString>> DIALOG_SYMBOL_CHOOSER::GetFields() const
                 : m_chooserPanel_HQ->GetFields();
 }
 
+void DIALOG_SYMBOL_CHOOSER::OnButton( wxCommandEvent& aEvent )
+{
+    const int pageIndex = m_notebook->GetSelection();
 
+    if( pageIndex == 1 && m_chooserPanel_HQ->CheckTaskIsRunning() )
+    {
+        DisplayInfoMessage( this, wxString::Format( _( "Task in Progress. "
+            "\nPlease wait for the current loading tasks to complete." ) ) );
+
+        aEvent.StopPropagation();
+
+        return;
+    }
+
+    // This is mandatory to allow wxDialogBase::OnButton() to be called.
+    aEvent.Skip();
+}

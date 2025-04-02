@@ -99,6 +99,8 @@ public:
         return m_field_edits;
     }
 
+    bool CheckTaskIsRunning() const;
+
 protected:
     static constexpr int DBLCLICK_DELAY = 100; // milliseconds
 
@@ -168,6 +170,7 @@ protected:
     wxString                  m_fp_override;
 
     std::vector<std::pair<int, wxString>>  m_field_edits;
+    int m_tasksRunning;
 };
 
 
