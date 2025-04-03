@@ -26,11 +26,33 @@
 #define PCB_AGENT_API_H
 
 #include <pcb_edit_frame.h>
-
+#include <action_plugin.h>
+#include <wx/log.h>
+#include <wx/msgdlg.h>
 
 void PCB_EDIT_FRAME::LaunchPlugin( std::string const&            aPluginName,
                                    std::optional<nlohmann::json> aParams )
 {
+    if( ACTION_PLUGINS::IsActionRunning() )
+    {
+        wxLogError( wxT( "Another plugin is running" ) );
+        return;
+    }
+
+
+    for( auto i = 0; i < ACTION_PLUGINS::GetActionsCount(); i++ )
+    {
+        const auto act_name =
+                ACTION_PLUGINS::GetActionByPath( aPluginName )->GetName().ToStdString();
+
+        if( act_name == aPluginName )
+        {
+            ACTION_PLUGINS::GetActionByPath( aPluginName )->Run();
+            return;
+        }
+    }
+    
+    wxLogError( wxT( "Action plugin %s not found" ), aPluginName );
 }
 
 
