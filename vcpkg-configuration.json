@@ -8,8 +8,8 @@
   "registries": [
     {
       "kind": "git",
-      "repository": "https://gitlab.com/Liangtie/kicad-vcpkg-registry.git",
-      "baseline": "6157d8320b3ec2f9b4c20f7c1bf346fe79d3b426",
+      "repository": "https://gitlab.com/liangtie/kicad-vcpkg-registry.git",
+      "baseline": "a5326119d9699322db955f6e7730fd4281d83db0",
       "packages": [
         "wxpython",
         "python3",
