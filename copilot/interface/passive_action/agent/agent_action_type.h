@@ -25,15 +25,28 @@
 #ifndef AGENT_ACTION_TYPE_H
 #define AGENT_ACTION_TYPE_H
 
+/**
+ * @brief All the types are converted from sting using magic enum , so actual enum int value doesn't matter
+ * 
+ */
 enum class AGENT_ACTION_TYPE
 {
     INVALID,
+
+    SCH_BEGIN,
+
     highlight_symbol,
-    part_detail,     //器件的详细信息
-    part_replace,    //相似器件推荐
-    link_check,      //某个位号对应器件与其他器件引脚之间的链接状况
-    foot_detail,     //器件的引脚的详细信息
+    part_detail,      //器件的详细信息
+    part_replace,     //相似器件推荐
+    link_check,       //某个位号对应器件与其他器件引脚之间的链接状况
+    foot_detail,      //器件的引脚的详细信息
     foot_unconnected, //器件的引脚中未跟任何其他器件相连时的具体情况
+
+    PCB_BEGIN,
+
+    basic_run, //比如启动PCB里的DMF插件
+
+
 };
 
 
