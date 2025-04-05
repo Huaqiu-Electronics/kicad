@@ -2808,7 +2808,7 @@ bool PCB_SELECTION_TOOL::Selectable( const BOARD_ITEM* aItem, bool checkVisibili
     const PCB_DISPLAY_OPTIONS& options = frame()->GetDisplayOptions();
 
     auto visibleLayers =
-            [&]()
+            [&]() -> LSET
             {
                 if( m_isFootprintEditor )
                 {
@@ -3897,7 +3897,7 @@ void PCB_SELECTION_TOOL::FilterCollectorForFootprints( GENERAL_COLLECTOR& aColle
     }
 
     auto visibleLayers =
-            [&]()
+            [&]() -> LSET
             {
                 if( m_isFootprintEditor )
                 {
