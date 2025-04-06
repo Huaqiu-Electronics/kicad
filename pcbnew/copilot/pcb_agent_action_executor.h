@@ -35,7 +35,6 @@
 #include <magic_enum.hpp>
 #include <string>
 #include <wx/log.h>
-#include <assistant_interface.h>
 
 void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
