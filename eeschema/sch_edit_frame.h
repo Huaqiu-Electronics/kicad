@@ -76,6 +76,7 @@ class wxGenericTreeCtrl;
 class BITMAP_BUTTON;
 struct SCH_COPILOT_GLOBAL_CONTEXT;
 struct SYMBOL_CMD_CONTEXT;
+class WEBVIEW_CONTAINER;
 
 
 /// Schematic search type used by the socket link with Pcbnew
@@ -767,7 +768,7 @@ public:
 
     SCH_DESIGN_BLOCK_PANE* GetDesignBlockPane() const { return m_designBlocksPane; }
 
-    wxPanel* GetCopilotPane() const { return m_copilotPanel; }
+    WEBVIEW_CONTAINER* GetCopilotPane() const { return m_copilotPanel; }
 
 
     void SetNetListerCommand( const wxString& aCommand ) { m_netListerCommand = aCommand; }
@@ -1229,7 +1230,7 @@ public:
     void HighlightSymbol(std::string const & aDesignator);
 
 private:
-    wxPanel*                                    m_copilotPanel{};
+    WEBVIEW_CONTAINER*                          m_copilotPanel{};
     std::unique_ptr<SCH_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
     std::unique_ptr<SYMBOL_CMD_CONTEXT>         m_symbolCmdContext;
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL            m_copilotGlobalContextHdl;

@@ -65,6 +65,7 @@ class DIALOG_BOARD_SETUP;
 class PCB_DESIGN_BLOCK_PANE;
 
 struct PCB_COPILOT_GLOBAL_CONTEXT;
+class WEBVIEW_CONTAINER;
 
 #ifdef KICAD_IPC_API
 class KICAD_API_SERVER;
@@ -929,7 +930,7 @@ public:
 
 
 private:
-    wxPanel*                                    m_copilotPanel{};
+    WEBVIEW_CONTAINER*                          m_copilotPanel{};
     std::unique_ptr<PCB_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL            m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE                   m_copilotAgentActionHdl;
