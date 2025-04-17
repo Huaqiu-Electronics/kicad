@@ -30,7 +30,7 @@
 #include <nlohmann/json.hpp>
 #include <netlist_exporter_xml.h>
 #include <kiid.h>
-#include <ee_selection_tool.h>
+#include <sch_selection_tool.h>
 #include <string>
 #include <tool/tool_manager.h>
 #include <sch_edit_frame.h>
@@ -105,18 +105,7 @@ void SCH_EDIT_FRAME::UpdateCopilotContextCache()
 }
 wxString SCH_EDIT_FRAME::GetBomList()
 {
-    SCH_REFERENCE_LIST referenceList;
-    Schematic().Hierarchy().GetSymbols( referenceList, false, false );
-    FIELDS_EDITOR_GRID_DATA_MODEL dataModel( referenceList );
-
-    for( int fieldId : MANDATORY_FIELDS )
-    {
-        dataModel.AddColumn( GetCanonicalFieldName( fieldId ),
-                             GetDefaultFieldName( fieldId, DO_TRANSLATE ), false );
-    }
-
-    dataModel.ApplyBomPreset( BOM_PRESET::GroupedByValueFootprint() );
-    return dataModel.Export( BOM_FMT_PRESET::CSV() ).ToStdString();
+    return {};
 }
 
 wxString SCH_EDIT_FRAME::GetNetList()
@@ -127,8 +116,8 @@ wxString SCH_EDIT_FRAME::GetNetList()
 
 SYMBOL_CMD_CONTEXT const& SCH_EDIT_FRAME::GetSelectedSymbolContext()
 {
-    EE_SELECTION_TOOL* selTool = GetToolManager()->GetTool<EE_SELECTION_TOOL>();
-    EE_SELECTION&      selection = selTool->GetSelection();
+    auto selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
+    auto&      selection = selTool->GetSelection();
     SCH_SYMBOL*        symbol = dynamic_cast<SCH_SYMBOL*>( selection.Front() );
 
     if( !symbol )

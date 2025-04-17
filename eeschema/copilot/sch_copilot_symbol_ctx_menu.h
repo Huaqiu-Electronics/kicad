@@ -27,7 +27,7 @@
 
 
 #include "bitmaps/bitmaps_list.h"
-#include <ee_actions.h>
+#include <sch_actions.h>
 #include <functional>
 #include <tool/action_menu.h>
 #include <vector>
@@ -41,10 +41,10 @@ public:
         SetIcon( BITMAPS::copilot );
         SetTitle( _( "Copilot" ) );
         for( const auto act : std::vector<std::reference_wrapper<TOOL_ACTION>>{
-                     EE_ACTIONS::copilotCurrentSymbol, EE_ACTIONS::copilotSimilarComponents,
-                     EE_ACTIONS::copilotCheckSymbolConnections,
-                     EE_ACTIONS::copilotComponentPinsDetails,
-                     EE_ACTIONS::copilotSymbolUnconnectedPins } )
+                     SCH_ACTIONS::copilotCurrentSymbol, SCH_ACTIONS::copilotSimilarComponents,
+                     SCH_ACTIONS::copilotCheckSymbolConnections,
+                     SCH_ACTIONS::copilotComponentPinsDetails,
+                     SCH_ACTIONS::copilotSymbolUnconnectedPins } )
 
             Add( act );
     }

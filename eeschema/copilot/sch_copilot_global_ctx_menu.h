@@ -26,7 +26,7 @@
 #define SCH_COPILOT_GLOBAL_CTX_MENU_H
 
 #include "bitmaps/bitmaps_list.h"
-#include <ee_actions.h>
+#include <sch_actions.h>
 #include <functional>
 #include <tool/action_menu.h>
 #include <vector>
@@ -40,8 +40,8 @@ public:
         SetIcon( BITMAPS::copilot );
         SetTitle( _( "Copilot" ) );
         for( const auto act : std::vector<std::reference_wrapper<TOOL_ACTION>>{
-                     EE_ACTIONS::copilotDesignIntention,
-                     EE_ACTIONS::copilotCoreComponents,
+                     SCH_ACTIONS::copilotDesignIntention,
+                     SCH_ACTIONS::copilotCoreComponents,
              } )
 
             Add( act );

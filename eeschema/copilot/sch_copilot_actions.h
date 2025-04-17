@@ -25,7 +25,7 @@
 #ifndef SCH_COPILOT_ACTIONS_H
 #define SCH_COPILOT_ACTIONS_H
 
-#include "tools/ee_actions.h"
+#include <sch_actions.h>
 
 #include <bitmaps.h>
 #include <sch_bitmap.h>
@@ -35,47 +35,47 @@
 #define _( s ) s
 
 
-TOOL_ACTION EE_ACTIONS::copilotDesignIntention(
+TOOL_ACTION SCH_ACTIONS::copilotDesignIntention(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotDesignIntention" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Explain design intention" ) ) );
 
 
-TOOL_ACTION EE_ACTIONS::copilotCoreComponents(
+TOOL_ACTION SCH_ACTIONS::copilotCoreComponents(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotCoreComponents" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Explain core components" ) ) );
 
 
-TOOL_ACTION EE_ACTIONS::copilotCurrentSymbol(
+TOOL_ACTION SCH_ACTIONS::copilotCurrentSymbol(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotCurrentSymbol" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Explain current symbol" ) ) );
 
 
-TOOL_ACTION EE_ACTIONS::copilotSimilarComponents(
+TOOL_ACTION SCH_ACTIONS::copilotSimilarComponents(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotSimilarComponents" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Find similar components" ) ) );
 
 
-TOOL_ACTION EE_ACTIONS::copilotCheckSymbolConnections(
+TOOL_ACTION SCH_ACTIONS::copilotCheckSymbolConnections(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotCheckSymbolConnections" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Check symbol connections" ) ) );
 
-TOOL_ACTION EE_ACTIONS::copilotComponentPinsDetails(
+TOOL_ACTION SCH_ACTIONS::copilotComponentPinsDetails(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotComponentPinsDetails" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Explain pins details" ) ) );
 
-TOOL_ACTION EE_ACTIONS::copilotSymbolUnconnectedPins(
+TOOL_ACTION SCH_ACTIONS::copilotSymbolUnconnectedPins(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.copilot.copilotSymbolUnconnectedPins" )
                 .Scope( AS_GLOBAL )
