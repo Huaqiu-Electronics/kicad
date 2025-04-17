@@ -728,7 +728,7 @@ bool SCH_EDIT_TOOL::Init()
     if( true )
     {
         selToolMenu.AddSeparator( 275 );
-        selToolMenu.AddMenu(new SCH_COPILOT_SYMBOL_CTX_MENU( m_selectionTool ) ,  E_C::SingleSymbol, 275);
+        selToolMenu.AddMenu(new SCH_COPILOT_SYMBOL_CTX_MENU( m_selectionTool ) ,  S_C::SingleSymbol, 275);
     }                  
 
 

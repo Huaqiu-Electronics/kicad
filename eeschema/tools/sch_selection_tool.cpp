@@ -304,7 +304,7 @@ bool SCH_SELECTION_TOOL::Init()
     if( true )
     {
         menu.AddSeparator( 100 );
-        menu.AddMenu( new SCH_COPILOT_GLOBAL_CTX_MENU( ), schEditCondition && EE_CONDITIONS::Empty, 100 );
+        menu.AddMenu( new SCH_COPILOT_GLOBAL_CTX_MENU( ), schEditCondition && SCH_CONDITIONS::Empty, 100 );
     }
 
     menu.AddSeparator( 100 );
