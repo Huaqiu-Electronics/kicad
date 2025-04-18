@@ -740,7 +740,7 @@ bool FP_LIB_TABLE::LoadHQGlobalTable( FP_LIB_TABLE& aTable )
     if( !fn.FileExists() )
     {
 
-        if( !fn.DirExists() && !fn.Mkdir( 0x777, wxPATH_MKDIR_FULL ) )
+        if( !fn.Mkdir( wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL ) )
         {
             THROW_IO_ERROR( wxString::Format( _( "Cannot create global library table path '%s'." ),
                                               fn.GetPath() ) );
