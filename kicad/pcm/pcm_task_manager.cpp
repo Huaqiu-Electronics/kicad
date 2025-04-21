@@ -579,8 +579,9 @@ void PCM_TASK_MANAGER::GetInstallHQPluginFilePaths( const wxString& aDir, wxArra
 
     PATH_COLLECTOR collector( files, dirs );
 
-    wxDir( aDir )
-        .Traverse( collector, wxEmptyString, wxDIR_DEFAULT | wxDIR_NO_FOLLOW );
+
+    if( const auto dir = wxDir( aDir ); dir.IsOpened() )
+        dir.Traverse( collector, wxEmptyString, wxDIR_DEFAULT | wxDIR_NO_FOLLOW );
 
     std::sort( files.begin(), files.end(), sort_func );
 
