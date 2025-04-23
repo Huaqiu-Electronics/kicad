@@ -65,12 +65,12 @@ inline auto send_data_buried_point()
                 }
                 catch( std::exception const& e )
                 {
-                    wxLogTrace( wxString::Format( "send_data_buried_point error: %s", e.what() ),
+                    wxLogDebug( wxString::Format( "send_data_buried_point error: %s", e.what() ),
                                 "send_data_buried_point" );
                 }
                 catch( ... )
                 {
-                    wxLogTrace( wxString::Format( "send_data_buried_point error: unknown" ),
+                    wxLogDebug( wxString::Format( "send_data_buried_point error: unknown" ),
                                 "send_data_buried_point" );
                 }
             } );
@@ -130,7 +130,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     if( !_browser->AddScriptMessageHandler(
                 magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
     {
-        wxLogError( "Could not add script message handler " );
+        wxLogDebug( "Could not add script message handler " );
     }
 
     SetSizer( top_sizer );
@@ -248,7 +248,7 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 
             if( !t.has_value() )
             {
-                wxLogError( "Invalid message received: %s", evt.GetString() );
+                wxLogDebug( "Invalid message received: %s", evt.GetString() );
                 return;
             }
 
@@ -258,7 +258,7 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
             {
                 if( _host_copilot_handles.global_context_handle.expired() )
                 {
-                    wxLogError( "Get design global context handle expired" );
+                    wxLogDebug( "Get design global context handle expired" );
                     break;
                 }
 
@@ -296,14 +296,14 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
     }
     catch( const std::exception& e )
     {
-        wxLogError( "Invalid message received: %s , %s", evt.GetString(), e.what() );
+        wxLogDebug( "Invalid message received: %s , %s", evt.GetString(), e.what() );
     }
 }
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
     if( evt.IsError() )
-        wxLogError( "Async script execution failed: %s", evt.GetString() );
+        wxLogDebug( "Async script execution failed: %s", evt.GetString() );
 }
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
@@ -324,6 +324,6 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
         WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_OTHER );
     }
 
-    wxLogMessage( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " ("
-                                + evt.GetString() + ")'" );
+    wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " ("
+                              + evt.GetString() + ")'" );
 }
