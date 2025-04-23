@@ -63,8 +63,15 @@ inline auto send_data_buried_point()
                     HTTP_CLIENT http_client;
                     http_client.send_data_buried_point( DATA_BURIED_POINT{} );
                 }
+                catch( std::exception const& e )
+                {
+                    wxLogTrace( wxString::Format( "send_data_buried_point error: %s", e.what() ),
+                                "send_data_buried_point" );
+                }
                 catch( ... )
                 {
+                    wxLogTrace( wxString::Format( "send_data_buried_point error: unknown" ),
+                                "send_data_buried_point" );
                 }
             } );
     t.detach();
