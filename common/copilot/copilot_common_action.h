@@ -24,11 +24,8 @@
 
 #include <bitmaps/bitmaps_list.h>
 #include <common.h>
-#include <eda_units.h>
-#include <frame_type.h>
 #include <tool/actions.h>
 #include <tool/tool_action.h>
-#include <tool/tool_event.h>
 
 #ifndef COPILOT_COMMON_ACTION_H
 #define COPILOT_COMMON_ACTION_H
