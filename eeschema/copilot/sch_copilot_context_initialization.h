@@ -25,17 +25,15 @@
 #ifndef SCH_COPILOT_CONTEXT_INITIALIZATION_H
 #define SCH_COPILOT_CONTEXT_INITIALIZATION_H
 
+#include <pgm_base.h>
 #include <context/sch/sch_copilot_global_context.h>
-#include <copilot/get_kicad_version_info.h>
 #include <kicad_copilot_editors.h>
 #include <sch_edit_frame.h>
-#include <magic_enum.hpp>
+#include <copilot/kicad_copilot_helper.h>
 
 void SCH_EDIT_FRAME::InitCopilotContext()
 {
-    m_copilotContextCache->host_version_info.details = get_kicad_version_info();
-    m_copilotContextCache->host_version_info.editor_name =
-            magic_enum::enum_name( KICAD_COPILOT_EDITORS::schematic );
+    init_copilot_context( *m_copilotContextCache, KICAD_COPILOT_EDITORS::schematic );
 }
 
 
