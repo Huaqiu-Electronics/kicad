@@ -30,6 +30,7 @@
 
 struct COPILOT_SETTINGS;
 struct WEBVIEW_PATH;
+struct DIALOG_GEOMETRY;
 class COPILOT_SETTINGS_MANAGER
 {
 public:
@@ -51,12 +52,18 @@ public:
 
     std::string const& get_webview_chat_path() const;
 
+    std::string const& get_webview_image_viewer_path() const;
+
+    DIALOG_GEOMETRY const& get_image_viewer_geometry() const;
+    void                   set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry );
 
 private:
     COPILOT_SETTINGS_MANAGER();
     std::unique_ptr<COPILOT_SETTINGS> _settings;
     bool                              _settings_is_valid;
     std::string                       _webview_chat_path;
+    std::string                       _webview_image_viewer_path;
+    bool                              _should_save{};
 };
 
 #endif

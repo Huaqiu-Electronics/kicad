@@ -77,11 +77,14 @@ COPILOT_SETTINGS_MANAGER::COPILOT_SETTINGS_MANAGER() :
 
     _webview_chat_path = fmt::format( "{}/#{}", _settings->webview_settings.url,
                                       _settings->webview_settings.path.chat );
+
+    _webview_image_viewer_path = fmt::format( "{}/#{}", _settings->webview_settings.url,
+                                              _settings->webview_settings.path.image_viewer );
 }
 
 COPILOT_SETTINGS_MANAGER::~COPILOT_SETTINGS_MANAGER()
 {
-    if( !_settings_is_valid )
+    if( !_settings_is_valid  || _should_save)
     {
         try
         {
@@ -165,4 +168,20 @@ WEBVIEW_PATH const& COPILOT_SETTINGS_MANAGER::get_webview_path() const
 std::string const& COPILOT_SETTINGS_MANAGER::get_webview_chat_path() const
 {
     return _webview_chat_path;
+}
+
+std::string const& COPILOT_SETTINGS_MANAGER::get_webview_image_viewer_path() const
+{
+    return _webview_image_viewer_path;
+}
+
+DIALOG_GEOMETRY const& COPILOT_SETTINGS_MANAGER::get_image_viewer_geometry() const
+{
+    return _settings->image_viewer_geometry;
+}
+
+void COPILOT_SETTINGS_MANAGER::set_image_viewer_geometry(DIALOG_GEOMETRY const& geometry)
+{
+    _settings->image_viewer_geometry = geometry;
+    _should_save = true;
 }
