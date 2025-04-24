@@ -33,6 +33,7 @@
 #include <set>
 #include <copilot_global.h>
 
+class DIALOG_IMAGE_VIEWER;
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
@@ -56,6 +57,7 @@ private:
     std::set<std::string> _consumed_global_ctx_keys{};
     wxWebView*            _browser;
     HOST_COPILOT_HANDLES  _host_copilot_handles;
+    DIALOG_IMAGE_VIEWER*  _image_viewer {};
 };
 
 #endif

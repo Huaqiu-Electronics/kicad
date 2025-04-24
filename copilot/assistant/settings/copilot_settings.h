@@ -28,7 +28,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-static constexpr auto kConfigVersion = "0.0.2";
+static constexpr auto kConfigVersion = "0.0.4";
 
 struct DATA_BURIED_POINT_SETTINGS
 {
@@ -42,7 +42,8 @@ struct WEBVIEW_PATH
 {
     std::string home = "/";
     std::string chat = "/chat";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_PATH, home, chat )
+    std::string image_viewer = "/image-viewer";
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_PATH, home, chat, image_viewer )
 };
 
 struct WEBVIEW_SETTINGS
@@ -53,13 +54,24 @@ struct WEBVIEW_SETTINGS
 };
 
 
+struct DIALOG_GEOMETRY
+{
+    int x = -1;
+    int y = -1;
+    int width = 900;
+    int height = 600;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( DIALOG_GEOMETRY, x, y, width, height )
+};
+
+
 struct COPILOT_SETTINGS
 {
     DATA_BURIED_POINT_SETTINGS data_buried_point_settings;
     WEBVIEW_SETTINGS           webview_settings;
     std::string                version = kConfigVersion;
+    DIALOG_GEOMETRY            image_viewer_geometry;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_SETTINGS, data_buried_point_settings, webview_settings,
-                                    version )
+                                    image_viewer_geometry, version )
 };
 
 #endif

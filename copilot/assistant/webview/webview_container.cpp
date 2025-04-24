@@ -23,6 +23,7 @@
  */
 
 #include <webview/webview_container.h>
+#include "settings/copilot_settings.h"
 #include "settings/copilot_settings_manager.h"
 #include "web_utils.h"
 #include "webview_constant.h"
@@ -51,6 +52,7 @@
 #include <thread>
 #include "http/http_client.h"
 #include "proto/data_buried_point.h"
+#include "common/dialog_image_viewer.h"
 
 
 inline auto send_data_buried_point()
@@ -278,6 +280,21 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
                         &out );
 
                 _consumed_global_ctx_keys.insert( global_ctx.uuid );
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::show_image:
+            {
+                if( !_image_viewer )
+                {
+                    const auto geometry =
+                            COPILOT_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
+                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer",
+                                                             { geometry.x, geometry.y },
+                                                             { geometry.width, geometry.height } );
+                }
+
+                _image_viewer->reload();
+                _image_viewer->Show();
                 break;
             }
             }
