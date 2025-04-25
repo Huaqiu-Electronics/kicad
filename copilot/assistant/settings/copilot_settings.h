@@ -52,6 +52,7 @@ struct WEBVIEW_SETTINGS
 #if defined( _WIN32 )
     std::string url = "https://chat.eda.cn/";
 #else
+    // FIXME : unable to register window message handle on macOS if we use https protocol
     std::string url = "http://47.100.5.151:8080/";
 #endif
 
