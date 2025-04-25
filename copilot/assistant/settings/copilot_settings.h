@@ -28,7 +28,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-static constexpr auto kConfigVersion = "0.0.5";
+static constexpr auto kConfigVersion = "0.0.7";
 
 struct DATA_BURIED_POINT_SETTINGS
 {
