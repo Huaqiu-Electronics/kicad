@@ -26,7 +26,13 @@
 #include "settings/copilot_settings_manager.h"
 #include "settings/copilot_settings.h"
 #include <wx/event.h>
+#include <wx/log.h>
 #include <wx/sizer.h>
+#include <fmt/format.h>
+
+#if wxUSE_WEBVIEW_EDGE
+#include <wx/msw/webview_edge.h>
+#endif
 
 
 DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, const wxString& title,
@@ -46,16 +52,31 @@ DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, cons
               const auto pos = GetPosition();
               const auto size = GetSize();
               COPILOT_SETTINGS_MANAGER::get_instance().set_image_viewer_geometry(
-                      { pos.x, pos.y, size.x, size.y
+                      DIALOG_GEOMETRY{ pos.x, pos.y, size.x, size.y
 
                       } );
               event.Skip();
           } );
+
+
+#ifdef DEBUG
+
+#if wxUSE_WEBVIEW_EDGE
+
+    if( auto edge = dynamic_cast<wxWebViewEdge*>( _browser ) )
+    {
+        edge->EnableAccessToDevTools( true );
+    }
+
+#endif
+
+
+#endif // DEBUG
 }
 
 void DIALOG_IMAGE_VIEWER::reload()
 {
-    _browser->Reload();
+    _browser->RunScriptAsync( "window.dispatchEvent(new Event(\"updateLocalImage\"));" );
 }
 
 DIALOG_IMAGE_VIEWER::~DIALOG_IMAGE_VIEWER()
