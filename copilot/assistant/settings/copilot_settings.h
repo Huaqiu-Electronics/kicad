@@ -28,7 +28,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-static constexpr auto kConfigVersion = "0.0.4";
+static constexpr auto kConfigVersion = "0.0.5";
 
 struct DATA_BURIED_POINT_SETTINGS
 {
@@ -48,7 +48,7 @@ struct WEBVIEW_PATH
 
 struct WEBVIEW_SETTINGS
 {
-    std::string  url = "http://47.100.5.151:8080/";
+    std::string  url = "https://chat.eda.cn/";
     WEBVIEW_PATH path;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_SETTINGS, url, path )
 };
