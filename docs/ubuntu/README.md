@@ -5,7 +5,8 @@
 sudo add-apt-repository ppa:kicad/kicad-dev-nightly
 sudo apt update
 
-sudo apt install kicad-nightly
+<!-- For debug purpose -->
+<!-- sudo apt install kicad-nightly -->
 
 sudo apt update && sudo apt install -y debhelper cmake doxygen libbz2-dev libcairo2-dev libglu1-mesa-dev \
 libgl1-mesa-dev libglew-dev libx11-dev libwxgtk3.2-dev mesa-common-dev pkg-config libssl-dev libzstd-dev \
