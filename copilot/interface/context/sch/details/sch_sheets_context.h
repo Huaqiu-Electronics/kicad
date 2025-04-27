@@ -22,16 +22,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SCH_NETLIST_CONTEXT_H
-#define SCH_NETLIST_CONTEXT_H
+#ifndef SCH_SHEETS_CONTEXT_H
+#define SCH_SHEETS_CONTEXT_H
 
-#include <nlohmann/json.hpp>
+#include "sch_netlist.h"
+#include <string>
+#include <unordered_map>
 
-struct SCH_NETLIST_CONTEXT
+namespace copilot
 {
-    std::string net_list;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SCH_NETLIST_CONTEXT, net_list )
-    virtual ~SCH_NETLIST_CONTEXT() = default;
+
+
+struct SCH_SHEETS_CONTEXT
+{
+    std::unordered_map<std::string, Netlist> sheets;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SCH_SHEETS_CONTEXT, sheets )
 };
+
+
+} // namespace copilot
 
 #endif

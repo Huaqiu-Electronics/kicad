@@ -31,25 +31,26 @@
 #include <string>
 #include <context/common/designators_context.h>
 #include <context/sch/details/sch_netlist_context.h>
+#include <context/sch/details/sch_xml_netlist_context.h>
 
 
 struct SCH_COPILOT_GLOBAL_CONTEXT : COPILOT_GLOBAL_CONTEXT,
                                     VARIABLE_CONTEXT,
-                                    SCH_NETLIST_CONTEXT,
+                                    SCH_XML_NETLIST_CONTEXT,
                                     DESIGNATORS_CONTEXT
 {
     friend void to_json( nlohmann ::json&                  nlohmann_json_j,
                          const SCH_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
     {
         to_json( nlohmann_json_j, static_cast<COPILOT_GLOBAL_CONTEXT const&>( nlohmann_json_t ) );
-        to_json( nlohmann_json_j, static_cast<SCH_NETLIST_CONTEXT const&>( nlohmann_json_t ) );
+        to_json( nlohmann_json_j, static_cast<SCH_XML_NETLIST_CONTEXT const&>( nlohmann_json_t ) );
         to_json( nlohmann_json_j, static_cast<DESIGNATORS_CONTEXT const&>( nlohmann_json_t ) );
     }
     friend void from_json( const nlohmann ::json&      nlohmann_json_j,
                            SCH_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
     {
         from_json( nlohmann_json_j, static_cast<COPILOT_GLOBAL_CONTEXT&>( nlohmann_json_t ) );
-        from_json( nlohmann_json_j, static_cast<SCH_NETLIST_CONTEXT&>( nlohmann_json_t ) );
+        from_json( nlohmann_json_j, static_cast<SCH_XML_NETLIST_CONTEXT&>( nlohmann_json_t ) );
         from_json( nlohmann_json_j, static_cast<DESIGNATORS_CONTEXT&>( nlohmann_json_t ) );
     }
     std::string dump() const override { return nlohmann::json( *this ).dump(); }
