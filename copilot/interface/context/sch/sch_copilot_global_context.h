@@ -30,7 +30,6 @@
 #include <context/context_fields.h>
 #include <string>
 #include <context/common/designators_context.h>
-#include <context/sch/details/sch_netlist_context.h>
 #include <context/sch/details/sch_xml_netlist_context.h>
 
 
