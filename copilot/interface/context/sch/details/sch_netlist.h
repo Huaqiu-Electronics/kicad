@@ -45,13 +45,10 @@ struct FIELD
 
 struct COMPONENT
 {
-    std::string                                  ref;
-    std::string                                  value;
-    std::string                                  footprint;
-    std::unordered_map<std::string, std::string> properties;
-    std::vector<FIELD>                           fields;
+    std::string        ref;
+    std::vector<FIELD> fields;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COMPONENT, ref, value, footprint, properties, fields )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COMPONENT, ref, fields )
 };
 
 struct NODE
