@@ -25,10 +25,15 @@
 #ifndef SELECTION_CHANGE_CMD_H
 #define SELECTION_CHANGE_CMD_H
 
+#include <nlohmann/json.hpp>
+#include <string>
+
+
 struct SELECTION_CHANGE_CMD
 {
-
-
+    bool        has_selection = false;
+    std::string type = "interaction.common.selection_change";
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SELECTION_CHANGE_CMD, has_selection, type )
 };
 
 #endif

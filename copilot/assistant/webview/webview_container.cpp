@@ -23,6 +23,7 @@
  */
 
 #include <webview/webview_container.h>
+#include "nlohmann/json.hpp"
 #include "settings/copilot_settings.h"
 #include "settings/copilot_settings_manager.h"
 #include "web_utils.h"
@@ -32,6 +33,7 @@
 #include <passive_action/passive_action_container.h>
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
+#include <active_action/cmd/common/selection_change_cmd.h>
 #include <wx/log.h>
 #include <wx/sizer.h>
 #include <wx/filename.h>
@@ -54,6 +56,7 @@
 #include "proto/data_buried_point.h"
 #include "common/dialog_image_viewer.h"
 
+using json = nlohmann::json;
 
 inline auto send_data_buried_point()
 {
@@ -188,7 +191,7 @@ void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
 
 void WEBVIEW_CONTAINER::on_host_selection_changed( bool has_selection )
 {
-
+    fire_host_active_cmd( json( SELECTION_CHANGE_CMD{ has_selection } ).dump().c_str() );
 }
 
 
