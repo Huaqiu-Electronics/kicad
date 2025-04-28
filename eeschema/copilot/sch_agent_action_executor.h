@@ -74,11 +74,6 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto netlist = nlohmann::json( GetSelection() ).dump();
-            // Write the netlist to net.json
-            std::ofstream netlist_file( "C:/code/net.json" );
-            netlist_file << netlist;
-            netlist_file.close();
-
             m_copilotPanel->fire_host_active_cmd(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
