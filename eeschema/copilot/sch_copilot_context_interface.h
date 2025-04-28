@@ -25,6 +25,7 @@
 #ifndef SCH_COPILOT_CONTEXT_INTERFACE_H
 #define SCH_COPILOT_CONTEXT_INTERFACE_H
 
+#include "sch_symbol.h"
 #include "webview/webview_container.h"
 #include <cstddef>
 #include <memory>
@@ -37,11 +38,13 @@
 #include <sch_edit_frame.h>
 #include <fields_data_model.h>
 #include <context/symbol_context.h>
+#include <unordered_map>
 #include <utils/base64.hpp>
 #include <context/sch/sch_copilot_global_context.h>
 #include <context/sch/details/sch_netlist.h>
 #include <string_utils.h>
 #include <algorithm>
+#include <vector>
 
 void SCH_EDIT_FRAME::UpdateCopilotContextCache()
 {
@@ -155,9 +158,40 @@ wxString SCH_EDIT_FRAME::GetSymbolNetList( wxString const& aDesignator )
 }
 
 
+inline auto get_fields( SCH_SHEET_PATH* aSheetPath, const std::vector<SCH_FIELD>& fields )
+{
+    std::vector<copilot::FIELD> result;
+    for( const auto& field : fields )
+    {
+        result.push_back( { field.GetName().ToStdString(),
+                            field.GetShownText( aSheetPath, false ).ToStdString() } );
+    }
+    return result;
+}
+
 copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
 {
-    return {};
+    auto  selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
+    auto& selections = selTool->GetSelection();
+    copilot::NETLIST netlist;
+    const auto sch_path = &GetCurrentSheet();
+
+    std::unordered_map<std::string , std::vector<copilot::NODE>> nets;
+
+    for( const auto& selection : selections )
+    {
+        if( selection->IsType( { SCH_SYMBOL_T } ) )
+        {
+            auto       symbol = static_cast<SCH_SYMBOL*>( selection );
+            const auto ref = symbol->GetRef( sch_path ).ToStdString();
+            netlist.components.push_back( { ref, get_fields( sch_path, symbol->GetFields() ) } );
+        }
+    }
+
+    for(const auto& [k,v] : nets)
+        netlist.nets.push_back({k, v});
+
+    return netlist;
 }
 
 void SCH_EDIT_FRAME::SetHasSelection( bool aHasSelection )
