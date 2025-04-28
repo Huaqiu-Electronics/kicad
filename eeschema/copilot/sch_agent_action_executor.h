@@ -43,6 +43,7 @@
 #include <chat/general_chat_cmd.h>
 #include <context/sch/details/sch_netlist.h>
 #include <fmt/format.h>
+#include "sch_selection_prompt.h"
 
 void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
@@ -72,13 +73,21 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         break;
         case AGENT_ACTION_TYPE::ask_selection:
         {
+            const auto netlist = nlohmann::json( GetSelection() ).dump();
+            // Write the netlist to net.json
+            std::ofstream netlist_file( "C:/code/net.json" );
+            netlist_file << netlist;
+            netlist_file.close();
+
             m_copilotPanel->fire_host_active_cmd(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
-                                    { {  aAction.context.get<std::string>() } },
+                                    { { aAction.context.get<std::string>() } },
                                     { { fmt::format(
-                                            "The user is asking about the following netlist: {}",
-                                            nlohmann::json( GetSelection() ).dump() ) } } } )
+                                            "The user is asking about the netlist:\n{}. The "
+                                            "netlist is defined "
+                                            "following the json scheama:\n {} ",
+                                            copilot::NETLIST_JSON_SCHEMA, netlist ) } } } )
                             .dump()
                             .c_str() );
         }

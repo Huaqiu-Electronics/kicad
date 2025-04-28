@@ -64,10 +64,10 @@ struct NODE
 
 struct NET
 {
-    std::string       name;
+    std::string       net_name;
     std::vector<NODE> nodes;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NET, name, nodes )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NET, net_name, nodes )
 };
 
 struct NETLIST

@@ -25,6 +25,7 @@
 #ifndef SCH_COPILOT_CONTEXT_INTERFACE_H
 #define SCH_COPILOT_CONTEXT_INTERFACE_H
 
+#include <connection_graph.h>
 #include "sch_symbol.h"
 #include "webview/webview_container.h"
 #include <cstddef>
@@ -45,6 +46,7 @@
 #include <string_utils.h>
 #include <algorithm>
 #include <vector>
+#include <wx/string.h>
 
 void SCH_EDIT_FRAME::UpdateCopilotContextCache()
 {
@@ -171,12 +173,12 @@ inline auto get_fields( SCH_SHEET_PATH* aSheetPath, const std::vector<SCH_FIELD>
 
 copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
 {
-    auto  selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
-    auto& selections = selTool->GetSelection();
+    auto             selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
+    auto&            selections = selTool->GetSelection();
     copilot::NETLIST netlist;
-    const auto sch_path = &GetCurrentSheet();
+    const auto       sch_path = &GetCurrentSheet();
 
-    std::unordered_map<std::string , std::vector<copilot::NODE>> nets;
+    std::set<SCH_PIN*> selection_pins;
 
     for( const auto& selection : selections )
     {
@@ -185,11 +187,73 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
             auto       symbol = static_cast<SCH_SYMBOL*>( selection );
             const auto ref = symbol->GetRef( sch_path ).ToStdString();
             netlist.components.push_back( { ref, get_fields( sch_path, symbol->GetFields() ) } );
+
+            for( const auto pin : symbol->GetPins( sch_path ) )
+                selection_pins.insert( pin );
         }
     }
 
-    for(const auto& [k,v] : nets)
-        netlist.nets.push_back({k, v});
+    std::unordered_map<std::string, std::shared_ptr<copilot::NET>> uniq_nets;
+
+    for( const auto& [key, subgraphs] : m_schematic->ConnectionGraph()->GetNetMap() )
+    {
+        if( subgraphs.empty() )
+            continue;
+
+
+        for( CONNECTION_SUBGRAPH* subgraph : subgraphs )
+        {
+            bool                       contains_selection_pin = false;
+            const auto                 net_name = subgraph->GetNetName();
+            const auto                 net_name_code = net_name.ToStdString();
+            std::vector<copilot::NODE> nodes;
+
+            const SCH_SHEET_PATH& sheet = subgraph->GetSheet();
+
+            for( SCH_ITEM* item : subgraph->GetItems() )
+            {
+                if( item->Type() == SCH_PIN_T )
+                {
+                    SCH_PIN* pin = static_cast<SCH_PIN*>( item );
+
+                    if( selection_pins.contains( pin ) )
+                        contains_selection_pin = true;
+
+                    SCH_SYMBOL* symbol = dynamic_cast<SCH_SYMBOL*>( pin->GetParentSymbol() );
+
+                    if( !symbol )
+                        continue;
+
+                    nodes.push_back( {
+                            symbol->GetRef( &sheet ).ToStdString(),
+                            pin->GetShownNumber().ToStdString(),
+                            pin->GetShownName().ToStdString(),
+                            PinShapeGetText( pin->GetShape() ).ToStdString(),
+                    } );
+                }
+            }
+
+            if( contains_selection_pin )
+            {
+                if( !uniq_nets.contains( net_name_code ) )
+                    uniq_nets.try_emplace( net_name_code, std::make_shared<copilot::NET>(
+                                                                  copilot::NET{ net_name_code } ) );
+
+                auto& net = uniq_nets[net_name_code];
+
+                net->net_name = net_name_code;
+                net->nodes.insert( net->nodes.end(), nodes.begin(), nodes.end() );
+            }
+        }
+    }
+
+    for( auto& [k, v] : uniq_nets )
+    {
+        if( !v->nodes.empty() )
+        {
+            netlist.nets.push_back( std::move( *v ) );
+        }
+    }
 
     return netlist;
 }
