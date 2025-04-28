@@ -25,6 +25,7 @@
 #ifndef SCH_COPILOT_CONTEXT_INTERFACE_H
 #define SCH_COPILOT_CONTEXT_INTERFACE_H
 
+#include "webview/webview_container.h"
 #include <cstddef>
 #include <memory>
 #include <nlohmann/json.hpp>
@@ -157,6 +158,12 @@ wxString SCH_EDIT_FRAME::GetSymbolNetList( wxString const& aDesignator )
 copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
 {
     return {};
+}
+
+void SCH_EDIT_FRAME::SetHasSelection( bool aHasSelection )
+{
+    if( m_copilotPanel )
+        m_copilotPanel->on_host_selection_changed( aHasSelection );
 }
 
 #endif
