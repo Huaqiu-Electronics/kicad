@@ -33,7 +33,7 @@
 struct ChatCompletionSystemMessageParam
 {
     std::string content;
-    std::string role = "system";
+    std::string role = "user";
     
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( ChatCompletionSystemMessageParam, content, role )
 };

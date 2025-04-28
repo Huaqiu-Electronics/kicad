@@ -79,9 +79,9 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },
                                     { { fmt::format(
-                                            "The user is asking about the netlist:\n{}. The "
+                                            "I'm working on a pcb schematic design the current selection of which is represented by the following netlist:\n{}. The "
                                             "netlist is defined "
-                                            "following the json scheama:\n {} ",
+                                            "following the json scheama:\n {}\n NOTE: All the connections for any component presented inside the components have been included in the nets",
                                             copilot::NETLIST_JSON_SCHEMA, netlist ) } } } )
                             .dump()
                             .c_str() );
