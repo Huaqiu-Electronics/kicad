@@ -1203,6 +1203,8 @@ public:
 
     copilot::NETLIST GetSelection()const ;
 
+    void SetHasSelection( bool aHasSelection );
+
 private:
     WEBVIEW_CONTAINER*                          m_copilotPanel{};
     std::unique_ptr<SCH_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;

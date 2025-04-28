@@ -1175,6 +1175,21 @@ void SCH_SELECTION_TOOL::OnIdle( wxIdleEvent& aEvent )
         else
             m_frame->GetCanvas()->SetCurrentCursor( m_nonModifiedCursor );
     }
+
+    if( auto sch_editor = dynamic_cast<SCH_EDIT_FRAME*>( m_frame );
+        sch_editor && m_pre_selection != m_selection )
+    {
+        m_pre_selection = m_selection;
+        sch_editor->SetHasSelection( (
+                [&]()
+                {
+                    for( auto it : m_selection.GetItems() )
+                        if( dynamic_cast<SCH_SYMBOL*>( it ) )
+                            return true;
+
+                    return false;
+                } )() );
+    }
 }
 
 
