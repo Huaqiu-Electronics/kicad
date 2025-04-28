@@ -45,6 +45,7 @@
 #include <template_fieldnames.h>
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
+#include "copilot/sch_copilot_ds_fwd.h"
 
 class SCH_ITEM;
 class EDA_ITEM;
@@ -69,9 +70,6 @@ class RESCUER;
 class HIERARCHY_PANE;
 class API_HANDLER_SCH;
 class DIALOG_SCHEMATIC_SETUP;
-struct SCH_COPILOT_GLOBAL_CONTEXT;
-struct SYMBOL_CMD_CONTEXT;
-class WEBVIEW_CONTAINER;
 
 
 /// Schematic search type used by the socket link with Pcbnew
@@ -1203,12 +1201,15 @@ public:
     // Agent APIS
     void HighlightSymbol(std::string const & aDesignator);
 
+    copilot::NETLIST GetSelection()const ;
+
 private:
     WEBVIEW_CONTAINER*                          m_copilotPanel{};
     std::unique_ptr<SCH_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
     std::unique_ptr<SYMBOL_CMD_CONTEXT>         m_symbolCmdContext;
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL            m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE                   m_copilotAgentActionHdl;
+    COPILOT_SELECTION_OWNED_HDL                 m_copilotSelectionHdl;
 };
 
 

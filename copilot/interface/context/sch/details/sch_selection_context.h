@@ -33,7 +33,7 @@ namespace copilot
 
 struct SCH_SELECTION_CONTEXT
 {
-    Netlist sch_selection;
+    NETLIST sch_selection;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( SCH_SELECTION_CONTEXT, sch_selection )
 };
 

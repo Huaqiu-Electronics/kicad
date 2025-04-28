@@ -22,17 +22,17 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef PASSIVE_CMD_H
-#define PASSIVE_CMD_H
+#ifndef ASK_SELECTION_H
+#define ASK_SELECTION_H
 
-#include <nlohmann/json.hpp>
-
-
-struct PASSIVE_CMD
+class ASK_SELECTION
 {
-    bool triggered_by_passive_action = false;
+public:
+    ASK_SELECTION();
+    ~ASK_SELECTION();
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PASSIVE_CMD, triggered_by_passive_action )
+private:
+
 };
 
 #endif

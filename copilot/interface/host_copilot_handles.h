@@ -35,6 +35,7 @@ struct HOST_COPILOT_HANDLES
     std::optional<HOST_TYPE>   host_type;
     COPILOT_GLOBAL_CONTEXT_HDL global_context_handle;
     AGENT_ACTION_HANDLE        agent_action_handle;
+    COPILOT_SELECTION_HDL      selection_handle;
 };
 
 #endif

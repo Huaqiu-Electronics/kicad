@@ -34,27 +34,27 @@
 namespace copilot
 {
 
-struct Field
+struct FIELD
 {
     std::string name;
     std::string value;
-    
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Field, name, value )
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FIELD, name, value )
 };
 
 
-struct Component
+struct COMPONENT
 {
     std::string                                  ref;
     std::string                                  value;
     std::string                                  footprint;
     std::unordered_map<std::string, std::string> properties;
-    std::vector<Field>                           fields;
+    std::vector<FIELD>                           fields;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Component, ref, value, footprint, properties, fields )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COMPONENT, ref, value, footprint, properties, fields )
 };
 
-struct Node
+struct NODE
 {
     std::string ref;
     std::string pin;
@@ -62,23 +62,23 @@ struct Node
     std::string pinfunction;
     std::string pintype;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Node, ref, pin, pinfunction, pintype )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NODE, ref, pin, pinfunction, pintype )
 };
 
-struct Net
+struct NET
 {
     std::string       name;
-    std::vector<Node> nodes;
+    std::vector<NODE> nodes;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Net, name, nodes )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NET, name, nodes )
 };
 
-struct Netlist
+struct NETLIST
 {
-    std::vector<Component> components;
-    std::vector<Net>       nets;
+    std::vector<COMPONENT> components;
+    std::vector<NET>       nets;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Netlist, components, nets )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NETLIST, components, nets )
 };
 
 

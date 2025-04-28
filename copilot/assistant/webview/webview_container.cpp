@@ -182,7 +182,15 @@ void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
             fmt::format( " {}({});",
                          magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd ),
             &out );
+
+    wxLogDebug( "fire_host_active_cmd: %s", out );
 }
+
+void WEBVIEW_CONTAINER::on_host_selection_changed( bool has_selection )
+{
+
+}
+
 
 void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {

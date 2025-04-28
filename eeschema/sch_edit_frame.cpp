@@ -23,6 +23,7 @@
  */
 
 #include "magic_enum.hpp"
+#include "nlohmann/json.hpp"
 #include "passive_action/agent/agent_action.h"
 #include "passive_action/agent/agent_action_handle.h"
 #include <algorithm>
@@ -110,6 +111,7 @@
 #include <project/project_local_settings.h>
 
 #include <context/sch/sch_copilot_global_context.h>
+#include <context/sch/details/sch_netlist.h>
 #include <copilot/sch_copilot_ui.h>
 #include <copilot/sch_agent_action_executor.h>
 #include <copilot/sch_copilot_cmd.h>
@@ -161,7 +163,8 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_copilotContextCache(new SCH_COPILOT_GLOBAL_CONTEXT ),
     m_symbolCmdContext(new SYMBOL_CMD_CONTEXT),
     m_copilotGlobalContextHdl(std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>( [&]() -> COPILOT_GLOBAL_CONTEXT const&{  UpdateCopilotContextCache(); return *m_copilotContextCache;  } )),
-    m_copilotAgentActionHdl(std::make_shared<AGENT_ACTION_HANDLE_T>([&](AGENT_ACTION const& act ){ ExecuteAgentAction(act);}))
+    m_copilotAgentActionHdl(std::make_shared<AGENT_ACTION_HANDLE_T>([&](AGENT_ACTION const& act ){ ExecuteAgentAction(act);})),
+    m_copilotSelectionHdl(std::make_shared<SELECTION_HDL_T>([this](){ return nlohmann::json(GetSelection()).dump(); }))
 {
     InitCopilotContext();
     m_maximizeByDefault = true;
