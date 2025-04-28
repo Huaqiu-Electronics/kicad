@@ -5,7 +5,7 @@
 
 ### ACTIVE CMD
 
-Fired by KiCad , executed by the plugin
+Fired by KiCad , executed by the plugin , mainly the context menu cmd
 
 ### Passive CMD
 

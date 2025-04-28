@@ -28,7 +28,9 @@
 enum PASSIVE_ACTION_CATEGORY
 {
     INVALID,
+      // The action is not binding to specific host type
     PA_WEB_HOST,
+      // The action must be executed in specific host type
     PA_AGENT
 
 };
