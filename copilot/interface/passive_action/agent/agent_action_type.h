@@ -32,6 +32,8 @@
 enum class AGENT_ACTION_TYPE
 {
     INVALID,
+    COMMON_BEGIN,
+    ask_selection,
 
     SCH_BEGIN,
 

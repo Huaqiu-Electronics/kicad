@@ -22,17 +22,47 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef ASK_SELECTION_H
-#define ASK_SELECTION_H
+#ifndef GENERAL_CHAT_CMD_H
+#define GENERAL_CHAT_CMD_H
 
-class ASK_SELECTION
+#include <nlohmann/json.hpp>
+#include <string>
+#include <vector>
+
+
+struct ChatCompletionSystemMessageParam
 {
-public:
-    ASK_SELECTION();
-    ~ASK_SELECTION();
+    std::string content;
+    std::string role = "system";
+    
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ChatCompletionSystemMessageParam, content, role )
+};
 
-private:
 
+struct USR_INPUT
+{
+    std::string              input_text;
+    std::vector<std::string> base64_images;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( USR_INPUT, input_text, base64_images )
+};
+
+
+struct GENERIC_CHAT_CONTEXT
+{
+    USR_INPUT chat;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( GENERIC_CHAT_CONTEXT, chat )
+};
+
+
+struct GENERAL_CHAT_CMD
+{
+    GENERIC_CHAT_CONTEXT                          context;
+    std::vector<ChatCompletionSystemMessageParam> messages;
+    std::string                                   type = "chat.user.generic_chat";
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( GENERAL_CHAT_CMD, context, messages, type )
 };
 
 #endif

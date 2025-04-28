@@ -40,6 +40,9 @@
 #include <active_action/cmd/sch/sch_copilot_cmd_type.h>
 #include <utils/copilot_utils.h>
 #include <webview/webview_container.h>
+#include <chat/general_chat_cmd.h>
+#include <context/sch/details/sch_netlist.h>
+#include <fmt/format.h>
 
 void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
@@ -65,6 +68,19 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         case AGENT_ACTION_TYPE::highlight_symbol:
         {
             hight_symbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
+        }
+        break;
+        case AGENT_ACTION_TYPE::ask_selection:
+        {
+            m_copilotPanel->fire_host_active_cmd(
+                    nlohmann::json(
+                            GENERAL_CHAT_CMD{
+                                    { {  aAction.context.get<std::string>() } },
+                                    { { fmt::format(
+                                            "The user is asking about the following netlist: {}",
+                                            nlohmann::json( GetSelection() ).dump() ) } } } )
+                            .dump()
+                            .c_str() );
         }
         break;
         default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
