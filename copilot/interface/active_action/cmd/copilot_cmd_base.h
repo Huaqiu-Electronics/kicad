@@ -30,11 +30,10 @@
 #include <optional>
 #include <string>
 #include <context/context_fields.h>
-#include <passive_action/passive_cmd.h>
 
 
 template <class GLOBAL_CONTEXT>
-struct COPILOT_CMD_BASE : PASSIVE_CMD
+struct COPILOT_CMD_BASE 
 {
     std::optional<std::string>    global_context_uuid;
     std::optional<GLOBAL_CONTEXT> design_global_context;
@@ -46,7 +45,6 @@ struct COPILOT_CMD_BASE : PASSIVE_CMD
         if( nlohmann_json_t.design_global_context )
             nlohmann_json_j[kDesignGlobalContext] = *nlohmann_json_t.design_global_context;
 
-        to_json( nlohmann_json_j, static_cast<PASSIVE_CMD const&>( nlohmann_json_t ) );
     }
     friend void from_json( const nlohmann ::json& nlohmann_json_j,
                            COPILOT_CMD_BASE&      nlohmann_json_t )
@@ -63,7 +61,6 @@ struct COPILOT_CMD_BASE : PASSIVE_CMD
                     nlohmann_json_j.at( kDesignGlobalContext ).get<GLOBAL_CONTEXT>();
         }
 
-        from_json( nlohmann_json_j, static_cast<PASSIVE_CMD&>( nlohmann_json_t ) );
     }
 };
 

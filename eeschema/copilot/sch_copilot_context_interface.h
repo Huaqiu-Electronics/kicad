@@ -38,6 +38,7 @@
 #include <context/symbol_context.h>
 #include <utils/base64.hpp>
 #include <context/sch/sch_copilot_global_context.h>
+#include <context/sch/details/sch_netlist.h>
 #include <string_utils.h>
 #include <algorithm>
 
@@ -116,9 +117,9 @@ wxString SCH_EDIT_FRAME::GetNetList()
 
 SYMBOL_CMD_CONTEXT const& SCH_EDIT_FRAME::GetSelectedSymbolContext()
 {
-    auto selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
-    auto&      selection = selTool->GetSelection();
-    SCH_SYMBOL*        symbol = dynamic_cast<SCH_SYMBOL*>( selection.Front() );
+    auto        selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
+    auto&       selection = selTool->GetSelection();
+    SCH_SYMBOL* symbol = dynamic_cast<SCH_SYMBOL*>( selection.Front() );
 
     if( !symbol )
     {
@@ -150,6 +151,12 @@ wxString SCH_EDIT_FRAME::GetSymbolNetList( wxString const& aDesignator )
 {
     WXUNUSED( aDesignator );
     return GetNetList();
+}
+
+
+copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
+{
+    return {};
 }
 
 #endif

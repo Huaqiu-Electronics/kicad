@@ -35,7 +35,7 @@ namespace copilot
 
 struct SCH_SHEETS_CONTEXT
 {
-    std::unordered_map<std::string, Netlist> sheets;
+    std::unordered_map<std::string, NETLIST> sheets;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( SCH_SHEETS_CONTEXT, sheets )
 };
 

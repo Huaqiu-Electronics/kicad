@@ -27,6 +27,7 @@
 
 #include <functional>
 #include <memory>
+#include <string>
 
 
 struct COPILOT_GLOBAL_CONTEXT;
@@ -40,5 +41,9 @@ using COPILOT_GLOBAL_CONTEXT_HDL = std::weak_ptr<std::function<COPILOT_GLOBAL_CO
 using COPILOT_GLOBAL_CONTEXT_OWNED_HDL =
         std::shared_ptr<std::function<COPILOT_GLOBAL_CONTEXT const&()>>;
 
+
+using SELECTION_HDL_T = std::function<std::string()>;
+using COPILOT_SELECTION_HDL = std::weak_ptr<std::function<std::string()>>;
+using COPILOT_SELECTION_OWNED_HDL = std::shared_ptr<std::function<std::string()>>;
 
 #endif
