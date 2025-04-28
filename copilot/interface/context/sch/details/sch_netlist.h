@@ -33,43 +33,54 @@
 
 namespace copilot
 {
-    struct Pin {
-        std::string number;
-        std::string net;
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Pin, number, net)
-    };
 
-    struct Component {
-        std::string ref;
-        std::string value;
-        std::string footprint;
-        std::unordered_map<std::string, std::string> properties;
-        std::vector<Pin> pins;
+struct Field
+{
+    std::string name;
+    std::string value;
     
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Component, ref, value, footprint, properties, pins)
-    };
-    
-    struct Node {
-        std::string ref;
-        std::string pin;
-    
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Node, ref, pin)
-    };
-    
-    struct Net {
-        std::string name;
-        std::vector<Node> nodes;
-    
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Net, name, nodes)
-    };
-    
-    struct Netlist {
-        std::vector<Component> components;
-        std::vector<Net> nets;
-    
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Netlist, components, nets)
-    };
-    
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Field, name, value )
+};
+
+
+struct Component
+{
+    std::string                                  ref;
+    std::string                                  value;
+    std::string                                  footprint;
+    std::unordered_map<std::string, std::string> properties;
+    std::vector<Field>                           fields;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Component, ref, value, footprint, properties, fields )
+};
+
+struct Node
+{
+    std::string ref;
+    std::string pin;
+    // NOTE The pinfunction is the pin name in fact, which is the pin num by default if the pin name is not defined.
+    std::string pinfunction;
+    std::string pintype;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Node, ref, pin, pinfunction, pintype )
+};
+
+struct Net
+{
+    std::string       name;
+    std::vector<Node> nodes;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Net, name, nodes )
+};
+
+struct Netlist
+{
+    std::vector<Component> components;
+    std::vector<Net>       nets;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( Netlist, components, nets )
+};
+
 
 } // namespace copilot
 
