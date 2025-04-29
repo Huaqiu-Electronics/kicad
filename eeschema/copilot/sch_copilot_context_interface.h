@@ -159,20 +159,21 @@ wxString SCH_EDIT_FRAME::GetSymbolNetList( wxString const& aDesignator )
     return GetNetList();
 }
 
-
-inline auto get_fields( SCH_SHEET_PATH* aSheetPath, const std::vector<SCH_FIELD>& fields )
-{
-    std::vector<copilot::FIELD> result;
-    for( const auto& field : fields )
-    {
-        result.push_back( { field.GetName().ToStdString(),
-                            field.GetShownText( aSheetPath, false ).ToStdString() } );
-    }
-    return result;
-}
-
 copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
 {
+    static const auto get_fields =
+            []( SCH_SHEET_PATH* aSheetPath, const std::vector<SCH_FIELD>& fields )
+    {
+        std::vector<copilot::FIELD> result;
+
+        for( const auto& field : fields )
+            result.push_back( { field.GetName().ToStdString(),
+                                field.GetShownText( aSheetPath, false ).ToStdString() } );
+
+        return result;
+    };
+
+
     auto             selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
     auto&            selections = selTool->GetSelection();
     copilot::NETLIST netlist;
