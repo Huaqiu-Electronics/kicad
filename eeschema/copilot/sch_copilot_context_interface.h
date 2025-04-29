@@ -201,52 +201,50 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
         if( subgraphs.empty() )
             continue;
 
-
         for( CONNECTION_SUBGRAPH* subgraph : subgraphs )
         {
-            bool                       contains_selection_pin = false;
-            const auto                 net_name = subgraph->GetNetName();
-            const auto                 net_name_code = net_name.ToStdString();
-            std::vector<copilot::NODE> nodes;
+            if( !std::any_of( subgraph->GetItems().begin(), subgraph->GetItems().end(),
+                              [&selection_pins]( SCH_ITEM* item )
+                              {
+                                  return item->Type() == SCH_PIN_T
+                                         && selection_pins.contains(
+                                                 static_cast<SCH_PIN*>( item ) );
+                              } ) )
+                continue;
 
             const SCH_SHEET_PATH& sheet = subgraph->GetSheet();
+            const std::string     net_name_code = subgraph->GetNetName().ToStdString();
+
+
+            if( !uniq_nets.contains( net_name_code ) )
+            {
+                uniq_nets.try_emplace( net_name_code, std::make_shared<copilot::NET>(
+                                                              copilot::NET{ net_name_code } ) );
+            }
+
+            auto& nodes = uniq_nets[net_name_code]->nodes;
 
             for( SCH_ITEM* item : subgraph->GetItems() )
             {
-                if( item->Type() == SCH_PIN_T )
-                {
-                    SCH_PIN* pin = static_cast<SCH_PIN*>( item );
+                if( item->Type() != SCH_PIN_T )
+                    continue;
 
-                    if( selection_pins.contains( pin ) )
-                        contains_selection_pin = true;
+                SCH_PIN*    pin = static_cast<SCH_PIN*>( item );
+                SCH_SYMBOL* symbol = dynamic_cast<SCH_SYMBOL*>( pin->GetParentSymbol() );
 
-                    SCH_SYMBOL* symbol = dynamic_cast<SCH_SYMBOL*>( pin->GetParentSymbol() );
+                if( !symbol )
+                    continue;
 
-                    if( !symbol )
-                        continue;
-
-                    nodes.emplace_back( copilot::NODE{
-                            symbol->GetRef( &sheet ).ToStdString(),
-                            pin->GetShownNumber().ToStdString(),
-                            pin->GetShownName().ToStdString(),
-                            PinShapeGetText( pin->GetShape() ).ToStdString(),
-                    } );
-                }
-            }
-
-            if( contains_selection_pin )
-            {
-                if( !uniq_nets.contains( net_name_code ) )
-                    uniq_nets.try_emplace( net_name_code, std::make_shared<copilot::NET>(
-                                                                  copilot::NET{ net_name_code } ) );
-
-                auto& net = uniq_nets[net_name_code];
-
-                net->net_name = net_name_code;
-                net->nodes.insert( net->nodes.end(), nodes.begin(), nodes.end() );
+                nodes.emplace_back( copilot::NODE{
+                        symbol->GetRef( &sheet ).ToStdString(),
+                        pin->GetShownNumber().ToStdString(),
+                        pin->GetShownName().ToStdString(),
+                        PinShapeGetText( pin->GetShape() ).ToStdString(),
+                } );
             }
         }
     }
+
 
     for( auto& [k, v] : uniq_nets )
     {
