@@ -167,7 +167,7 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
         std::vector<copilot::FIELD> result;
 
         for( const auto& field : fields )
-            result.push_back( { field.GetName().ToStdString(),
+            result.emplace_back ( copilot::FIELD{ field.GetName().ToStdString(),
                                 field.GetShownText( aSheetPath, false ).ToStdString() } );
 
         return result;
@@ -187,7 +187,7 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
         {
             auto       symbol = static_cast<SCH_SYMBOL*>( selection );
             const auto ref = symbol->GetRef( sch_path ).ToStdString();
-            netlist.components.push_back( { ref, get_fields( sch_path, symbol->GetFields() ) } );
+            netlist.components.emplace_back(  copilot::COMPONENT { ref, get_fields( sch_path, symbol->GetFields() ) } );
 
             for( const auto pin : symbol->GetPins( sch_path ) )
                 selection_pins.insert( pin );
@@ -225,7 +225,7 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
                     if( !symbol )
                         continue;
 
-                    nodes.push_back( {
+                    nodes.emplace_back( copilot::NODE{
                             symbol->GetRef( &sheet ).ToStdString(),
                             pin->GetShownNumber().ToStdString(),
                             pin->GetShownName().ToStdString(),
