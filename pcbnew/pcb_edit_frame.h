@@ -28,6 +28,7 @@
 #include <variant>
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
+#include "copilot/pcb_copilot_ds_fwd.h"
 
 class ACTION_PLUGIN;
 class PCB_SCREEN;
@@ -61,9 +62,6 @@ class BOARD_NETLIST_UPDATER;
 class ACTION_MENU;
 class TOOL_ACTION;
 class DIALOG_BOARD_SETUP;
-
-struct PCB_COPILOT_GLOBAL_CONTEXT;
-class WEBVIEW_CONTAINER;
 
 #ifdef KICAD_IPC_API
 class KICAD_API_SERVER;
@@ -942,12 +940,16 @@ public:
     // Agent APIS
     void LaunchPlugin(std::string const& aPluginName, std::optional<nlohmann::json> aParams);
 
+    copilot::BOARD GetSelection() const;
+
+    void SetHasSelection( bool aHasSelection );
 
 private:
     WEBVIEW_CONTAINER*                          m_copilotPanel{};
     std::unique_ptr<PCB_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL            m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE                   m_copilotAgentActionHdl;
+    COPILOT_SELECTION_OWNED_HDL                 m_copilotSelectionHdl;
 };
 
 #endif  // __PCB_EDIT_FRAME_H__

@@ -1176,11 +1176,11 @@ void SCH_SELECTION_TOOL::OnIdle( wxIdleEvent& aEvent )
             m_frame->GetCanvas()->SetCurrentCursor( m_nonModifiedCursor );
     }
 
-    if( auto sch_editor = dynamic_cast<SCH_EDIT_FRAME*>( m_frame );
-        sch_editor && m_pre_selection != m_selection )
+    if( auto editor = dynamic_cast<SCH_EDIT_FRAME*>( m_frame );
+        editor && m_pre_selection != m_selection )
     {
         m_pre_selection = m_selection;
-        sch_editor->SetHasSelection( (
+        editor->SetHasSelection( (
                 [&]()
                 {
                     for( auto it : m_selection.GetItems() )

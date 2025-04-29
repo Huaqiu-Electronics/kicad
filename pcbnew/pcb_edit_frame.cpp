@@ -125,6 +125,7 @@
 #include <copilot/pcb_copilot_context_initialization.h>
 #include <copilot/pcb_agent_action_executor.h>
 #include <copilot/pcb_agent_api.h>
+#include <context/pcb/details/board_ir.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_server.h>
@@ -224,7 +225,8 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
          UpdateCopilotContextCache();
         return *m_copilotContextCache;  
     } )),
-    m_copilotAgentActionHdl(std::make_shared<AGENT_ACTION_HANDLE_T>([&](AGENT_ACTION const& act ){ ExecuteAgentAction(act);}))
+    m_copilotAgentActionHdl(std::make_shared<AGENT_ACTION_HANDLE_T>([&](AGENT_ACTION const& act ){ ExecuteAgentAction(act);})),
+    m_copilotSelectionHdl(std::make_shared<SELECTION_HDL_T>([this](){ return nlohmann::json(GetSelection()).dump(); }))
 {
     InitCopilotContext();
     m_maximizeByDefault = true;

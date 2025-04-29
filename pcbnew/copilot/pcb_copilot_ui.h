@@ -37,9 +37,9 @@
 
 void PCB_EDIT_FRAME::InitCopilotPanel()
 {
-    m_copilotPanel =  new WEBVIEW_CONTAINER(
+    m_copilotPanel = new WEBVIEW_CONTAINER(
             this, { m_copilotContextCache->host_version_info, m_copilotGlobalContextHdl,
-                    m_copilotAgentActionHdl } );
+                    m_copilotAgentActionHdl, m_copilotSelectionHdl } );
 }
 
 void PCB_EDIT_FRAME::InitCopilotAui()
