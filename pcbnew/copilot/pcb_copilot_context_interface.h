@@ -25,11 +25,13 @@
 #ifndef PCB_COPILOT_CONTEXT_INTERFACE_H
 #define PCB_COPILOT_CONTEXT_INTERFACE_H
 
+#include <webview/webview_container.h>
 #include <board_design_settings.h>
 #include <string_utils.h>
 #include <algorithm>
 #include <pcb_edit_frame.h>
 #include <context/pcb/pcb_copilot_global_context.h>
+#include <context/pcb/details/board_ir.h>
 #include <string>
 #include <board.h>
 #include <footprint.h>
@@ -68,5 +70,17 @@ void PCB_EDIT_FRAME::UpdateCopilotContextCache()
     })();
 }
 
+
+copilot::BOARD PCB_EDIT_FRAME::GetSelection() const
+{
+    return {};
+}
+
+
+void PCB_EDIT_FRAME::SetHasSelection( bool aHasSelection )
+{
+    if( m_copilotPanel )
+        m_copilotPanel->on_host_selection_changed( aHasSelection );
+}
 
 #endif
