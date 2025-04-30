@@ -25,6 +25,8 @@
 #ifndef PCB_COPILOT_CONTEXT_INTERFACE_H
 #define PCB_COPILOT_CONTEXT_INTERFACE_H
 
+#include "tool/tool_manager.h"
+#include "tools/pcb_selection_tool.h"
 #include <webview/webview_container.h>
 #include <board_design_settings.h>
 #include <string_utils.h>
@@ -73,6 +75,19 @@ void PCB_EDIT_FRAME::UpdateCopilotContextCache()
 
 copilot::BOARD PCB_EDIT_FRAME::GetSelection() const
 {
+
+    auto  selTool = GetToolManager()->GetTool<PCB_SELECTION_TOOL>();
+    auto& selections = selTool->GetSelection();
+
+
+    for( const auto& selection : selections )
+    {
+        if( selection->IsType( { SCH_SYMBOL_T } ) )
+        {
+        }
+    }
+
+
     return {};
 }
 

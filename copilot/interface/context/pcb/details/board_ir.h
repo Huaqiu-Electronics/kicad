@@ -25,23 +25,127 @@
 #ifndef BOARD_IR_H
 #define BOARD_IR_H
 
-#include <nlohmann/json.hpp>
 #include <string>
-
+#include <vector>
+#include <nlohmann/json.hpp>
 
 namespace copilot
 {
 
+struct TEXT_ITEM
+{
+    std::string type;
+    std::string layer;
+    std::string text;
+    double      x;
+    double      y;
+    double      rotation;
+    std::string hJustify;
+    std::string vJustify;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( TEXT_ITEM, type, layer, text, x, y, rotation, hJustify,
+                                    vJustify )
+};
+
+struct LINE_ITEM
+{
+    std::string type;
+    std::string layer;
+    double      x1;
+    double      y1;
+    double      x2;
+    double      y2;
+    double      width;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( LINE_ITEM, type, layer, x1, y1, x2, y2, width )
+};
+
+struct CIRCLE_ITEM
+{
+    std::string type;
+    std::string layer;
+    double      x;
+    double      y;
+    double      radius;
+    double      width;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( CIRCLE_ITEM, type, layer, x, y, radius, width )
+};
+
+struct ARC_ITEM
+{
+    std::string type;
+    std::string layer;
+    double      x;
+    double      y;
+    double      radius;
+    double      start;
+    double      end;
+    double      width;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ARC_ITEM, type, layer, x, y, radius, start, end, width )
+};
+
+struct SEGMENT
+{
+    double x1;
+    double y1;
+    double x2;
+    double y2;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SEGMENT, x1, y1, x2, y2 )
+};
+
+struct ZONE
+{
+    std::string          layer;
+    std::vector<SEGMENT> segments;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ZONE, layer, segments )
+};
+
+struct PAD
+{
+    std::string net;
+    std::string pin;
+    std::string type;
+    std::string shape;
+    double      x;
+    double      y;
+    double      width;
+    double      height;
+    double      rotation;
+    std::string layer;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PAD, net, pin, type, shape, x, y, width, height, rotation,
+                                    layer )
+};
+
+struct FOOTPRINT
+{
+    std::string      ref;
+    std::string      value;
+    std::string      footprint;
+    double           x;
+    double           y;
+    double           rotation;
+    std::vector<PAD> pads;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FOOTPRINT, ref, value, footprint, x, y, rotation, pads )
+};
 
 struct BOARD
 {
-    std::string name;
+    std::vector<TEXT_ITEM>   texts;
+    std::vector<LINE_ITEM>   lines;
+    std::vector<CIRCLE_ITEM> circles;
+    std::vector<ARC_ITEM>    arcs;
+    std::vector<ZONE>        zones;
+    std::vector<FOOTPRINT>   footprints;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD, name )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD, texts, lines, circles, arcs, zones, footprints )
 };
 
-
 } // namespace copilot
-
 
 #endif
