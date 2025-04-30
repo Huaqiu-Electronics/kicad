@@ -30,154 +30,299 @@ namespace copilot
 constexpr const char* BOARD_JSON_SCHEMA = R"json(
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "BOARD",
+  "title": "Board",
   "type": "object",
-  "description": "Represents a complete board design including various drawing and component items.",
   "properties": {
     "texts": {
       "type": "array",
-      "description": "List of text annotations on the board.",
-      "items": { "$ref": "#/definitions/TEXT_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "text": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "rotation": { "type": "number" },
+          "hJustify": { "type": "string" },
+          "vJustify": { "type": "string" }
+        },
+        "required": ["layer", "text", "x", "y", "rotation", "hJustify", "vJustify"]
+      }
     },
     "lines": {
       "type": "array",
-      "description": "List of line segments used for board graphics or outlines.",
-      "items": { "$ref": "#/definitions/LINE_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x1": { "type": "number" },
+          "y1": { "type": "number" },
+          "x2": { "type": "number" },
+          "y2": { "type": "number" },
+          "width": { "type": "number" }
+        },
+        "required": ["layer", "x1", "y1", "x2", "y2", "width"]
+      }
     },
     "circles": {
       "type": "array",
-      "description": "List of circle elements used in board graphics.",
-      "items": { "$ref": "#/definitions/CIRCLE_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "radius": { "type": "number" },
+          "width": { "type": "number" }
+        },
+        "required": ["layer", "x", "y", "radius", "width"]
+      }
     },
     "arcs": {
       "type": "array",
-      "description": "List of arcs used in the board's geometry or silkscreen.",
-      "items": { "$ref": "#/definitions/ARC_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "start": { "$ref": "#/definitions/vector2" },
+          "end": { "$ref": "#/definitions/vector2" },
+          "mid": { "$ref": "#/definitions/vector2" }
+        },
+        "required": ["layer", "start", "end", "mid"]
+      }
     },
     "zones": {
       "type": "array",
-      "description": "List of copper fill zones defined by segments.",
-      "items": { "$ref": "#/definitions/ZONE" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "segments": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/segment" }
+          }
+        },
+        "required": ["layer", "segments"]
+      }
     },
     "footprints": {
       "type": "array",
-      "description": "Component footprints placed on the board.",
-      "items": { "$ref": "#/definitions/FOOTPRINT" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "ref": { "type": "string" },
+          "value": { "type": "string" },
+          "footprint": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "rotation": { "type": "number" },
+          "pads": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/pad" }
+          }
+        },
+        "required": ["ref", "value", "footprint", "x", "y", "rotation", "pads"]
+      }
     },
     "reference_images": {
       "type": "array",
-      "description": "Embedded reference images used for design aid.",
-      "items": { "$ref": "#/definitions/REFERENCE_IMAGE_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" },
+          "image_data": { "type": "string" }
+        },
+        "required": ["layer", "x", "y", "width", "height", "image_data"]
+      }
     },
     "fields": {
       "type": "array",
-      "description": "Fields representing metadata or title block information.",
-      "items": { "$ref": "#/definitions/FIELD_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "text": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "rotation": { "type": "number" }
+        },
+        "required": ["layer", "text", "x", "y", "rotation"]
+      }
     },
     "generators": {
       "type": "array",
-      "description": "Items generated dynamically based on identifiers.",
-      "items": { "$ref": "#/definitions/GENERATOR_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "generator_id": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" }
+        },
+        "required": ["layer", "generator_id", "x", "y"]
+      }
     },
     "textboxes": {
       "type": "array",
-      "description": "Multi-line text boxes used for annotations.",
-      "items": { "$ref": "#/definitions/TEXTBOX_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "text": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" },
+          "rotation": { "type": "number" }
+        },
+        "required": ["layer", "text", "x", "y", "width", "height", "rotation"]
+      }
     },
     "tables": {
       "type": "array",
-      "description": "Tabular data rendered on the board.",
-      "items": { "$ref": "#/definitions/TABLE_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" },
+          "cells": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "required": ["layer", "x", "y", "width", "height", "cells"]
+      }
     },
     "tablecells": {
       "type": "array",
-      "description": "Individual cells of rendered tables, possibly positioned separately.",
-      "items": { "$ref": "#/definitions/TABLECELL_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "text": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["layer", "text", "x", "y", "width", "height"]
+      }
     },
     "markers": {
       "type": "array",
-      "description": "Markers for warnings, errors, or informational notes.",
-      "items": { "$ref": "#/definitions/MARKER_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "message": { "type": "string" },
+          "severity": { "type": "string" }
+        },
+        "required": ["layer", "x", "y", "message", "severity"]
+      }
     },
     "dimensions": {
       "type": "array",
-      "description": "Dimensional measurements annotated on the board.",
-      "items": { "$ref": "#/definitions/DIMENSION_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x1": { "type": "number" },
+          "y1": { "type": "number" },
+          "x2": { "type": "number" },
+          "y2": { "type": "number" },
+          "value": { "type": "string" },
+          "dim_type": { "type": "string" }
+        },
+        "required": ["layer", "x1", "y1", "x2", "y2", "value", "dim_type"]
+      }
     },
     "targets": {
       "type": "array",
-      "description": "Target points used for alignment or fiducials.",
-      "items": { "$ref": "#/definitions/TARGET_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "layer": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "diameter": { "type": "number" }
+        },
+        "required": ["layer", "x", "y", "diameter"]
+      }
     },
     "item_lists": {
       "type": "array",
-      "description": "Lists of item identifiers for grouping or referencing.",
-      "items": { "$ref": "#/definitions/ITEM_LIST" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["item_ids"]
+      }
     },
     "netinfos": {
       "type": "array",
-      "description": "Net information mapping names to numeric codes.",
-      "items": { "$ref": "#/definitions/NETINFO_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "netname": { "type": "string" },
+          "netcode": { "type": "integer" }
+        },
+        "required": ["netname", "netcode"]
+      }
     },
     "groups": {
       "type": "array",
-      "description": "Groups of item identifiers used for logical or visual grouping.",
-      "items": { "$ref": "#/definitions/GROUP_ITEM" }
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["item_ids"]
+      }
     },
-    "length_unit": {
-      "type": "string",
-      "description": "The unit of length used in the board design."
-    }
-  }
-  "required": [],
+    "vias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "layers": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "drill_value": { "type": "integer" },
+          "via_type": { "type": "string" },
+          "start": { "$ref": "#/definitions/vector2" },
+          "end": { "$ref": "#/definitions/vector2" }
+        },
+        "required": ["layers", "drill_value", "via_type", "start", "end"]
+      }
+    },
+    "board_length_unit": { "type": "string" }
+  },
+  "required": ["texts", "lines", "circles", "arcs", "zones", "footprints", "reference_images",
+               "fields", "generators", "textboxes", "tables", "tablecells", "markers",
+               "dimensions", "targets", "item_lists", "netinfos", "groups", "vias",
+               "board_length_unit"],
   "definitions": {
-    "TEXT_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string", "description": "Layer the text belongs to." },
-        "text": { "type": "string", "description": "The text content." },
-        "x": { "type": "number", "description": "X-coordinate of the text." },
-        "y": { "type": "number", "description": "Y-coordinate of the text." },
-        "rotation": { "type": "number", "description": "Text rotation in degrees." },
-        "hJustify": { "type": "string", "description": "Horizontal justification." },
-        "vJustify": { "type": "string", "description": "Vertical justification." }
-      },
-      "required": ["layer", "text", "x", "y"]
-    },
-    "LINE_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x1": { "type": "number" },
-        "y1": { "type": "number" },
-        "x2": { "type": "number" },
-        "y2": { "type": "number" },
-        "width": { "type": "number" }
-      },
-      "required": ["layer", "x1", "y1", "x2", "y2"]
-    },
-    "CIRCLE_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "radius": { "type": "number" },
-        "width": { "type": "number" }
-      },
-      "required": ["layer", "x", "y", "radius"]
-    },
-    "ARC_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "start": { "$ref": "#/definitions/VECTOR2" },
-        "end": { "$ref": "#/definitions/VECTOR2" },
-        "mid": { "$ref": "#/definitions/VECTOR2" }
-      },
-      "required": ["layer", "start", "end", "mid"]
-    },
-    "VECTOR2": {
+    "vector2": {
       "type": "object",
       "properties": {
         "x": { "type": "integer" },
@@ -185,7 +330,7 @@ constexpr const char* BOARD_JSON_SCHEMA = R"json(
       },
       "required": ["x", "y"]
     },
-    "SEGMENT": {
+    "segment": {
       "type": "object",
       "properties": {
         "x1": { "type": "number" },
@@ -195,18 +340,7 @@ constexpr const char* BOARD_JSON_SCHEMA = R"json(
       },
       "required": ["x1", "y1", "x2", "y2"]
     },
-    "ZONE": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "segments": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/SEGMENT" }
-        }
-      },
-      "required": ["layer", "segments"]
-    },
-    "PAD": {
+    "pad": {
       "type": "object",
       "properties": {
         "net": { "type": "string" },
@@ -220,164 +354,11 @@ constexpr const char* BOARD_JSON_SCHEMA = R"json(
         "rotation": { "type": "number" },
         "layer": { "type": "string" }
       },
-      "required": ["net", "pin", "x", "y", "width", "height"]
-    },
-    "FOOTPRINT": {
-      "type": "object",
-      "properties": {
-        "ref": { "type": "string" },
-        "value": { "type": "string" },
-        "footprint": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "rotation": { "type": "number" },
-        "pads": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/PAD" }
-        }
-      },
-      "required": ["ref", "value", "footprint", "x", "y"]
-    },
-    "REFERENCE_IMAGE_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "width": { "type": "number" },
-        "height": { "type": "number" },
-        "image_data": { "type": "string" }
-      },
-      "required": ["layer", "x", "y", "image_data"]
-    },
-    "FIELD_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "text": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "rotation": { "type": "number" }
-      },
-      "required": ["layer", "text", "x", "y"]
-    },
-    "GENERATOR_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "generator_id": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" }
-      },
-      "required": ["layer", "generator_id", "x", "y"]
-    },
-    "TEXTBOX_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "text": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "width": { "type": "number" },
-        "height": { "type": "number" },
-        "rotation": { "type": "number" }
-      },
-      "required": ["layer", "text", "x", "y"]
-    },
-    "TABLE_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "width": { "type": "number" },
-        "height": { "type": "number" },
-        "cells": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": { "type": "string" }
-          }
-        }
-      },
-      "required": ["layer", "x", "y", "cells"]
-    },
-    "TABLECELL_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "text": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "width": { "type": "number" },
-        "height": { "type": "number" }
-      },
-      "required": ["layer", "text", "x", "y"]
-    },
-    "MARKER_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "message": { "type": "string" },
-        "severity": { "type": "string" }
-      },
-      "required": ["layer", "x", "y", "message"]
-    },
-    "DIMENSION_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x1": { "type": "number" },
-        "y1": { "type": "number" },
-        "x2": { "type": "number" },
-        "y2": { "type": "number" },
-        "value": { "type": "string" },
-        "dim_type": { "type": "string" }
-      },
-      "required": ["layer", "x1", "y1", "x2", "y2"]
-    },
-    "TARGET_ITEM": {
-      "type": "object",
-      "properties": {
-        "layer": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "diameter": { "type": "number" }
-      },
-      "required": ["layer", "x", "y", "diameter"]
-    },
-    "ITEM_LIST": {
-      "type": "object",
-      "properties": {
-        "item_ids": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
-      },
-      "required": ["item_ids"]
-    },
-    "NETINFO_ITEM": {
-      "type": "object",
-      "properties": {
-        "netname": { "type": "string" },
-        "netcode": { "type": "integer" }
-      },
-      "required": ["netname", "netcode"]
-    },
-    "GROUP_ITEM": {
-      "type": "object",
-      "properties": {
-        "item_ids": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
-      },
-      "required": ["item_ids"]
+      "required": ["net", "pin", "type", "shape", "x", "y", "width", "height", "rotation", "layer"]
     }
   }
-})json";
+}
+)json";
 }
 
 
