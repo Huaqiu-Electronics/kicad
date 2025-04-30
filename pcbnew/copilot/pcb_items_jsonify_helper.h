@@ -230,9 +230,10 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
         case PCB_VIA_T:
         {
             auto via = dynamic_cast<PCB_VIA*>( selection );
+
             if( via )
             {
-                copilot::VIA p;
+                copilot::VIA v;
 
                 static const auto get_readable_via_t = []( VIATYPE type ) -> std::string
                 {
@@ -245,15 +246,17 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                     }
                     return "UNKNOWN";
                 };
-                p.drill_value = via->GetDrillValue();
-                p.via_type = get_readable_via_t( via->GetViaType() );
-                p.start = toVector2( via->GetStart() );
-                p.end = toVector2( via->GetEnd() );
+                v.drill_value = via->GetDrillValue();
+                v.via_type = get_readable_via_t( via->GetViaType() );
+                v.start = toVector2( via->GetStart() );
+                v.end = toVector2( via->GetEnd() );
 
                 for( const auto& layer : via->GetLayerSet().Seq() )
                 {
-                    p.layers.push_back( LayerName( layer ).ToStdString() );
+                    v.layers.push_back( LayerName( layer ).ToStdString() );
                 }
+
+                board.vias.push_back( v );
             }
             break;
         }
