@@ -28,7 +28,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-static constexpr auto kConfigVersion = "0.0.7";
+#include "copilot_config_version.h"
 
 struct DATA_BURIED_POINT_SETTINGS
 {
@@ -48,7 +48,6 @@ struct WEBVIEW_PATH
 
 struct WEBVIEW_SETTINGS
 {
-
 #if defined( _WIN32 )
     std::string url = "https://chat.eda.cn/";
 #else
@@ -71,14 +70,21 @@ struct DIALOG_GEOMETRY
 };
 
 
-struct COPILOT_SETTINGS
+struct IMMUTABLE_SETTINGS
 {
     DATA_BURIED_POINT_SETTINGS data_buried_point_settings;
     WEBVIEW_SETTINGS           webview_settings;
     std::string                version = kConfigVersion;
-    DIALOG_GEOMETRY            image_viewer_geometry;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_SETTINGS, data_buried_point_settings, webview_settings,
-                                    image_viewer_geometry, version )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( IMMUTABLE_SETTINGS, data_buried_point_settings,
+                                    webview_settings, version )
+};
+
+
+struct MUTABLE_SETTINGS
+{
+    DIALOG_GEOMETRY image_viewer_geometry;
+    std::string     version = kConfigVersion;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MUTABLE_SETTINGS, image_viewer_geometry, version )
 };
 
 #endif

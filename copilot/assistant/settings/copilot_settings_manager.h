@@ -26,9 +26,10 @@
 #define COPILOT_SETTINGS_MANAGER_H
 
 #include <string>
-#include <memory>
+#include "copilot_settings.h"
 
-struct COPILOT_SETTINGS;
+
+struct IMMUTABLE_SETTINGS;
 struct WEBVIEW_PATH;
 struct DIALOG_GEOMETRY;
 class COPILOT_SETTINGS_MANAGER
@@ -40,7 +41,7 @@ public:
 
     static std::string get_copilot_setting_dir();
 
-    static std::string get_copilot_setting_path();
+    static std::string get_copilot_setting_path( std::string const& file_name );
 
     std::string const& get_data_buried_point_host() const;
 
@@ -59,11 +60,10 @@ public:
 
 private:
     COPILOT_SETTINGS_MANAGER();
-    std::unique_ptr<COPILOT_SETTINGS> _settings;
-    bool                              _settings_is_valid;
-    std::string                       _webview_chat_path;
-    std::string                       _webview_image_viewer_path;
-    bool                              _should_save{};
+    IMMUTABLE_SETTINGS _immutable_settings;
+    std::string        _webview_chat_path;
+    std::string        _webview_image_viewer_path;
+    MUTABLE_SETTINGS   _mutable_settings;
 };
 
 #endif

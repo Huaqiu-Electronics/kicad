@@ -36,6 +36,7 @@ namespace copilot
 struct BOARD
 {
     std::string name;
+
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD, name )
 };
 

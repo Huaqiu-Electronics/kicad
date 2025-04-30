@@ -24,83 +24,29 @@
 
 #include "copilot_settings_manager.h"
 #include "copilot_settings.h"
+#include "config_io_helper.h"
 
-#include <fmt/format.h>
-#include <iostream>
-#include <macros.h>
-#include <nlohmann/json.hpp>
-#include <wx/filename.h>
-#include <wx/log.h>
-#include <wx/stdpaths.h>
-#include <wx/file.h>
-#include <fstream>
 
-COPILOT_SETTINGS_MANAGER::COPILOT_SETTINGS_MANAGER() :
-        _settings( new COPILOT_SETTINGS ), _settings_is_valid( false )
+constexpr auto kMutableSettingsFileName = "mutable_settings.json";
+constexpr auto kImmutableSettingsFileName = "immutable_settings.json";
+
+COPILOT_SETTINGS_MANAGER::COPILOT_SETTINGS_MANAGER()
 {
-    // Check if the setting file exists
-    const auto setting_path = get_copilot_setting_path();
+    load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), _immutable_settings );
+    load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
 
-    if( !wxFileExists( setting_path ) )
-    {
-        wxLogTrace( "COPILOT_SETTINGS_MANAGER",
-                    wxT( "COPILOT_SETTINGS_MANAGER(): Setting file %s does not exist, creating a "
-                         "new one." ),
-                    setting_path.c_str() );
 
-        std::ofstream out( setting_path );
-        out << ( nlohmann::json( *_settings ) ).dump();
-        out.close();
-    }
-    else
-    {
-        try
-        {
-            std::ifstream in( setting_path );
-            auto          cnf = nlohmann::json::parse( in ).get<COPILOT_SETTINGS>();
+    _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings.webview_settings.url,
+                                      _immutable_settings.webview_settings.path.chat );
 
-            if( cnf.version == kConfigVersion )
-            {
-                _settings = std::make_unique<COPILOT_SETTINGS>( cnf );
-                _settings_is_valid = true;
-            }
-
-            in.close();
-        }
-        catch( const std::exception& e )
-        {
-            wxLogTrace( "COPILOT_SETTINGS_MANAGER",
-                        wxT( "COPILOT_SETTINGS_MANAGER(): Failed to parse setting file %s, using "
-                             "default settings." ) );
-        }
-    }
-
-    _webview_chat_path = fmt::format( "{}/#{}", _settings->webview_settings.url,
-                                      _settings->webview_settings.path.chat );
-
-    _webview_image_viewer_path = fmt::format( "{}/#{}", _settings->webview_settings.url,
-                                              _settings->webview_settings.path.image_viewer );
+    _webview_image_viewer_path =
+            fmt::format( "{}/#{}", _immutable_settings.webview_settings.url,
+                         _immutable_settings.webview_settings.path.image_viewer );
 }
 
 COPILOT_SETTINGS_MANAGER::~COPILOT_SETTINGS_MANAGER()
 {
-    if( !_settings_is_valid  || _should_save)
-    {
-        try
-        {
-            std::ofstream ofs( get_copilot_setting_path() );
-            ofs << nlohmann::json( *_settings ).dump();
-            ofs.close();
-        }
-        catch( std::exception& e )
-        {
-            std::cerr << e.what() << std::endl;
-        }
-        catch( ... )
-        {
-            std::cerr << "unknown exception" << std::endl;
-        }
-    }
+    save_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
 }
 
 COPILOT_SETTINGS_MANAGER& COPILOT_SETTINGS_MANAGER::get_instance()
@@ -139,30 +85,30 @@ std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_dir()
     return kCopilotSettingDir;
 }
 
-std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_path()
+std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_path( std::string const& file_name )
 {
-    return get_copilot_setting_dir() + "/copilot_settings.json";
+    return get_copilot_setting_dir() + "/" + file_name;
 }
 
 
 std::string const& COPILOT_SETTINGS_MANAGER::get_data_buried_point_host() const
 {
-    return _settings->data_buried_point_settings.host;
+    return _immutable_settings.data_buried_point_settings.host;
 }
 
 std::string const& COPILOT_SETTINGS_MANAGER::get_data_buried_point_endpoint() const
 {
-    return _settings->data_buried_point_settings.endpoint;
+    return _immutable_settings.data_buried_point_settings.endpoint;
 }
 
 std::string const& COPILOT_SETTINGS_MANAGER::get_webview_url() const
 {
-    return _settings->webview_settings.url;
+    return _immutable_settings.webview_settings.url;
 }
 
 WEBVIEW_PATH const& COPILOT_SETTINGS_MANAGER::get_webview_path() const
 {
-    return _settings->webview_settings.path;
+    return _immutable_settings.webview_settings.path;
 }
 
 std::string const& COPILOT_SETTINGS_MANAGER::get_webview_chat_path() const
@@ -177,11 +123,10 @@ std::string const& COPILOT_SETTINGS_MANAGER::get_webview_image_viewer_path() con
 
 DIALOG_GEOMETRY const& COPILOT_SETTINGS_MANAGER::get_image_viewer_geometry() const
 {
-    return _settings->image_viewer_geometry;
+    return _mutable_settings.image_viewer_geometry;
 }
 
-void COPILOT_SETTINGS_MANAGER::set_image_viewer_geometry(DIALOG_GEOMETRY const& geometry)
+void COPILOT_SETTINGS_MANAGER::set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry )
 {
-    _settings->image_viewer_geometry = geometry;
-    _should_save = true;
+    _mutable_settings.image_viewer_geometry = geometry;
 }
