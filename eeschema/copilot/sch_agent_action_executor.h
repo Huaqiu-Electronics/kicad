@@ -82,7 +82,7 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                                      "current selection of which is represented by "
                                                      "the following netlist:\n{}. The "
                                                      "netlist is defined "
-                                                     "following the json scheama:\n {}\n"
+                                                     "following the json schema:\n {}\n"
                                                      "NOTE: All the connections for any component "
                                                      "presented inside the components have been "
                                                      "included in the nets.\n"

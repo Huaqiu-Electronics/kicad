@@ -72,7 +72,7 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                                      "current selection of which is represented by "
                                                      "the following json :\n{}. It's "
                                                      "defined "
-                                                     "following the json scheama:\n {}\n"
+                                                     "following the json schema:\n {}\n"
                                                      "NOTE: You always provide clear answers "
                                                      "rather than asking for more information.\n ",
                                                      copilot::BOARD_JSON_SCHEMA, pcb ) } } } )
