@@ -81,7 +81,9 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                     { { fmt::format(
                                             "I'm working on a pcb schematic design the current selection of which is represented by the following netlist:\n{}. The "
                                             "netlist is defined "
-                                            "following the json scheama:\n {}\n NOTE: All the connections for any component presented inside the components have been included in the nets",
+                                            "following the json scheama:\n {}\n"
+                                            "NOTE: All the connections for any component presented inside the components have been included in the nets.\n"
+                                            "NOTE: You always provide clear answers rather than asking for more information.\n ",
                                             copilot::NETLIST_JSON_SCHEMA, netlist ) } } } )
                             .dump()
                             .c_str() );
