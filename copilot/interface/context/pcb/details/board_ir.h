@@ -120,6 +120,18 @@ struct PAD
                                     layer )
 };
 
+
+struct VIA
+{
+    std::vector<std::string> layers;
+    int                      drill_value;
+    std::string              via_type;
+    VECTOR2                  start;
+    VECTOR2                  end;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( VIA, layers, drill_value, via_type, start, end )
+};
+
+
 struct FOOTPRINT
 {
     std::string      ref;
@@ -279,12 +291,13 @@ struct BOARD
     std::vector<ITEM_LIST>            item_lists;
     std::vector<NETINFO_ITEM>         netinfos;
     std::vector<GROUP_ITEM>           groups;
+    std::vector<VIA>                  vias;
     std::string                       length_unit = "nm";
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD, texts, lines, circles, arcs, zones, footprints,
                                     reference_images, fields, generators, textboxes, tables,
                                     tablecells, markers, dimensions, targets, item_lists, netinfos,
-                                    groups, length_unit )
+                                    groups, vias, length_unit )
 };
 
 } // namespace copilot

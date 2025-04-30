@@ -232,26 +232,27 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             auto via = dynamic_cast<PCB_VIA*>( selection );
             if( via )
             {
-                copilot::PAD p;
-                p.pin = "";
-                p.net = via->GetNetname();
-                p.x = via->GetPosition().x;
-                p.y = via->GetPosition().y;
-                p.rotation = 0.0;
-                p.type = "via";
-                p.shape = "circle";
-                p.width = via->GetWidth();
-                p.height = via->GetWidth();
-                p.layer = LayerName( via->GetLayer() );
-                if( board.footprints.empty() )
+                copilot::VIA p;
+
+                static const auto get_readable_via_t = []( VIATYPE type ) -> std::string
                 {
-                    copilot::FOOTPRINT f;
-                    f.pads.push_back( p );
-                    board.footprints.push_back( f );
-                }
-                else
+                    switch( type )
+                    {
+                    case VIATYPE::THROUGH: return "THROUGH";
+                    case VIATYPE::BLIND_BURIED: return "BLIND_BURIED";
+                    case VIATYPE::MICROVIA: return "MICRO_VIA";
+                    case VIATYPE::NOT_DEFINED: return "NOT_DEFINED";
+                    }
+                    return "UNKNOWN";
+                };
+                p.drill_value = via->GetDrillValue();
+                p.via_type = get_readable_via_t( via->GetViaType() );
+                p.start = toVector2( via->GetStart() );
+                p.end = toVector2( via->GetEnd() );
+
+                for( const auto& layer : via->GetLayerSet().Seq() )
                 {
-                    board.footprints.back().pads.push_back( p );
+                    p.layers.push_back( LayerName( layer ).ToStdString() );
                 }
             }
             break;
