@@ -292,12 +292,12 @@ struct BOARD
     std::vector<NETINFO_ITEM>         netinfos;
     std::vector<GROUP_ITEM>           groups;
     std::vector<VIA>                  vias;
-    std::string                       length_unit = "nm";
+    std::string                       board_length_unit = "nm";
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD, texts, lines, circles, arcs, zones, footprints,
                                     reference_images, fields, generators, textboxes, tables,
                                     tablecells, markers, dimensions, targets, item_lists, netinfos,
-                                    groups, vias, length_unit )
+                                    groups, vias, board_length_unit )
 };
 
 } // namespace copilot
