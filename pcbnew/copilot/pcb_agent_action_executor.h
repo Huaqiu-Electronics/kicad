@@ -26,6 +26,10 @@
 #define PCB_AGENT_ACTION_EXECUTOR_H
 
 
+#include "chat/general_chat_cmd.h"
+#include <context/pcb/details/board_ir.h>
+#include <context/pcb/details/board_json_schema.h>
+#include "webview/webview_container.h"
 #include <context/symbol_context.h>
 #include <exception>
 #include <passive_action/agent/agent_action.h>
@@ -35,6 +39,7 @@
 #include <magic_enum.hpp>
 #include <string>
 #include <wx/log.h>
+#include <fmt/format.h>
 
 void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
@@ -54,9 +59,28 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         {
             const auto plugin_context = aAction.context.get<LAUNCH_PCB_PLUGIN_CONTEXT>();
             LaunchPlugin( plugin_context.type, plugin_context.params );
+            break;
         }
-
+        case AGENT_ACTION_TYPE::ask_selection:
+        {
+            const auto pcb = nlohmann::json( GetSelection() ).dump();
+            m_copilotPanel->fire_host_active_cmd(
+                    nlohmann::json(
+                            GENERAL_CHAT_CMD{
+                                    { { aAction.context.get<std::string>() } },
+                                    { { fmt::format( "I'm working on a pcb the "
+                                                     "current selection of which is represented by "
+                                                     "the following json :\n{}. It's "
+                                                     "defined "
+                                                     "following the json scheama:\n {}\n"
+                                                     "NOTE: You always provide clear answers "
+                                                     "rather than asking for more information.\n ",
+                                                     copilot::BOARD_JSON_SCHEMA, pcb ) } } } )
+                            .dump()
+                            .c_str() );
+        }
         break;
+
 
         default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
         }
