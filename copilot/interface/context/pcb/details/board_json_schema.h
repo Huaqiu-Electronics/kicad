@@ -123,8 +123,12 @@ constexpr const char* BOARD_JSON_SCHEMA = R"json(
       "type": "array",
       "description": "Groups of item identifiers used for logical or visual grouping.",
       "items": { "$ref": "#/definitions/GROUP_ITEM" }
+    },
+    "length_unit": {
+      "type": "string",
+      "description": "The unit of length used in the board design."
     }
-  },
+  }
   "required": [],
   "definitions": {
     "TEXT_ITEM": {
