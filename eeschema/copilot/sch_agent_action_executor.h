@@ -42,8 +42,8 @@
 #include <webview/webview_container.h>
 #include <chat/general_chat_cmd.h>
 #include <context/sch/details/sch_netlist.h>
+#include <context/sch/details/netlist_json_schema.h>
 #include <fmt/format.h>
-#include "sch_selection_prompt.h"
 
 void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
@@ -78,13 +78,17 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },
-                                    { { fmt::format(
-                                            "I'm working on a pcb schematic design the current selection of which is represented by the following netlist:\n{}. The "
-                                            "netlist is defined "
-                                            "following the json scheama:\n {}\n"
-                                            "NOTE: All the connections for any component presented inside the components have been included in the nets.\n"
-                                            "NOTE: You always provide clear answers rather than asking for more information.\n ",
-                                            copilot::NETLIST_JSON_SCHEMA, netlist ) } } } )
+                                    { { fmt::format( "I'm working on a pcb schematic design the "
+                                                     "current selection of which is represented by "
+                                                     "the following netlist:\n{}. The "
+                                                     "netlist is defined "
+                                                     "following the json scheama:\n {}\n"
+                                                     "NOTE: All the connections for any component "
+                                                     "presented inside the components have been "
+                                                     "included in the nets.\n"
+                                                     "NOTE: You always provide clear answers "
+                                                     "rather than asking for more information.\n ",
+                                                     netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
         }

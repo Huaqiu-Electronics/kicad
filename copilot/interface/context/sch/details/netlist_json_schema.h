@@ -22,8 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SCH_SELECTION_PROMPT_H
-#define SCH_SELECTION_PROMPT_H
+#ifndef NETLIST_JSON_SCHEMA_H
+#define NETLIST_JSON_SCHEMA_H
 
 namespace copilot {
 
