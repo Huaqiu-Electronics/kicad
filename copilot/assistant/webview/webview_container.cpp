@@ -202,12 +202,17 @@ void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
+#ifndef _WIN32
+
     const auto evt_url = evt.GetURL().ToStdString();
 
-    if( evt_url != _primary_url )
+    // NOTE: Adhoc, on *nux the webview is not loading the url correctly on the first time if url start with https
+    if( evt_url == COPILOT_SETTINGS_MANAGER::get_instance().get_webview_url() )
     {
         _browser->LoadURL( _primary_url );
     }
+    
+#endif // !_WIN32
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
