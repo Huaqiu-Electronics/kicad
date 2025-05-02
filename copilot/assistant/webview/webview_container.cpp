@@ -88,7 +88,10 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
         wxPanel( parent ), _browser( wxWebView::New() ),
-        _host_copilot_handles( std::move( host_copilot_handles ) )
+        _host_copilot_handles( std::move( host_copilot_handles ) ),
+        _primary_url( add_parameter_to_url(
+                COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                _host_copilot_handles.host_type ) )
 {
     send_data_buried_point();
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
@@ -110,13 +113,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
         _host_copilot_handles.host_type->session_id = generate_uuid();
     }
 
-    const auto url =
-            add_parameter_to_url( COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
-                                  _host_copilot_handles.host_type );
-
-    _browser->Create( this, wxID_ANY, url, wxDefaultPosition, wxDefaultSize );
-    // FIXME : ad hoc for macos while loading https
-    _browser->LoadURL( url );
+    _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 #ifndef __WXMAC__
@@ -156,22 +153,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
           _browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this,
           _browser->GetId() );
-
-
-    //   Start a timer to log the webview url
-    wxTimer* timer = new wxTimer( this, wxID_ANY );
-    timer->Start( 1000 );
-    Bind( wxEVT_TIMER,
-          [=]( wxTimerEvent& )
-          {
-              auto p_u = _browser->GetCurrentURL();
-              wxLogDebug( "webview url: %s", _browser->GetCurrentURL() );
-
-              if( url != p_u )
-              {
-                  _browser->LoadURL( url );
-              }
-          } );
 
 #ifdef DEBUG
 
@@ -221,8 +202,11 @@ void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
-    if( evt.GetURL() == _browser->GetCurrentURL() )
+    const auto evt_url = evt.GetURL().ToStdString();
+
+    if( evt_url != _primary_url )
     {
+        _browser->LoadURL( _primary_url );
     }
 }
 
