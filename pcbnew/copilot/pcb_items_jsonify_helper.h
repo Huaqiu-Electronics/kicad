@@ -47,6 +47,7 @@
 #include <footprint.h>
 #include <pcb_track.h>
 #include <pcb_shape.h>
+#include <wx/log.h>
 #include <zone.h>
 
 
@@ -263,6 +264,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
         case PCB_ARC_T:
         {
             auto arc = dynamic_cast<PCB_ARC*>( selection );
+
             if( arc )
             {
                 copilot::ARC_ITEM a;
@@ -272,6 +274,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 a.mid = toVector2( arc->GetMid() );
                 board.arcs.push_back( a );
             }
+            
             break;
         }
         case PCB_REFERENCE_IMAGE_T:
@@ -437,7 +440,9 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             }
             break;
         }
-        default: break;
+        default: {
+            wxLogTrace( "COPILOT", "Unknown selection type: %d", selection->Type() );
+        } break;
         }
     }
 
