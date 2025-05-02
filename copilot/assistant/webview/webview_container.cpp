@@ -46,7 +46,7 @@
 #include <context/copilot_global_context.h>
 #include <fmt/format.h>
 #include <magic_enum.hpp>
-
+#include <wx/timer.h>
 #include <thread>
 #include "http/http_client.h"
 #include "proto/data_buried_point.h"
@@ -156,6 +156,22 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
           _browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this,
           _browser->GetId() );
+
+
+    //   Start a timer to log the webview url
+    wxTimer* timer = new wxTimer( this, wxID_ANY );
+    timer->Start( 1000 );
+    Bind( wxEVT_TIMER,
+          [=]( wxTimerEvent& )
+          {
+              auto p_u = _browser->GetCurrentURL();
+              wxLogDebug( "webview url: %s", _browser->GetCurrentURL() );
+
+              if( url != p_u )
+              {
+                  _browser->LoadURL( url );
+              }
+          } );
 
 #ifdef DEBUG
 
