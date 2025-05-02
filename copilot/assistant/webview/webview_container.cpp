@@ -47,10 +47,6 @@
 #include <fmt/format.h>
 #include <magic_enum.hpp>
 
-#if wxUSE_WEBVIEW_EDGE
-#include <wx/msw/webview_edge.h>
-#endif
-
 #include <thread>
 #include "http/http_client.h"
 #include "proto/data_buried_point.h"
