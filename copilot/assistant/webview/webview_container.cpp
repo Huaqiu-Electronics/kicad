@@ -119,6 +119,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                                   _host_copilot_handles.host_type );
 
     _browser->Create( this, wxID_ANY, url, wxDefaultPosition, wxDefaultSize );
+    // FIXME : ad hoc for macos while loading https
+    _browser->LoadURL( url );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 #ifndef __WXMAC__
@@ -161,15 +163,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
 
 #ifdef DEBUG
 
-#if wxUSE_WEBVIEW_EDGE
-
-    if( auto edge = dynamic_cast<wxWebViewEdge*>( _browser ) )
-    {
-        edge->EnableAccessToDevTools( true );
-    }
-
-#endif
-
+    _browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
 }
