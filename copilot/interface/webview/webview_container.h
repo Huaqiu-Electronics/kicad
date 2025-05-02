@@ -42,7 +42,7 @@ public:
 
     void fire_host_active_cmd( const char* cmd );
 
-    void on_host_selection_changed(bool has_selection);
+    void on_host_selection_changed( bool has_selection );
 
     void OnNavigationRequest( wxWebViewEvent& evt );
     void OnNavigationComplete( wxWebViewEvent& evt );
@@ -57,11 +57,11 @@ public:
 
 private:
     std::set<std::string> _consumed_global_ctx_keys{};
-    
 
-    wxWebView*            _browser;
-    HOST_COPILOT_HANDLES  _host_copilot_handles;
-    DIALOG_IMAGE_VIEWER*  _image_viewer {};
+    wxWebView*           _browser;
+    HOST_COPILOT_HANDLES _host_copilot_handles;
+    DIALOG_IMAGE_VIEWER* _image_viewer{};
+    std::string          _primary_url;
 };
 
 #endif
