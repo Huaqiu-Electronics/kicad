@@ -35,6 +35,11 @@ COPILOT_SETTINGS_MANAGER::COPILOT_SETTINGS_MANAGER()
     load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), _immutable_settings );
     load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
 
+    auto url = _immutable_settings.webview_settings.url;
+
+    if( url.back() == '/' )
+        url = url.substr( 0, url.length() - 1 );
+
 
     _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings.webview_settings.url,
                                       _immutable_settings.webview_settings.path.chat );
