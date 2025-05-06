@@ -99,7 +99,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
         case PCB_TEXT_T:
         {
             auto               text = static_cast<PCB_TEXT*>( selection );
-            copilot::TEXT_ITEM t;
+            copilot::PCB_TEXT t;
             t.layer = LayerName( text->GetLayer() );
             t.text = text->GetText();
             t.x = text->GetPosition().x;
@@ -115,7 +115,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             auto track = dynamic_cast<PCB_TRACK*>( selection );
             if( track )
             {
-                copilot::LINE_ITEM l;
+                copilot::PCB_TRACK l;
                 l.layer = LayerName( track->GetLayer() );
                 l.x1 = track->GetStart().x;
                 l.y1 = track->GetStart().y;
@@ -135,7 +135,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 {
                 case SHAPE_T::SEGMENT:
                 {
-                    copilot::LINE_ITEM l;
+                    copilot::LINE_SHAPE_ITEM l;
                     l.layer = LayerName( shape->GetLayer() );
                     l.x1 = shape->GetStart().x;
                     l.y1 = shape->GetStart().y;
@@ -147,7 +147,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 }
                 case SHAPE_T::CIRCLE:
                 {
-                    copilot::CIRCLE_ITEM c;
+                    copilot::CIRCLE_SHAPE_ITEM c;
                     c.layer = LayerName( shape->GetLayer() );
                     c.x = shape->GetCenter().x;
                     c.y = shape->GetCenter().y;
@@ -158,7 +158,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 }
                 case SHAPE_T::ARC:
                 {
-                    copilot::ARC_ITEM a;
+                    copilot::ARC_SHAPE_ITEM a;
                     a.layer = LayerName( shape->GetLayer() );
                     if( auto arc = dynamic_cast<PCB_ARC*>( shape ) )
                     {
@@ -267,7 +267,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
 
             if( arc )
             {
-                copilot::ARC_ITEM a;
+                copilot::PCB_ARC a;
                 a.layer = LayerName( arc->GetLayer() );
                 a.start = toVector2( arc->GetStart() );
                 a.end = toVector2( arc->GetEnd() );
