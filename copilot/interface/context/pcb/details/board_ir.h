@@ -32,6 +32,17 @@
 namespace copilot
 {
 
+
+struct BOARD_CONNECTED_ITEM
+{
+};
+
+
+struct PCB_SHAPE : BOARD_CONNECTED_ITEM
+{
+};
+
+
 struct VECTOR2
 {
     int x;
@@ -39,7 +50,7 @@ struct VECTOR2
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( VECTOR2, x, y )
 };
 
-struct TEXT_ITEM
+struct PCB_TEXT
 {
     std::string layer;
     std::string text;
@@ -49,10 +60,10 @@ struct TEXT_ITEM
     std::string hJustify;
     std::string vJustify;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( TEXT_ITEM, layer, text, x, y, rotation, hJustify, vJustify )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_TEXT, layer, text, x, y, rotation, hJustify, vJustify )
 };
 
-struct LINE_ITEM
+struct PCB_TRACK
 {
     std::string layer;
     double      x1;
@@ -61,10 +72,14 @@ struct LINE_ITEM
     double      y2;
     double      width;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( LINE_ITEM, layer, x1, y1, x2, y2, width )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_TRACK, layer, x1, y1, x2, y2, width )
 };
 
-struct CIRCLE_ITEM
+struct LINE_SHAPE_ITEM : PCB_SHAPE, PCB_TRACK
+{
+};
+
+struct CIRCLE_SHAPE_ITEM : PCB_SHAPE
 {
     std::string layer;
     double      x;
@@ -72,17 +87,17 @@ struct CIRCLE_ITEM
     double      radius;
     double      width;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( CIRCLE_ITEM, layer, x, y, radius, width )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( CIRCLE_SHAPE_ITEM, layer, x, y, radius, width )
 };
 
-struct ARC_ITEM
+struct ARC_SHAPE_ITEM : PCB_SHAPE
 {
     std::string layer;
     VECTOR2     start;
     VECTOR2     end;
     VECTOR2     mid;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ARC_ITEM, layer, start, end, mid )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ARC_SHAPE_ITEM, layer, start, end, mid )
 };
 
 struct SEGMENT
@@ -118,6 +133,11 @@ struct PAD
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PAD, net, pin, type, shape, x, y, width, height, rotation,
                                     layer )
+};
+
+
+struct PCB_ARC : ARC_SHAPE_ITEM
+{
 };
 
 
@@ -272,13 +292,12 @@ struct GROUP_ITEM
 };
 
 
-
 struct BOARD_SELECTIONS
 {
-    std::vector<TEXT_ITEM>            texts;
-    std::vector<LINE_ITEM>            lines;
-    std::vector<CIRCLE_ITEM>          circles;
-    std::vector<ARC_ITEM>             arcs;
+    std::vector<PCB_TEXT>             texts;
+    std::vector<PCB_TRACK>            lines;
+    std::vector<CIRCLE_SHAPE_ITEM>    circles;
+    std::vector<ARC_SHAPE_ITEM>       arcs;
     std::vector<ZONE>                 zones;
     std::vector<FOOTPRINT>            footprints;
     std::vector<REFERENCE_IMAGE_ITEM> reference_images;
@@ -296,10 +315,10 @@ struct BOARD_SELECTIONS
     std::vector<VIA>                  vias;
     std::string                       board_length_unit = "nm";
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD_SELECTIONS, texts, lines, circles, arcs, zones, footprints,
-                                    reference_images, fields, generators, textboxes, tables,
-                                    tablecells, markers, dimensions, targets, item_lists, netinfos,
-                                    groups, vias, board_length_unit )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD_SELECTIONS, texts, lines, circles, arcs, zones,
+                                    footprints, reference_images, fields, generators, textboxes,
+                                    tables, tablecells, markers, dimensions, targets, item_lists,
+                                    netinfos, groups, vias, board_length_unit )
 };
 
 } // namespace copilot
