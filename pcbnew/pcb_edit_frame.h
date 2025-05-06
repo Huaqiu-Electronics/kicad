@@ -940,7 +940,9 @@ public:
     // Agent APIS
     void LaunchPlugin(std::string const& aPluginName, std::optional<nlohmann::json> aParams);
 
-    copilot::BOARD GetSelection() const;
+    copilot::BOARD_SELECTIONS GetSelection() const;
+
+    std::string GetSelectionJsonString() const;
 
     void SetHasSelection( bool aHasSelection );
 

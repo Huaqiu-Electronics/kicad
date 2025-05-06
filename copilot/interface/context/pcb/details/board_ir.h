@@ -271,7 +271,9 @@ struct GROUP_ITEM
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( GROUP_ITEM, item_ids )
 };
 
-struct BOARD
+
+
+struct BOARD_SELECTIONS
 {
     std::vector<TEXT_ITEM>            texts;
     std::vector<LINE_ITEM>            lines;
@@ -294,7 +296,7 @@ struct BOARD
     std::vector<VIA>                  vias;
     std::string                       board_length_unit = "nm";
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD, texts, lines, circles, arcs, zones, footprints,
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( BOARD_SELECTIONS, texts, lines, circles, arcs, zones, footprints,
                                     reference_images, fields, generators, textboxes, tables,
                                     tablecells, markers, dimensions, targets, item_lists, netinfos,
                                     groups, vias, board_length_unit )
