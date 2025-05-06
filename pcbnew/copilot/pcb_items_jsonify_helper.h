@@ -58,9 +58,9 @@ inline copilot::VECTOR2 toVector2( VECTOR2I b )
 
 // ...
 
-inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOARD
+inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOARD_SELECTIONS
 {
-    copilot::BOARD board;
+    copilot::BOARD_SELECTIONS board_selections;
 
     for( const auto& selection : aSelection )
     {
@@ -93,7 +93,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 f.pads.push_back( p );
             }
 
-            board.footprints.push_back( f );
+            board_selections.footprints.push_back( f );
             break;
         }
         case PCB_TEXT_T:
@@ -107,7 +107,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             t.rotation = text->GetDrawRotation().AsDegrees();
             t.hJustify = text->GetHorizJustify();
             t.vJustify = text->GetVertJustify();
-            board.texts.push_back( t );
+            board_selections.texts.push_back( t );
             break;
         }
         case PCB_TRACE_T:
@@ -122,7 +122,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 l.x2 = track->GetEnd().x;
                 l.y2 = track->GetEnd().y;
                 l.width = track->GetWidth();
-                board.lines.push_back( l );
+                board_selections.lines.push_back( l );
             }
             break;
         }
@@ -142,7 +142,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                     l.x2 = shape->GetEnd().x;
                     l.y2 = shape->GetEnd().y;
                     l.width = shape->GetWidth();
-                    board.lines.push_back( l );
+                    board_selections.lines.push_back( l );
                     break;
                 }
                 case SHAPE_T::CIRCLE:
@@ -153,7 +153,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                     c.y = shape->GetCenter().y;
                     c.radius = shape->GetRadius();
                     c.width = shape->GetWidth();
-                    board.circles.push_back( c );
+                    board_selections.circles.push_back( c );
                     break;
                 }
                 case SHAPE_T::ARC:
@@ -166,7 +166,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                         a.end = toVector2( arc->GetEnd() );
                         a.mid = toVector2( arc->GetMid() );
                     }
-                    board.arcs.push_back( a );
+                    board_selections.arcs.push_back( a );
                     break;
                 }
                 default: break;
@@ -198,7 +198,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                         }
                     }
                 }
-                board.zones.push_back( z );
+                board_selections.zones.push_back( z );
             }
             break;
         }
@@ -216,15 +216,15 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             p.width = pad->GetSizeX();
             p.height = pad->GetSizeY();
             p.layer = LayerName( pad->GetLayer() );
-            if( board.footprints.empty() )
+            if( board_selections.footprints.empty() )
             {
                 copilot::FOOTPRINT f;
                 f.pads.push_back( p );
-                board.footprints.push_back( f );
+                board_selections.footprints.push_back( f );
             }
             else
             {
-                board.footprints.back().pads.push_back( p );
+                board_selections.footprints.back().pads.push_back( p );
             }
             break;
         }
@@ -257,7 +257,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                     v.layers.push_back( LayerName( layer ).ToStdString() );
                 }
 
-                board.vias.push_back( v );
+                board_selections.vias.push_back( v );
             }
             break;
         }
@@ -272,7 +272,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 a.start = toVector2( arc->GetStart() );
                 a.end = toVector2( arc->GetEnd() );
                 a.mid = toVector2( arc->GetMid() );
-                board.arcs.push_back( a );
+                board_selections.arcs.push_back( a );
             }
             
             break;
@@ -286,7 +286,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 r.layer = LayerName( img->GetLayer() );
                 r.x = img->GetPosition().x;
                 r.y = img->GetPosition().y;
-                board.reference_images.push_back( r );
+                board_selections.reference_images.push_back( r );
             }
             break;
         }
@@ -301,7 +301,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 f.x = field->GetPosition().x;
                 f.y = field->GetPosition().y;
                 f.rotation = field->GetDrawRotation().AsDegrees();
-                board.fields.push_back( f );
+                board_selections.fields.push_back( f );
             }
             break;
         }
@@ -315,7 +315,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 g.generator_id = gen->GetGeneratorType();
                 g.x = gen->GetPosition().x;
                 g.y = gen->GetPosition().y;
-                board.generators.push_back( g );
+                board_selections.generators.push_back( g );
             }
             break;
         }
@@ -332,7 +332,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 t.width = tb->GetWidth();
                 t.height = tb->GetTextHeight();
                 t.rotation = tb->GetDrawRotation().AsDegrees();
-                board.textboxes.push_back( t );
+                board_selections.textboxes.push_back( t );
             }
             break;
         }
@@ -347,7 +347,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 t.y = table->GetPosition().y;
                 t.width = table->GetEnd().x - table->GetPosition().x;
                 t.height = table->GetEnd().y - table->GetPosition().y;
-                board.tables.push_back( t );
+                board_selections.tables.push_back( t );
             }
             break;
         }
@@ -363,7 +363,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 c.y = cell->GetPosition().y;
                 c.width = cell->GetWidth();
                 c.height = cell->GetTextHeight();
-                board.tablecells.push_back( c );
+                board_selections.tablecells.push_back( c );
             }
             break;
         }
@@ -378,7 +378,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 m.y = marker->GetPosition().y;
                 m.message = marker->GetComment();
                 m.severity = marker->GetSeverity();
-                board.markers.push_back( m );
+                board_selections.markers.push_back( m );
             }
             break;
         }
@@ -400,7 +400,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 d.y2 = dim->GetEnd().y;
                 d.value = dim->GetValueText();
                 d.dim_type = dim->GetTypeDesc();
-                board.dimensions.push_back( d );
+                board_selections.dimensions.push_back( d );
             }
             break;
         }
@@ -414,7 +414,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 t.x = target->GetPosition().x;
                 t.y = target->GetPosition().y;
                 t.diameter = target->GetSize();
-                board.targets.push_back( t );
+                board_selections.targets.push_back( t );
             }
             break;
         }
@@ -426,7 +426,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 copilot::NETINFO_ITEM n;
                 n.netname = netinfo->GetNetname();
                 n.netcode = netinfo->GetNetCode();
-                board.netinfos.push_back( n );
+                board_selections.netinfos.push_back( n );
             }
             break;
         }
@@ -436,7 +436,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             if( group )
             {
                 copilot::GROUP_ITEM g;
-                board.groups.push_back( g );
+                board_selections.groups.push_back( g );
             }
             break;
         }
@@ -446,7 +446,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
         }
     }
 
-    return board;
+    return board_selections;
 }
 
 

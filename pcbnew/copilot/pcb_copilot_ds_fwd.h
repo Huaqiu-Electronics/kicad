@@ -31,7 +31,7 @@ class WEBVIEW_CONTAINER;
 namespace copilot
 {
 
-struct BOARD;
+struct BOARD_SELECTIONS;
 
 }
 

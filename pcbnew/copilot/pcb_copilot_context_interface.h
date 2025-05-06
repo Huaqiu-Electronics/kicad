@@ -74,11 +74,24 @@ void PCB_EDIT_FRAME::UpdateCopilotContextCache()
 }
 
 
-copilot::BOARD PCB_EDIT_FRAME::GetSelection() const
+copilot::BOARD_SELECTIONS PCB_EDIT_FRAME::GetSelection() const
 {
-    auto  selTool = GetToolManager()->GetTool<PCB_SELECTION_TOOL>();
-    auto& selections = selTool->GetSelection();
-    return jsonify_pcb_items( selections );
+    return jsonify_pcb_items( GetToolManager()->GetTool<PCB_SELECTION_TOOL>()->GetSelection() );
+}
+
+std::string PCB_EDIT_FRAME::GetSelectionJsonString() const
+{
+    nlohmann::json selection = GetSelection();
+
+    for( const auto& [key, value] : selection.items() )
+    {
+        if( value.is_array() && value.size() == 0 )
+            continue;
+
+        selection.erase( key );
+    }
+
+    return selection.dump();
 }
 
 
