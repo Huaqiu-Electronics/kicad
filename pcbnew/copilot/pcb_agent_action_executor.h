@@ -27,7 +27,6 @@
 
 
 #include "chat/general_chat_cmd.h"
-#include <context/pcb/details/board_ir.h>
 #include <context/pcb/details/board_json_schema.h>
 #include "webview/webview_container.h"
 #include <context/symbol_context.h>
@@ -63,7 +62,7 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         }
         case AGENT_ACTION_TYPE::ask_selection:
         {
-            const auto pcb = nlohmann::json( GetSelection() ).dump();
+            const auto pcb = GetSelectionJsonString();
             m_copilotPanel->fire_host_active_cmd(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
@@ -75,11 +74,12 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                                      "following the json schema:\n {}\n"
                                                      "NOTE: You always provide clear answers "
                                                      "rather than asking for more information.\n ",
-                                                     copilot::BOARD_JSON_SCHEMA, pcb ) } } } )
+                                                     pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
+
+            break;
         }
-        break;
 
 
         default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
