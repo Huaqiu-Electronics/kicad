@@ -83,10 +83,12 @@ std::string PCB_EDIT_FRAME::GetSelectionJsonString() const
 {
     nlohmann::json selection = GetSelection();
 
-    for( const auto& [key, value] : selection.items() )
+    for( auto it = selection.begin(); it != selection.end(); )
     {
-        if( value.size() == 0 && ( value.is_array() || value.is_object() ) )
-            selection.erase( key );
+        if( ( it.value().is_array() || it.value().is_object() ) && it.value().empty() )
+            it = selection.erase( it );
+        else
+            ++it;
     }
 
     return selection.dump();
