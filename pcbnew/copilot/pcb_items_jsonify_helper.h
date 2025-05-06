@@ -98,7 +98,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
         }
         case PCB_TEXT_T:
         {
-            auto               text = static_cast<PCB_TEXT*>( selection );
+            auto              text = static_cast<PCB_TEXT*>( selection );
             copilot::PCB_TEXT t;
             t.layer = LayerName( text->GetLayer() );
             t.text = text->GetText();
@@ -113,17 +113,20 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
         case PCB_TRACE_T:
         {
             auto track = dynamic_cast<PCB_TRACK*>( selection );
+
             if( track )
             {
                 copilot::PCB_TRACK l;
                 l.layer = LayerName( track->GetLayer() );
-                l.x1 = track->GetStart().x;
-                l.y1 = track->GetStart().y;
-                l.x2 = track->GetEnd().x;
-                l.y2 = track->GetEnd().y;
+                l.start = toVector2( track->GetStart() );
+                l.end = toVector2( track->GetEnd() );
                 l.width = track->GetWidth();
-                board_selections.lines.push_back( l );
+                l.length = track->GetLength();
+                l.netcode = track->GetNetCode();
+                l.netname = track->GetNetname();
+                board_selections.tracks.push_back( l );
             }
+
             break;
         }
         case PCB_SHAPE_T:
@@ -137,14 +140,13 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                 {
                     copilot::LINE_SHAPE_ITEM l;
                     l.layer = LayerName( shape->GetLayer() );
-                    l.x1 = shape->GetStart().x;
-                    l.y1 = shape->GetStart().y;
-                    l.x2 = shape->GetEnd().x;
-                    l.y2 = shape->GetEnd().y;
+                    l.start = toVector2( shape->GetStart() );
+                    l.end = toVector2( shape->GetEnd() );
                     l.width = shape->GetWidth();
-                    board_selections.lines.push_back( l );
+                    board_selections.shapes.lines.push_back( l );
                     break;
                 }
+
                 case SHAPE_T::CIRCLE:
                 {
                     copilot::CIRCLE_SHAPE_ITEM c;
@@ -153,7 +155,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                     c.y = shape->GetCenter().y;
                     c.radius = shape->GetRadius();
                     c.width = shape->GetWidth();
-                    board_selections.circles.push_back( c );
+                    board_selections.shapes.circles.push_back( c );
                     break;
                 }
                 case SHAPE_T::ARC:
@@ -166,7 +168,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                         a.end = toVector2( arc->GetEnd() );
                         a.mid = toVector2( arc->GetMid() );
                     }
-                    board_selections.arcs.push_back( a );
+                    board_selections.shapes.arcs.push_back( a );
                     break;
                 }
                 default: break;
@@ -180,6 +182,8 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             if( zone )
             {
                 copilot::ZONE z;
+                z.netcode = zone->GetNetCode();
+                z.netname = zone->GetNetname();
                 z.layer = LayerName( zone->GetLayer() );
                 const SHAPE_POLY_SET* outline = zone->GetFilledPolysList( zone->GetLayer() ).get();
                 if( outline )
@@ -189,7 +193,7 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                         const SHAPE_LINE_CHAIN& chain = outline->Outline( i );
                         for( int j = 0; j < chain.SegmentCount(); ++j )
                         {
-                            copilot::SEGMENT s;
+                            copilot::ZONE::SEGMENT s;
                             s.x1 = chain.CPoint( j ).x;
                             s.y1 = chain.CPoint( j ).y;
                             s.x2 = chain.CPoint( ( j + 1 ) % chain.PointCount() ).x;
@@ -207,7 +211,8 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             auto         pad = static_cast<PAD*>( selection );
             copilot::PAD p;
             p.pin = pad->GetNumber();
-            p.net = pad->GetNetname();
+            p.netcode = pad->GetNetCode();
+            p.netname = pad->GetNetname();
             p.x = pad->GetPosition().x;
             p.y = pad->GetPosition().y;
             p.rotation = pad->GetOrientationDegrees();
@@ -268,13 +273,15 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             if( arc )
             {
                 copilot::PCB_ARC a;
+                a.netcode = arc->GetNetCode();
+                a.netname = arc->GetNetname();
                 a.layer = LayerName( arc->GetLayer() );
                 a.start = toVector2( arc->GetStart() );
                 a.end = toVector2( arc->GetEnd() );
                 a.mid = toVector2( arc->GetMid() );
                 board_selections.arcs.push_back( a );
             }
-            
+
             break;
         }
         case PCB_REFERENCE_IMAGE_T:
@@ -440,9 +447,11 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             }
             break;
         }
-        default: {
+        default:
+        {
             wxLogTrace( "COPILOT", "Unknown selection type: %d", selection->Type() );
-        } break;
+        }
+        break;
         }
     }
 
