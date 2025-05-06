@@ -67,13 +67,10 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },
-                                    { { fmt::format( "I'm working on a pcb the "
-                                                     "current selection of which is represented by "
+                                    { { fmt::format( "The user is working on a pcb board design, and has just selected some items on the board. All the selected items are serialized into the "                                                     
                                                      "the following json :\n{}. It's "
                                                      "defined "
-                                                     "following the json schema:\n {}\n"
-                                                     "NOTE: You always provide clear answers "
-                                                     "rather than asking for more information.\n ",
+                                                     "following the json schema:\n {}\n",
                                                      pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
