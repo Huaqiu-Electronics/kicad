@@ -30,331 +30,91 @@ namespace copilot
 constexpr const char* BOARD_JSON_SCHEMA = R"json(
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Board",
+  "title": "KiCad BOARD_SELECTIONS Schema",
   "type": "object",
+  "description": "Represents the selection of items on a KiCad PCB board.",
   "properties": {
     "texts": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "text": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "rotation": { "type": "number" },
-          "hJustify": { "type": "string" },
-          "vJustify": { "type": "string" }
-        },
-        "required": ["layer", "text", "x", "y", "rotation", "hJustify", "vJustify"]
-      }
+      "description": "List of text items on the PCB."
     },
-    "lines": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x1": { "type": "number" },
-          "y1": { "type": "number" },
-          "x2": { "type": "number" },
-          "y2": { "type": "number" },
-          "width": { "type": "number" }
-        },
-        "required": ["layer", "x1", "y1", "x2", "y2", "width"]
-      }
-    },
-    "circles": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "radius": { "type": "number" },
-          "width": { "type": "number" }
-        },
-        "required": ["layer", "x", "y", "radius", "width"]
-      }
+    "shapes": {
+      "type": "object",
+      "description": "Geometric shape primitives such as lines, circles, and arcs."
     },
     "arcs": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "start": { "$ref": "#/definitions/vector2" },
-          "end": { "$ref": "#/definitions/vector2" },
-          "mid": { "$ref": "#/definitions/vector2" }
-        },
-        "required": ["layer", "start", "end", "mid"]
-      }
+      "description": "List of arc items on the PCB."
+    },
+    "tracks": {
+      "type": "array",
+      "description": "List of track items on the PCB."
     },
     "zones": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "segments": {
-            "type": "array",
-            "items": { "$ref": "#/definitions/segment" }
-          }
-        },
-        "required": ["layer", "segments"]
-      }
-    },
-    "footprints": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "ref": { "type": "string" },
-          "value": { "type": "string" },
-          "footprint": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "rotation": { "type": "number" },
-          "pads": {
-            "type": "array",
-            "items": { "$ref": "#/definitions/pad" }
-          }
-        },
-        "required": ["ref", "value", "footprint", "x", "y", "rotation", "pads"]
-      }
-    },
-    "reference_images": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "width": { "type": "number" },
-          "height": { "type": "number" },
-          "image_data": { "type": "string" }
-        },
-        "required": ["layer", "x", "y", "width", "height", "image_data"]
-      }
-    },
-    "fields": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "text": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "rotation": { "type": "number" }
-        },
-        "required": ["layer", "text", "x", "y", "rotation"]
-      }
-    },
-    "generators": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "generator_id": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" }
-        },
-        "required": ["layer", "generator_id", "x", "y"]
-      }
-    },
-    "textboxes": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "text": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "width": { "type": "number" },
-          "height": { "type": "number" },
-          "rotation": { "type": "number" }
-        },
-        "required": ["layer", "text", "x", "y", "width", "height", "rotation"]
-      }
-    },
-    "tables": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "width": { "type": "number" },
-          "height": { "type": "number" },
-          "cells": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": { "type": "string" }
-            }
-          }
-        },
-        "required": ["layer", "x", "y", "width", "height", "cells"]
-      }
-    },
-    "tablecells": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "text": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "width": { "type": "number" },
-          "height": { "type": "number" }
-        },
-        "required": ["layer", "text", "x", "y", "width", "height"]
-      }
-    },
-    "markers": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "message": { "type": "string" },
-          "severity": { "type": "string" }
-        },
-        "required": ["layer", "x", "y", "message", "severity"]
-      }
-    },
-    "dimensions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x1": { "type": "number" },
-          "y1": { "type": "number" },
-          "x2": { "type": "number" },
-          "y2": { "type": "number" },
-          "value": { "type": "string" },
-          "dim_type": { "type": "string" }
-        },
-        "required": ["layer", "x1", "y1", "x2", "y2", "value", "dim_type"]
-      }
-    },
-    "targets": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layer": { "type": "string" },
-          "x": { "type": "number" },
-          "y": { "type": "number" },
-          "diameter": { "type": "number" }
-        },
-        "required": ["layer", "x", "y", "diameter"]
-      }
-    },
-    "item_lists": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "item_ids": {
-            "type": "array",
-            "items": { "type": "string" }
-          }
-        },
-        "required": ["item_ids"]
-      }
-    },
-    "netinfos": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "netname": { "type": "string" },
-          "netcode": { "type": "integer" }
-        },
-        "required": ["netname", "netcode"]
-      }
-    },
-    "groups": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "item_ids": {
-            "type": "array",
-            "items": { "type": "string" }
-          }
-        },
-        "required": ["item_ids"]
-      }
+      "description": "List of zone items on the PCB."
     },
     "vias": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "layers": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "drill_value": { "type": "integer" },
-          "via_type": { "type": "string" },
-          "start": { "$ref": "#/definitions/vector2" },
-          "end": { "$ref": "#/definitions/vector2" }
-        },
-        "required": ["layers", "drill_value", "via_type", "start", "end"]
-      }
+      "description": "List of via items on the PCB."
     },
-    "board_length_unit": { "type": "string" }
-  },
-  "required": ["texts", "lines", "circles", "arcs", "zones", "footprints", "reference_images",
-               "fields", "generators", "textboxes", "tables", "tablecells", "markers",
-               "dimensions", "targets", "item_lists", "netinfos", "groups", "vias",
-               "board_length_unit"],
-  "definitions": {
-    "vector2": {
-      "type": "object",
-      "properties": {
-        "x": { "type": "integer" },
-        "y": { "type": "integer" }
-      },
-      "required": ["x", "y"]
+    "footprints": {
+      "type": "array",
+      "description": "List of footprint items on the PCB."
     },
-    "segment": {
-      "type": "object",
-      "properties": {
-        "x1": { "type": "number" },
-        "y1": { "type": "number" },
-        "x2": { "type": "number" },
-        "y2": { "type": "number" }
-      },
-      "required": ["x1", "y1", "x2", "y2"]
+    "reference_images": {
+      "type": "array",
+      "description": "List of reference image items on the PCB."
     },
-    "pad": {
-      "type": "object",
-      "properties": {
-        "net": { "type": "string" },
-        "pin": { "type": "string" },
-        "type": { "type": "string" },
-        "shape": { "type": "string" },
-        "x": { "type": "number" },
-        "y": { "type": "number" },
-        "width": { "type": "number" },
-        "height": { "type": "number" },
-        "rotation": { "type": "number" },
-        "layer": { "type": "string" }
-      },
-      "required": ["net", "pin", "type", "shape", "x", "y", "width", "height", "rotation", "layer"]
+    "fields": {
+      "type": "array",
+      "description": "List of field items on the PCB."
+    },
+    "generators": {
+      "type": "array",
+      "description": "List of generator items on the PCB."
+
+    },
+    "textboxes": {
+      "type": "array",
+      "description": "List of textbox items on the PCB."
+    },
+    "tables": {
+      "type": "array",
+      "description": "List of table items on the PCB."
+    },
+    "tablecells": {
+      "type": "array",
+      "description": "List of table cell items on the PCB."
+    },
+    "markers": {
+      "type": "array",
+      "description": "List of marker items on the PCB."
+    },
+    "dimensions": {
+      "type": "array",
+      "description": "List of dimension items on the PCB."
+    },
+    "targets": {
+      "type": "array",
+      "description": "List of target items on the PCB."
+    },
+    "item_lists": {
+      "type": "array",
+      "description": "List of item lists on the PCB."
+    },
+    "netinfos": {
+      "type": "array",
+      "description": "List of net information items on the PCB."
+    },
+    "groups": {
+      "type": "array",
+      "description": "List of group items on the PCB."
+    },
+    "board_length_unit": {
+      "type": "string",
+      "description": "The unit used to describe board lengths, default is 'nm'.",
+      "default": "nm"
     }
   }
 }
