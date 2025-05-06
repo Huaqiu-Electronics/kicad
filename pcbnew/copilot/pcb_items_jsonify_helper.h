@@ -81,7 +81,8 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
             {
                 copilot::PAD p;
                 p.pin = pad->GetNumber();
-                p.net = pad->GetNetname();
+                p.netcode = pad->GetNetCode();
+                p.netname = pad->GetNetname();
                 p.x = pad->GetPosition().x;
                 p.y = pad->GetPosition().y;
                 p.rotation = pad->GetOrientationDegrees();
