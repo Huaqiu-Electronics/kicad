@@ -85,10 +85,8 @@ std::string PCB_EDIT_FRAME::GetSelectionJsonString() const
 
     for( const auto& [key, value] : selection.items() )
     {
-        if( value.is_array() && value.size() == 0 )
-            continue;
-
-        selection.erase( key );
+        if( value.size() == 0 && ( value.is_array() || value.is_object() ) )
+            selection.erase( key );
     }
 
     return selection.dump();
