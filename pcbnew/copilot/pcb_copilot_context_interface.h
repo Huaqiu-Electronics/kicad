@@ -79,18 +79,38 @@ copilot::BOARD_SELECTIONS PCB_EDIT_FRAME::GetSelection() const
     return jsonify_pcb_items( GetToolManager()->GetTool<PCB_SELECTION_TOOL>()->GetSelection() );
 }
 
+static void RemoveEmptyObjectsOrArrays( nlohmann::json& j )
+{
+    if( j.is_object() )
+    {
+        for( auto it = j.begin(); it != j.end(); )
+        {
+            RemoveEmptyObjectsOrArrays( it.value() ); // Recurse first
+
+            if( ( it.value().is_object() || it.value().is_array() ) && it.value().empty() )
+                it = j.erase( it );
+            else
+                ++it;
+        }
+    }
+    else if( j.is_array() )
+    {
+        for( auto it = j.begin(); it != j.end(); )
+        {
+            RemoveEmptyObjectsOrArrays( *it ); // Recurse into array elements
+
+            if( ( it->is_object() || it->is_array() ) && it->empty() )
+                it = j.erase( it );
+            else
+                ++it;
+        }
+    }
+}
+
 std::string PCB_EDIT_FRAME::GetSelectionJsonString() const
 {
     nlohmann::json selection = GetSelection();
-
-    for( auto it = selection.begin(); it != selection.end(); )
-    {
-        if( ( it.value().is_array() || it.value().is_object() ) && it.value().empty() )
-            it = selection.erase( it );
-        else
-            ++it;
-    }
-
+    RemoveEmptyObjectsOrArrays( selection );
     return selection.dump();
 }
 
