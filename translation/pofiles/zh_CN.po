@@ -8924,11 +8924,11 @@ msgstr "当前器件"
 
 #: eeschema/copilot/sch_copilot_actions.h:63
 msgid "Find similar components"
-msgstr "替代料"
+msgstr "相似器件推荐"
 
 #: eeschema/copilot/sch_copilot_actions.h:70
 msgid "Check symbol connections"
-msgstr "检查器件连接关系"
+msgstr "连接关系检查"
 
 #: eeschema/copilot/sch_copilot_actions.h:76
 msgid "Explain pins details"
@@ -8936,7 +8936,7 @@ msgstr "引脚详细"
 
 #: eeschema/copilot/sch_copilot_actions.h:82
 msgid "Check unconnected pins"
-msgstr "检查未连接引脚"
+msgstr "未连接引脚检查"
 
 #: eeschema/cross-probing.cpp:157
 #, c-format
