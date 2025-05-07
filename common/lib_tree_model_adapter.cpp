@@ -388,7 +388,7 @@ void LIB_TREE_MODEL_ADAPTER::UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNod
 
         m_tree.ResetScore();
 
-        m_tree.UpdateScore( nullptr, wxEmptyString, nullptr );
+        m_tree.UpdateScore( {}, {} );
 
         if( aResort )
         {
