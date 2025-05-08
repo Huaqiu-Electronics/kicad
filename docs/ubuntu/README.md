@@ -7,11 +7,12 @@ sudo apt update
 
 <!-- For debug purpose -->
 <!-- sudo apt install kicad-nightly -->
+<!-- We'd like to install libwxgtk3.2-dev and python3-wxgtk4.0 from source or apt-build -->
 
 sudo apt update && sudo apt install -y debhelper cmake doxygen libbz2-dev libcairo2-dev libglu1-mesa-dev \
 libgl1-mesa-dev libglew-dev libx11-dev mesa-common-dev pkg-config libssl-dev libzstd-dev \
 build-essential cmake-curses-gui grep python3-dev swig dblatex po4a asciidoc \
-python3-wxgtk4.0 libgit2-dev libsecret-1-dev source-highlight libboost-all-dev libglm-dev \
+libgit2-dev libsecret-1-dev source-highlight libboost-all-dev libglm-dev \
 libcurl4-openssl-dev libgtk-3-dev libngspice-kicad-dev libngspice-kicad  \
 libocct-modeling-algorithms-dev libocct-modeling-data-dev libocct-data-exchange-dev \libocct-visualization-dev \
 libocct-foundation-dev libocct-ocaf-dev unixodbc-dev libnng-dev libprotobuf-dev protobuf-compiler zlib1g-dev \
