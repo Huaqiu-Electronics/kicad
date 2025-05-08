@@ -22,10 +22,16 @@ shared-mime-info python3-pytest python3-cairosvg python3-numpy
 
 sudo apt install libwxgtk-webview3.2-1t64/noble lld ninja-build -y 
 
+## Building from source
 
-## Build wxWidgets
+### Build wxWidgets
 
 git clone -b v3.2.4-fix-webview https://github.com/liangtie/wxWidgets.git
 cmake -G Ninja -S . -B build_linux -D CMAKE_BUILD_TYPE=Debug -DwxUSE_WEBVIEW=ON -DwxBUILD_SAMPLES=ALL -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -DCMAKE_CXX_FLAGS=-fuse-ld=lld
+
+## Build through apt-build
+
+sudo apt-build install libwxgtk3.2-dev python3-wxgtk4.0
+
 
 
