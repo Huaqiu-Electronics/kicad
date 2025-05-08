@@ -30,13 +30,13 @@ namespace copilot {
     constexpr const char* NETLIST_JSON_SCHEMA = R"json(
     {
       "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "NETLIST",
-      "description": "A schematic netlist containing components and electrical nets.",
+      "title": "KiCad SCHEMATIC SELECTION Schema",
+      "description": "The selection of items on a KiCad SCHEMATIC.",
       "type": "object",
       "properties": {
         "components": {
           "type": "array",
-          "description": "List of components used in the schematic.",
+          "description": "List of components used in the schematic selections.",
           "items": {
             "type": "object",
             "properties": {

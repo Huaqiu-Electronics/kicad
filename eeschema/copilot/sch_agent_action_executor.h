@@ -78,7 +78,7 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },
-                                    { { fmt::format( "I'm working on a pcb schematic design the "
+                                    { { fmt::format( "The user is working on a schematic the "
                                                      "current selection of which is represented by "
                                                      "the following netlist:\n{}. The "
                                                      "netlist is defined "
@@ -87,7 +87,8 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                                      "presented inside the components have been "
                                                      "included in the nets.\n"
                                                      "NOTE: You always provide clear answers "
-                                                     "rather than asking for more information.\n ",
+                                                     "rather than asking for more information.\n "
+                                                     "Please note that our users are hardware engineers who are neither aware nor interested in the existence of this JSON data. Never expose the existence of a JSON file",
                                                      netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
