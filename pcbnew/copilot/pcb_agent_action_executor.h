@@ -80,7 +80,10 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                             "selected items are serialized into the "
                                             "the following json :\n{}. It's "
                                             "defined "
-                                            "following the json schema:\n {}\n",
+                                            "following the json schema:\n {}\n"
+                                            "NOTE: You always provide clear answers "
+                                            "rather than asking for more information.\n "                                            
+                                            "Please note that our users are hardware engineers who are neither aware nor interested in the existence of this JSON data. Never expose the existence of a JSON file.",
                                             pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );

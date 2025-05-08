@@ -30,13 +30,13 @@ namespace copilot
 constexpr const char* BOARD_JSON_SCHEMA = R"json(
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "KiCad BOARD_SELECTIONS Schema",
+  "title": "KiCad BOARD SELECTION Schema",
   "type": "object",
-  "description": "Represents the selection of items on a KiCad PCB board.",
+  "description": "The selection of items on a KiCad PCB.",
   "properties": {
     "texts": {
       "type": "array",
-      "description": "List of text items on the PCB."
+      "description": "List of text items selected on the PCB."
     },
     "shapes": {
       "type": "object",
@@ -44,72 +44,72 @@ constexpr const char* BOARD_JSON_SCHEMA = R"json(
     },
     "arcs": {
       "type": "array",
-      "description": "List of arc items on the PCB."
+      "description": "List of arc items selected on the PCB."
     },
     "tracks": {
       "type": "array",
-      "description": "List of track items on the PCB."
+      "description": "List of track items selected on the PCB."
     },
     "zones": {
       "type": "array",
-      "description": "List of zone items on the PCB."
+      "description": "List of zone items selected on the PCB."
     },
     "vias": {
       "type": "array",
-      "description": "List of via items on the PCB."
+      "description": "List of via items selected on the PCB."
     },
     "footprints": {
       "type": "array",
-      "description": "List of footprint items on the PCB."
+      "description": "List of footprint items selected on the PCB."
     },
     "reference_images": {
       "type": "array",
-      "description": "List of reference image items on the PCB."
+      "description": "List of reference image items selected on the PCB."
     },
     "fields": {
       "type": "array",
-      "description": "List of field items on the PCB."
+      "description": "List of field items selected on the PCB."
     },
     "generators": {
       "type": "array",
-      "description": "List of generator items on the PCB."
+      "description": "List of generator items selected on the PCB."
 
     },
     "textboxes": {
       "type": "array",
-      "description": "List of textbox items on the PCB."
+      "description": "List of textbox items selected on the PCB."
     },
     "tables": {
       "type": "array",
-      "description": "List of table items on the PCB."
+      "description": "List of table items selected on the PCB."
     },
     "tablecells": {
       "type": "array",
-      "description": "List of table cell items on the PCB."
+      "description": "List of table cell items selected on the PCB."
     },
     "markers": {
       "type": "array",
-      "description": "List of marker items on the PCB."
+      "description": "List of marker items selected on the PCB."
     },
     "dimensions": {
       "type": "array",
-      "description": "List of dimension items on the PCB."
+      "description": "List of dimension items selected on the PCB."
     },
     "targets": {
       "type": "array",
-      "description": "List of target items on the PCB."
+      "description": "List of target items selected on the PCB."
     },
     "item_lists": {
       "type": "array",
-      "description": "List of item lists on the PCB."
+      "description": "List of item lists selected on the PCB."
     },
     "netinfos": {
       "type": "array",
-      "description": "List of net information items on the PCB."
+      "description": "List of net information items selected on the PCB."
     },
     "groups": {
       "type": "array",
-      "description": "List of group items on the PCB."
+      "description": "List of group items selected on the PCB."
     },
     "board_length_unit": {
       "type": "string",
