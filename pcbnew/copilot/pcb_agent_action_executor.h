@@ -34,6 +34,7 @@
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
 #include <passive_action/agent/context/launch_pcb_plugin_context.h>
+#include <copilot_dbg_helper.h>
 #include <pcb_edit_frame.h>
 #include <magic_enum.hpp>
 #include <string>
@@ -63,15 +64,24 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto pcb = GetSelectionJsonString();
+
+#ifdef DEBUG
+            dump( pcb, "pcb_selection." );
+#endif // DEBUG
+
+
             m_copilotPanel->fire_host_active_cmd(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },
-                                    { { fmt::format( "The user is working on a pcb board design, and has just selected some items on the board. All the selected items are serialized into the "                                                     
-                                                     "the following json :\n{}. It's "
-                                                     "defined "
-                                                     "following the json schema:\n {}\n",
-                                                     pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
+                                    { { fmt::format(
+                                            "The user is working on a pcb board design, and has "
+                                            "just selected some items on the board. All the "
+                                            "selected items are serialized into the "
+                                            "the following json :\n{}. It's "
+                                            "defined "
+                                            "following the json schema:\n {}\n",
+                                            pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
 
