@@ -14,6 +14,10 @@ cmake -S . -B build -G Ninja -DCMAKE_CXX_FLAGS=-fuse-ld=lld -DKICAD_USE_CMAKE_FI
 
 cmake --build build
 
+# For the linuxdeploy to find the deps dlls 
+cmake --install build
+
+# Will install to ${project_root}/AppDir
 DESTDIR=AppDir cmake --install build
 ```
 
