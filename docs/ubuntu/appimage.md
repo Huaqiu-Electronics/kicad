@@ -4,12 +4,19 @@
 
 注意修改为以下cmake配置，make后再安装
 
-```
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 
-make install DESTDIR=AppDir
+```bash
+# cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 
+# make install DESTDIR=AppDir
+
+cmake -S . -B build -G Ninja -DCMAKE_CXX_FLAGS=-fuse-ld=lld -DKICAD_USE_CMAKE_FINDPROTOBUF=ON -DCMAKE_INSTALL_PREFIX=/usr -DKICAD_BUILD_I18N=ON -DKICAD_BUILD_QA_TESTS=OFF -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build
+
+DESTDIR=AppDir cmake --install build
 ```
+
 
 ### 1.2 下载 linuxdeploy
 
