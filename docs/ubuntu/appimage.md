@@ -26,7 +26,7 @@ DESTDIR=AppDir cmake --install build
 
 在上一步的 AppDir 上运行 linuxdeploy：
 
-> ./linuxdeploy-x86_64.AppImage --appdir AppDir
+linuxdeploy-x86_64.AppImage --appdir AppDir -d AppDir/usr/share/applications/org.kicad.kicad.desktop -e AppDir/usr/bin/kicad
 
 ### 1.3 下载生成appimage的插件
 
@@ -39,11 +39,11 @@ DESTDIR=AppDir cmake --install build
 
 最简指令版：
 
-> ./linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
 
 或者更详细指令指定所用插件，用qt举例：
 
-./linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
+linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
 
 ### 1.5 得到并移动生成的AppImage，你要的位置替换下面的$OLD_CWD
 
@@ -102,7 +102,7 @@ chmod +x linuxdeploy*.AppImage
 export QML_SOURCES_PATHS="$REPO_ROOT"/src
 
 # initialize AppDir, bundle shared libraries for QtQuickApp, use Qt plugin to bundle additional resources, and build AppImage, all in one single command
-./linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
+linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
 
 # move built AppImage back into original CWD
 mv QtQuickApp*.AppImage "$OLD_CWD"
