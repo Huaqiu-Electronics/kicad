@@ -22,6 +22,7 @@ set( KIAPI_PROTO_SRCS
     common/envelope.proto
 
     common/types/base_types.proto
+    common/types/design_resources.proto
     common/types/enums.proto
     common/types/project_settings.proto
 

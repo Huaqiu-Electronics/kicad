@@ -19,6 +19,17 @@
 
 syntax = "proto3";
 
-package kiapi.schematic.types;
+package kiapi.schematic.commands;
+
+import "common/types/design_resources.proto";
+
+message PlaceDesignBlock
+{
+  kiapi.common.types.DesignBlockResource design_block_resource = 1;
+}
 
 
+message PlaceSymbol
+{
+    kiapi.common.types.ComponentResource component_resource = 1;
+}
