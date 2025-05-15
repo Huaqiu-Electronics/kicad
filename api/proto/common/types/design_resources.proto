@@ -1,0 +1,67 @@
+/*
+ * This program source code file is part of KiCad, a free EDA CAD application.
+ *
+ * Copyright (C) 2025 KiCad Developers, see AUTHORS.txt for contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+/*
+ * design_resources.proto
+ * Includes types used to access online or local resources
+ */
+
+
+syntax = "proto3";
+
+package kiapi.common.types;
+
+message SymbolResource
+{
+    string uri = 1;
+}
+
+// The 3D model resource
+message ModelResource 
+{
+    string uri = 1;
+}
+
+message FootprintResource 
+{
+    string uri = 1;
+    repeated ModelResource models = 2; // The 3D models for this footprint
+}
+
+message ComponentResource 
+{
+    SymbolResource symbol_resource = 1;
+    repeated FootprintResource footprint_resources = 2;
+}
+
+message PCBResource 
+{
+    string pcb_uri = 1;
+    repeated FootprintResource footprint_resources = 2;
+}
+
+
+message DesignBlockResource 
+{
+    repeated string schematic_uris = 1;
+    optional string root_schematic = 2;
+    optional PCBResource pcb_resource = 3;
+    optional string version = 4;
+}
