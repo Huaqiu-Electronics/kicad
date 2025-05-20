@@ -21,12 +21,19 @@
 #ifndef KICAD_API_HANDLER_SCH_H
 #define KICAD_API_HANDLER_SCH_H
 
+#include <google/protobuf/empty.pb.h>
+
 #include <api/api_handler_editor.h>
 #include <api/common/commands/editor_commands.pb.h>
+#include <api/schematic/schematic_commands.pb.h>
+#include <api/schematic/schematic_types.pb.h>
 #include <kiid.h>
 
 using namespace kiapi;
 using namespace kiapi::common;
+using namespace kiapi::schematic::commands;
+
+using google::protobuf::Empty;
 
 class SCH_EDIT_FRAME;
 class SCH_ITEM;
@@ -66,6 +73,11 @@ protected:
 private:
     HANDLER_RESULT<commands::GetOpenDocumentsResponse> handleGetOpenDocuments(
             const HANDLER_CONTEXT<commands::GetOpenDocuments>& aCtx );
+
+    HANDLER_RESULT<Empty> handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx );
+
+    HANDLER_RESULT<Empty> handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx );
+
 
     SCH_EDIT_FRAME* m_frame;
 };
