@@ -27,8 +27,14 @@ import "common/types/design_resources.proto";
 message PlaceDesignBlock
 {
   kiapi.common.types.DesignBlockResource design_block_resource = 1;
+
+  // Keep the design block selected for subsequent clicks
   optional bool place_repeated_copies = 2;
+
+  // Place the design block as a sheet symbol 
   optional bool place_as_sheet = 3;
+
+  // Keep the annotations of the sch symbols
   optional bool keep_annotations = 4;
 }
 
@@ -36,6 +42,10 @@ message PlaceDesignBlock
 message PlaceSymbol
 {
     kiapi.common.types.ComponentResource component_resource = 1;
+
+    // Keep the symbol selected for subsequent clicks
     optional bool place_repeated_copies = 2;
+
+    // Sequentially place all units of the symbol.
     optional bool place_all_units = 3;
 }
