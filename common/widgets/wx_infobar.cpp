@@ -165,6 +165,10 @@ void WX_INFOBAR::ShowMessage( const wxString& aMessage, int aFlags )
     m_message = aMessage;
     m_message.Trim();
 
+    
+    // FIXME: Will lead to crash while working with the WebKit on MacOS
+    // LINK: https://gitlab.com/kicad-hq/kicad/-/issues/9
+    
 #ifndef __WXMAC__
     wxInfoBarGeneric::ShowMessage( m_message, aFlags );
 #endif // __WXMAC__    
