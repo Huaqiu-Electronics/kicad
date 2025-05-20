@@ -45,10 +45,11 @@ message ModelResource
     string uri = 1;
 }
 
+// May contain only the 3D models , e.g a block design has only a PCB
 message FootprintResource 
 {
     // The URI to the .kicad_mod
-    string uri = 1;
+    optional string uri = 1;
 
     // The 3D models for this footprint
     repeated ModelResource models = 2; 
@@ -67,6 +68,8 @@ message PCBResource
 {
     // The URI to the .kicad_pcb
     string pcb_uri = 1;
+    // The footprint and 3D model resources associated with the PCB
+    repeated FootprintResource footprint_resources = 2;
 }
 
 
