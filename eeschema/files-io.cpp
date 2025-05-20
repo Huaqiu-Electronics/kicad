@@ -261,7 +261,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
                            "non-KiCad schematic files." ),
                         fullFileName );
 
-            // progressReporter.Hide();
+            progressReporter.Hide();
             DisplayErrorMessage( this, msg );
         }
     }
@@ -399,7 +399,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
         {
             newSchematic->CreateDefaultScreens();
             msg.Printf( _( "Memory exhausted loading schematic '%s'." ), fullFileName );
-            // progressReporter.Hide();
+            progressReporter.Hide();
             DisplayErrorMessage( this, msg, wxEmptyString );
 
             failedLoad = true;
@@ -1494,7 +1494,7 @@ bool SCH_EDIT_FRAME::importFile( const wxString& aFileName, int aFileType,
             else
                 pi->SetReporter( &NULL_REPORTER::GetInstance() );
 
-            // pi->SetProgressReporter( &progressReporter );
+            pi->SetProgressReporter( &progressReporter );
 
             SCH_SHEET* loadedSheet = pi->LoadSchematicFile( aFileName, newSchematic.get(), nullptr,
                                                             aProperties );
