@@ -26,6 +26,7 @@ import "common/types/design_resources.proto";
 
 message PlaceDesignBlock
 {
+  // The design block to place , it consists a schematic and may contain a pcb
   kiapi.common.types.DesignBlockResource design_block_resource = 1;
 
   // Keep the design block selected for subsequent clicks
@@ -41,6 +42,7 @@ message PlaceDesignBlock
 
 message PlaceSymbol
 {
+    // The component resource to place, it consists a symbol and one or more footprints and corresponding 3D models
     kiapi.common.types.ComponentResource component_resource = 1;
 
     // Keep the symbol selected for subsequent clicks
