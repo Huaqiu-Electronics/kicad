@@ -155,8 +155,8 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
     SetStatusText( wxEmptyString );
     m_infoBar->Dismiss();
 
-    // WX_PROGRESS_REPORTER progressReporter( this, is_new ? _( "Creating Schematic" )
-    //                                                     : _( "Loading Schematic" ), 1 );
+    WX_PROGRESS_REPORTER progressReporter( this, is_new ? _( "Creating Schematic" )
+                                                        : _( "Loading Schematic" ), 1 );
 
     bool differentProject = pro.GetFullPath() != Prj().GetProjectFullName();
 
@@ -239,7 +239,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
                            "non-KiCad schematic files." ),
                         fullFileName );
 
-            // progressReporter.Hide();
+            progressReporter.Hide();
             DisplayErrorMessage( this, msg );
         }
     }
@@ -264,7 +264,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
 
         IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( schFileType ) );
 
-        // pi->SetProgressReporter( &progressReporter );
+        pi->SetProgressReporter( &progressReporter );
 
         bool failedLoad = false;
 
@@ -291,7 +291,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
         catch( const FUTURE_FORMAT_ERROR& ffe )
         {
             msg.Printf( _( "Error loading schematic '%s'." ), fullFileName);
-            // progressReporter.Hide();
+            progressReporter.Hide();
             DisplayErrorMessage( this, msg, ffe.Problem() );
 
             failedLoad = true;
@@ -299,7 +299,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
         catch( const IO_ERROR& ioe )
         {
             msg.Printf( _( "Error loading schematic '%s'." ), fullFileName);
-            // progressReporter.Hide();
+            progressReporter.Hide();
             DisplayErrorMessage( this, msg, ioe.What() );
 
             failedLoad = true;
@@ -307,7 +307,7 @@ bool SCH_EDIT_FRAME::OpenProjectFiles( const std::vector<wxString>& aFileSet, in
         catch( const std::bad_alloc& )
         {
             msg.Printf( _( "Memory exhausted loading schematic '%s'." ), fullFileName );
-            // progressReporter.Hide();
+            progressReporter.Hide();
             DisplayErrorMessage( this, msg, wxEmptyString );
 
             failedLoad = true;
@@ -1334,7 +1334,7 @@ bool SCH_EDIT_FRAME::importFile( const wxString& aFileName, int aFileType,
         {
             IO_RELEASER<SCH_IO>  pi( SCH_IO_MGR::FindPlugin( fileType ) );
             DIALOG_HTML_REPORTER errorReporter( this );
-            // WX_PROGRESS_REPORTER progressReporter( this, _( "Importing Schematic" ), 1 );
+            WX_PROGRESS_REPORTER progressReporter( this, _( "Importing Schematic" ), 1 );
 
             if( PROJECT_CHOOSER_PLUGIN* c_pi = dynamic_cast<PROJECT_CHOOSER_PLUGIN*>( pi.get() ) )
             {
@@ -1347,7 +1347,7 @@ bool SCH_EDIT_FRAME::importFile( const wxString& aFileName, int aFileType,
             else
                 pi->SetReporter( &NULL_REPORTER::GetInstance() );
 
-            // pi->SetProgressReporter( &progressReporter );
+            pi->SetProgressReporter( &progressReporter );
 
             SCH_SHEET* loadedSheet = pi->LoadSchematicFile( aFileName, &Schematic(), nullptr,
                                                             aProperties );
