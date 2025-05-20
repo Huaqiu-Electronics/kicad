@@ -340,6 +340,8 @@ void WX_INFOBAR::AddButton( wxButton* aButton )
 
     wxASSERT( aButton );
 
+    // FIXME: Will lead to crash while working with the WebKit on MacOS
+    // LINK: https://gitlab.com/kicad-hq/kicad/-/issues/9
 #ifdef __WXMAC__
     // Based on the code in the original class:
     // smaller buttons look better in the (narrow) info bar under OS X
