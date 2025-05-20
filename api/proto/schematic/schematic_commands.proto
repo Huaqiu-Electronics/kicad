@@ -24,8 +24,7 @@ package kiapi.schematic.commands;
 import "common/types/design_resources.proto";
 
 
-// To distinguish between a schematic and a PCB
-message SchPlaceDesignBlock
+message PlaceDesignBlock
 {
   // Contains at least one schematic and may contain a pcb
   kiapi.common.types.DesignBlockResource design_block_resource = 1;
