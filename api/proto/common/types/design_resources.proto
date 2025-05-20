@@ -28,40 +28,59 @@ syntax = "proto3";
 
 package kiapi.common.types;
 
+// URI can be a local path with a file:// prefix or a URL.
+// https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+// https://docs.wxwidgets.org/3.2/classwx_u_r_i.html
+
 message SymbolResource
 {
+    // The URI to the .kicad_sym 
     string uri = 1;
 }
 
 // The 3D model resource
 message ModelResource 
 {
+    // The URI of the 3D model resource (.step , .wrl ) 
     string uri = 1;
 }
 
 message FootprintResource 
 {
+    // The URI to the .kicad_mod
     string uri = 1;
-    repeated ModelResource models = 2; // The 3D models for this footprint
+
+    // The 3D models for this footprint
+    repeated ModelResource models = 2; 
 }
 
 message ComponentResource 
 {
+    // The symbol resource inside the component
     SymbolResource symbol_resource = 1;
+
+    // The footprint resources associated with the symbol
     repeated FootprintResource footprint_resources = 2;
 }
 
 message PCBResource 
 {
+    // The URI to the .kicad_pcb
     string pcb_uri = 1;
-    repeated FootprintResource footprint_resources = 2;
 }
 
 
 message DesignBlockResource 
 {
+    // The URIs of the .kicad_sch inside the design block
     repeated string schematic_uris = 1;
+
+    // The root schematic name of the design block used in hierarchical design
     optional string root_schematic = 2;
+
+    // The URI to the .kicad_pcb corresponding to the schematic(s)
     optional PCBResource pcb_resource = 3;
+
+    // The version of the design block , meant to be used by online design block registries
     optional string version = 4;
 }
