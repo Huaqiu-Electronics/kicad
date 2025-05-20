@@ -165,7 +165,9 @@ void WX_INFOBAR::ShowMessage( const wxString& aMessage, int aFlags )
     m_message = aMessage;
     m_message.Trim();
 
+#ifndef __WXMAC__
     wxInfoBarGeneric::ShowMessage( m_message, aFlags );
+#endif // __WXMAC__    
 
     if( m_auiManager )
         updateAuiLayout( true );
