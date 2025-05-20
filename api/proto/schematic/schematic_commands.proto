@@ -24,9 +24,10 @@ package kiapi.schematic.commands;
 import "common/types/design_resources.proto";
 
 
-message PlaceDesignBlock
+// To distinguish between a schematic and a PCB
+message SchPlaceDesignBlock
 {
-  // The design block to place , it consists a schematic and may contain a pcb
+  // Contains at least one schematic and may contain a pcb
   kiapi.common.types.DesignBlockResource design_block_resource = 1;
 
   // Keep the design block selected for subsequent clicks
@@ -42,12 +43,12 @@ message PlaceDesignBlock
 
 message PlaceSymbol
 {
-    // The component resource to place, it consists a symbol and one or more footprints and corresponding 3D models
-    kiapi.common.types.ComponentResource component_resource = 1;
+  // Contains a symbol and one or more footprints, 3D models
+  kiapi.common.types.ComponentResource component_resource = 1;
 
-    // Keep the symbol selected for subsequent clicks
-    optional bool place_repeated_copies = 2;
+  // Keep the symbol selected for subsequent clicks
+  optional bool place_repeated_copies = 2;
 
-    // Sequentially place all units of the symbol.
-    optional bool place_all_units = 3;
+  // Sequentially place all units of the symbol.
+  optional bool place_all_units = 3;
 }

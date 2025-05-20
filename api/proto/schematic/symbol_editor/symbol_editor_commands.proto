@@ -28,3 +28,15 @@ syntax = "proto3";
 
 package kiapi.symbol_editor.commands;
 
+import "common/commands/import_part_option.proto";
+
+
+message ImportSymbol 
+{
+  // URI to the .kicad_sym
+  string uri = 1;
+
+  // Create a new part or import the graphics into current part
+  ImportPartOption import_part_option = 2;
+
+}
