@@ -167,14 +167,18 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 
 void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
 {
-    wxString out;
-    _browser->RunScriptAsync(
-            fmt::format( " {}({});",
-                         magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd ),
-            &out );
+    const auto script = fmt::format(
+            " {}({});", magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
 
-    wxLogDebug( "fire_host_active_cmd: %s", out );
+    CallAfter(
+            [this, script]()
+            {
+                wxString out;
+                _browser->RunScriptAsync( script, &out );
+                wxLogDebug( "fire_host_active_cmd: %s", out );
+            } );
 }
+
 
 void WEBVIEW_CONTAINER::on_host_selection_changed( bool has_selection )
 {
@@ -211,7 +215,7 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
     {
         _browser->LoadURL( _primary_url );
     }
-    
+
 #endif // !_WIN32
 }
 
@@ -277,35 +281,49 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
                 if( _consumed_global_ctx_keys.contains( global_ctx.uuid ) )
                     break;
 
-                wxString out;
-                _browser->RunScriptAsync(
-                        fmt::format( " {}({});",
-                                     magic_enum::enum_name(
-                                             WEBVIEW_FUNCTIONS::update_copilot_global_context ),
-                                     global_ctx.dump() ),
-                        &out );
+                auto global_ctx_value = global_ctx.dump();
+                auto ctx_id = global_ctx.uuid;
 
-                _consumed_global_ctx_keys.insert( global_ctx.uuid );
+                CallAfter(
+                        [this, global_ctx_value, ctx_id]
+                        {
+                            wxString out;
+                            _browser->RunScriptAsync(
+                                    fmt::format( " {}({});",
+                                                 magic_enum::enum_name(
+                                                         WEBVIEW_FUNCTIONS::
+                                                                 update_copilot_global_context ),
+                                                 global_ctx_value ),
+                                    &out );
+
+                            _consumed_global_ctx_keys.insert( ctx_id );
+                        } );
+
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::show_image:
             {
-                if( !_image_viewer )
-                {
-                    const auto geometry =
-                            COPILOT_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
-                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer",
-                                                             { geometry.x, geometry.y },
-                                                             { geometry.width, geometry.height } );
-                }
+                CallAfter(
+                        [this]()
+                        {
+                            if( !_image_viewer )
+                            {
+                                const auto geometry = COPILOT_SETTINGS_MANAGER::get_instance()
+                                                              .get_image_viewer_geometry();
+                                _image_viewer = new DIALOG_IMAGE_VIEWER(
+                                        m_parent, wxID_ANY, "Image Viewer",
+                                        { geometry.x, geometry.y },
+                                        { geometry.width, geometry.height } );
+                            }
+                            _image_viewer->reload();
+                            _image_viewer->Show();
+                        } );
 
-                _image_viewer->reload();
-                _image_viewer->Show();
                 break;
             }
             }
+            break;
         }
-        break;
         case PA_AGENT:
         {
             if( !_host_copilot_handles.agent_action_handle.expired() )
@@ -313,8 +331,8 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
                 auto context_function = _host_copilot_handles.agent_action_handle.lock();
                 ( *context_function )( act_container.data );
             }
+            break;
         }
-        break;
         }
     }
     catch( const std::exception& e )
