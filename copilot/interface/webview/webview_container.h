@@ -26,12 +26,19 @@
 #define WEBVIEW_CONTAINER_H
 
 #include <host_copilot_handles.h>
+#include <memory>
 #include <string>
 #include <wx/panel.h>
 #include <wx/log.h>
 #include <wx/webview.h>
+#include <thread>
 #include <set>
 #include <copilot_global.h>
+
+namespace httplib
+{
+class Server;
+}
 
 class DIALOG_IMAGE_VIEWER;
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
@@ -54,14 +61,23 @@ public:
     void OnScriptResult( wxWebViewEvent& evt );
     void OnError( wxWebViewEvent& evt );
 
+private:
+    void generic_process_web_msg( std::string const& msg );
+    
+    void generic_process_web_msg_wrapper( std::string const& msg );
+
 
 private:
     std::set<std::string> _consumed_global_ctx_keys{};
+    
 
-    wxWebView*           _browser;
-    HOST_COPILOT_HANDLES _host_copilot_handles;
-    DIALOG_IMAGE_VIEWER* _image_viewer{};
-    std::string          _primary_url;
+
+    wxWebView*                       _browser;
+    HOST_COPILOT_HANDLES             _host_copilot_handles;
+    DIALOG_IMAGE_VIEWER*             _image_viewer{};
+    std::string                      _primary_url;
+    std::unique_ptr<httplib::Server> _server;
+    std::unique_ptr<std::thread>     _server_thread;
 };
 
 #endif

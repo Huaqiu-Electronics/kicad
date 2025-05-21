@@ -22,6 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include <memory>
 #include <webview/webview_container.h>
 #include "nlohmann/json.hpp"
 #include "settings/copilot_settings.h"
@@ -51,8 +52,10 @@
 #include "http/http_client.h"
 #include "proto/data_buried_point.h"
 #include "common/dialog_image_viewer.h"
+#include <utils/httplib.h>
 
 using json = nlohmann::json;
+using namespace httplib;
 
 inline auto send_data_buried_point()
 {
@@ -88,12 +91,55 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
         wxPanel( parent ), _browser( wxWebView::New() ),
-        _host_copilot_handles( std::move( host_copilot_handles ) ),
-        _primary_url( add_parameter_to_url(
-                COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
-                _host_copilot_handles.host_type ) )
+        _host_copilot_handles( std::move( host_copilot_handles ) ), _server( new httplib::Server() )
 {
-    send_data_buried_point();
+    auto available_port = _server->bind_to_any_port( "0.0.0.0" );
+    _host_copilot_handles.host_type->port = available_port;
+    _primary_url =
+            add_parameter_to_url( COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                                  _host_copilot_handles.host_type );
+
+    _server_thread = std::make_unique<std::thread>(
+            [&]()
+            {
+                // Handle POST requests
+                _server->Post( "/passive_action",
+                               [this]( const Request& req, Response& res )
+                               {
+                                   // Add CORS headers
+                                   res.set_header( "Access-Control-Allow-Origin", "*" );
+                                   res.set_header( "Access-Control-Allow-Methods",
+                                                   "POST, OPTIONS" );
+                                   res.set_header( "Access-Control-Allow-Headers", "*" );
+
+                                   const auto msg = req.body;
+                                   if( msg.empty() )
+                                   {
+                                       res.set_content( "Invalid message", "text/plain" );
+                                       return;
+                                   }
+
+                                   // Process the message
+                                   generic_process_web_msg_wrapper( msg );
+                                   res.set_content( "OK", "text/plain" );
+                               } );
+
+                // Handle OPTIONS preflight requests
+                _server->Options( "/passive_action",
+                                  []( const Request& req, Response& res )
+                                  {
+                                      res.set_header( "Access-Control-Allow-Origin", "*" );
+                                      res.set_header( "Access-Control-Allow-Methods",
+                                                      "POST, OPTIONS" );
+                                      res.set_header( "Access-Control-Allow-Headers", "*" );
+                                      res.set_content( "", "text/plain" );
+                                  } );
+
+
+                _server->listen_after_bind();
+            } );
+
+
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
 
 #ifdef __WXMAC__
@@ -127,11 +173,17 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
 
 #endif
 
+#if 0
+    // FIXME : wxWebView::AddScriptMessageHandler is not available on MacOS , it will lead to crash while working with the KiCad' co-thread
+
     if( !_browser->AddScriptMessageHandler(
                 magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
     {
         wxLogDebug( "Could not add script message handler " );
     }
+
+#endif // DEBUG
+
 
     SetSizer( top_sizer );
     //Set a more sensible size for web browsing
@@ -159,10 +211,14 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     _browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
+
+    send_data_buried_point();
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
+    _server->stop();
+    _server_thread->join();
 }
 
 void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
@@ -246,99 +302,10 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
-    try
-    {
-        const auto act_container = nlohmann::json::parse( evt.GetString().ToStdString() )
-                                           .get<PASSIVE_ACTION_CONTAINER>();
-        switch( act_container.category )
-        {
-        case INVALID: throw std::runtime_error( "Invalid message received" );
-        case PA_WEB_HOST:
-        {
-            const auto cmd = act_container.data.get<WEB_HOST_INTERNAL_CMD>();
-            auto       t = magic_enum::enum_cast<WEB_HOST_INTERNAL_CMD_TYPE>( cmd.type );
-
-            if( !t.has_value() )
-            {
-                wxLogDebug( "Invalid message received: %s", evt.GetString() );
-                return;
-            }
-
-            switch( *t )
-            {
-            case WEB_HOST_INTERNAL_CMD_TYPE::fetch_global_context_from_host:
-            {
-                if( _host_copilot_handles.global_context_handle.expired() )
-                {
-                    wxLogDebug( "Get design global context handle expired" );
-                    break;
-                }
-
-                auto context_function = _host_copilot_handles.global_context_handle.lock();
-
-                auto& global_ctx = ( *context_function )();
-
-                if( _consumed_global_ctx_keys.contains( global_ctx.uuid ) )
-                    break;
-
-                auto global_ctx_value = global_ctx.dump();
-                auto ctx_id = global_ctx.uuid;
-
-                CallAfter(
-                        [this, global_ctx_value, ctx_id]
-                        {
-                            wxString out;
-                            _browser->RunScriptAsync(
-                                    fmt::format( " {}({});",
-                                                 magic_enum::enum_name(
-                                                         WEBVIEW_FUNCTIONS::
-                                                                 update_copilot_global_context ),
-                                                 global_ctx_value ),
-                                    &out );
-
-                            _consumed_global_ctx_keys.insert( ctx_id );
-                        } );
-
-                break;
-            }
-            case WEB_HOST_INTERNAL_CMD_TYPE::show_image:
-            {
-                CallAfter(
-                        [this]()
-                        {
-                            if( !_image_viewer )
-                            {
-                                const auto geometry = COPILOT_SETTINGS_MANAGER::get_instance()
-                                                              .get_image_viewer_geometry();
-                                _image_viewer = new DIALOG_IMAGE_VIEWER(
-                                        m_parent, wxID_ANY, "Image Viewer",
-                                        { geometry.x, geometry.y },
-                                        { geometry.width, geometry.height } );
-                            }
-                            _image_viewer->reload();
-                            _image_viewer->Show();
-                        } );
-
-                break;
-            }
-            }
-            break;
-        }
-        case PA_AGENT:
-        {
-            if( !_host_copilot_handles.agent_action_handle.expired() )
-            {
-                auto context_function = _host_copilot_handles.agent_action_handle.lock();
-                ( *context_function )( act_container.data );
-            }
-            break;
-        }
-        }
-    }
-    catch( const std::exception& e )
-    {
-        wxLogDebug( "Invalid message received: %s , %s", evt.GetString(), e.what() );
-    }
+    // NOTE : This is the entrypoint for HQ distribution v9.0.2 , which has been released on 2025-05
+    // The msg is posted through _browser->AddScriptMessageHandler( "eda_host" )
+    // Hover, it will lead to crash on MacOS , so the http way is preferred
+    generic_process_web_msg( evt.GetString().ToStdString() );
 }
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
@@ -367,4 +334,100 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
 
     wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " ("
                               + evt.GetString() + ")'" );
+}
+
+
+void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
+{
+    try
+    {
+        const auto act_container = nlohmann::json::parse( msg ).get<PASSIVE_ACTION_CONTAINER>();
+        switch( act_container.category )
+        {
+        case INVALID: throw std::runtime_error( "Invalid message received" );
+        case PA_WEB_HOST:
+        {
+            const auto cmd = act_container.data.get<WEB_HOST_INTERNAL_CMD>();
+            auto       t = magic_enum::enum_cast<WEB_HOST_INTERNAL_CMD_TYPE>( cmd.type );
+
+            if( !t.has_value() )
+            {
+                wxLogDebug( "Invalid message received: %s", msg );
+                return;
+            }
+
+            switch( *t )
+            {
+            case WEB_HOST_INTERNAL_CMD_TYPE::fetch_global_context_from_host:
+            {
+                if( _host_copilot_handles.global_context_handle.expired() )
+                {
+                    wxLogDebug( "Get design global context handle expired" );
+                    break;
+                }
+
+                auto context_function = _host_copilot_handles.global_context_handle.lock();
+
+                auto& global_ctx = ( *context_function )();
+
+                if( _consumed_global_ctx_keys.contains( global_ctx.uuid ) )
+                    break;
+
+                auto global_ctx_value = global_ctx.dump();
+                auto ctx_id = global_ctx.uuid;
+
+                wxString out;
+                _browser->RunScriptAsync(
+                        fmt::format( " {}({});",
+                                     magic_enum::enum_name(
+                                             WEBVIEW_FUNCTIONS::update_copilot_global_context ),
+                                     global_ctx_value ),
+                        &out );
+
+                _consumed_global_ctx_keys.insert( ctx_id );
+
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::show_image:
+            {
+                if( !_image_viewer )
+                {
+                    const auto geometry =
+                            COPILOT_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
+                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer",
+                                                             { geometry.x, geometry.y },
+                                                             { geometry.width, geometry.height } );
+                }
+                _image_viewer->reload();
+                _image_viewer->Show();
+
+                break;
+            }
+            }
+            break;
+        }
+        case PA_AGENT:
+        {
+            if( !_host_copilot_handles.agent_action_handle.expired() )
+            {
+                auto context_function = _host_copilot_handles.agent_action_handle.lock();
+                ( *context_function )( act_container.data );
+            }
+            break;
+        }
+        }
+    }
+    catch( const std::exception& e )
+    {
+        wxLogDebug( "Invalid message received: %s , %s", msg, e.what() );
+    }
+}
+
+void WEBVIEW_CONTAINER::generic_process_web_msg_wrapper( std::string const& msg )
+{
+    CallAfter(
+            [this, msg]()
+            {
+                generic_process_web_msg( msg );
+            } );
 }
