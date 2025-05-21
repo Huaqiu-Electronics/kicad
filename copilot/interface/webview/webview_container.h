@@ -63,19 +63,17 @@ public:
 
 private:
     void generic_process_web_msg( std::string const& msg );
-    
+
     void generic_process_web_msg_wrapper( std::string const& msg );
 
 
 private:
-    std::set<std::string> _consumed_global_ctx_keys{};
-    
-
-
+    std::set<std::string>            _consumed_global_ctx_keys{};
     wxWebView*                       _browser;
     HOST_COPILOT_HANDLES             _host_copilot_handles;
     DIALOG_IMAGE_VIEWER*             _image_viewer{};
     std::string                      _primary_url;
+    int                              _port;
     std::unique_ptr<httplib::Server> _server;
     std::unique_ptr<std::thread>     _server_thread;
 };
