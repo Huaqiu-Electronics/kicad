@@ -66,9 +66,16 @@ private:
 
     void generic_process_web_msg_wrapper( std::string const& msg );
 
+#ifndef _WIN32
+    void sync_http_port();
+#endif // !_WIN32
+
+
 
 private:
     std::set<std::string>            _consumed_global_ctx_keys{};
+    
+
     wxWebView*                       _browser;
     HOST_COPILOT_HANDLES             _host_copilot_handles;
     DIALOG_IMAGE_VIEWER*             _image_viewer{};
