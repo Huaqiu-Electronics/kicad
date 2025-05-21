@@ -23,6 +23,7 @@
  */
 
 #include <memory>
+#include <string>
 #include <webview/webview_container.h>
 #include "nlohmann/json.hpp"
 #include "settings/copilot_settings.h"
@@ -93,8 +94,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
         wxPanel( parent ), _browser( wxWebView::New() ),
         _host_copilot_handles( std::move( host_copilot_handles ) ), _server( new httplib::Server() )
 {
-    auto available_port = _server->bind_to_any_port( "0.0.0.0" );
-    _host_copilot_handles.host_type->port = available_port;
+    _port = _server->bind_to_any_port( "0.0.0.0" );
+    _host_copilot_handles.host_type->port = _port;
     _primary_url =
             add_parameter_to_url( COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
                                   _host_copilot_handles.host_type );
@@ -270,6 +271,9 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
     if( evt_url == COPILOT_SETTINGS_MANAGER::get_instance().get_webview_url() )
     {
         _browser->LoadURL( _primary_url );
+        _browser->RunScriptAsync(
+                fmt::format( "window.update_host_port({});",
+                             std::to_string( _host_copilot_handles.host_type->port ) ) );
     }
 
 #endif // !_WIN32
