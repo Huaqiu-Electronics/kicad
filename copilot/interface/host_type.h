@@ -35,7 +35,8 @@ struct HOST_TYPE
     std::string editor_name;
     std::string session_id;
     std::string locale ;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id ,locale)
+    int port{};
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id ,locale,port)
 };
 
 #endif
