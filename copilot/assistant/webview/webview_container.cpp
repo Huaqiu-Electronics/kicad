@@ -161,6 +161,13 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     }
 
     _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
+
+#ifndef _WIN32
+
+    sync_http_port();
+
+#endif // !_WIN32
+
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 #ifndef __WXMAC__
@@ -271,9 +278,7 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
     if( evt_url == COPILOT_SETTINGS_MANAGER::get_instance().get_webview_url() )
     {
         _browser->LoadURL( _primary_url );
-        _browser->RunScriptAsync(
-                fmt::format( "window.update_host_port({});",
-                             std::to_string( _host_copilot_handles.host_type->port ) ) );
+        sync_http_port();
     }
 
 #endif // !_WIN32
@@ -426,6 +431,18 @@ void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
         wxLogDebug( "Invalid message received: %s , %s", msg, e.what() );
     }
 }
+
+#ifndef _WIN32
+
+void WEBVIEW_CONTAINER::sync_http_port()
+{
+    _browser->RunScriptAsync(
+            fmt::format( "window.update_host_port({});",
+                         std::to_string( _host_copilot_handles.host_type->port ) ) );
+}
+
+#endif // !_WIN32
+
 
 void WEBVIEW_CONTAINER::generic_process_web_msg_wrapper( std::string const& msg )
 {
