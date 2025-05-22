@@ -92,14 +92,17 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
         wxPanel( parent ), _browser( wxWebView::New() ),
-        _host_copilot_handles( std::move( host_copilot_handles ) ), _server( new httplib::Server() )
+        _host_copilot_handles( std::move( host_copilot_handles ) )
 {
+
+#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
+
+    _server = std::make_unique<httplib::Server>();
     _port = _server->bind_to_any_port( "0.0.0.0" );
     _host_copilot_handles.host_type->port = _port;
     _primary_url =
             add_parameter_to_url( COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
                                   _host_copilot_handles.host_type );
-
     _server_thread = std::make_unique<std::thread>(
             [&]()
             {
@@ -140,18 +143,10 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                 _server->listen_after_bind();
             } );
 
+#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
+
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
-
-#ifdef __WXMAC__
-
-    // With WKWebView handlers need to be registered before creation
-    _browser->RegisterHandler(
-            wxSharedPtr<wxWebViewHandler>( new wxWebViewArchiveHandler( "wxfs" ) ) );
-    _browser->RegisterHandler(
-            wxSharedPtr<wxWebViewHandler>( new wxWebViewFSHandler( "memory" ) ) );
-
-#endif
 
     // ADHOC : force client generate a new session
     if( _host_copilot_handles.host_type )
@@ -163,18 +158,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
-#ifndef __WXMAC__
+#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
 
-    //We register the wxfs:// protocol for testing purposes
-    _browser->RegisterHandler(
-            wxSharedPtr<wxWebViewHandler>( new wxWebViewArchiveHandler( "wxfs" ) ) );
-    //And the memory: file system
-    _browser->RegisterHandler(
-            wxSharedPtr<wxWebViewHandler>( new wxWebViewFSHandler( "memory" ) ) );
-
-#endif
-
-#if 0
     // FIXME : wxWebView::AddScriptMessageHandler is not available on MacOS , it will lead to crash while working with the KiCad' co-thread
 
     if( !_browser->AddScriptMessageHandler(
@@ -183,7 +168,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
         wxLogDebug( "Could not add script message handler " );
     }
 
-#endif // DEBUG
+
+#endif // COPILOT_USE_SCRIPT_MSG_HANDLER
 
 
     SetSizer( top_sizer );
@@ -202,8 +188,12 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
           _browser->GetId() );
     Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this,
           _browser->GetId() );
+
+#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
+
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this,
           _browser->GetId() );
+#endif
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this,
           _browser->GetId() );
 
@@ -218,8 +208,13 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
+
+#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
+
     _server->stop();
     _server_thread->join();
+    
+#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
 }
 
 void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
@@ -301,6 +296,8 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
     // ShowFullScreen( evt.GetInt() != 0 );
 }
 
+#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
+
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
     // NOTE : This is the entrypoint for HQ distribution v9.0.2 , which has been released on 2025-05
@@ -308,6 +305,8 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
     // Hover, it will lead to crash on MacOS , so the http way is preferred
     generic_process_web_msg( evt.GetString().ToStdString() );
 }
+
+#endif
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {

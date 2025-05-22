@@ -26,14 +26,19 @@
 #define WEBVIEW_CONTAINER_H
 
 #include <host_copilot_handles.h>
-#include <memory>
 #include <string>
 #include <wx/panel.h>
 #include <wx/log.h>
 #include <wx/webview.h>
-#include <thread>
 #include <set>
 #include <copilot_global.h>
+
+#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
+
+#include <thread>
+#include <memory>
+
+#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
 
 namespace httplib
 {
@@ -58,7 +63,13 @@ public:
     void OnNewWindow( wxWebViewEvent& evt );
     void OnTitleChanged( wxWebViewEvent& evt );
     void OnFullScreenChanged( wxWebViewEvent& evt );
+
+#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
+
     void OnScriptMessage( wxWebViewEvent& evt );
+
+#endif
+
     void OnScriptResult( wxWebViewEvent& evt );
     void OnError( wxWebViewEvent& evt );
 
@@ -67,16 +78,21 @@ private:
     void generic_process_web_msg_wrapper( std::string const& msg );
 
 private:
-    std::set<std::string>            _consumed_global_ctx_keys{};
-    
+    std::set<std::string> _consumed_global_ctx_keys{};
 
-    wxWebView*                       _browser;
-    HOST_COPILOT_HANDLES             _host_copilot_handles;
-    DIALOG_IMAGE_VIEWER*             _image_viewer{};
-    std::string                      _primary_url;
+
+    wxWebView*           _browser;
+    HOST_COPILOT_HANDLES _host_copilot_handles;
+    DIALOG_IMAGE_VIEWER* _image_viewer{};
+    std::string          _primary_url;
+
+#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
+
     int                              _port;
     std::unique_ptr<httplib::Server> _server;
     std::unique_ptr<std::thread>     _server_thread;
+
+#endif // COPILOT_USE_SCRIPT_MSG_HANDLER
 };
 
 #endif
