@@ -19,6 +19,7 @@ target_link_libraries(assistant PRIVATE
     nlohmann_json
     fmt::fmt
     ${wxWidgets_LIBRARIES}
+    libcontext
 )
 
 target_compile_definitions(assistant PRIVATE COPILOT_SHARED_LIBRARY)
