@@ -79,6 +79,10 @@ auto load_cnf( std::string const& path, T& aCnf )
             {
                 aCnf = cnf;
             }
+            else
+            {
+                save_cnf( path, aCnf );
+            }
         }
         catch( const std::exception& e )
         {

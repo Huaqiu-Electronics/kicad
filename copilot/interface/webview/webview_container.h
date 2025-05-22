@@ -41,6 +41,7 @@ class Server;
 }
 
 class DIALOG_IMAGE_VIEWER;
+
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
@@ -63,14 +64,7 @@ public:
 
 private:
     void generic_process_web_msg( std::string const& msg );
-
     void generic_process_web_msg_wrapper( std::string const& msg );
-
-#ifndef _WIN32
-    void sync_http_port();
-#endif // !_WIN32
-
-
 
 private:
     std::set<std::string>            _consumed_global_ctx_keys{};
