@@ -277,13 +277,6 @@ void PCB_SELECTION_TOOL::OnIdle( wxIdleEvent& aEvent )
         else
             m_frame->GetCanvas()->SetCurrentCursor( m_nonModifiedCursor );
     }
-
-    if( auto editor = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
-        editor && m_pre_selection != m_selection )
-    {
-        m_pre_selection = m_selection;
-        editor->SetHasSelection( !m_selection.GetItems().empty() );
-    }
 }
 
 
@@ -3135,6 +3128,8 @@ void PCB_SELECTION_TOOL::highlight( EDA_ITEM* aItem, int aMode, SELECTION* aGrou
     // creates noise.
     if( aMode == BRIGHTENED )
         getView()->MarkTargetDirty( KIGFX::TARGET_OVERLAY );
+
+    on_item_highlighted( true );
 }
 
 
@@ -3168,6 +3163,8 @@ void PCB_SELECTION_TOOL::unhighlight( EDA_ITEM* aItem, int aMode, SELECTION* aGr
     // Many selections are very temporal and updating the display each time just creates noise.
     if( aMode == BRIGHTENED )
         getView()->MarkTargetDirty( KIGFX::TARGET_OVERLAY );
+
+    on_item_highlighted( false );
 }
 
 
@@ -4135,4 +4132,16 @@ void PCB_SELECTION_TOOL::setTransitions()
     Go( &PCB_SELECTION_TOOL::UnselectAll,         ACTIONS::unselectAll.MakeEvent() );
 
     Go( &PCB_SELECTION_TOOL::disambiguateCursor,  EVENTS::DisambiguatePoint );
+}
+
+
+void PCB_SELECTION_TOOL::on_item_highlighted( bool aHighlight )
+{
+    aHighlight ? ++m_highlighted_item_count : --m_highlighted_item_count;
+
+    if( m_highlighted_item_count < 0 )
+        m_highlighted_item_count = 0;
+
+    if( auto editor = dynamic_cast<PCB_EDIT_FRAME*>( m_frame ); editor )
+        editor->SetHasSelection( m_highlighted_item_count > 0 );
 }

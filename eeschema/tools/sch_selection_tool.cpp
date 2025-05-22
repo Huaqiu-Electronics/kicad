@@ -1175,21 +1175,6 @@ void SCH_SELECTION_TOOL::OnIdle( wxIdleEvent& aEvent )
         else
             m_frame->GetCanvas()->SetCurrentCursor( m_nonModifiedCursor );
     }
-
-    if( auto editor = dynamic_cast<SCH_EDIT_FRAME*>( m_frame );
-        editor && m_pre_selection != m_selection )
-    {
-        m_pre_selection = m_selection;
-        editor->SetHasSelection( (
-                [&]()
-                {
-                    for( auto it : m_selection.GetItems() )
-                        if( dynamic_cast<SCH_SYMBOL*>( it ) )
-                            return true;
-
-                    return false;
-                } )() );
-    }
 }
 
 
@@ -2787,6 +2772,11 @@ void SCH_SELECTION_TOOL::highlight( EDA_ITEM* aItem, int aMode, SELECTION* aGrou
                         aChild->SetBrightened();
                     }
                 } );
+
+        if( sch_item->IsType( { SCH_SYMBOL_T } ) )
+        {
+            on_symbol_highlighted( true );
+        }
     }
 
     if( aGroup && aMode != BRIGHTENED )
@@ -2839,6 +2829,11 @@ void SCH_SELECTION_TOOL::unhighlight( EDA_ITEM* aItem, int aMode, SELECTION* aGr
                     if( aGroup )
                         aGroup->Remove( aChild );
                 } );
+
+        if( sch_item->IsType( { SCH_SYMBOL_T } ) )
+        {
+            on_symbol_highlighted( false );
+        }
     }
 
     if( aItem->GetParent() && aItem->GetParent()->Type() != SCHEMATIC_T )
@@ -2893,3 +2888,13 @@ void SCH_SELECTION_TOOL::setTransitions()
 }
 
 
+void SCH_SELECTION_TOOL::on_symbol_highlighted( bool aHighlight )
+{
+    aHighlight ? ++m_highlighted_symbol_count : --m_highlighted_symbol_count;
+
+    if( m_highlighted_symbol_count < 0 )
+        m_highlighted_symbol_count = 0;
+
+    if( auto editor = dynamic_cast<SCH_EDIT_FRAME*>( m_frame ); editor )
+        editor->SetHasSelection( m_highlighted_symbol_count > 0 );
+}
