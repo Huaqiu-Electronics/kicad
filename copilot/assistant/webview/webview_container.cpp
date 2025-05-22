@@ -236,6 +236,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     }
 
     _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
+    launch_coroutine_with_js("console.log('Browser created');");
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 #ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
