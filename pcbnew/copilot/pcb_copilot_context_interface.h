@@ -117,8 +117,12 @@ std::string PCB_EDIT_FRAME::GetSelectionJsonString() const
 
 void PCB_EDIT_FRAME::SetHasSelection( bool aHasSelection )
 {
-    if( m_copilotPanel )
-        m_copilotPanel->on_host_selection_changed( aHasSelection );
+    CallAfter(
+            [=, this]()
+            {
+                if( m_copilotPanel )
+                    m_copilotPanel->on_host_selection_changed( aHasSelection );
+            } );
 }
 
 #endif
