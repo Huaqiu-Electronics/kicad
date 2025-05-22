@@ -343,6 +343,8 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
     }
 
 #endif // !_WIN32
+
+    launch_coroutine_with_js("console.log('Document loaded');");
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
