@@ -91,8 +91,11 @@ enum START_UP_SIZE
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
-        wxPanel( parent ), _browser( wxWebView::New() ),
-        _host_copilot_handles( std::move( host_copilot_handles ) )
+        wxPanel( parent ),
+        _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
+        _primary_url( add_parameter_to_url(
+                COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                _host_copilot_handles.host_type ) )
 {
 #ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
 
