@@ -94,7 +94,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
         wxPanel( parent ), _browser( wxWebView::New() ),
         _host_copilot_handles( std::move( host_copilot_handles ) )
 {
-
 #ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
 
     _server = std::make_unique<httplib::Server>();
@@ -208,26 +207,26 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
-
 #ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
 
     _server->stop();
     _server_thread->join();
-    
+
 #endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
 }
 
 void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
 {
-    const auto script = fmt::format(
-            " {}({});", magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
+    const auto js_call =
+            fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
+                         magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
 
     CallAfter(
-            [this, script]()
+            [this, js_call]()
             {
                 wxString out;
-                _browser->RunScriptAsync( script, &out );
-                wxLogDebug( "fire_host_active_cmd: %s", out );
+                _browser->RunScriptAsync( js_call, &out );
+                wxLogDebug( "fire_host_active_cmd (wrapped): %s", out );
             } );
 }
 
@@ -311,7 +310,9 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
     if( evt.IsError() )
-        wxLogDebug( "Async script execution failed: %s", evt.GetString() );
+        wxLogDebug( "Async JS failed: %s", evt.GetString() );
+    else
+        wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
 }
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
@@ -378,11 +379,13 @@ void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
 
                 wxString out;
                 _browser->RunScriptAsync(
-                        fmt::format( " {}({});",
+                        fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS "
+                                     "exception:', e); }}",
                                      magic_enum::enum_name(
                                              WEBVIEW_FUNCTIONS::update_copilot_global_context ),
                                      global_ctx_value ),
                         &out );
+
 
                 _consumed_global_ctx_keys.insert( ctx_id );
 
