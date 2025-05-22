@@ -259,8 +259,12 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
 
 void SCH_EDIT_FRAME::SetHasSelection( bool aHasSelection )
 {
-    if( m_copilotPanel )
-        m_copilotPanel->on_host_selection_changed( aHasSelection );
+    CallAfter(
+            [=, this]()
+            {
+                if( m_copilotPanel )
+                    m_copilotPanel->on_host_selection_changed( aHasSelection );
+            } );
 }
 
 #endif
