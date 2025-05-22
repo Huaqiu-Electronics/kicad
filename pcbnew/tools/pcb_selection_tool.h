@@ -484,6 +484,7 @@ private:
     bool                     m_isFootprintEditor;
 
     PCB_SELECTION            m_selection;            // Current state of selection
+    PCB_SELECTION            m_pre_selection;        // Previous state of selection
 
     PCB_SELECTION_FILTER_OPTIONS m_filter;
 
@@ -498,12 +499,6 @@ private:
     /// Private state (opaque pointer/compilation firewall)
     class PRIV;
     std::unique_ptr<PRIV>    m_priv;
-
-
-private:
-    void on_item_highlighted( bool aHighlight );
-
-    int m_highlighted_item_count{};
 };
 
 #endif /* PCB_SELECTION_TOOL_H */
