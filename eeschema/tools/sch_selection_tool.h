@@ -304,6 +304,8 @@ private:
 
     SCH_BASE_FRAME* m_frame;             // Pointer to the parent frame
     SCH_SELECTION   m_selection;         // Current state of selection
+    SCH_SELECTION   m_pre_selection;     // Previous state of selection
+
 
     KICURSOR        m_nonModifiedCursor; // Cursor in the absence of shift/ctrl/alt
 
@@ -313,12 +315,6 @@ private:
     int             m_bodyStyle;         // Fixed DeMorgan filter (for symbol editor)
 
     SCH_SELECTION_FILTER_OPTIONS m_filter;
-
-
-private:
-    void on_symbol_highlighted( bool aHighlight );
-
-    int m_highlighted_symbol_count{};
 };
 
 #endif //SCH_SELECTION_TOOL_H
