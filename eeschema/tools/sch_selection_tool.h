@@ -373,8 +373,6 @@ private:
 private:
     SCH_BASE_FRAME* m_frame;     // Pointer to the parent frame
     SCH_SELECTION   m_selection; // Current state of selection
-    SCH_SELECTION   m_pre_selection;     // Previous state of selection
-
 
     KICURSOR m_nonModifiedCursor; // Cursor in the absence of shift/ctrl/alt
 
@@ -392,6 +390,12 @@ private:
     SELECTION_MODE m_selectionMode; // Current selection mode
 
     SCH_TABLECELL* m_previous_first_cell; // First selected cell for shift+click selection range
+
+
+private:
+    void on_symbol_highlighted( bool aHighlight );
+
+    int m_highlighted_symbol_count{};
 };
 
 #endif //SCH_SELECTION_TOOL_H
