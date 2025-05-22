@@ -33,10 +33,6 @@
 #include <set>
 #include <copilot_global.h>
 
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
-#define COPILOT_USE_SCRIPT_MSG_HANDLER
-#endif // COPILOT_USE_SCRIPT_MSG_HANDLER
-
 
 #ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
 
