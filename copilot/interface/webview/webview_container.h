@@ -77,10 +77,6 @@ public:
 private:
     void generic_process_web_msg( std::string const& msg );
     void generic_process_web_msg_wrapper( std::string const& msg );
-    template <typename T>
-    void launch_coroutine( T data );
-
-    void launch_coroutine_with_js(std::string js_code);
 
 private:
     std::set<std::string> _consumed_global_ctx_keys{};

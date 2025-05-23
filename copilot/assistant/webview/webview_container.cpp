@@ -22,85 +22,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-// webview_coroutine_patch.cpp
-// Patch for integrating libcontext coroutine and safe RunScriptAsync call into WEBVIEW_CONTAINER
-
-#include <webview/webview_container.h>
-#include <libcontext.h>
-#include <fmt/format.h>
-#include <magic_enum.hpp>
-#include <wx/app.h>
-#include <wx/webview.h>
-#include <cstdlib>
-#include <memory>
-#include "webview_constant.h"
-
-using namespace libcontext;
-// Structure to hold coroutine context and stack
-struct CoroutineContext
-{
-    fcontext_t ctx;
-    void*      stack;
-};
-
-// Structure to pass args to coroutine
-struct CoroutineArgs
-{
-    wxWebView*  browser;
-    std::string js;
-};
-
-// Forward declaration
-static fcontext_t main_ctx;
-
-// Coroutine entry point
-static void coroutine_entry( intptr_t raw_ptr )
-{
-    auto* args = reinterpret_cast<CoroutineArgs*>( raw_ptr );
-
-    args->browser->CallAfter(
-            [browser = args->browser, js = args->js]()
-            {
-                wxString out;
-                browser->RunScriptAsync( js, &out );
-                wxLogDebug( "[Coroutine] JS sent to browser: %s", out );
-            } );
-
-    // Clean up memory after scheduling work on main thread
-    std::free( args );
-
-    // Return to the main context (optional)
-    jump_fcontext( &main_ctx, main_ctx, 0 );
-}
-
-// Allocate and prepare coroutine context
-CoroutineContext make_coroutine_context( void ( *fn )( intptr_t ), intptr_t arg )
-{
-    const size_t stack_size = 64 * 1024;
-    void*        stack = std::malloc( stack_size );
-
-    fcontext_t ctx = make_fcontext( static_cast<char*>( stack ) + stack_size, stack_size, fn );
-
-    return { ctx, stack };
-}
-
-// Add this method to WEBVIEW_CONTAINER class
-void WEBVIEW_CONTAINER::launch_coroutine_with_js( std::string js_code )
-{
-    auto* args = static_cast<CoroutineArgs*>( std::malloc( sizeof( CoroutineArgs ) ) );
-    new( args ) CoroutineArgs{ _browser, std::move( js_code ) }; // placement new
-
-    CoroutineContext coro =
-            make_coroutine_context( coroutine_entry, reinterpret_cast<intptr_t>( args ) );
-
-    // Save main context and switch to coroutine
-    jump_fcontext( &main_ctx, coro.ctx, reinterpret_cast<intptr_t>( args ) );
-
-    // Clean up coroutine stack
-    std::free( coro.stack );
-}
-
-
 #include <memory>
 #include <string>
 #include <webview/webview_container.h>
@@ -108,6 +29,7 @@ void WEBVIEW_CONTAINER::launch_coroutine_with_js( std::string js_code )
 #include "settings/copilot_settings.h"
 #include "settings/copilot_settings_manager.h"
 #include "web_utils.h"
+#include "webview_constant.h"
 #include <utils/copilot_utils.h>
 #include <passive_action/web/web_host.h>
 #include <passive_action/passive_action_container.h>
@@ -169,8 +91,8 @@ enum START_UP_SIZE
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
-        wxPanel( parent ), _browser( wxWebView::New() ),
-        _host_copilot_handles( std::move( host_copilot_handles ) ),
+        wxPanel( parent ),
+        _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
         _primary_url( add_parameter_to_url(
                 COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
                 _host_copilot_handles.host_type ) )
@@ -303,7 +225,13 @@ void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
             fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
                          magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
 
-    launch_coroutine_with_js( js_call );
+    CallAfter(
+            [this, js_call]()
+            {
+                wxString out;
+                _browser->RunScriptAsync( js_call, &out );
+                wxLogDebug( "fire_host_active_cmd (wrapped): %s", out );
+            } );
 }
 
 
@@ -455,12 +383,14 @@ void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
                 auto global_ctx_value = global_ctx.dump();
                 auto ctx_id = global_ctx.uuid;
 
-
-                launch_coroutine_with_js( fmt::format(
-                        "try {{ {}({}); }} catch (e) {{ console.error('JS "
-                        "exception:', e); }}",
-                        magic_enum::enum_name( WEBVIEW_FUNCTIONS::update_copilot_global_context ),
-                        global_ctx_value ) );
+                wxString out;
+                _browser->RunScriptAsync(
+                        fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS "
+                                     "exception:', e); }}",
+                                     magic_enum::enum_name(
+                                             WEBVIEW_FUNCTIONS::update_copilot_global_context ),
+                                     global_ctx_value ),
+                        &out );
 
 
                 _consumed_global_ctx_keys.insert( ctx_id );
