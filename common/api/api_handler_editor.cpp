@@ -23,13 +23,14 @@
 #include <eda_base_frame.h>
 #include <eda_item.h>
 #include <wx/wx.h>
+#include <eda_base_frame.h>
 
 using namespace kiapi::common::commands;
 
 
 API_HANDLER_EDITOR::API_HANDLER_EDITOR( EDA_BASE_FRAME* aFrame ) :
         API_HANDLER(),
-        m_frame( aFrame )
+        m_frame( aFrame ),m_resourceMgr(*aFrame)
 {
     registerHandler<BeginCommit, BeginCommitResponse>( &API_HANDLER_EDITOR::handleBeginCommit );
     registerHandler<EndCommit, EndCommitResponse>( &API_HANDLER_EDITOR::handleEndCommit );
