@@ -147,7 +147,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
 
 #endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
 
-
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
 
     // ADHOC : force client generate a new session
@@ -158,7 +157,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     }
 
     _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
-    launch_coroutine_with_js("console.log('Browser created');");
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 #ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
@@ -272,8 +270,6 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
     }
 
 #endif // !_WIN32
-
-    launch_coroutine_with_js("console.log('Document loaded');");
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
