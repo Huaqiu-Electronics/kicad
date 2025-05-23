@@ -31,28 +31,18 @@
 #include <wx/filename.h>
 
 #include <api/common/types/base_types.pb.h>
+#include <api/api_design_resource.h>
+
 
 using namespace kiapi::common::commands;
 using kiapi::common::types::CommandStatus;
 using kiapi::common::types::DocumentType;
 using kiapi::common::types::ItemRequestStatus;
 
-
-namespace
+wxString API_HANDLER_SCH::getProjectPath() const
 {
-
-struct FootprintResource
-{
-    std::string            uri;
-    std::list<std::string> model_uris;
-};
-
-struct DesignBlockResource
-{
-};
-
-
-} // namespace
+    return m_frame->Prj().GetProjectPath();
+}
 
 
 HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx )
@@ -70,13 +60,13 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         return {};
 
 
-    const auto                   symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
-    std::list<FootprintResource> footprint_resources;
+    const auto                        symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
+    std::list<FootprintConent> footprint_resources;
 
 
     for( const auto& it : aCtx.Request.component_resource().footprint_resources() )
     {
-        FootprintResource footprint_resource;
+        FootprintConent footprint_resource;
         footprint_resource.uri = it.uri();
         for( const auto& model : it.models() )
         {

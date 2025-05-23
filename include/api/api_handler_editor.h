@@ -25,6 +25,7 @@
 #include <api/common/commands/editor_commands.pb.h>
 #include <commit.h>
 #include <kiid.h>
+#include "api_design_resource_mgr.h"
 
 using namespace kiapi::common;
 using kiapi::common::types::DocumentSpecifier;
@@ -110,6 +111,8 @@ protected:
     std::set<std::string> m_activeClients;
 
     EDA_BASE_FRAME* m_frame;
+
+    API_DESIGN_RESOURCE_MGR m_resourceMgr;
 };
 
 #endif //KICAD_API_HANDLER_EDITOR_H

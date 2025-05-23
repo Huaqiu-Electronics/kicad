@@ -80,6 +80,12 @@ private:
 
 
     SCH_EDIT_FRAME* m_frame;
+
+private: 
+
+    wxString getProjectPath() const;
+
+
 };
 
 

@@ -687,6 +687,7 @@ set( COMMON_SRCS
 if( KICAD_IPC_API )
     set( COMMON_SRCS
         ${COMMON_SRCS}
+        api/api_design_resource_mgr.cpp        
         api/api_handler_common.cpp
         api/api_handler_editor.cpp
     )
