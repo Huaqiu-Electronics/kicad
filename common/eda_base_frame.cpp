@@ -719,7 +719,6 @@ void EDA_BASE_FRAME::AddStandardHelpMenu( wxMenuBar* aMenuBar )
     }
 #endif // _WIN32
 
-
     aMenuBar->Append( helpMenu, _( "&Help" ) );
 }
 
