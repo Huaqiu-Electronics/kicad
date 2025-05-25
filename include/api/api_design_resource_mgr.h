@@ -30,10 +30,14 @@
 #include <wx/string.h>
 
 class EDA_BASE_FRAME;
+struct DesignBlockConent;
+struct ComponentContent;
 class API_DESIGN_RESOURCE_MGR
 {
 public:
+
     API_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame );
+
     ~API_DESIGN_RESOURCE_MGR();
 
     /**
@@ -47,6 +51,21 @@ public:
     static std::string extract_name( std::string const& aUrl );
 
     wxString getProjectPath() const;
+
+    void placeComponent(ComponentContent const& aComponent);
+    
+    void placeDesignBlock(DesignBlockConent const& aComponent);
+
+private:
+
+    void setupProjectResourceDir();
+
+    wxString getProjectResourceDir() const;
+
+    void updateSymbolLibTable( const std::string& aName, const std::string& aContent );
+
+
+    void updateFootprintLibTable( const std::string& aName, const std::string& aContent );
 
 private:
     EDA_BASE_FRAME& m_frame;

@@ -29,6 +29,7 @@
 #include <wx/debug.h>
 #include <wx/log.h>
 #include <eda_base_frame.h>
+#include <api/api_design_resource.h>
 
 static auto checkServerResponse( auto& aCurl )
 {
@@ -76,5 +77,24 @@ wxString API_DESIGN_RESOURCE_MGR::getProjectPath() const
 std::string API_DESIGN_RESOURCE_MGR::extract_name( std::string const& aUrl )
 {
     return aUrl.substr( aUrl.find_last_of( '/' ) + 1 );
+}
+
+void API_DESIGN_RESOURCE_MGR::placeComponent( ComponentContent const& aComponent )
+{
+}
+
+void API_DESIGN_RESOURCE_MGR::placeDesignBlock( DesignBlockConent const& aComponent )
+{
+}
+
+
+void API_DESIGN_RESOURCE_MGR::setupProjectResourceDir()
+{
+}
+
+wxString API_DESIGN_RESOURCE_MGR::getProjectResourceDir() const
+{
+
+    return {};
 }
 
