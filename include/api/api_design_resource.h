@@ -25,11 +25,12 @@
 #ifndef API_DESIGN_RESOURCE_H
 #define API_DESIGN_RESOURCE_H
 
+#include <optional>
 #include <string>
 #include <list>
 
 
-struct NamedConent
+struct NamedContent
 {
     std::string name;
     std::string content;
@@ -38,21 +39,41 @@ struct NamedConent
 
 struct FootprintConent
 {
-    NamedConent footprint;
+    NamedContent footprint;
+
     // The 3d models
-    std::list<NamedConent> models;
+    std::list<NamedContent> models;
 };
 
 
 struct ComponentContent
 {
-    NamedConent                symbol;
+    NamedContent               symbol;
     std::list<FootprintConent> footprints;
 };
 
 
-struct DesignBlockResource
+struct PCBConent
 {
+    NamedContent               pcb;
+    // footprints used in the PCB , in case we are placing only the PCB
+    std::list<FootprintConent> footprints;
+};
+
+
+struct DesignBlockConent
+{
+    // The root schematic file name
+    std::optional<std::string> root;
+
+    // One or more schematic files
+    std::list<NamedContent>    schematics;
+    
+    // The PCB file 
+    std::optional<PCBConent>   pcb;
+
+    // Components used in the schematics
+    std::list<ComponentContent> components;
 };
 
 #endif

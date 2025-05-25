@@ -71,3 +71,10 @@ wxString API_DESIGN_RESOURCE_MGR::getProjectPath() const
 {
     return m_frame.Prj().GetProjectPath();
 }
+
+
+std::string API_DESIGN_RESOURCE_MGR::extract_name( std::string const& aUrl )
+{
+    return aUrl.substr( aUrl.find_last_of( '/' ) + 1 );
+}
+
