@@ -22,6 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "api/api_design_resource_mgr.h"
 #include <api/api_handler_sch.h>
 #include <api/api_sch_utils.h>
 #include <api/api_utils.h>
@@ -32,6 +33,7 @@
 
 #include <api/common/types/base_types.pb.h>
 #include <api/api_design_resource.h>
+#include <wx/log.h>
 
 
 using namespace kiapi::common::commands;
@@ -47,11 +49,43 @@ wxString API_HANDLER_SCH::getProjectPath() const
 
 HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx )
 {
-    if( !aCtx.Request.has_design_block_resource() )
+    if( !aCtx.Request.has_design_block_resource() || aCtx.Request.design_block_resource().schematic_uris().empty())
         return {};
 
+
+    DesignBlockConent design_block_content;
+
+    if( aCtx.Request.design_block_resource().has_root_schematic() )
+    {
+        design_block_content.root = aCtx.Request.design_block_resource().root_schematic();
+    }
+
+    for(const auto& uri : aCtx.Request.design_block_resource().schematic_uris())
+    {
+        NamedContent schematic;
+        const auto   schematic_content = API_DESIGN_RESOURCE_MGR::download_url( uri );
+
+        if( !schematic_content )
+        {
+            wxLogWarning( "Failed to download schematic from %s", uri );
+            continue;
+        }
+
+        schematic.name = API_DESIGN_RESOURCE_MGR::extract_name( uri );
+        schematic.content = *schematic_content;
+        design_block_content.schematics.push_back( std::move( schematic ) );
+    }
+
+    // TODO : handle the PCB
+    handlePlaceDesignBlock( design_block_content );    
     return {};
 }
+
+
+void API_HANDLER_SCH::handlePlaceDesignBlock( struct DesignBlockConent const& aComponent )
+{
+}
+
 
 HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx )
 {
@@ -60,21 +94,58 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         return {};
 
 
-    const auto                        symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
-    std::list<FootprintConent> footprint_resources;
+    const auto symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
+    const auto symbol_content = API_DESIGN_RESOURCE_MGR::download_url( symbol_uri );
 
-
-    for( const auto& it : aCtx.Request.component_resource().footprint_resources() )
+    if( !symbol_content )
     {
-        FootprintConent footprint_resource;
-        footprint_resource.uri = it.uri();
-        for( const auto& model : it.models() )
-        {
-            footprint_resource.model_uris.push_back( model.uri() );
-        }
-        footprint_resources.push_back( footprint_resource );
+        wxLogWarning( "Failed to download symbol from %s", symbol_uri );
+        return {};
     }
 
+    ComponentContent component_content{ { API_DESIGN_RESOURCE_MGR::extract_name( symbol_uri ), *symbol_content } };
 
+
+    for( const auto& fp : aCtx.Request.component_resource().footprint_resources() )
+    {
+        FootprintConent footprint_resource;
+        const auto      fp_uri = fp.uri();
+        const auto      fp_content = API_DESIGN_RESOURCE_MGR::download_url( fp_uri );
+
+        if( !fp_content )
+        {
+            wxLogWarning( "Failed to download footprint from %s", fp_uri );
+            continue;
+        }
+
+        footprint_resource.footprint.name = API_DESIGN_RESOURCE_MGR::extract_name( fp_uri );
+        footprint_resource.footprint.content = *fp_content;
+
+        for( const auto& ml : fp.models() )
+        {
+            NamedContent model;
+            const auto   model_uri = ml.uri();
+            const auto   model_content = API_DESIGN_RESOURCE_MGR::download_url( model_uri );
+
+            if( !model_content )
+            {
+                wxLogWarning( "Failed to download 3D model from %s", model_uri );
+                continue;
+            }
+
+            model.name = API_DESIGN_RESOURCE_MGR::extract_name( model_uri );
+            model.content = *model_content;
+            footprint_resource.models.push_back( model );
+        }
+
+        component_content.footprints.push_back( std::move( footprint_resource ) );
+    }
+
+    handlePlaceSymbol( component_content );
     return {};
+}
+
+
+void API_HANDLER_SCH::handlePlaceSymbol( struct ComponentContent const& aComponent )
+{
 }

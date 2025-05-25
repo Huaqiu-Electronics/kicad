@@ -44,10 +44,14 @@ public:
      */
     static std::optional<std::string> download_url( std::string const& aUrl );
 
+    static std::string extract_name( std::string const& aUrl );
+
     wxString getProjectPath() const;
 
 private:
     EDA_BASE_FRAME& m_frame;
 };
+
+
 
 #endif

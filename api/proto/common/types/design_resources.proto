@@ -82,9 +82,13 @@ message DesignBlockResource
     // The root schematic name of the design block used in hierarchical design
     optional string root_schematic = 2;
 
+    // The client may place the project footprints inside either the component_resources or the 
+    // footprint_resources of the PCBResource (in case there is no schematic)
+    repeated ComponentResource component_resources = 3;
+
     // The URI to the .kicad_pcb corresponding to the schematic(s)
-    optional PCBResource pcb_resource = 3;
+    optional PCBResource pcb_resource = 4;
 
     // The version of the design block , meant to be used by online design block registries
-    optional string version = 4;
+    optional string version = 5;
 }

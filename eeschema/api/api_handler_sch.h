@@ -76,8 +76,11 @@ private:
 
     HANDLER_RESULT<Empty> handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx );
 
+    void handlePlaceDesignBlock(struct DesignBlockConent const& aComponent);
+
     HANDLER_RESULT<Empty> handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx );
 
+    void handlePlaceSymbol(struct ComponentContent const& aComponent);
 
     SCH_EDIT_FRAME* m_frame;
 
