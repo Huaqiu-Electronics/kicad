@@ -148,4 +148,8 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
 
 void API_HANDLER_SCH::handlePlaceSymbol( struct ComponentContent const& aComponent )
 {
+
+
+
+    
 }
