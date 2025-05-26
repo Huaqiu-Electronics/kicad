@@ -28,15 +28,16 @@
 
 #include <api/common/types/base_types.pb.h>
 
+#include "api_sch_design_resource_mgr.h"
+
 using namespace kiapi::common::commands;
 using kiapi::common::types::CommandStatus;
 using kiapi::common::types::DocumentType;
 using kiapi::common::types::ItemRequestStatus;
 
 
-API_HANDLER_SCH::API_HANDLER_SCH( SCH_EDIT_FRAME* aFrame ) :
-        API_HANDLER_EDITOR(),
-        m_frame( aFrame )
+API_HANDLER_SCH::API_HANDLER_SCH( SCH_EDIT_FRAME* aFrame ) : API_HANDLER_EDITOR(), m_frame( aFrame ),
+m_resourceMgr(std::make_unique<API_SCH_DESIGN_RESOURCE_MGR>(*m_frame))
 {
     registerHandler<GetOpenDocuments, GetOpenDocumentsResponse>(
             &API_HANDLER_SCH::handleGetOpenDocuments );

@@ -28,6 +28,7 @@
 #include <api/schematic/schematic_commands.pb.h>
 #include <api/schematic/schematic_types.pb.h>
 #include <kiid.h>
+#include <memory>
 
 using namespace kiapi;
 using namespace kiapi::common;
@@ -37,6 +38,7 @@ using google::protobuf::Empty;
 
 class SCH_EDIT_FRAME;
 class SCH_ITEM;
+class API_SCH_DESIGN_RESOURCE_MGR;
 
 
 class API_HANDLER_SCH : public API_HANDLER_EDITOR
@@ -83,12 +85,7 @@ private:
     void handlePlaceSymbol(struct ComponentContent const& aComponent);
 
     SCH_EDIT_FRAME* m_frame;
-
-private: 
-
-    wxString getProjectPath() const;
-
-
+    std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
 };
 
 

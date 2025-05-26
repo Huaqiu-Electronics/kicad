@@ -28,6 +28,7 @@
 #include <optional>
 #include <string>
 #include <list>
+#include <unordered_map>
 
 
 struct NamedContent
@@ -48,14 +49,15 @@ struct FootprintConent
 
 struct ComponentContent
 {
-    NamedContent               symbol;
-    std::list<FootprintConent> footprints;
+    NamedContent                                 symbol;
+    std::unordered_map<std::string, std::string> attributes;
+    std::list<FootprintConent>                   footprints;
 };
 
 
 struct PCBConent
 {
-    NamedContent               pcb;
+    NamedContent pcb;
     // footprints used in the PCB , in case we are placing only the PCB
     std::list<FootprintConent> footprints;
 };
@@ -67,10 +69,10 @@ struct DesignBlockConent
     std::optional<std::string> root;
 
     // One or more schematic files
-    std::list<NamedContent>    schematics;
-    
-    // The PCB file 
-    std::optional<PCBConent>   pcb;
+    std::list<NamedContent> schematics;
+
+    // The PCB file
+    std::optional<PCBConent> pcb;
 
     // Components used in the schematics
     std::list<ComponentContent> components;
