@@ -32,45 +32,82 @@
 class EDA_BASE_FRAME;
 struct DesignBlockConent;
 struct ComponentContent;
+
 class API_DESIGN_RESOURCE_MGR
 {
 public:
+    enum ProjectResourceDir
+    {
+        BEGIN = 0,
+
+        ROOT_DIR = BEGIN,
+        SYMBOL_DIR = ROOT_DIR,
+        PRETTY_DIR,
+        MODEL_3D_DIR,
+
+        END
+    };
+
+
+    enum API_LIB_TABLE_T
+    {
+        API_LIB_SYMBOL_TABLE,
+        API_LIB_FP_TABLE,
+        API_LIB_DESIGN_BLOCK_TABLE
+    };
+
 
     API_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame );
 
-    ~API_DESIGN_RESOURCE_MGR();
+    virtual ~API_DESIGN_RESOURCE_MGR();
 
     /**
-     * @brief 
-     * 
+     * @brief Download the content of a design resource from the given URL.
      * @param aUrl The url to a design resource e.g. symbol ,footprint 
      * @return The string buffer of the url
      */
-    static std::optional<std::string> download_url( std::string const& aUrl );
+    static std::optional<std::string> DownloadURL( std::string const& aUrl );
 
-    static std::string extract_name( std::string const& aUrl );
+    static std::string ExtractName( std::string const& aUrl );
 
-    wxString getProjectPath() const;
+    static std::string ExtactFileExtension( std::string const& aUrl );
 
-    void placeComponent(ComponentContent const& aComponent);
-    
-    void placeDesignBlock(DesignBlockConent const& aComponent);
+    wxString GetProjectDirectory() const;
+
+    /**
+     * @brief Get the project resource directory for the given type.
+     * @param aType The type of resource directory to get.
+     * @return The path to the project resource directory, or std::nullopt if not set.
+     */
+    std::optional<wxString> GetProjectResourceDir( ProjectResourceDir aType );
+
+    /**
+     * @brief Get the project resource save path for the given type and name.
+     * @param aType The type of resource directory to get.
+     * @param aName The name of the resource.
+     * @return The path to the project resource save path, or std::nullopt if not set.
+     */
+    std::optional<wxString> GetProjectResourceSavePath( ProjectResourceDir aType, wxString const& aName );
+
+    bool WriteProjectResource( ProjectResourceDir aType, wxString const& aName, std::string const& aContent );
+
+    bool WriteProjectResource( wxString const& aPath, std::string const& aContent );
+
+    bool SaveComponentToProject( ComponentContent const& aComponent );
+
+    bool SaveDesignBlockToProject( DesignBlockConent const& aComponent );
+
+    // TODO : Currently it's done in the sub class ,how about exposing the corresponding LIB_TABLE getter through KiWay to get a centralized API ?
+    virtual bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
 private:
+    wxString GetProjectResourceDirInternal( ProjectResourceDir aType ) const;
 
-    void setupProjectResourceDir();
+    bool SetupProjectResourceDirs();
 
-    wxString getProjectResourceDir() const;
-
-    void updateSymbolLibTable( const std::string& aName, const std::string& aContent );
-
-
-    void updateFootprintLibTable( const std::string& aName, const std::string& aContent );
-
-private:
+protected:
     EDA_BASE_FRAME& m_frame;
 };
-
 
 
 #endif

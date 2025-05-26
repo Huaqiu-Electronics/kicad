@@ -475,6 +475,8 @@ set( EESCHEMA_SRCS
 if( KICAD_IPC_API )
     set( EESCHEMA_SRCS
         ${EESCHEMA_SRCS}
+        api/api_handler_sch_placement.cpp
+        api/api_sch_design_resource_mgr.cpp
         api/api_handler_sch.cpp
     )
 endif()

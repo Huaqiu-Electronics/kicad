@@ -22,8 +22,21 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef API_HANDLER_SCH_PLACEMENT_H
-#define API_HANDLER_SCH_PLACEMENT_H
+#ifndef API_SCH_DESIGN_RESOURCE_MGR_H
+#define API_SCH_DESIGN_RESOURCE_MGR_H
 
+#include <api/api_design_resource_mgr.h>
+
+class API_SCH_DESIGN_RESOURCE_MGR : public API_DESIGN_RESOURCE_MGR
+{
+public:
+    API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame );
+
+    ~API_SCH_DESIGN_RESOURCE_MGR();
+
+    bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI ) override;
+
+private:
+};
 
 #endif
