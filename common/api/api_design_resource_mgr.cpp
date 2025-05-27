@@ -103,7 +103,7 @@ std::string API_DESIGN_RESOURCE_MGR::ExtactFileExtension( std::string const& aUr
     return aUrl.substr( pos + 1 );
 }
 
-std::string API_DESIGN_RESOURCE_MGR::RemoveFileExt(std::string const& aFileName)
+std::string API_DESIGN_RESOURCE_MGR::RemoveFileExt( std::string const& aFileName )
 {
     auto pos = aFileName.find_last_of( '.' );
 
@@ -112,13 +112,23 @@ std::string API_DESIGN_RESOURCE_MGR::RemoveFileExt(std::string const& aFileName)
         return aFileName;
     }
 
-    return aFileName.substr( 0, pos );    
+    return aFileName.substr( 0, pos );
+}
+
+std::string API_DESIGN_RESOURCE_MGR::FormatSymbolFpPropertyValue( std::string const& aSymbolName )
+{
+    return fmt::format( "{}:{}", GetAPIFootprintPrettyName(), aSymbolName );
+}
+
+std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyName()
+{
+    return kProjectPrettyName;
 }
 
 
 std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyDirName()
 {
-    return fmt::format( "{}.{}", kProjectPrettyName, FILEEXT::KiCadFootprintLibPathExtension );
+    return fmt::format( "{}.{}", GetAPIFootprintPrettyName(), FILEEXT::KiCadFootprintLibPathExtension );
 }
 
 wxString API_DESIGN_RESOURCE_MGR::GetProjectResourceDirInternal( ProjectResourceDir aType ) const

@@ -70,6 +70,10 @@ public:
 
     static std::string RemoveFileExt( std::string const& aFileName );
 
+    static std::string FormatSymbolFpPropertyValue( std::string const& aSymbolName );
+
+    static std::string GetAPIFootprintPrettyName();
+
     static std::string GetAPIFootprintPrettyDirName();
 
     wxString GetProjectApiFpUri() const;
