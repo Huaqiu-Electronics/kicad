@@ -67,7 +67,7 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
             continue;
         }
 
-        schematic.name = API_DESIGN_RESOURCE_MGR::ExtractName( uri );
+        schematic.filename = API_DESIGN_RESOURCE_MGR::ExtractFileName( uri );
         schematic.content = *schematic_content;
         design_block_content.schematics.push_back( std::move( schematic ) );
     }
@@ -103,7 +103,7 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
 
     const auto symbol_name = aCtx.Request.component_resource().has_component_name()
                                      ? aCtx.Request.component_resource().component_name()
-                                     : API_DESIGN_RESOURCE_MGR::ExtractName( symbol_uri );
+                                     : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri );
 
     ComponentContent component_content{
         fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
@@ -124,10 +124,10 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
             continue;
         }
 
-        footprint_resource.footprint.name =
+        footprint_resource.footprint.filename =
                 component_content.footprints.empty()
                         ? fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( fp_uri ) )
-                        : API_DESIGN_RESOURCE_MGR::ExtractName( fp_uri );
+                        : API_DESIGN_RESOURCE_MGR::ExtractFileName( fp_uri );
 
         footprint_resource.footprint.content = *fp_content;
 
@@ -143,10 +143,10 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
                 continue;
             }
 
-            model.name = component_content.footprints.empty()
+            model.filename = component_content.footprints.empty()
                                  ? fmt::format( "{}.{}", symbol_name,
                                                 API_DESIGN_RESOURCE_MGR::ExtactFileExtension( model_uri ) )
-                                 : API_DESIGN_RESOURCE_MGR::ExtractName( model_uri );
+                                 : API_DESIGN_RESOURCE_MGR::ExtractFileName( model_uri );
             model.content = *model_content;
             footprint_resource.models.push_back( model );
         }

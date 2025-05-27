@@ -33,7 +33,7 @@
 
 struct NamedContent
 {
-    std::string name;
+    std::string filename;
     std::string content;
 };
 
