@@ -426,6 +426,50 @@ FP_LIB_TABLE* PROJECT::PcbFootprintLibs( KIWAY& aKiway )
 }
 
 
+bool PROJECT::InsertFpLibTableRow( KIWAY& aKiway, const wxString& aNick, const wxString& aURI, const wxString& aType,
+                                   const wxString& fpTablePath, const wxString& aOptions, const wxString& aDescr )
+{
+    try
+    {
+        FP_LIB_TABLE* tbl = PcbFootprintLibs( aKiway );
+
+        if( !tbl )
+        {
+            return false;
+        }
+
+        using UPDATE_HANDLE_T = bool ( * )( FP_LIB_TABLE*, const wxString&, const wxString&, const wxString&,
+                                            const wxString&, const wxString&, const wxString& );
+
+
+        KIFACE* kiface = aKiway.KiFACE( KIWAY::FACE_PCB );
+
+        UPDATE_HANDLE_T insertRowFunc = (UPDATE_HANDLE_T) kiface->IfaceOrAddress( KIFACE_INSERT_ROW_FOOTPRINT_TABLE );
+
+        if( !insertRowFunc )
+        {
+            wxLogError( "Failed to get InsertFpLibTableRow function from KIFACE." );
+            return false;
+        }
+
+        if( !insertRowFunc( tbl, aNick, aURI, aType, fpTablePath, aOptions, aDescr ) )
+        {
+            wxLogError( "Failed to insert footprint library row: %s", aNick );
+            return false;
+        }
+
+        return true;
+    }
+
+    catch( ... )
+    {
+        DisplayErrorMessage( nullptr, _( "Error inserting footprint library." ) );
+    }
+
+    return false;
+}
+
+
 DESIGN_BLOCK_LIB_TABLE* PROJECT::DesignBlockLibs()
 {
     // This is a lazy loading function, it loads the project specific table when

@@ -23,6 +23,11 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
+#include "symbol_lib_table.h"
+#include <eda_base_frame.h>
+#include <project_sch.h>
+#include <wx/log.h>
+
 
 API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) : API_DESIGN_RESOURCE_MGR( aFrame )
 {
@@ -32,7 +37,55 @@ API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
 {
 }
 
-bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable(API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI)
+bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName,
+                                                  const wxString& aURI )
 {
-    return  {};   
+    static const auto libType = wxT( "KiCad" );
+    static const auto desc = wxT( "Added by schematic API" );
+
+    switch( aLibT )
+    {
+    case API_DESIGN_RESOURCE_MGR::API_LIB_SYMBOL_TABLE:
+    {
+        const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
+
+        if( !symbolTb )
+        {
+            wxLogError( "Failed to get symbol library table." );
+            return false;
+        }
+
+        const auto row = new SYMBOL_LIB_TABLE_ROW( aNickName, aURI, libType, desc );
+
+        if( !symbolTb->InsertRow( row, true ) )
+        {
+            wxLogError( "Failed to add symbol library row: %s", aNickName );
+            return false;
+        }
+
+        return true;
+    }
+    case API_DESIGN_RESOURCE_MGR::API_LIB_FP_TABLE:
+    {
+        const auto fpTb = m_frame.Prj().PcbFootprintLibs( m_frame.Kiway() );
+
+        if( !fpTb )
+        {
+            wxLogError( "Failed to get footprint library table." );
+            return false;
+        }
+
+        // Update the footprint library table using the global function.
+        return m_frame.Prj().InsertFpLibTableRow( m_frame.Kiway(), aNickName, aURI, libType,
+                                                  m_frame.Prj().FootprintLibTblName(), desc );
+    }
+    case API_DESIGN_RESOURCE_MGR::API_LIB_DESIGN_BLOCK_TABLE:
+    {
+        // TODO
+        break;
+    }
+    }
+
+
+    return false;
 }

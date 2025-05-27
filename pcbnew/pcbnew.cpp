@@ -72,6 +72,23 @@
 
 extern "C" PyObject* PyInit__pcbnew( void );
 
+
+static bool InsertFpLibTableRow( FP_LIB_TABLE* fpT, const wxString& aNick, const wxString& aURI, const wxString& aType,
+                                 const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
+                                 const wxString& aDescr = wxEmptyString )
+{
+    if( fpT->HasLibraryWithPath( aURI ) )
+        return true;
+
+    if( fpT->InsertRow( new FP_LIB_TABLE_ROW( aNick, aURI, aType, aOptions, aDescr ) ) )
+    {
+        fpT->Save( fpTablePath );
+        return true;
+    }
+    return false;
+}
+
+
 namespace PCB {
 
 static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
@@ -331,6 +348,8 @@ static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
         // Return a new FP_LIB_TABLE with the global table installed as a fallback.
         case KIFACE_NEW_FOOTPRINT_TABLE:
             return (void*) new FP_LIB_TABLE( &GFootprintTable );
+
+        case KIFACE_INSERT_ROW_FOOTPRINT_TABLE: return reinterpret_cast<void*>( InsertFpLibTableRow );
 
         // Return a pointer to the global instance of the global footprint table.
         case KIFACE_GLOBAL_FOOTPRINT_TABLE:

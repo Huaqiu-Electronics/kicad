@@ -46,6 +46,12 @@ enum KIFACE_ADDR_ID : int
     KIFACE_NEW_FOOTPRINT_TABLE,
 
     /**
+     * Return a function ptr for insert row in the FP_LIB_TABLE corresponding to the given
+.    * KIFACE_NEW_FOOTPRINT_TABLE
+     */
+    KIFACE_INSERT_ROW_FOOTPRINT_TABLE,
+
+    /**
      * Return the global FP_LIB_TABLE.
      * Type is FP_LIB_TABLE*
      * Caller does NOT own.

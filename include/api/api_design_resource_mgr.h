@@ -97,7 +97,7 @@ public:
 
     bool SaveDesignBlockToProject( DesignBlockConent const& aComponent );
 
-    // TODO : Currently it's done in the sub class ,how about exposing the corresponding LIB_TABLE getter through KiWay to get a centralized API ?
+    // TODO : Currently it's done in the sub class ,requires some code structure refactoring for a centralized API e.g. moving the def of SYMBOL_LIB_TABLE to common
     virtual bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
 private:

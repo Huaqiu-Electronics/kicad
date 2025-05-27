@@ -23,7 +23,7 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
-
+#include <project_sch.h>
 #include <api/api_handler_sch.h>
 #include <api/api_sch_utils.h>
 #include <api/api_utils.h>
@@ -161,6 +161,10 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
 
 void API_HANDLER_SCH::handlePlaceSymbol( struct ComponentContent const& aComponent )
 {
+    // Trigger loading the lazy ininitialized project symbol library table.
+    void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
+
+
     if( !m_resourceMgr->SaveComponentToProject( aComponent ) )
     {
         wxLogError( "Failed to save component to project" );
