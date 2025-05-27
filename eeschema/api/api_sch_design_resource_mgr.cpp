@@ -23,6 +23,8 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
+#include <lib_symbol.h>
+#include <sch_field.h>
 #include <api/api_design_resource.h>
 #include <symbol_lib_table.h>
 #include <eda_base_frame.h>
@@ -37,6 +39,67 @@ API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame
 API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
 {
 }
+
+
+bool API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
+{
+    const auto& symbol_file_name = aComponent.symbol.filename;
+
+    if( !WriteProjectResource( SYMBOL_DIR, symbol_file_name, aComponent.symbol.content ) )
+    {
+        wxLogError( "Failed to save symbol %s to project", symbol_file_name );
+        return false;
+    }
+
+    const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
+
+    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, GetProjectApiFpUri() ) )
+    {
+        wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
+        return false;
+    }
+
+
+    if( !WriteSymbolFields( symbol_nick_name, aComponent.attributes ) )
+    {
+        wxLogError( "Failed to write symbol fields for %s", symbol_nick_name );
+        return false;
+    }
+
+
+    if( !UpdateLibTable( API_LIB_FP_TABLE, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
+    {
+        wxLogError( "Failed to update fp library table for %s", symbol_nick_name );
+        return false;
+    }
+
+
+    for( const auto& footprint : aComponent.footprints )
+    {
+        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
+        {
+            wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
+            continue;
+        }
+
+        for( const auto& model : footprint.models )
+        {
+            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
+            {
+                wxLogError( "Failed to save 3D model %s to project", model.filename );
+                continue;
+            }
+        }
+    }
+
+    return true;
+}
+
+bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DesignBlockConent const& aComponent )
+{
+    return {};
+}
+
 
 bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName,
                                                   const wxString& aURI )
@@ -83,54 +146,110 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
     return false;
 }
 
-
-bool API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
+bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const&                                  aNickName,
+                                                     std::unordered_map<std::string, std::string> const& aFields )
 {
-    const auto& symbol_file_name = aComponent.symbol.filename;
+    const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
 
-    if( !WriteProjectResource( SYMBOL_DIR, symbol_file_name, aComponent.symbol.content ) )
+    if( !symbolTb )
     {
-        wxLogError( "Failed to save symbol %s to project", symbol_file_name );
+        wxLogError( "Failed to get symbol library table." );
         return false;
     }
 
+    LIB_SYMBOL* lib_sym = nullptr;
 
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, RemoveFileExt( symbol_file_name ), GetProjectApiFpUri() ) )
+    try
     {
-        wxLogError( "Failed to update symbol library table for %s", symbol_file_name );
-        return false;
-    }
+        std::vector<LIB_SYMBOL*> symbols;
+        symbolTb->LoadSymbolLib( symbols, aNickName, false );
 
-
-    if( !UpdateLibTable( API_LIB_FP_TABLE, "kicad_api_lib", GetProjectApiFpUri() ) )
-    {
-        wxLogError( "Failed to update fp library table for %s", symbol_file_name );
-        return false;
-    }
-
-
-    for( const auto& footprint : aComponent.footprints )
-    {
-        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
+        if( symbols.empty() )
         {
-            wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
-            continue;
+            wxLogError( "Symbol '%s' not found in library table.", aNickName );
+            return false;
         }
 
-        for( const auto& model : footprint.models )
+        lib_sym = symbols.front();
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Error loading HQ symbol library '%s'." ) + wxS( "\n%s" ), aNickName, ioe.What() );
+        return false;
+    }
+
+    lib_sym->SetName( aNickName );
+    std::vector<SCH_FIELD> fields;
+
+    // Set fields order by manual.
+    if( auto loc = aFields.find( "Mpn" ); loc != aFields.end() )
+    {
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, FIELD_T::USER, "Mpn" );
+        field->SetShowInChooser( false );
+        field->SetVisible( false );
+        field->SetText( loc->second );
+        fields.push_back( *field );
+    }
+
+    if( auto loc = aFields.find( "Manufacturer" ); loc != aFields.end() )
+    {
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, FIELD_T::USER, "Manufacturer" );
+        field->SetShowInChooser( false );
+        field->SetVisible( false );
+        field->SetText( loc->second );
+        fields.push_back( *field );
+    }
+
+    for( auto& [name, text] : aFields )
+    {
+        SCH_FIELD* field = nullptr;
+        if( name == "Value" )
         {
-            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
-            {
-                wxLogError( "Failed to save 3D model %s to project", model.filename );
-                continue;
-            }
+            field = new SCH_FIELD( lib_sym->GetValueField() );
+            field->SetVisible( false );
         }
+        else if( name == "Footprint" )
+        {
+            field = new SCH_FIELD( lib_sym->GetFootprintField() );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+        else if( name == "Datasheet" )
+        {
+            field = new SCH_FIELD( lib_sym->GetDatasheetField() );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+        else if( name == "Description" )
+        {
+            field = new SCH_FIELD( lib_sym->GetDescriptionField() );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+        else if( name != "Manufacturer" && name != "Mpn" )
+        {
+            field = new SCH_FIELD( lib_sym, FIELD_T::USER, name );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+
+        if( field && name != "Manufacturer" && name != "Mpn" )
+        {
+            field->SetText( text );
+            fields.push_back( *field );
+        }
+    }
+    SCH_FIELD* ref_field = new SCH_FIELD( lib_sym->GetReferenceField() );
+    ref_field->SetShowInChooser( true );
+    ref_field->SetVisible( true );
+    fields.push_back( *ref_field );    
+    lib_sym->SetFields( fields );
+
+    if( auto res = symbolTb->SaveSymbol( aNickName, lib_sym, true ); res != SYMBOL_LIB_TABLE::SAVE_OK )
+    {
+        wxLogError( "Failed to save symbol fields for %s", aNickName );
+        return false;
     }
 
     return true;
-}
-
-bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DesignBlockConent const& aComponent )
-{
-    return {};
 }
