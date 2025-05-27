@@ -512,6 +512,9 @@ bool PROJECT::InsertFpLibTableRow( KIWAY& aKiway, const wxString& aNick, const w
             return false;
         }
 
+        if( tbl->HasLibraryWithPath( aURI ) )
+            return true;
+
         using UPDATE_HANDLE_T = bool ( * )( FP_LIB_TABLE*, const wxString&, const wxString&, const wxString&,
                                             const wxString&, const wxString&, const wxString& );
 

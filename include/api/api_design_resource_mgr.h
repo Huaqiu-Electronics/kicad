@@ -61,44 +61,30 @@ public:
 
     virtual ~API_DESIGN_RESOURCE_MGR();
 
-    /**
-     * @brief Download the content of a design resource from the given URL.
-     * @param aUrl The url to a design resource e.g. symbol ,footprint 
-     * @return The string buffer of the url
-     */
+    // Download the url conent
     static std::optional<std::string> DownloadURL( std::string const& aUrl );
 
-    static std::string ExtractName( std::string const& aUrl );
+    static std::string ExtractFileName( std::string const& aUrl );
 
     static std::string ExtactFileExtension( std::string const& aUrl );
 
+    static std::string RemoveFileExt( std::string const& aFileName );
+
+    static std::string GetAPIFootprintPrettyDirName();
+
+    wxString GetProjectApiFpUri() const;
+
     wxString GetProjectDirectory() const;
 
-    /**
-     * @brief Get the project resource directory for the given type.
-     * @param aType The type of resource directory to get.
-     * @return The path to the project resource directory, or std::nullopt if not set.
-     */
+    //  Get the project resource directory for the given type.
     std::optional<wxString> GetProjectResourceDir( ProjectResourceDir aType );
-
-    /**
-     * @brief Get the project resource save path for the given type and name.
-     * @param aType The type of resource directory to get.
-     * @param aName The name of the resource.
-     * @return The path to the project resource save path, or std::nullopt if not set.
-     */
+    
+    // Get the project resource save path for the given type and name.
     std::optional<wxString> GetProjectResourceSavePath( ProjectResourceDir aType, wxString const& aName );
 
     bool WriteProjectResource( ProjectResourceDir aType, wxString const& aName, std::string const& aContent );
 
     bool WriteProjectResource( wxString const& aPath, std::string const& aContent );
-
-    bool SaveComponentToProject( ComponentContent const& aComponent );
-
-    bool SaveDesignBlockToProject( DesignBlockConent const& aComponent );
-
-    // TODO : Currently it's done in the sub class ,requires some code structure refactoring for a centralized API e.g. moving the def of SYMBOL_LIB_TABLE to common
-    virtual bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
 private:
     wxString GetProjectResourceDirInternal( ProjectResourceDir aType ) const;
@@ -108,6 +94,9 @@ private:
 protected:
     EDA_BASE_FRAME& m_frame;
 };
+
+
+
 
 
 #endif

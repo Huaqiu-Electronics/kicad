@@ -23,7 +23,8 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
-#include "symbol_lib_table.h"
+#include <api/api_design_resource.h>
+#include <symbol_lib_table.h>
 #include <eda_base_frame.h>
 #include <project_sch.h>
 #include <wx/log.h>
@@ -45,7 +46,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
 
     switch( aLibT )
     {
-    case API_DESIGN_RESOURCE_MGR::API_LIB_SYMBOL_TABLE:
+    case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_SYMBOL_TABLE:
     {
         const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
 
@@ -65,21 +66,13 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
 
         return true;
     }
-    case API_DESIGN_RESOURCE_MGR::API_LIB_FP_TABLE:
+    case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_FP_TABLE:
     {
-        const auto fpTb = m_frame.Prj().PcbFootprintLibs( m_frame.Kiway() );
-
-        if( !fpTb )
-        {
-            wxLogError( "Failed to get footprint library table." );
-            return false;
-        }
-
         // Update the footprint library table using the global function.
         return m_frame.Prj().InsertFpLibTableRow( m_frame.Kiway(), aNickName, aURI, libType,
                                                   m_frame.Prj().FootprintLibTblName(), desc );
     }
-    case API_DESIGN_RESOURCE_MGR::API_LIB_DESIGN_BLOCK_TABLE:
+    case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_DESIGN_BLOCK_TABLE:
     {
         // TODO
         break;
@@ -88,4 +81,56 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
 
 
     return false;
+}
+
+
+bool API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
+{
+    const auto& symbol_file_name = aComponent.symbol.filename;
+
+    if( !WriteProjectResource( SYMBOL_DIR, symbol_file_name, aComponent.symbol.content ) )
+    {
+        wxLogError( "Failed to save symbol %s to project", symbol_file_name );
+        return false;
+    }
+
+
+    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, RemoveFileExt( symbol_file_name ), GetProjectApiFpUri() ) )
+    {
+        wxLogError( "Failed to update symbol library table for %s", symbol_file_name );
+        return false;
+    }
+
+
+    if( !UpdateLibTable( API_LIB_FP_TABLE, "kicad_api_lib", GetProjectApiFpUri() ) )
+    {
+        wxLogError( "Failed to update fp library table for %s", symbol_file_name );
+        return false;
+    }
+
+
+    for( const auto& footprint : aComponent.footprints )
+    {
+        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
+        {
+            wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
+            continue;
+        }
+
+        for( const auto& model : footprint.models )
+        {
+            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
+            {
+                wxLogError( "Failed to save 3D model %s to project", model.filename );
+                continue;
+            }
+        }
+    }
+
+    return true;
+}
+
+bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DesignBlockConent const& aComponent )
+{
+    return {};
 }

@@ -22,6 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "fmt/format.h"
 #include <project.h>
 #include <api/api_design_resource_mgr.h>
 #include <kicad_curl/kicad_curl_easy.h>
@@ -78,7 +79,7 @@ std::optional<std::string> API_DESIGN_RESOURCE_MGR::DownloadURL( std::string con
     return std::make_optional( curl.GetBuffer() );
 }
 
-std::string API_DESIGN_RESOURCE_MGR::ExtractName( std::string const& aUrl )
+std::string API_DESIGN_RESOURCE_MGR::ExtractFileName( std::string const& aUrl )
 {
     auto pos = aUrl.find_last_of( '/' );
 
@@ -102,6 +103,23 @@ std::string API_DESIGN_RESOURCE_MGR::ExtactFileExtension( std::string const& aUr
     return aUrl.substr( pos + 1 );
 }
 
+std::string API_DESIGN_RESOURCE_MGR::RemoveFileExt(std::string const& aFileName)
+{
+    auto pos = aFileName.find_last_of( '.' );
+
+    if( pos == std::string::npos || pos == aFileName.length() - 1 )
+    {
+        return aFileName;
+    }
+
+    return aFileName.substr( 0, pos );    
+}
+
+
+std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyDirName()
+{
+    return fmt::format( "{}.{}", kProjectPrettyName, FILEEXT::KiCadFootprintLibPathExtension );
+}
 
 wxString API_DESIGN_RESOURCE_MGR::GetProjectResourceDirInternal( ProjectResourceDir aType ) const
 {
@@ -111,9 +129,7 @@ wxString API_DESIGN_RESOURCE_MGR::GetProjectResourceDirInternal( ProjectResource
     switch( aType )
     {
     case ProjectResourceDir::ROOT_DIR: break;
-    case ProjectResourceDir::PRETTY_DIR:
-        resDir.AppendDir( wxString::Format( "%s.%s", kProjectPrettyName, FILEEXT::KiCadFootprintLibPathExtension ) );
-        break;
+    case ProjectResourceDir::PRETTY_DIR: resDir.AppendDir( GetAPIFootprintPrettyDirName() ); break;
     case ProjectResourceDir::MODEL_3D_DIR: resDir.AppendDir( kProject3DModelName ); break;
 
     default:
@@ -144,6 +160,10 @@ bool API_DESIGN_RESOURCE_MGR::SetupProjectResourceDirs()
     return true;
 }
 
+wxString API_DESIGN_RESOURCE_MGR::GetProjectApiFpUri() const
+{
+    return wxString::Format( "${KIPRJMOD}/%s/%s", kProjectResourceDirName, GetAPIFootprintPrettyDirName() );
+}
 
 wxString API_DESIGN_RESOURCE_MGR::GetProjectDirectory() const
 {
@@ -211,51 +231,5 @@ bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( ProjectResourceDir aType, wx
         return false;
     }
 
-    return savePath && WriteProjectResource( *savePath, aContent );
-}
-
-bool API_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
-{
-    if( !WriteProjectResource( SYMBOL_DIR, aComponent.symbol.name, aComponent.symbol.content ) )
-    {
-        wxLogError( "Failed to save symbol %s to project", aComponent.symbol.name );
-        return false;
-    }
-
-    SYMBOL_LIB_TABLE* sym_table;
-
-
-    for( const auto& footprint : aComponent.footprints )
-    {
-        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.name, footprint.footprint.content ) )
-        {
-            wxLogError( "Failed to save footprint %s to project", footprint.footprint.name );
-            continue;
-        }
-
-        for( const auto& model : footprint.models )
-        {
-            if( !WriteProjectResource( MODEL_3D_DIR, model.name, model.content ) )
-            {
-                wxLogError( "Failed to save 3D model %s to project", model.name );
-                continue;
-            }
-        }
-    }
-
-    return true;
-}
-
-bool API_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DesignBlockConent const& aComponent )
-{
-    return {};
-}
-
-
-bool API_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI )
-{
-    WXUNUSED( aLibT );
-    WXUNUSED( aNickName );
-    WXUNUSED( aURI );
-    return false;
+    return WriteProjectResource( *savePath, aContent );
 }
