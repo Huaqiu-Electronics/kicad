@@ -45,6 +45,7 @@ class API_HANDLER_SCH : public API_HANDLER_EDITOR
 {
 public:
     API_HANDLER_SCH( SCH_EDIT_FRAME* aFrame );
+    ~API_HANDLER_SCH() override;
 
 protected:
     std::unique_ptr<COMMIT> createCommit() override;
