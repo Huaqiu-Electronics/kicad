@@ -292,6 +292,11 @@ public:
      */
     virtual FOOTPRINT_LIBRARY_ADAPTER* FootprintLibAdapter( KIWAY& aKiway );
 
+
+    virtual bool InsertFpLibTableRow( KIWAY& aKiway, const wxString& aNick, const wxString& aURI, const wxString& aType,
+                                      const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
+                                      const wxString& aDescr = wxEmptyString );
+
     /**
      * Return the table of design block libraries.
      */

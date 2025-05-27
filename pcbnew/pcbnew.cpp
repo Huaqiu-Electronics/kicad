@@ -90,6 +90,23 @@
 extern "C" PyObject* PyInit__pcbnew( void );
 
 
+static bool InsertFpLibTableRow( FP_LIB_TABLE* fpT, const wxString& aNick, const wxString& aURI, const wxString& aType,
+                                 const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
+                                 const wxString& aDescr = wxEmptyString )
+{
+    if( fpT->HasLibraryWithPath( aURI ) )
+        return true;
+
+    if( fpT->InsertRow( new FP_LIB_TABLE_ROW( aNick, aURI, aType, aOptions, aDescr ) ) )
+    {
+        fpT->Save( fpTablePath );
+        return true;
+    }
+    return false;
+}
+
+
+
 /**
  * Filter footprints based on criteria passed as JSON.
  *
@@ -543,6 +560,7 @@ static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
             // Signature: wxString (*)(const wxString& aFilterJson)
             return reinterpret_cast<void*>( &filterFootprints );
         }
+        case KIFACE_INSERT_ROW_FOOTPRINT_TABLE: return reinterpret_cast<void*>( InsertFpLibTableRow );
 
         case KIFACE_SCRIPTING_LEGACY:
             return reinterpret_cast<void*>( PyInit__pcbnew );
