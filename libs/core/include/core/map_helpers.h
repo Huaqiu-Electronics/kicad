@@ -38,7 +38,7 @@ inline std::optional<V> get_opt( const std::map<wxString, V>& aMap, const wxStri
     if( it == aMap.end() )
         return std::nullopt;
 
-    return it->second;
+    return std::make_optional(it->second);
 }
 
 
