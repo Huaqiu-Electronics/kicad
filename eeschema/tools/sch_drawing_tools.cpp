@@ -138,7 +138,7 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
     // If we get an parameterised symbol, we probably just want to place
     // that and get out of the placmeent tool, rather than popping the
     // chooser afterwards
-    bool placeOneOnly = symbol != nullptr;
+    bool placeOneOnly = symbol != nullptr && !toolParams.forcePlaceAllUnits ;
 
     SYMBOL_LIBRARY_FILTER       filter;
     std::vector<PICKED_SYMBOL>* historyList = nullptr;
