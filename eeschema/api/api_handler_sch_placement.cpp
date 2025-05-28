@@ -109,8 +109,8 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
     };
 
-    for( const auto& [k, v] : aCtx.Request.component_resource().attributes() )
-        component_content.attributes[k] = v;
+    for( const auto& attr : aCtx.Request.component_resource().attributes() )
+        component_content.attributes.push_back( { attr.name(), attr.value() } );
 
     for( const auto& fp : aCtx.Request.component_resource().footprint_resources() )
     {
@@ -144,9 +144,9 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
             }
 
             model.filename = component_content.footprints.empty()
-                                 ? fmt::format( "{}.{}", symbol_name,
-                                                API_DESIGN_RESOURCE_MGR::ExtactFileExtension( model_uri ) )
-                                 : API_DESIGN_RESOURCE_MGR::ExtractFileName( model_uri );
+                                     ? fmt::format( "{}.{}", symbol_name,
+                                                    API_DESIGN_RESOURCE_MGR::ExtactFileExtension( model_uri ) )
+                                     : API_DESIGN_RESOURCE_MGR::ExtractFileName( model_uri );
             model.content = *model_content;
             footprint_resource.models.push_back( model );
         }

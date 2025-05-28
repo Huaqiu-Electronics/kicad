@@ -23,13 +23,39 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
+#include <functional>
 #include <lib_symbol.h>
 #include <sch_field.h>
 #include <api/api_design_resource.h>
+#include <string>
 #include <symbol_lib_table.h>
 #include <eda_base_frame.h>
 #include <project_sch.h>
 #include <wx/log.h>
+
+class FIELD_WRITER
+{
+    LIB_SYMBOL*             m_lib;
+    std::vector<SCH_FIELD>& m_fields;
+
+public:
+    FIELD_WRITER( LIB_SYMBOL* aLibSym, std::vector<SCH_FIELD>& aFields ) : m_lib( aLibSym ), m_fields( aFields ) {}
+
+    auto add_field( SCH_FIELD&& field, const wxString& aText )
+    {
+        field.SetShowInChooser( false );
+        field.SetVisible( false );
+        field.SetText( aText );
+        m_fields.push_back( std::move( field ) );
+    }
+
+    auto add_field( const SCH_FIELD& other, const wxString& aText ) { add_field( SCH_FIELD( other ), aText ); }
+
+    auto add_field( const wxString& aName, const wxString& aText )
+    {
+        add_field( SCH_FIELD( m_lib, FIELD_T::USER, aName ), aText );
+    };
+};
 
 
 API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) : API_DESIGN_RESOURCE_MGR( aFrame )
@@ -146,8 +172,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
     return false;
 }
 
-bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const&                                  aNickName,
-                                                     std::unordered_map<std::string, std::string> const& aFields )
+bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickName, auto const& aFields )
 {
     const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
 
@@ -180,69 +205,28 @@ bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const&         
 
     lib_sym->SetName( aNickName );
     std::vector<SCH_FIELD> fields;
+    lib_sym->CopyFields( fields );
 
-    // Set fields order by manual.
-    if( auto loc = aFields.find( "Mpn" ); loc != aFields.end() )
+    FIELD_WRITER field_writer( lib_sym, fields );
+
+    std::map<std::string, std::reference_wrapper<SCH_FIELD>> field_map;
+
+    for( auto& field : fields )
+        field_map.emplace( field.GetName(), std::ref( field ) );
+
+
+    for( const auto& field : aFields )
     {
-        SCH_FIELD* field = new SCH_FIELD( lib_sym, FIELD_T::USER, "Mpn" );
-        field->SetShowInChooser( false );
-        field->SetVisible( false );
-        field->SetText( loc->second );
-        fields.push_back( *field );
+        if( auto loc = field_map.find( field.name ); loc != field_map.end() )
+        {
+            loc->second.get().SetText( field.value );
+        }
+        else
+        {
+            field_writer.add_field( field.name, field.value );
+        }
     }
 
-    if( auto loc = aFields.find( "Manufacturer" ); loc != aFields.end() )
-    {
-        SCH_FIELD* field = new SCH_FIELD( lib_sym, FIELD_T::USER, "Manufacturer" );
-        field->SetShowInChooser( false );
-        field->SetVisible( false );
-        field->SetText( loc->second );
-        fields.push_back( *field );
-    }
-
-    for( auto& [name, text] : aFields )
-    {
-        SCH_FIELD* field = nullptr;
-        if( name == "Value" )
-        {
-            field = new SCH_FIELD( lib_sym->GetValueField() );
-            field->SetVisible( false );
-        }
-        else if( name == "Footprint" )
-        {
-            field = new SCH_FIELD( lib_sym->GetFootprintField() );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
-        }
-        else if( name == "Datasheet" )
-        {
-            field = new SCH_FIELD( lib_sym->GetDatasheetField() );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
-        }
-        else if( name == "Description" )
-        {
-            field = new SCH_FIELD( lib_sym->GetDescriptionField() );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
-        }
-        else if( name != "Manufacturer" && name != "Mpn" )
-        {
-            field = new SCH_FIELD( lib_sym, FIELD_T::USER, name );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
-        }
-
-        if( field && name != "Manufacturer" && name != "Mpn" )
-        {
-            field->SetText( text );
-            fields.push_back( *field );
-        }
-    }
-    SCH_FIELD* ref_field = new SCH_FIELD( lib_sym->GetReferenceField() );
-    ref_field->SetShowInChooser( true );
-    ref_field->SetVisible( true );
-    fields.push_back( *ref_field );    
     lib_sym->SetFields( fields );
 
     if( auto res = symbolTb->SaveSymbol( aNickName, lib_sym, true ); res != SYMBOL_LIB_TABLE::SAVE_OK )

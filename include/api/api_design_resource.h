@@ -49,9 +49,15 @@ struct FootprintConent
 
 struct ComponentContent
 {
-    NamedContent                                 symbol;
-    std::unordered_map<std::string, std::string> attributes;
-    std::list<FootprintConent>                   footprints;
+    struct Attribute
+    {
+        std::string name;
+        std::string value;
+    };
+
+    NamedContent               symbol;
+    std::list<Attribute>       attributes;
+    std::list<FootprintConent> footprints;
 };
 
 
