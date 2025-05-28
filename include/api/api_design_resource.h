@@ -28,22 +28,23 @@
 #include <optional>
 #include <string>
 #include <list>
-#include <unordered_map>
+#include <nlohmann/json.hpp>
 
 
 struct NamedContent
 {
     std::string filename;
     std::string content;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NamedContent, filename, content )
 };
 
 
 struct FootprintConent
 {
     NamedContent footprint;
-
     // The 3d models
     std::list<NamedContent> models;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FootprintConent, footprint, models )
 };
 
 
@@ -53,11 +54,13 @@ struct ComponentContent
     {
         std::string name;
         std::string value;
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE( Attribute, name, value )
     };
 
     NamedContent               symbol;
     std::list<Attribute>       attributes;
     std::list<FootprintConent> footprints;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ComponentContent, symbol, attributes, footprints )
 };
 
 
@@ -66,6 +69,7 @@ struct PCBConent
     NamedContent pcb;
     // footprints used in the PCB , in case we are placing only the PCB
     std::list<FootprintConent> footprints;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCBConent, pcb, footprints )
 };
 
 
@@ -82,6 +86,30 @@ struct DesignBlockConent
 
     // Components used in the schematics
     std::list<ComponentContent> components;
+    friend void                 to_json( nlohmann ::json& nlohmann_json_j, const DesignBlockConent& nlohmann_json_t )
+    {
+        if( nlohmann_json_t.root )
+            nlohmann_json_j["root"] = *nlohmann_json_t.root;
+
+        nlohmann_json_j["schematics"] = nlohmann_json_t.schematics;
+
+        if( nlohmann_json_t.pcb )
+            nlohmann_json_j["pcb"] = *nlohmann_json_t.pcb;
+
+        nlohmann_json_j["components"] = nlohmann_json_t.components;
+    }
+    friend void from_json( const nlohmann ::json& nlohmann_json_j, DesignBlockConent& nlohmann_json_t )
+    {
+        if( nlohmann_json_j.contains( "root" ) )
+            nlohmann_json_t.root = nlohmann_json_j.at( "root" ).get<std::string>();
+
+        nlohmann_json_j.at( "schematics" ).get_to( nlohmann_json_t.schematics );
+
+        if( nlohmann_json_j.contains( "pcb" ) )
+            nlohmann_json_t.pcb = nlohmann_json_j.at( "pcb" ).get<PCBConent>();
+
+        nlohmann_json_j.at( "components" ).get_to( nlohmann_json_t.components );
+    }
 };
 
 #endif
