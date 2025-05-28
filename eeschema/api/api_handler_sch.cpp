@@ -50,7 +50,6 @@ m_resourceMgr(std::make_unique<API_SCH_DESIGN_RESOURCE_MGR>(*m_frame))
 
 API_HANDLER_SCH::~API_HANDLER_SCH()
 {
-    
 }
 
 
