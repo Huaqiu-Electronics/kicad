@@ -28,7 +28,6 @@
 #include <api/api_handler_sch.h>
 #include <api/api_design_resource.h>
 #include "sch_editor_control.h"
-#include "tool/tool_manager.h"
 #include <context/symbol_context.h>
 #include <exception>
 #include <passive_action/agent/agent_action.h>
@@ -46,6 +45,7 @@
 #include <context/sch/details/sch_netlist.h>
 #include <context/sch/details/netlist_json_schema.h>
 #include <fmt/format.h>
+#include <api/plain_api_design_resource.h>
 
 void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
@@ -96,13 +96,13 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 
         case AGENT_ACTION_TYPE::place_symbol:
         {
-            m_apiHandler->placeSymbol( aAction.context.get<ComponentContent>() );
+            m_apiHandler->placeSymbol( aAction.context.get<COMPONENT_RESOURCE>() );
             break;
         }
 
         case AGENT_ACTION_TYPE::place_design_block:
         {
-            m_apiHandler->placeDesignBlock( aAction.context.get<DesignBlockConent>() );
+            m_apiHandler->placeDesignBlock( aAction.context.get<DESIGN_BLOCK_RESOURCE>() );
             break;
         }
 
