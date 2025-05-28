@@ -75,12 +75,12 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
     }
 
     // TODO : handle the PCB
-    handlePlaceDesignBlock( design_block_content );
+    placeDesignBlock( design_block_content );
     return {};
 }
 
 
-void API_HANDLER_SCH::handlePlaceDesignBlock( struct DesignBlockConent const& aBlock )
+void API_HANDLER_SCH::placeDesignBlock( struct DesignBlockConent const& aBlock )
 {
     m_resourceMgr->SaveDesignBlockToProject( aBlock );
 }
@@ -156,12 +156,12 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         component_content.footprints.push_back( std::move( footprint_resource ) );
     }
 
-    handlePlaceSymbol( component_content );
+    placeSymbol( component_content );
     return {};
 }
 
 
-void API_HANDLER_SCH::handlePlaceSymbol( struct ComponentContent const& aComponent )
+void API_HANDLER_SCH::placeSymbol( struct ComponentContent const& aComponent )
 {
     // Trigger loading the lazy ininitialized project symbol library table.
     void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
