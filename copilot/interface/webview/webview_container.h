@@ -32,14 +32,8 @@
 #include <wx/webview.h>
 #include <set>
 #include <copilot_global.h>
+#include "webview_channel_ctrl.h"
 
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
-
-#ifndef __WXMAC__
-#define COPILOT_USE_SCRIPT_MSG_HANDLER
-#endif // __WXMAC__
-
-#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
 
 #ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
 
