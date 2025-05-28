@@ -25,6 +25,8 @@
 #ifndef SCH_AGENT_ACTION_EXECUTOR_H
 #define SCH_AGENT_ACTION_EXECUTOR_H
 
+#include <api/api_handler_sch.h>
+#include <api/api_design_resource.h>
 #include "sch_editor_control.h"
 #include "tool/tool_manager.h"
 #include <context/symbol_context.h>
@@ -62,8 +64,8 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         case AGENT_ACTION_TYPE::highlight_symbol:
         {
             HighlightSymbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
+            break;
         }
-        break;
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto netlist = nlohmann::json( GetSelection() ).dump();
@@ -89,8 +91,21 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                             netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
+            break;
         }
-        break;
+
+        case AGENT_ACTION_TYPE::place_symbol:
+        {
+            m_apiHandler->placeSymbol( aAction.context.get<ComponentContent>() );
+            break;
+        }
+
+        case AGENT_ACTION_TYPE::place_design_block:
+        {
+            m_apiHandler->placeDesignBlock( aAction.context.get<DesignBlockConent>() );
+            break;
+        }
+
         default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
         }
     }
