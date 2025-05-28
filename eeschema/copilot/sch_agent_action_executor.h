@@ -47,13 +47,6 @@
 
 void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
-    const auto hight_symbol = [&]( std::string const& designator )
-    {
-        wxString            part_ref{ designator };
-        SCH_EDITOR_CONTROL* editor = m_toolManager->GetTool<SCH_EDITOR_CONTROL>();
-        editor->FindSymbolAndItem( nullptr, &part_ref, true, HIGHLIGHT_SYMBOL, {} );
-    };
-
     try
     {
         auto t = magic_enum::enum_cast<AGENT_ACTION_TYPE>( aAction.action );
@@ -68,7 +61,7 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         {
         case AGENT_ACTION_TYPE::highlight_symbol:
         {
-            hight_symbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
+            HighlightSymbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
         }
         break;
         case AGENT_ACTION_TYPE::ask_selection:
@@ -78,18 +71,22 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },
-                                    { { fmt::format( "The user is working on a schematic the "
-                                                     "current selection of which is represented by "
-                                                     "the following netlist:\n{}. The "
-                                                     "netlist is defined "
-                                                     "following the json schema:\n {}\n"
-                                                     "NOTE: All the connections for any component "
-                                                     "presented inside the components have been "
-                                                     "included in the nets.\n"
-                                                     "NOTE: You always provide clear answers "
-                                                     "rather than asking for more information.\n "
-                                                     "Please note that our users are hardware engineers who are neither aware nor interested in the existence of this JSON data. Never expose the existence of a JSON file",
-                                                     netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
+                                    { { fmt::format(
+                                            "The user is working on a schematic the "
+                                            "current selection of which is represented by "
+                                            "the following netlist:\n{}. The "
+                                            "netlist is defined "
+                                            "following the json schema:\n {}\n"
+                                            "NOTE: All the connections for any component "
+                                            "presented inside the components have been "
+                                            "included in the nets.\n"
+                                            "NOTE: You always provide clear answers "
+                                            "rather than asking for more information.\n "
+                                            "Please note that our users are hardware engineers who "
+                                            "are neither aware nor interested in the existence of "
+                                            "this JSON data. Never expose the existence of a JSON "
+                                            "file",
+                                            netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
         }

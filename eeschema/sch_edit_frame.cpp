@@ -109,15 +109,7 @@
 #include <widgets/wx_aui_utils.h>
 #include <drawing_sheet/ds_proxy_view_item.h>
 #include <project/project_local_settings.h>
-
-#include <context/sch/sch_copilot_global_context.h>
-#include <context/sch/details/sch_netlist.h>
-#include <copilot/sch_copilot_ui.h>
-#include <copilot/sch_agent_action_executor.h>
-#include <copilot/sch_copilot_cmd.h>
-#include <copilot/sch_copilot_context_interface.h>
-#include <copilot/sch_copilot_context_initialization.h>
-#include <copilot/sch_agent_api.h>
+#include "sch_copilot_pch.h"
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
