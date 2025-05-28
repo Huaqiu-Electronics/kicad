@@ -79,14 +79,15 @@ private:
 
     HANDLER_RESULT<Empty> handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx );
 
-    void handlePlaceDesignBlock(struct DesignBlockConent const& aComponent);
-
     HANDLER_RESULT<Empty> handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx );
-
-    void handlePlaceSymbol(struct ComponentContent const& aComponent);
 
     SCH_EDIT_FRAME* m_frame;
     std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
+
+public:
+    void handlePlaceSymbol( struct ComponentContent const& aComponent );
+
+    void handlePlaceDesignBlock( struct DesignBlockConent const& aComponent );
 };
 
 

@@ -53,7 +53,7 @@ public:
 
     auto add_field( const wxString& aName, const wxString& aText )
     {
-        add_field( SCH_FIELD( m_lib, FIELD_T::USER, aName ), aText );
+        add_field( SCH_FIELD( m_lib, {}, aName ), aText );
     };
 };
 
