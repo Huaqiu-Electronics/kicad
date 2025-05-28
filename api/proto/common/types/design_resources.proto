@@ -55,8 +55,14 @@ message FootprintResource
     repeated ModelResource models = 2; 
 }
 
+
 message ComponentResource 
 {
+    message Attribute{
+        string name = 1;
+        string value = 2;
+    };
+
     // The name of the component, will be used as the symbol file name if presents
     // The name shall has no extension, e.g. "my_component" instead of "my_component.kicad_sym"
     optional string component_name = 1;
@@ -68,7 +74,7 @@ message ComponentResource
     repeated FootprintResource footprint_resources = 3;
 
     // The attributes of the component, e.g. value, footprint, etc.
-    map<string, string> attributes = 4;
+    repeated Attribute attributes = 4;
 
 }
 

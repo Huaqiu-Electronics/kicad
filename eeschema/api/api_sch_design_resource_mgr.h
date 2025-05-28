@@ -40,7 +40,7 @@ public:
 
     bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
-    bool WriteSymbolFields( std::string const& aNickName, std::unordered_map<std::string, std::string> const& aFields );
+    bool WriteSymbolFields( std::string const& aNickName, auto const& aFields );
 };
 
 #endif
