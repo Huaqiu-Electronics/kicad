@@ -25,11 +25,16 @@
 #ifndef SCH_AGENT_API_H
 #define SCH_AGENT_API_H
 
+#include <sch_editor_control.h>
+#include <tool/tool_manager.h>
 #include <sch_edit_frame.h>
 
 
 void SCH_EDIT_FRAME::HighlightSymbol( std::string const& aDesignator )
 {
+    wxString            part_ref{ aDesignator };
+    SCH_EDITOR_CONTROL* editor = m_toolManager->GetTool<SCH_EDITOR_CONTROL>();
+    editor->FindSymbolAndItem( nullptr, &part_ref, true, HIGHLIGHT_SYMBOL, {} );
 }
 
 #endif
