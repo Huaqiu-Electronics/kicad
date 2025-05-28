@@ -25,6 +25,7 @@
 #ifndef API_SCH_DESIGN_RESOURCE_MGR_H
 #define API_SCH_DESIGN_RESOURCE_MGR_H
 
+#include "lib_id.h"
 #include <api/api_design_resource_mgr.h>
 
 class LIB_SYMBOL;
@@ -43,7 +44,7 @@ public:
     bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
     //  Write symbol fields ,return the updated symbol if successful
-    LIB_SYMBOL* WriteSymbolFields( std::string const& aNickName, auto const& aFields );
+    LIB_ID WriteSymbolFields( std::string const& aFileName, auto const& aFields );
 };
 
 #endif

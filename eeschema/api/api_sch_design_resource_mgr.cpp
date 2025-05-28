@@ -23,6 +23,7 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
+#include "api/api_design_resource_mgr.h"
 #include "sch_base_frame.h"
 #include <functional>
 #include <lib_symbol.h>
@@ -115,12 +116,21 @@ API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aC
         return {};
     }
 
+    auto lib_id = WriteSymbolFields( symbol_file_name, aComponent.attributes );
 
-    LIB_SYMBOL* lib_sym = WriteSymbolFields( symbol_nick_name, aComponent.attributes );
+    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name,
+                         FormatAPISymbolURI( symbol_file_name ) ) )
+    {
+        wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
+        return {};
+    }
+
+    auto lib_sym = SchGetLibSymbol( lib_id, PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() ),
+                                    nullptr, &m_frame );
 
     if( !lib_sym )
     {
-        wxLogError( "Failed to write symbol fields for %s", symbol_nick_name );
+        wxLogError( "Failed to load symbol for %s", symbol_nick_name );
         return {};
     }
 
@@ -187,8 +197,8 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
     return false;
 }
 
-LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickName,
-                                                            auto const&        aFields )
+LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName,
+                                                       auto const&        aFields )
 {
     const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
 
@@ -199,6 +209,8 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& a
     }
 
     LIB_SYMBOL* lib_sym = nullptr;
+
+    const auto aNickName = RemoveFileExt( aFileName );
 
     try
     {
@@ -245,14 +257,22 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& a
     }
 
     lib_sym->SetFields( fields );
-    lib_sym->GetFootprintField().SetText(FormatSymbolFpPropertyValue(aNickName));
+    lib_sym->GetFootprintField().SetText( FormatSymbolFpPropertyValue( aNickName ) );
 
-    if( auto res = symbolTb->SaveSymbol( aNickName, lib_sym, true );
-        res != SYMBOL_LIB_TABLE::SAVE_OK )
+
+    const auto fp = *GetProjectResourceSavePath( SYMBOL_DIR, aFileName );
+    wxFileName fn( fp );
+
+    try
     {
-        wxLogError( "Failed to save symbol fields for %s", aNickName );
+        IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) );
+        pi->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ) );
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Failed to save library %s. %s" ), fn.GetFullPath(), ioe.What() );
         return {};
     }
 
-    return lib_sym;
+    return lib_sym->GetLibId();
 }
