@@ -85,9 +85,9 @@ private:
     std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
 
 public:
-    void handlePlaceSymbol( struct ComponentContent const& aComponent );
+    void placeSymbol( struct ComponentContent const& aComponent );
 
-    void handlePlaceDesignBlock( struct DesignBlockConent const& aComponent );
+    void placeDesignBlock( struct DesignBlockConent const& aComponent );
 };
 
 
