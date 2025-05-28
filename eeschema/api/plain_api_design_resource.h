@@ -31,12 +31,6 @@
 #include <nlohmann/json.hpp>
 
 
-#include <string>
-#include <vector>
-#include <optional>
-#include <nlohmann/json.hpp>
-
-
 struct SYMBOL_RESOURCE
 {
     std::string uri;
