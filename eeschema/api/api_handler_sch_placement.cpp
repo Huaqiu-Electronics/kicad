@@ -23,6 +23,7 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
+#include "plain_api_design_resource.h"
 #include <sch_actions.h>
 #include <tool/tool_manager.h>
 #include <project_sch.h>
@@ -45,23 +46,103 @@ using kiapi::common::types::CommandStatus;
 using kiapi::common::types::DocumentType;
 using kiapi::common::types::ItemRequestStatus;
 
-HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx )
+
+namespace
 {
-    if( !aCtx.Request.has_design_block_resource() || aCtx.Request.design_block_resource().schematic_uris().empty() )
-        return {};
 
+COMPONENT_RESOURCE    ConvertProtoToComponentResource( const kiapi::common::types::ComponentResource& protoComponent );
+FOOTPRINT_RESOURCE    ConvertProtoToFootprintResource( const kiapi::common::types::FootprintResource& protoFp );
+PCB_RESOURCE          ConvertProtoToPcbResource( const kiapi::common::types::PCBResource& protoPcb );
+DESIGN_BLOCK_RESOURCE ConvertProtoToDesignBlockResource( const kiapi::common::types::DesignBlockResource& protoBlock );
 
-    DesignBlockConent design_block_content;
+COMPONENT_RESOURCE ConvertProtoToComponentResource( const kiapi::common::types::ComponentResource& protoComponent )
+{
+    COMPONENT_RESOURCE component;
 
-    if( aCtx.Request.design_block_resource().has_root_schematic() )
+    if( protoComponent.has_component_name() )
+        component.component_name = protoComponent.component_name();
+
+    if( protoComponent.has_symbol_resource() )
+        component.symbol_resource.uri = protoComponent.symbol_resource().uri();
+
+    for( const auto& proto_fp : protoComponent.footprint_resources() )
+        component.footprint_resources.push_back( ConvertProtoToFootprintResource( proto_fp ) );
+
+    for( const auto& proto_attr : protoComponent.attributes() )
     {
-        design_block_content.root = aCtx.Request.design_block_resource().root_schematic();
+        component.attributes.push_back( { proto_attr.name(), proto_attr.value() } );
     }
 
-    for( const auto& uri : aCtx.Request.design_block_resource().schematic_uris() )
+    return component;
+}
+
+
+FOOTPRINT_RESOURCE ConvertProtoToFootprintResource( const kiapi::common::types::FootprintResource& protoFp )
+{
+    FOOTPRINT_RESOURCE fp;
+
+    if( protoFp.has_uri() )
+        fp.uri = protoFp.uri();
+
+    for( const auto& proto_model : protoFp.models() )
+        fp.models.push_back( { proto_model.uri() } );
+
+    return fp;
+}
+
+
+PCB_RESOURCE ConvertProtoToPcbResource( const kiapi::common::types::PCBResource& protoPcb )
+{
+    PCB_RESOURCE pcb;
+
+    pcb.pcb_uri = protoPcb.pcb_uri();
+
+    for( const auto& proto_fp : protoPcb.footprint_resources() )
+        pcb.footprint_resources.push_back( ConvertProtoToFootprintResource( proto_fp ) );
+
+    return pcb;
+}
+
+
+DESIGN_BLOCK_RESOURCE ConvertProtoToDesignBlockResource( const kiapi::common::types::DesignBlockResource& protoBlock )
+{
+    DESIGN_BLOCK_RESOURCE resource;
+
+    for( const auto& uri : protoBlock.schematic_uris() )
+        resource.schematic_uris.push_back( uri );
+
+    if( protoBlock.has_root_schematic() )
+        resource.root_schematic = protoBlock.root_schematic();
+
+    for( const auto& proto_component : protoBlock.component_resources() )
+        resource.component_resources.push_back( ConvertProtoToComponentResource( proto_component ) );
+
+    if( protoBlock.has_pcb_resource() )
+        resource.pcb_resource = ConvertProtoToPcbResource( protoBlock.pcb_resource() );
+
+    if( protoBlock.has_version() )
+        resource.version = protoBlock.version();
+
+    return resource;
+}
+
+
+} // namespace
+
+
+void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_RESOURCE const& aDesignBlock )
+{
+    DESIGN_BLOCK_CONTENT design_block_content;
+
+    if( aDesignBlock.root_schematic )
     {
-        NamedContent schematic;
-        const auto   schematic_content = API_DESIGN_RESOURCE_MGR::DownloadURL( uri );
+        design_block_content.root = *aDesignBlock.root_schematic;
+    }
+
+    for( const auto& uri : aDesignBlock.schematic_uris )
+    {
+        NAMED_CONTENT schematic;
+        const auto    schematic_content = API_DESIGN_RESOURCE_MGR::DownloadURL( uri );
 
         if( !schematic_content )
         {
@@ -76,49 +157,61 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
 
     // TODO : handle the PCB
     placeDesignBlock( design_block_content );
+}
+
+
+HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx )
+{
+    if( !aCtx.Request.has_design_block_resource() || aCtx.Request.design_block_resource().schematic_uris().empty() )
+    {
+        return {};
+    }
+
+    placeDesignBlock( ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ) );
     return {};
 }
 
 
-void API_HANDLER_SCH::placeDesignBlock( struct DesignBlockConent const& aBlock )
+void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock )
 {
     m_resourceMgr->SaveDesignBlockToProject( aBlock );
 }
 
 
-HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx )
+void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent )
 {
-    if( !aCtx.Request.has_component_resource() || !aCtx.Request.component_resource().has_symbol_resource()
-        || aCtx.Request.component_resource().symbol_resource().uri().empty() )
-        return {};
+    if( aComponent.symbol_resource.uri.empty() )
+        return;
 
 
-    const auto& symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
+    const auto& symbol_uri = aComponent.symbol_resource.uri;
     const auto  symbol_content = API_DESIGN_RESOURCE_MGR::DownloadURL( symbol_uri );
 
     if( !symbol_content )
     {
         wxLogWarning( "Failed to download symbol from %s", symbol_uri );
-        return {};
+        return;
     }
 
 
-    const auto symbol_name = aCtx.Request.component_resource().has_component_name()
-                                     ? aCtx.Request.component_resource().component_name()
-                                     : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri );
+    const auto symbol_name = aComponent.component_name ? *aComponent.component_name
+                                                       : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri );
 
-    ComponentContent component_content{
+    COMPONENT_CONTENT component_content{
         fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
     };
 
-    for( const auto& attr : aCtx.Request.component_resource().attributes() )
-        component_content.attributes.push_back( { attr.name(), attr.value() } );
+    for( const auto& attr : aComponent.attributes )
+        component_content.attributes.push_back( { attr.name, attr.value } );
 
-    for( const auto& fp : aCtx.Request.component_resource().footprint_resources() )
+    for( const auto& fp : aComponent.footprint_resources )
     {
-        FootprintConent footprint_resource;
-        const auto      fp_uri = fp.uri();
-        const auto      fp_content = API_DESIGN_RESOURCE_MGR::DownloadURL( fp_uri );
+        if( !fp.uri || fp.uri->empty() )
+            continue;
+
+        FOOTPRINT_CONENT footprint_resource;
+        const auto       fp_uri = *fp.uri;
+        const auto       fp_content = API_DESIGN_RESOURCE_MGR::DownloadURL( fp_uri );
 
         if( !fp_content )
         {
@@ -133,11 +226,12 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
 
         footprint_resource.footprint.content = *fp_content;
 
-        for( const auto& ml : fp.models() )
+        for( const auto& ml : fp.models )
         {
-            NamedContent model;
-            const auto   model_uri = ml.uri();
-            const auto   model_content = API_DESIGN_RESOURCE_MGR::DownloadURL( model_uri );
+            NAMED_CONTENT model;
+
+            const auto model_uri = ml.uri;
+            const auto model_content = API_DESIGN_RESOURCE_MGR::DownloadURL( model_uri );
 
             if( !model_content )
             {
@@ -157,11 +251,22 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
     }
 
     placeSymbol( component_content );
+}
+
+HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx )
+{
+    if( !aCtx.Request.has_component_resource() || !aCtx.Request.component_resource().has_symbol_resource()
+        || aCtx.Request.component_resource().symbol_resource().uri().empty() )
+    {
+        return {};
+    }
+
+    placeSymbol( ConvertProtoToComponentResource( aCtx.Request.component_resource() ) );
     return {};
 }
 
 
-void API_HANDLER_SCH::placeSymbol( struct ComponentContent const& aComponent )
+void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const& aComponent )
 {
     // Trigger loading the lazy ininitialized project symbol library table.
     void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );

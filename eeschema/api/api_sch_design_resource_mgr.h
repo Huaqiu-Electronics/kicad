@@ -36,9 +36,9 @@ public:
     ~API_SCH_DESIGN_RESOURCE_MGR();
 
     // Save a component to project, return the new/updated libsymbol if successful
-    LIB_SYMBOL* SaveComponentToProject( ComponentContent const& aComponent );
+    LIB_SYMBOL* SaveComponentToProject( COMPONENT_CONTENT const& aComponent );
 
-    bool SaveDesignBlockToProject( DesignBlockConent const& aComponent );
+    bool SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aComponent );
 
     bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 

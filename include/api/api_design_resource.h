@@ -28,88 +28,58 @@
 #include <optional>
 #include <string>
 #include <list>
-#include <nlohmann/json.hpp>
 
 
-struct NamedContent
+struct NAMED_CONTENT
 {
     std::string filename;
     std::string content;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NamedContent, filename, content )
 };
 
 
-struct FootprintConent
+struct FOOTPRINT_CONENT
 {
-    NamedContent footprint;
+    NAMED_CONTENT footprint;
     // The 3d models
-    std::list<NamedContent> models;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FootprintConent, footprint, models )
+    std::list<NAMED_CONTENT> models;
 };
 
 
-struct ComponentContent
+struct COMPONENT_CONTENT
 {
     struct Attribute
     {
         std::string name;
         std::string value;
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE( Attribute, name, value )
     };
 
-    NamedContent               symbol;
+    NAMED_CONTENT               symbol;
     std::list<Attribute>       attributes;
-    std::list<FootprintConent> footprints;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ComponentContent, symbol, attributes, footprints )
+    std::list<FOOTPRINT_CONENT> footprints;
 };
 
 
-struct PCBConent
+struct PCB_CONTENT
 {
-    NamedContent pcb;
+    NAMED_CONTENT pcb;
     // footprints used in the PCB , in case we are placing only the PCB
-    std::list<FootprintConent> footprints;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCBConent, pcb, footprints )
+    std::list<FOOTPRINT_CONENT> footprints;
 };
 
 
-struct DesignBlockConent
+struct DESIGN_BLOCK_CONTENT
 {
     // The root schematic file name
     std::optional<std::string> root;
 
     // One or more schematic files
-    std::list<NamedContent> schematics;
+    std::list<NAMED_CONTENT> schematics;
 
     // The PCB file
-    std::optional<PCBConent> pcb;
+    std::optional<PCB_CONTENT> pcb;
 
     // Components used in the schematics
-    std::list<ComponentContent> components;
-    friend void                 to_json( nlohmann ::json& nlohmann_json_j, const DesignBlockConent& nlohmann_json_t )
-    {
-        if( nlohmann_json_t.root )
-            nlohmann_json_j["root"] = *nlohmann_json_t.root;
-
-        nlohmann_json_j["schematics"] = nlohmann_json_t.schematics;
-
-        if( nlohmann_json_t.pcb )
-            nlohmann_json_j["pcb"] = *nlohmann_json_t.pcb;
-
-        nlohmann_json_j["components"] = nlohmann_json_t.components;
-    }
-    friend void from_json( const nlohmann ::json& nlohmann_json_j, DesignBlockConent& nlohmann_json_t )
-    {
-        if( nlohmann_json_j.contains( "root" ) )
-            nlohmann_json_t.root = nlohmann_json_j.at( "root" ).get<std::string>();
-
-        nlohmann_json_j.at( "schematics" ).get_to( nlohmann_json_t.schematics );
-
-        if( nlohmann_json_j.contains( "pcb" ) )
-            nlohmann_json_t.pcb = nlohmann_json_j.at( "pcb" ).get<PCBConent>();
-
-        nlohmann_json_j.at( "components" ).get_to( nlohmann_json_t.components );
-    }
+    std::list<COMPONENT_CONTENT> components;
 };
 
 #endif
