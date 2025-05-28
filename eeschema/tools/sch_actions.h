@@ -322,5 +322,8 @@ public:
         SCH_SYMBOL* m_Symbol = nullptr;
         ///< If a symbol is provide, reannotate it?
         bool m_Reannotate = true;
+        ///< Whether the caller expects to place all units
+        bool forcePlaceAllUnits = false;
+
     };
 };

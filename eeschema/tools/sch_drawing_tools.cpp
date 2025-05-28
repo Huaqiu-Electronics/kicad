@@ -449,11 +449,14 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
                 SCH_SYMBOL* nextSymbol = nullptr;
 
                 if( m_frame->eeconfig()->m_SymChooserPanel.place_all_units
-                        || m_frame->eeconfig()->m_SymChooserPanel.keep_symbol )
+                        || m_frame->eeconfig()->m_SymChooserPanel.keep_symbol 
+                        || toolParams.forcePlaceAllUnits
+                    )
                 {
                     int new_unit = symbol->GetUnit();
 
-                    if( m_frame->eeconfig()->m_SymChooserPanel.place_all_units
+                    if( ( m_frame->eeconfig()->m_SymChooserPanel.place_all_units 
+                            || toolParams.forcePlaceAllUnits )
                         && symbol->GetUnit() < symbol->GetUnitCount() )
                     {
                         new_unit++;
