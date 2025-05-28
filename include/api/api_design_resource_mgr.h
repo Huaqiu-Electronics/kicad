@@ -30,8 +30,8 @@
 #include <wx/string.h>
 
 class EDA_BASE_FRAME;
-struct DesignBlockConent;
-struct ComponentContent;
+struct DESIGN_BLOCK_CONTENT;
+struct COMPONENT_CONTENT;
 
 class API_DESIGN_RESOURCE_MGR
 {

@@ -39,7 +39,10 @@ using google::protobuf::Empty;
 class SCH_EDIT_FRAME;
 class SCH_ITEM;
 class API_SCH_DESIGN_RESOURCE_MGR;
-
+struct COMPONENT_CONTENT;
+struct COMPONENT_RESOURCE;
+struct DESIGN_BLOCK_CONTENT;
+struct DESIGN_BLOCK_RESOURCE;
 
 class API_HANDLER_SCH : public API_HANDLER_EDITOR
 {
@@ -85,9 +88,13 @@ private:
     std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
 
 public:
-    void placeSymbol( struct ComponentContent const& aComponent );
+    void placeSymbol( COMPONENT_CONTENT const& aComponent );
 
-    void placeDesignBlock( struct DesignBlockConent const& aComponent );
+    void placeSymbol( COMPONENT_RESOURCE const& aComponent );
+
+    void placeDesignBlock( DESIGN_BLOCK_CONTENT const& aDesignBlock );
+
+    void placeDesignBlock( DESIGN_BLOCK_RESOURCE const& aDesignBlock );
 };
 
 

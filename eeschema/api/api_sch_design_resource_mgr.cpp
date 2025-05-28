@@ -67,7 +67,7 @@ API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
 }
 
 
-LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
+LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aComponent )
 {
     const auto& symbol_file_name = aComponent.symbol.filename;
 
@@ -123,7 +123,7 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentConten
     return lib_sym;
 }
 
-bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DesignBlockConent const& aComponent )
+bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aComponent )
 {
     return {};
 }
