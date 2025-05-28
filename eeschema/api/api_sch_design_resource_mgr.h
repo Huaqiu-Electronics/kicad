@@ -27,6 +27,7 @@
 
 #include <api/api_design_resource_mgr.h>
 
+class LIB_SYMBOL;
 class API_SCH_DESIGN_RESOURCE_MGR : public API_DESIGN_RESOURCE_MGR
 {
 public:
@@ -34,13 +35,15 @@ public:
 
     ~API_SCH_DESIGN_RESOURCE_MGR();
 
-    bool SaveComponentToProject( ComponentContent const& aComponent );
+    // Save a component to project, return the new/updated libsymbol if successful
+    LIB_SYMBOL* SaveComponentToProject( ComponentContent const& aComponent );
 
     bool SaveDesignBlockToProject( DesignBlockConent const& aComponent );
 
     bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
-    bool WriteSymbolFields( std::string const& aNickName, auto const& aFields );
+    //  Write symbol fields ,return the updated symbol if successful
+    LIB_SYMBOL* WriteSymbolFields( std::string const& aNickName, auto const& aFields );
 };
 
 #endif

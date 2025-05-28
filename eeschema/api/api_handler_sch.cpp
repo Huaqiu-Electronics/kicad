@@ -21,6 +21,7 @@
 #include <api/api_handler_sch.h>
 #include <api/api_sch_utils.h>
 #include <api/api_utils.h>
+#include <google/protobuf/empty.pb.h>
 #include <magic_enum.hpp>
 #include <sch_commit.h>
 #include <sch_edit_frame.h>
@@ -41,6 +42,10 @@ m_resourceMgr(std::make_unique<API_SCH_DESIGN_RESOURCE_MGR>(*m_frame))
 {
     registerHandler<GetOpenDocuments, GetOpenDocumentsResponse>(
             &API_HANDLER_SCH::handleGetOpenDocuments );
+    registerHandler<PlaceDesignBlock, Empty>(
+            &API_HANDLER_SCH::handlePlaceDesignBlock );
+    registerHandler<PlaceSymbol, Empty>(
+            &API_HANDLER_SCH::handlePlaceSymbol );                        
 }
 
 API_HANDLER_SCH::~API_HANDLER_SCH()

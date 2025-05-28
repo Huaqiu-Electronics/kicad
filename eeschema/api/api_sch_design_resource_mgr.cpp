@@ -67,14 +67,14 @@ API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
 }
 
 
-bool API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
+LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const& aComponent )
 {
     const auto& symbol_file_name = aComponent.symbol.filename;
 
     if( !WriteProjectResource( SYMBOL_DIR, symbol_file_name, aComponent.symbol.content ) )
     {
         wxLogError( "Failed to save symbol %s to project", symbol_file_name );
-        return false;
+        return {};
     }
 
     const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
@@ -82,21 +82,23 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const
     if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, GetProjectApiFpUri() ) )
     {
         wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
-        return false;
+        return {};
     }
 
 
-    if( !WriteSymbolFields( symbol_nick_name, aComponent.attributes ) )
+    LIB_SYMBOL* lib_sym = WriteSymbolFields( symbol_nick_name, aComponent.attributes );
+
+    if( !lib_sym )
     {
         wxLogError( "Failed to write symbol fields for %s", symbol_nick_name );
-        return false;
+        return {};
     }
 
 
     if( !UpdateLibTable( API_LIB_FP_TABLE, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
     {
         wxLogError( "Failed to update fp library table for %s", symbol_nick_name );
-        return false;
+        return {};
     }
 
 
@@ -118,7 +120,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( ComponentContent const
         }
     }
 
-    return true;
+    return lib_sym;
 }
 
 bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DesignBlockConent const& aComponent )
@@ -172,14 +174,14 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
     return false;
 }
 
-bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickName, auto const& aFields )
+LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickName, auto const& aFields )
 {
     const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
 
     if( !symbolTb )
     {
         wxLogError( "Failed to get symbol library table." );
-        return false;
+        return {};
     }
 
     LIB_SYMBOL* lib_sym = nullptr;
@@ -192,7 +194,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickNam
         if( symbols.empty() )
         {
             wxLogError( "Symbol '%s' not found in library table.", aNickName );
-            return false;
+            return {};
         }
 
         lib_sym = symbols.front();
@@ -200,7 +202,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickNam
     catch( const IO_ERROR& ioe )
     {
         wxLogError( _( "Error loading HQ symbol library '%s'." ) + wxS( "\n%s" ), aNickName, ioe.What() );
-        return false;
+        return {};
     }
 
     lib_sym->SetName( aNickName );
@@ -232,8 +234,8 @@ bool API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aNickNam
     if( auto res = symbolTb->SaveSymbol( aNickName, lib_sym, true ); res != SYMBOL_LIB_TABLE::SAVE_OK )
     {
         wxLogError( "Failed to save symbol fields for %s", aNickName );
-        return false;
+        return {};
     }
 
-    return true;
+    return lib_sym;
 }

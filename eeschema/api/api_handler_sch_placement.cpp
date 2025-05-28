@@ -23,6 +23,8 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
+#include <sch_actions.h>
+#include <tool/tool_manager.h>
 #include <project_sch.h>
 #include <api/api_handler_sch.h>
 #include <api/api_sch_utils.h>
@@ -91,8 +93,8 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         return {};
 
 
-    const auto symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
-    const auto symbol_content = API_DESIGN_RESOURCE_MGR::DownloadURL( symbol_uri );
+    const auto& symbol_uri = aCtx.Request.component_resource().symbol_resource().uri();
+    const auto  symbol_content = API_DESIGN_RESOURCE_MGR::DownloadURL( symbol_uri );
 
     if( !symbol_content )
     {
@@ -164,10 +166,18 @@ void API_HANDLER_SCH::handlePlaceSymbol( struct ComponentContent const& aCompone
     // Trigger loading the lazy ininitialized project symbol library table.
     void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
 
+    auto libSymbol = m_resourceMgr->SaveComponentToProject( aComponent );
 
-    if( !m_resourceMgr->SaveComponentToProject( aComponent ) )
+    if( !libSymbol )
     {
         wxLogError( "Failed to save component to project" );
         return;
     }
+
+    PICKED_SYMBOL pickedSymbol;
+    pickedSymbol.LibId = libSymbol->GetLIB_ID();
+    m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SYMBOL_PARAMS>(
+            SCH_ACTIONS::placeSymbol,
+            { new SCH_SYMBOL( *libSymbol, &m_frame->GetCurrentSheet(), pickedSymbol, {}, &m_frame->Schematic() ), true,
+              true } );
 }

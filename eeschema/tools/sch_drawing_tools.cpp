@@ -473,12 +473,12 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
 
                 SCH_SYMBOL* nextSymbol = nullptr;
 
-                if( keepSymbol || placeAllUnits )
+                if( keepSymbol || placeAllUnits || toolParams.forcePlaceAllUnits)
                 {
                     SCH_REFERENCE currentReference( symbol, m_frame->GetCurrentSheet() );
                     SCHEMATIC& schematic = m_frame->Schematic();
 
-                    if( placeAllUnits )
+                    if( placeAllUnits || toolParams.forcePlaceAllUnits )
                     {
                         while( currentReference.GetUnit() <= symbol->GetUnitCount()
                                && schematic.Contains( currentReference ) )
