@@ -76,6 +76,8 @@ public:
 
     static std::string GetAPIFootprintPrettyDirName();
 
+    static wxString FormatAPISymbolURI( std::string const& aSymbolName);
+
     wxString GetProjectApiFpUri() const;
 
     wxString GetProjectDirectory() const;
