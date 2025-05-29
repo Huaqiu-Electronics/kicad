@@ -54,6 +54,28 @@
 #include "proto/data_buried_point.h"
 #include "common/dialog_image_viewer.h"
 #include <utils/httplib.h>
+#include <codecvt>
+
+inline std::string ws2s( const std::wstring& wstr )
+{
+    if( wstr.empty() )
+        return std::string();
+    int size_needed =
+            WideCharToMultiByte( CP_UTF8, 0, &wstr[0], (int) wstr.size(), NULL, 0, NULL, NULL );
+    std::string strTo( size_needed, 0 );
+    WideCharToMultiByte( CP_UTF8, 0, &wstr[0], (int) wstr.size(), &strTo[0], size_needed, NULL,
+                         NULL );
+    return strTo;
+}
+
+inline std::wstring s2ws( const std::string& str )
+{
+    using convert_typeX = std::codecvt_utf8<wchar_t>;
+    std::wstring_convert<convert_typeX, wchar_t> converterX;
+
+    return converterX.from_bytes( str );
+}
+
 
 using json = nlohmann::json;
 using namespace httplib;
@@ -297,6 +319,7 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
     // ShowFullScreen( evt.GetInt() != 0 );
 }
 
+
 #ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
 
 // NOTE : This is the entrypoint for HQ distribution v9.0.2 , which has been released on 2025-05
@@ -304,7 +327,9 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 // Hover, it will lead to crash on MacOS , so the http way is preferred
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
-    generic_process_web_msg( evt.GetString().ToStdString() );
+    const auto wStr = evt.GetString().ToStdWstring();
+    const auto str = ws2s( wStr );
+    generic_process_web_msg( str );
 }
 
 #endif
@@ -338,7 +363,6 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
     wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " ("
                               + evt.GetString() + ")'" );
 }
-
 
 void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
 {
