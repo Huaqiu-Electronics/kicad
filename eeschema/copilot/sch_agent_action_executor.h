@@ -111,7 +111,7 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
     }
     catch( std::exception const& e )
     {
-        wxLogWarning( "Exception caught: %s", e.what() );
+        wxLogError( "Exception caught: %s while processing action :", e.what() , aAction.context.dump());
     }
 }
 
