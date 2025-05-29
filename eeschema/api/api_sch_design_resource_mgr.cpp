@@ -59,7 +59,7 @@ public:
         add_field( SCH_FIELD( other ), aText );
     }
 
-    auto add_field( const wxString& aName, const wxString& aText )
+    auto add_field( const std::string& aName, const std::string& aText )
     {
         add_field( SCH_FIELD( m_lib, {}, aName ), aText );
     };
@@ -242,7 +242,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     std::map<std::string, std::reference_wrapper<SCH_FIELD>> field_map;
 
     for( auto& field : fields )
-        field_map.emplace( field.GetName(), std::ref( field ) );
+        field_map.emplace( field.GetName().ToStdString(), std::ref( field ) );
 
 
     for( const auto& field : aFields )
