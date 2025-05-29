@@ -131,6 +131,26 @@ std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyDirName()
     return fmt::format( "{}.{}", GetAPIFootprintPrettyName(),
                         FILEEXT::KiCadFootprintLibPathExtension );
 }
+
+std::string API_DESIGN_RESOURCE_MGR::FormatToValidFileName( std::string const& aComponentName )
+{
+    static const std::string invalidChars = "\\/:*?\"<>|";
+    std::string              result = aComponentName;
+
+    for( char& c : result )
+    {
+        if( invalidChars.find( c ) != std::string::npos )
+            c = '_';
+    }
+
+    // Optionally, trim whitespace from both ends
+    size_t start = result.find_first_not_of( " \t\r\n" );
+    size_t end = result.find_last_not_of( " \t\r\n" );
+    if( start == std::string::npos )
+        return ""; // All whitespace
+    return result.substr( start, end - start + 1 );
+}
+
 wxString API_DESIGN_RESOURCE_MGR::FormatAPISymbolURI( std::string const& aSymbolName )
 {
     return wxString::Format( "${KIPRJMOD}/%s/%s", kProjectResourceDirName, aSymbolName );

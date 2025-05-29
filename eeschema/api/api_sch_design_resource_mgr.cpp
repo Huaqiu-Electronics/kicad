@@ -232,6 +232,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
         return {};
     }
 
+    wxString old_symName = lib_sym->GetName();
     lib_sym->SetName( aNickName );
     std::vector<SCH_FIELD> fields;
     lib_sym->CopyFields( fields );
@@ -266,6 +267,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     try
     {
         IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) );
+        pi->DeleteSymbol( fn.GetFullPath(), old_symName );
         pi->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ) );
     }
     catch( const IO_ERROR& ioe )
