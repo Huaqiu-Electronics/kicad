@@ -49,11 +49,12 @@ struct WEBVIEW_PATH
 struct WEBVIEW_SETTINGS
 {
 
-#ifdef _WIN32
+
+#if defined(_WIN32) && !defined(IS_RC_BUILD)
     std::string url = "https://chat.eda.cn/";
 #else
     std::string url = "http://47.100.5.151:8080/";
-#endif // _WIN32    
+#endif
 
     WEBVIEW_PATH path;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_SETTINGS, url, path )
