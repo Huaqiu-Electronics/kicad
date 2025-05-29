@@ -194,13 +194,14 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent )
     }
 
 
-    const auto symbol_name = aComponent.component_name ? *aComponent.component_name
-                                                       : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri );
+    const auto symbol_name = API_DESIGN_RESOURCE_MGR::FormatToValidFileName(
+            aComponent.component_name ? *aComponent.component_name
+                                      : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri ) );
 
-    COMPONENT_CONTENT component_content{
-        fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
-    };
-
+    COMPONENT_CONTENT component_content{ fmt::format( "{}.{}", symbol_name,
+                                                      API_DESIGN_RESOURCE_MGR::ExtactFileExtension(
+                                                              symbol_uri ) ),
+                                         *symbol_content };
     for( const auto& attr : aComponent.attributes )
         component_content.attributes.push_back( { attr.name, attr.value } );
 

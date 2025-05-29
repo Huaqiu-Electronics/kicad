@@ -465,7 +465,9 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
 
                 commit.Push( _( "Place Symbol" ) );
 
-                if( placeOneOnly )
+                if( placeOneOnly
+                    && !( toolParams.forcePlaceAllUnits
+                          && symbol->GetUnit() < symbol->GetUnitCount() ) )
                 {
                     m_frame->PopTool( aEvent );
                     break;

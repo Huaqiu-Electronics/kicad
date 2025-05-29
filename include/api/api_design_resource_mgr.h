@@ -76,6 +76,8 @@ public:
 
     static std::string GetAPIFootprintPrettyDirName();
 
+    static std::string FormatToValidFileName( std::string const& aComponentName );
+
     static wxString FormatAPISymbolURI( std::string const& aSymbolName);
 
     wxString GetProjectApiFpUri() const;
@@ -100,9 +102,6 @@ private:
 protected:
     EDA_BASE_FRAME& m_frame;
 };
-
-
-
 
 
 #endif
