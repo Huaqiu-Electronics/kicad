@@ -74,8 +74,6 @@ std::optional<std::string> API_DESIGN_RESOURCE_MGR::DownloadURL( std::string con
         return {};
     }
 
-    wxLogWarning( curl.GetBuffer().c_str() );
-
     return std::make_optional( curl.GetBuffer() );
 }
 
