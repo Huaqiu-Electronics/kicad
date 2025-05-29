@@ -234,31 +234,86 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
 
     wxString old_symName = lib_sym->GetName();
     lib_sym->SetName( aNickName );
-    std::vector<SCH_FIELD> fields;
-    lib_sym->CopyFields( fields );
 
-    FIELD_WRITER field_writer( lib_sym, fields );
+    std::map<std::string, std::string> attrs;
 
-    std::map<std::string, std::reference_wrapper<SCH_FIELD>> field_map;
-
-    for( auto& field : fields )
-        field_map.emplace( field.GetName().ToStdString(), std::ref( field ) );
-
-
-    for( const auto& field : aFields )
+    for( auto& [name, text] : aFields )
     {
-        if( auto loc = field_map.find( field.name ); loc != field_map.end() )
-        {
-            loc->second.get().SetText( field.value );
-        }
-        else
-        {
-            field_writer.add_field( field.name, field.value );
-        }
+        attrs.try_emplace( name, text );
     }
 
-    lib_sym->SetFields( fields );
+    std::vector<SCH_FIELD> fields;
+    int                    field_id = 5;
+    // Set fields order by manual.
+    if( attrs.find( "MPN" ) != attrs.end() )
+    {
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, "MPN" );
+        // field->SetId(  );
+        // field->SetName();
+        field->SetShowInChooser( false );
+        field->SetVisible( false );
+        field->SetText( attrs["Mpn"] );
+        fields.push_back( *field );
+    }
+
+    if( attrs.find( "Manufacturer" ) != attrs.end() )
+    {
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, "Manufacturer" );
+        // field->SetId( field_id++ );
+        // field->SetName( "Manufacturer" );
+        field->SetShowInChooser( false );
+        field->SetVisible( false );
+        field->SetText( attrs["Manufacturer"] );
+        fields.push_back( *field );
+    }
+
+    for( auto& [name, text] : attrs )
+    {
+        SCH_FIELD* field = nullptr;
+        if( name == "Value" )
+        {
+            field = new SCH_FIELD( lib_sym->GetValueField() );
+            field->SetVisible( false );
+        }
+        else if( name == "Footprint" )
+        {
+            continue;
+        }
+        else if( name == "Datasheet" )
+        {
+            field = new SCH_FIELD( lib_sym->GetDatasheetField() );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+        else if( name == "Description" )
+        {
+            field = new SCH_FIELD( lib_sym->GetDescriptionField() );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+        else if( name != "Manufacturer" && name != "Mpn" )
+        {
+            field = new SCH_FIELD( lib_sym, field_id++, name );
+            // field->SetId( field_id++ );
+            // field->SetName( name );
+            field->SetShowInChooser( false );
+            field->SetVisible( false );
+        }
+
+        if( name != "Manufacturer" && name != "Mpn" )
+        {
+            field->SetText( text );
+            fields.push_back( *field );
+        }
+    }
+    SCH_FIELD* ref_field = new SCH_FIELD( lib_sym->GetReferenceField() );
+    ref_field->SetShowInChooser( true );
+    ref_field->SetVisible( true );
+    fields.push_back( *ref_field );
     lib_sym->GetFootprintField().SetText( FormatSymbolFpPropertyValue( aNickName ) );
+    fields.push_back( lib_sym->GetFootprintField() );
+    // replace old fields
+    lib_sym->SetHqPartsFields( fields );
 
 
     const auto fp = *GetProjectResourceSavePath( SYMBOL_DIR, aFileName );
