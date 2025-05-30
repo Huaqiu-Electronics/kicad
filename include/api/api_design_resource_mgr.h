@@ -40,8 +40,9 @@ public:
     {
         BEGIN = 0,
 
-        ROOT_DIR = BEGIN,
-        SYMBOL_DIR = ROOT_DIR,
+        PROJECT_ROOT = BEGIN,
+        API_RES_DIR,
+        SYMBOL_DIR = API_RES_DIR,
         PRETTY_DIR,
         MODEL_3D_DIR,
 

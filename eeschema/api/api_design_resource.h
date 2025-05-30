@@ -22,8 +22,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef PLAIN_API_DESIGN_RESOURCE_H
-#define PLAIN_API_DESIGN_RESOURCE_H
+
+// Intermediate interfaces decoupled from the protocol buffer.
+
+#ifndef API_DESIGN_RESOURCE_H
+#define API_DESIGN_RESOURCE_H
+
 
 #include <string>
 #include <vector>

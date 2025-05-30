@@ -31,7 +31,7 @@
 #include <wx/filename.h>
 #include <wx/log.h>
 #include <eda_base_frame.h>
-#include <api/api_design_resource.h>
+#include <api/api_design_content.h>
 #include <wildcards_and_files_ext.h>
 #include <wx/string.h>
 #include <wx/wfstream.h>
@@ -126,8 +126,7 @@ std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyName()
 
 std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyDirName()
 {
-    return fmt::format( "{}.{}", GetAPIFootprintPrettyName(),
-                        FILEEXT::KiCadFootprintLibPathExtension );
+    return fmt::format( "{}.{}", GetAPIFootprintPrettyName(), FILEEXT::KiCadFootprintLibPathExtension );
 }
 
 std::string API_DESIGN_RESOURCE_MGR::FormatToValidFileName( std::string const& aComponentName )
@@ -159,17 +158,31 @@ wxString API_DESIGN_RESOURCE_MGR::GetProjectResourceDirInternal( ProjectResource
 {
     const auto prjDir = GetProjectDirectory();
     wxFileName resDir( prjDir );
-    resDir.AppendDir( kProjectResourceDirName );
 
     switch( aType )
     {
-    case ProjectResourceDir::ROOT_DIR: break;
-    case ProjectResourceDir::PRETTY_DIR: resDir.AppendDir( GetAPIFootprintPrettyDirName() ); break;
-    case ProjectResourceDir::MODEL_3D_DIR: resDir.AppendDir( kProject3DModelName ); break;
+    case ProjectResourceDir::PROJECT_ROOT: break;
+    case ProjectResourceDir::SYMBOL_DIR:
+    {
+        resDir.AppendDir( kProjectResourceDirName );
+        break;
+    }
+    case ProjectResourceDir::PRETTY_DIR:
+    {
+        resDir.AppendDir( kProjectResourceDirName );
+        resDir.AppendDir( GetAPIFootprintPrettyDirName() );
+        break;
+    }
+    case ProjectResourceDir::MODEL_3D_DIR:
+    {
+        resDir.AppendDir( kProjectResourceDirName );
+        resDir.AppendDir( kProject3DModelName );
+        break;
+    }
 
     default:
-        wxASSERT_MSG( false, wxString::Format( "Unknown project resource directory type: %d",
-                                               static_cast<int>( aType ) ) );
+        wxASSERT_MSG( false,
+                      wxString::Format( "Unknown project resource directory type: %d", static_cast<int>( aType ) ) );
         return {};
     }
 
@@ -180,8 +193,7 @@ bool API_DESIGN_RESOURCE_MGR::SetupProjectResourceDirs()
 {
     for( int type = ProjectResourceDir::BEGIN; type < ProjectResourceDir::END; ++type )
     {
-        const auto target_dir =
-                GetProjectResourceDirInternal( static_cast<ProjectResourceDir>( type ) );
+        const auto target_dir = GetProjectResourceDirInternal( static_cast<ProjectResourceDir>( type ) );
 
         wxFileName resDir( target_dir );
 
@@ -189,8 +201,7 @@ bool API_DESIGN_RESOURCE_MGR::SetupProjectResourceDirs()
         {
             if( !resDir.Mkdir( wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL ) )
             {
-                wxLogError( wxString::Format( _( "Cannot create project resource path '%s'." ),
-                                              resDir.GetPath() ) );
+                wxLogError( wxString::Format( _( "Cannot create project resource path '%s'." ), resDir.GetPath() ) );
                 return false;
             }
         }
@@ -201,8 +212,7 @@ bool API_DESIGN_RESOURCE_MGR::SetupProjectResourceDirs()
 
 wxString API_DESIGN_RESOURCE_MGR::GetProjectApiFpUri() const
 {
-    return wxString::Format( "${KIPRJMOD}/%s/%s", kProjectResourceDirName,
-                             GetAPIFootprintPrettyDirName() );
+    return wxString::Format( "${KIPRJMOD}/%s/%s", kProjectResourceDirName, GetAPIFootprintPrettyDirName() );
 }
 
 wxString API_DESIGN_RESOURCE_MGR::GetProjectDirectory() const
@@ -222,9 +232,8 @@ std::optional<wxString> API_DESIGN_RESOURCE_MGR::GetProjectResourceDir( ProjectR
 }
 
 
-std::optional<wxString>
-API_DESIGN_RESOURCE_MGR::GetProjectResourceSavePath( ProjectResourceDir aType,
-                                                     wxString const&    aName )
+std::optional<wxString> API_DESIGN_RESOURCE_MGR::GetProjectResourceSavePath( ProjectResourceDir aType,
+                                                                             wxString const&    aName )
 {
     const auto resDir = GetProjectResourceDir( aType );
 
@@ -239,8 +248,7 @@ API_DESIGN_RESOURCE_MGR::GetProjectResourceSavePath( ProjectResourceDir aType,
     return savePath.GetFullPath();
 }
 
-bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( wxString const&    aPath,
-                                                    std::string const& aContent )
+bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( wxString const& aPath, std::string const& aContent )
 {
     try
     {
@@ -255,8 +263,7 @@ bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( wxString const&    aPath,
     }
     catch( const std::exception& e )
     {
-        wxLogTrace( kTraceResourceIO, wxT( "Catch error: could not save %s. IO error %s" ), aPath,
-                    e.what() );
+        wxLogTrace( kTraceResourceIO, wxT( "Catch error: could not save %s. IO error %s" ), aPath, e.what() );
         return false;
     }
 

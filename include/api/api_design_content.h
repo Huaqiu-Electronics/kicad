@@ -22,8 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef API_DESIGN_RESOURCE_H
-#define API_DESIGN_RESOURCE_H
+#ifndef API_DESIGN_CONTENT_H
+#define API_DESIGN_CONTENT_H
 
 #include <optional>
 #include <string>
@@ -81,5 +81,6 @@ struct DESIGN_BLOCK_CONTENT
     // Components used in the schematics
     std::list<COMPONENT_CONTENT> components;
 };
+
 
 #endif

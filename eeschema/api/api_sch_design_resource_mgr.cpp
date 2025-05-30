@@ -28,7 +28,7 @@
 #include <functional>
 #include <lib_symbol.h>
 #include <sch_field.h>
-#include <api/api_design_resource.h>
+#include <api/api_design_content.h>
 #include <string>
 #include <symbol_lib_table.h>
 #include <eda_base_frame.h>
@@ -41,10 +41,7 @@ class FIELD_WRITER
     std::vector<SCH_FIELD>& m_fields;
 
 public:
-    FIELD_WRITER( LIB_SYMBOL* aLibSym, std::vector<SCH_FIELD>& aFields ) :
-            m_lib( aLibSym ), m_fields( aFields )
-    {
-    }
+    FIELD_WRITER( LIB_SYMBOL* aLibSym, std::vector<SCH_FIELD>& aFields ) : m_lib( aLibSym ), m_fields( aFields ) {}
 
     auto add_field( SCH_FIELD&& field, const wxString& aText )
     {
@@ -54,10 +51,7 @@ public:
         m_fields.push_back( std::move( field ) );
     }
 
-    auto add_field( const SCH_FIELD& other, const wxString& aText )
-    {
-        add_field( SCH_FIELD( other ), aText );
-    }
+    auto add_field( const SCH_FIELD& other, const wxString& aText ) { add_field( SCH_FIELD( other ), aText ); }
 
     auto add_field( const std::string& aName, const std::string& aText )
     {
@@ -66,8 +60,7 @@ public:
 };
 
 
-API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) :
-        API_DESIGN_RESOURCE_MGR( aFrame )
+API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) : API_DESIGN_RESOURCE_MGR( aFrame )
 {
 }
 
@@ -76,8 +69,7 @@ API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
 }
 
 
-LIB_SYMBOL*
-API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aComponent )
+LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aComponent )
 {
     const auto& symbol_file_name = aComponent.symbol.filename;
 
@@ -89,8 +81,7 @@ API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aC
 
     for( const auto& footprint : aComponent.footprints )
     {
-        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename,
-                                   footprint.footprint.content ) )
+        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
         {
             wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
             continue;
@@ -109,8 +100,7 @@ API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aC
 
     const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
 
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name,
-                         FormatAPISymbolURI( symbol_file_name ) ) )
+    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, FormatAPISymbolURI( symbol_file_name ) ) )
     {
         wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
         return {};
@@ -118,15 +108,13 @@ API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aC
 
     auto lib_id = WriteSymbolFields( symbol_file_name, aComponent.attributes );
 
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name,
-                         FormatAPISymbolURI( symbol_file_name ) ) )
+    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, FormatAPISymbolURI( symbol_file_name ) ) )
     {
         wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
         return {};
     }
 
-    auto lib_sym = SchGetLibSymbol( lib_id, PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() ),
-                                    nullptr, &m_frame );
+    auto lib_sym = SchGetLibSymbol( lib_id, PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() ), nullptr, &m_frame );
 
     if( !lib_sym )
     {
@@ -144,9 +132,30 @@ API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aC
     return lib_sym;
 }
 
-bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aComponent )
+bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aBlock )
 {
-    return {};
+    for( const auto& component : aBlock.components )
+        SaveComponentToProject( component );
+
+    for( const auto [schematic_file_name, schematic_content] : aBlock.schematics )
+    {
+        if( !WriteProjectResource( PROJECT_ROOT, schematic_file_name, schematic_content ) )
+        {
+            wxLogError( "Failed to save schematic %s to project", schematic_file_name );
+            return {};
+        }
+    }
+
+    if( aBlock.pcb )
+    {
+        if( !WriteProjectResource( PROJECT_ROOT, aBlock.pcb->pcb.filename, aBlock.pcb->pcb.content ) )
+        {
+            wxLogError( "Failed to save pcb %s to project", aBlock.pcb->pcb.filename );
+            return {};
+        }
+    }
+
+    return true;
 }
 
 
@@ -197,8 +206,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
     return false;
 }
 
-LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName,
-                                                       auto const&        aFields )
+LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName, auto const& aFields )
 {
     const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
 
@@ -227,8 +235,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     }
     catch( const IO_ERROR& ioe )
     {
-        wxLogError( _( "Error loading HQ symbol library '%s'." ) + wxS( "\n%s" ), aNickName,
-                    ioe.What() );
+        wxLogError( _( "Error loading symbol library '%s'." ) + wxS( "\n%s" ), aNickName, ioe.What() );
         return {};
     }
 
