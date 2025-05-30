@@ -95,6 +95,7 @@ public:
     static TOOL_ACTION drawSheetFromDesignBlock;
     static TOOL_ACTION placeSheetPin;
     static TOOL_ACTION importSheet;
+    static TOOL_ACTION apiPlaceSheet;
     // Sync sheet pins for selected sheet symbol
     static TOOL_ACTION syncSheetPins;
     // Sync sheet pins for all sheet symbols
@@ -325,5 +326,11 @@ public:
         ///< Whether the caller expects to place all units
         bool forcePlaceAllUnits = false;
 
+    };
+
+    struct PLACE_SHEET_PARAMS
+    {
+        wxString sheetFileName;
+        bool     place_as_sheet = false;
     };
 };
