@@ -42,11 +42,11 @@ class API_SCH_DESIGN_RESOURCE_MGR;
 
 struct COMPONENT_CONTENT;
 struct PLACE_SYMBOL_OPTION;
-struct PLACE_SYMBOL_COMMAND;
+struct PLACE_SYMBOL_RESOURCE_COMMAND;
 
 struct DESIGN_BLOCK_CONTENT;
 struct PLACE_DESIGN_BLOCK_OPTION;
-struct PLACE_DESIGN_BLOCK_COMMAND;
+struct PLACE_DESIGN_BLOCK_RESOURCE_COMMAND;
 
 class API_HANDLER_SCH : public API_HANDLER_EDITOR
 {
@@ -94,11 +94,11 @@ private:
 public:
     void placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_SYMBOL_OPTION const& aOption );
 
-    void placeSymbol( PLACE_SYMBOL_COMMAND const& aCommand );
+    void placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand );
 
     void placeDesignBlock( DESIGN_BLOCK_CONTENT const& aDesignBlock ,PLACE_DESIGN_BLOCK_OPTION const& aOption );
 
-    void placeDesignBlock( PLACE_DESIGN_BLOCK_COMMAND const& aCommand );
+    void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND const& aCommand );
 };
 
 

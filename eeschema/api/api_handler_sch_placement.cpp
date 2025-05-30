@@ -132,7 +132,7 @@ DESIGN_BLOCK_RESOURCE ConvertProtoToDesignBlockResource( const kiapi::common::ty
 } // namespace
 
 
-void API_HANDLER_SCH::placeDesignBlock( PLACE_DESIGN_BLOCK_COMMAND const& aCommand )
+void API_HANDLER_SCH::placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND const& aCommand )
 {
     DESIGN_BLOCK_CONTENT design_block_content;
 
@@ -207,7 +207,7 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock, PLAC
 }
 
 
-void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_COMMAND const& aCommand )
+void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand )
 {
     const auto& component = aCommand.component;
 
