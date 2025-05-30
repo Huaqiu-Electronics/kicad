@@ -95,24 +95,39 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
             break;
         }
 
-        case AGENT_ACTION_TYPE::place_symbol:
+        case AGENT_ACTION_TYPE::place_symbol_resource:
         {
-            m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_COMMAND>() );
+            m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
+            break;
+        }
+        case AGENT_ACTION_TYPE::place_symbol_content:
+        {
+            const auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_COMMAND>();
+            m_apiHandler->placeSymbol( content.component, content.option );
             break;
         }
 
-        case AGENT_ACTION_TYPE::place_design_block:
+        case AGENT_ACTION_TYPE::place_design_block_resource:
         {
-            m_apiHandler->placeDesignBlock( aAction.context.get<DESIGN_BLOCK_CONTENT>() , {} );
+            m_apiHandler->placeDesignBlock(
+                    aAction.context.get<PLACE_DESIGN_BLOCK_RESOURCE_COMMAND>() );
             break;
         }
+        case AGENT_ACTION_TYPE::place_design_block_content:
+        {
+            const auto content = aAction.context.get<PLACE_DESIGN_BLOCK_CONTENT_COMMAND>();
+            m_apiHandler->placeDesignBlock( content.design_block, content.option );
+            break;
+        }
+
 
         default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
         }
     }
     catch( std::exception const& e )
     {
-        wxLogError( "Exception caught: %s while processing action :", e.what() , aAction.context.dump());
+        wxLogError( "Exception caught: %s while processing action %s:", e.what(),
+                    nlohmann::json( aAction ).dump().c_str() );
     }
 }
 
