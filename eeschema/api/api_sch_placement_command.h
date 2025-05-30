@@ -33,7 +33,9 @@
 
 struct PLACE_SYMBOL_OPTION
 {
-    // Is it necessary to use place all units and place repeated options ?
+    std::optional<bool> place_repeated_copies;
+    std::optional<bool> place_all_units;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_OPTION, place_repeated_copies, place_all_units )
 };
 
 struct PLACE_SYMBOL_COMMAND
