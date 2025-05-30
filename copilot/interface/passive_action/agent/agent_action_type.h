@@ -38,8 +38,12 @@ enum class AGENT_ACTION_TYPE
     SCH_BEGIN,
 
     highlight_symbol,
-    place_symbol,
-    place_design_block,
+    
+    place_symbol_resource,
+    place_symbol_content,
+
+    place_design_block_resource,
+    place_design_block_content,
 
     PCB_BEGIN,
 
