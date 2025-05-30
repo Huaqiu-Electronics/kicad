@@ -29,8 +29,14 @@ message PlaceDesignBlock
   // Contains at least one schematic and may contain a pcb
   kiapi.common.types.DesignBlockResource design_block_resource = 1;
 
+  // Keep the design block selected for subsequent clicks
+  optional bool place_repeated_copies = 2;
+
   // Place the design block as a sheet symbol 
-  optional bool place_as_sheet = 2;
+  optional bool place_as_sheet = 3;
+
+  // Keep the annotations of the sch symbols
+  optional bool keep_annotations = 4;
 }
 
 
@@ -38,4 +44,10 @@ message PlaceSymbol
 {
   // Contains a symbol and one or more footprints, 3D models
   kiapi.common.types.ComponentResource component_resource = 1;
+
+  // Keep the symbol selected for subsequent clicks
+  optional bool place_repeated_copies = 2;
+
+  // Sequentially place all units of the symbol.
+  optional bool place_all_units = 3;
 }
