@@ -28,12 +28,13 @@
 #include <optional>
 #include <string>
 #include <list>
-
+#include <nlohmann/json.hpp>
 
 struct NAMED_CONTENT
 {
     std::string filename;
     std::string content;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NAMED_CONTENT, filename, content )
 };
 
 
@@ -42,6 +43,8 @@ struct FOOTPRINT_CONENT
     NAMED_CONTENT footprint;
     // The 3d models
     std::list<NAMED_CONTENT> models;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(  FOOTPRINT_CONENT, footprint, models )
 };
 
 
@@ -51,11 +54,13 @@ struct COMPONENT_CONTENT
     {
         std::string name;
         std::string value;
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE( Attribute, name, value )
     };
 
     NAMED_CONTENT               symbol;
     std::list<Attribute>       attributes;
     std::list<FOOTPRINT_CONENT> footprints;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COMPONENT_CONTENT, symbol, attributes, footprints )
 };
 
 
@@ -64,6 +69,8 @@ struct PCB_CONTENT
     NAMED_CONTENT pcb;
     // footprints used in the PCB , in case we are placing only the PCB
     std::list<FOOTPRINT_CONENT> footprints;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_CONTENT, pcb, footprints )
 };
 
 
@@ -80,6 +87,8 @@ struct DESIGN_BLOCK_CONTENT
 
     // Components used in the schematics
     std::list<COMPONENT_CONTENT> components;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( DESIGN_BLOCK_CONTENT, root, schematics, pcb, components )
 };
 
 

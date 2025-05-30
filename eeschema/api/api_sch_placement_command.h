@@ -27,7 +27,7 @@
 #ifndef API_SCH_PLACEMENT_COMMAND_H
 #define API_SCH_PLACEMENT_COMMAND_H
 
-#include "api_design_resource.h"
+#include <api/api_design_resource.h>
 #include <optional>
 
 
