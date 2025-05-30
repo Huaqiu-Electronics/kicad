@@ -23,7 +23,9 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
-#include "plain_api_design_resource.h"
+#include "api_design_resource.h"
+#include "api_sch_placement_command.h"
+#include <api/api_design_content.h>
 #include <sch_actions.h>
 #include <tool/tool_manager.h>
 #include <project_sch.h>
@@ -130,7 +132,8 @@ DESIGN_BLOCK_RESOURCE ConvertProtoToDesignBlockResource( const kiapi::common::ty
 } // namespace
 
 
-void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_RESOURCE const& aDesignBlock )
+void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_RESOURCE const&     aDesignBlock,
+                                        PLACE_DESIGN_BLOCK_OPTION const& aOption )
 {
     DESIGN_BLOCK_CONTENT design_block_content;
 
@@ -155,8 +158,7 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_RESOURCE const& aDesignBloc
         design_block_content.schematics.push_back( std::move( schematic ) );
     }
 
-    // TODO : handle the PCB
-    placeDesignBlock( design_block_content );
+    placeDesignBlock( design_block_content, aOption );
 }
 
 
@@ -167,18 +169,44 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
         return {};
     }
 
-    placeDesignBlock( ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ) );
+    placeDesignBlock( ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ),
+                      { aCtx.Request.has_place_as_sheet() ? aCtx.Request.place_as_sheet() : std::optional<bool>{} } );
     return {};
 }
 
 
-void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock )
+void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock, PLACE_DESIGN_BLOCK_OPTION const& aOption )
 {
-    m_resourceMgr->SaveDesignBlockToProject( aBlock );
+    if( !aBlock.schematics.size() )
+        return;
+
+    if( !m_resourceMgr->SaveDesignBlockToProject( aBlock ) )
+        return;
+
+    wxString target_sch_file =
+            m_resourceMgr
+                    ->GetProjectResourceSavePath( API_DESIGN_RESOURCE_MGR::ProjectResourceDir::PROJECT_ROOT,
+                                                  aBlock.root ? *aBlock.root : aBlock.schematics.front().filename )
+                    .value();
+
+    wxFileName rootFile( target_sch_file );
+
+    if( !rootFile.FileExists() )
+    {
+        wxLogError( wxString::Format( "File %s does not exist", rootFile.GetFullPath() ) );
+        return;
+    }
+
+    if( !aOption.place_as_sheet )
+        m_frame->GetToolManager()->RunAction( SCH_ACTIONS::importSheet, new wxString( target_sch_file ) );
+    else
+    {
+        // TODO: place as sheet
+    }
 }
 
 
-void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent )
+void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent, PLACE_COMPONENT_OPTION const& aOption )
 {
     if( aComponent.symbol_resource.uri.empty() )
         return;
@@ -198,10 +226,9 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent )
             aComponent.component_name ? *aComponent.component_name
                                       : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri ) );
 
-    COMPONENT_CONTENT component_content{ fmt::format( "{}.{}", symbol_name,
-                                                      API_DESIGN_RESOURCE_MGR::ExtactFileExtension(
-                                                              symbol_uri ) ),
-                                         *symbol_content };
+    COMPONENT_CONTENT component_content{
+        fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
+    };
     for( const auto& attr : aComponent.attributes )
         component_content.attributes.push_back( { attr.name, attr.value } );
 
@@ -251,7 +278,7 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent )
         component_content.footprints.push_back( std::move( footprint_resource ) );
     }
 
-    placeSymbol( component_content );
+    placeSymbol( component_content, aOption );
 }
 
 HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx )
@@ -262,12 +289,12 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         return {};
     }
 
-    placeSymbol( ConvertProtoToComponentResource( aCtx.Request.component_resource() ) );
+    placeSymbol( ConvertProtoToComponentResource( aCtx.Request.component_resource() ), {} );
     return {};
 }
 
 
-void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const& aComponent )
+void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_COMPONENT_OPTION const& aOption )
 {
     // Trigger loading the lazy ininitialized project symbol library table.
     void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
