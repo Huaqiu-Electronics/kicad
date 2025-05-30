@@ -198,12 +198,10 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock, PLAC
         return;
     }
 
-    if( !aOption.place_as_sheet )
-        m_frame->GetToolManager()->RunAction( SCH_ACTIONS::importSheet, new wxString( target_sch_file ) );
-    else
-    {
-        // TODO: place as sheet
-    }
+
+    m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SHEET_PARAMS>(
+            SCH_ACTIONS::apiPlaceSheet,
+            { target_sch_file, aOption.place_as_sheet.has_value() ? aOption.place_as_sheet.value() : false } );
 }
 
 

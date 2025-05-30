@@ -645,6 +645,16 @@ TOOL_ACTION SCH_ACTIONS::importSheet( TOOL_ACTION_ARGS()
         .Flags( AF_ACTIVATE )
         .Parameter<wxString*> ( nullptr ) );
 
+
+TOOL_ACTION SCH_ACTIONS::apiPlaceSheet( TOOL_ACTION_ARGS()
+        .Name( "eeschema.api.placeSheet" )
+        .Scope( AS_GLOBAL )
+        .LegacyHotkeyName( "API import Sheet..." )
+        .FriendlyName( _( "API import sheet into project" ) )
+        .Icon( BITMAPS::add_hierarchical_subsheet )
+        .Flags( AF_ACTIVATE )
+        .Parameter<SCH_ACTIONS::PLACE_SHEET_PARAMS>( {} ) ); 
+
 TOOL_ACTION SCH_ACTIONS::placeGlobalLabel( TOOL_ACTION_ARGS()
         .Name( "eeschema.InteractiveDrawing.placeGlobalLabel" )
         .Scope( AS_GLOBAL )

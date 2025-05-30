@@ -722,10 +722,13 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
         return 0;
 
     bool placingDesignBlock = aEvent.IsAction( &SCH_ACTIONS::placeDesignBlock );
+    bool isApiPlaceSheet = aEvent.IsAction( &SCH_ACTIONS::apiPlaceSheet );
 
     std::unique_ptr<DESIGN_BLOCK> designBlock;
     wxString                      sheetFileName = wxEmptyString;
     int                           suffix = 1;
+    EESCHEMA_SETTINGS* cfg = m_frame->eeconfig();
+    bool               place_as_sheet = cfg->m_DesignBlockChooserPanel.place_as_sheet;
 
     if( placingDesignBlock )
     {
@@ -746,13 +749,27 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
             }
 
             sheetFileName = designBlock->GetSchematicFile();
-
+            
             if( sheetFileName.IsEmpty() || !wxFileExists( sheetFileName ) )
             {
                 m_frame->ShowInfoBarError( _( "Design block has no schematic to place." ), true );
                 return 0;
             }
         }
+    }
+    else if( isApiPlaceSheet )
+    {
+        const SCH_ACTIONS::PLACE_SHEET_PARAMS& toolParams = aEvent.Parameter<SCH_ACTIONS::PLACE_SHEET_PARAMS>();
+
+        sheetFileName = toolParams.sheetFileName;
+        place_as_sheet = toolParams.place_as_sheet;
+    }
+    else if( isApiPlaceSheet )
+    {
+        const SCH_ACTIONS::PLACE_SHEET_PARAMS& toolParams = aEvent.Parameter<SCH_ACTIONS::PLACE_SHEET_PARAMS>();
+
+        sheetFileName = toolParams.sheetFileName;
+        place_as_sheet = toolParams.place_as_sheet;
     }
     else
     {
@@ -958,7 +975,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
 
     // If we're placing sheet contents, we don't even want to run our tool loop, just add the items
     // to the canvas and run the move tool
-    if( !cfg->m_DesignBlockChooserPanel.place_as_sheet )
+    if( !place_as_sheet )
     {
         while( placeSheetContents() && cfg->m_DesignBlockChooserPanel.repeated_placement )
         {}
