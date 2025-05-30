@@ -23,7 +23,7 @@
  */
 
 #include "api_sch_design_resource_mgr.h"
-#include "api_design_resource.h"
+#include <api/api_design_resource.h>
 #include "api_sch_placement_command.h"
 #include <api/api_design_content.h>
 #include <sch_actions.h>
