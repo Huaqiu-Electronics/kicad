@@ -132,17 +132,17 @@ DESIGN_BLOCK_RESOURCE ConvertProtoToDesignBlockResource( const kiapi::common::ty
 } // namespace
 
 
-void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_RESOURCE const&     aDesignBlock,
-                                        PLACE_DESIGN_BLOCK_OPTION const& aOption )
+void API_HANDLER_SCH::placeDesignBlock( PLACE_DESIGN_BLOCK_COMMAND const& aCommand )
 {
     DESIGN_BLOCK_CONTENT design_block_content;
 
-    if( aDesignBlock.root_schematic )
+    const auto& design_block = aCommand.design_block;
+    if( design_block.root_schematic )
     {
-        design_block_content.root = *aDesignBlock.root_schematic;
+        design_block_content.root = *design_block.root_schematic;
     }
 
-    for( const auto& uri : aDesignBlock.schematic_uris )
+    for( const auto& uri : design_block.schematic_uris )
     {
         NAMED_CONTENT schematic;
         const auto    schematic_content = API_DESIGN_RESOURCE_MGR::DownloadURL( uri );
@@ -158,7 +158,7 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_RESOURCE const&     aDesign
         design_block_content.schematics.push_back( std::move( schematic ) );
     }
 
-    placeDesignBlock( design_block_content, aOption );
+    placeDesignBlock( design_block_content, aCommand.option );
 }
 
 
@@ -169,8 +169,9 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
         return {};
     }
 
-    placeDesignBlock( ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ),
-                      { aCtx.Request.has_place_as_sheet() ? aCtx.Request.place_as_sheet() : std::optional<bool>{} } );
+    placeDesignBlock(
+            { ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ),
+              { aCtx.Request.has_place_as_sheet() ? aCtx.Request.place_as_sheet() : std::optional<bool>{} } } );
     return {};
 }
 
@@ -206,13 +207,15 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock, PLAC
 }
 
 
-void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent, PLACE_COMPONENT_OPTION const& aOption )
+void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_COMMAND const& aCommand )
 {
-    if( aComponent.symbol_resource.uri.empty() )
+    const auto& component = aCommand.component;
+
+    if( component.symbol_resource.uri.empty() )
         return;
 
 
-    const auto& symbol_uri = aComponent.symbol_resource.uri;
+    const auto& symbol_uri = component.symbol_resource.uri;
     const auto  symbol_content = API_DESIGN_RESOURCE_MGR::DownloadURL( symbol_uri );
 
     if( !symbol_content )
@@ -223,16 +226,16 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent, PLACE_C
 
 
     const auto symbol_name = API_DESIGN_RESOURCE_MGR::FormatToValidFileName(
-            aComponent.component_name ? *aComponent.component_name
-                                      : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri ) );
+            component.component_name ? *component.component_name
+                                     : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri ) );
 
     COMPONENT_CONTENT component_content{
         fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
     };
-    for( const auto& attr : aComponent.attributes )
+    for( const auto& attr : component.attributes )
         component_content.attributes.push_back( { attr.name, attr.value } );
 
-    for( const auto& fp : aComponent.footprint_resources )
+    for( const auto& fp : component.footprint_resources )
     {
         if( !fp.uri || fp.uri->empty() )
             continue;
@@ -278,7 +281,7 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_RESOURCE const& aComponent, PLACE_C
         component_content.footprints.push_back( std::move( footprint_resource ) );
     }
 
-    placeSymbol( component_content, aOption );
+    placeSymbol( component_content, aCommand.option );
 }
 
 HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx )
@@ -289,12 +292,12 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
         return {};
     }
 
-    placeSymbol( ConvertProtoToComponentResource( aCtx.Request.component_resource() ), {} );
+    placeSymbol( { ConvertProtoToComponentResource( aCtx.Request.component_resource() ), {} } );
     return {};
 }
 
 
-void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_COMPONENT_OPTION const& aOption )
+void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_SYMBOL_OPTION const& aOption )
 {
     // Trigger loading the lazy ininitialized project symbol library table.
     void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );

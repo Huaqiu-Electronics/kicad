@@ -41,12 +41,10 @@ class SCH_ITEM;
 class API_SCH_DESIGN_RESOURCE_MGR;
 
 struct COMPONENT_CONTENT;
-struct COMPONENT_RESOURCE;
-struct PLACE_COMPONENT_OPTION;
-struct PLACE_COMPONENT_COMMAND;
+struct PLACE_SYMBOL_OPTION;
+struct PLACE_SYMBOL_COMMAND;
 
 struct DESIGN_BLOCK_CONTENT;
-struct DESIGN_BLOCK_RESOURCE;
 struct PLACE_DESIGN_BLOCK_OPTION;
 struct PLACE_DESIGN_BLOCK_COMMAND;
 
@@ -94,13 +92,13 @@ private:
     std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
 
 public:
-    void placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_COMPONENT_OPTION const& aOption );
+    void placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_SYMBOL_OPTION const& aOption );
 
-    void placeSymbol( COMPONENT_RESOURCE const& aComponent , PLACE_COMPONENT_OPTION const& aOption);
+    void placeSymbol( PLACE_SYMBOL_COMMAND const& aCommand );
 
     void placeDesignBlock( DESIGN_BLOCK_CONTENT const& aDesignBlock ,PLACE_DESIGN_BLOCK_OPTION const& aOption );
 
-    void placeDesignBlock( DESIGN_BLOCK_RESOURCE const& aDesignBlock  ,PLACE_DESIGN_BLOCK_OPTION const& aOption );
+    void placeDesignBlock( PLACE_DESIGN_BLOCK_COMMAND const& aCommand );
 };
 
 

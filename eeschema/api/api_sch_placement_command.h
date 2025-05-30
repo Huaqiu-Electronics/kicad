@@ -31,16 +31,16 @@
 #include <optional>
 
 
-struct PLACE_COMPONENT_OPTION
+struct PLACE_SYMBOL_OPTION
 {
     // Is it necessary to use place all units and place repeated options ?
 };
 
-struct PLACE_COMPONENT_COMMAND
+struct PLACE_SYMBOL_COMMAND
 {
     COMPONENT_RESOURCE  component;
-    PLACE_COMPONENT_OPTION option;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_COMPONENT_COMMAND, component, option )
+    PLACE_SYMBOL_OPTION option;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_COMMAND, component, option )
 };
 
 
