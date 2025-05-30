@@ -54,8 +54,8 @@
 #include "proto/data_buried_point.h"
 #include "common/dialog_image_viewer.h"
 #include <utils/httplib.h>
-#include <codecvt>
 
+#ifdef _WIN32
 inline std::string ws2s( const std::wstring& wstr )
 {
     if( wstr.empty() )
@@ -68,13 +68,7 @@ inline std::string ws2s( const std::wstring& wstr )
     return strTo;
 }
 
-inline std::wstring s2ws( const std::string& str )
-{
-    using convert_typeX = std::codecvt_utf8<wchar_t>;
-    std::wstring_convert<convert_typeX, wchar_t> converterX;
-
-    return converterX.from_bytes( str );
-}
+#endif // _WIN32
 
 
 using json = nlohmann::json;
@@ -327,9 +321,17 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 // Hover, it will lead to crash on MacOS , so the http way is preferred
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
+#ifdef _WIN32
+
     const auto wStr = evt.GetString().ToStdWstring();
     const auto str = ws2s( wStr );
     generic_process_web_msg( str );
+
+#else
+
+    generic_process_web_msg( evt.GetString().ToStdString() );
+
+#endif // _WIN32
 }
 
 #endif
