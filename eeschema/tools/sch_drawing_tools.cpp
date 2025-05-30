@@ -3415,6 +3415,7 @@ void SCH_DRAWING_TOOLS::setTransitions()
     Go( &SCH_DRAWING_TOOLS::TwoClickPlace,       SCH_ACTIONS::placeSheetPin.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::ImportSheet,         SCH_ACTIONS::placeDesignBlock.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::ImportSheet,         SCH_ACTIONS::importSheet.MakeEvent() );
+    Go( &SCH_DRAWING_TOOLS::ImportSheet,         SCH_ACTIONS::apiPlaceSheet.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::TwoClickPlace,       SCH_ACTIONS::placeSchematicText.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::DrawShape,           SCH_ACTIONS::drawRectangle.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::DrawShape,           SCH_ACTIONS::drawCircle.MakeEvent() );
