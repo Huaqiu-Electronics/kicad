@@ -2433,6 +2433,8 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
             newPad->SetNetCode( NETINFO_LIST::UNCONNECTED );
     }
 
+    std::set<PCB_TEXT*> handledTextItems;
+
     for( BOARD_ITEM* oldItem : aExisting->GraphicalItems() )
     {
         PCB_TEXT* oldTextItem = dynamic_cast<PCB_TEXT*>( oldItem );
@@ -2447,6 +2449,7 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
 
             if( newTextItem )
             {
+                handledTextItems.insert( newTextItem );
                 processTextItem( *oldTextItem, *newTextItem, resetTextContent, resetTextLayers,
                                  resetTextEffects, aUpdated );
             }
@@ -2456,7 +2459,28 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
             }
             else
             {
-                aNew->Add( static_cast<BOARD_ITEM*>( oldTextItem->Clone() ) );
+                newTextItem = static_cast<PCB_TEXT*>( oldTextItem->Clone() );
+                handledTextItems.insert( newTextItem );
+                aNew->Add( newTextItem );
+            }
+        }
+    }
+
+    // Check for any newly-added text items and set the update flag as appropriate
+    for( BOARD_ITEM* newItem : aNew->GraphicalItems() )
+    {
+        PCB_TEXT* newTextItem = dynamic_cast<PCB_TEXT*>( newItem );
+
+        if( newTextItem )
+        {
+            // Dimensions have PCB_TEXT base but are not treated like texts in the updater
+            if( dynamic_cast<PCB_DIMENSION_BASE*>( newTextItem ) )
+                continue;
+
+            if( !handledTextItems.contains( newTextItem ) )
+            {
+                *aUpdated = true;
+                break;
             }
         }
     }
@@ -2472,6 +2496,8 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
                      aExisting->GetValue() == aExisting->GetFPID().GetLibItemName().wx_str(),
                      resetTextLayers, resetTextEffects, aUpdated );
 
+    std::set<PCB_FIELD*> handledFields;
+
     // Copy fields in accordance with the reset* flags
     for( PCB_FIELD* oldField : aExisting->GetFields() )
     {
@@ -2483,6 +2509,7 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
 
         if( newField )
         {
+            handledFields.insert( newField );
             processTextItem( *oldField, *newField, resetTextContent, resetTextLayers,
                              resetTextEffects, aUpdated );
         }
@@ -2493,8 +2520,22 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
         else
         {
             newField = new PCB_FIELD( *oldField );
+            handledFields.insert( newField );
             aNew->Add( newField );
-            processTextItem( *oldField, *newField, true, true, true, aUpdated );
+        }
+    }
+
+    // Check for any newly-added fields and set the update flag as appropriate
+    for( PCB_FIELD* newField : aNew->GetFields() )
+    {
+        // Reference and value are already handled
+        if( newField->IsReference() || newField->IsValue() )
+            continue;
+
+        if( !handledFields.contains( newField ) )
+        {
+            *aUpdated = true;
+            break;
         }
     }
 
@@ -2548,6 +2589,13 @@ void PCB_EDIT_FRAME::ExchangeFootprint( FOOTPRINT* aExisting, FOOTPRINT* aNew,
     aNew->SetSheetname( aExisting->GetSheetname() );
     aNew->SetFilters( aExisting->GetFilters() );
     aNew->SetComponentClass( aExisting->GetComponentClass() );
+
+    if( !aUpdated )
+    {
+        // Check pad shapes, graphics, zones, etc. for changes
+        if( aNew->FootprintNeedsUpdate( aExisting, BOARD_ITEM::COMPARE_FLAGS::INSTANCE_TO_INSTANCE ) )
+            *aUpdated = true;
+    }
 
     aCommit.Remove( aExisting );
     aCommit.Add( aNew );
