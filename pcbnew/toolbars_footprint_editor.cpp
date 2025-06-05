@@ -186,6 +186,7 @@ std::optional<TOOLBAR_CONFIGURATION> FOOTPRINT_EDIT_TOOLBAR_SETTINGS::DefaultToo
         break;
     }
 
+    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
     // clang-format on
     return config;
 }

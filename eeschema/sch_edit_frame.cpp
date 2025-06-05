@@ -127,7 +127,7 @@
 #include <wx/generic/treectlg.h>
 
 
-#include "sch_copilot_pch.h"
+#include <sch_copilot_pch.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>

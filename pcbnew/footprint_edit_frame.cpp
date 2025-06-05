@@ -80,6 +80,8 @@
 #include <wx/filedlg.h>
 #include <wx/hyperlink.h>
 
+#include <fpedit_copilot_pch.h>
+
 BEGIN_EVENT_TABLE( FOOTPRINT_EDIT_FRAME, PCB_BASE_FRAME )
     EVT_MENU( wxID_CLOSE, FOOTPRINT_EDIT_FRAME::CloseFootprintEditor )
     EVT_MENU( wxID_EXIT, FOOTPRINT_EDIT_FRAME::OnExitKiCad )
@@ -252,6 +254,9 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
                       // Fixed-size pane; -1 for MinSize height is required
                       .MinSize( FromDIP( 180 ), -1 )
                       .BestSize( FromDIP( 180 ), -1 ) );
+
+    InitCopilotAui();
+    LoadCopilotCnf();
 
     // Center
     m_auimgr.AddPane( GetCanvas(), EDA_PANE().Canvas().Name( "DrawFrame" )
@@ -852,6 +857,8 @@ void FOOTPRINT_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
             cfg->m_ActiveLayerPreset              = m_appearancePanel->GetActiveLayerPreset();
         }
     }
+
+    SaveCopilotCnf();
 }
 
 
@@ -1024,6 +1031,8 @@ void FOOTPRINT_EDIT_FRAME::ShowChangedLanguage()
 {
     // call my base class
     PCB_BASE_EDIT_FRAME::ShowChangedLanguage();
+
+    CopilotPanelShowChangedLanguage();
 
     // We have 2 panes to update.
     // For some obscure reason, the AUI manager hides the first modified pane.

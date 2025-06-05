@@ -88,6 +88,8 @@
 #include <wx/log.h>
 #include <trace_helpers.h>
 
+#include <symbol_copilot_pch.h>
+
 
 bool SYMBOL_EDIT_FRAME::m_showDeMorgan = false;
 
@@ -244,6 +246,19 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     propertiesPaneInfo.Show( m_settings->m_AuiPanels.show_properties );
     updateSelectionFilterVisbility();
 
+    m_auimgr.AddPane( m_optionsToolBar, EDA_PANE().VToolbar().Name( "OptToolbar" )
+                      .Left().Layer( 2 ) );
+
+    m_auimgr.AddPane( m_drawToolBar, EDA_PANE().VToolbar().Name( "ToolsToolbar" )
+                      .Right().Layer( 2 ) );
+
+    InitCopilotAui();
+    LoadCopilotCnf();
+
+    // Center
+    m_auimgr.AddPane( GetCanvas(), wxAuiPaneInfo().Name( "DrawFrame" )
+                      .CentrePane() );
+
     FinishAUIInitialization();
 
     // Can't put this in LoadSettings, because it has to be called before setupTools :/
@@ -358,6 +373,8 @@ void SYMBOL_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
 
     SCH_SELECTION_TOOL* selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
     m_settings->m_SelectionFilter = selTool->GetFilter();
+
+    SaveCopilotCnf();
 }
 
 
@@ -1508,6 +1525,8 @@ void SYMBOL_EDIT_FRAME::ShowChangedLanguage()
 
     // tooltips in toolbars
     RecreateToolbars();
+
+    CopilotPanelShowChangedLanguage();
 
     // For some obscure reason, the AUI manager hides the first modified pane.
     // So force show panes

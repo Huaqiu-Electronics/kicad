@@ -48,6 +48,7 @@
 #include <wx/filedlg.h>
 #include <kiplatform/ui.h>
 
+#include "symbol_edit_frame.h"
 
 bool SYMBOL_EDITOR_CONTROL::Init()
 {
@@ -1036,4 +1037,31 @@ void SYMBOL_EDITOR_CONTROL::setTransitions()
 
     Go( &SYMBOL_EDITOR_CONTROL::ChangeUnit,            SCH_ACTIONS::previousUnit.MakeEvent() );
     Go( &SYMBOL_EDITOR_CONTROL::ChangeUnit,            SCH_ACTIONS::nextUnit.MakeEvent() );
+
+
+    Go( &SYMBOL_EDITOR_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );    
+    Go( &SYMBOL_EDITOR_CONTROL::ToggleCopilot,    ACTIONS::toggleCopilotPanel.MakeEvent() );
+}
+
+
+int SYMBOL_EDITOR_CONTROL::ToggleCopilot( const TOOL_EVENT& aEvent )
+{
+    auto editFrame = dynamic_cast<SYMBOL_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->ToggleCopilot();
+    return 0;
+}
+
+int SYMBOL_EDITOR_CONTROL::ShowCopilot( const TOOL_EVENT& aEvent )
+{
+    auto editFrame = dynamic_cast<SYMBOL_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->ShowCopilot();
+    return 0;
 }

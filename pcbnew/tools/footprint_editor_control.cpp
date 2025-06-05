@@ -1008,7 +1008,9 @@ void FOOTPRINT_EDITOR_CONTROL::setTransitions()
     Go( &FOOTPRINT_EDITOR_CONTROL::Properties,           PCB_ACTIONS::footprintProperties.MakeEvent() );
     Go( &FOOTPRINT_EDITOR_CONTROL::DefaultPadProperties, PCB_ACTIONS::defaultPadProperties.MakeEvent() );
     Go( &FOOTPRINT_EDITOR_CONTROL::ToggleLayersManager,  PCB_ACTIONS::showLayersManager.MakeEvent() );
-    Go( &FOOTPRINT_EDITOR_CONTROL::ToggleProperties,     ACTIONS::showProperties.MakeEvent() );
+    Go( &FOOTPRINT_EDITOR_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );    
+    Go( &FOOTPRINT_EDITOR_CONTROL::ToggleCopilot,    ACTIONS::toggleCopilotPanel.MakeEvent() );    
+    Go( &FOOTPRINT_EDITOR_CONTROL::ToggleProperties,     PCB_ACTIONS::showProperties.MakeEvent() );
     // clang-format on
 
     // Line modes for the footprint editor: explicit modes, next-mode, and toolbar sync
@@ -1045,5 +1047,28 @@ int FOOTPRINT_EDITOR_CONTROL::OnAngleSnapModeChanged( const TOOL_EVENT& aEvent )
     case LEADER_MODE::DEG45:  f->SelectToolbarAction( PCB_ACTIONS::lineMode45 );   break;
     }
 
+    return 0;
+}
+
+
+int FOOTPRINT_EDITOR_CONTROL::ToggleCopilot( const TOOL_EVENT& aEvent )
+{
+    auto editFrame = dynamic_cast<FOOTPRINT_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->ToggleCopilot();
+    return 0;
+}
+
+int FOOTPRINT_EDITOR_CONTROL::ShowCopilot( const TOOL_EVENT& aEvent )
+{
+    auto editFrame = dynamic_cast<FOOTPRINT_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->ShowCopilot();
     return 0;
 }

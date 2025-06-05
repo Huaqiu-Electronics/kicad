@@ -127,7 +127,7 @@
 #include <toolbars_pcb_editor.h>
 #include <wx/log.h>
 
-#include "pcb_copilot_pch.h"
+#include <pcb_copilot_pch.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_server.h>
