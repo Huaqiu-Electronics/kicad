@@ -36,9 +36,10 @@
 #include <kicad_copilot_editors.h>
 #include <get_copilot_host_version.h>
 #include <widgets/wx_aui_utils.h>
+#include <copilot/copilot_panel_settings.h>
 
 
-template <class Derived, class ConfigT, class ContextT>
+template <class Derived, class ContextT>
 
 class COPILOT_PANEL_CONTAINER
 {
@@ -71,11 +72,10 @@ public:
 
     KICAD_COPILOT_EDITORS editor_type() const { return KICAD_COPILOT_EDITORS::unknown; }
 
-    // Copilot UI interfaces
-    void InitCopilotPanel()
+    void CopilotPanelInit()
     {
+        m_containerCfg = self()->config();
         m_copilotContextCache.host_version_info = get_copilot_host_version( editor_type() );
-        m_containerCfg = static_cast<ConfigT*>( self()->config() );
         m_copilotPanel = new WEBVIEW_CONTAINER(
                 self(), { m_copilotContextCache.host_version_info, m_copilotGlobalContextHdl,
                           m_copilotAgentActionHdl, m_copilotSelectionHdl } );
@@ -128,30 +128,27 @@ public:
         {
             if( copilot_pane.IsFloating() )
             {
-                copilot_pane.FloatingSize( m_containerCfg->m_AuiPanels.copilot_panel_float_width,
-                                           m_containerCfg->m_AuiPanels.copilot_panel_float_height );
+                copilot_pane.FloatingSize( m_containerCfg->copilot_panel_float_width,
+                                           m_containerCfg->copilot_panel_float_height );
                 m_containerAuiMgr.Update();
             }
-            else if( m_containerCfg->m_AuiPanels.copilot_panel_docked_width > 0 )
+            else if( m_containerCfg->copilot_panel_docked_width > 0 )
             {
                 // SetAuiPaneSize also updates m_auimgr
                 SetAuiPaneSize( m_containerAuiMgr, copilot_pane,
-                                m_containerCfg->m_AuiPanels.copilot_panel_docked_width, -1 );
+                                m_containerCfg->copilot_panel_docked_width, -1 );
             }
         }
         else
         {
             if( copilot_pane.IsFloating() )
             {
-                m_containerCfg->m_AuiPanels.copilot_panel_float_width =
-                        copilot_pane.floating_size.x;
-                m_containerCfg->m_AuiPanels.copilot_panel_float_height =
-                        copilot_pane.floating_size.y;
+                m_containerCfg->copilot_panel_float_width = copilot_pane.floating_size.x;
+                m_containerCfg->copilot_panel_float_height = copilot_pane.floating_size.y;
             }
             else
             {
-                m_containerCfg->m_AuiPanels.copilot_panel_docked_width =
-                        m_copilotPanel->GetSize().x;
+                m_containerCfg->copilot_panel_docked_width = m_copilotPanel->GetSize().x;
             }
 
             m_containerAuiMgr.Update();
@@ -164,16 +161,14 @@ public:
         {
             auto& m_auimgr = static_cast<Derived*>( this )->m_auimgr;
             auto& copilotPane = m_auimgr.GetPane( CopilotPanelName() );
-            m_containerCfg->m_AuiPanels.copilot_panel_show = copilotPane.IsShown();
+            m_containerCfg->copilot_panel_show = copilotPane.IsShown();
 
             if( copilotPane.IsDocked() )
-                m_containerCfg->m_AuiPanels.copilot_panel_docked_width =
-                        m_copilotPanel->GetSize().x;
+                m_containerCfg->copilot_panel_docked_width = m_copilotPanel->GetSize().x;
             else
             {
-                m_containerCfg->m_AuiPanels.copilot_panel_float_height =
-                        copilotPane.floating_size.y;
-                m_containerCfg->m_AuiPanels.copilot_panel_float_width = copilotPane.floating_size.x;
+                m_containerCfg->copilot_panel_float_height = copilotPane.floating_size.y;
+                m_containerCfg->copilot_panel_float_width = copilotPane.floating_size.x;
             }
         }
     }
@@ -183,11 +178,11 @@ public:
         if( m_copilotPanel )
         {
             auto& copilotPane = m_containerAuiMgr.GetPane( CopilotPanelName() );
-            copilotPane.Show( m_containerCfg->m_AuiPanels.copilot_panel_show );
-            if( m_containerCfg->m_AuiPanels.copilot_panel_show )
+            copilotPane.Show( m_containerCfg->copilot_panel_show );
+            if( m_containerCfg->copilot_panel_show )
             {
                 SetAuiPaneSize( m_containerAuiMgr, copilotPane,
-                                m_containerCfg->m_AuiPanels.copilot_panel_docked_width, -1 );
+                                m_containerCfg->copilot_panel_docked_width, -1 );
             }
         }
     }
@@ -212,14 +207,14 @@ public:
 
     std::string GetJsonifySelection() const { return ( nlohmann::json() ).dump(); }
 
+
 protected:
     WEBVIEW_CONTAINER* m_copilotPanel{};
     ContextT           m_copilotContextCache;
 
 private:
-    ConfigT*      m_containerCfg{};
-    wxAuiManager& m_containerAuiMgr;
-
+    COPILOT_PANEL_SETTINGS*          m_containerCfg{};
+    wxAuiManager&                    m_containerAuiMgr;
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;

@@ -221,6 +221,8 @@ APP_SETTINGS_BASE::APP_SETTINGS_BASE( const std::string& aFilename, int aSchemaV
 
     m_params.emplace_back( new PARAM<bool>( "cross_probing.auto_highlight",
             &m_CrossProbing.auto_highlight, true ) );
+
+    initCopilotSettings();
 }
 
 
@@ -536,3 +538,6 @@ bool APP_SETTINGS_BASE::migrateLibTreeWidth()
 
     return true;
 }
+
+
+#include "copilot_panel_settings.cpp"

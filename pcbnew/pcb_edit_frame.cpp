@@ -273,7 +273,7 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     // PCB drawings start in the upper left corner.
     GetScreen()->m_Center = false;
 
-    InitCopilotPanel();
+    CopilotPanelInit();
     setupTools();
     setupUIConditions();
 

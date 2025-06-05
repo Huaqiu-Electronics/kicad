@@ -39,7 +39,6 @@
 #include <zones.h>
 #include <widgets/ui_common.h>
 #include <base_units.h>
-#include "copilot/pcb_copilot_settings.h"
 
 #include "../3d-viewer/3d_viewer/eda_3d_viewer_settings.h"
 
@@ -642,8 +641,6 @@ PCBNEW_SETTINGS::PCBNEW_SETTINGS()
 
     m_params.emplace_back( new PARAM<wxString>( "system.last_footprint3d_dir",
             &m_lastFootprint3dDir, "" ) );
-
-    initCopilotSettings();
 
     registerMigration( 0, 1,
             [&]()
