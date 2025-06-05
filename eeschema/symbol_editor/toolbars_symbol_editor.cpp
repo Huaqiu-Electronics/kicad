@@ -143,6 +143,8 @@ void SYMBOL_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( SCH_ACTIONS::addSymbolToSchematic );
 
+    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
+
     // after adding the buttons to the toolbar, must call Realize() to reflect the changes
     m_mainToolBar->Realize();
 }

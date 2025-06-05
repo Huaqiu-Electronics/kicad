@@ -383,6 +383,10 @@ private:
     std::unique_ptr<FOOTPRINT>  m_originalFootprintCopy;
     wxString                    m_footprintNameWhenLoaded;
     std::map<KIID, KIID>        m_boardFootprintUuids;
+
+
+public:
+    friend FOOTPRINT_COPILOT_PANEL_CONTAINER;
 };
 
 #endif      // FOOTPRINT_EDIT_FRAME_H

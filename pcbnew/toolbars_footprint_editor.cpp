@@ -97,7 +97,9 @@ void FOOTPRINT_EDIT_FRAME::ReCreateHToolbar()
                             KiScaledBitmap( BITMAPS::insert_module_board, this ),
                             _( "Insert footprint into current board" ) );
 
-    m_mainToolBar->AddScaledSeparator( this );
+    // m_mainToolBar->AddScaledSeparator( this );
+
+    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
 
     // Grid selection choice box.
     if( m_gridSelectBox == nullptr )

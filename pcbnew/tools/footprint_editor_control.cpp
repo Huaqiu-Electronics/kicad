@@ -947,5 +947,33 @@ void FOOTPRINT_EDITOR_CONTROL::setTransitions()
     Go( &FOOTPRINT_EDITOR_CONTROL::DefaultPadProperties, PCB_ACTIONS::defaultPadProperties.MakeEvent() );
     Go( &FOOTPRINT_EDITOR_CONTROL::ToggleLayersManager,  PCB_ACTIONS::showLayersManager.MakeEvent() );
     Go( &FOOTPRINT_EDITOR_CONTROL::ToggleProperties,     PCB_ACTIONS::showProperties.MakeEvent() );
+
+    
+    Go( &FOOTPRINT_EDITOR_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );    
+    Go( &FOOTPRINT_EDITOR_CONTROL::ToggleCopilot,    ACTIONS::toggleCopilotPanel.MakeEvent() );
+
     // clang-format on
+}
+
+
+int FOOTPRINT_EDITOR_CONTROL::ToggleCopilot( const TOOL_EVENT& aEvent )
+{
+    auto editFrame = dynamic_cast<FOOTPRINT_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->ToggleCopilot();
+    return 0;
+}
+
+int FOOTPRINT_EDITOR_CONTROL::ShowCopilot( const TOOL_EVENT& aEvent )
+{
+    auto editFrame = dynamic_cast<FOOTPRINT_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->ShowCopilot();
+    return 0;
 }

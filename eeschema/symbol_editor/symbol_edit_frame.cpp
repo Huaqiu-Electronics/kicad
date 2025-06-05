@@ -84,6 +84,8 @@
 #include <wx/msgdlg.h>
 #include <wx/log.h>
 
+#include <symbol_copilot_pch.h>
+
 
 bool SYMBOL_EDIT_FRAME::m_showDeMorgan = false;
 
@@ -231,6 +233,9 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_auimgr.AddPane( m_drawToolBar, EDA_PANE().VToolbar().Name( "ToolsToolbar" )
                       .Right().Layer( 2 ) );
 
+    InitCopilotAui();
+    LoadCopilotCnf();
+
     // Center
     m_auimgr.AddPane( GetCanvas(), wxAuiPaneInfo().Name( "DrawFrame" )
                       .CentrePane() );
@@ -351,6 +356,8 @@ void SYMBOL_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
 
     SCH_SELECTION_TOOL* selTool = GetToolManager()->GetTool<SCH_SELECTION_TOOL>();
     m_settings->m_SelectionFilter = selTool->GetFilter();
+
+    SaveCopilotCnf();
 }
 
 
@@ -1376,6 +1383,8 @@ void SYMBOL_EDIT_FRAME::ShowChangedLanguage()
 
     // tooltips in toolbars
     RecreateToolbars();
+
+    CopilotPanelShowChangedLanguage();
 
     // For some obscure reason, the AUI manager hides the first modified pane.
     // So force show panes
