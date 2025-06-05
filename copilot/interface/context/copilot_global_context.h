@@ -30,12 +30,12 @@
 
 struct COPILOT_GLOBAL_CONTEXT
 {
-    std::string        uuid;
+    std::string       uuid;
     HOST_VERSION_INFO host_version_info;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_GLOBAL_CONTEXT, uuid, host_version_info )
 
     virtual ~COPILOT_GLOBAL_CONTEXT() = default;
-    virtual std::string dump() const = 0;
+    virtual std::string dump() const { return nlohmann::json( *this ).dump(); }
 };
 
 
