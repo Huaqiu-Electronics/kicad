@@ -28,7 +28,17 @@
 #include <variant>
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
-#include "copilot/pcb_copilot_ds_fwd.h"
+#include <context/pcb/pcb_copilot_global_context.h>
+#include <copilot_panel_container.h>
+namespace copilot
+{
+struct BOARD_SELECTIONS;
+}
+
+class PCB_EDIT_FRAME;
+using PCB_COPILOT_PANEL_CONTAINER =
+        COPILOT_PANEL_CONTAINER<PCB_EDIT_FRAME, PCBNEW_SETTINGS, PCB_COPILOT_GLOBAL_CONTEXT>;
+
 
 class ACTION_PLUGIN;
 class PCB_SCREEN;
@@ -80,7 +90,7 @@ namespace PCB { struct IFACE; }     // KIFACE is in pcbnew.cpp
  *
  * See also class PCB_BASE_FRAME(): Basic class for Pcbnew and GerbView.
  */
-class PCB_EDIT_FRAME : public PCB_BASE_EDIT_FRAME
+class PCB_EDIT_FRAME : public PCB_BASE_EDIT_FRAME, public PCB_COPILOT_PANEL_CONTAINER
 {
 public:
     virtual ~PCB_EDIT_FRAME();
@@ -891,53 +901,12 @@ private:
 #endif
 
 public:
-    // Copilot UI interfaces
-    void InitCopilotPanel();
-
-    void InitCopilotAui();
-
-    void RecreateCopilotToolBar();
-
-    void CopilotPanelShowChangedLanguage();
-
-    void ToggleCopilot();
-
-    void ShowCopilot( bool show = true );
-
-    void SaveCopilotCnf();
-
-    void LoadCopilotCnf();
-
-
-    // Copilot context interfaces
-    void InitCopilotContext();
-
-    void UpdateCopilotContextCache();
-
-    // Copilot commands Dispatcher
-    void FireCopilotCommand( std::string const& aCmdType );
-
-    // Concreate cmd handlers
-    // TODO
-
-    // Agent execution entrypoint
-    void ExecuteAgentAction( AGENT_ACTION const& aAction );
-
     // Agent APIS
     void LaunchPlugin(std::string const& aPluginName, std::optional<nlohmann::json> aParams);
 
     copilot::BOARD_SELECTIONS GetSelection() const;
 
-    std::string GetSelectionJsonString() const;
-
-    void SetHasSelection( bool aHasSelection );
-
-private:
-    WEBVIEW_CONTAINER*                          m_copilotPanel{};
-    std::unique_ptr<PCB_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
-    COPILOT_GLOBAL_CONTEXT_OWNED_HDL            m_copilotGlobalContextHdl;
-    AGENT_ACTION_OWNED_HANDLE                   m_copilotAgentActionHdl;
-    COPILOT_SELECTION_OWNED_HDL                 m_copilotSelectionHdl;
+    friend PCB_COPILOT_PANEL_CONTAINER;
 };
 
 #endif  // __PCB_EDIT_FRAME_H__

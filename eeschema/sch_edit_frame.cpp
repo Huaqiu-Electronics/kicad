@@ -126,6 +126,7 @@
 #include <wx/textdlg.h>
 #include <wx/generic/treectlg.h>
 
+
 #include "sch_copilot_pch.h"
 
 #ifdef KICAD_IPC_API
@@ -168,35 +169,14 @@ wxDEFINE_EVENT( EDA_EVT_SCHEMATIC_CHANGED, wxCommandEvent );
 SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         SCH_BASE_FRAME( aKiway, aParent, FRAME_SCH, wxT( "Eeschema" ), wxDefaultPosition,
                         wxDefaultSize, KICAD_DEFAULT_DRAWFRAME_STYLE, SCH_EDIT_FRAME_NAME ),
-        COPILOT_PANEL_CONTAINER( m_auimgr,
-                                 std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
-                                         [&]() -> COPILOT_GLOBAL_CONTEXT const&
-                                         {
-                                             UpdateCopilotContextCache();
-                                             return m_copilotContextCache;
-                                         } ),
-                                 std::make_shared<AGENT_ACTION_HANDLE_T>(
-                                         [&]( AGENT_ACTION const& act )
-                                         {
-                                             ExecuteAgentAction( act );
-                                         } ),
-                                 std::make_shared<SELECTION_HDL_T>(
-                                         [this]()
-                                         {
-                                             return nlohmann::json( GetSelection() ).dump();
-                                         } ) ),                         
-        m_ercDialog( nullptr ),
-        m_diffSymbolDialog( nullptr ),
-        m_symbolFieldsTableDialog( nullptr ),
-        m_netNavigator( nullptr ),
-        m_netNavigatorFilter( nullptr ),
-        m_netNavigatorFilterValue(),
-        m_netNavigatorMenuNetName(),
-        m_highlightedConnChanged( false ),
-        m_designBlocksPane( nullptr ),
-        m_remoteSymbolPane( nullptr ),
-        m_currentVariantCtrl( nullptr ),
-        m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)
+    COPILOT_PANEL_CONTAINER( m_auimgr),
+    m_ercDialog( nullptr ),
+    m_diffSymbolDialog( nullptr ),
+    m_symbolFieldsTableDialog( nullptr ),
+    m_netNavigator( nullptr ),
+    m_highlightedConnChanged( false ),
+    m_designBlocksPane( nullptr ),
+    m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)
 {
     InitCopilotContext();
     m_maximizeByDefault = true;

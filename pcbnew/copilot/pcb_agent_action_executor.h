@@ -41,7 +41,8 @@
 #include <wx/log.h>
 #include <fmt/format.h>
 
-void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
+template <>
+void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
     try
     {
@@ -58,12 +59,12 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         case AGENT_ACTION_TYPE::basic_run:
         {
             const auto plugin_context = aAction.context.get<LAUNCH_PCB_PLUGIN_CONTEXT>();
-            LaunchPlugin( plugin_context.type, plugin_context.params );
+            self()->LaunchPlugin( plugin_context.type, plugin_context.params );
             break;
         }
         case AGENT_ACTION_TYPE::ask_selection:
         {
-            const auto pcb = GetSelectionJsonString();
+            const auto pcb = self()->GetJsonifySelection();
 
 #ifdef DEBUG
             dump( pcb, "pcb_selection." );
@@ -82,8 +83,11 @@ void PCB_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
                                             "defined "
                                             "following the json schema:\n {}\n"
                                             "NOTE: You always provide clear answers "
-                                            "rather than asking for more information.\n "                                            
-                                            "Please note that our users are hardware engineers who are neither aware nor interested in the existence of this JSON data. Never expose the existence of a JSON file.",
+                                            "rather than asking for more information.\n "
+                                            "Please note that our users are hardware engineers who "
+                                            "are neither aware nor interested in the existence of "
+                                            "this JSON data. Never expose the existence of a JSON "
+                                            "file.",
                                             pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );

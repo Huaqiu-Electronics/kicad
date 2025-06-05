@@ -127,14 +127,7 @@
 #include <toolbars_pcb_editor.h>
 #include <wx/log.h>
 
-#include <copilot/pcb_copilot_cmd.h>
-#include <copilot/pcb_copilot_context_interface.h>
-#include <context/pcb/pcb_copilot_global_context.h>
-#include <copilot/pcb_copilot_ui.h>
-#include <copilot/pcb_copilot_context_initialization.h>
-#include <copilot/pcb_agent_action_executor.h>
-#include <copilot/pcb_agent_api.h>
-#include <context/pcb/details/board_ir.h>
+#include "pcb_copilot_pch.h"
 
 #ifdef KICAD_IPC_API
 #include <api/api_server.h>
@@ -201,6 +194,7 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         PCB_BASE_EDIT_FRAME( aKiway, aParent, FRAME_PCB_EDITOR, _( "PCB Editor" ),
                              wxDefaultPosition, wxDefaultSize, KICAD_DEFAULT_DRAWFRAME_STYLE,
                              PCB_EDIT_FRAME_NAME ),
+        COPILOT_PANEL_CONTAINER( m_auimgr ),                              
     m_exportNetlistAction( nullptr ),
     m_findDialog( nullptr ),
     m_inspectDrcErrorDlg( nullptr ),
@@ -210,16 +204,8 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_boardSetupDlg( nullptr ),
     m_designBlocksPane( nullptr ),
     m_importProperties( nullptr ),
-    m_eventCounterTimer( nullptr ),
-    m_copilotContextCache(new PCB_COPILOT_GLOBAL_CONTEXT ),
-    m_copilotGlobalContextHdl(std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>( [&]()->COPILOT_GLOBAL_CONTEXT const&{ 
-         UpdateCopilotContextCache();
-        return *m_copilotContextCache;  
-    } )),
-    m_copilotAgentActionHdl(std::make_shared<AGENT_ACTION_HANDLE_T>([&](AGENT_ACTION const& act ){ ExecuteAgentAction(act);})),
-    m_copilotSelectionHdl(std::make_shared<SELECTION_HDL_T>([this](){ return GetSelectionJsonString(); }))
+    m_eventCounterTimer( nullptr )
 {
-    InitCopilotContext();
     m_maximizeByDefault = true;
     m_showBorderAndTitleBlock = true;   // true to display sheet references
     m_SelTrackWidthBox = nullptr;
@@ -778,7 +764,7 @@ void PCB_EDIT_FRAME::SetBoard( BOARD* aBoard, bool aBuildConnectivity,
     SetPageSettings( aBoard->GetPageSettings() );
 
     UpdateVariantSelectionCtrl();
-    m_copilotContextCache->is_newest = false;
+    m_copilotContextCache.is_newest = false;
 }
 
 
@@ -2002,7 +1988,7 @@ void PCB_EDIT_FRAME::OnModify()
     if( !GetTitle().StartsWith( wxT( "*" ) ) )
         UpdateTitle();
 
-    m_copilotContextCache->is_newest = false;
+    m_copilotContextCache.is_newest = false;
 }
 
 

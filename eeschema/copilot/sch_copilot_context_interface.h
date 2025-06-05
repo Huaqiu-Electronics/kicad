@@ -25,8 +25,9 @@
 #ifndef SCH_COPILOT_CONTEXT_INTERFACE_H
 #define SCH_COPILOT_CONTEXT_INTERFACE_H
 
-#include <connection_graph.h>
 #include "sch_symbol.h"
+
+#include <connection_graph.h>
 #include <cstddef>
 #include <memory>
 #include <nlohmann/json.hpp>
@@ -42,6 +43,7 @@
 #include <utils/base64.hpp>
 #include <context/sch/sch_copilot_global_context.h>
 #include <context/sch/details/sch_netlist.h>
+#include <copilot_json_helper.h>
 #include <string_utils.h>
 #include <algorithm>
 #include <vector>
@@ -53,6 +55,13 @@ KICAD_COPILOT_EDITORS SCH_COPILOT_PANEL_CONTAINER::editor_type() const
     return KICAD_COPILOT_EDITORS::schematic;
 }
 
+template <>
+std::string SCH_COPILOT_PANEL_CONTAINER::GetJsonifySelection() const
+{
+    nlohmann::json selection = self()->GetSelection();
+    RemoveEmptyObjectsOrArrays( selection );
+    return selection.dump();
+}
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
