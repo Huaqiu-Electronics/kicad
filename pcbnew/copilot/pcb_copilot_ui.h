@@ -32,7 +32,7 @@ void PCB_COPILOT_PANEL_CONTAINER::InitCopilotAui()
 {
     if( m_copilotPanel )
     {
-        m_containerAuimgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ).Layer( 5 ) );
+        m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ).Layer( 5 ) );
     }
 }
 
