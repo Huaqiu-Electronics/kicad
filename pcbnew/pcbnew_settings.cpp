@@ -37,7 +37,6 @@
 #include <wx/config.h>
 #include <wx/tokenzr.h>
 #include <base_units.h>
-#include "copilot/pcb_copilot_settings.h"
 
 #include "../3d-viewer/3d_viewer/eda_3d_viewer_settings.h"
 
@@ -351,8 +350,6 @@ PCBNEW_SETTINGS::PCBNEW_SETTINGS()
 
     m_params.emplace_back( new PARAM<bool>( "DRC.scroll_on_crossprobe",
             &m_DRCDialog.scroll_on_crossprobe, true ) );
-
-    initCopilotSettings();
 
     registerMigration( 0, 1,
             [&]()

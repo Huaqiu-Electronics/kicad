@@ -117,6 +117,7 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         SCH_BASE_FRAME( aKiway, aParent, FRAME_SCH_SYMBOL_EDITOR, _( "Library Editor" ),
                         wxDefaultPosition, wxDefaultSize, KICAD_DEFAULT_DRAWFRAME_STYLE,
                         LIB_EDIT_FRAME_NAME ),
+        SYMBOL_COPILOT_PANEL_CONTAINER(m_auimgr),                        
         m_unitSelectBox( nullptr ),
         m_bodyStyleSelectBox( nullptr ),
         m_isSymbolFromSchematic( false )
@@ -171,6 +172,7 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     GetRenderSettings()->m_IsSymbolEditor = true;
     GetCanvas()->GetGAL()->SetAxesColor( m_colorSettings->GetColor( LAYER_SCHEMATIC_GRID_AXES ) );
 
+    CopilotPanelInit();
     setupTools();
     setupUIConditions();
 

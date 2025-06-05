@@ -300,6 +300,8 @@ APP_SETTINGS_BASE::APP_SETTINGS_BASE( const std::string& aFilename, int aSchemaV
 
     m_params.emplace_back( new PARAM<bool>( "cross_probing.flash_selection",
             &m_CrossProbing.flash_selection, false ) );
+
+    initCopilotSettings();
 }
 
 
@@ -677,3 +679,6 @@ bool APP_SETTINGS_BASE::migrateLibTreeWidth()
 
     return true;
 }
+
+
+#include "copilot_panel_settings.cpp"

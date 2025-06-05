@@ -25,7 +25,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <settings/json_settings.h>
 #include <settings/grid_settings.h>
-#include <copilot_panel_settings.h>
+#include <copilot/copilot_panel_settings.h>
 
 /**
  * Cross-probing behavior.
@@ -113,7 +113,7 @@ struct KICOMMON_API WINDOW_SETTINGS
  *
  * COMMON_SETTINGS stores settings that are always the same across all applications.
  */
-class KICOMMON_API APP_SETTINGS_BASE : public JSON_SETTINGS
+class KICOMMON_API APP_SETTINGS_BASE : public JSON_SETTINGS, public COPILOT_PANEL_SETTINGS
 {
 public:
     struct FIND_REPLACE
@@ -287,6 +287,9 @@ protected:
      * Migrate the library tree width setting from a single column (Item) to multi-column.
      */
     bool migrateLibTreeWidth();
+
+
+    void initCopilotSettings();
 };
 
 #endif

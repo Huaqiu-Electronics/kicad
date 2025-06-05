@@ -38,7 +38,6 @@
 #include <wx/config.h>
 #include <widgets/ui_common.h>
 #include <default_values.h>    // For some default values
-#include <copilot/sch_copilot_settings.h>
 
 using namespace T_BOMCFG_T;     // for the BOM_CFG_PARSER parser and its keywords
 
@@ -687,8 +686,6 @@ EESCHEMA_SETTINGS::EESCHEMA_SETTINGS() :
 
     m_params.emplace_back( new PARAM<wxString>( "system.last_symbol_lib_dir",
             &m_lastSymbolLibDir, "" ) );
-
-    initCopilotSettings();
 
     // Migrations
     registerMigration( 0, 1,

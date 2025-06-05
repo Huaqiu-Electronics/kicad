@@ -26,6 +26,11 @@
 #include <widgets/lib_tree.h>
 #include <footprint_tree_pane.h>
 #include <fp_tree_synchronizing_adapter.h>
+#include <copilot_panel_container.h>
+
+class FOOTPRINT_EDIT_FRAME;
+using FOOTPRINT_COPILOT_PANEL_CONTAINER =
+        COPILOT_PANEL_CONTAINER<FOOTPRINT_EDIT_FRAME, COPILOT_GLOBAL_CONTEXT>;
 
 class PCB_LAYER_BOX_SELECTOR;
 class FP_LIB_TABLE;
@@ -37,7 +42,7 @@ class EDA_LIST_DIALOG;
 namespace PCB { struct IFACE; }     // A KIFACE coded in pcbnew.cpp
 
 
-class FOOTPRINT_EDIT_FRAME : public PCB_BASE_EDIT_FRAME
+class FOOTPRINT_EDIT_FRAME : public PCB_BASE_EDIT_FRAME, public FOOTPRINT_COPILOT_PANEL_CONTAINER
 {
 public:
     ~FOOTPRINT_EDIT_FRAME();
