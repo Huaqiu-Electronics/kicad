@@ -44,7 +44,7 @@ class COPILOT_PANEL_CONTAINER
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
-            m_containerAuimgr( aAuiMgr ),
+            m_containerAuiMgr( aAuiMgr ),
             m_copilotGlobalContextHdl(
                     std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
                             [&]() -> COPILOT_GLOBAL_CONTEXT const&
@@ -84,7 +84,7 @@ public:
     void InitCopilotAui()
     {
         if( m_copilotPanel )
-            m_containerAuimgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ) );
+            m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ) );
     }
 
     void RecreateCopilotToolBar( auto* aToolBar, auto& aAction )
@@ -100,7 +100,7 @@ public:
     {
         if( m_copilotPanel )
         {
-            wxAuiPaneInfo& copilot_panel_info = m_containerAuimgr.GetPane( m_copilotPanel );
+            wxAuiPaneInfo& copilot_panel_info = m_containerAuiMgr.GetPane( m_copilotPanel );
             bool           is_shown = copilot_panel_info.IsShown();
             copilot_panel_info.Caption( _( "Copilot" ) );
             copilot_panel_info.Show( is_shown );
@@ -109,13 +109,13 @@ public:
 
     void ToggleCopilot()
     {
-        wxAuiPaneInfo& copilot_pane = m_containerAuimgr.GetPane( CopilotPanelName() );
+        wxAuiPaneInfo& copilot_pane = m_containerAuiMgr.GetPane( CopilotPanelName() );
         ShowCopilot( !copilot_pane.IsShown() );
     }
 
     void ShowCopilot( bool show = true )
     {
-        auto& copilot_pane = m_containerAuimgr.GetPane( CopilotPanelName() );
+        auto& copilot_pane = m_containerAuiMgr.GetPane( CopilotPanelName() );
 
         bool now_shown = copilot_pane.IsShown();
 
@@ -130,12 +130,12 @@ public:
             {
                 copilot_pane.FloatingSize( m_containerCfg->m_AuiPanels.copilot_panel_float_width,
                                            m_containerCfg->m_AuiPanels.copilot_panel_float_height );
-                m_containerAuimgr.Update();
+                m_containerAuiMgr.Update();
             }
             else if( m_containerCfg->m_AuiPanels.copilot_panel_docked_width > 0 )
             {
                 // SetAuiPaneSize also updates m_auimgr
-                SetAuiPaneSize( m_containerAuimgr, copilot_pane,
+                SetAuiPaneSize( m_containerAuiMgr, copilot_pane,
                                 m_containerCfg->m_AuiPanels.copilot_panel_docked_width, -1 );
             }
         }
@@ -154,7 +154,7 @@ public:
                         m_copilotPanel->GetSize().x;
             }
 
-            m_containerAuimgr.Update();
+            m_containerAuiMgr.Update();
         }
     }
 
@@ -182,11 +182,11 @@ public:
     {
         if( m_copilotPanel )
         {
-            auto& copilotPane = m_containerAuimgr.GetPane( CopilotPanelName() );
+            auto& copilotPane = m_containerAuiMgr.GetPane( CopilotPanelName() );
             copilotPane.Show( m_containerCfg->m_AuiPanels.copilot_panel_show );
             if( m_containerCfg->m_AuiPanels.copilot_panel_show )
             {
-                SetAuiPaneSize( m_containerAuimgr, copilotPane,
+                SetAuiPaneSize( m_containerAuiMgr, copilotPane,
                                 m_containerCfg->m_AuiPanels.copilot_panel_docked_width, -1 );
             }
         }
@@ -213,16 +213,16 @@ public:
     std::string GetJsonifySelection() const { return ( nlohmann::json() ).dump(); }
 
 protected:
-    COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
-    AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
-    COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
-
     WEBVIEW_CONTAINER* m_copilotPanel{};
     ContextT           m_copilotContextCache;
 
 private:
-    wxAuiManager& m_containerAuimgr;
-    ConfigT*      m_containerCfg;
+    ConfigT*      m_containerCfg{};
+    wxAuiManager& m_containerAuiMgr;
+
+    COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
+    AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
+    COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
 };
 
 #endif
