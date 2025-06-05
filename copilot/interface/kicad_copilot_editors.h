@@ -27,6 +27,7 @@
 
 enum class KICAD_COPILOT_EDITORS
 {
+    unknown,
     schematic,
     pcb,
     footprint,

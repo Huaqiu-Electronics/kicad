@@ -29,7 +29,6 @@
 #include <context/pcb/pcb_copilot_global_context.h>
 #include <kicad_copilot_editors.h>
 #include <pcb_edit_frame.h>
-#include <copilot/kicad_copilot_helper.h>
 
 
 /**
@@ -37,7 +36,6 @@
  */
 void PCB_EDIT_FRAME::InitCopilotContext()
 {
-    init_copilot_context( *m_copilotContextCache, KICAD_COPILOT_EDITORS::pcb );
 }
 
 

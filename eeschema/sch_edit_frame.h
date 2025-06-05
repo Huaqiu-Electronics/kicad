@@ -43,9 +43,21 @@
 #include <math/box2.h>
 #include <sch_base_frame.h>
 #include <template_fieldnames.h>
-#include <context/copilot_global_context_handle.h>
-#include <passive_action/agent/agent_action_handle.h>
-#include "copilot/sch_copilot_ds_fwd.h"
+
+#include <context/sch/sch_copilot_global_context.h>
+#include <copilot_panel_container.h>
+
+struct SYMBOL_CMD_CONTEXT;
+
+namespace copilot
+{
+
+struct NETLIST;
+
+}
+
+using SCH_COPILOT_PANEL_CONTAINER =
+        COPILOT_PANEL_CONTAINER<SCH_EDIT_FRAME, EESCHEMA_SETTINGS, SCH_COPILOT_GLOBAL_CONTEXT>;
 
 class SCH_ITEM;
 class EDA_ITEM;
@@ -137,7 +149,7 @@ private:
 /**
  * Schematic editor (Eeschema) main window.
  */
-class SCH_EDIT_FRAME : public SCH_BASE_FRAME
+class SCH_EDIT_FRAME : public SCH_BASE_FRAME, public SCH_COPILOT_PANEL_CONTAINER
 {
 public:
     SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent );
@@ -1147,28 +1159,6 @@ private:
 #endif
 
 public:
-    // Copilot UI interfaces
-    void InitCopilotPanel();
-
-    void InitCopilotAui();
-
-    void RecreateCopilotToolBar();
-
-    void CopilotPanelShowChangedLanguage();
-
-    void ToggleCopilot();
-
-    void ShowCopilot( bool show = true );
-
-    void SaveCopilotCnf();
-
-    void LoadCopilotCnf();
-
-    // Copilot context interfaces
-    void InitCopilotContext();
-
-    void UpdateCopilotContextCache();
-
     wxString GetBomList();
 
     wxString GetNetList();
@@ -1176,9 +1166,6 @@ public:
     SYMBOL_CMD_CONTEXT const& GetSelectedSymbolContext();
 
     wxString GetSymbolNetList( wxString const& aDesignator );
-
-    // Copilot commands Dispatcher
-    void FireCopilotCommand( std::string const& aCmdType );
 
     // Concreate cmd handlers
     void DesignIntention();
@@ -1195,23 +1182,14 @@ public:
 
     void SymbolUnconnectedPins();
 
-    // Agent execution entrypoint
-    void ExecuteAgentAction( AGENT_ACTION const& aAction );
-
     // Agent APIS
     void HighlightSymbol(std::string const & aDesignator);
 
     copilot::NETLIST GetSelection()const ;
 
-    void SetHasSelection( bool aHasSelection );
-
 private:
-    WEBVIEW_CONTAINER*                          m_copilotPanel{};
-    std::unique_ptr<SCH_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
     std::unique_ptr<SYMBOL_CMD_CONTEXT>         m_symbolCmdContext;
-    COPILOT_GLOBAL_CONTEXT_OWNED_HDL            m_copilotGlobalContextHdl;
-    AGENT_ACTION_OWNED_HANDLE                   m_copilotAgentActionHdl;
-    COPILOT_SELECTION_OWNED_HDL                 m_copilotSelectionHdl;
+    friend SCH_COPILOT_PANEL_CONTAINER;
 };
 
 

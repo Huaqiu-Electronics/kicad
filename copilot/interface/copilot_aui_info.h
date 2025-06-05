@@ -33,7 +33,7 @@
 #include <wx/chartype.h>
 #include <copilot_panel_name.h>
 
-wxAuiPaneInfo defaultCopilotPaneInfo( wxWindow* aWindow )
+inline auto defaultCopilotPaneInfo( wxWindow* aWindow )
 {
     return wxAuiPaneInfo()
             .Name( CopilotPanelName() )

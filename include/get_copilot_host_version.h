@@ -22,50 +22,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef KICAD_COPILOT_HELPER_H
-#define KICAD_COPILOT_HELPER_H
+#ifndef GET_COPILOT_HOST_VERSION_H
+#define GET_COPILOT_HOST_VERSION_H
 
-
-#include <pgm_base.h>
 #include <context/copilot_global_context.h>
-#include <string>
-#include "get_kicad_version_info.h"
 #include <kicad_copilot_editors.h>
-#include <magic_enum.hpp>
+#include <kicommon.h>
 
 
-inline auto init_copilot_context( COPILOT_GLOBAL_CONTEXT& ctx, KICAD_COPILOT_EDITORS editor )
-{
-    ctx.host_version_info.details = get_kicad_version_info();
-    const auto lang_id = Pgm().GetSelectedLanguageIdentifier();
-    
-    wxString localeStr;
-
-    if (lang_id == wxLANGUAGE_DEFAULT)
-    {
-        wxLocale sysLocale;
-        sysLocale.Init(); // use system default
-        localeStr = sysLocale.GetCanonicalName(); // e.g., "zh_CN"
-    }
-    else
-    {
-        const wxLanguageInfo* info = wxLocale::GetLanguageInfo(lang_id);
-        if (info)
-            localeStr = info->CanonicalName; // e.g., "en_US"
-        else
-            localeStr = "zh"; // fallback if no info
-    }
-    
-    // Extract two-letter language code
-    wxString langCode = localeStr.BeforeFirst('_');
-    if (langCode.IsEmpty())
-        langCode = "zh"; // fallback again if split fails
-    
-    ctx.host_version_info.locale = langCode.ToStdString();
-    
-    
-    ctx.host_version_info.editor_name = magic_enum::enum_name( editor );
-}
-
+KICOMMON_API HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor );
 
 #endif
