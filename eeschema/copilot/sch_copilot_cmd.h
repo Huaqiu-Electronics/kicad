@@ -37,8 +37,8 @@
 #include "context/symbol_context.h"
 
 
-
-void SCH_EDIT_FRAME::FireCopilotCommand( std::string const& aCmdType )
+template <>
+void SCH_COPILOT_PANEL_CONTAINER::FireCopilotCommand( std::string const& aCmdType )
 {
     if( !m_copilotPanel )
         return;
@@ -50,12 +50,13 @@ void SCH_EDIT_FRAME::FireCopilotCommand( std::string const& aCmdType )
     if( aCmdType.starts_with( "chat.design" ) )
     {
         cmd = create_cmd<CONCRETE_TYPE_COPILOT_CMD<SCH_COPILOT_GLOBAL_CONTEXT>>(
-                *m_copilotContextCache );
+                m_copilotContextCache );
     }
     else if( aCmdType.starts_with( "chat.components" ) )
     {
         cmd = create_cmd<COPILOT_CMD_WITH_CONTEXT<SCH_COPILOT_GLOBAL_CONTEXT, SYMBOL_CMD_CONTEXT>,
-                         SYMBOL_CMD_CONTEXT>( *m_copilotContextCache, GetSelectedSymbolContext() );
+                         SYMBOL_CMD_CONTEXT>( m_copilotContextCache,
+                                              self()->GetSelectedSymbolContext() );
     }
     else
     {

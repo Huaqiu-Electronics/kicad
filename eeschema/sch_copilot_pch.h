@@ -25,13 +25,11 @@
 #ifndef SCH_COPILOT_PCH_H
 #define SCH_COPILOT_PCH_H
 
+#include <copilot/sch_copilot_context_interface.h>
 #include <context/sch/sch_copilot_global_context.h>
 #include <context/sch/details/sch_netlist.h>
-#include <copilot/sch_copilot_ui.h>
 #include <copilot/sch_agent_action_executor.h>
 #include <copilot/sch_copilot_cmd.h>
-#include <copilot/sch_copilot_context_interface.h>
-#include <copilot/sch_copilot_context_initialization.h>
 #include <copilot/sch_agent_api.h>
 
 #endif

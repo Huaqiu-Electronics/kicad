@@ -400,3 +400,4 @@ wxString GetVersionInfoData( const wxString& aTitle, bool aHtml, bool aBrief )
 
 
 #include "copilot/get_kicad_version_info.cpp"
+#include "copilot/get_copilot_host_version.cpp"

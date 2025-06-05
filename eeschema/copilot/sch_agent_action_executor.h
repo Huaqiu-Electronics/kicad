@@ -28,6 +28,8 @@
 #include <api/api_handler_sch.h>
 #include <api/api_design_resource.h>
 #include <api/api_design_content.h>
+#include <api/api_server.h>
+#include <pgm_base.h>
 #include "sch_editor_control.h"
 #include <context/symbol_context.h>
 #include <exception>
@@ -48,7 +50,8 @@
 #include <fmt/format.h>
 #include <api/api_sch_placement_command.h>
 
-void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
+template <>
+void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
     try
     {
@@ -64,12 +67,12 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
         {
         case AGENT_ACTION_TYPE::highlight_symbol:
         {
-            HighlightSymbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
+            self()->HighlightSymbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
             break;
         }
         case AGENT_ACTION_TYPE::ask_selection:
         {
-            const auto netlist = nlohmann::json( GetSelection() ).dump();
+            const auto netlist = nlohmann::json( self()->GetSelection() ).dump();
             m_copilotPanel->fire_host_active_cmd(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
@@ -97,26 +100,27 @@ void SCH_EDIT_FRAME::ExecuteAgentAction( AGENT_ACTION const& aAction )
 
         case AGENT_ACTION_TYPE::place_symbol_resource:
         {
-            m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
+            self()->m_apiHandler->placeSymbol(
+                    aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
             break;
         }
         case AGENT_ACTION_TYPE::place_symbol_content:
         {
             const auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_COMMAND>();
-            m_apiHandler->placeSymbol( content.component, content.option );
+            self()->m_apiHandler->placeSymbol( content.component, content.option );
             break;
         }
 
         case AGENT_ACTION_TYPE::place_design_block_resource:
         {
-            m_apiHandler->placeDesignBlock(
+            self()->m_apiHandler->placeDesignBlock(
                     aAction.context.get<PLACE_DESIGN_BLOCK_RESOURCE_COMMAND>() );
             break;
         }
         case AGENT_ACTION_TYPE::place_design_block_content:
         {
             const auto content = aAction.context.get<PLACE_DESIGN_BLOCK_CONTENT_COMMAND>();
-            m_apiHandler->placeDesignBlock( content.design_block, content.option );
+            self()->m_apiHandler->placeDesignBlock( content.design_block, content.option );
             break;
         }
 

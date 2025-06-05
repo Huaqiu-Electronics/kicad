@@ -27,7 +27,6 @@
 
 #include <connection_graph.h>
 #include "sch_symbol.h"
-#include "webview/webview_container.h"
 #include <cstddef>
 #include <memory>
 #include <nlohmann/json.hpp>
@@ -48,18 +47,26 @@
 #include <vector>
 #include <wx/string.h>
 
-void SCH_EDIT_FRAME::UpdateCopilotContextCache()
+template <>
+KICAD_COPILOT_EDITORS SCH_COPILOT_PANEL_CONTAINER::editor_type() const
 {
-    if( m_copilotContextCache->is_newest )
+    return KICAD_COPILOT_EDITORS::schematic;
+}
+
+
+template <>
+void SCH_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
+{
+    if( m_copilotContextCache.is_newest )
         return;
 
-    m_copilotContextCache->uuid = KIID().AsStdString();
-    m_copilotContextCache->net_list = base64::to_base64(
+    m_copilotContextCache.uuid = KIID().AsStdString();
+    m_copilotContextCache.net_list = base64::to_base64(
             ( (
                       [&]() -> wxString
                       {
-                          Schematic().Hierarchy().AnnotatePowerSymbols();
-                          SCHEMATIC*           sch = &Schematic();
+                          self()->Schematic().Hierarchy().AnnotatePowerSymbols();
+                          SCHEMATIC*           sch = &self()->Schematic();
                           WX_STRING_REPORTER   reporter;
                           NETLIST_EXPORTER_XML helper( sch );
 
@@ -88,10 +95,10 @@ void SCH_EDIT_FRAME::UpdateCopilotContextCache()
                       } )() )
                     .ToStdString() );
 
-    m_copilotContextCache->designators = ([this]{
-        decltype( m_copilotContextCache->designators)   designators;
+    m_copilotContextCache.designators = ([this]{
+        decltype( m_copilotContextCache.designators)   designators;
         SCH_REFERENCE_LIST referenceList;
-        Schematic().Hierarchy().GetSymbols( referenceList, false, false );
+         self()->Schematic().Hierarchy().GetSymbols( referenceList, false, false );
         const auto instances = referenceList.GetSymbolInstances();
 
         for( const auto& instance : instances )
@@ -108,7 +115,7 @@ void SCH_EDIT_FRAME::UpdateCopilotContextCache()
 
     })();
 
-    m_copilotContextCache->is_newest = true;
+    m_copilotContextCache.is_newest = true;
 }
 wxString SCH_EDIT_FRAME::GetBomList()
 {
@@ -118,7 +125,7 @@ wxString SCH_EDIT_FRAME::GetBomList()
 wxString SCH_EDIT_FRAME::GetNetList()
 {
     UpdateCopilotContextCache();
-    return m_copilotContextCache->net_list;
+    return m_copilotContextCache.net_list;
 }
 
 SYMBOL_CMD_CONTEXT const& SCH_EDIT_FRAME::GetSelectedSymbolContext()
@@ -167,8 +174,9 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
         std::vector<copilot::FIELD> result;
 
         for( const auto& field : fields )
-            result.emplace_back ( copilot::FIELD{ field.GetName().ToStdString(),
-                                field.GetShownText( aSheetPath, false ).ToStdString() } );
+            result.emplace_back(
+                    copilot::FIELD{ field.GetName().ToStdString(),
+                                    field.GetShownText( aSheetPath, false ).ToStdString() } );
 
         return result;
     };
@@ -187,7 +195,8 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
         {
             auto       symbol = static_cast<SCH_SYMBOL*>( selection );
             const auto ref = symbol->GetRef( sch_path ).ToStdString();
-            netlist.components.emplace_back(  copilot::COMPONENT { ref, get_fields( sch_path, symbol->GetFields() ) } );
+            netlist.components.emplace_back(
+                    copilot::COMPONENT{ ref, get_fields( sch_path, symbol->GetFields() ) } );
 
             for( const auto pin : symbol->GetPins( sch_path ) )
                 selection_pins.insert( pin );
@@ -257,14 +266,5 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
     return netlist;
 }
 
-void SCH_EDIT_FRAME::SetHasSelection( bool aHasSelection )
-{
-    CallAfter(
-            [=, this]()
-            {
-                if( m_copilotPanel )
-                    m_copilotPanel->on_host_selection_changed( aHasSelection );
-            } );
-}
 
 #endif

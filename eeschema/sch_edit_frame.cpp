@@ -168,6 +168,23 @@ wxDEFINE_EVENT( EDA_EVT_SCHEMATIC_CHANGED, wxCommandEvent );
 SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         SCH_BASE_FRAME( aKiway, aParent, FRAME_SCH, wxT( "Eeschema" ), wxDefaultPosition,
                         wxDefaultSize, KICAD_DEFAULT_DRAWFRAME_STYLE, SCH_EDIT_FRAME_NAME ),
+        COPILOT_PANEL_CONTAINER( m_auimgr,
+                                 std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
+                                         [&]() -> COPILOT_GLOBAL_CONTEXT const&
+                                         {
+                                             UpdateCopilotContextCache();
+                                             return m_copilotContextCache;
+                                         } ),
+                                 std::make_shared<AGENT_ACTION_HANDLE_T>(
+                                         [&]( AGENT_ACTION const& act )
+                                         {
+                                             ExecuteAgentAction( act );
+                                         } ),
+                                 std::make_shared<SELECTION_HDL_T>(
+                                         [this]()
+                                         {
+                                             return nlohmann::json( GetSelection() ).dump();
+                                         } ) ),                         
         m_ercDialog( nullptr ),
         m_diffSymbolDialog( nullptr ),
         m_symbolFieldsTableDialog( nullptr ),
@@ -179,11 +196,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         m_designBlocksPane( nullptr ),
         m_remoteSymbolPane( nullptr ),
         m_currentVariantCtrl( nullptr ),
-        m_copilotContextCache(new SCH_COPILOT_GLOBAL_CONTEXT ),
-        m_symbolCmdContext(new SYMBOL_CMD_CONTEXT),
-        m_copilotGlobalContextHdl(std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>( [&]() -> COPILOT_GLOBAL_CONTEXT const&{  UpdateCopilotContextCache(); return *m_copilotContextCache;  } )),
-        m_copilotAgentActionHdl(std::make_shared<AGENT_ACTION_HANDLE_T>([&](AGENT_ACTION const& act ){ ExecuteAgentAction(act);})),
-        m_copilotSelectionHdl(std::make_shared<SELECTION_HDL_T>([this](){ return nlohmann::json(GetSelection()).dump(); }))
+        m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)
 {
     InitCopilotContext();
     m_maximizeByDefault = true;
@@ -1089,7 +1102,7 @@ void SCH_EDIT_FRAME::CreateDefaultScreens()
         SetScreen( screen );
     }
     
-    m_copilotContextCache->is_newest = false;
+    m_copilotContextCache.is_newest = false;
 }
 
 
@@ -1339,7 +1352,7 @@ void SCH_EDIT_FRAME::OnModify()
     if( m_isClosing )
         return;
     
-    m_copilotContextCache->is_newest = false;
+    m_copilotContextCache.is_newest = false;
 
     if( GetCanvas() )
         GetCanvas()->Refresh();

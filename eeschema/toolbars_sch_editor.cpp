@@ -198,61 +198,20 @@ std::optional<TOOLBAR_CONFIGURATION> SCH_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
               .AppendAction( ACTIONS::showSymbolBrowser )
               .AppendAction( ACTIONS::showFootprintEditor );
 
-        config.AppendSeparator()
-              .AppendAction( SCH_ACTIONS::annotate )
-              .AppendAction( SCH_ACTIONS::runERC )
-              .AppendAction( SCH_ACTIONS::showSimulator )
-              .AppendAction( SCH_ACTIONS::assignFootprints )
-              .AppendAction( SCH_ACTIONS::editSymbolFields )
-              .AppendAction( SCH_ACTIONS::generateBOM );
+    m_mainToolBar->AddScaledSeparator( this );
+    m_mainToolBar->Add( SCH_ACTIONS::annotate );
+    m_mainToolBar->Add( SCH_ACTIONS::runERC );
+    m_mainToolBar->Add( SCH_ACTIONS::showSimulator );
+    m_mainToolBar->Add( SCH_ACTIONS::assignFootprints );
+    m_mainToolBar->Add( SCH_ACTIONS::editSymbolFields );
+    m_mainToolBar->Add( SCH_ACTIONS::generateBOM );
 
-        config.AppendSeparator()
-              .AppendAction( SCH_ACTIONS::showPcbNew );
+    m_mainToolBar->AddScaledSeparator( this );
+    m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
 
-        config.AppendControl( SCH_ACTION_TOOLBAR_CONTROLS::currentVariant );
-
-        // Insert all the IPC plugins here on the toolbar
-        // TODO (ISM): Move this to individual actions for each script
-        config.AppendControl( ACTION_TOOLBAR_CONTROLS::ipcScripting );
-
-        break;
-    }
-
-    // clang-format on
-    return config;
-}
-
-
-void SCH_EDIT_FRAME::configureToolbars()
-{
-    SCH_BASE_FRAME::configureToolbars();
-
-    // Variant selection drop down control on main tool bar.
-    auto variantSelectionCtrlFactory =
-            [this]( ACTION_TOOLBAR* aToolbar )
-            {
-                std::optional<wxString> currentVariantName = Schematic().GetCurrentVariant();
-                wxString tmp = currentVariantName ? *currentVariantName : GetDefaultVariantName();
-
-                m_currentVariantCtrl = new wxChoice( aToolbar, ID_TOOLBAR_SCH_SELECT_VARAIANT, wxDefaultPosition,
-                                                     wxDefaultSize, Schematic().GetVariantNamesForUI(), 0,
-                                                     wxDefaultValidator, tmp );
-
-                m_currentVariantCtrl->SetToolTip( _( "Select the current variant to display and edit." ) );
-                aToolbar->Add( m_currentVariantCtrl );
-                UpdateVariantSelectionCtrl( Schematic().GetVariantNamesForUI() );
-            };
-
-    RegisterCustomToolbarControlFactory( SCH_ACTION_TOOLBAR_CONTROLS::currentVariant, variantSelectionCtrlFactory );
-
-    // IPC/Scripting plugin control
-    // TODO (ISM): Clean this up to make IPC actions just normal tool actions to get rid of this entire
-    // control
-    auto pluginControlFactory =
-            [this]( ACTION_TOOLBAR* aToolbar )
-            {
-                // Add scripting console and API plugins
-                bool scriptingAvailable = SCRIPTING::IsWxAvailable();
+    RecreateCopilotToolBar();
+    // Add scripting console and API plugins
+    bool scriptingAvailable = SCRIPTING::IsWxAvailable();
 
 #ifdef KICAD_IPC_API
                 bool haveApiPlugins = Pgm().GetCommonSettings()->m_Api.enable_server
