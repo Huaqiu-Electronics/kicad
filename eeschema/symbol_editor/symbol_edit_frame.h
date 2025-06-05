@@ -32,6 +32,12 @@
 #include <sch_screen.h>
 #include <symbol_tree_pane.h>
 #include <optional>
+#include <copilot_panel_container.h>
+#include <context/copilot_global_context.h>
+
+class SYMBOL_EDIT_FRAME;
+using SYMBOL_COPILOT_PANEL_CONTAINER = COPILOT_PANEL_CONTAINER<SYMBOL_EDIT_FRAME,SYMBOL_EDITOR_SETTINGS, COPILOT_GLOBAL_CONTEXT  >;
+
 
 class SCH_EDIT_FRAME;
 class LIB_SYMBOL;
@@ -51,7 +57,7 @@ class EDA_LIST_DIALOG;
 /**
  * The symbol library editor main window.
  */
-class SYMBOL_EDIT_FRAME : public SCH_BASE_FRAME
+class SYMBOL_EDIT_FRAME : public SCH_BASE_FRAME , public SYMBOL_COPILOT_PANEL_CONTAINER
 {
 public:
     SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent );
@@ -576,6 +582,14 @@ private:
     // They are enabled when the loaded symbol has graphic items for converted shape
     // But under some circumstances (New symbol created) these tools must left enabled
     static bool m_showDeMorgan;
+
+
+public:
+
+    friend SYMBOL_COPILOT_PANEL_CONTAINER;
+
+    void AddSymbolToCanvas( std::string const& aSymbolContent  );
+
 };
 
 #endif  // SYMBOL_EDIT_FRAME_H

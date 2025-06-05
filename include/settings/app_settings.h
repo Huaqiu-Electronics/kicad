@@ -25,6 +25,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <settings/json_settings.h>
 #include <settings/grid_settings.h>
+#include <copilot_panel_settings.h>
 
 /**
  * Cross-probing behavior.
