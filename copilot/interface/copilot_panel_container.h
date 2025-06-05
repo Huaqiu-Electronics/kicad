@@ -35,34 +35,47 @@
 #include <copilot_aui_info.h>
 #include <kicad_copilot_editors.h>
 #include <get_copilot_host_version.h>
+#include <widgets/wx_aui_utils.h>
 
-extern void SetAuiPaneSize( wxAuiManager& aManager, wxAuiPaneInfo& aPane, int aWidth, int aHeight );
 
 template <class Derived, class ConfigT, class ContextT>
 
 class COPILOT_PANEL_CONTAINER
 {
 public:
-    COPILOT_PANEL_CONTAINER( wxAuiManager&                    aAuiMgr,
-                             COPILOT_GLOBAL_CONTEXT_OWNED_HDL aCopilotGlobalContextHdl,
-                             AGENT_ACTION_OWNED_HANDLE        aCopilotAgentActionHdl,
-                             COPILOT_SELECTION_OWNED_HDL      aCopilotSelectionHdl ) :
+    COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
             m_containerAuimgr( aAuiMgr ),
-            m_copilotGlobalContextHdl( std::move( aCopilotGlobalContextHdl ) ),
-            m_copilotAgentActionHdl( std::move( aCopilotAgentActionHdl ) ),
-            m_copilotSelectionHdl( std::move( aCopilotSelectionHdl ) )
+            m_copilotGlobalContextHdl(
+                    std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
+                            [&]() -> COPILOT_GLOBAL_CONTEXT const&
+                            {
+                                UpdateCopilotContextCache();
+                                return m_copilotContextCache;
+                            } ) ),
+            m_copilotAgentActionHdl( std::make_shared<AGENT_ACTION_HANDLE_T>(
+                    [&]( AGENT_ACTION const& act )
+                    {
+                        ExecuteAgentAction( act );
+                    } ) ),
+            m_copilotSelectionHdl( std::make_shared<SELECTION_HDL_T>(
+                    [this]()
+                    {
+                        return GetJsonifySelection();
+                    } ) )
     {
     }
 
 
-    auto                  self() { return static_cast<Derived*>( this ); }
+    auto self() { return static_cast<Derived*>( this ); }
+    auto self() const { return static_cast<const Derived*>( this ); }
+
     KICAD_COPILOT_EDITORS editor_type() const { return KICAD_COPILOT_EDITORS::unknown; }
 
     // Copilot UI interfaces
     void InitCopilotPanel()
     {
         m_copilotContextCache.host_version_info = get_copilot_host_version( editor_type() );
-        m_containerCfg = dynamic_cast<ConfigT*>( self()->config() );
+        m_containerCfg = static_cast<ConfigT*>( self()->config() );
         m_copilotPanel = new WEBVIEW_CONTAINER(
                 self(), { m_copilotContextCache.host_version_info, m_copilotGlobalContextHdl,
                           m_copilotAgentActionHdl, m_copilotSelectionHdl } );
@@ -197,16 +210,15 @@ public:
                 } );
     }
 
+    std::string GetJsonifySelection() const { return ( nlohmann::json() ).dump(); }
 
 protected:
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
 
-
     WEBVIEW_CONTAINER* m_copilotPanel{};
     ContextT           m_copilotContextCache;
-
 
 private:
     wxAuiManager& m_containerAuimgr;

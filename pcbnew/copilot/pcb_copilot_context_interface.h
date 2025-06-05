@@ -28,6 +28,8 @@
 #include "tool/tool_manager.h"
 #include "tools/pcb_selection_tool.h"
 #include "pcb_items_jsonify_helper.h"
+
+#include <copilot_json_helper.h>
 #include <webview/webview_container.h>
 #include <board_design_settings.h>
 #include <string_utils.h>
@@ -39,18 +41,20 @@
 #include <board.h>
 #include <footprint.h>
 
-void PCB_EDIT_FRAME::UpdateCopilotContextCache()
+template <>
+void PCB_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
 {
-    if( m_copilotContextCache->is_newest )
+    if( m_copilotContextCache.is_newest )
         return;
 
-    m_copilotContextCache->uuid = KIID().AsStdString();
-    m_copilotContextCache->is_newest = true;
-    m_copilotContextCache->designators = ([this](){
+    m_copilotContextCache.uuid = KIID().AsStdString();
+    m_copilotContextCache.is_newest = true;
+    auto board = self()->GetBoard();
+    m_copilotContextCache.designators = ([board](){
 
         std::vector<std::string> designators;
 
-        for(const auto& fp : GetBoard()->Footprints())        
+        for(const auto& fp : board->Footprints())        
             designators.push_back(UnescapeString(fp->Reference().GetText()).ToStdString());        
         std::sort(designators.begin(), designators.end(),[&](const std::string& a, const std::string& b){
             return StrNumCmp(a, b) < 0;
@@ -63,14 +67,23 @@ void PCB_EDIT_FRAME::UpdateCopilotContextCache()
 
     })();
 
-    m_copilotContextCache->fab_settings.distance_settings = ([this](){
+    m_copilotContextCache.fab_settings.distance_settings = ([board](){
 
         return  PCB_FAB_DISTANCE_SETTINGS{
-            GetBoard()->GetDesignSettings().m_TrackMinWidth,
-            GetBoard()->GetDesignSettings().m_MinClearance,
-             std::min(GetBoard()->GetDesignSettings().m_MinThroughDrill, GetBoard()->GetDesignSettings().m_ViasMinSize),
+            board->GetDesignSettings().m_TrackMinWidth,
+            board->GetDesignSettings().m_MinClearance,
+             std::min(board->GetDesignSettings().m_MinThroughDrill, board->GetDesignSettings().m_ViasMinSize),
         };
     })();
+}
+
+
+template <>
+std::string PCB_COPILOT_PANEL_CONTAINER::GetJsonifySelection() const
+{
+    nlohmann::json selection = self()->GetSelection();
+    RemoveEmptyObjectsOrArrays( selection );
+    return selection.dump();
 }
 
 
@@ -79,50 +92,5 @@ copilot::BOARD_SELECTIONS PCB_EDIT_FRAME::GetSelection() const
     return jsonify_pcb_items( GetToolManager()->GetTool<PCB_SELECTION_TOOL>()->GetSelection() );
 }
 
-static void RemoveEmptyObjectsOrArrays( nlohmann::json& j )
-{
-    if( j.is_object() )
-    {
-        for( auto it = j.begin(); it != j.end(); )
-        {
-            RemoveEmptyObjectsOrArrays( it.value() ); // Recurse first
-
-            if( ( it.value().is_object() || it.value().is_array() ) && it.value().empty() )
-                it = j.erase( it );
-            else
-                ++it;
-        }
-    }
-    else if( j.is_array() )
-    {
-        for( auto it = j.begin(); it != j.end(); )
-        {
-            RemoveEmptyObjectsOrArrays( *it ); // Recurse into array elements
-
-            if( ( it->is_object() || it->is_array() ) && it->empty() )
-                it = j.erase( it );
-            else
-                ++it;
-        }
-    }
-}
-
-std::string PCB_EDIT_FRAME::GetSelectionJsonString() const
-{
-    nlohmann::json selection = GetSelection();
-    RemoveEmptyObjectsOrArrays( selection );
-    return selection.dump();
-}
-
-
-void PCB_EDIT_FRAME::SetHasSelection( bool aHasSelection )
-{
-    CallAfter(
-            [=, this]()
-            {
-                if( m_copilotPanel )
-                    m_copilotPanel->on_host_selection_changed( aHasSelection );
-            } );
-}
 
 #endif

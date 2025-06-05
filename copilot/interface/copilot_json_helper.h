@@ -22,17 +22,37 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef PCB_COPILOT_DS_FWD_H
-#define PCB_COPILOT_DS_FWD_H
+#ifndef COPILOT_JSON_HELPER_H
+#define COPILOT_JSON_HELPER_H
 
-struct PCB_COPILOT_GLOBAL_CONTEXT;
-class WEBVIEW_CONTAINER;
+#include <nlohmann/json.hpp>
 
-namespace copilot
+inline void RemoveEmptyObjectsOrArrays( nlohmann::json& j )
 {
+    if( j.is_object() )
+    {
+        for( auto it = j.begin(); it != j.end(); )
+        {
+            RemoveEmptyObjectsOrArrays( it.value() ); // Recurse first
 
-struct BOARD_SELECTIONS;
+            if( ( it.value().is_object() || it.value().is_array() ) && it.value().empty() )
+                it = j.erase( it );
+            else
+                ++it;
+        }
+    }
+    else if( j.is_array() )
+    {
+        for( auto it = j.begin(); it != j.end(); )
+        {
+            RemoveEmptyObjectsOrArrays( *it ); // Recurse into array elements
 
+            if( ( it->is_object() || it->is_array() ) && it->empty() )
+                it = j.erase( it );
+            else
+                ++it;
+        }
+    }
 }
 
 

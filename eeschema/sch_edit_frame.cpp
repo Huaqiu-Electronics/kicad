@@ -109,6 +109,7 @@
 #include <widgets/wx_aui_utils.h>
 #include <drawing_sheet/ds_proxy_view_item.h>
 #include <project/project_local_settings.h>
+
 #include "sch_copilot_pch.h"
 
 #ifdef KICAD_IPC_API
@@ -146,23 +147,7 @@ wxDEFINE_EVENT( EDA_EVT_SCHEMATIC_CHANGED, wxCommandEvent );
 SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         SCH_BASE_FRAME( aKiway, aParent, FRAME_SCH, wxT( "Eeschema" ), wxDefaultPosition,
                         wxDefaultSize, KICAD_DEFAULT_DRAWFRAME_STYLE, SCH_EDIT_FRAME_NAME ),
-        COPILOT_PANEL_CONTAINER( m_auimgr,
-                                 std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
-                                         [&]() -> COPILOT_GLOBAL_CONTEXT const&
-                                         {
-                                             UpdateCopilotContextCache();
-                                             return m_copilotContextCache;
-                                         } ),
-                                 std::make_shared<AGENT_ACTION_HANDLE_T>(
-                                         [&]( AGENT_ACTION const& act )
-                                         {
-                                             ExecuteAgentAction( act );
-                                         } ),
-                                 std::make_shared<SELECTION_HDL_T>(
-                                         [this]()
-                                         {
-                                             return nlohmann::json( GetSelection() ).dump();
-                                         } ) ),       
+        COPILOT_PANEL_CONTAINER( m_auimgr),
     m_ercDialog( nullptr ),
     m_diffSymbolDialog( nullptr ),
     m_symbolFieldsTableDialog( nullptr ),
