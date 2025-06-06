@@ -27,6 +27,12 @@
 
 #include <footprint_edit_frame.h>
 
+template <>
+KICAD_COPILOT_EDITORS FOOTPRINT_COPILOT_PANEL_CONTAINER::editor_type() const
+{
+    return KICAD_COPILOT_EDITORS::footprint;
+}
+
 
 template <>
 void FOOTPRINT_COPILOT_PANEL_CONTAINER::InitCopilotAui()

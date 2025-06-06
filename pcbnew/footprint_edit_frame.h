@@ -385,8 +385,10 @@ private:
     std::map<KIID, KIID>        m_boardFootprintUuids;
 
 
-public:
     friend FOOTPRINT_COPILOT_PANEL_CONTAINER;
+
+public:
+    void AddFootprintToCanvas( std::string const& aFootprintContent );
 };
 
 #endif      // FOOTPRINT_EDIT_FRAME_H
