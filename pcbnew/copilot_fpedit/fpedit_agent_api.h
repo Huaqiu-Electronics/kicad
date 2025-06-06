@@ -30,11 +30,5 @@
 #include <tool/actions.h>
 #include <tool/tool_manager.h>
 
-void FOOTPRINT_EDIT_FRAME::AddFootprintToCanvas( std::string const& aFootprintContent )
-{
-    WriteClipBoard( aFootprintContent );
-    GetToolManager()->RunAction( ACTIONS::paste );
-}
-
 
 #endif

@@ -55,7 +55,7 @@ void SYMBOL_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAc
         case AGENT_ACTION_TYPE::symbol_editor_place_symbol:
         {
             const auto ctx = aAction.context.get<STRING_SERIALIZED_CONTEXT>();
-            self()->PasteSymbolToCanvas( ctx.content );
+            CopilotRunPaste( ctx.content );
             break;
         }
 

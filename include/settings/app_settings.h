@@ -24,7 +24,7 @@
 #include <gal/color4d.h>
 #include <settings/json_settings.h>
 #include <settings/grid_settings.h>
-#include <copilot/copilot_panel_settings.h>
+#include <copilot_panel_settings.h>
 
 /**
  * Cross-probing behavior.
