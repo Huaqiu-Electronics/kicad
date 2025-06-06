@@ -589,8 +589,7 @@ public:
 
     friend SYMBOL_COPILOT_PANEL_CONTAINER;
 
-    void AddSymbolToCanvas( std::string const& aSymbolContent  );
-
+    void PasteSymbolToCanvas( std::string const& aSymbolContent );
 };
 
 #endif  // SYMBOL_EDIT_FRAME_H

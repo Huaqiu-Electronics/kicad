@@ -32,22 +32,27 @@
 enum class AGENT_ACTION_TYPE
 {
     INVALID,
+
+
     COMMON_BEGIN,
     ask_selection,
 
-    SCH_BEGIN,
-
+    SCH_EDITOR_BEGIN,
     highlight_symbol,
-    
     place_symbol_resource,
     place_symbol_content,
-
     place_design_block_resource,
     place_design_block_content,
 
-    PCB_BEGIN,
+    PCB_EDITOR_BEGIN,
+    basic_run, //Launch the pcb plugins
 
-    basic_run, //比如启动PCB里的DMF插件
+    SYMBOL_EDITOR_BEGIN,
+    symbol_editor_place_symbol,
+
+
+    FOOTPRINT_EDITOR_BEGIN,
+    fp_editor_place_footprint,
 
 
 };

@@ -28,6 +28,13 @@
 #include <symbol_edit_frame.h>
 
 template <>
+KICAD_COPILOT_EDITORS SYMBOL_COPILOT_PANEL_CONTAINER::editor_type() const
+{
+    return KICAD_COPILOT_EDITORS::symbol;
+}
+
+
+template <>
 void SYMBOL_COPILOT_PANEL_CONTAINER::InitCopilotAui()
 {
     if( m_copilotPanel )

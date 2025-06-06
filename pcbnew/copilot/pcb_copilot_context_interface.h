@@ -41,6 +41,14 @@
 #include <board.h>
 #include <footprint.h>
 
+
+template <>
+KICAD_COPILOT_EDITORS PCB_COPILOT_PANEL_CONTAINER::editor_type() const
+{
+    return KICAD_COPILOT_EDITORS::pcb;
+}
+
+
 template <>
 void PCB_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
 {

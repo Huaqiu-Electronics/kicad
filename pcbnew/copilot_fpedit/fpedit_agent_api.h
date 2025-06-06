@@ -25,5 +25,16 @@
 #ifndef FPEDIT_AGENT_API_H
 #define FPEDIT_AGENT_API_H
 
+#include <footprint_edit_frame.h>
+#include <copilot_clipboard.h>
+#include <tool/actions.h>
+#include <tool/tool_manager.h>
+
+void FOOTPRINT_EDIT_FRAME::AddFootprintToCanvas( std::string const& aFootprintContent )
+{
+    WriteClipBoard( aFootprintContent );
+    GetToolManager()->RunAction( ACTIONS::paste );
+}
+
 
 #endif
