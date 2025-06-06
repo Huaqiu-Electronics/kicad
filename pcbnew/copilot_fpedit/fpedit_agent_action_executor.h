@@ -54,7 +54,7 @@ void FOOTPRINT_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& 
         case AGENT_ACTION_TYPE::fp_editor_place_footprint:
         {
             const auto ctx = aAction.context.get<STRING_SERIALIZED_CONTEXT>();
-            self()->AddFootprintToCanvas( ctx.content );
+            CopilotRunPaste( ctx.content );
             break;
         }
 

@@ -36,7 +36,9 @@
 #include <kicad_copilot_editors.h>
 #include <get_copilot_host_version.h>
 #include <widgets/wx_aui_utils.h>
-#include <copilot/copilot_panel_settings.h>
+#include <copilot_panel_settings.h>
+#include <copilot_clipboard.h>
+#include <tool/actions.h>
 
 
 template <class Derived, class ContextT>
@@ -206,6 +208,13 @@ public:
     }
 
     std::string GetJsonifySelection() const { return ( nlohmann::json() ).dump(); }
+
+
+    void CopilotRunPaste( std::string const& aContent )
+    {
+        WriteClipBoard( aContent );
+        self()->GetToolManager()->RunAction( ACTIONS::paste );
+    }
 
 
 protected:

@@ -25,17 +25,10 @@
 #ifndef SYMBOL_AGENT_API_H
 #define SYMBOL_AGENT_API_H
 
-#include "tool/actions.h"
 #include <tool/tool_manager.h>
 #include <sch_actions.h>
 #include <symbol_edit_frame.h>
 #include <copilot_clipboard.h>
-
-void SYMBOL_EDIT_FRAME::PasteSymbolToCanvas( std::string const& aSymbolContent )
-{
-    WriteClipBoard( aSymbolContent );
-    GetToolManager()->RunAction( ACTIONS::paste );
-}
 
 
 #endif
