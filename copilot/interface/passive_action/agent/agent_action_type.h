@@ -44,7 +44,8 @@ enum class AGENT_ACTION_TYPE
     place_symbol_content,
     place_design_block_resource,
     place_design_block_content,
-
+    open_project_zip_achieve,
+    
     PCB_EDITOR_BEGIN,
     basic_run,
 
