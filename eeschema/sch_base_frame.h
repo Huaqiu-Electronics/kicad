@@ -270,6 +270,8 @@ public:
         m_watcherLastModified = aTime;
     }
 
+    SCH_SELECTION_TOOL* GetSelectionTool() override;
+
 protected:
     void handleActivateEvent( wxActivateEvent& aEvent ) override;
 
