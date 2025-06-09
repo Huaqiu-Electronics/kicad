@@ -25,6 +25,10 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
+#include <passive_action/agent/agent_action_type.h>
+#include <passive_action/agent/agent_action.h>
+#include <passive_action/agent/context/string_serialized_context.h>
+#include <magic_enum.hpp>
 #include <host_version_info.h>
 #include <webview/webview_container.h>
 #include <context/copilot_global_context_handle.h>
@@ -194,8 +198,33 @@ public:
     // Copilot commands Dispatcher
     void FireCopilotCommand( std::string const& aCmdType ) { WXUNUSED( aCmdType ); }
 
-    // Agent execution entrypoint
-    void ExecuteAgentAction( AGENT_ACTION const& aAction ) { WXUNUSED( aAction ); }
+    void ExecuteAgentAction( AGENT_ACTION const& aAction )
+    {
+        try
+        {
+            auto t = magic_enum::enum_cast<AGENT_ACTION_TYPE>( aAction.action );
+
+            if( !t.has_value() )
+            {
+                wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
+                return;
+            }
+
+            switch( *t )
+            {
+            case AGENT_ACTION_TYPE::paste:
+            {
+                break;
+            }
+
+            default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
+            }
+        }
+        catch( std::exception const& e )
+        {
+            wxLogWarning( "Exception caught: %s", e.what() );
+        }
+    }
 
     void SetHasSelection( bool aHasSelection )
     {

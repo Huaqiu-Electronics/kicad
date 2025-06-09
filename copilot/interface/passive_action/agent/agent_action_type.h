@@ -36,6 +36,7 @@ enum class AGENT_ACTION_TYPE
 
     COMMON_BEGIN,
     ask_selection,
+    paste,
 
     SCH_EDITOR_BEGIN,
     highlight_symbol,
@@ -45,14 +46,12 @@ enum class AGENT_ACTION_TYPE
     place_design_block_content,
 
     PCB_EDITOR_BEGIN,
-    basic_run, //Launch the pcb plugins
+    basic_run,
 
     SYMBOL_EDITOR_BEGIN,
-    symbol_editor_place_symbol,
 
 
     FOOTPRINT_EDITOR_BEGIN,
-    fp_editor_place_footprint,
 
 
 };

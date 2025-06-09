@@ -37,36 +37,4 @@
 #include <copilot_dbg_helper.h>
 
 
-template <>
-void SYMBOL_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
-{
-    try
-    {
-        auto t = magic_enum::enum_cast<AGENT_ACTION_TYPE>( aAction.action );
-
-        if( !t.has_value() )
-        {
-            wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
-            return;
-        }
-
-        switch( *t )
-        {
-        case AGENT_ACTION_TYPE::symbol_editor_place_symbol:
-        {
-            const auto ctx = aAction.context.get<STRING_SERIALIZED_CONTEXT>();
-            CopilotRunPaste( ctx.content );
-            break;
-        }
-
-        default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
-        }
-    }
-    catch( std::exception const& e )
-    {
-        wxLogWarning( "Exception caught: %s", e.what() );
-    }
-}
-
-
 #endif
