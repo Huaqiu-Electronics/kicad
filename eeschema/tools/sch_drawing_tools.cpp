@@ -1966,8 +1966,7 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
                 {
                     if( m_dialogSyncSheetPin && m_dialogSyncSheetPin->GetPlacementTemplate() )
                     {
-                        auto pin = static_cast<SCH_HIERLABEL*>(
-                                m_dialogSyncSheetPin->GetPlacementTemplate() );
+                        auto pin = static_cast<SCH_HIERLABEL*>( m_dialogSyncSheetPin->GetPlacementTemplate() );
                         SCH_HIERLABEL* label = new SCH_HIERLABEL( cursorPos );
                         SCHEMATIC*     schematic = getModel<SCHEMATIC>();
                         label->SetText( pin->GetText() );
@@ -2028,8 +2027,7 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
                         {
                             item = createNewSheetPinFromLabel(
                                     sheet, cursorPos,
-                                    static_cast<SCH_HIERLABEL*>(
-                                            m_dialogSyncSheetPin->GetPlacementTemplate() ) );
+                                    static_cast<SCH_HIERLABEL*>( m_dialogSyncSheetPin->GetPlacementTemplate() ) );
                         }
                         else
                         {
@@ -2089,7 +2087,7 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
                 if( item->IsConnectable() )
                     m_frame->AutoRotateItem( m_frame->GetScreen(), item );
 
-                if( isSheetPin )
+                if( isSheetPin && sheet )
                 {
                     // Sheet pins are owned by their parent sheet.
                     commit.Modify( sheet, m_frame->GetScreen() );
@@ -2126,7 +2124,7 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
 
                 item = nullptr;
 
-                if( isSheetPin )
+                if( isSheetPin && sheet )
                 {
                     SCH_HIERLABEL* label = importHierLabel( sheet );
 
@@ -2134,8 +2132,7 @@ int SCH_DRAWING_TOOLS::TwoClickPlace( const TOOL_EVENT& aEvent )
                     {
                         m_statusPopup = std::make_unique<STATUS_TEXT_POPUP>( m_frame );
                         m_statusPopup->SetText( _( "No new hierarchical labels found." ) );
-                        m_statusPopup->Move( KIPLATFORM::UI::GetMousePosition()
-                                             + wxPoint( 20, 20 ) );
+                        m_statusPopup->Move( KIPLATFORM::UI::GetMousePosition() + wxPoint( 20, 20 ) );
                         m_statusPopup->PopupFor( 2000 );
 
                         m_frame->PopTool( aEvent );
