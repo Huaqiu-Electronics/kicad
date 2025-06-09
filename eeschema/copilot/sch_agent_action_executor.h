@@ -30,6 +30,7 @@
 #include <api/api_design_content.h>
 #include <api/api_server.h>
 #include <pgm_base.h>
+#include <passive_action/agent/context/string_serialized_context.h>
 #include "sch_editor_control.h"
 #include <context/symbol_context.h>
 #include <exception>
@@ -70,6 +71,13 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
             self()->HighlightSymbol( aAction.context.get<HIGHLIGHT_SYMBOL_CONTEXT>().designator );
             break;
         }
+
+        case AGENT_ACTION_TYPE::paste:
+        {
+            CopilotRunPaste( aAction.context.get<STRING_SERIALIZED_CONTEXT>().content );
+            break;
+        }
+
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto netlist = nlohmann::json( self()->GetSelection() ).dump();
