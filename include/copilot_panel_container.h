@@ -25,7 +25,6 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
-#include <passive_action/agent/agent_action_type.h>
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/context/string_serialized_context.h>
 #include <magic_enum.hpp>
@@ -202,23 +201,12 @@ public:
     {
         try
         {
-            auto t = magic_enum::enum_cast<AGENT_ACTION_TYPE>( aAction.action );
-
-            if( !t.has_value() )
+            if( "paste" == aAction.action )
             {
-                wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
-                return;
+                return CopilotRunPaste( aAction.context );
             }
 
-            switch( *t )
-            {
-            case AGENT_ACTION_TYPE::paste:
-            {
-                break;
-            }
-
-            default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
-            }
+            wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
         }
         catch( std::exception const& e )
         {

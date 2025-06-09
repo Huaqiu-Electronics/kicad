@@ -78,6 +78,11 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
             break;
         }
 
+        case AGENT_ACTION_TYPE::open_project_zip_achieve:
+        {
+            break;
+        }
+
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto netlist = nlohmann::json( self()->GetSelection() ).dump();
