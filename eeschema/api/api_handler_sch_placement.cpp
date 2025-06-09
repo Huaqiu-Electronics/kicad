@@ -26,6 +26,7 @@
 #include <api/api_design_resource.h>
 #include "api_sch_placement_command.h"
 #include <api/api_design_content.h>
+#include <optional>
 #include <sch_actions.h>
 #include <tool/tool_manager.h>
 #include <project_sch.h>
@@ -169,14 +170,20 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
         return {};
     }
 
-    placeDesignBlock(
-            { ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ),
-              { aCtx.Request.has_place_as_sheet() ? aCtx.Request.place_as_sheet() : std::optional<bool>{} } } );
+    placeDesignBlock( { ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ),
+                        std::make_optional<PLACE_DESIGN_BLOCK_OPTION>( {
+
+                                aCtx.Request.has_place_repeated_copies()
+                                        ? std::make_optional( aCtx.Request.place_repeated_copies() )
+                                        : std::optional<bool>{}
+
+                        } ) } );
     return {};
 }
 
 
-void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock, PLACE_DESIGN_BLOCK_OPTION const& aOption )
+void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const&                     aBlock,
+                                        std::optional<PLACE_DESIGN_BLOCK_OPTION> const& aOption )
 {
     if( !aBlock.schematics.size() )
         return;
@@ -201,7 +208,8 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const& aBlock, PLAC
 
     m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SHEET_PARAMS>(
             SCH_ACTIONS::apiPlaceSheet,
-            { target_sch_file, aOption.place_as_sheet.has_value() ? aOption.place_as_sheet.value() : false } );
+            { target_sch_file,
+              aOption.has_value() && aOption->place_as_sheet.has_value() ? aOption->place_as_sheet.value() : false } );
 }
 
 
@@ -295,7 +303,8 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
 }
 
 
-void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_SYMBOL_OPTION const& aOption )
+void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const&                  aComponent,
+                                   std::optional<PLACE_SYMBOL_OPTION> const& aOption )
 {
     // Trigger loading the lazy ininitialized project symbol library table.
     void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );

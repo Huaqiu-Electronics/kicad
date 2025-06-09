@@ -41,16 +41,16 @@ struct PLACE_SYMBOL_OPTION
 
 struct PLACE_SYMBOL_RESOURCE_COMMAND
 {
-    COMPONENT_RESOURCE  component;
-    PLACE_SYMBOL_OPTION option;
+    COMPONENT_RESOURCE                 component;
+    std::optional<PLACE_SYMBOL_OPTION> option;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_RESOURCE_COMMAND, component, option )
 };
 
 
 struct PLACE_SYMBOL_CONTENT_COMMAND
 {
-    COMPONENT_CONTENT   component;
-    PLACE_SYMBOL_OPTION option;
+    COMPONENT_CONTENT                  component;
+    std::optional<PLACE_SYMBOL_OPTION> option;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_CONTENT_COMMAND, component, option )
 };
 
@@ -64,8 +64,8 @@ struct PLACE_DESIGN_BLOCK_OPTION
 
 struct PLACE_DESIGN_BLOCK_RESOURCE_COMMAND
 {
-    DESIGN_BLOCK_RESOURCE     design_block;
-    PLACE_DESIGN_BLOCK_OPTION option;
+    DESIGN_BLOCK_RESOURCE                    design_block;
+    std::optional<PLACE_DESIGN_BLOCK_OPTION> option;
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND, design_block, option )
 };
@@ -73,8 +73,8 @@ struct PLACE_DESIGN_BLOCK_RESOURCE_COMMAND
 
 struct PLACE_DESIGN_BLOCK_CONTENT_COMMAND
 {
-    DESIGN_BLOCK_CONTENT      design_block;
-    PLACE_DESIGN_BLOCK_OPTION option;
+    DESIGN_BLOCK_CONTENT                     design_block;
+    std::optional<PLACE_DESIGN_BLOCK_OPTION> option;
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_DESIGN_BLOCK_CONTENT_COMMAND, design_block, option )
 };
