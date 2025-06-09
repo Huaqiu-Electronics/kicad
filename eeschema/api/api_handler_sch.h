@@ -29,6 +29,7 @@
 #include <api/schematic/schematic_types.pb.h>
 #include <kiid.h>
 #include <memory>
+#include <optional>
 
 using namespace kiapi;
 using namespace kiapi::common;
@@ -92,11 +93,11 @@ private:
     std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
 
 public:
-    void placeSymbol( COMPONENT_CONTENT const& aComponent, PLACE_SYMBOL_OPTION const& aOption );
+    void placeSymbol( COMPONENT_CONTENT const& aComponent,  std::optional< PLACE_SYMBOL_OPTION> const& aOption );
 
     void placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand );
 
-    void placeDesignBlock( DESIGN_BLOCK_CONTENT const& aDesignBlock ,PLACE_DESIGN_BLOCK_OPTION const& aOption );
+    void placeDesignBlock( DESIGN_BLOCK_CONTENT const& aDesignBlock ,std::optional<PLACE_DESIGN_BLOCK_OPTION> const& aOption );
 
     void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND const& aCommand );
 };
