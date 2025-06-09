@@ -26,7 +26,6 @@
 #define COPILOT_PANEL_CONTAINER_H
 
 #include <passive_action/agent/agent_action.h>
-#include <passive_action/agent/context/string_serialized_context.h>
 #include <magic_enum.hpp>
 #include <host_version_info.h>
 #include <webview/webview_container.h>
