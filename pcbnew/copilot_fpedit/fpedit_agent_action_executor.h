@@ -32,7 +32,6 @@
 #include <fmt/format.h>
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
-#include <passive_action/agent/context/string_serialized_context.h>
 #include <copilot_dbg_helper.h>
 
 
