@@ -31,6 +31,7 @@
 #include <api/api_design_content.h>
 #include <optional>
 
+// NOTE : The default JSON value for optional<STRUCT T>  is null instead of undefined.
 
 struct PLACE_SYMBOL_OPTION
 {
