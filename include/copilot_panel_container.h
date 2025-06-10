@@ -261,12 +261,11 @@ public:
 
 
 protected:
-    WEBVIEW_CONTAINER* m_copilotPanel{};
-    ContextT           m_copilotContextCache;
+    ContextT                m_copilotContextCache;
+    WEBVIEW_CONTAINER*      m_copilotPanel{};
+    COPILOT_PANEL_SETTINGS* m_containerCfg{};
+    wxAuiManager&           m_containerAuiMgr;
 
-private:
-    COPILOT_PANEL_SETTINGS*          m_containerCfg{};
-    wxAuiManager&                    m_containerAuiMgr;
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
