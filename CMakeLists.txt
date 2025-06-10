@@ -1174,7 +1174,14 @@ add_subdirectory( thirdparty )
 add_subdirectory( libs )
 add_subdirectory( scripting )
 add_subdirectory( common )
+
+# The pre-release build use a different online environment
+if(IS_RC_BUILD)
+    add_compile_definitions(IS_RC_BUILD)
+endif()
+
 add_subdirectory( copilot )
+
 add_subdirectory( 3d-viewer )
 add_subdirectory( eeschema )
 add_subdirectory( gerbview )

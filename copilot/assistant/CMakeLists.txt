@@ -39,7 +39,3 @@ if( APPLE )
             "@executable_path/../Frameworks" )
     set_target_properties( assistant PROPERTIES BUILD_WITH_INSTALL_RPATH 1 )
 endif()
-
-if(IS_RC_BUILD)
-    add_compile_definitions(IS_RC_BUILD)
-endif()
