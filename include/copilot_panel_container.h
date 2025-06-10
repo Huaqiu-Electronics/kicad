@@ -81,10 +81,12 @@ public:
 
     KICAD_COPILOT_EDITORS editor_type() const { return KICAD_COPILOT_EDITORS::unknown; }
 
+    std::string GetSessionId() const { return self().Prj().GetProjectPath().ToStdString(); }
+
     void CopilotPanelInit()
     {
         m_containerCfg = self()->config();
-        auto host_version_info = get_copilot_host_version( editor_type() );
+        auto host_version_info = get_copilot_host_version( editor_type(), GetSessionId() );
 
 #ifdef COPILOT_USE_HTTP_MSG_HANDLER
 

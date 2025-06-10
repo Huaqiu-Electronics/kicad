@@ -56,6 +56,7 @@ inline auto add_parameter_to_url( std::string const& url, std::optional<HOST_TYP
 
     std::map<std::string, std::string> parameters{ { "host_name", host->host_name },
                                                    { "editor_name", host->editor_name },
+                                                   { "session_id", host->session_id },
                                                    { "locale", host->locale } };
 
     if( host->port )
