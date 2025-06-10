@@ -30,7 +30,6 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
                                                       std::unique_ptr<httplib::Server> msgServer ) :
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, std::move( msgServer ) )
 {
-    
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
@@ -38,6 +37,7 @@ COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 
 void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
+    WEBVIEW_CONTAINER::OnDocumentLoaded( evt );
 #ifndef _WIN32
 
     const auto evt_url = evt.GetURL().ToStdString();
@@ -50,3 +50,8 @@ void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 
 #endif // !_WIN32
 };
+
+DATA_BURIED_POINT COPILOT_WEBVIEW_CONTAINER::GetDataBuriedPoint() const
+{
+    return { "kicad_client_copilot_launch", "user_launch_copilot" };
+}

@@ -32,7 +32,7 @@
 #include <wx/webview.h>
 #include <set>
 #include <copilot_global.h>
-
+#include <proto/data_buried_point.h>
 #include <thread>
 #include <memory>
 
@@ -63,6 +63,8 @@ public:
     virtual void ExecuteCommand( const char* cmd );
 
     virtual void OnHostSelectionChanged( bool has_selection );
+
+    virtual DATA_BURIED_POINT GetDataBuriedPoint() const;
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );
