@@ -30,6 +30,7 @@
 #include <kicommon.h>
 
 
-KICOMMON_API HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor );
+KICOMMON_API HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor,
+                                                         std::string const&    aSessionId );
 
 #endif
