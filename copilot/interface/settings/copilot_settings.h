@@ -38,15 +38,15 @@ struct DATA_BURIED_POINT_SETTINGS
 };
 
 
-struct WEBVIEW_PATH
+struct COPILOT_WEBVIEW_PATH
 {
     std::string home = "/";
     std::string chat = "/chat";
     std::string image_viewer = "/image-viewer";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_PATH, home, chat, image_viewer )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_PATH, home, chat, image_viewer )
 };
 
-struct WEBVIEW_SETTINGS
+struct COPILOT_WEBVIEW_SETTINGS
 {
 #if defined( _WIN32 ) && !defined( IS_RC_BUILD )
     std::string url = "https://chat.eda.cn/";
@@ -54,8 +54,8 @@ struct WEBVIEW_SETTINGS
     std::string url = "http://47.100.5.151:8080/";
 #endif
 
-    WEBVIEW_PATH path;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_SETTINGS, url, path )
+    COPILOT_WEBVIEW_PATH path;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_SETTINGS, url, path )
 };
 
 
@@ -72,10 +72,10 @@ struct DIALOG_GEOMETRY
 struct IMMUTABLE_SETTINGS
 {
     DATA_BURIED_POINT_SETTINGS data_buried_point_settings;
-    WEBVIEW_SETTINGS           webview_settings;
+    COPILOT_WEBVIEW_SETTINGS   copilot_webview_settings;
     std::string                version = kConfigVersion;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( IMMUTABLE_SETTINGS, data_buried_point_settings,
-                                    webview_settings, version )
+                                    copilot_webview_settings, version )
 };
 
 

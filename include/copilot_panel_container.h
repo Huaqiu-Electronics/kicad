@@ -44,7 +44,7 @@
 #include <copilot_panel_settings.h>
 #include <copilot_clipboard.h>
 #include <tool/actions.h>
-#include <settings/copilot_settings_manager.h>
+#include <settings/webview_settings_manager.h>
 #include <utils/httplib.h>
 #include <utils/web_utils.h>
 
@@ -100,7 +100,7 @@ public:
         m_copilotPanel = new WEBVIEW_CONTAINER(
                 self(),
                 add_parameter_to_url(
-                        COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                        WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
                         host_version_info ),
                 { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl },
                 http_server );
@@ -109,7 +109,7 @@ public:
         m_copilotPanel = new WEBVIEW_CONTAINER(
                 self(),
                 add_parameter_to_url(
-                        COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                        WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
                         host_version_info ),
                 { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } );
 

@@ -23,7 +23,7 @@
  */
 
 #include "dialog_image_viewer.h"
-#include <settings/copilot_settings_manager.h>
+#include <settings/webview_settings_manager.h>
 #include <wx/event.h>
 #include <wx/log.h>
 #include <wx/sizer.h>
@@ -40,7 +40,7 @@ DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, cons
         wxDialog( aParent, id, title, pos, size, style, name ), _browser( wxWebView::New() )
 {
     auto       top_sizer = new wxBoxSizer( wxVERTICAL );
-    const auto url = COPILOT_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path();
+    const auto url = WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path();
     _browser->Create( this, wxID_ANY, url, wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
     SetSizer( top_sizer );
@@ -50,7 +50,7 @@ DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, cons
           {
               const auto pos = GetPosition();
               const auto size = GetSize();
-              COPILOT_SETTINGS_MANAGER::get_instance().set_image_viewer_geometry(
+              WEBVIEW_SETTINGS_MANAGER::get_instance().set_image_viewer_geometry(
                       DIALOG_GEOMETRY{ pos.x, pos.y, size.x, size.y
 
                       } );

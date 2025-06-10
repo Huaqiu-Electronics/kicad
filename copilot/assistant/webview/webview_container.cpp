@@ -26,7 +26,7 @@
 #include <string>
 #include <webview/webview_container.h>
 #include <nlohmann/json.hpp>
-#include <settings/copilot_settings_manager.h>
+#include <settings/webview_settings_manager.h>
 #include "webview_constant.h"
 #include <utils/copilot_utils.h>
 #include <passive_action/web/web_host.h>
@@ -105,56 +105,56 @@ enum START_UP_SIZE
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                       HOST_COPILOT_HANDLES             host_copilot_handles,
-                                      std::unique_ptr<httplib::Server> server ) :
+                                      std::unique_ptr<httplib::Server> msgServer ) :
         wxPanel( parent ), _browser( wxWebView::New() ),
         _host_copilot_handles( std::move( host_copilot_handles ) ),
-        _primary_url( std::move( url ) ), _server( std::move( server ) )
+        _primary_url( std::move( url ) ), _web_msg_server( std::move( msgServer ) )
 {
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
     _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 
-    if( _server )
+    if( _web_msg_server )
     {
-        _server_thread = std::make_unique<std::thread>(
+        _web_msg_server_thread = std::make_unique<std::thread>(
                 [&]()
                 {
                     // Handle POST requests
-                    _server->Post( "/passive_action",
-                                   [this]( const Request& req, Response& res )
-                                   {
-                                       // Add CORS headers
-                                       res.set_header( "Access-Control-Allow-Origin", "*" );
-                                       res.set_header( "Access-Control-Allow-Methods",
-                                                       "POST, OPTIONS" );
-                                       res.set_header( "Access-Control-Allow-Headers", "*" );
+                    _web_msg_server->Post(
+                            "/passive_action",
+                            [this]( const Request& req, Response& res )
+                            {
+                                // Add CORS headers
+                                res.set_header( "Access-Control-Allow-Origin", "*" );
+                                res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
+                                res.set_header( "Access-Control-Allow-Headers", "*" );
 
-                                       const auto msg = req.body;
-                                       if( msg.empty() )
-                                       {
-                                           res.set_content( "Invalid message", "text/plain" );
-                                           return;
-                                       }
+                                const auto msg = req.body;
+                                if( msg.empty() )
+                                {
+                                    res.set_content( "Invalid message", "text/plain" );
+                                    return;
+                                }
 
-                                       // Process the message
-                                       OnWebChannelMsgWrapper( msg );
-                                       res.set_content( "OK", "text/plain" );
-                                   } );
+                                // Process the message
+                                OnWebChannelMsgWrapper( msg );
+                                res.set_content( "OK", "text/plain" );
+                            } );
 
                     // Handle OPTIONS preflight requests
-                    _server->Options( "/passive_action",
-                                      []( const Request& req, Response& res )
-                                      {
-                                          res.set_header( "Access-Control-Allow-Origin", "*" );
-                                          res.set_header( "Access-Control-Allow-Methods",
-                                                          "POST, OPTIONS" );
-                                          res.set_header( "Access-Control-Allow-Headers", "*" );
-                                          res.set_content( "", "text/plain" );
-                                      } );
+                    _web_msg_server->Options(
+                            "/passive_action",
+                            []( const Request& req, Response& res )
+                            {
+                                res.set_header( "Access-Control-Allow-Origin", "*" );
+                                res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
+                                res.set_header( "Access-Control-Allow-Headers", "*" );
+                                res.set_content( "", "text/plain" );
+                            } );
 
 
-                    _server->listen_after_bind();
+                    _web_msg_server->listen_after_bind();
                 } );
     }
     else
@@ -188,7 +188,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this,
           _browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this,
-          _browser->GetId() );          
+          _browser->GetId() );
 
 #ifdef DEBUG
 
@@ -201,11 +201,11 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
-    if( _server )
-        _server->stop();
+    if( _web_msg_server )
+        _web_msg_server->stop();
 
-    if( _server_thread )
-        _server_thread->join();
+    if( _web_msg_server_thread )
+        _web_msg_server_thread->join();
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
@@ -231,7 +231,7 @@ void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
 
 WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
 {
-    return _server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
+    return _web_msg_server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
 }
 
 
@@ -239,7 +239,7 @@ void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {
     const auto url = evt.GetURL();
 
-    if( !url.Contains( COPILOT_SETTINGS_MANAGER::get_instance().get_webview_url() ) )
+    if( !url.Contains( _primary_url ) )
     {
         // Launch the url in the system default browser
         wxLaunchDefaultBrowser( url );
@@ -255,17 +255,6 @@ void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
-#ifndef _WIN32
-
-    const auto evt_url = evt.GetURL().ToStdString();
-
-    // NOTE: Adhoc, on *nux the webview is not loading the url correctly on the first time if url start with https
-    if( evt_url == COPILOT_SETTINGS_MANAGER::get_instance().get_webview_url() )
-    {
-        _browser->LoadURL( _primary_url );
-    }
-
-#endif // !_WIN32
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
@@ -400,7 +389,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                 if( !_image_viewer )
                 {
                     const auto geometry =
-                            COPILOT_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
+                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
                     _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer",
                                                              { geometry.x, geometry.y },
                                                              { geometry.width, geometry.height } );

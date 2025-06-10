@@ -32,14 +32,14 @@
 
 
 struct IMMUTABLE_SETTINGS;
-struct WEBVIEW_PATH;
+struct COPILOT_WEBVIEW_PATH;
 struct DIALOG_GEOMETRY;
-class COPILOT_API COPILOT_SETTINGS_MANAGER
+class COPILOT_API WEBVIEW_SETTINGS_MANAGER
 {
 public:
-    ~COPILOT_SETTINGS_MANAGER();
+    ~WEBVIEW_SETTINGS_MANAGER();
 
-    static COPILOT_SETTINGS_MANAGER& get_instance();
+    static WEBVIEW_SETTINGS_MANAGER& get_instance();
 
     static std::string get_copilot_setting_dir();
 
@@ -49,9 +49,9 @@ public:
 
     std::string const& get_data_buried_point_endpoint() const;
 
-    std::string const& get_webview_url() const;
+    std::string const& get_copilot_webview_url() const;
 
-    WEBVIEW_PATH const& get_webview_path() const;
+    COPILOT_WEBVIEW_PATH const& get_copilot_webview_path() const;
 
     std::string const& get_webview_chat_path() const;
 
@@ -61,7 +61,7 @@ public:
     void                   set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry );
 
 private:
-    COPILOT_SETTINGS_MANAGER();
+    WEBVIEW_SETTINGS_MANAGER();
     IMMUTABLE_SETTINGS _immutable_settings;
     std::string        _webview_chat_path;
     std::string        _webview_image_viewer_path;
