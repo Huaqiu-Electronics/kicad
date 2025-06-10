@@ -35,12 +35,7 @@
 #include <proto/data_buried_point.h>
 #include <thread>
 #include <memory>
-
-
-namespace httplib
-{
-class Server;
-}
+#include <utils/httplib.h>
 
 class DIALOG_IMAGE_VIEWER;
 
