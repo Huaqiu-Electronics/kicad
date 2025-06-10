@@ -49,7 +49,6 @@
 #include <wx/timer.h>
 #include <thread>
 #include "http/http_client.h"
-#include "proto/data_buried_point.h"
 #include "common/dialog_image_viewer.h"
 #include <utils/httplib.h>
 
