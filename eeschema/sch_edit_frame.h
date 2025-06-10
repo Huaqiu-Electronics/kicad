@@ -1214,8 +1214,9 @@ public:
     copilot::NETLIST GetSelection()const ;
 
 private:
-    std::unique_ptr<SYMBOL_CMD_CONTEXT>         m_symbolCmdContext;
     friend SCH_COPILOT_PANEL_CONTAINER;
+    std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
+    WEBVIEW_CONTAINER*                  m_componentChooser;
 };
 
 
