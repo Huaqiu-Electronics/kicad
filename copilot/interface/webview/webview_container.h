@@ -32,7 +32,7 @@
 #include <wx/webview.h>
 #include <set>
 #include <copilot_global.h>
-#include <proto/data_buried_point.h>
+#include <data_buried_point.h>
 #include <thread>
 #include <memory>
 #include <utils/httplib.h>
