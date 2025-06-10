@@ -24,7 +24,6 @@
 
 #include "webview/copilot_webview_container.h"
 
-
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES host_copilot_handles,
                                                       std::unique_ptr<httplib::Server> msgServer ) :
