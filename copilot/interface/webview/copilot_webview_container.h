@@ -42,6 +42,8 @@ protected:
 
     DATA_BURIED_POINT GetDataBuriedPoint() const override;
 
+    void OnNavigationRequest( wxWebViewEvent& evt ) override;
+
 
 private:
 };
