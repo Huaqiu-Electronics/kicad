@@ -716,6 +716,9 @@ EESCHEMA_SETTINGS::EESCHEMA_SETTINGS() :
                 // This is actually a migration for APP_SETTINGS_BASE::m_LibTree
                 return migrateLibTreeWidth();
            } );
+
+
+    InitOnlineSymbolChooserSettings();
 }
 
 
