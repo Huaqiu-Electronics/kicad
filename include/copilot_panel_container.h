@@ -25,6 +25,7 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
+#include "fmt/format.h"
 #include <memory>
 #include <passive_action/agent/agent_action.h>
 #include <magic_enum.hpp>
@@ -46,6 +47,7 @@
 #include <settings/copilot_settings_manager.h>
 #include <utils/httplib.h>
 #include <utils/web_utils.h>
+#include <magic_enum.hpp>
 
 
 template <class Derived, class ContextT>
@@ -81,7 +83,11 @@ public:
 
     KICAD_COPILOT_EDITORS editor_type() const { return KICAD_COPILOT_EDITORS::unknown; }
 
-    std::string GetSessionId() const { return self().Prj().GetProjectPath().ToStdString(); }
+    std::string GetSessionId() const
+    {
+        return fmt::format( "{}:{}", self()->Prj().GetProjectPath().ToStdString(),
+                            magic_enum::enum_name( editor_type() ) );
+    }
 
     void CopilotPanelInit()
     {
