@@ -48,9 +48,7 @@ struct WEBVIEW_PATH
 
 struct WEBVIEW_SETTINGS
 {
-
-
-#if defined(_WIN32) && !defined(IS_RC_BUILD)
+#if defined( _WIN32 ) && !defined( IS_RC_BUILD )
     std::string url = "https://chat.eda.cn/";
 #else
     std::string url = "http://47.100.5.151:8080/";

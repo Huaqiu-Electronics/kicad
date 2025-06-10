@@ -25,10 +25,8 @@
 #include <memory>
 #include <string>
 #include <webview/webview_container.h>
-#include "nlohmann/json.hpp"
-#include "settings/copilot_settings.h"
-#include "settings/copilot_settings_manager.h"
-#include "web_utils.h"
+#include <nlohmann/json.hpp>
+#include <settings/copilot_settings_manager.h>
 #include "webview_constant.h"
 #include <utils/copilot_utils.h>
 #include <passive_action/web/web_host.h>
@@ -105,89 +103,70 @@ enum START_UP_SIZE
     HEIGHT = 1040
 };
 
-WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
-                                      HOST_COPILOT_HANDLES host_copilot_handles ) :
+WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
+                                      HOST_COPILOT_HANDLES             host_copilot_handles,
+                                      std::unique_ptr<httplib::Server> server ) :
         wxPanel( parent ), _browser( wxWebView::New() ),
         _host_copilot_handles( std::move( host_copilot_handles ) ),
-        _primary_url( add_parameter_to_url(
-                COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
-                _host_copilot_handles.host_type ) )
+        _primary_url( std::move( url ) ), _server( std::move( server ) )
 {
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
-
-    _server = std::make_unique<httplib::Server>();
-    _port = _server->bind_to_any_port( "0.0.0.0" );
-    _host_copilot_handles.host_type->port = _port;
-    _primary_url =
-            add_parameter_to_url( COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
-                                  _host_copilot_handles.host_type );
-    _server_thread = std::make_unique<std::thread>(
-            [&]()
-            {
-                // Handle POST requests
-                _server->Post( "/passive_action",
-                               [this]( const Request& req, Response& res )
-                               {
-                                   // Add CORS headers
-                                   res.set_header( "Access-Control-Allow-Origin", "*" );
-                                   res.set_header( "Access-Control-Allow-Methods",
-                                                   "POST, OPTIONS" );
-                                   res.set_header( "Access-Control-Allow-Headers", "*" );
-
-                                   const auto msg = req.body;
-                                   if( msg.empty() )
-                                   {
-                                       res.set_content( "Invalid message", "text/plain" );
-                                       return;
-                                   }
-
-                                   // Process the message
-                                   generic_process_web_msg_wrapper( msg );
-                                   res.set_content( "OK", "text/plain" );
-                               } );
-
-                // Handle OPTIONS preflight requests
-                _server->Options( "/passive_action",
-                                  []( const Request& req, Response& res )
-                                  {
-                                      res.set_header( "Access-Control-Allow-Origin", "*" );
-                                      res.set_header( "Access-Control-Allow-Methods",
-                                                      "POST, OPTIONS" );
-                                      res.set_header( "Access-Control-Allow-Headers", "*" );
-                                      res.set_content( "", "text/plain" );
-                                  } );
-
-
-                _server->listen_after_bind();
-            } );
-
-#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
-
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
-
-    // ADHOC : force client generate a new session
-    if( _host_copilot_handles.host_type )
-    {
-        // Generate a uid
-        _host_copilot_handles.host_type->session_id = generate_uuid();
-    }
-
     _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
-#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
 
-    // FIXME : wxWebView::AddScriptMessageHandler is not available on MacOS , it will lead to crash while working with the KiCad' co-thread
-
-    if( !_browser->AddScriptMessageHandler(
-                magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
+    if( _server )
     {
-        wxLogDebug( "Could not add script message handler " );
+        _server_thread = std::make_unique<std::thread>(
+                [&]()
+                {
+                    // Handle POST requests
+                    _server->Post( "/passive_action",
+                                   [this]( const Request& req, Response& res )
+                                   {
+                                       // Add CORS headers
+                                       res.set_header( "Access-Control-Allow-Origin", "*" );
+                                       res.set_header( "Access-Control-Allow-Methods",
+                                                       "POST, OPTIONS" );
+                                       res.set_header( "Access-Control-Allow-Headers", "*" );
+
+                                       const auto msg = req.body;
+                                       if( msg.empty() )
+                                       {
+                                           res.set_content( "Invalid message", "text/plain" );
+                                           return;
+                                       }
+
+                                       // Process the message
+                                       OnWebChannelMsgWrapper( msg );
+                                       res.set_content( "OK", "text/plain" );
+                                   } );
+
+                    // Handle OPTIONS preflight requests
+                    _server->Options( "/passive_action",
+                                      []( const Request& req, Response& res )
+                                      {
+                                          res.set_header( "Access-Control-Allow-Origin", "*" );
+                                          res.set_header( "Access-Control-Allow-Methods",
+                                                          "POST, OPTIONS" );
+                                          res.set_header( "Access-Control-Allow-Headers", "*" );
+                                          res.set_content( "", "text/plain" );
+                                      } );
+
+
+                    _server->listen_after_bind();
+                } );
     }
+    else
+    {
+        // FIXME : wxWebView::AddScriptMessageHandler is not available on MacOS , it will lead to crash while working with the KiCad' co-thread
 
-
-#endif // COPILOT_USE_SCRIPT_MSG_HANDLER
-
+        if( !_browser->AddScriptMessageHandler(
+                    magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
+        {
+            wxLogDebug( "Could not add script message handler " );
+        }
+    }
 
     SetSizer( top_sizer );
     //Set a more sensible size for web browsing
@@ -206,13 +185,10 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
     Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this,
           _browser->GetId() );
 
-#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
-
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this,
           _browser->GetId() );
-#endif
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this,
-          _browser->GetId() );
+          _browser->GetId() );          
 
 #ifdef DEBUG
 
@@ -225,15 +201,14 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow*            parent,
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
+    if( _server )
+        _server->stop();
 
-    _server->stop();
-    _server_thread->join();
-
-#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
+    if( _server_thread )
+        _server_thread->join();
 }
 
-void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
+void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
 {
     const auto js_call =
             fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
@@ -244,14 +219,19 @@ void WEBVIEW_CONTAINER::fire_host_active_cmd( const char* cmd )
             {
                 wxString out;
                 _browser->RunScriptAsync( js_call, &out );
-                wxLogDebug( "fire_host_active_cmd (wrapped): %s", out );
+                wxLogDebug( "ExecuteCommand (wrapped): %s", out );
             } );
 }
 
 
-void WEBVIEW_CONTAINER::on_host_selection_changed( bool has_selection )
+void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
 {
-    fire_host_active_cmd( json( SELECTION_CHANGE_CMD{ has_selection } ).dump().c_str() );
+    ExecuteCommand( json( SELECTION_CHANGE_CMD{ has_selection } ).dump().c_str() );
+}
+
+WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
+{
+    return _server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
 }
 
 
@@ -309,12 +289,9 @@ void WEBVIEW_CONTAINER::OnTitleChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 {
-    // TODO
     // ShowFullScreen( evt.GetInt() != 0 );
 }
 
-
-#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
 
 // NOTE : This is the entrypoint for HQ distribution v9.0.2 , which has been released on 2025-05
 // The msg is posted through _browser->AddScriptMessageHandler( "eda_host" )
@@ -325,16 +302,15 @@ void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 
     const auto wStr = evt.GetString().ToStdWstring();
     const auto str = ws2s( wStr );
-    generic_process_web_msg( str );
+    OnWebChannelMsg( str );
 
 #else
 
-    generic_process_web_msg( evt.GetString().ToStdString() );
+    OnWebChannelMsg( evt.GetString().ToStdString() );
 
 #endif // _WIN32
 }
 
-#endif
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
@@ -366,7 +342,7 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
                               + evt.GetString() + ")'" );
 }
 
-void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
+void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
 {
     try
     {
@@ -454,11 +430,11 @@ void WEBVIEW_CONTAINER::generic_process_web_msg( std::string const& msg )
     }
 }
 
-void WEBVIEW_CONTAINER::generic_process_web_msg_wrapper( std::string const& msg )
+void WEBVIEW_CONTAINER::OnWebChannelMsgWrapper( std::string const& msg )
 {
     CallAfter(
             [this, msg]()
             {
-                generic_process_web_msg( msg );
+                OnWebChannelMsg( msg );
             } );
 }

@@ -56,11 +56,7 @@ HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor )
     if( langCode.IsEmpty() )
         langCode = "zh"; // fallback again if split fails
 
-    return HOST_VERSION_INFO{
-        { "kicad_desktop", magic_enum::enum_name( editor ).data(), {}, langCode.ToStdString()
-
-
-        },
-        get_kicad_version_info()
-    };
+    return HOST_VERSION_INFO{ { "kicad_desktop", magic_enum::enum_name( editor ).data(),
+                                langCode.ToStdString() },
+                              get_kicad_version_info() };
 }

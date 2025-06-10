@@ -23,7 +23,7 @@
  */
 
 #include "http_client.h"
-#include "assistant/settings/copilot_settings_manager.h"
+#include <settings/copilot_settings_manager.h>
 #include <utils/httplib.h>
 #include <wx/log.h>
 #include "http_utils.h"

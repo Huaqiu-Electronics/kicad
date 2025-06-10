@@ -71,7 +71,7 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 #endif // DEBUG
 
 
-            m_copilotPanel->fire_host_active_cmd(
+            m_copilotPanel->ExecuteCommand(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },

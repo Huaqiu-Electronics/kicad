@@ -29,7 +29,6 @@
 #include <optional>
 #include <string>
 #include <host_type.h>
-#include <webview/webview_channel_ctrl.h>
 
 inline auto add_parameter_to_url( std::string const&                        url,
                                   std::map<std::string, std::string> const& parameters )
@@ -55,17 +54,16 @@ inline auto add_parameter_to_url( std::string const& url, std::optional<HOST_TYP
     if( !host )
         return url;
 
-    return add_parameter_to_url( url, { { "host_name", host->host_name },
-                                        { "editor_name", host->editor_name },
-                                        { "session_id", host->session_id },
-                                        { "locale", host->locale }
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
-                                        ,
-                                        { "port", std::to_string( host->port ) }
-#endif
+    std::map<std::string, std::string> parameters{ { "host_name", host->host_name },
+                                                   { "editor_name", host->editor_name },
+                                                   { "locale", host->locale } };
 
-                                      } );
+    if( host->port )
+    {
+        parameters.emplace( "port", std::to_string( host->port ) );
+    }
+
+    return add_parameter_to_url( url, parameters );
 }
-
 
 #endif

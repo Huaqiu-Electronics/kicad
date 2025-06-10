@@ -86,7 +86,7 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto netlist = nlohmann::json( self()->GetSelection() ).dump();
-            m_copilotPanel->fire_host_active_cmd(
+            m_copilotPanel->ExecuteCommand(
                     nlohmann::json(
                             GENERAL_CHAT_CMD{
                                     { { aAction.context.get<std::string>() } },

@@ -35,7 +35,7 @@
 #include <fmt/format.h>
 #include <iostream>
 #include <macros.h>
-#include "copilot_config_version.h"
+#include <settings/copilot_config_version.h>
 
 inline auto save_cnf( std::string const& path, const auto& cnf )
 {

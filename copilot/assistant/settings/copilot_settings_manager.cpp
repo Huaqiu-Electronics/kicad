@@ -22,8 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "copilot_settings_manager.h"
-#include "copilot_settings.h"
+#include <settings/copilot_settings_manager.h>
 #include "config_io_helper.h"
 
 
