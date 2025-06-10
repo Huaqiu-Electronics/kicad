@@ -25,10 +25,12 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
+#include <memory>
 #include <passive_action/agent/agent_action.h>
 #include <magic_enum.hpp>
 #include <host_version_info.h>
 #include <webview/webview_container.h>
+#include <webview/webview_channel_ctrl.h>
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
 #include <wx/aui/auibar.h>
@@ -41,6 +43,9 @@
 #include <copilot_panel_settings.h>
 #include <copilot_clipboard.h>
 #include <tool/actions.h>
+#include <settings/copilot_settings_manager.h>
+#include <utils/httplib.h>
+#include <utils/web_utils.h>
 
 
 template <class Derived, class ContextT>
@@ -79,10 +84,32 @@ public:
     void CopilotPanelInit()
     {
         m_containerCfg = self()->config();
-        m_copilotContextCache.host_version_info = get_copilot_host_version( editor_type() );
+        auto host_version_info = get_copilot_host_version( editor_type() );
+
+#ifdef COPILOT_USE_HTTP_MSG_HANDLER
+
+        auto http_server = std::make_unique<httplib::Server>();
+        host_version_info.port = http_server->bind_to_any_port( "0.0.0.0" );
+
         m_copilotPanel = new WEBVIEW_CONTAINER(
-                self(), { m_copilotContextCache.host_version_info, m_copilotGlobalContextHdl,
-                          m_copilotAgentActionHdl, m_copilotSelectionHdl } );
+                self(),
+                add_parameter_to_url(
+                        COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                        host_version_info ),
+                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl },
+                http_server );
+
+#else
+        m_copilotPanel = new WEBVIEW_CONTAINER(
+                self(),
+                add_parameter_to_url(
+                        COPILOT_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
+                        host_version_info ),
+                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } );
+
+#endif
+
+        m_copilotContextCache.host_version_info = std::move( host_version_info );
     }
 
     void InitCopilotAui()
@@ -219,7 +246,7 @@ public:
                 [=, this]()
                 {
                     if( m_copilotPanel )
-                        m_copilotPanel->on_host_selection_changed( aHasSelection );
+                        m_copilotPanel->OnHostSelectionChanged( aHasSelection );
                 } );
     }
 

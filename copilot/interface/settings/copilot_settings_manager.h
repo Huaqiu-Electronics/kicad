@@ -26,13 +26,15 @@
 #define COPILOT_SETTINGS_MANAGER_H
 
 #include <string>
+#include <copilot_global.h>
+
 #include "copilot_settings.h"
 
 
 struct IMMUTABLE_SETTINGS;
 struct WEBVIEW_PATH;
 struct DIALOG_GEOMETRY;
-class COPILOT_SETTINGS_MANAGER
+class COPILOT_API COPILOT_SETTINGS_MANAGER
 {
 public:
     ~COPILOT_SETTINGS_MANAGER();

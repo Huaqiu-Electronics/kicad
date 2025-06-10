@@ -67,7 +67,7 @@ void SCH_COPILOT_PANEL_CONTAINER::FireCopilotCommand( std::string const& aCmdTyp
     {
         cmd[kType] = aCmdType;
         ShowCopilot();
-        m_copilotPanel->fire_host_active_cmd( cmd.dump().c_str() );
+        m_copilotPanel->ExecuteCommand( cmd.dump().c_str() );
     }
 }
 

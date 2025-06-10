@@ -32,15 +32,10 @@
 #include <wx/webview.h>
 #include <set>
 #include <copilot_global.h>
-#include "webview_channel_ctrl.h"
-
-
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
 
 #include <thread>
 #include <memory>
 
-#endif // !COPILOT_USE_SCRIPT_MSG_HANDLER
 
 namespace httplib
 {
@@ -49,52 +44,59 @@ class Server;
 
 class DIALOG_IMAGE_VIEWER;
 
+enum class WEBVIEW_MSG_CHANNELS
+{
+    POST_MSG,
+    HTTP,
+};
+
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
-    WEBVIEW_CONTAINER( wxWindow* parent, HOST_COPILOT_HANDLES host_copilot_handles );
+    WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
+                       std::unique_ptr<httplib::Server> server = nullptr );
     ~WEBVIEW_CONTAINER();
 
-    void fire_host_active_cmd( const char* cmd );
+    void ExecuteCommand( const char* cmd );
 
-    void on_host_selection_changed( bool has_selection );
+    void OnHostSelectionChanged( bool has_selection );
 
+    WEBVIEW_MSG_CHANNELS MsgChannelType() const;
+
+protected:
     void OnNavigationRequest( wxWebViewEvent& evt );
-    void OnNavigationComplete( wxWebViewEvent& evt );
-    void OnDocumentLoaded( wxWebViewEvent& evt );
-    void OnNewWindow( wxWebViewEvent& evt );
-    void OnTitleChanged( wxWebViewEvent& evt );
-    void OnFullScreenChanged( wxWebViewEvent& evt );
 
-#ifdef COPILOT_USE_SCRIPT_MSG_HANDLER
+    void OnNavigationComplete( wxWebViewEvent& evt );
+
+    void OnDocumentLoaded( wxWebViewEvent& evt );
+
+    void OnNewWindow( wxWebViewEvent& evt );
+
+    void OnTitleChanged( wxWebViewEvent& evt );
+
+    void OnFullScreenChanged( wxWebViewEvent& evt );
 
     void OnScriptMessage( wxWebViewEvent& evt );
 
-#endif
-
     void OnScriptResult( wxWebViewEvent& evt );
+
     void OnError( wxWebViewEvent& evt );
 
 private:
-    void generic_process_web_msg( std::string const& msg );
-    void generic_process_web_msg_wrapper( std::string const& msg );
+    void OnWebChannelMsg( std::string const& msg );
+
+    void OnWebChannelMsgWrapper( std::string const& msg );
 
 private:
     std::set<std::string> _consumed_global_ctx_keys{};
+    DIALOG_IMAGE_VIEWER*  _image_viewer{};
 
 
-    wxWebView*           _browser;
-    HOST_COPILOT_HANDLES _host_copilot_handles;
-    DIALOG_IMAGE_VIEWER* _image_viewer{};
-    std::string          _primary_url;
-
-#ifndef COPILOT_USE_SCRIPT_MSG_HANDLER
-
-    int                              _port;
+    wxWebView*                       _browser;
+    HOST_COPILOT_HANDLES             _host_copilot_handles;
+    std::string                      _primary_url;
     std::unique_ptr<httplib::Server> _server;
     std::unique_ptr<std::thread>     _server_thread;
-
-#endif // COPILOT_USE_SCRIPT_MSG_HANDLER
 };
 
 #endif
