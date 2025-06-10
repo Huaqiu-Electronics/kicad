@@ -22,44 +22,44 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <settings/copilot_settings_manager.h>
+#include <settings/webview_settings_manager.h>
 #include "config_io_helper.h"
 
 
 constexpr auto kMutableSettingsFileName = "mutable_settings.json";
 constexpr auto kImmutableSettingsFileName = "immutable_settings.json";
 
-COPILOT_SETTINGS_MANAGER::COPILOT_SETTINGS_MANAGER()
+WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER()
 {
     load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), _immutable_settings );
     load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
 
-    auto url = _immutable_settings.webview_settings.url;
+    auto url = _immutable_settings.copilot_webview_settings.url;
 
     if( url.back() == '/' )
         url = url.substr( 0, url.length() - 1 );
 
 
-    _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings.webview_settings.url,
-                                      _immutable_settings.webview_settings.path.chat );
+    _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings.copilot_webview_settings.url,
+                                      _immutable_settings.copilot_webview_settings.path.chat );
 
     _webview_image_viewer_path =
-            fmt::format( "{}/#{}", _immutable_settings.webview_settings.url,
-                         _immutable_settings.webview_settings.path.image_viewer );
+            fmt::format( "{}/#{}", _immutable_settings.copilot_webview_settings.url,
+                         _immutable_settings.copilot_webview_settings.path.image_viewer );
 }
 
-COPILOT_SETTINGS_MANAGER::~COPILOT_SETTINGS_MANAGER()
+WEBVIEW_SETTINGS_MANAGER::~WEBVIEW_SETTINGS_MANAGER()
 {
     save_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
 }
 
-COPILOT_SETTINGS_MANAGER& COPILOT_SETTINGS_MANAGER::get_instance()
+WEBVIEW_SETTINGS_MANAGER& WEBVIEW_SETTINGS_MANAGER::get_instance()
 {
-    static COPILOT_SETTINGS_MANAGER instance;
+    static WEBVIEW_SETTINGS_MANAGER instance;
     return instance;
 }
 
-std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_dir()
+std::string WEBVIEW_SETTINGS_MANAGER::get_copilot_setting_dir()
 {
     static const auto kCopilotSettingDir = ([]{
         wxFileName path;
@@ -68,7 +68,7 @@ std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_dir()
             {
                 if( !wxMkdir( path.GetPath() ) )
                 {
-                    wxLogTrace( "COPILOT_SETTINGS_MANAGER",
+                    wxLogTrace( "WEBVIEW_SETTINGS_MANAGER",
                                 wxT( "get_copilot_setting_dir(): Path %s missing and could not be created!" ),
                                 path.GetPath() );
                 }
@@ -89,48 +89,48 @@ std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_dir()
     return kCopilotSettingDir;
 }
 
-std::string COPILOT_SETTINGS_MANAGER::get_copilot_setting_path( std::string const& file_name )
+std::string WEBVIEW_SETTINGS_MANAGER::get_copilot_setting_path( std::string const& file_name )
 {
     return get_copilot_setting_dir() + "/" + file_name;
 }
 
 
-std::string const& COPILOT_SETTINGS_MANAGER::get_data_buried_point_host() const
+std::string const& WEBVIEW_SETTINGS_MANAGER::get_data_buried_point_host() const
 {
     return _immutable_settings.data_buried_point_settings.host;
 }
 
-std::string const& COPILOT_SETTINGS_MANAGER::get_data_buried_point_endpoint() const
+std::string const& WEBVIEW_SETTINGS_MANAGER::get_data_buried_point_endpoint() const
 {
     return _immutable_settings.data_buried_point_settings.endpoint;
 }
 
-std::string const& COPILOT_SETTINGS_MANAGER::get_webview_url() const
+std::string const& WEBVIEW_SETTINGS_MANAGER::get_copilot_webview_url() const
 {
-    return _immutable_settings.webview_settings.url;
+    return _immutable_settings.copilot_webview_settings.url;
 }
 
-WEBVIEW_PATH const& COPILOT_SETTINGS_MANAGER::get_webview_path() const
+COPILOT_WEBVIEW_PATH const& WEBVIEW_SETTINGS_MANAGER::get_copilot_webview_path() const
 {
-    return _immutable_settings.webview_settings.path;
+    return _immutable_settings.copilot_webview_settings.path;
 }
 
-std::string const& COPILOT_SETTINGS_MANAGER::get_webview_chat_path() const
+std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_chat_path() const
 {
     return _webview_chat_path;
 }
 
-std::string const& COPILOT_SETTINGS_MANAGER::get_webview_image_viewer_path() const
+std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_image_viewer_path() const
 {
     return _webview_image_viewer_path;
 }
 
-DIALOG_GEOMETRY const& COPILOT_SETTINGS_MANAGER::get_image_viewer_geometry() const
+DIALOG_GEOMETRY const& WEBVIEW_SETTINGS_MANAGER::get_image_viewer_geometry() const
 {
     return _mutable_settings.image_viewer_geometry;
 }
 
-void COPILOT_SETTINGS_MANAGER::set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry )
+void WEBVIEW_SETTINGS_MANAGER::set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry )
 {
     _mutable_settings.image_viewer_geometry = geometry;
 }

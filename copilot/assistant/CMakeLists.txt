@@ -1,8 +1,9 @@
 add_library( assistant SHARED 
     common/assistant_version.cpp
     common/dialog_image_viewer.cpp
-    settings/copilot_settings_manager.cpp  
+    settings/webview_settings_manager.cpp  
     webview/webview_container.cpp
+    webview/copilot_webview_container.cpp
     http/http_client.cpp
 )
 

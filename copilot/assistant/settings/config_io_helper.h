@@ -61,8 +61,8 @@ auto load_cnf( std::string const& path, T& aCnf )
 {
     if( !wxFileExists( path ) )
     {
-        wxLogTrace( "COPILOT_SETTINGS_MANAGER",
-                    wxT( "COPILOT_SETTINGS_MANAGER(): Setting file %s does not exist, creating a "
+        wxLogTrace( "WEBVIEW_SETTINGS_MANAGER",
+                    wxT( "WEBVIEW_SETTINGS_MANAGER(): Setting file %s does not exist, creating a "
                          "new one." ),
                     path.c_str() );
 
@@ -86,8 +86,8 @@ auto load_cnf( std::string const& path, T& aCnf )
         }
         catch( const std::exception& e )
         {
-            wxLogTrace( "COPILOT_SETTINGS_MANAGER",
-                        wxT( "COPILOT_SETTINGS_MANAGER(): Failed to parse setting file %s, using "
+            wxLogTrace( "WEBVIEW_SETTINGS_MANAGER",
+                        wxT( "WEBVIEW_SETTINGS_MANAGER(): Failed to parse setting file %s, using "
                              "default settings." ) );
             save_cnf( path, aCnf );
         }
