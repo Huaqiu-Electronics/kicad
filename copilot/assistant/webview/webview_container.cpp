@@ -102,6 +102,12 @@ enum START_UP_SIZE
     HEIGHT = 1040
 };
 
+inline auto extract_host_from_url( std::string const& url )
+{
+    return url.substr( url.find( "://" ) + 3,
+                       url.find( "/", url.find( "://" ) + 3 ) - url.find( "://" ) - 3 );
+}
+
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                       HOST_COPILOT_HANDLES             host_copilot_handles,
                                       std::unique_ptr<httplib::Server> msgServer ) :
@@ -241,7 +247,7 @@ void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {
     const auto url = evt.GetURL();
 
-    if( !url.Contains( _primary_url ) )
+    if( !url.Contains( extract_host_from_url( _primary_url ) ) )
     {
         // Launch the url in the system default browser
         wxLaunchDefaultBrowser( url );

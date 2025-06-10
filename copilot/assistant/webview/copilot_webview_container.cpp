@@ -23,6 +23,7 @@
  */
 
 #include "webview/copilot_webview_container.h"
+#include <settings/webview_settings_manager.h>
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES host_copilot_handles,
@@ -53,4 +54,17 @@ void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 DATA_BURIED_POINT COPILOT_WEBVIEW_CONTAINER::GetDataBuriedPoint() const
 {
     return { "kicad_client_copilot_launch", "user_launch_copilot" };
+}
+
+void COPILOT_WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
+{
+    const auto url = evt.GetURL();
+
+    if( !url.Contains( WEBVIEW_SETTINGS_MANAGER::get_instance().get_copilot_webview_url() ) )
+    {
+        // Launch the url in the system default browser
+        wxLaunchDefaultBrowser( url );
+        evt.Veto();
+        return;
+    }
 }
