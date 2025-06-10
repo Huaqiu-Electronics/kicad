@@ -111,6 +111,7 @@
 #include <project/project_local_settings.h>
 
 #include <sch_copilot_pch.h>
+#include <online_symbol_chooser_pch.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
@@ -154,7 +155,8 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_netNavigator( nullptr ),
     m_highlightedConnChanged( false ),
     m_designBlocksPane( nullptr ),
-    m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)
+    m_symbolCmdContext(new SYMBOL_CMD_CONTEXT),
+    m_componentChooser( new WEBVIEW_CONTAINER( this , (ONLINE_SYMBOL_CHOOSER_SETTINGS()).url,{  {} , m_copilotAgentActionHdl , {} }  ))
 {
     m_maximizeByDefault = true;
     m_schematic = new SCHEMATIC( nullptr );
@@ -259,6 +261,8 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_auimgr.AddPane( m_designBlocksPane, defaultDesignBlocksPaneInfo( this ) );
 
     InitCopilotAui();
+
+    
 
     m_auimgr.AddPane( createHighlightedNetNavigator(), defaultNetNavigatorPaneInfo() );
 

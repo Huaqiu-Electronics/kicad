@@ -1158,6 +1158,7 @@ private:
     std::unique_ptr<API_HANDLER_SCH> m_apiHandler;
 #endif
 
+// Copilot APIS
 public:
     wxString GetBomList();
 
@@ -1186,6 +1187,23 @@ public:
     void HighlightSymbol(std::string const & aDesignator);
 
     copilot::NETLIST GetSelection()const ;
+
+protected:
+
+    void InitSymbolChooserAui();
+
+    void RecreateSymbolChooserToolBar();
+
+    void SymbolChooserPanelShowChangedLanguage();
+
+    void ToggleSymbolChooserPanel();
+
+    void ShowSymbolChooserPanel( bool aShow );
+
+    void LoadSymbolChooserPanelCnf();
+
+    void SaveSymbolChooserPanelCnf();
+
 
 private:
     friend SCH_COPILOT_PANEL_CONTAINER;
