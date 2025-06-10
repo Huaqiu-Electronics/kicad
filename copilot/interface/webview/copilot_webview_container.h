@@ -27,7 +27,7 @@
 
 #include "webview_container.h"
 
-class COPILOT_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
+class COPILOT_API COPILOT_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
     COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
@@ -40,6 +40,7 @@ public:
 protected:
     void OnDocumentLoaded( wxWebViewEvent& evt ) override;
 
+    DATA_BURIED_POINT GetDataBuriedPoint() const override;
 
 private:
 };

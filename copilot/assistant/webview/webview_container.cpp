@@ -72,15 +72,15 @@ inline std::string ws2s( const std::wstring& wstr )
 using json = nlohmann::json;
 using namespace httplib;
 
-inline auto send_data_buried_point()
+inline auto send_data_buried_point( DATA_BURIED_POINT const& aDataBuriedPoint )
 {
     std::thread t(
-            [&]()
+            [=]()
             {
                 try
                 {
                     HTTP_CLIENT http_client;
-                    http_client.send_data_buried_point( DATA_BURIED_POINT{} );
+                    http_client.send_data_buried_point( aDataBuriedPoint );
                 }
                 catch( std::exception const& e )
                 {
@@ -195,8 +195,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
     _browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
-
-    send_data_buried_point();
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -229,6 +227,11 @@ void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
     ExecuteCommand( json( SELECTION_CHANGE_CMD{ has_selection } ).dump().c_str() );
 }
 
+DATA_BURIED_POINT WEBVIEW_CONTAINER::GetDataBuriedPoint() const
+{
+    return { "kicad_webview_container_launch", "user_launch_webview_in_kicad" };
+}
+
 WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
 {
     return _web_msg_server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
@@ -255,6 +258,7 @@ void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
+    send_data_buried_point( GetDataBuriedPoint() );
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
