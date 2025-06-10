@@ -23,11 +23,14 @@
  */
 
 #include "http_client.h"
+
 #include <settings/webview_settings_manager.h>
 #include <utils/httplib.h>
 #include <wx/log.h>
+#include <data_buried_point.h>
 #include "http_utils.h"
-#include "proto/data_buried_point.h"
+
+
 HTTP_CLIENT::HTTP_CLIENT() :
         _client( new httplib::Client(
                 WEBVIEW_SETTINGS_MANAGER::get_instance().get_data_buried_point_host() ) )
