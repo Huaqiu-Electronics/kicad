@@ -42,6 +42,7 @@ protected:
 
     DATA_BURIED_POINT GetDataBuriedPoint() const override;
 
+
 private:
 };
 

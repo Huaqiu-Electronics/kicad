@@ -30,7 +30,7 @@
 #include <passive_action/agent/agent_action.h>
 #include <magic_enum.hpp>
 #include <host_version_info.h>
-#include <webview/webview_container.h>
+#include <webview/copilot_webview_container.h>
 #include <webview/webview_channel_ctrl.h>
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
@@ -97,7 +97,7 @@ public:
         auto http_server = std::make_unique<httplib::Server>();
         host_version_info.port = http_server->bind_to_any_port( "0.0.0.0" );
 
-        m_copilotPanel = new WEBVIEW_CONTAINER(
+        m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
                 self(),
                 add_parameter_to_url(
                         WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
@@ -106,7 +106,7 @@ public:
                 http_server );
 
 #else
-        m_copilotPanel = new WEBVIEW_CONTAINER(
+        m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
                 self(),
                 add_parameter_to_url(
                         WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
@@ -268,7 +268,7 @@ public:
 
 protected:
     ContextT                m_copilotContextCache;
-    WEBVIEW_CONTAINER*      m_copilotPanel{};
+    COPILOT_WEBVIEW_CONTAINER* m_copilotPanel{};
     COPILOT_PANEL_SETTINGS* m_containerCfg{};
     wxAuiManager&           m_containerAuiMgr;
 

@@ -28,5 +28,6 @@
 #include <online_symbol_chooser/online_symbol_chooser_settings.h>
 #include <online_symbol_chooser/online_symbol_chooser_setup.h>
 #include <online_symbol_chooser/init_online_symbol_chooser_settings.h>
+#include <online_symbol_chooser/symbol_chooser_webview_container.h>
 
 #endif

@@ -778,7 +778,7 @@ public:
 
     SCH_DESIGN_BLOCK_PANE* GetDesignBlockPane() const { return m_designBlocksPane; }
 
-    WEBVIEW_CONTAINER* GetCopilotPane() const { return m_copilotPanel; }
+    COPILOT_WEBVIEW_CONTAINER* GetCopilotPane() const { return m_copilotPanel; }
 
 
     void SetNetListerCommand( const wxString& aCommand ) { m_netListerCommand = aCommand; }
@@ -1234,7 +1234,7 @@ protected:
 private:
     friend SCH_COPILOT_PANEL_CONTAINER;
     std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
-    WEBVIEW_CONTAINER*                  m_componentChooser;
+    class SYMBOL_CHOOSER_WEBVIEW_CONTAINER* m_componentChooser;
 };
 
 
