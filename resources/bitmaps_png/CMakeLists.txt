@@ -190,6 +190,7 @@ set( BMAPS_MID
     add_radial_dimension
     add_rectangle
     add_symbol_to_schematic
+    hq_add_symbol_to_schematic
     add_textbox
     add_tracks
     add_via
