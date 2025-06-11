@@ -35,9 +35,10 @@ struct ONLINE_SYMBOL_CHOOSER_SETTINGS
 #else
     std::string url = "http://www.fdatasheets.com/symbolSelector/";
 #endif
+
     enum
     {
-        DEFAULT_SIZE = -1,
+        DEFAULT_SIZE = -1
     };
 
     bool panel_show{ true };

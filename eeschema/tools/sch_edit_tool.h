@@ -94,6 +94,9 @@ public:
     /// set to true unless all symbols already have the attribute set to true.
     int SetAttribute( const TOOL_EVENT& aEvent );
 
+
+    int ToggleOnlineSymbolChooser( const TOOL_EVENT& aEvent );
+
 private:
     void editFieldText( SCH_FIELD* aField );
 

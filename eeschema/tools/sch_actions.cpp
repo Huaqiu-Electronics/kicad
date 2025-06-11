@@ -1581,3 +1581,11 @@ TOOL_ACTION SCH_ACTIONS::showNetlist( TOOL_ACTION_ARGS()
         .Scope( AS_GLOBAL )
         .FriendlyName( _( "Show SPICE Netlist" ) )
         .Icon( BITMAPS::netlist ) );
+
+
+TOOL_ACTION SCH_ACTIONS::toggleOnlineSymbolChooser(
+        TOOL_ACTION_ARGS()
+                .Name( "eeschema.AUI.toggleOnlineSymbolChooser" )
+                .Scope( AS_GLOBAL )
+                .FriendlyName( _( "Toggle Online Symbol Chooser" ) )
+                .Icon( BITMAPS::copilot ) );

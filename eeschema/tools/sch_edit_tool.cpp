@@ -3288,5 +3288,16 @@ void SCH_EDIT_TOOL::setTransitions()
     Go( &SCH_EDIT_TOOL::EditPageNumber,     SCH_ACTIONS::editPageNumber.MakeEvent() );
 
     Go( &SCH_EDIT_TOOL::DdAppendFile,       SCH_ACTIONS::ddAppendFile.MakeEvent() );
+
+
+    Go( &SCH_EDIT_TOOL::ToggleOnlineSymbolChooser,       SCH_ACTIONS::toggleOnlineSymbolChooser.MakeEvent() );
+
     // clang-format on
+}
+
+
+int SCH_EDIT_TOOL::ToggleOnlineSymbolChooser( const TOOL_EVENT& aEvent )
+{
+    m_frame->ToggleSymbolChooserPanel();
+    return 0;
 }

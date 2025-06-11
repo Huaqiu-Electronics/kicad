@@ -35,16 +35,16 @@
 #include <wx/chartype.h>
 
 
-inline auto OnlineSymbolChooserName()
+inline auto onlineSymbolChooserName()
 {
     return ( "OnlineSymbolChooser" );
 }
 
 
-inline auto DefaultOnlineSymbolChooserPanelInfo( wxWindow* aWindow )
+inline auto defaultOnlineSymbolChooserPanelInfo( wxWindow* aWindow )
 {
     return wxAuiPaneInfo()
-            .Name( OnlineSymbolChooserName() )
+            .Name( onlineSymbolChooserName() )
             .Caption( _( "Online Symbol Chooser" ) )
             .PaneBorder( false )
             .Right()
