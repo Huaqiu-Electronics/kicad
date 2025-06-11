@@ -293,6 +293,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_auimgr.AddPane( m_remoteSymbolPane, defaultRemoteSymbolPaneInfo( this ) );
 
 
+    InitSymbolChooserAui();
     InitCopilotAui();    
 
     if( m_copilotPanel )
@@ -396,6 +397,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
 
     LoadCopilotCnf();                     
+    LoadSymbolChooserPanelCnf();
 
     if( aui_cfg.hierarchy_panel_docked_width > 0 )
     {
@@ -2065,6 +2067,7 @@ void SCH_EDIT_FRAME::ShowChangedLanguage()
     design_blocks_pane_info.Show( panel_shown );
 
     CopilotPanelShowChangedLanguage();
+    SymbolChooserPanelShowChangedLanguage();
 
     m_auimgr.GetPane( m_hierarchy ).Caption( _( "Schematic Hierarchy" ) );
     m_auimgr.GetPane( m_selectionFilterPanel ).Caption( _( "Selection Filter" ) );
