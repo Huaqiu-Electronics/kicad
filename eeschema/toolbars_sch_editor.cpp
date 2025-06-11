@@ -124,6 +124,7 @@ void SCH_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
 
     RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
+    RecreateSymbolChooserToolBar();
     // Add scripting console and API plugins
     bool scriptingAvailable = SCRIPTING::IsWxAvailable();
 

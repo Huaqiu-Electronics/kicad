@@ -108,6 +108,20 @@ void SCH_EDIT_FRAME::ShowSymbolChooserPanel( bool show )
     }
 }
 
+void SCH_EDIT_FRAME::SaveSymbolChooserPanelCnf()
+{
+    if( m_webSymbolChooser )
+    {
+        auto& webPane = m_containerAuiMgr.GetPane( CopilotPanelName() );
+        webPane.Show( eeconfig()->m_OnlineSymbolChooserSettings.panel_show );
+        if( eeconfig()->m_OnlineSymbolChooserSettings.panel_show )
+        {
+            SetAuiPaneSize( m_containerAuiMgr, webPane,
+                            eeconfig()->m_OnlineSymbolChooserSettings.panel_docked_width, -1 );
+        }
+    }
+}
+
 void SCH_EDIT_FRAME::LoadSymbolChooserPanelCnf()
 {
     if( m_webSymbolChooser )
@@ -122,20 +136,6 @@ void SCH_EDIT_FRAME::LoadSymbolChooserPanelCnf()
         {
             eeconfig()->m_OnlineSymbolChooserSettings.panel_float_height = webPane.floating_size.y;
             eeconfig()->m_OnlineSymbolChooserSettings.panel_float_width = webPane.floating_size.x;
-        }
-    }
-}
-
-void SCH_EDIT_FRAME::SaveSymbolChooserPanelCnf()
-{
-    if( m_webSymbolChooser )
-    {
-        auto& webPane = m_containerAuiMgr.GetPane( CopilotPanelName() );
-        webPane.Show( eeconfig()->m_OnlineSymbolChooserSettings.panel_show );
-        if( eeconfig()->m_OnlineSymbolChooserSettings.panel_show )
-        {
-            SetAuiPaneSize( m_containerAuiMgr, webPane,
-                            eeconfig()->m_OnlineSymbolChooserSettings.panel_docked_width, -1 );
         }
     }
 }

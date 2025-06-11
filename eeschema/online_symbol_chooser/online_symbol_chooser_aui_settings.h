@@ -48,8 +48,8 @@ inline auto defaultOnlineSymbolChooserPanelInfo( wxWindow* aWindow )
             .Caption( _( "Online Symbol Chooser" ) )
             .PaneBorder( false )
             .Right()
-            .Layer( 3 )
-            .Position( 2 )
+            .Layer( 4 )
+            .Position( 0 )
             .RightDockable()
             .LeftDockable()
             .TopDockable( false )
@@ -59,7 +59,7 @@ inline auto defaultOnlineSymbolChooserPanelInfo( wxWindow* aWindow )
             .BestSize( aWindow->FromDIP( wxSize( 300, 200 ) ) )
             .FloatingSize( aWindow->FromDIP( wxSize( 800, 600 ) ) )
             .FloatingPosition( aWindow->FromDIP( wxPoint( 50, 200 ) ) )
-            .Show( false );
+            .Show( true );
 }
 
 #endif

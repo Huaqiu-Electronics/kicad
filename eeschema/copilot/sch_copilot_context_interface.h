@@ -49,6 +49,16 @@
 #include <vector>
 #include <wx/string.h>
 
+
+template <>
+void SCH_COPILOT_PANEL_CONTAINER::InitCopilotAui()
+{
+    if( m_copilotPanel )
+        m_containerAuiMgr.AddPane( m_copilotPanel,
+                                   defaultCopilotPaneInfo( self() ).Position( 0 ).Layer( 5 ) );
+}
+
+
 template <>
 KICAD_COPILOT_EDITORS SCH_COPILOT_PANEL_CONTAINER::editor_type() const
 {
