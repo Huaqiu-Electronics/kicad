@@ -1215,6 +1215,8 @@ public:
     copilot::NETLIST GetSelection()const ;
 
 public:
+    void SymbolChooserInit();
+
     void InitSymbolChooserAui();
 
     void RecreateSymbolChooserToolBar();

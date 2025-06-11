@@ -209,8 +209,9 @@ std::optional<TOOLBAR_CONFIGURATION> SCH_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
 
-    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
     RecreateSymbolChooserToolBar();
+    m_mainToolBar->Add( SCH_ACTIONS::toggleCopilotPanel );
+
     // Add scripting console and API plugins
     bool scriptingAvailable = SCRIPTING::IsWxAvailable();
 

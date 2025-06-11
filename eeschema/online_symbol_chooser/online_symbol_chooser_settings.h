@@ -28,14 +28,17 @@
 #include <nlohmann/json.hpp>
 
 
-struct ONLINE_SYMBOL_CHOOSER_SETTINGS
-{
 #if defined( _WIN32 ) && !defined( IS_RC_BUILD )
-    std::string url = "https://www.eda.cn/symbolSelector/";
+constexpr auto kSymbolChooserUrl = "https://www.eda.cn/symbolSelector/";
+#elif defined( NDEBUG )
+constexpr auto kSymbolChooserUrl = "http://192.168.96.1:8000/symbolSelector/;
 #else
-    std::string url = "http://www.fdatasheets.com/symbolSelector/";
+constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/symbolSelector/";
 #endif
 
+
+struct ONLINE_SYMBOL_CHOOSER_SETTINGS
+{
     enum
     {
         DEFAULT_SIZE = -1
@@ -46,6 +49,8 @@ struct ONLINE_SYMBOL_CHOOSER_SETTINGS
     int  panel_docked_height{ DEFAULT_SIZE };
     int  panel_float_width{ DEFAULT_SIZE };
     int  panel_float_height{ DEFAULT_SIZE };
+
+    std::string url;
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( ONLINE_SYMBOL_CHOOSER_SETTINGS, url, panel_show,
                                     panel_docked_width, panel_docked_height, panel_float_width,

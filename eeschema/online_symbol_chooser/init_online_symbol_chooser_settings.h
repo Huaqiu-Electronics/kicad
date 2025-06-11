@@ -44,6 +44,10 @@ void EESCHEMA_SETTINGS::InitOnlineSymbolChooserSettings()
     m_params.emplace_back( new PARAM<int>( "aui.online_symbol_chooser_float_height",
                                            &m_OnlineSymbolChooserSettings.panel_float_height,
                                            -1 ) );
+
+    m_params.emplace_back( new PARAM<int>( "aui.online_symbol_chooser_float_height",
+                                           &m_OnlineSymbolChooserSettings.panel_float_height,
+                                           -1 ) );
 }
 
 

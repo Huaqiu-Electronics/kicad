@@ -26,7 +26,6 @@
 #define SCH_COPILOT_CONTEXT_INTERFACE_H
 
 #include "sch_symbol.h"
-
 #include <connection_graph.h>
 #include <cstddef>
 #include <memory>
