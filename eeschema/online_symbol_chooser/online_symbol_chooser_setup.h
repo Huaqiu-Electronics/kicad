@@ -25,15 +25,27 @@
 #ifndef ONLINE_SYMBOL_CHOOSER_SETUP_H
 #define ONLINE_SYMBOL_CHOOSER_SETUP_H
 
+
 #include <sch_edit_frame.h>
+#include <tool/action_toolbar.h>
+#include <sch_actions.h>
+#include "symbol_chooser_webview_container.h"
+#include "online_symbol_chooser_aui_settings.h"
 
 
 void SCH_EDIT_FRAME::InitSymbolChooserAui()
 {
+    if( m_webSymbolChooser )
+    {
+        m_containerAuiMgr.AddPane( m_webSymbolChooser,
+                                   defaultOnlineSymbolChooserPanelInfo( this ) );
+    }
 }
 
 void SCH_EDIT_FRAME::RecreateSymbolChooserToolBar()
 {
+    m_mainToolBar->AddSeparator();
+
 }
 
 void SCH_EDIT_FRAME::SymbolChooserPanelShowChangedLanguage()

@@ -178,7 +178,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_highlightedConnChanged( false ),
     m_designBlocksPane( nullptr ),
     m_symbolCmdContext(new SYMBOL_CMD_CONTEXT),
-    m_componentChooser( new SYMBOL_CHOOSER_WEBVIEW_CONTAINER( this , (ONLINE_SYMBOL_CHOOSER_SETTINGS()).url,{  {} , m_copilotAgentActionHdl , {} }  ))
+    m_webSymbolChooser( new SYMBOL_CHOOSER_WEBVIEW_CONTAINER( this , (ONLINE_SYMBOL_CHOOSER_SETTINGS()).url,{  {} , m_copilotAgentActionHdl , {} }  ))
 {
     InitCopilotContext();
     m_maximizeByDefault = true;

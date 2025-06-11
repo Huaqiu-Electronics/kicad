@@ -1214,8 +1214,7 @@ public:
 
     copilot::NETLIST GetSelection()const ;
 
-protected:
-
+public:
     void InitSymbolChooserAui();
 
     void RecreateSymbolChooserToolBar();
@@ -1234,7 +1233,7 @@ protected:
 private:
     friend SCH_COPILOT_PANEL_CONTAINER;
     std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
-    class SYMBOL_CHOOSER_WEBVIEW_CONTAINER* m_componentChooser;
+    class SYMBOL_CHOOSER_WEBVIEW_CONTAINER* m_webSymbolChooser;
 };
 
 

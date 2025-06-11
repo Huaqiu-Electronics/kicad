@@ -1795,3 +1795,11 @@ TOOL_ACTION SCH_ACTIONS::removeVariant( TOOL_ACTION_ARGS()
         .Tooltip( _( "Remove an existing design variant from the schematic." ) ) );
 
 // clang-format on
+
+
+TOOL_ACTION SCH_ACTIONS::toggleOnlineSymbolChooser(
+        TOOL_ACTION_ARGS()
+                .Name( "eeschema.AUI.toggleOnlineSymbolChooser" )
+                .Scope( AS_GLOBAL )
+                .FriendlyName( _( "Toggle Online Symbol Chooser" ) )
+                .Icon( BITMAPS::copilot ) );

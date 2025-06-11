@@ -26,10 +26,24 @@
 #define INIT_ONLINE_SYMBOL_CHOOSER_SETTINGS_H
 
 #include <eeschema_settings.h>
-
+#include <settings/app_settings.h>
+#include <settings/parameters.h>
 
 void EESCHEMA_SETTINGS::InitOnlineSymbolChooserSettings()
 {
+    m_params.emplace_back( new PARAM<bool>( "aui.online_symbol_chooser_show",
+                                            &m_OnlineSymbolChooserSettings.panel_show, true ) );
+
+    m_params.emplace_back( new PARAM<int>( "aui.online_symbol_chooser_docked_width",
+                                           &m_OnlineSymbolChooserSettings.panel_docked_width,
+                                           -1 ) );
+
+    m_params.emplace_back( new PARAM<int>( "aui.online_symbol_chooser_float_width",
+                                           &m_OnlineSymbolChooserSettings.panel_float_width, -1 ) );
+
+    m_params.emplace_back( new PARAM<int>( "aui.online_symbol_chooser_float_height",
+                                           &m_OnlineSymbolChooserSettings.panel_float_height,
+                                           -1 ) );
 }
 
 
