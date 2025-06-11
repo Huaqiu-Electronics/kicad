@@ -30,6 +30,14 @@
 #include <settings/parameters.h>
 #include "online_symbol_chooser_settings.h"
 
+
+#if !defined( IS_RC_BUILD )
+constexpr auto kSymbolChooserUrl = "https://www.eda.cn/symbolSelector/";
+#else
+constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/symbolSelector/";
+#endif
+
+
 void EESCHEMA_SETTINGS::InitOnlineSymbolChooserSettings()
 {
     m_params.emplace_back( new PARAM<bool>( "aui.online_symbol_chooser_show",
