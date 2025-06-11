@@ -47,6 +47,7 @@
 #include <settings/webview_settings_manager.h>
 #include <utils/httplib.h>
 #include <utils/web_utils.h>
+#include <api/api_open_project_url.h>
 
 template <class Derived, class ContextT>
 
@@ -235,7 +236,11 @@ public:
         {
             if( "paste" == aAction.action )
             {
-                return CopilotRunPaste( aAction.context );
+                return HandlePasteAction( aAction );
+            }
+            else if( "open_project_zip_achieve" == aAction.action )
+            {
+                return HandleOpenProjectZipAchieve( aAction );
             }
 
             wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
@@ -265,12 +270,24 @@ public:
         self()->GetToolManager()->RunAction( ACTIONS::paste );
     }
 
+    void HandlePasteAction( AGENT_ACTION const& aAction ) { CopilotRunPaste( aAction.context ); }
+
+    void CopilotOpenProjectZipAchieve( std::string const& aUrl )
+    {
+        OpenProjectZipAchieveUrl( aUrl );
+    }
+
+    void HandleOpenProjectZipAchieve( AGENT_ACTION const& aAction )
+    {
+        CopilotOpenProjectZipAchieve( aAction.context );
+    }
+
 
 protected:
-    ContextT                m_copilotContextCache;
+    ContextT                   m_copilotContextCache;
     COPILOT_WEBVIEW_CONTAINER* m_copilotPanel{};
-    COPILOT_PANEL_SETTINGS* m_containerCfg{};
-    wxAuiManager&           m_containerAuiMgr;
+    COPILOT_PANEL_SETTINGS*    m_containerCfg{};
+    wxAuiManager&              m_containerAuiMgr;
 
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;

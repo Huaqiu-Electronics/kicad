@@ -73,13 +73,12 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::paste:
         {
-            CopilotRunPaste( aAction.context );
+            HandlePasteAction( aAction );
             break;
         }
 
         case AGENT_ACTION_TYPE::open_project_zip_achieve:
         {
-
             break;
         }
 
