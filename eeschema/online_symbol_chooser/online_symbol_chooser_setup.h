@@ -44,7 +44,6 @@ void SCH_EDIT_FRAME::InitSymbolChooserAui()
 
 void SCH_EDIT_FRAME::RecreateSymbolChooserToolBar()
 {
-    m_mainToolBar->AddSeparator();
     m_mainToolBar->Add( SCH_ACTIONS::toggleOnlineSymbolChooser );
 }
 
