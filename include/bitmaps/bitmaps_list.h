@@ -262,6 +262,7 @@ enum class BITMAPS : unsigned int
     hole_to_copper_clearance,
     hole_to_hole_clearance,
     hotkeys,
+    hq_add_symbol_to_schematic,    
     hv45mode,
     icon_3d,
     icon_bitmap2component,

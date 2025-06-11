@@ -1802,4 +1802,4 @@ TOOL_ACTION SCH_ACTIONS::toggleOnlineSymbolChooser(
                 .Name( "eeschema.AUI.toggleOnlineSymbolChooser" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Toggle Online Symbol Chooser" ) )
-                .Icon( BITMAPS::copilot ) );
+                .Icon( BITMAPS::hq_add_symbol_to_schematic ) );
