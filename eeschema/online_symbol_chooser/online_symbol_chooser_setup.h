@@ -33,6 +33,14 @@
 #include "online_symbol_chooser_aui_settings.h"
 
 
+void SCH_EDIT_FRAME::SymbolChooserInit()
+{
+    m_webSymbolChooser = new SYMBOL_CHOOSER_WEBVIEW_CONTAINER(
+            this, eeconfig()->m_OnlineSymbolChooserSettings.url,
+            { {}, m_copilotAgentActionHdl, {} } );
+}
+
+
 void SCH_EDIT_FRAME::InitSymbolChooserAui()
 {
     if( m_webSymbolChooser )
@@ -44,6 +52,7 @@ void SCH_EDIT_FRAME::InitSymbolChooserAui()
 
 void SCH_EDIT_FRAME::RecreateSymbolChooserToolBar()
 {
+    m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( SCH_ACTIONS::toggleOnlineSymbolChooser );
 }
 

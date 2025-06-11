@@ -155,8 +155,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_netNavigator( nullptr ),
     m_highlightedConnChanged( false ),
     m_designBlocksPane( nullptr ),
-    m_symbolCmdContext(new SYMBOL_CMD_CONTEXT),
-    m_webSymbolChooser( new SYMBOL_CHOOSER_WEBVIEW_CONTAINER( this , (ONLINE_SYMBOL_CHOOSER_SETTINGS()).url,{  {} , m_copilotAgentActionHdl , {} }  ))
+    m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)
 {
     m_maximizeByDefault = true;
     m_schematic = new SCHEMATIC( nullptr );
@@ -197,6 +196,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     root.push_back( &Schematic().Root() );
     SetCurrentSheet( root );
 
+    SymbolChooserInit();
     CopilotPanelInit();
     setupTools();
     setupUIConditions();
