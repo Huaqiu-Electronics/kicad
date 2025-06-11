@@ -56,6 +56,7 @@ void SCH_EDIT_FRAME::RecreateSymbolChooserToolBar()
     m_mainToolBar->Add( SCH_ACTIONS::toggleOnlineSymbolChooser );
 }
 
+
 void SCH_EDIT_FRAME::SymbolChooserPanelShowChangedLanguage()
 {
     if( m_webSymbolChooser )

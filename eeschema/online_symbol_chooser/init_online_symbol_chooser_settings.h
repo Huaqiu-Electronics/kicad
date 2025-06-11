@@ -28,6 +28,7 @@
 #include <eeschema_settings.h>
 #include <settings/app_settings.h>
 #include <settings/parameters.h>
+#include "online_symbol_chooser_settings.h"
 
 void EESCHEMA_SETTINGS::InitOnlineSymbolChooserSettings()
 {
@@ -48,6 +49,10 @@ void EESCHEMA_SETTINGS::InitOnlineSymbolChooserSettings()
     m_params.emplace_back( new PARAM<int>( "aui.online_symbol_chooser_float_height",
                                            &m_OnlineSymbolChooserSettings.panel_float_height,
                                            -1 ) );
+
+    m_params.emplace_back( new PARAM<std::string>( "aui.online_symbol_chooser_url",
+                                                   &m_OnlineSymbolChooserSettings.url,
+                                                   kSymbolChooserUrl ) );
 }
 
 
