@@ -28,10 +28,8 @@
 #include <nlohmann/json.hpp>
 
 
-#if defined( _WIN32 ) && !defined( IS_RC_BUILD )
+#if !defined( IS_RC_BUILD )
 constexpr auto kSymbolChooserUrl = "https://www.eda.cn/symbolSelector/";
-#elif defined( NDEBUG )
-constexpr auto kSymbolChooserUrl = "http://192.168.96.1:8000/symbolSelector/;
 #else
 constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/symbolSelector/";
 #endif
