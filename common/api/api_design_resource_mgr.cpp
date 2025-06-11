@@ -36,6 +36,7 @@
 #include <wx/string.h>
 #include <wx/wfstream.h>
 #include <wx/log.h>
+#include "api_open_project_url_impl.h"
 
 constexpr auto kProjectResourceDirName = "kicad_api_libs";
 constexpr auto kProjectPrettyName = "kicad_api_lib";
