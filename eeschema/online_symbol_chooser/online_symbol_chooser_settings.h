@@ -27,14 +27,6 @@
 
 #include <nlohmann/json.hpp>
 
-
-#if !defined( IS_RC_BUILD )
-constexpr auto kSymbolChooserUrl = "https://www.eda.cn/symbolSelector/";
-#else
-constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/symbolSelector/";
-#endif
-
-
 struct ONLINE_SYMBOL_CHOOSER_SETTINGS
 {
     enum
