@@ -70,13 +70,13 @@ void SCH_EDIT_FRAME::SymbolChooserPanelShowChangedLanguage()
 
 void SCH_EDIT_FRAME::ToggleSymbolChooserPanel()
 {
-    wxAuiPaneInfo& web_pane = m_containerAuiMgr.GetPane( CopilotPanelName() );
+    wxAuiPaneInfo& web_pane = m_containerAuiMgr.GetPane( onlineSymbolChooserName() );
     ShowSymbolChooserPanel( !web_pane.IsShown() );
 }
 
 void SCH_EDIT_FRAME::ShowSymbolChooserPanel( bool show )
 {
-    auto& web_pane = m_containerAuiMgr.GetPane( CopilotPanelName() );
+    auto& web_pane = m_containerAuiMgr.GetPane( onlineSymbolChooserName() );
 
     bool now_shown = web_pane.IsShown();
 
@@ -121,7 +121,7 @@ void SCH_EDIT_FRAME::SaveSymbolChooserPanelCnf()
 {
     if( m_webSymbolChooser )
     {
-        auto& webPane = m_containerAuiMgr.GetPane( CopilotPanelName() );
+        auto& webPane = m_containerAuiMgr.GetPane( onlineSymbolChooserName() );
         webPane.Show( eeconfig()->m_OnlineSymbolChooserSettings.panel_show );
         if( eeconfig()->m_OnlineSymbolChooserSettings.panel_show )
         {
@@ -135,7 +135,7 @@ void SCH_EDIT_FRAME::LoadSymbolChooserPanelCnf()
 {
     if( m_webSymbolChooser )
     {
-        auto& webPane = m_auimgr.GetPane( CopilotPanelName() );
+        auto& webPane = m_auimgr.GetPane( onlineSymbolChooserName() );
         eeconfig()->m_OnlineSymbolChooserSettings.panel_show = webPane.IsShown();
 
         if( webPane.IsDocked() )
