@@ -45,7 +45,7 @@ inline auto defaultOnlineSymbolChooserPanelInfo( wxWindow* aWindow )
 {
     return wxAuiPaneInfo()
             .Name( onlineSymbolChooserName() )
-            .Caption( _( "Online Symbol Chooser" ) )
+            .Caption( _( "Component" ) )
             .PaneBorder( false )
             .Right()
             .Layer( 4 )
