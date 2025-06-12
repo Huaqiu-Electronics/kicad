@@ -201,7 +201,7 @@ void SYMBOL_EDIT_FRAME::configureToolbars()
 
     RegisterCustomToolbarControlFactory( ACTION_TOOLBAR_CONTROLS::unitSelector, unitDisplayFactory );
     RegisterCustomToolbarControlFactory( ACTION_TOOLBAR_CONTROLS::bodyStyleSelector, bodyDisplayFactory );
-    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );    
+    RecreateCopilotToolBar();    
 }
 
 

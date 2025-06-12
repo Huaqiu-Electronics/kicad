@@ -96,7 +96,7 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         }
 
 
-        default: wxLogWarning( "Unknown action received: %s", aAction.action.c_str() ); break;
+        default: return BaseExecuteAgentAction( aAction );
         }
     }
     catch( std::exception const& e )

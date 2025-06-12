@@ -210,7 +210,7 @@ std::optional<TOOLBAR_CONFIGURATION> SCH_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
     m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
 
     RecreateSymbolChooserToolBar();
-    m_mainToolBar->Add( SCH_ACTIONS::toggleCopilotPanel );
+    RecreateCopilotToolBar();
 
     // Add scripting console and API plugins
     bool scriptingAvailable = SCRIPTING::IsWxAvailable();
