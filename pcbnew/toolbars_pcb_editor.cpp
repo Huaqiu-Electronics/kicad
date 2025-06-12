@@ -199,7 +199,7 @@ void PCB_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
 
-    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
+    RecreateCopilotToolBar();
 
     // Add SWIG and API plugins
     bool scriptingAvailable = SCRIPTING::IsWxAvailable();

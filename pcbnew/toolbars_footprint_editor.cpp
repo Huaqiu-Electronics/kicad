@@ -99,7 +99,7 @@ void FOOTPRINT_EDIT_FRAME::ReCreateHToolbar()
 
     // m_mainToolBar->AddScaledSeparator( this );
 
-    RecreateCopilotToolBar( m_mainToolBar, ACTIONS::toggleCopilotPanel );
+    RecreateCopilotToolBar();
 
     // Grid selection choice box.
     if( m_gridSelectBox == nullptr )

@@ -25,6 +25,7 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
+#include <tool/action_toolbar.h>
 #include <fmt/format.h>
 #include <memory>
 #include <passive_action/agent/agent_action.h>
@@ -125,12 +126,13 @@ public:
             m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ) );
     }
 
-    void RecreateCopilotToolBar( auto* aToolBar, auto& aAction )
+    void RecreateCopilotToolBar()
     {
         if( m_copilotPanel )
         {
+            auto aToolBar = self()->m_mainToolBar;
             aToolBar->AddScaledSeparator( self() );
-            aToolBar->Add( aAction );
+            aToolBar->Add( ACTIONS::toggleCopilotPanel );
         }
     }
 
@@ -232,15 +234,22 @@ public:
 
     void ExecuteAgentAction( AGENT_ACTION const& aAction )
     {
+        return BaseExecuteAgentAction( aAction );
+    }
+
+    void BaseExecuteAgentAction( AGENT_ACTION const& aAction )
+    {
+        const auto& context = aAction.context;
+
         try
         {
             if( "paste" == aAction.action )
             {
-                return HandlePasteAction( aAction );
+                return RunPasteAction( context );
             }
             else if( "open_project_zip_achieve" == aAction.action )
             {
-                return HandleOpenProjectZipAchieve( aAction );
+                return OpenProjectZipAchieveUrl( context );
             }
 
             wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
@@ -264,22 +273,10 @@ public:
     std::string GetJsonifySelection() const { return ( nlohmann::json() ).dump(); }
 
 
-    void CopilotRunPaste( std::string const& aContent )
+    void RunPasteAction( std::string const& aContent )
     {
         WriteClipBoard( aContent );
         self()->GetToolManager()->RunAction( ACTIONS::paste );
-    }
-
-    void HandlePasteAction( AGENT_ACTION const& aAction ) { CopilotRunPaste( aAction.context ); }
-
-    void CopilotOpenProjectZipAchieve( std::string const& aUrl )
-    {
-        OpenProjectZipAchieveUrl( aUrl );
-    }
-
-    void HandleOpenProjectZipAchieve( AGENT_ACTION const& aAction )
-    {
-        CopilotOpenProjectZipAchieve( aAction.context );
     }
 
 

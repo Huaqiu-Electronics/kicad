@@ -50,6 +50,13 @@
 
 
 template <>
+void SCH_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
+{
+    self()->m_mainToolBar->Add( ACTIONS::toggleCopilotPanel );
+}
+
+
+template <>
 void SCH_COPILOT_PANEL_CONTAINER::InitCopilotAui()
 {
     if( m_copilotPanel )
