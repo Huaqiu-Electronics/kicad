@@ -71,7 +71,7 @@ void SCH_EDIT_FRAME::SymbolChooserPanelShowChangedLanguage()
 void SCH_EDIT_FRAME::ToggleSymbolChooserPanel()
 {
     wxAuiPaneInfo& web_pane = m_containerAuiMgr.GetPane( CopilotPanelName() );
-    ShowCopilot( !web_pane.IsShown() );
+    ShowSymbolChooserPanel( !web_pane.IsShown() );
 }
 
 void SCH_EDIT_FRAME::ShowSymbolChooserPanel( bool show )
