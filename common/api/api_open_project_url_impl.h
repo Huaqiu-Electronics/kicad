@@ -26,9 +26,22 @@
 #define API_OPEN_PROJECT_URL_IMPL_H
 
 #include <api/api_open_project_url.h>
+#include <api/api_design_resource_mgr.h>
+
+#include <wx/filename.h>
+#include <wx/stdpaths.h>
+
 
 void OpenProjectZipAchieveUrl( std::string const& aPrjZipUrl )
 {
+    wxFileName f( wxStandardPaths::Get().GetExecutablePath() );
+    wxString   appPath( f.GetPath() );
+
+    const std::optional<std::string> zip_buffer =
+            API_DESIGN_RESOURCE_MGR::DownloadURL( aPrjZipUrl );
+
+    if( !zip_buffer )
+        return;
 }
 
 
