@@ -35,7 +35,7 @@
 
 TOOL_ACTION ACTIONS::toggleCopilotPanel(
         TOOL_ACTION_ARGS()
-                .Name( "eeschema.SchDesignBlockControl.toggleCopilotPanel" )
+                .Name( "common.copilot.toggleCopilotPanel" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Copilot" ) )
                 .Tooltip( _( "Show/hide copilot panel" ) )
@@ -43,7 +43,7 @@ TOOL_ACTION ACTIONS::toggleCopilotPanel(
 
 TOOL_ACTION ACTIONS::showCopilotPanel(
         TOOL_ACTION_ARGS()
-                .Name( "eeschema.SchDesignBlockControl.showCopilotPanel" )
+                .Name( "common.copilot.showCopilotPanel" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Show copilot" ) )
                 .Tooltip( _( "Show copilot panel" ) )
