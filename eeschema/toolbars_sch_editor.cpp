@@ -42,6 +42,7 @@
 #include <widgets/wx_aui_utils.h>
 #include <widgets/sch_properties_panel.h>
 #include <widgets/sch_search_pane.h>
+#include <copilot/sch_copilot_tool_bar.h>
 
 /* Create  the main Horizontal Toolbar for the schematic editor
  */
