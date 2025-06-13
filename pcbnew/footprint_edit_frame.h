@@ -363,6 +363,9 @@ private:
 
     friend FOOTPRINT_COPILOT_PANEL_CONTAINER;
 
+    // AD-HOC: ToggleCopilot not working as other editors
+    void FpToggleCopilot( wxCommandEvent& aEvent );
+
 public:
 };
 

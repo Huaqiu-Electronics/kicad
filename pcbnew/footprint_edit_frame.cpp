@@ -95,8 +95,9 @@ BEGIN_EVENT_TABLE( FOOTPRINT_EDIT_FRAME, PCB_BASE_FRAME )
 
     // Drop files event
     EVT_DROP_FILES( FOOTPRINT_EDIT_FRAME::OnDropFiles )
+    EVT_TOOL( ID_TOGGLE_COPILOT, FOOTPRINT_EDIT_FRAME::FpToggleCopilot )
 
-END_EVENT_TABLE()
+    END_EVENT_TABLE()
 
 
 FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
@@ -110,61 +111,61 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_aboutTitle = _HKI( "KiCad Footprint Editor" );
     m_editorSettings = nullptr;
 
-    // Give an icon
-    wxIcon icon;
-    wxIconBundle icon_bundle;
+        // Give an icon
+        wxIcon       icon;
+        wxIconBundle icon_bundle;
 
-    icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit, 48 ) );
-    icon_bundle.AddIcon( icon );
-    icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit, 128 ) );
-    icon_bundle.AddIcon( icon );
-    icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit, 256 ) );
-    icon_bundle.AddIcon( icon );
-    icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit_32 ) );
-    icon_bundle.AddIcon( icon );
-    icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit_16 ) );
-    icon_bundle.AddIcon( icon );
+        icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit, 48 ) );
+        icon_bundle.AddIcon( icon );
+        icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit, 128 ) );
+        icon_bundle.AddIcon( icon );
+        icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit, 256 ) );
+        icon_bundle.AddIcon( icon );
+        icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit_32 ) );
+        icon_bundle.AddIcon( icon );
+        icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_modedit_16 ) );
+        icon_bundle.AddIcon( icon );
 
-    SetIcons( icon_bundle );
+        SetIcons( icon_bundle );
 
     // Create GAL canvas
     m_canvasType = loadCanvasTypeSetting();
 
-    PCB_DRAW_PANEL_GAL* drawPanel = new PCB_DRAW_PANEL_GAL( this, -1, wxPoint( 0, 0 ), m_frameSize,
-                                                            GetGalDisplayOptions(), m_canvasType );
-    SetCanvas( drawPanel );
+        PCB_DRAW_PANEL_GAL* drawPanel = new PCB_DRAW_PANEL_GAL(
+                this, -1, wxPoint( 0, 0 ), m_frameSize, GetGalDisplayOptions(), m_canvasType );
+        SetCanvas( drawPanel );
 
-    CreateInfoBar();
+        CreateInfoBar();
 
-    SetBoard( new BOARD() );
+        SetBoard( new BOARD() );
 
-    // This board will only be used to hold a footprint for editing
-    GetBoard()->SetBoardUse( BOARD_USE::FPHOLDER );
+        // This board will only be used to hold a footprint for editing
+        GetBoard()->SetBoardUse( BOARD_USE::FPHOLDER );
 
-    // In Footprint Editor, the default net clearance is not known (it depends on the actual
-    // board).  So we do not show the default clearance, by setting it to 0.  The footprint or
-    // pad specific clearance will be shown.
-    GetBoard()->GetDesignSettings().m_NetSettings->GetDefaultNetclass()->SetClearance( 0 );
+        // In Footprint Editor, the default net clearance is not known (it depends on the actual
+        // board).  So we do not show the default clearance, by setting it to 0.  The footprint or
+        // pad specific clearance will be shown.
+        GetBoard()->GetDesignSettings().m_NetSettings->GetDefaultNetclass()->SetClearance( 0 );
 
-    // Don't show the default board solder mask expansion in the footprint editor.  Only the
-    // footprint or pad mask expansions settings should be shown.
-    GetBoard()->GetDesignSettings().m_SolderMaskExpansion = 0;
+        // Don't show the default board solder mask expansion in the footprint editor.  Only the
+        // footprint or pad mask expansions settings should be shown.
+        GetBoard()->GetDesignSettings().m_SolderMaskExpansion = 0;
 
-    // Ensure all layers and items are visible:
-    // In footprint editor, some layers have no meaning or cannot be used, but we show all of
-    // them, at least to be able to edit a bad layer
-    GetBoard()->SetVisibleAlls();
+        // Ensure all layers and items are visible:
+        // In footprint editor, some layers have no meaning or cannot be used, but we show all of
+        // them, at least to be able to edit a bad layer
+        GetBoard()->SetVisibleAlls();
 
-    GetGalDisplayOptions().m_axesEnabled = true;
+        GetGalDisplayOptions().m_axesEnabled = true;
 
     // In Footprint Editor, set the default paper size to A4 for plot/print
     SetPageSettings( PAGE_INFO( PAGE_SIZE_TYPE::A4 ) );
     SetScreen( new PCB_SCREEN( GetPageSettings().GetSizeIU( pcbIUScale.IU_PER_MILS ) ) );
 
-    CopilotPanelInit();
-    // Create the manager and dispatcher & route draw panel events to the dispatcher
-    setupTools();
-    setupUIConditions();
+        CopilotPanelInit();
+        // Create the manager and dispatcher & route draw panel events to the dispatcher
+        setupTools();
+        setupUIConditions();
 
     initLibraryTree();
     m_treePane = new FOOTPRINT_TREE_PANE( this );
@@ -176,55 +177,56 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
     ReCreateMenuBar();
 
-    m_selectionFilterPanel = new PANEL_SELECTION_FILTER( this );
-    m_appearancePanel = new APPEARANCE_CONTROLS( this, GetCanvas(), true );
-    m_propertiesPanel = new PCB_PROPERTIES_PANEL( this, this );
+        m_selectionFilterPanel = new PANEL_SELECTION_FILTER( this );
+        m_appearancePanel = new APPEARANCE_CONTROLS( this, GetCanvas(), true );
+        m_propertiesPanel = new PCB_PROPERTIES_PANEL( this, this );
 
-    // LoadSettings() *after* creating m_LayersManager, because LoadSettings() initialize
-    // parameters in m_LayersManager
-    // NOTE: KifaceSettings() will return PCBNEW_SETTINGS if we started from pcbnew
-    LoadSettings( GetSettings() );
+        // LoadSettings() *after* creating m_LayersManager, because LoadSettings() initialize
+        // parameters in m_LayersManager
+        // NOTE: KifaceSettings() will return PCBNEW_SETTINGS if we started from pcbnew
+        LoadSettings( GetSettings() );
 
     updateEnabledLayers();
 
-    float proportion = GetFootprintEditorSettings()->m_AuiPanels.properties_splitter;
-    m_propertiesPanel->SetSplitterProportion( proportion );
+        float proportion = GetFootprintEditorSettings()->m_AuiPanels.properties_splitter;
+        m_propertiesPanel->SetSplitterProportion( proportion );
 
-    SetActiveLayer( F_SilkS );
+        SetActiveLayer( F_SilkS );
 
-    // Fetch a COPY of the config as a lot of these initializations are going to overwrite our
-    // data.
-    int libWidth = 0;
-    FOOTPRINT_EDITOR_SETTINGS::AUI_PANELS aui_cfg;
+        // Fetch a COPY of the config as a lot of these initializations are going to overwrite our
+        // data.
+        int                                   libWidth = 0;
+        FOOTPRINT_EDITOR_SETTINGS::AUI_PANELS aui_cfg;
 
-    if( FOOTPRINT_EDITOR_SETTINGS* cfg = dynamic_cast<FOOTPRINT_EDITOR_SETTINGS*>( GetSettings() ) )
-    {
-        libWidth = cfg->m_LibWidth;
-        aui_cfg = cfg->m_AuiPanels;
-    }
-    else
-    {
-        // keep gcc quiet about uninitalized vars:
-        aui_cfg.appearance_panel_tab = 0;
-        aui_cfg.right_panel_width = -1;
-    }
+        if( FOOTPRINT_EDITOR_SETTINGS* cfg =
+                    dynamic_cast<FOOTPRINT_EDITOR_SETTINGS*>( GetSettings() ) )
+        {
+            libWidth = cfg->m_LibWidth;
+            aui_cfg = cfg->m_AuiPanels;
+        }
+        else
+        {
+            // keep gcc quiet about uninitalized vars:
+            aui_cfg.appearance_panel_tab = 0;
+            aui_cfg.right_panel_width = -1;
+        }
 
-    m_auimgr.SetManagedWindow( this );
+        m_auimgr.SetManagedWindow( this );
 
-    unsigned int auiFlags = wxAUI_MGR_DEFAULT;
+        unsigned int auiFlags = wxAUI_MGR_DEFAULT;
 #if !defined( _WIN32 )
-    // Windows cannot redraw the UI fast enough during a live resize and may lead to all kinds
-    // of graphical glitches
-    auiFlags |= wxAUI_MGR_LIVE_RESIZE;
+        // Windows cannot redraw the UI fast enough during a live resize and may lead to all kinds
+        // of graphical glitches
+        auiFlags |= wxAUI_MGR_LIVE_RESIZE;
 #endif
-    m_auimgr.SetFlags( auiFlags );
+        m_auimgr.SetFlags( auiFlags );
 
     // Rows; layers 4 - 6
     m_auimgr.AddPane( m_tbTopMain, EDA_PANE().HToolbar().Name( "TopMainToolbar" )
                       .Top().Layer( 6 ) );
 
-    m_auimgr.AddPane( m_messagePanel, EDA_PANE().Messages().Name( "MsgPanel" )
-                      .Bottom().Layer( 6 ) );
+        m_auimgr.AddPane( m_messagePanel,
+                          EDA_PANE().Messages().Name( "MsgPanel" ).Bottom().Layer( 6 ) );
 
     // Columns; layers 1 - 3
     m_auimgr.AddPane( m_treePane, EDA_PANE().Palette().Name( "Footprints" )
@@ -255,12 +257,11 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
                       .MinSize( FromDIP( 180 ), -1 )
                       .BestSize( FromDIP( 180 ), -1 ) );
 
-    InitCopilotAui();
-    LoadCopilotCnf();
+        InitCopilotAui();
+        LoadCopilotCnf();
 
-    // Center
-    m_auimgr.AddPane( GetCanvas(), EDA_PANE().Canvas().Name( "DrawFrame" )
-                      .Center() );
+        // Center
+        m_auimgr.AddPane( GetCanvas(), EDA_PANE().Canvas().Name( "DrawFrame" ).Center() );
 
     RestoreAuiLayout();
 
@@ -268,58 +269,60 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_auimgr.GetPane( "SelectionFilter" ).Show( m_show_layer_manager_tools );
     m_auimgr.GetPane( PropertiesPaneName() ).Show( GetSettings()->m_AuiPanels.show_properties );
 
-    // The selection filter doesn't need to grow in the vertical direction when docked
-    m_auimgr.GetPane( "SelectionFilter" ).dock_proportion = 0;
+        // The selection filter doesn't need to grow in the vertical direction when docked
+        m_auimgr.GetPane( "SelectionFilter" ).dock_proportion = 0;
 
-    m_acceptedExts.emplace( FILEEXT::KiCadFootprintLibPathExtension, &ACTIONS::ddAddLibrary );
-    m_acceptedExts.emplace( FILEEXT::KiCadFootprintFileExtension, &PCB_ACTIONS::ddImportFootprint );
-    DragAcceptFiles( true );
+        m_acceptedExts.emplace( FILEEXT::KiCadFootprintLibPathExtension, &ACTIONS::ddAddLibrary );
+        m_acceptedExts.emplace( FILEEXT::KiCadFootprintFileExtension,
+                                &PCB_ACTIONS::ddImportFootprint );
+        DragAcceptFiles( true );
 
-    FinishAUIInitialization();
+        FinishAUIInitialization();
 
-    // Apply saved visibility stuff at the end
-    wxAuiPaneInfo& treePane = m_auimgr.GetPane( "Footprints" );
-    wxAuiPaneInfo& layersManager = m_auimgr.GetPane( "LayersManager" );
+        // Apply saved visibility stuff at the end
+        wxAuiPaneInfo& treePane = m_auimgr.GetPane( "Footprints" );
+        wxAuiPaneInfo& layersManager = m_auimgr.GetPane( "LayersManager" );
 
-    if( libWidth > 0 )
-        SetAuiPaneSize( m_auimgr, treePane, libWidth, -1 );
+        if( libWidth > 0 )
+            SetAuiPaneSize( m_auimgr, treePane, libWidth, -1 );
 
-    if( aui_cfg.right_panel_width > 0 )
-        SetAuiPaneSize( m_auimgr, layersManager, aui_cfg.right_panel_width, -1 );
+        if( aui_cfg.right_panel_width > 0 )
+            SetAuiPaneSize( m_auimgr, layersManager, aui_cfg.right_panel_width, -1 );
 
-    m_appearancePanel->SetTabIndex( aui_cfg.appearance_panel_tab );
+        m_appearancePanel->SetTabIndex( aui_cfg.appearance_panel_tab );
 
-    if( FOOTPRINT_EDITOR_SETTINGS* cfg = dynamic_cast<FOOTPRINT_EDITOR_SETTINGS*>( GetSettings() ) )
-    {
-        m_appearancePanel->SetUserLayerPresets( cfg->m_LayerPresets );
-        m_appearancePanel->ApplyLayerPreset( cfg->m_ActiveLayerPreset );
-    }
+        if( FOOTPRINT_EDITOR_SETTINGS* cfg =
+                    dynamic_cast<FOOTPRINT_EDITOR_SETTINGS*>( GetSettings() ) )
+        {
+            m_appearancePanel->SetUserLayerPresets( cfg->m_LayerPresets );
+            m_appearancePanel->ApplyLayerPreset( cfg->m_ActiveLayerPreset );
+        }
 
-    // restore the last footprint from the project, if any, after the library has been init'ed
-    // N.B. This needs to happen after the AUI manager has been initialized so that we can
-    // properly call the WX_INFOBAR without crashing on some systems.
-    restoreLastFootprint();
+        // restore the last footprint from the project, if any, after the library has been init'ed
+        // N.B. This needs to happen after the AUI manager has been initialized so that we can
+        // properly call the WX_INFOBAR without crashing on some systems.
+        restoreLastFootprint();
 
-    // This displays the last footprint loaded, if any, so it must be done after restoreLastFootprint()
-    ActivateGalCanvas();
+        // This displays the last footprint loaded, if any, so it must be done after restoreLastFootprint()
+        ActivateGalCanvas();
 
-    GetToolManager()->PostAction( ACTIONS::zoomFitScreen );
-    UpdateTitle();
-    setupUnits( GetSettings() );
+        GetToolManager()->PostAction( ACTIONS::zoomFitScreen );
+        UpdateTitle();
+        setupUnits( GetSettings() );
 
-    resolveCanvasType();
+        resolveCanvasType();
 
-    // Default shutdown reason until a file is loaded
-    KIPLATFORM::APP::SetShutdownBlockReason( this, _( "Footprint changes are unsaved" ) );
+        // Default shutdown reason until a file is loaded
+        KIPLATFORM::APP::SetShutdownBlockReason( this, _( "Footprint changes are unsaved" ) );
 
-    // Catch unhandled accelerator command characters that were no handled by the library tree
-    // panel.
-    Bind( wxEVT_CHAR, &TOOL_DISPATCHER::DispatchWxEvent, m_toolDispatcher );
-    Bind( wxEVT_CHAR_HOOK, &TOOL_DISPATCHER::DispatchWxEvent, m_toolDispatcher );
+        // Catch unhandled accelerator command characters that were no handled by the library tree
+        // panel.
+        Bind( wxEVT_CHAR, &TOOL_DISPATCHER::DispatchWxEvent, m_toolDispatcher );
+        Bind( wxEVT_CHAR_HOOK, &TOOL_DISPATCHER::DispatchWxEvent, m_toolDispatcher );
 
-    // Ensure the window is on top
-    Raise();
-    Show( true );
+        // Ensure the window is on top
+        Raise();
+        Show( true );
 
     // Register a call to update the toolbar sizes. It can't be done immediately because
     // it seems to require some sizes calculated that aren't yet (at least on GTK).

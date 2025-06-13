@@ -35,6 +35,7 @@
 #include <wx/choice.h>
 #include <wx/wupdlock.h>
 #include <advanced_config.h>
+#include <copilot_fpedit/fpedit_copilot_recreate_tool_bar.h>
 
 #include <toolbars_footprint_editor.h>
 
@@ -202,4 +203,8 @@ void FOOTPRINT_EDIT_FRAME::ReCreateLayerBox( bool aForceResizeToolbar )
 
     if( aForceResizeToolbar )
         UpdateToolbarControlSizes();
+}
+void FOOTPRINT_EDIT_FRAME::FpToggleCopilot( wxCommandEvent& aEvent )
+{
+    ToggleCopilot();
 }
