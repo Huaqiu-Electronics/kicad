@@ -84,7 +84,7 @@ protected:
 
     virtual void OnWebChannelMsgWrapper( std::string const& msg );
 
-private:
+protected:
     std::set<std::string> _consumed_global_ctx_keys{};
     DIALOG_IMAGE_VIEWER*  _image_viewer{};
 
