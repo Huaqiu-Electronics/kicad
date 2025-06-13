@@ -1,5 +1,4 @@
 add_library( assistant SHARED 
-    common/assistant_version.cpp
     common/dialog_image_viewer.cpp
     settings/webview_settings_manager.cpp  
     webview/webview_container.cpp
