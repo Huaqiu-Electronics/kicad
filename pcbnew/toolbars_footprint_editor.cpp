@@ -33,6 +33,7 @@
 #include <wx/choice.h>
 #include <wx/wupdlock.h>
 #include <advanced_config.h>
+#include <copilot_fpedit/fpedit_copilot_recreate_tool_bar.h>
 
 void FOOTPRINT_EDIT_FRAME::ReCreateHToolbar()
 {
@@ -96,8 +97,6 @@ void FOOTPRINT_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->AddTool( ID_ADD_FOOTPRINT_TO_BOARD, wxEmptyString,
                             KiScaledBitmap( BITMAPS::insert_module_board, this ),
                             _( "Insert footprint into current board" ) );
-
-    // m_mainToolBar->AddScaledSeparator( this );
 
     RecreateCopilotToolBar();
 
@@ -298,4 +297,10 @@ void FOOTPRINT_EDIT_FRAME::ReCreateLayerBox( bool aForceResizeToolbar )
 void FOOTPRINT_EDIT_FRAME::OnUpdateLayerSelectBox( wxUpdateUIEvent& aEvent )
 {
     m_selLayerBox->SetLayerSelection( GetActiveLayer() );
+}
+
+
+void FOOTPRINT_EDIT_FRAME::FpToggleCopilot( wxCommandEvent& aEvent )
+{
+    ToggleCopilot();
 }
