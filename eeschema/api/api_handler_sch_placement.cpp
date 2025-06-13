@@ -171,11 +171,11 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceDesignBlock( const HANDLER_CON
     }
 
     placeDesignBlock( { ConvertProtoToDesignBlockResource( aCtx.Request.design_block_resource() ),
-                        std::make_optional<PLACE_DESIGN_BLOCK_OPTION>( {
+                        std::make_optional<PLACE_DESIGN_BLOCK_OPTION>( PLACE_DESIGN_BLOCK_OPTION{
 
                                 aCtx.Request.has_place_repeated_copies()
                                         ? std::make_optional( aCtx.Request.place_repeated_copies() )
-                                        : std::optional<bool>{}
+                                        : std::nullopt
 
                         } ) } );
     return {};
