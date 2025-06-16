@@ -91,7 +91,7 @@ void SCH_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
                           wxString tmp_file_path =
                                   wxFileName::CreateTempFileName( wxFileName::GetTempDir() + "/" );
 
-                          std::shared_ptr<nullptr_t> on_leave( nullptr,
+                          std::shared_ptr<void*> on_leave( nullptr,
                                                                [=]( auto it )
                                                                {
                                                                    wxRemoveFile( tmp_file_path );
@@ -121,7 +121,7 @@ void SCH_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
 
         for( const auto& instance : instances )
             designators.push_back( instance.m_Reference.ToStdString() );
-    
+
         std::sort(designators.begin(), designators.end(),[&](const std::string& a, const std::string& b){
                 return StrNumCmp(a, b) < 0;
             });

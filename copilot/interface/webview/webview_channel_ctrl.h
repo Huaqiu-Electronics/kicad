@@ -25,12 +25,12 @@
 #ifndef WEBVIEW_CHANNEL_CTRL_H
 #define WEBVIEW_CHANNEL_CTRL_H
 
-#ifndef COPILOT_USE_HTTP_MSG_HANDLER
+// #ifndef COPILOT_USE_HTTP_MSG_HANDLER
 
-#ifdef __WXMAC__
-#define COPILOT_USE_HTTP_MSG_HANDLER
-#endif // __WXMAC__
+// #ifdef __WXMAC__
+// #define COPILOT_USE_HTTP_MSG_HANDLER
+// #endif // __WXMAC__
 
-#endif // !COPILOT_USE_HTTP_MSG_HANDLER
+// #endif // !COPILOT_USE_HTTP_MSG_HANDLER
 
 #endif

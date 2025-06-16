@@ -48,12 +48,7 @@ struct COPILOT_WEBVIEW_PATH
 
 struct COPILOT_WEBVIEW_SETTINGS
 {
-#if defined( _WIN32 ) && !defined( IS_RC_BUILD )
-    std::string url = "https://chat.eda.cn/";
-#else
-    std::string url = "http://47.100.5.151:8080/";
-#endif
-
+    std::string          url = "https://chat.eda.cn/";
     COPILOT_WEBVIEW_PATH path;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_SETTINGS, url, path )
 };
