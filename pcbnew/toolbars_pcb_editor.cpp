@@ -311,8 +311,18 @@ void PCB_EDIT_FRAME::ReCreateVToolbar()
 {
     wxWindowUpdateLocker dummy( this );
 
+    const TOOL_ACTION* currentDimensionGroupAction = nullptr;
+    const TOOL_ACTION* currentOriginGroupAction    = nullptr;
+    const TOOL_ACTION* currentRoutingGroupAction   = nullptr;
+    const TOOL_ACTION* currentTuneGroupAction      = nullptr;
+
     if( m_drawToolBar )
     {
+        currentDimensionGroupAction = m_drawToolBar->GetSelectedAction( "group.pcbDimensions" );
+        currentOriginGroupAction    = m_drawToolBar->GetSelectedAction( "group.pcbOrigins" );
+        currentRoutingGroupAction   = m_drawToolBar->GetSelectedAction( "group.pcbRouting" );
+        currentTuneGroupAction      = m_drawToolBar->GetSelectedAction( "group.pcbTune" );
+
         m_drawToolBar->ClearToolbar();
     }
     else
@@ -338,12 +348,18 @@ void PCB_EDIT_FRAME::ReCreateVToolbar()
                                              &PCB_ACTIONS::drawLeader } );
     }
 
+    if( currentDimensionGroupAction )
+        dimensionGroup->SetDefaultAction( *currentDimensionGroupAction );
+
     if( !originGroup )
     {
         originGroup = new ACTION_GROUP( "group.pcbOrigins",
                                         { &PCB_ACTIONS::gridSetOrigin,
                                           &PCB_ACTIONS::drillOrigin } );
     }
+
+    if( currentOriginGroupAction )
+        dimensionGroup->SetDefaultAction( *currentOriginGroupAction );
 
     if( !routingGroup )
     {
@@ -352,6 +368,9 @@ void PCB_EDIT_FRAME::ReCreateVToolbar()
                                           &PCB_ACTIONS::routeDiffPair } );
     }
 
+    if( currentRoutingGroupAction )
+        routingGroup->SetDefaultAction( *currentRoutingGroupAction );
+
     if( !tuneGroup )
     {
         tuneGroup = new ACTION_GROUP( "group.pcbTune",
@@ -359,6 +378,9 @@ void PCB_EDIT_FRAME::ReCreateVToolbar()
                                         &PCB_ACTIONS::tuneDiffPair,
                                         &PCB_ACTIONS::tuneSkew } );
     }
+
+    if( currentTuneGroupAction )
+        tuneGroup->SetDefaultAction( *currentTuneGroupAction );
 
     // clang-format off
     m_drawToolBar->Add( ACTIONS::selectionTool,            ACTION_TOOLBAR::TOGGLE );
