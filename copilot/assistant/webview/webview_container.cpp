@@ -162,16 +162,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                     _web_msg_server->listen_after_bind();
                 } );
     }
-    else
-    {
-        // FIXME : wxWebView::AddScriptMessageHandler is not available on MacOS , it will lead to crash while working with the KiCad' co-thread
-
-        if( !_browser->AddScriptMessageHandler(
-                    magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
-        {
-            wxLogDebug( "Could not add script message handler " );
-        }
-    }
 
     SetSizer( top_sizer );
     //Set a more sensible size for web browsing
