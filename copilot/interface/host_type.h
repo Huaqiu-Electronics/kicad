@@ -33,10 +33,14 @@ struct HOST_TYPE
 {
     std::string host_name = "kicad_desktop";
     std::string editor_name;
+    // Used by the frontend to indexing the chat history
     std::string session_id;
+    // Used by the the server to identify the user session
+    std::string chat_id;
     std::string locale;
     int         port{};
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, locale, port )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale,
+                                    port )
 };
 
 #endif
