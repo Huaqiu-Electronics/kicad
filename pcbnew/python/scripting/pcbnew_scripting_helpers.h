@@ -261,4 +261,13 @@ bool WriteDRCReport( BOARD* aBoard, const wxString& aFileName, EDA_UNITS aUnits,
  */
 wxString GetLanguage();
 
+
+/**
+ *  Get the Copilot chat ID used by the webview.
+ *
+ * @return the current copilot chat id string.
+ */
+wxString GetCopilotChatId();
+
+
 #endif      // __PCBNEW_SCRIPTING_HELPERS_H

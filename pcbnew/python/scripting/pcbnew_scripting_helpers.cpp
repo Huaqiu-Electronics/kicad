@@ -61,6 +61,8 @@
 #include <wx/crt.h>
 #include <wx/image.h>
 
+#include <copilot/pcb_copilot_current_chat_id.h>
+
 static PCB_EDIT_FRAME* s_PcbEditFrame = nullptr;
 static SETTINGS_MANAGER* s_SettingsManager = nullptr;
 
@@ -692,4 +694,10 @@ wxString GetLanguage()
         return GetSettingsManager()->GetCommonSettings()->m_System.language;
     else
         return "";
+}
+
+
+wxString GetCopilotChatId()
+{
+    return PCB_COPILOT_CURRENT_CHAT_ID::Get().GetChatId();
 }
