@@ -26,6 +26,7 @@
 #define PCB_COPILOT_UI_H
 
 #include <pcb_edit_frame.h>
+#include "pcb_copilot_current_chat_id.h"
 
 template <>
 void PCB_COPILOT_PANEL_CONTAINER::InitCopilotAui()
@@ -33,6 +34,7 @@ void PCB_COPILOT_PANEL_CONTAINER::InitCopilotAui()
     if( m_copilotPanel )
     {
         m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ).Layer( 5 ) );
+        PCB_COPILOT_CURRENT_CHAT_ID::Get().SetChatId( GetSessionId() );
     }
 }
 
