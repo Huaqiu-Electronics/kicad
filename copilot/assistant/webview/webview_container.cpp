@@ -51,6 +51,7 @@
 #include "http/http_client.h"
 #include "common/dialog_image_viewer.h"
 #include <utils/httplib.h>
+#include "webview_evt_filter.h"
 
 #ifdef _WIN32
 inline std::string ws2s( const std::wstring& wstr )
@@ -190,6 +191,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
     _browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
+
+    WEBVIEW_EVT_FILTER::Get().AddPanel( this );
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -199,6 +202,8 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 
     if( _web_msg_server_thread )
         _web_msg_server_thread->join();
+
+    WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
