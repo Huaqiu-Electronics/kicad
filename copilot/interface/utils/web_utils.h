@@ -29,6 +29,11 @@
 #include <optional>
 #include <string>
 #include <host_type.h>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <random>
+#include <string>
 
 inline auto add_parameter_to_url( std::string const&                        url,
                                   std::map<std::string, std::string> const& parameters )
@@ -57,7 +62,10 @@ inline auto add_parameter_to_url( std::string const& url, std::optional<HOST_TYP
     std::map<std::string, std::string> parameters{ { "host_name", host->host_name },
                                                    { "editor_name", host->editor_name },
                                                    { "session_id", host->session_id },
-                                                   { "locale", host->locale } };
+                                                   { "locale", host->locale },
+                                                   { "chat_id", host->chat_id }
+
+    };
 
     if( host->port )
     {
@@ -66,5 +74,22 @@ inline auto add_parameter_to_url( std::string const& url, std::optional<HOST_TYP
 
     return add_parameter_to_url( url, parameters );
 }
+
+
+inline std::string random_substring()
+{
+    static std::mt19937                           gen( std::random_device{}() );
+    static std::uniform_real_distribution<double> dist( 0.0, 1.0 );
+
+    double rand_val = dist( gen );
+
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision( 15 ) << rand_val;
+    std::string str = oss.str(); // example: "0.123456789012345"
+
+    // extract 5 characters after "0."
+    return ( str.size() >= 2 + 5 ) ? str.substr( 2, 5 ) : "00000";
+}
+
 
 #endif

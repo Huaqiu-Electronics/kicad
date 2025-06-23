@@ -83,16 +83,21 @@ public:
 
     KICAD_COPILOT_EDITORS editor_type() const { return KICAD_COPILOT_EDITORS::unknown; }
 
+    // Used by the webview container to index the chat history
     std::string GetSessionId() const
     {
         return fmt::format( "{}:{}", self()->Prj().GetProjectPath().ToStdString(),
                             magic_enum::enum_name( editor_type() ) );
     }
 
+    // Used by the server to identify the chat
+    std::string GetChatId() const { return m_chat_id; }
+
     void CopilotPanelInit()
     {
         m_containerCfg = self()->config();
         auto host_version_info = get_copilot_host_version( editor_type(), GetSessionId() );
+        host_version_info.chat_id = m_chat_id;
 
 #ifdef COPILOT_USE_HTTP_MSG_HANDLER
 
@@ -289,6 +294,7 @@ protected:
     COPILOT_GLOBAL_CONTEXT_OWNED_HDL m_copilotGlobalContextHdl;
     AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
+    std::string                      m_chat_id = random_substring();
 };
 
 #endif

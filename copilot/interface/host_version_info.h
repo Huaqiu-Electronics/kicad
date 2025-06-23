@@ -27,11 +27,24 @@
 
 #include <kicad_version_info.h>
 #include "host_type.h"
+#include "nlohmann/json.hpp"
 
 struct HOST_VERSION_INFO : HOST_TYPE
 {
     KICAD_VERSION_INFO details;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_VERSION_INFO, host_name, editor_name, details )
+
+    friend void to_json( nlohmann::json& nlohmann_json_j, const HOST_VERSION_INFO& nlohmann_json_t )
+    {
+        to_json( nlohmann_json_j, static_cast<const HOST_TYPE&>( nlohmann_json_t ) );
+        nlohmann_json_j["details"] = nlohmann_json_t.details;
+    }
+
+    friend void from_json( const nlohmann::json& nlohmann_json_j,
+                           HOST_VERSION_INFO&    nlohmann_json_t )
+    {
+        from_json( nlohmann_json_j, static_cast<HOST_TYPE&>( nlohmann_json_t ) );
+        nlohmann_json_j.at( "details" ).get_to( nlohmann_json_t.details );
+    }
 };
 
 #endif
