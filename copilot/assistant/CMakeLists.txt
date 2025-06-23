@@ -3,6 +3,7 @@ add_library( assistant SHARED
     settings/webview_settings_manager.cpp  
     webview/webview_container.cpp
     webview/copilot_webview_container.cpp
+    webview/webview_evt_filter.cpp
     http/http_client.cpp
 )
 
