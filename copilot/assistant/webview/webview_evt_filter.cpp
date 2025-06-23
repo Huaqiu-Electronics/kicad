@@ -41,9 +41,9 @@ int WEBVIEW_EVT_FILTER::FilterEvent( wxEvent& event )
     auto       obj = event.GetEventObject();
 
 
-    if( event.GetEventType() == wxEVT_SET_FOCUS || event.GetEventType() == wxEVT_KILL_FOCUS )
+    if( evt_type == wxEVT_SET_FOCUS || evt_type == wxEVT_KILL_FOCUS )
     {
-        m_panel_focused[obj] = event.GetEventType() == wxEVT_SET_FOCUS;
+        m_panel_focused[obj] = evt_type == wxEVT_SET_FOCUS;
     }
 
 
