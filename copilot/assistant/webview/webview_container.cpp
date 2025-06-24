@@ -164,6 +164,12 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                 } );
     }
 
+    if( !_browser->AddScriptMessageHandler(
+                magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
+    {
+        wxLogDebug( "Could not add script message handler " );
+    }    
+
     SetSizer( top_sizer );
     //Set a more sensible size for web browsing
     SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
@@ -192,7 +198,10 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
 
 #endif // DEBUG
 
+
+#ifndef _WIN32
     WEBVIEW_EVT_FILTER::Get().AddPanel( this );
+#endif
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -203,7 +212,9 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
     if( _web_msg_server_thread )
         _web_msg_server_thread->join();
 
+#ifndef _WIN32
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
+#endif
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
@@ -258,7 +269,6 @@ void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
-    send_data_buried_point( GetDataBuriedPoint() );
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
