@@ -54,6 +54,10 @@
 #include "common/dialog_image_viewer.h"
 #include "webview_constant.h"
 
+#ifndef _WIN32
+#include "webview_evt_filter.h"
+#endif
+
 
 #ifdef _WIN32
 inline std::string ws2s( const std::wstring& wstr )
@@ -114,8 +118,8 @@ inline auto extract_host_from_url( std::string const& url )
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                       HOST_COPILOT_HANDLES             host_copilot_handles,
                                       std::unique_ptr<httplib::Server> msgServer ) :
-        wxPanel( parent ), _browser( wxWebView::New() ),
-        _host_copilot_handles( std::move( host_copilot_handles ) ),
+        wxPanel( parent ),
+        _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
         _primary_url( std::move( url ) ), _web_msg_server( std::move( msgServer ) )
 {
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
@@ -170,7 +174,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                 magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
     {
         wxLogDebug( "Could not add script message handler " );
-    }    
+    }
 
     SetSizer( top_sizer );
     //Set a more sensible size for web browsing
