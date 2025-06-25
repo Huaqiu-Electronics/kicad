@@ -24,33 +24,35 @@
 
 #include <settings/webview_settings_manager.h>
 #include "config_io_helper.h"
+#include <settings/copilot_settings.h>
 
 
 constexpr auto kMutableSettingsFileName = "mutable_settings.json";
 constexpr auto kImmutableSettingsFileName = "immutable_settings.json";
 
-WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER()
+WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
+        _immutable_settings( new IMMUTABLE_SETTINGS ), _mutable_settings( new MUTABLE_SETTINGS )
 {
-    load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), _immutable_settings );
-    load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
+    load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), *_immutable_settings );
+    load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings );
 
-    auto url = _immutable_settings.copilot_webview_settings.url;
+    auto url = _immutable_settings->copilot_webview_settings.url;
 
     if( url.back() == '/' )
         url = url.substr( 0, url.length() - 1 );
 
 
-    _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings.copilot_webview_settings.url,
-                                      _immutable_settings.copilot_webview_settings.path.chat );
+    _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
+                                      _immutable_settings->copilot_webview_settings.path.chat );
 
     _webview_image_viewer_path =
-            fmt::format( "{}/#{}", _immutable_settings.copilot_webview_settings.url,
-                         _immutable_settings.copilot_webview_settings.path.image_viewer );
+            fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
+                         _immutable_settings->copilot_webview_settings.path.image_viewer );
 }
 
 WEBVIEW_SETTINGS_MANAGER::~WEBVIEW_SETTINGS_MANAGER()
 {
-    save_cnf( get_copilot_setting_path( kMutableSettingsFileName ), _mutable_settings );
+    save_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings );
 }
 
 WEBVIEW_SETTINGS_MANAGER& WEBVIEW_SETTINGS_MANAGER::get_instance()
@@ -97,22 +99,22 @@ std::string WEBVIEW_SETTINGS_MANAGER::get_copilot_setting_path( std::string cons
 
 std::string const& WEBVIEW_SETTINGS_MANAGER::get_data_buried_point_host() const
 {
-    return _immutable_settings.data_buried_point_settings.host;
+    return _immutable_settings->data_buried_point_settings.host;
 }
 
 std::string const& WEBVIEW_SETTINGS_MANAGER::get_data_buried_point_endpoint() const
 {
-    return _immutable_settings.data_buried_point_settings.endpoint;
+    return _immutable_settings->data_buried_point_settings.endpoint;
 }
 
 std::string const& WEBVIEW_SETTINGS_MANAGER::get_copilot_webview_url() const
 {
-    return _immutable_settings.copilot_webview_settings.url;
+    return _immutable_settings->copilot_webview_settings.url;
 }
 
 COPILOT_WEBVIEW_PATH const& WEBVIEW_SETTINGS_MANAGER::get_copilot_webview_path() const
 {
-    return _immutable_settings.copilot_webview_settings.path;
+    return _immutable_settings->copilot_webview_settings.path;
 }
 
 std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_chat_path() const
@@ -127,10 +129,10 @@ std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_image_viewer_path() con
 
 DIALOG_GEOMETRY const& WEBVIEW_SETTINGS_MANAGER::get_image_viewer_geometry() const
 {
-    return _mutable_settings.image_viewer_geometry;
+    return _mutable_settings->image_viewer_geometry;
 }
 
 void WEBVIEW_SETTINGS_MANAGER::set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry )
 {
-    _mutable_settings.image_viewer_geometry = geometry;
+    _mutable_settings->image_viewer_geometry = geometry;
 }

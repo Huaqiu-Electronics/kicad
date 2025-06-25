@@ -25,15 +25,16 @@
 #ifndef COPILOT_SETTINGS_MANAGER_H
 #define COPILOT_SETTINGS_MANAGER_H
 
+#include <memory>
 #include <string>
 #include <copilot_global.h>
 
-#include "copilot_settings.h"
-
 
 struct IMMUTABLE_SETTINGS;
+struct MUTABLE_SETTINGS;
 struct COPILOT_WEBVIEW_PATH;
 struct DIALOG_GEOMETRY;
+
 class COPILOT_API WEBVIEW_SETTINGS_MANAGER
 {
 public:
@@ -62,10 +63,10 @@ public:
 
 private:
     WEBVIEW_SETTINGS_MANAGER();
-    IMMUTABLE_SETTINGS _immutable_settings;
-    std::string        _webview_chat_path;
-    std::string        _webview_image_viewer_path;
-    MUTABLE_SETTINGS   _mutable_settings;
+    std::unique_ptr<IMMUTABLE_SETTINGS> _immutable_settings;
+    std::unique_ptr<MUTABLE_SETTINGS>   _mutable_settings;
+    std::string                         _webview_chat_path;
+    std::string                         _webview_image_viewer_path;
 };
 
 #endif

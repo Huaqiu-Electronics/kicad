@@ -23,6 +23,7 @@
  */
 
 #include "dialog_image_viewer.h"
+#include "settings/copilot_settings.h"
 #include <settings/webview_settings_manager.h>
 #include <wx/event.h>
 #include <wx/log.h>
