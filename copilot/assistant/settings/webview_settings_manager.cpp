@@ -23,8 +23,10 @@
  */
 
 #include <settings/webview_settings_manager.h>
+#include <settings/immutable_settings.h>
+#include <settings/mutable_settings.h>
+
 #include "config_io_helper.h"
-#include <settings/copilot_settings.h>
 
 
 constexpr auto kMutableSettingsFileName = "mutable_settings.json";

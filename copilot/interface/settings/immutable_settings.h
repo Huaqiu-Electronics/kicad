@@ -22,51 +22,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef COPILOT_SETTINGS_H
-#define COPILOT_SETTINGS_H
+#ifndef IMMUTABLE_SETTINGS_H
+#define IMMUTABLE_SETTINGS_H
 
-#include <string>
 #include <nlohmann/json.hpp>
 
 #include "copilot_config_version.h"
-
-struct DATA_BURIED_POINT_SETTINGS
-{
-    std::string host = "blog.eda.cn";
-    std::string endpoint = "/data_buried_point";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( DATA_BURIED_POINT_SETTINGS, host, endpoint )
-};
-
-
-struct COPILOT_WEBVIEW_PATH
-{
-    std::string home = "/";
-    std::string chat = "/chat";
-    std::string image_viewer = "/image-viewer";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_PATH, home, chat, image_viewer )
-};
-
-struct COPILOT_WEBVIEW_SETTINGS
-{
-#if !defined( IS_RC_BUILD )
-    std::string url = "https://chat.eda.cn/";
-#else
-    std::string url = "http://47.100.5.151:8080/";
-#endif
-
-    COPILOT_WEBVIEW_PATH path;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_SETTINGS, url, path )
-};
-
-
-struct DIALOG_GEOMETRY
-{
-    int x = -1;
-    int y = -1;
-    int width = 900;
-    int height = 600;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( DIALOG_GEOMETRY, x, y, width, height )
-};
+#include "data_buried_point_settings.h"
+#include "copilot_webview_settings.h"
 
 
 struct IMMUTABLE_SETTINGS
@@ -78,12 +41,5 @@ struct IMMUTABLE_SETTINGS
                                     copilot_webview_settings, version )
 };
 
-
-struct MUTABLE_SETTINGS
-{
-    DIALOG_GEOMETRY image_viewer_geometry;
-    std::string     version = kConfigVersion;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MUTABLE_SETTINGS, image_viewer_geometry, version )
-};
 
 #endif

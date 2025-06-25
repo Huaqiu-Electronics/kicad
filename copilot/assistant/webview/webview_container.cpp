@@ -27,7 +27,7 @@
 #include <webview/webview_container.h>
 #include <nlohmann/json.hpp>
 #include <settings/webview_settings_manager.h>
-#include "webview_constant.h"
+#include <settings/dialog_geometry.h>
 #include <utils/copilot_utils.h>
 #include <passive_action/web/web_host.h>
 #include <passive_action/passive_action_container.h>
@@ -48,10 +48,12 @@
 #include <magic_enum.hpp>
 #include <wx/timer.h>
 #include <thread>
+#include <utils/httplib.h>
+
 #include "http/http_client.h"
 #include "common/dialog_image_viewer.h"
-#include <utils/httplib.h>
-#include "webview_evt_filter.h"
+#include "webview_constant.h"
+
 
 #ifdef _WIN32
 inline std::string ws2s( const std::wstring& wstr )
