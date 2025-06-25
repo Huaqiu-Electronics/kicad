@@ -45,9 +45,22 @@ int WEBVIEW_EVT_FILTER::FilterEvent( wxEvent& event )
     auto       obj = event.GetEventObject();
 
 
-    if( evt_type == wxEVT_SET_FOCUS || evt_type == wxEVT_KILL_FOCUS )
+    if( evt_type == wxEVT_SET_FOCUS )
     {
-        m_panel_focused[obj] = evt_type == wxEVT_SET_FOCUS;
+        if( m_panels.find( obj ) == m_panels.end() )
+        {
+            for( auto& [panel, focused] : m_panel_focused )
+                m_panel_focused[panel] = false;
+        }
+        else
+        {
+            m_panel_focused[obj] = true;
+        }
+    }
+
+    if( evt_type == wxEVT_KILL_FOCUS && m_panels.find( obj ) != m_panels.end() )
+    {
+        m_panel_focused[obj] = false;
     }
 
 
