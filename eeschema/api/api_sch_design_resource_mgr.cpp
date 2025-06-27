@@ -25,7 +25,7 @@
 #include "api_sch_design_resource_mgr.h"
 #include "api/api_design_resource_mgr.h"
 #include "sch_base_frame.h"
-#include <functional>
+#include "sch_field_names.h"
 #include <lib_symbol.h>
 #include <sch_field.h>
 #include <api/api_design_content.h>
@@ -252,53 +252,53 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     std::vector<SCH_FIELD> fields;
     int                    field_id = 5;
     // Set fields order by manual.
-    if( attrs.find( "MPN" ) != attrs.end() )
+    if( attrs.find( kMPN ) != attrs.end() )
     {
-        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, "MPN" );
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, kMPN );
         // field->SetId(  );
         // field->SetName();
         field->SetShowInChooser( false );
         field->SetVisible( false );
-        field->SetText( attrs["Mpn"] );
+        field->SetText( attrs[kMPN] );
         fields.push_back( *field );
     }
 
-    if( attrs.find( "Manufacturer" ) != attrs.end() )
+    if( attrs.find( kMANUFACTURER ) != attrs.end() )
     {
-        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, "Manufacturer" );
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, kMANUFACTURER );
         // field->SetId( field_id++ );
-        // field->SetName( "Manufacturer" );
+        // field->SetName( MANUFACTURER );
         field->SetShowInChooser( false );
         field->SetVisible( false );
-        field->SetText( attrs["Manufacturer"] );
+        field->SetText( attrs[kMANUFACTURER] );
         fields.push_back( *field );
     }
 
     for( auto& [name, text] : attrs )
     {
         SCH_FIELD* field = nullptr;
-        if( name == "Value" )
+        if( name == kVALUE )
         {
             field = new SCH_FIELD( lib_sym->GetValueField() );
             field->SetVisible( false );
         }
-        else if( name == "Footprint" )
+        else if( name == kFOOTPRINT )
         {
             continue;
         }
-        else if( name == "Datasheet" )
+        else if( name == kDATASHEET )
         {
             field = new SCH_FIELD( lib_sym->GetDatasheetField() );
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
-        else if( name == "Description" )
+        else if( name == kDESCRIPTION )
         {
             field = new SCH_FIELD( lib_sym->GetDescriptionField() );
             field->SetShowInChooser( false );
             field->SetVisible( false );
         }
-        else if( name != "Manufacturer" && name != "Mpn" )
+        else if( name != kMANUFACTURER && name != kMPN )
         {
             field = new SCH_FIELD( lib_sym, field_id++, name );
             // field->SetId( field_id++ );
@@ -307,7 +307,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
             field->SetVisible( false );
         }
 
-        if( name != "Manufacturer" && name != "Mpn" )
+        if( name != kMANUFACTURER && name != kMPN )
         {
             field->SetText( text );
             fields.push_back( *field );
