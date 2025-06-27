@@ -22,35 +22,35 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef LAUNCH_PCB_PLUGIN_CONTEXT_H
-#define LAUNCH_PCB_PLUGIN_CONTEXT_H
+#ifndef PCB_AGENT_PY_PLUGIN_ARG_H
+#define PCB_AGENT_PY_PLUGIN_ARG_H
 
-
-#include "optional_param_context.h"
+#include <optional>
 #include <nlohmann/json.hpp>
+#include <wx/string.h>
 
-struct LAUNCH_PCB_PLUGIN_CONTEXT_BASE
+class PCB_AGENT_PY_PLUGIN_ARG
 {
-    std::string type;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( LAUNCH_PCB_PLUGIN_CONTEXT_BASE, type )
-};
+public:
+    static constexpr auto kNullJson = "null";
 
-struct LAUNCH_PCB_PLUGIN_CONTEXT : LAUNCH_PCB_PLUGIN_CONTEXT_BASE, OPTIONAL_PARAM_CONTEXT
-{
-    friend void to_json( nlohmann ::json&                 nlohmann_json_j,
-                         const LAUNCH_PCB_PLUGIN_CONTEXT& nlohmann_json_t )
+    static PCB_AGENT_PY_PLUGIN_ARG& Get()
     {
-        to_json( nlohmann_json_j,
-                 static_cast<const LAUNCH_PCB_PLUGIN_CONTEXT_BASE&>( nlohmann_json_t ) );
-        to_json( nlohmann_json_j, static_cast<const OPTIONAL_PARAM_CONTEXT&>( nlohmann_json_t ) );
+        static PCB_AGENT_PY_PLUGIN_ARG instance;
+        return instance;
     }
-    friend void from_json( const nlohmann ::json&     nlohmann_json_j,
-                           LAUNCH_PCB_PLUGIN_CONTEXT& nlohmann_json_t )
+
+    void SetPluginArgs( const std::optional<nlohmann::json>& aPluginArgs ) { m_pluginArgs = aPluginArgs; }
+
+    wxString GetPluginArgs() const
     {
-        from_json( nlohmann_json_j,
-                   static_cast<LAUNCH_PCB_PLUGIN_CONTEXT_BASE&>( nlohmann_json_t ) );
-        from_json( nlohmann_json_j, static_cast<OPTIONAL_PARAM_CONTEXT&>( nlohmann_json_t ) );
+        return m_pluginArgs.has_value() ? wxString::FromUTF8( m_pluginArgs->dump().c_str() ) : wxString( kNullJson );
     }
+
+private:
+    PCB_AGENT_PY_PLUGIN_ARG() = default;
+
+    std::optional<nlohmann::json> m_pluginArgs;
 };
 
 #endif

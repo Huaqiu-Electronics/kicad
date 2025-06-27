@@ -29,6 +29,7 @@
 #include <action_plugin.h>
 #include <wx/log.h>
 #include <wx/msgdlg.h>
+#include "pcb_agent_py_plugin_arg.h"
 
 void PCB_EDIT_FRAME::LaunchPlugin( std::string const&            aPluginName,
                                    std::optional<nlohmann::json> aParams )
@@ -60,6 +61,7 @@ void PCB_EDIT_FRAME::LaunchPlugin( std::string const&            aPluginName,
         if( act_name == plugin_name )
         {
             plugin->Run();
+            PCB_AGENT_PY_PLUGIN_ARG::Get().SetPluginArgs( aParams );
             return;
         }
     }

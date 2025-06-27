@@ -27,7 +27,15 @@
 
 namespace PCB_COPILOT_CMD_TYPE
 {
-constexpr auto COST_SUGGESTION = "chat.fab.cost_suggestion";
+
+constexpr auto PCB_DFM_CHECK = "chat.fab.dfm_check";
+constexpr auto BETTER_FAB_PRICE = "chat.fab.cost_suggestion";
+constexpr auto PCB_QUERY_PRICE = "chat.fab.pcb_query_price";
+constexpr auto PCB_PLACE_ORDER = "chat.fab.pcb_place_order";
+constexpr auto SMT_QUERY_PRICE = "chat.fab.smt_query_price";
+constexpr auto SMT_PLACE_ORDER = "chat.fab.smt_place_order";
+
+
 }; // namespace PCB_COPILOT_CMD_TYPE
 
 #endif

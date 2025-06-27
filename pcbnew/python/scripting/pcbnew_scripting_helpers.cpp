@@ -62,6 +62,7 @@
 #include <wx/image.h>
 
 #include <copilot/pcb_copilot_current_chat_id.h>
+#include <copilot/pcb_agent_py_plugin_arg.h>
 
 static PCB_EDIT_FRAME* s_PcbEditFrame = nullptr;
 static SETTINGS_MANAGER* s_SettingsManager = nullptr;
@@ -701,3 +702,8 @@ wxString GetCopilotChatId()
 {
     return PCB_COPILOT_CURRENT_CHAT_ID::Get().GetChatId();
 }
+
+wxString GetAgentLaunchPluginArgumentJson() {
+    return PCB_AGENT_PY_PLUGIN_ARG::Get().GetPluginArgs();
+}
+

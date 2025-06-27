@@ -270,4 +270,12 @@ wxString GetLanguage();
 wxString GetCopilotChatId();
 
 
+/**
+ *  Get the argument used by the python plugin launched by the agent.
+ *
+ * @return 'null' if no argument is set, otherwise the JSON string
+ */
+wxString GetAgentLaunchPluginArgumentJson();
+
+
 #endif      // __PCBNEW_SCRIPTING_HELPERS_H

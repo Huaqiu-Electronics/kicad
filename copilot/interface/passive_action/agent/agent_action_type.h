@@ -47,7 +47,7 @@ enum class AGENT_ACTION_TYPE
     place_design_block_content,
 
     PCB_EDITOR_BEGIN,
-    basic_run,
+    launch_plugin,
 
     SYMBOL_EDITOR_BEGIN,
 
