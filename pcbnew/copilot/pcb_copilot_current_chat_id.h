@@ -42,7 +42,7 @@ public:
     void SetChatId( const wxString& aChatId ) { m_chatId = aChatId; }
 
 private:
-    PCB_COPILOT_CURRENT_CHAT_ID() {}
+    PCB_COPILOT_CURRENT_CHAT_ID() =default;
 
     wxString m_chatId;
 };
