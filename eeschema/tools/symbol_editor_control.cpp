@@ -259,6 +259,13 @@ int SYMBOL_EDITOR_CONTROL::AddSymbol( const TOOL_EVENT& aEvent )
         return 0;
     }
 
+    if( !editFrame->GetLibManager().LibraryExists( libName ) )
+    {
+        msg.Printf( _( "Symbol library '%s' not found." ), libName );
+        m_frame->ShowInfoBarError( msg );
+        return 0;
+    }
+
     if( editFrame->GetLibManager().IsLibraryReadOnly( libName ) )
     {
         msg.Printf( _( "Symbol library '%s' is not writable." ), libName );
@@ -403,7 +410,9 @@ int SYMBOL_EDITOR_CONTROL::CutCopyDelete( const TOOL_EVENT& aEvt )
         {
             const wxString& libName = sel.GetLibNickname();
 
-            if( editFrame->GetLibManager().IsLibraryReadOnly( libName ) )
+            if( !editFrame->GetLibManager().LibraryExists( libName ) )
+                msg.Printf( _( "Symbol library '%s' not found." ), libName );
+            else if( editFrame->GetLibManager().IsLibraryReadOnly( libName ) )
                 msg.Printf( _( "Symbol library '%s' is not writable." ), libName );
             else
                 hasWritableLibs = true;
@@ -443,6 +452,13 @@ int SYMBOL_EDITOR_CONTROL::DuplicateSymbol( const TOOL_EVENT& aEvent )
     }
 
     const wxString& libName = sel.GetLibNickname();
+
+    if( !editFrame->GetLibManager().LibraryExists( libName ) )
+    {
+        msg.Printf( _( "Symbol library '%s' not found." ), libName );
+        m_frame->ShowInfoBarError( msg );
+        return 0;
+    }
 
     if( editFrame->GetLibManager().IsLibraryReadOnly( libName ) )
     {
