@@ -31,34 +31,20 @@
 #include <wx/msgdlg.h>
 #include "pcb_agent_py_plugin_arg.h"
 
-void PCB_EDIT_FRAME::LaunchPlugin( std::string const&            aPluginName,
-                                   std::optional<nlohmann::json> aParams )
+void PCB_EDIT_FRAME::LaunchPlugin( std::string const& aPluginName, std::optional<nlohmann::json> aParams )
 {
-    static const auto kSupportedPlugins =
-            std::unordered_map<std::string, std::string>{ { "dfm", "HQ DFM" } };
-
-    if( !kSupportedPlugins.contains( aPluginName ) )
-    {
-        wxLogError( wxT( "Plugin %s is not supported" ), aPluginName );
-        return;
-    }
-
-
-    const auto plugin_name = kSupportedPlugins.at( aPluginName );
-
     if( ACTION_PLUGINS::IsActionRunning() )
     {
         wxLogError( wxT( "Another plugin is running" ) );
         return;
     }
 
-
     for( auto i = 0; i < ACTION_PLUGINS::GetActionsCount(); i++ )
     {
         const auto plugin = ACTION_PLUGINS::GetAction( i );
         const auto act_name = plugin->GetName().ToStdString();
 
-        if( act_name == plugin_name )
+        if( act_name == aPluginName )
         {
             plugin->Run();
             PCB_AGENT_PY_PLUGIN_ARG::Get().SetPluginArgs( aParams );
