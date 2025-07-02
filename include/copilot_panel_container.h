@@ -96,8 +96,9 @@ public:
     void CopilotPanelInit()
     {
         m_containerCfg = self()->config();
-        auto host_version_info = get_copilot_host_version( editor_type(), GetSessionId() );
+        auto host_version_info = get_copilot_host_version( editor_type() );
         host_version_info.chat_id = m_chat_id;
+        host_version_info.session_id = GetSessionId();
 
 #ifdef COPILOT_USE_HTTP_MSG_HANDLER
 
