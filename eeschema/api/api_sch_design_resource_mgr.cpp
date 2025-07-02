@@ -26,6 +26,7 @@
 #include "api/api_design_resource_mgr.h"
 #include "sch_base_frame.h"
 #include "sch_field_names.h"
+#include "template_fieldnames.h"
 #include <lib_symbol.h>
 #include <sch_field.h>
 #include <api/api_design_content.h>
@@ -251,14 +252,11 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
 
     std::vector<SCH_FIELD> fields;
     int                    field_id = 5;
-    // Set fields order by manual.
+
+    // FIXME : Deleting the new SCH_FIELD will crash the program
     if( attrs.find( kMPN ) != attrs.end() )
     {
         SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, kMPN );
-        // field->SetId(  );
-        // field->SetName();
-        field->SetShowInChooser( false );
-        field->SetVisible( false );
         field->SetText( attrs[kMPN] );
         fields.push_back( *field );
     }
@@ -266,10 +264,6 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     if( attrs.find( kMANUFACTURER ) != attrs.end() )
     {
         SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, kMANUFACTURER );
-        // field->SetId( field_id++ );
-        // field->SetName( MANUFACTURER );
-        field->SetShowInChooser( false );
-        field->SetVisible( false );
         field->SetText( attrs[kMANUFACTURER] );
         fields.push_back( *field );
     }
@@ -277,10 +271,10 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     for( auto& [name, text] : attrs )
     {
         SCH_FIELD* field = nullptr;
+
         if( name == kVALUE )
         {
             field = new SCH_FIELD( lib_sym->GetValueField() );
-            field->SetVisible( false );
         }
         else if( name == kFOOTPRINT )
         {
@@ -289,39 +283,36 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
         else if( name == kDATASHEET )
         {
             field = new SCH_FIELD( lib_sym->GetDatasheetField() );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
         }
         else if( name == kDESCRIPTION )
         {
             field = new SCH_FIELD( lib_sym->GetDescriptionField() );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
         }
         else if( name != kMANUFACTURER && name != kMPN )
         {
             field = new SCH_FIELD( lib_sym, field_id++, name );
-            // field->SetId( field_id++ );
-            // field->SetName( name );
-            field->SetShowInChooser( false );
-            field->SetVisible( false );
         }
-
         if( name != kMANUFACTURER && name != kMPN )
         {
             field->SetText( text );
             fields.push_back( *field );
         }
     }
+
     SCH_FIELD* ref_field = new SCH_FIELD( lib_sym->GetReferenceField() );
-    ref_field->SetShowInChooser( true );
-    ref_field->SetVisible( true );
     fields.push_back( *ref_field );
     lib_sym->GetFootprintField().SetText( FormatSymbolFpPropertyValue( aNickName ) );
     fields.push_back( lib_sym->GetFootprintField() );
-    // replace old fields
-    lib_sym->SetHqPartsFields( fields );
 
+    for( auto& field : fields )
+    {
+        const auto is_value_ref = field.GetId() == REFERENCE_FIELD || field.GetId() == VALUE_FIELD;
+        field.SetVisible( is_value_ref );
+        field.SetShowInChooser( is_value_ref );
+    }
+
+
+    lib_sym->SetHqPartsFields( fields );
 
     const auto fp = *GetProjectResourceSavePath( SYMBOL_DIR, aFileName );
     wxFileName fn( fp );
