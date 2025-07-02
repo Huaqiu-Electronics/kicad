@@ -25,22 +25,26 @@
 #ifndef HOST_TYPE_H
 #define HOST_TYPE_H
 
+#include <optional>
 #include <string>
 #include <nlohmann/json.hpp>
 
 
 struct HOST_TYPE
 {
-    std::string host_name = "kicad_desktop";
+    // Fields below are filled inside @get_copilot_host_version
+    std::string host_name;
+    std::string host_version;
     std::string editor_name;
+    std::string locale;
+
     // Used by the frontend to indexing the chat history
     std::string session_id;
     // Used by the the server to identify the user session
     std::string chat_id;
-    std::string locale;
-    int         port{};
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale,
-                                    port )
+
+    std::optional<int> port;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale, port, host_version )
 };
 
 #endif

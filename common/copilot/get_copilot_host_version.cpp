@@ -30,8 +30,7 @@
 #include "host_version_info.h"
 
 
-HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor,
-                                            std::string const&    aSessionId )
+HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor )
 {
     const auto lang_id = Pgm().GetSelectedLanguageIdentifier();
 
@@ -57,7 +56,10 @@ HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor,
     if( langCode.IsEmpty() )
         langCode = "zh"; // fallback again if split fails
 
-    return HOST_VERSION_INFO{ { "kicad_desktop", magic_enum::enum_name( editor ).data(), aSessionId,
+
+    const auto details = get_kicad_version_info();
+
+    return HOST_VERSION_INFO{ { "kicad_desktop", details.KiCadBuildVersion, magic_enum::enum_name( editor ).data(),
                                 langCode.ToStdString() },
-                              get_kicad_version_info() };
+                              details };
 }
