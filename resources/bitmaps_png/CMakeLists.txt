@@ -331,6 +331,7 @@ set( BMAPS_MID
     hotkeys
     hole_to_hole_clearance
     hole_to_copper_clearance
+    huaqiu
     hv45mode
     icon_bitmap2component_24
     icon_cvpcb_24
@@ -612,7 +613,6 @@ set( BMAPS_32
     icon_pagelayout_editor_32
     icon_pcbcalculator_32
     icon_pcbnew_32
-    icon_hq_32
     )
 
 # 48 x 48 for now

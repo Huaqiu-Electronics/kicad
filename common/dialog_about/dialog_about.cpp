@@ -106,7 +106,7 @@ DIALOG_ABOUT::DIALOG_ABOUT( EDA_BASE_FRAME *aParent, ABOUT_APP_INFO& aAppInfo ) 
     }
 
     wxIcon hq_icon;
-    hq_icon.CopyFromBitmap( KiBitmap( BITMAPS::icon_hq_32, 32 ) );
+    hq_icon.CopyFromBitmap( KiBitmap( BITMAPS::huaqiu, 32 ) );
     m_bitmapHQ->SetBitmap( hq_icon );
 
     m_titleName = aParent->GetAboutTitle();
