@@ -232,41 +232,6 @@ LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::DoAddLibraryNode( const wxString&
 }
 
 
-LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::AddSubLibraryNode( const wxString& aNodeName,
-                                                                 const wxString& aDesc,
-                                                                 bool pinned )
-{
-    return DoAddLibraryNode( aNodeName, aDesc, pinned );
-}
-
-LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::AddSubLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
-                                                                 const wxString& aNodeName,
-                                                                 const wxString& aDesc,
-                                                                 bool pinned )
-{
-    LIB_TREE_NODE_LIBRARY& lib_node = aNode.AddLib( &aNode, aNodeName, aDesc );
-
-    lib_node.m_Pinned = pinned;
-
-    return lib_node;
-}
-
-
-void LIB_TREE_MODEL_ADAPTER::AddItemToLibraryNode( LIB_TREE_NODE_LIBRARY& aNode,
-                                           const std::vector<LIB_TREE_ITEM*>& aItemList,
-                                           bool pinned, bool presorted )
-{
-    if( !aNode.m_Children.empty() && 
-        "- More results -" == aNode.m_Children.back().get()->m_Name )
-        aNode.m_Children.pop_back();
-
-    for( LIB_TREE_ITEM* item: aItemList )
-        aNode.AddItem( item );
-
-    // aNode.AssignIntrinsicRanks( presorted );
-}
-
-
 LIB_TREE_NODE_LIBRARY& LIB_TREE_MODEL_ADAPTER::DoAddLibrary( const wxString& aNodeName,
                                                              const wxString& aDesc,
                                                              const std::vector<LIB_TREE_ITEM*>& aItemList,
@@ -363,57 +328,6 @@ void LIB_TREE_MODEL_ADAPTER::UpdateSearchString( const wxString& aSearch, bool a
         }
 
         m_widget->EnsureVisible( item );
-    }
-}
-
-//todo  move to symbol adapter
-void LIB_TREE_MODEL_ADAPTER::UpdateTreeAfterAddHQPart( const LIB_TREE_NODE* aNode, bool aResort )
-{
-    {
-        wxWindowUpdateLocker updateLock( m_widget );
-
-        // Even with the updateLock, wxWidgets sometimes ties its knickers in a knot trying to
-        // run a wxdataview_selection_changed_callback() on a row that has been deleted.
-        // https://bugs.launchpad.net/kicad/+bug/1756255
-        m_widget->UnselectAll();
-
-        // DO NOT REMOVE THE FREEZE/THAW. This freeze/thaw is a flag for this model adapter
-        // that tells it when it shouldn't trust any of the data in the model. When set, it will
-        // not return invalid data to the UI, since this invalid data can cause crashes.
-        // This is different than the update locker, which locks the UI aspects only.
-        Freeze();
-        BeforeReset();
-
-        m_tree.ResetScore();
-
-        m_tree.UpdateScore( {}, {} );
-
-        if( aResort )
-        {
-            m_tree.SortLibraryNodes( true );
-        }
-            
-        AfterReset();
-        Thaw();
-    }
-
-    if( aNode )
-    {
-        
-        wxDataViewItem item = ToItem( aNode );
-        if( item.IsOk() )
-        {
-            m_widget->UnselectAll();
-            m_widget->Expand( item );
-            m_widget->Select( item );
-        }
-
-        // wxDataViewItem parent = GetParent( item );
-
-        // if( parent.IsOk() )
-        //     m_widget->EnsureVisible( parent );
-
-        m_widget->EnsureVisible( item );      
     }
 }
 
