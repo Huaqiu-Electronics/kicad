@@ -694,7 +694,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
                     item->SetFlags( SKIP_STRUCT );
 
                 if( !m_frame->LoadSheetFromFile( sheetPath.Last(), &sheetPath, sheetFileName, true,
-                                                 placingDesignBlock ) )
+                                                 placingDesignBlock || isApiPlaceSheet ) )
                     return false;
 
                 m_frame->SetSheetNumberAndCount();
