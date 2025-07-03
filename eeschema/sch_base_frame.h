@@ -185,9 +185,6 @@ public:
     LIB_SYMBOL* GetLibSymbol( const LIB_ID& aLibId, bool aUseCacheLib = false,
                               bool aShowErrorMsg = false );
 
-    LIB_SYMBOL* GetHQLibSymbol( const LIB_ID& aLibId, bool aShowErrorMsg = false );
-
-
     bool SavePrjSymbolLibTables() { return saveSymbolLibTables( false, true ); }
 
 
