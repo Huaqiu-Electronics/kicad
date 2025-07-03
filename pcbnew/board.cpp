@@ -1483,8 +1483,7 @@ void BOARD::DetachAllFootprints()
 {
     for( FOOTPRINT* footprint : m_footprints )
     {
-        // FIXME : will crash the PANEL_HQ_SYMBOL_CHOOSER
-        // footprint->SetParent( nullptr );
+        footprint->SetParent( nullptr );
     }
 
     m_footprints.clear();

@@ -24,7 +24,6 @@
 #include <symbol_library.h>
 #include <dialog_symbol_chooser.h>
 #include <widgets/panel_symbol_chooser.h>
-#include <widgets/panel_hq_symbol_chooser.h>
 #include <eeschema_settings.h>
 #include <kiface_base.h>
 #include <sch_base_frame.h>
@@ -34,10 +33,8 @@
 #include <widgets/footprint_select_widget.h>
 #include <widgets/symbol_preview_widget.h>
 #include <wx/button.h>
-#include <confirm.h>
 #include <wx/checkbox.h>
 #include <wx/sizer.h>
-
 
 std::mutex DIALOG_SYMBOL_CHOOSER::g_Mutex;
 
@@ -50,9 +47,7 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
                      wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER )
 {
     wxBoxSizer* sizer = new wxBoxSizer( wxVERTICAL );
-    m_notebook = new wxNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
-
-    m_chooserPanel = new PANEL_SYMBOL_CHOOSER( aParent, m_notebook, aFilter, aHistoryList, aAlreadyPlaced,
+    m_chooserPanel = new PANEL_SYMBOL_CHOOSER( aParent, this, aFilter, aHistoryList, aAlreadyPlaced,
                                                aAllowFieldEdits, aShowFootprints,
                                                [this]()
                                                {
@@ -63,28 +58,7 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
                                                    EndModal( wxID_CANCEL );
                                                } );
 
-    m_chooserPanel_HQ = new PANEL_HQ_SYMBOL_CHOOSER( aParent, m_notebook, aFilter, aHistoryList, aAlreadyPlaced,
-                                               aAllowFieldEdits, aShowFootprints,
-                                               [this]()
-                                               {
-                                                   EndModal( wxID_OK );
-                                               },
-                                               [this]()
-                                               {
-                                                   EndModal( wxID_CANCEL );
-                                               } );
-    
-    bool show_hq = true;
-    if( EESCHEMA_SETTINGS* cfg = dynamic_cast<EESCHEMA_SETTINGS*>( Kiface().KifaceSettings() ) )
-    {
-        show_hq = cfg->m_SymChooserPanel.show_hq_page;
-    }
-
-    m_notebook->AddPage( m_chooserPanel, wxT("KiCad Symbols"), !show_hq );
-    
-	m_notebook->AddPage( m_chooserPanel_HQ, wxT("HQ Symbols"), show_hq );
-	
-    sizer->Add( m_notebook, 1, wxEXPAND, 5 );
+    sizer->Add( m_chooserPanel, 1, wxEXPAND, 5 );
 
     if( aPreselect && aPreselect->IsValid() )
         m_chooserPanel->SetPreselect( *aPreselect );
@@ -129,13 +103,9 @@ DIALOG_SYMBOL_CHOOSER::DIALOG_SYMBOL_CHOOSER( SCH_BASE_FRAME* aParent, const LIB
     SetupStandardButtons();
 
     m_chooserPanel->FinishSetup();
-    m_chooserPanel_HQ->FinishSetup( this );
     Layout();
 
     Bind( wxEVT_CHAR_HOOK, &PANEL_SYMBOL_CHOOSER::OnChar, m_chooserPanel );
-    Bind( wxEVT_CHAR_HOOK, &PANEL_HQ_SYMBOL_CHOOSER::OnChar, m_chooserPanel_HQ );
-    Bind( wxEVT_BUTTON, &DIALOG_SYMBOL_CHOOSER::OnButton, this );
-
 }
 
 
@@ -145,51 +115,19 @@ DIALOG_SYMBOL_CHOOSER::~DIALOG_SYMBOL_CHOOSER()
     {
         cfg->m_SymChooserPanel.keep_symbol = m_keepSymbol->GetValue();
         cfg->m_SymChooserPanel.place_all_units = m_useUnits->GetValue();
-        
-        const int pageIndex = m_notebook->GetSelection();
-    
-        if( pageIndex == wxNOT_FOUND )
-            cfg->m_SymChooserPanel.show_hq_page = true;
-        else
-            cfg->m_SymChooserPanel.show_hq_page = pageIndex == 1;
     }
 }
 
 
 LIB_ID DIALOG_SYMBOL_CHOOSER::GetSelectedLibId( int* aUnit ) const
 {
-    const int pageIndex = m_notebook->GetSelection();
-    
-    if( pageIndex == wxNOT_FOUND )
-        return LIB_ID();
-    
-    return pageIndex == 0 ? m_chooserPanel->GetSelectedLibId( aUnit )
-                : m_chooserPanel_HQ->GetSelectedLibId( aUnit );
+    return m_chooserPanel->GetSelectedLibId( aUnit );
 }
 
 
 std::vector<std::pair<int, wxString>> DIALOG_SYMBOL_CHOOSER::GetFields() const
 {
-    const int pageIndex = m_notebook->GetSelection();
-    
-    return pageIndex == 0 ? m_chooserPanel->GetFields()
-                : m_chooserPanel_HQ->GetFields();
+    return m_chooserPanel->GetFields();
 }
 
-void DIALOG_SYMBOL_CHOOSER::OnButton( wxCommandEvent& aEvent )
-{
-    const int pageIndex = m_notebook->GetSelection();
 
-    if( pageIndex == 1 && m_chooserPanel_HQ->CheckTaskIsRunning() )
-    {
-        DisplayInfoMessage( this, wxString::Format( _( "Task in Progress. "
-            "\nPlease wait for the current loading tasks to complete." ) ) );
-
-        aEvent.StopPropagation();
-
-        return;
-    }
-
-    // This is mandatory to allow wxDialogBase::OnButton() to be called.
-    aEvent.Skip();
-}

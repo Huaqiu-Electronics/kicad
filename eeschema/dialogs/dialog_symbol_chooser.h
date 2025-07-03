@@ -33,7 +33,6 @@
 
 class SCH_BASE_FRAME;
 class PANEL_SYMBOL_CHOOSER;
-class PANEL_HQ_SYMBOL_CHOOSER;
 struct PICKED_SYMBOL;
 
 
@@ -77,16 +76,11 @@ public:
      */
     std::vector<std::pair<int, wxString>> GetFields() const;
 
-private:
-    void OnButton( wxCommandEvent& aEvent );
-
 public:
     static std::mutex         g_Mutex;
 
 protected:
-    wxNotebook*               m_notebook;
     PANEL_SYMBOL_CHOOSER*     m_chooserPanel;
-    PANEL_HQ_SYMBOL_CHOOSER*  m_chooserPanel_HQ;
     wxCheckBox*               m_keepSymbol;
     wxCheckBox*               m_useUnits;
 };
