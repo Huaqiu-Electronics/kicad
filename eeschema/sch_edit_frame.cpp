@@ -128,7 +128,7 @@
 
 
 #include <sch_copilot_pch.h>
-#include <online_symbol_chooser_pch.h>
+#include <webview_library_pch.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
@@ -220,7 +220,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     root.push_back( &Schematic().Root() );
     SetCurrentSheet( root );
 
-    SymbolChooserInit();
+    WebViewLibraryInit();
     CopilotPanelInit();
     setupTools();
     setupUIConditions();
@@ -293,7 +293,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_auimgr.AddPane( m_remoteSymbolPane, defaultRemoteSymbolPaneInfo( this ) );
 
 
-    InitSymbolChooserAui();
+    InitWebViewLibraryAui();
     InitCopilotAui();    
 
     if( m_copilotPanel )
@@ -397,7 +397,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
 
     LoadCopilotCnf();                     
-    LoadSymbolChooserPanelCnf();
+    LoadWebViewLibraryCnf();
 
     if( aui_cfg.hierarchy_panel_docked_width > 0 )
     {
@@ -2067,7 +2067,7 @@ void SCH_EDIT_FRAME::ShowChangedLanguage()
     design_blocks_pane_info.Show( panel_shown );
 
     CopilotPanelShowChangedLanguage();
-    SymbolChooserPanelShowChangedLanguage();
+    WebViewLibraryShowChangedLanguage();
 
     m_auimgr.GetPane( m_hierarchy ).Caption( _( "Schematic Hierarchy" ) );
     m_auimgr.GetPane( m_selectionFilterPanel ).Caption( _( "Selection Filter" ) );

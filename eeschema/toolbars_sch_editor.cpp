@@ -210,7 +210,7 @@ std::optional<TOOLBAR_CONFIGURATION> SCH_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
 
-    RecreateSymbolChooserToolBar();
+    RecreateWebViewLibraryToolBar();
     RecreateCopilotToolBar();
 
     // Add scripting console and API plugins

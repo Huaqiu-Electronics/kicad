@@ -396,7 +396,7 @@ void SCH_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
         }
 
         SaveCopilotCnf();        
-        SaveSymbolChooserPanelCnf();
+        SaveWebViewLibraryCnf();
     }
 }
 

@@ -3505,14 +3505,14 @@ void SCH_EDIT_TOOL::setTransitions()
     Go( &SCH_EDIT_TOOL::DdAddImage,        SCH_ACTIONS::ddAddImage.MakeEvent() );
 
 
-    Go( &SCH_EDIT_TOOL::ToggleOnlineSymbolChooser,       SCH_ACTIONS::toggleOnlineSymbolChooser.MakeEvent() );
+    Go( &SCH_EDIT_TOOL::ToggleWebViewLibrary,       SCH_ACTIONS::toggleWebViewLibrary.MakeEvent() );
 
     // clang-format on
 }
 
 
-int SCH_EDIT_TOOL::ToggleOnlineSymbolChooser( const TOOL_EVENT& aEvent )
+int SCH_EDIT_TOOL::ToggleWebViewLibrary( const TOOL_EVENT& aEvent )
 {
-    m_frame->ToggleSymbolChooserPanel();
+    m_frame->ToggleWebViewLibrary();
     return 0;
 }

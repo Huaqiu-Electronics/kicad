@@ -22,8 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef ONLINE_SYMBOL_CHOOSER_AUI_SETTINGS_H
-#define ONLINE_SYMBOL_CHOOSER_AUI_SETTINGS_H
+#ifndef WEBVIEW_LIBRARY_AUI_SETTINGS_H
+#define WEBVIEW_LIBRARY_AUI_SETTINGS_H
 
 
 #include <nlohmann/json.hpp>
@@ -33,19 +33,17 @@
 #include <wx/aui/auibar.h>
 #include <wx/aui/auibook.h>
 #include <wx/chartype.h>
-
-
-inline auto onlineSymbolChooserName()
+inline auto WebviewLibraryName()
 {
-    return ( "OnlineSymbolChooser" );
+    return ( "Library" );
 }
 
 
-inline auto defaultOnlineSymbolChooserPanelInfo( wxWindow* aWindow )
+inline auto DefaultWebviewLibraryPanelInfo( wxWindow* aWindow )
 {
     return wxAuiPaneInfo()
-            .Name( onlineSymbolChooserName() )
-            .Caption( _( "Component" ) )
+            .Name( WebviewLibraryName() )
+            .Caption( _( "Library" ) )
             .PaneBorder( false )
             .Right()
             .Layer( 4 )
