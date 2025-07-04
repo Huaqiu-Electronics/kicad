@@ -95,7 +95,7 @@ public:
     int SetAttribute( const TOOL_EVENT& aEvent );
 
 
-    int ToggleOnlineSymbolChooser( const TOOL_EVENT& aEvent );
+    int ToggleWebViewLibrary( const TOOL_EVENT& aEvent );
 
 private:
     void editFieldText( SCH_FIELD* aField );

@@ -124,7 +124,7 @@ void SCH_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
 
-    RecreateSymbolChooserToolBar();
+    RecreateWebViewLibraryToolBar();
     RecreateCopilotToolBar();
 
     // Add scripting console and API plugins

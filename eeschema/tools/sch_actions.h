@@ -338,5 +338,5 @@ public:
     };
 
 
-    static TOOL_ACTION toggleOnlineSymbolChooser;
+    static TOOL_ACTION toggleWebViewLibrary;
 };

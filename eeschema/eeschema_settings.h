@@ -28,7 +28,7 @@
 
 #include <settings/app_settings.h>
 #include <sim/sim_preferences.h>
-#include "online_symbol_chooser/online_symbol_chooser_settings.h"
+#include "webview_library/webview_library_settings.h"
 
 using KIGFX::COLOR4D;
 
@@ -396,10 +396,9 @@ public:
 
     wxString m_lastSymbolLibDir;
 
-    ONLINE_SYMBOL_CHOOSER_SETTINGS m_OnlineSymbolChooserSettings;
+    WEBVIEW_LIBRARY_SETTINGS m_WebViewLibrarySettings;
 
-    void InitOnlineSymbolChooserSettings();
-    
+    void InitWebviewLibrarySettings();
 };
 
 

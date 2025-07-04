@@ -1191,27 +1191,27 @@ public:
     copilot::NETLIST GetSelection()const ;
 
 public:
-    void SymbolChooserInit();
+    void WebViewLibraryInit();
 
-    void InitSymbolChooserAui();
+    void InitWebViewLibraryAui();
 
-    void RecreateSymbolChooserToolBar();
+    void RecreateWebViewLibraryToolBar();
 
-    void SymbolChooserPanelShowChangedLanguage();
+    void WebViewLibraryShowChangedLanguage();
 
-    void ToggleSymbolChooserPanel();
+    void ToggleWebViewLibrary();
 
-    void ShowSymbolChooserPanel( bool aShow );
+    void ShowWebViewLibrary( bool aShow );
 
-    void LoadSymbolChooserPanelCnf();
+    void LoadWebViewLibraryCnf();
 
-    void SaveSymbolChooserPanelCnf();
+    void SaveWebViewLibraryCnf();
 
 
 private:
     friend SCH_COPILOT_PANEL_CONTAINER;
     std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
-    class SYMBOL_CHOOSER_WEBVIEW_CONTAINER* m_webSymbolChooser;
+    class WEBVIEW_LIBRARY_CONTAINER*    m_webSymbolChooser;
 };
 
 

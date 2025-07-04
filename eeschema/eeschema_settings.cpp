@@ -798,7 +798,7 @@ EESCHEMA_SETTINGS::EESCHEMA_SETTINGS() :
            } );
 
 
-    InitOnlineSymbolChooserSettings();
+    InitWebviewLibrarySettings();
 }
 
 

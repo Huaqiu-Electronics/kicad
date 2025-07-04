@@ -1597,9 +1597,9 @@ TOOL_ACTION SCH_ACTIONS::showNetlist( TOOL_ACTION_ARGS()
         .Icon( BITMAPS::netlist ) );
 
 
-TOOL_ACTION SCH_ACTIONS::toggleOnlineSymbolChooser(
+TOOL_ACTION SCH_ACTIONS::toggleWebViewLibrary(
         TOOL_ACTION_ARGS()
-                .Name( "eeschema.AUI.toggleOnlineSymbolChooser" )
+                .Name( "eeschema.AUI.toggleWebViewLibrary" )
                 .Scope( AS_GLOBAL )
                 .FriendlyName( _( "Toggle Online Symbol Chooser" ) )
                 .Icon( BITMAPS::hq_add_symbol_to_schematic ) );

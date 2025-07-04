@@ -22,12 +22,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SYMBOL_CHOOSER_WEBVIEW_CONTAINER_H
-#define SYMBOL_CHOOSER_WEBVIEW_CONTAINER_H
+#ifndef WEBVIEW_LIBRARY_CONTAINER_H
+#define WEBVIEW_LIBRARY_CONTAINER_H
 
 #include <webview/webview_container.h>
 
-class SYMBOL_CHOOSER_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
+class WEBVIEW_LIBRARY_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
     using WEBVIEW_CONTAINER::WEBVIEW_CONTAINER;
@@ -35,7 +35,7 @@ public:
 protected:
     DATA_BURIED_POINT GetDataBuriedPoint() const override
     {
-        return { "kicad_client_symbol_chooser_launch", "user_launch_symbol_chooser" };
+        return { "kicad_desktop_webview_library", "user_launch_webview_library_in_kicad_desktop" };
     }
 
 

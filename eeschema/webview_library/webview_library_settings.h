@@ -22,12 +22,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef ONLINE_SYMBOL_CHOOSER_SETTINGS_H
-#define ONLINE_SYMBOL_CHOOSER_SETTINGS_H
+#ifndef WEBVIEW_LIBRARY_SETTINGS_H
+#define WEBVIEW_LIBRARY_SETTINGS_H
 
 #include <nlohmann/json.hpp>
 
-struct ONLINE_SYMBOL_CHOOSER_SETTINGS
+struct WEBVIEW_LIBRARY_SETTINGS
 {
     enum
     {
@@ -42,9 +42,8 @@ struct ONLINE_SYMBOL_CHOOSER_SETTINGS
 
     std::string url;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ONLINE_SYMBOL_CHOOSER_SETTINGS, url, panel_show,
-                                    panel_docked_width, panel_docked_height, panel_float_width,
-                                    panel_float_height )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_LIBRARY_SETTINGS, url, panel_show, panel_docked_width, panel_docked_height,
+                                    panel_float_width, panel_float_height )
 };
 
 

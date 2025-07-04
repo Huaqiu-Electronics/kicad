@@ -22,12 +22,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef ONLINE_SYMBOL_CHOOSER_PCH_H
-#define ONLINE_SYMBOL_CHOOSER_PCH_H
+#ifndef WEBVIEW_LIBRARY_PCH_H
+#define WEBVIEW_LIBRARY_PCH_H
 
-#include <online_symbol_chooser/online_symbol_chooser_settings.h>
-#include <online_symbol_chooser/online_symbol_chooser_setup.h>
-#include <online_symbol_chooser/init_online_symbol_chooser_settings.h>
-#include <online_symbol_chooser/symbol_chooser_webview_container.h>
+#include <webview_library/webview_library_settings.h>
+#include <webview_library/webview_library_setup.h>
+#include <webview_library/init_webview_library_settings.h>
+#include <webview_library/webview_library_container.h>
 
 #endif
