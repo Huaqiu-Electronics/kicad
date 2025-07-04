@@ -32,9 +32,9 @@
 
 
 #if !defined( IS_RC_BUILD )
-constexpr auto kSymbolChooserUrl = "https://www.eda.cn/symbolSelector/";
+constexpr auto kSymbolChooserUrl = "https://www.eda.cn/library/";
 #else
-constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/symbolSelector/";
+constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/library/";
 #endif
 
 
