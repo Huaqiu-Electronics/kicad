@@ -49,6 +49,7 @@
 #include <wx/timer.h>
 #include <thread>
 #include <utils/httplib.h>
+#include <utils/wstring_to_string.h>
 
 #include "http/http_client.h"
 #include "common/dialog_image_viewer.h"
@@ -57,22 +58,6 @@
 #ifndef _WIN32
 #include "webview_evt_filter.h"
 #endif
-
-
-#ifdef _WIN32
-inline std::string ws2s( const std::wstring& wstr )
-{
-    if( wstr.empty() )
-        return std::string();
-    int size_needed =
-            WideCharToMultiByte( CP_UTF8, 0, &wstr[0], (int) wstr.size(), NULL, 0, NULL, NULL );
-    std::string strTo( size_needed, 0 );
-    WideCharToMultiByte( CP_UTF8, 0, &wstr[0], (int) wstr.size(), &strTo[0], size_needed, NULL,
-                         NULL );
-    return strTo;
-}
-
-#endif // _WIN32
 
 
 using json = nlohmann::json;
@@ -307,17 +292,7 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 // Hover, it will lead to crash on MacOS , so the http way is preferred
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
-#ifdef _WIN32
-
-    const auto wStr = evt.GetString().ToStdWstring();
-    const auto str = ws2s( wStr );
-    OnWebChannelMsg( str );
-
-#else
-
-    OnWebChannelMsg( evt.GetString().ToStdString() );
-
-#endif // _WIN32
+    OnWebChannelMsg( wxString2String( evt.GetString() ) );
 }
 
 

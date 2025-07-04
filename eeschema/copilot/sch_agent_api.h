@@ -37,4 +37,9 @@ void SCH_EDIT_FRAME::HighlightSymbol( std::string const& aDesignator )
     editor->FindSymbolAndItem( nullptr, &part_ref, true, HIGHLIGHT_SYMBOL, {} );
 }
 
+wxString SCH_EDIT_FRAME::DumpSelectionToDesignBlock() const
+{
+    return {};
+}
+
 #endif

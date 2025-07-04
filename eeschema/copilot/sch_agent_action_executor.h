@@ -49,6 +49,7 @@
 #include <context/sch/details/netlist_json_schema.h>
 #include <fmt/format.h>
 #include <api/api_sch_placement_command.h>
+#include <utils/wstring_to_string.h>
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -96,6 +97,13 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
                                             netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
                             .dump()
                             .c_str() );
+            break;
+        }
+        case AGENT_ACTION_TYPE::dump_selection_to_design_block:
+        {
+            const auto sch = wxString2String( self()->DumpSelectionToDesignBlock() );
+
+
             break;
         }
 

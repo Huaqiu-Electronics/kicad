@@ -38,6 +38,7 @@ enum class AGENT_ACTION_TYPE
     ask_selection,
     paste,
     open_project_zip_achieve,
+    dump_selection_to_design_block,
 
     SCH_EDITOR_BEGIN,
     highlight_symbol,
