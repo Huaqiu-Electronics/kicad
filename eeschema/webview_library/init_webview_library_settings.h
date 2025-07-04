@@ -40,22 +40,22 @@ constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/symbolSelector/";
 
 void EESCHEMA_SETTINGS::InitWebviewLibrarySettings()
 {
-    m_params.emplace_back( new PARAM<bool>( "aui.webview_library_show", &m_WebViewLibrarySettings.panel_show, true ) );
+    m_params.emplace_back( new PARAM<bool>( "webview_library.show", &m_WebViewLibrarySettings.panel_show, true ) );
 
     m_params.emplace_back(
-            new PARAM<int>( "aui.webview_library_docked_width", &m_WebViewLibrarySettings.panel_docked_width, -1 ) );
+            new PARAM<int>( "webview_library.docked_width", &m_WebViewLibrarySettings.panel_docked_width, -1 ) );
 
     m_params.emplace_back(
-            new PARAM<int>( "aui.webview_library_float_width", &m_WebViewLibrarySettings.panel_float_width, -1 ) );
+            new PARAM<int>( "webview_library.float_width", &m_WebViewLibrarySettings.panel_float_width, -1 ) );
 
     m_params.emplace_back(
-            new PARAM<int>( "aui.webview_library_float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
+            new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
 
     m_params.emplace_back(
-            new PARAM<int>( "aui.webview_library_float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
+            new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
 
     m_params.emplace_back(
-            new PARAM<std::string>( "aui.webview_library_url", &m_WebViewLibrarySettings.url, kSymbolChooserUrl ) );
+            new PARAM<std::string>( "webview_library.url", &m_WebViewLibrarySettings.url, kSymbolChooserUrl ) );
 }
 
 #endif
