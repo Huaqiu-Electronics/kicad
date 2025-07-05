@@ -1748,6 +1748,7 @@ int SCH_EDIT_TOOL::InteractiveDelete( const TOOL_EVENT& aEvent )
 
     picker->SetCursor( KICURSOR::REMOVE );
     picker->SetSnapping( false );
+    picker->ClearHandlers();
 
     picker->SetClickHandler(
             [this]( const VECTOR2D& aPosition ) -> bool
