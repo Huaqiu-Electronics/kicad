@@ -1,5 +1,6 @@
 add_library( assistant SHARED 
     common/dialog_image_viewer.cpp
+    settings/get_webview_chat_path.cpp  
     settings/webview_settings_manager.cpp  
     webview/webview_container.cpp
     webview/copilot_webview_container.cpp

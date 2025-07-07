@@ -45,7 +45,7 @@
 #include <copilot_panel_settings.h>
 #include <copilot_clipboard.h>
 #include <tool/actions.h>
-#include <settings/webview_settings_manager.h>
+#include <settings/get_webview_chat_path.h>
 #include <utils/httplib.h>
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
@@ -57,13 +57,12 @@ class COPILOT_PANEL_CONTAINER
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
             m_containerAuiMgr( aAuiMgr ),
-            m_copilotGlobalContextHdl(
-                    std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
-                            [&]() -> COPILOT_GLOBAL_CONTEXT const&
-                            {
-                                UpdateCopilotContextCache();
-                                return m_copilotContextCache;
-                            } ) ),
+            m_copilotGlobalContextHdl( std::make_shared<std::function<COPILOT_GLOBAL_CONTEXT const&()>>(
+                    [&]() -> COPILOT_GLOBAL_CONTEXT const&
+                    {
+                        UpdateCopilotContextCache();
+                        return m_copilotContextCache;
+                    } ) ),
             m_copilotAgentActionHdl( std::make_shared<AGENT_ACTION_HANDLE_T>(
                     [&]( AGENT_ACTION const& act )
                     {
@@ -106,19 +105,12 @@ public:
         host_version_info.port = http_server->bind_to_any_port( "0.0.0.0" );
 
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                self(),
-                add_parameter_to_url(
-                        WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
-                        host_version_info ),
-                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl },
-                http_server );
+                self(), add_parameter_to_url( get_webview_chat_path(), host_version_info ),
+                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl }, http_server );
 
 #else
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                self(),
-                add_parameter_to_url(
-                        WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path(),
-                        host_version_info ),
+                self(), add_parameter_to_url( get_webview_chat_path(), host_version_info ),
                 { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } );
 
 #endif
@@ -181,8 +173,7 @@ public:
             else if( m_containerCfg->copilot_panel_docked_width > 0 )
             {
                 // SetAuiPaneSize also updates m_auimgr
-                SetAuiPaneSize( m_containerAuiMgr, copilot_pane,
-                                m_containerCfg->copilot_panel_docked_width, -1 );
+                SetAuiPaneSize( m_containerAuiMgr, copilot_pane, m_containerCfg->copilot_panel_docked_width, -1 );
             }
         }
         else
@@ -227,8 +218,7 @@ public:
             copilotPane.Show( m_containerCfg->copilot_panel_show );
             if( m_containerCfg->copilot_panel_show )
             {
-                SetAuiPaneSize( m_containerAuiMgr, copilotPane,
-                                m_containerCfg->copilot_panel_docked_width, -1 );
+                SetAuiPaneSize( m_containerAuiMgr, copilotPane, m_containerCfg->copilot_panel_docked_width, -1 );
             }
         }
     }
@@ -238,10 +228,7 @@ public:
     // Copilot commands Dispatcher
     void FireCopilotCommand( std::string const& aCmdType ) { WXUNUSED( aCmdType ); }
 
-    void ExecuteAgentAction( AGENT_ACTION const& aAction )
-    {
-        return BaseExecuteAgentAction( aAction );
-    }
+    void ExecuteAgentAction( AGENT_ACTION const& aAction ) { return BaseExecuteAgentAction( aAction ); }
 
     void BaseExecuteAgentAction( AGENT_ACTION const& aAction )
     {
