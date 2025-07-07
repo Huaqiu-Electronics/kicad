@@ -47,9 +47,8 @@ WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
     _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
                                       _immutable_settings->copilot_webview_settings.path.chat );
 
-    _webview_image_viewer_path =
-            fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
-                         _immutable_settings->copilot_webview_settings.path.image_viewer );
+    _webview_image_viewer_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
+                                              _immutable_settings->copilot_webview_settings.path.image_viewer );
 }
 
 WEBVIEW_SETTINGS_MANAGER::~WEBVIEW_SETTINGS_MANAGER()
@@ -129,12 +128,17 @@ std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_image_viewer_path() con
     return _webview_image_viewer_path;
 }
 
-DIALOG_GEOMETRY const& WEBVIEW_SETTINGS_MANAGER::get_image_viewer_geometry() const
+DIALOG_GEOMETRY WEBVIEW_SETTINGS_MANAGER::get_dialog_geometry( std::string const& aKey ) const
 {
-    return _mutable_settings->image_viewer_geometry;
+    if( !_mutable_settings->dialog_geometries.count( aKey ) )
+    {
+        return {};
+    }
+
+    return _mutable_settings->dialog_geometries.at( aKey );
 }
 
-void WEBVIEW_SETTINGS_MANAGER::set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry )
+void WEBVIEW_SETTINGS_MANAGER::set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& geometry )
 {
-    _mutable_settings->image_viewer_geometry = geometry;
+    _mutable_settings->dialog_geometries[aKey] = geometry;
 }
