@@ -1190,7 +1190,7 @@ public:
 
     copilot::NETLIST GetSelection()const ;
 
-    wxString DumpSelectionToDesignBlock() const;
+    wxString DumpSelectionToDesignBlock();
 
     // WebView Library
 public:

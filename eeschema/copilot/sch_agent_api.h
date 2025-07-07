@@ -25,9 +25,14 @@
 #ifndef SCH_AGENT_API_H
 #define SCH_AGENT_API_H
 
+#include <confirm.h>
+#include <cstddef>
+#include <memory>
 #include <sch_editor_control.h>
 #include <tool/tool_manager.h>
 #include <sch_edit_frame.h>
+#include <fstream>
+#include <sstream>
 
 
 void SCH_EDIT_FRAME::HighlightSymbol( std::string const& aDesignator )
@@ -37,9 +42,66 @@ void SCH_EDIT_FRAME::HighlightSymbol( std::string const& aDesignator )
     editor->FindSymbolAndItem( nullptr, &part_ref, true, HIGHLIGHT_SYMBOL, {} );
 }
 
-wxString SCH_EDIT_FRAME::DumpSelectionToDesignBlock() const
+wxString SCH_EDIT_FRAME::DumpSelectionToDesignBlock()
 {
-    return {};
+    // Get all selected items
+    SCH_SELECTION selection = m_toolManager->GetTool<SCH_SELECTION_TOOL>()->GetSelection();
+
+    if( selection.Empty() )
+    {
+        DisplayErrorMessage( this, _( "Please select some items to save as a design block." ) );
+        return {};
+    }
+
+    // Just block all attempts to create design blocks with nested sheets at this point
+    if( selection.HasType( SCH_SHEET_T ) )
+    {
+        DisplayErrorMessage( this, _( "Design blocks with nested sheets are not supported." ) );
+
+        return {};
+    }
+
+
+    // Create a temporary screen
+    SCH_SCREEN* tempScreen = new SCH_SCREEN( m_schematic );
+
+    // Copy the selected items to the temporary screen
+    for( EDA_ITEM* item : selection )
+    {
+        EDA_ITEM* copy = item->Clone();
+        tempScreen->Append( static_cast<SCH_ITEM*>( copy ) );
+    }
+
+    // Create a sheet for the temporary screen
+    SCH_SHEET* tempSheet = new SCH_SHEET( m_schematic );
+    tempSheet->SetScreen( tempScreen );
+
+    std::shared_ptr<nullptr_t> clean_sheet( nullptr,
+                                            [&]( nullptr_t )
+                                            {
+                                                delete tempSheet;
+                                            } );
+
+
+    // Save a temporary copy of the schematic file, as the plugin is just going to move it
+    wxString                   tempFile = wxFileName::CreateTempFileName( "design_block" );
+    std::shared_ptr<nullptr_t> clean_file( nullptr,
+                                           [&]( nullptr_t )
+                                           {
+                                               wxRemoveFile( tempFile );
+                                           } );
+
+
+    if( !saveSchematicFile( tempSheet, tempFile ) )
+    {
+        DisplayErrorMessage( this, _( "Error saving temporary schematic file to create design block." ) );
+        return {};
+    }
+
+    std::ifstream     file( tempFile.ToStdString() );
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    return buffer.str();
 }
 
 #endif
