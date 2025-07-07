@@ -80,8 +80,7 @@ inline auto send_data_buried_point( DATA_BURIED_POINT const& aDataBuriedPoint )
                 }
                 catch( ... )
                 {
-                    wxLogDebug( wxString::Format( "send_data_buried_point error: unknown" ),
-                                "send_data_buried_point" );
+                    wxLogDebug( wxString::Format( "send_data_buried_point error: unknown" ), "send_data_buried_point" );
                 }
             } );
     t.detach();
@@ -96,15 +95,12 @@ enum START_UP_SIZE
 
 inline auto extract_host_from_url( std::string const& url )
 {
-    return url.substr( url.find( "://" ) + 3,
-                       url.find( "/", url.find( "://" ) + 3 ) - url.find( "://" ) - 3 );
+    return url.substr( url.find( "://" ) + 3, url.find( "/", url.find( "://" ) + 3 ) - url.find( "://" ) - 3 );
 }
 
-WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
-                                      HOST_COPILOT_HANDLES             host_copilot_handles,
+WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
                                       std::unique_ptr<httplib::Server> msgServer ) :
-        wxPanel( parent ),
-        _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
+        wxPanel( parent ), _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
         _primary_url( std::move( url ) ), _web_msg_server( std::move( msgServer ) )
 {
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
@@ -118,45 +114,42 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                 [&]()
                 {
                     // Handle POST requests
-                    _web_msg_server->Post(
-                            "/passive_action",
-                            [this]( const Request& req, Response& res )
-                            {
-                                // Add CORS headers
-                                res.set_header( "Access-Control-Allow-Origin", "*" );
-                                res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
-                                res.set_header( "Access-Control-Allow-Headers", "*" );
+                    _web_msg_server->Post( "/passive_action",
+                                           [this]( const Request& req, Response& res )
+                                           {
+                                               // Add CORS headers
+                                               res.set_header( "Access-Control-Allow-Origin", "*" );
+                                               res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
+                                               res.set_header( "Access-Control-Allow-Headers", "*" );
 
-                                const auto msg = req.body;
-                                if( msg.empty() )
-                                {
-                                    res.set_content( "Invalid message", "text/plain" );
-                                    return;
-                                }
+                                               const auto msg = req.body;
+                                               if( msg.empty() )
+                                               {
+                                                   res.set_content( "Invalid message", "text/plain" );
+                                                   return;
+                                               }
 
-                                // Process the message
-                                OnWebChannelMsgWrapper( msg );
-                                res.set_content( "OK", "text/plain" );
-                            } );
+                                               // Process the message
+                                               OnWebChannelMsgWrapper( msg );
+                                               res.set_content( "OK", "text/plain" );
+                                           } );
 
                     // Handle OPTIONS preflight requests
-                    _web_msg_server->Options(
-                            "/passive_action",
-                            []( const Request& req, Response& res )
-                            {
-                                res.set_header( "Access-Control-Allow-Origin", "*" );
-                                res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
-                                res.set_header( "Access-Control-Allow-Headers", "*" );
-                                res.set_content( "", "text/plain" );
-                            } );
+                    _web_msg_server->Options( "/passive_action",
+                                              []( const Request& req, Response& res )
+                                              {
+                                                  res.set_header( "Access-Control-Allow-Origin", "*" );
+                                                  res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
+                                                  res.set_header( "Access-Control-Allow-Headers", "*" );
+                                                  res.set_content( "", "text/plain" );
+                                              } );
 
 
                     _web_msg_server->listen_after_bind();
                 } );
     }
 
-    if( !_browser->AddScriptMessageHandler(
-                magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
+    if( !_browser->AddScriptMessageHandler( magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
     {
         wxLogDebug( "Could not add script message handler " );
     }
@@ -166,22 +159,16 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
     SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
 
     // Connect the webview events
-    Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this,
-          _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this,
-          _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, _browser->GetId() );
     Bind( wxEVT_WEBVIEW_LOADED, &WEBVIEW_CONTAINER::OnDocumentLoaded, this, _browser->GetId() );
     Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_CONTAINER::OnError, this, _browser->GetId() );
     Bind( wxEVT_WEBVIEW_NEWWINDOW, &WEBVIEW_CONTAINER::OnNewWindow, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this,
-          _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this,
-          _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _browser->GetId() );
 
-    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this,
-          _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this,
-          _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _browser->GetId() );
 
 #ifdef DEBUG
 
@@ -210,9 +197,8 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
 {
-    const auto js_call =
-            fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
-                         magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
+    const auto js_call = fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
+                                      magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
 
     CallAfter(
             [this, js_call]()
@@ -306,7 +292,7 @@ void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
 {
-#define WX_ERROR_CASE( type )                                                                      \
+#define WX_ERROR_CASE( type )                                                                                          \
     case type: category = #type; break;
 
     wxString category;
@@ -322,8 +308,7 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
         WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_OTHER );
     }
 
-    wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " ("
-                              + evt.GetString() + ")'" );
+    wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " (" + evt.GetString() + ")'" );
 }
 
 void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
@@ -369,8 +354,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                 _browser->RunScriptAsync(
                         fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS "
                                      "exception:', e); }}",
-                                     magic_enum::enum_name(
-                                             WEBVIEW_FUNCTIONS::update_copilot_global_context ),
+                                     magic_enum::enum_name( WEBVIEW_FUNCTIONS::update_copilot_global_context ),
                                      global_ctx_value ),
                         &out );
 
@@ -383,11 +367,10 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
             {
                 if( !_image_viewer )
                 {
-                    const auto geometry =
-                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
-                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer",
-                                                             { geometry.x, geometry.y },
-                                                             { geometry.width, geometry.height } );
+                    const auto geometry = WEBVIEW_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
+                    _image_viewer =
+                            new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer", { geometry.x, geometry.y },
+                                                     { geometry.width, geometry.height } );
                 }
                 _image_viewer->reload();
                 _image_viewer->Show();
