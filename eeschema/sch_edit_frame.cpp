@@ -498,8 +498,9 @@ SCH_EDIT_FRAME::~SCH_EDIT_FRAME()
         }
     }
 
-    delete m_hierarchy;
-    delete m_selectionFilterPanel;
+    // We passed ownership of these to wxAuiManager.
+    // delete m_hierarchy;
+    // delete m_selectionFilterPanel;
 }
 
 
