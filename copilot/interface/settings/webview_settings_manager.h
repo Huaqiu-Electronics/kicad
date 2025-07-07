@@ -58,8 +58,8 @@ public:
 
     std::string const& get_webview_image_viewer_path() const;
 
-    DIALOG_GEOMETRY const& get_image_viewer_geometry() const;
-    void                   set_image_viewer_geometry( DIALOG_GEOMETRY const& geometry );
+    DIALOG_GEOMETRY get_dialog_geometry( std::string const& aKey ) const;
+    void            set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
 private:
     WEBVIEW_SETTINGS_MANAGER();

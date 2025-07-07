@@ -32,9 +32,9 @@
 
 struct MUTABLE_SETTINGS
 {
-    DIALOG_GEOMETRY image_viewer_geometry;
-    std::string     version = kConfigVersion;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MUTABLE_SETTINGS, image_viewer_geometry, ecad_viewer_geometry, version )
+    std::map<std::string, DIALOG_GEOMETRY> dialog_geometries;
+    std::string                            version = kConfigVersion;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MUTABLE_SETTINGS, dialog_geometries, version )
 };
 
 

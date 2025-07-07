@@ -23,61 +23,11 @@
  */
 
 #include "dialog_image_viewer.h"
-#include <settings/dialog_geometry.h>
 
-#include <settings/webview_settings_manager.h>
-#include <wx/event.h>
-#include <wx/log.h>
-#include <wx/sizer.h>
-#include <fmt/format.h>
-
-#if wxUSE_WEBVIEW_EDGE
-#include <wx/msw/webview_edge.h>
-#endif
-
-
-DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, const wxString& title,
-                                          const wxPoint& pos, const wxSize& size, long style,
-                                          const wxString& name ) :
-        wxDialog( aParent, id, title, pos, size, style, name ), _browser( wxWebView::New() )
-{
-    auto       top_sizer = new wxBoxSizer( wxVERTICAL );
-    const auto url = WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path();
-    _browser->Create( this, wxID_ANY, url, wxDefaultPosition, wxDefaultSize );
-    top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
-    SetSizer( top_sizer );
-
-    Bind( wxEVT_CLOSE_WINDOW,
-          [this]( wxCloseEvent& event )
-          {
-              const auto pos = GetPosition();
-              const auto size = GetSize();
-              WEBVIEW_SETTINGS_MANAGER::get_instance().set_image_viewer_geometry(
-                      DIALOG_GEOMETRY{ pos.x, pos.y, size.x, size.y
-
-                      } );
-              event.Skip();
-          } );
-
-
-#ifdef DEBUG
-
-#if wxUSE_WEBVIEW_EDGE
-
-    if( auto edge = dynamic_cast<wxWebViewEdge*>( _browser ) )
-    {
-        edge->EnableAccessToDevTools( true );
-    }
-
-#endif
-
-
-#endif // DEBUG
-}
 
 void DIALOG_IMAGE_VIEWER::reload()
 {
-    _browser->RunScriptAsync( "window.dispatchEvent(new Event(\"updateLocalImage\"));" );
+    GetBrowser().RunScriptAsync( "window.dispatchEvent(new Event(\"updateLocalImage\"));" );
 }
 
 DIALOG_IMAGE_VIEWER::~DIALOG_IMAGE_VIEWER()

@@ -28,22 +28,16 @@
 #include <wx/dialog.h>
 #include <wx/webview.h>
 
+#include "dialog_webview.h"
 
-class DIALOG_IMAGE_VIEWER : public wxDialog
+class DIALOG_IMAGE_VIEWER : public DIALOG_WEBVIEW
 {
 public:
-    DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, const wxString& title,
-                         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                         long            style = wxDEFAULT_FRAME_STYLE | wxRESIZE_BORDER,
-                         const wxString& name = wxDialogNameStr );
+    using DIALOG_WEBVIEW::DIALOG_WEBVIEW;
 
     ~DIALOG_IMAGE_VIEWER();
 
     void reload();
-
-
-private:
-    wxWebView* _browser;
 };
 
 #endif
