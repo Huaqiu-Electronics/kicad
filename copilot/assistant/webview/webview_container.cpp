@@ -377,6 +377,20 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
 
                 break;
             }
+            case WEB_HOST_INTERNAL_CMD_TYPE::show_ecad_viewer:
+            {
+                if( !_image_viewer )
+                {
+                    const auto geometry = WEBVIEW_SETTINGS_MANAGER::get_instance().get_image_viewer_geometry();
+                    _image_viewer =
+                            new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer", { geometry.x, geometry.y },
+                                                     { geometry.width, geometry.height } );
+                }
+                _image_viewer->reload();
+                _image_viewer->Show();
+
+                break;
+            }
             }
             break;
         }
