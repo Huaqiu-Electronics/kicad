@@ -55,7 +55,7 @@ void EESCHEMA_SETTINGS::InitWebviewLibrarySettings()
             new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
 
     m_params.emplace_back(
-            new PARAM<std::string>( "webview_library.url", &m_WebViewLibrarySettings.url, kSymbolChooserUrl ) );
+            new PARAM<wxString>( "webview_library.url", &m_WebViewLibrarySettings.url, kSymbolChooserUrl ) );
 }
 
 #endif

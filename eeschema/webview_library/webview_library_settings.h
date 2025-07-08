@@ -25,7 +25,7 @@
 #ifndef WEBVIEW_LIBRARY_SETTINGS_H
 #define WEBVIEW_LIBRARY_SETTINGS_H
 
-#include <nlohmann/json.hpp>
+#include <wx/string.h>
 
 struct WEBVIEW_LIBRARY_SETTINGS
 {
@@ -40,10 +40,7 @@ struct WEBVIEW_LIBRARY_SETTINGS
     int  panel_float_width{ DEFAULT_SIZE };
     int  panel_float_height{ DEFAULT_SIZE };
 
-    std::string url;
-
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_LIBRARY_SETTINGS, url, panel_show, panel_docked_width, panel_docked_height,
-                                    panel_float_width, panel_float_height )
+    wxString url;
 };
 
 
