@@ -50,6 +50,7 @@
 #include <thread>
 #include <utils/httplib.h>
 #include <utils/wstring_to_string.h>
+#include <wx/dialog.h>
 
 #include "http/http_client.h"
 #include "common/dialog_image_viewer.h"
@@ -260,7 +261,10 @@ void WEBVIEW_CONTAINER::OnTitleChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 {
-    // ShowFullScreen( evt.GetInt() != 0 );
+    if( auto p = dynamic_cast<wxDialog*>( GetParent() ) )
+        p->ShowFullScreen( evt.GetInt() != 0 );
+
+    evt.Veto();
 }
 
 
@@ -359,7 +363,9 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                 if( !_image_viewer )
                 {
                     _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer", "image_viewer" );
+                    _image_viewer->LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
+
                 _image_viewer->reload();
                 _image_viewer->Show();
 
@@ -367,6 +373,24 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::show_ecad_viewer:
             {
+                if( cmd.data )
+                {
+                    try
+                    {
+                        const auto url = cmd.data->get<std::string>();
+
+                        if( !_ecad_viewer )
+                        {
+                            _ecad_viewer = new DIALOG_WEBVIEW( m_parent, wxID_ANY, "ECAD Viewer", "ecad_viewer" );
+                        }
+
+                        _ecad_viewer->LoadUrl( url );
+                        _ecad_viewer->Show();
+                    }
+                    catch( ... )
+                    {
+                    }
+                }
                 break;
             }
             }
