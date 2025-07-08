@@ -40,8 +40,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad_zh_CN_Master_v0.0.32\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-08 11:34+0800\n"
-"PO-Revision-Date: 2025-07-08 11:56+0800\n"
+"POT-Creation-Date: 2025-07-08 13:50+0800\n"
+"PO-Revision-Date: 2025-07-08 17:16+0800\n"
 "Last-Translator: CloverGit <w991593239@163.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/projects/kicad/v9/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -1521,10 +1521,9 @@ msgid "No shape in black and white image to convert: no outline created."
 msgstr "黑白图像中没有可转换的形状: 未创建轮廓。"
 
 #: common/api/api_design_resource_mgr.cpp:205
-#, fuzzy, c-format
-#| msgid "Cannot create project remap back up folder '%s'."
+#, c-format
 msgid "Cannot create project resource path '%s'."
-msgstr "无法创建工程重新映射备份文件夹 '%s'。"
+msgstr "无法创建工程重新映射备份文件夹 '%s'。 "
 
 #: common/api/api_handler.cpp:27
 msgid "Modification from API"
@@ -6689,10 +6688,8 @@ msgid "Error loading project footprint library table."
 msgstr "加载工程封装库表时出错。"
 
 #: common/project.cpp:469
-#, fuzzy
-#| msgid "Error saving footprint library"
 msgid "Error inserting footprint library."
-msgstr "保存封装库"
+msgstr "更新封装库出错"
 
 #: common/project.cpp:498 common/project.cpp:504
 msgid "Error loading project design block library table."
@@ -8905,10 +8902,9 @@ msgid "Error loading symbol library '%s'."
 msgstr "加载符号库 '%s' 时出现错误。"
 
 #: eeschema/api/api_sch_design_resource_mgr.cpp:328
-#, fuzzy, c-format
-#| msgid "Failed to save rescue library %s."
+#, c-format
 msgid "Failed to save library %s. %s"
-msgstr "无法保存恢复库 %s。"
+msgstr "无法保持库 %s. %s"
 
 #: eeschema/bom_plugins.cpp:47
 #, c-format
@@ -19093,10 +19089,8 @@ msgid "Import sheet into project"
 msgstr "导入图纸到工程"
 
 #: eeschema/tools/sch_actions.cpp:587
-#, fuzzy
-#| msgid "Import sheet into project"
 msgid "API import sheet into project"
-msgstr "导入图纸到工程"
+msgstr "API导入Sheet到项目"
 
 #: eeschema/tools/sch_actions.cpp:597
 msgid "Place Global Labels"
@@ -19959,10 +19953,8 @@ msgid "Show SPICE Netlist"
 msgstr "显示 SPICE 网表"
 
 #: eeschema/tools/sch_actions.cpp:1604
-#, fuzzy
-#| msgid "Symbol Chooser"
 msgid "Toggle Online Symbol Chooser"
-msgstr "符号选择器"
+msgstr "打开/关闭华秋器件库"
 
 #: eeschema/tools/sch_drawing_tools.cpp:320
 msgid "Press <ESC> to cancel symbol creation."
