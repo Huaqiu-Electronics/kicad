@@ -36,6 +36,9 @@ public:
     DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey );
     ~DIALOG_WEBVIEW();
 
+
+    void LoadUrl( wxString const& aUrl );
+
 protected:
     wxWebView& GetBrowser();
 

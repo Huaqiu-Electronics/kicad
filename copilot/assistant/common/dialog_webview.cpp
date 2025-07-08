@@ -40,9 +40,8 @@ DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString
     SetPosition( { geometry.x, geometry.y } );
     SetSize( { geometry.width, geometry.height } );
 
-    auto       top_sizer = new wxBoxSizer( wxVERTICAL );
-    const auto url = WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path();
-    _browser->Create( this, wxID_ANY, url, wxDefaultPosition, wxDefaultSize );
+    auto top_sizer = new wxBoxSizer( wxVERTICAL );
+    _browser->Create( this, wxID_ANY );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
     SetSizer( top_sizer );
 
@@ -68,6 +67,11 @@ DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString
 
 DIALOG_WEBVIEW::~DIALOG_WEBVIEW()
 {
+}
+
+void DIALOG_WEBVIEW::LoadUrl( wxString const& aUrl )
+{
+    _browser->LoadURL( aUrl );
 }
 
 wxWebView& DIALOG_WEBVIEW::GetBrowser()

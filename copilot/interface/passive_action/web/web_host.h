@@ -26,6 +26,7 @@
 #define WEB_HOST_H
 
 #include <nlohmann/json.hpp>
+#include <optional>
 
 enum class WEB_HOST_INTERNAL_CMD_TYPE
 {
@@ -37,8 +38,9 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
 
 struct WEB_HOST_INTERNAL_CMD
 {
-    std::string type;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEB_HOST_INTERNAL_CMD, type )
+    std::string                   type;
+    std::optional<nlohmann::json> data;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEB_HOST_INTERNAL_CMD, type, data )
 };
 
 #endif

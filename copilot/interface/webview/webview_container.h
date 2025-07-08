@@ -38,6 +38,7 @@
 #include <utils/httplib.h>
 
 class DIALOG_IMAGE_VIEWER;
+class DIALOG_WEBVIEW;
 
 enum class WEBVIEW_MSG_CHANNELS
 {
@@ -87,6 +88,8 @@ protected:
 protected:
     std::set<std::string> _consumed_global_ctx_keys{};
     DIALOG_IMAGE_VIEWER*  _image_viewer{};
+    DIALOG_WEBVIEW*       _ecad_viewer{};
+
 
     wxWebView*                       _browser;
     HOST_COPILOT_HANDLES             _host_copilot_handles;
