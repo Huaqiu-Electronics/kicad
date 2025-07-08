@@ -362,7 +362,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
             {
                 if( !_image_viewer )
                 {
-                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, "Image Viewer", "image_viewer" );
+                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _("Image Viewer"), "image_viewer" );
                     _image_viewer->LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
 
@@ -381,7 +381,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
 
                         if( !_ecad_viewer )
                         {
-                            _ecad_viewer = new DIALOG_WEBVIEW( m_parent, wxID_ANY, "ECAD Viewer", "ecad_viewer" );
+                            _ecad_viewer = new DIALOG_WEBVIEW( m_parent, wxID_ANY, _("ECAD Viewer"), "ecad_viewer" );
                         }
 
                         _ecad_viewer->LoadUrl( url );
