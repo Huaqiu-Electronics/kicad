@@ -1801,5 +1801,5 @@ TOOL_ACTION SCH_ACTIONS::toggleWebViewLibrary(
         TOOL_ACTION_ARGS()
                 .Name( "eeschema.AUI.toggleWebViewLibrary" )
                 .Scope( AS_GLOBAL )
-                .FriendlyName( _( "Toggle Online Symbol Chooser" ) )
+                .FriendlyName( _( "Toggle Online Library" ) )
                 .Icon( BITMAPS::hq_add_symbol_to_schematic ) );
