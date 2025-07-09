@@ -5274,7 +5274,7 @@ msgstr "在封装库表文件的第 %2$d 行中出现了重复的库名称 '%1$s
 
 #: common/fp_lib_table.cpp:634 pcbnew/footprint_preview_panel.cpp:219
 msgid "Added by HQ Online Symbol"
-msgstr "添加自华秋在线库"
+msgstr "添加自云端库"
 
 #: common/fp_lib_table.cpp:769
 #, c-format
@@ -19953,8 +19953,8 @@ msgid "Show SPICE Netlist"
 msgstr "显示 SPICE 网表"
 
 #: eeschema/tools/sch_actions.cpp:1604
-msgid "Toggle Online Symbol Chooser"
-msgstr "打开/关闭华秋器件库"
+msgid "Toggle Online Library"
+msgstr "打开/关闭云端库"
 
 #: eeschema/tools/sch_drawing_tools.cpp:320
 msgid "Press <ESC> to cancel symbol creation."
