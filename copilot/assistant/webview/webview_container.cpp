@@ -170,6 +170,14 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_CO
 
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _browser->GetId() );
+    Bind(
+            wxEVT_WEBVIEW_LOADED,
+            [&]( wxWebViewEvent& evt )
+            {
+                send_data_buried_point( GetDataBuriedPoint() );
+            },
+            _browser->GetId() );
+
 
 #ifdef DEBUG
 
@@ -371,7 +379,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
             {
                 if( !_image_viewer )
                 {
-                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _("Image Viewer"), "image_viewer" );
+                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _( "Image Viewer" ), "image_viewer" );
                     _image_viewer->LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
 
@@ -390,7 +398,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
 
                         if( !_ecad_viewer )
                         {
-                            _ecad_viewer = new DIALOG_WEBVIEW( m_parent, wxID_ANY, _("ECAD Viewer"), "ecad_viewer" );
+                            _ecad_viewer = new DIALOG_WEBVIEW( m_parent, wxID_ANY, _( "ECAD Viewer" ), "ecad_viewer" );
                         }
 
                         _ecad_viewer->LoadUrl( url );
