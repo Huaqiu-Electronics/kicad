@@ -36,6 +36,7 @@
 #include <thread>
 #include <memory>
 #include <utils/httplib.h>
+#include <optional>
 
 class DIALOG_IMAGE_VIEWER;
 class DIALOG_WEBVIEW;
@@ -50,6 +51,7 @@ class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
     WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
+                       std::optional<std::string>       data_buried_point = std::nullopt,
                        std::unique_ptr<httplib::Server> msgServer = nullptr );
 
     ~WEBVIEW_CONTAINER() override;
@@ -59,8 +61,6 @@ public:
     virtual void ExecuteCommand( const char* cmd );
 
     virtual void OnHostSelectionChanged( bool has_selection );
-
-    virtual DATA_BURIED_POINT GetDataBuriedPoint() const;
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );

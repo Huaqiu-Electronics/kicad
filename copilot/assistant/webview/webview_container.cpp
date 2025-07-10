@@ -64,7 +64,7 @@
 using json = nlohmann::json;
 using namespace httplib;
 
-inline auto send_data_buried_point( DATA_BURIED_POINT const& aDataBuriedPoint )
+inline auto send_data_buried_point( std::string const& name )
 {
     std::thread t(
             [=]()
@@ -72,7 +72,9 @@ inline auto send_data_buried_point( DATA_BURIED_POINT const& aDataBuriedPoint )
                 try
                 {
                     HTTP_CLIENT http_client;
-                    http_client.send_data_buried_point( aDataBuriedPoint );
+                    http_client.send_data_buried_point( DATA_BURIED_POINT{ name, fmt::format( "{}_in_kicad", name )
+
+                    } );
                 }
                 catch( std::exception const& e )
                 {
@@ -100,6 +102,7 @@ inline auto extract_host_from_url( std::string const& url )
 }
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
+                                      std::optional<std::string>       data_buried_point,
                                       std::unique_ptr<httplib::Server> msgServer ) :
         wxPanel( parent ), _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
         _primary_url( std::move( url ) ), _web_msg_server( std::move( msgServer ) )
@@ -170,13 +173,11 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_CO
 
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _browser->GetId() );
-    Bind(
-            wxEVT_WEBVIEW_LOADED,
-            [&]( wxWebViewEvent& evt )
-            {
-                send_data_buried_point( GetDataBuriedPoint() );
-            },
-            _browser->GetId() );
+
+    if( data_buried_point )
+    {
+        send_data_buried_point( *data_buried_point );
+    }
 
 
 #ifdef DEBUG
@@ -224,10 +225,6 @@ void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
     ExecuteCommand( json( SELECTION_CHANGE_CMD{ has_selection } ).dump().c_str() );
 }
 
-DATA_BURIED_POINT WEBVIEW_CONTAINER::GetDataBuriedPoint() const
-{
-    return { "kicad_webview_container_launch", "user_launch_webview_in_kicad" };
-}
 
 WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
 {

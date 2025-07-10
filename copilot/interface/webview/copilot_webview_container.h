@@ -30,8 +30,7 @@
 class COPILOT_API COPILOT_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
-    COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
-                               HOST_COPILOT_HANDLES             host_copilot_handles,
+    COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
                                std::unique_ptr<httplib::Server> msgServer = nullptr );
 
     ~COPILOT_WEBVIEW_CONTAINER() override;
@@ -39,8 +38,6 @@ public:
 
 protected:
     void OnDocumentLoaded( wxWebViewEvent& evt ) override;
-
-    DATA_BURIED_POINT GetDataBuriedPoint() const override;
 
     void OnNavigationRequest( wxWebViewEvent& evt ) override;
 

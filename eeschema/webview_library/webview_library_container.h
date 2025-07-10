@@ -30,14 +30,12 @@
 class WEBVIEW_LIBRARY_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
-    using WEBVIEW_CONTAINER::WEBVIEW_CONTAINER;
-
-protected:
-    DATA_BURIED_POINT GetDataBuriedPoint() const override
+    WEBVIEW_LIBRARY_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
+                               std::unique_ptr<httplib::Server> msgServer = nullptr ) :
+            WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_desktop_webview_library",
+                               std::move( msgServer ) )
     {
-        return { "kicad_desktop_webview_library", "user_launch_webview_library_in_kicad_desktop" };
     }
-
 
 private:
 };
