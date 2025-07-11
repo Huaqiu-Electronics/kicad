@@ -28,4 +28,30 @@
 #include <pcb_edit_frame.h>
 
 
+
+template <>
+FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications() const
+{
+    return {};
+}
+
+template <>
+GERBER_FILENAME_CONTENT FAB_INFO_GETTER_PCB::GetGerber() const
+{
+    return {};
+}
+
+template <>
+std::vector<FP_POSITION_LIST> FAB_INFO_GETTER_PCB::GetComponentPosition() const
+{
+    return {};
+}
+
+template <>
+std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM() const
+{
+    return {};
+}
+
+
 #endif
