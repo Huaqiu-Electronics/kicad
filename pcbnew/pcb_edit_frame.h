@@ -29,6 +29,7 @@
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
 #include <context/pcb/pcb_copilot_global_context.h>
+#include <fab/fab_info_getter.h>
 #include <copilot_panel_container.h>
 namespace copilot
 {
@@ -38,6 +39,7 @@ struct BOARD_SELECTIONS;
 class PCB_EDIT_FRAME;
 using PCB_COPILOT_PANEL_CONTAINER =
         COPILOT_PANEL_CONTAINER<PCB_EDIT_FRAME, PCB_COPILOT_GLOBAL_CONTEXT>;
+using FAB_INFO_GETTER_PCB = FAB_INFO_GETTER<PCB_EDIT_FRAME>;
 
 
 class ACTION_PLUGIN;
@@ -88,7 +90,7 @@ namespace PCB { struct IFACE; }     // KIFACE is in pcbnew.cpp
  *
  * See also class PCB_BASE_FRAME(): Basic class for Pcbnew and GerbView.
  */
-class PCB_EDIT_FRAME : public PCB_BASE_EDIT_FRAME, public PCB_COPILOT_PANEL_CONTAINER
+class PCB_EDIT_FRAME : public PCB_BASE_EDIT_FRAME, public PCB_COPILOT_PANEL_CONTAINER, public FAB_INFO_GETTER_PCB
 {
 public:
     virtual ~PCB_EDIT_FRAME();
