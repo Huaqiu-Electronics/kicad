@@ -178,23 +178,25 @@ int PCB_CONTROL::TrackDisplayMode( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::ToggleRatsnest( const TOOL_EVENT& aEvent )
 {
-    if( aEvent.IsAction( &PCB_ACTIONS::showRatsnest ) )
+    if( PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame ) )
     {
-        // N.B. Do not disable the Ratsnest layer here.  We use it for local ratsnest
-        Flip( displayOptions().m_ShowGlobalRatsnest );
-        getEditFrame<PCB_EDIT_FRAME>()->SetElementVisibility( LAYER_RATSNEST,
-                                                              displayOptions().m_ShowGlobalRatsnest );
+        if( aEvent.IsAction( &PCB_ACTIONS::showRatsnest ) )
+        {
+            // N.B. Do not disable the Ratsnest layer here.  We use it for local ratsnest
+            Flip( displayOptions().m_ShowGlobalRatsnest );
+            editFrame->SetElementVisibility( LAYER_RATSNEST, displayOptions().m_ShowGlobalRatsnest );
 
+        }
+        else if( aEvent.IsAction( &PCB_ACTIONS::ratsnestLineMode ) )
+        {
+            Flip( displayOptions().m_DisplayRatsnestLinesCurved );
+        }
+
+        editFrame->OnDisplayOptionsChanged();
+
+        canvas()->RedrawRatsnest();
+        canvas()->Refresh();
     }
-    else if( aEvent.IsAction( &PCB_ACTIONS::ratsnestLineMode ) )
-    {
-        Flip( displayOptions().m_DisplayRatsnestLinesCurved );
-    }
-
-    frame()->OnDisplayOptionsChanged();
-
-    canvas()->RedrawRatsnest();
-    canvas()->Refresh();
 
     return 0;
 }
@@ -238,15 +240,14 @@ void PCB_CONTROL::unfilledZoneCheck()
 
     if( unfilledZones )
     {
-        WX_INFOBAR*      infobar = frame()->GetInfoBar();
-        wxHyperlinkCtrl* button = new wxHyperlinkCtrl( infobar, wxID_ANY, _( "Don't show again" ),
-                                                       wxEmptyString );
+        WX_INFOBAR*      infobar = m_frame->GetInfoBar();
+        wxHyperlinkCtrl* button = new wxHyperlinkCtrl( infobar, wxID_ANY, _( "Don't show again" ), wxEmptyString );
 
         button->Bind( wxEVT_COMMAND_HYPERLINK, std::function<void( wxHyperlinkEvent& aEvent )>(
                 [&]( wxHyperlinkEvent& aEvent )
                 {
                     Pgm().GetCommonSettings()->m_DoNotShowAgain.zone_fill_warning = true;
-                    frame()->GetInfoBar()->Dismiss();
+                    m_frame->GetInfoBar()->Dismiss();
                 } ) );
 
         infobar->RemoveAllButtons();
@@ -264,7 +265,7 @@ void PCB_CONTROL::unfilledZoneCheck()
 
 int PCB_CONTROL::ZoneDisplayMode( const TOOL_EVENT& aEvent )
 {
-    PCB_DISPLAY_OPTIONS opts = frame()->GetDisplayOptions();
+    PCB_DISPLAY_OPTIONS opts = m_frame->GetDisplayOptions();
 
     // Apply new display options to the GAL canvas
     if( aEvent.IsAction( &PCB_ACTIONS::zoneDisplayFilled ) )
@@ -310,11 +311,11 @@ int PCB_CONTROL::ZoneDisplayMode( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::HighContrastMode( const TOOL_EVENT& aEvent )
 {
-    PCB_DISPLAY_OPTIONS opts = frame()->GetDisplayOptions();
+    PCB_DISPLAY_OPTIONS opts = m_frame->GetDisplayOptions();
 
     opts.m_ContrastModeDisplay = opts.m_ContrastModeDisplay == HIGH_CONTRAST_MODE::NORMAL
-                                        ? HIGH_CONTRAST_MODE::DIMMED
-                                        : HIGH_CONTRAST_MODE::NORMAL;
+                                                                            ? HIGH_CONTRAST_MODE::DIMMED
+                                                                            : HIGH_CONTRAST_MODE::NORMAL;
 
     m_frame->SetDisplayOptions( opts );
     return 0;
@@ -323,7 +324,7 @@ int PCB_CONTROL::HighContrastMode( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::HighContrastModeCycle( const TOOL_EVENT& aEvent )
 {
-    PCB_DISPLAY_OPTIONS opts = frame()->GetDisplayOptions();
+    PCB_DISPLAY_OPTIONS opts = m_frame->GetDisplayOptions();
 
     switch( opts.m_ContrastModeDisplay )
     {
@@ -344,7 +345,7 @@ int PCB_CONTROL::ContrastModeFeedback( const TOOL_EVENT& aEvent )
     if( !Pgm().GetCommonSettings()->m_Input.hotkey_feedback )
         return 0;
 
-    PCB_DISPLAY_OPTIONS opts = frame()->GetDisplayOptions();
+    PCB_DISPLAY_OPTIONS opts = m_frame->GetDisplayOptions();
 
     wxArrayString labels;
     labels.Add( _( "Normal" ) );
@@ -368,7 +369,7 @@ int PCB_CONTROL::ContrastModeFeedback( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::NetColorModeCycle( const TOOL_EVENT& aEvent )
 {
-    PCB_DISPLAY_OPTIONS opts = frame()->GetDisplayOptions();
+    PCB_DISPLAY_OPTIONS opts = m_frame->GetDisplayOptions();
 
     switch( opts.m_NetColorMode )
     {
@@ -384,27 +385,30 @@ int PCB_CONTROL::NetColorModeCycle( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::RatsnestModeCycle( const TOOL_EVENT& aEvent )
 {
-    if( !displayOptions().m_ShowGlobalRatsnest )
+    if( PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame ) )
     {
-        displayOptions().m_ShowGlobalRatsnest = true;
-        displayOptions().m_RatsnestMode = RATSNEST_MODE::ALL;
-    }
-    else if( displayOptions().m_RatsnestMode == RATSNEST_MODE::ALL )
-    {
-        displayOptions().m_RatsnestMode = RATSNEST_MODE::VISIBLE;
-    }
-    else
-    {
-        displayOptions().m_ShowGlobalRatsnest = false;
+        if( !displayOptions().m_ShowGlobalRatsnest )
+        {
+            displayOptions().m_ShowGlobalRatsnest = true;
+            displayOptions().m_RatsnestMode = RATSNEST_MODE::ALL;
+        }
+        else if( displayOptions().m_RatsnestMode == RATSNEST_MODE::ALL )
+        {
+            displayOptions().m_RatsnestMode = RATSNEST_MODE::VISIBLE;
+        }
+        else
+        {
+            displayOptions().m_ShowGlobalRatsnest = false;
+        }
+
+        editFrame->SetElementVisibility( LAYER_RATSNEST, displayOptions().m_ShowGlobalRatsnest );
+
+        editFrame->OnDisplayOptionsChanged();
+
+        canvas()->RedrawRatsnest();
+        canvas()->Refresh();
     }
 
-    getEditFrame<PCB_EDIT_FRAME>()->SetElementVisibility( LAYER_RATSNEST,
-                                                          displayOptions().m_ShowGlobalRatsnest );
-
-    frame()->OnDisplayOptionsChanged();
-
-    canvas()->RedrawRatsnest();
-    canvas()->Refresh();
     return 0;
 }
 
@@ -419,14 +423,13 @@ int PCB_CONTROL::LayerSwitch( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::LayerNext( const TOOL_EVENT& aEvent )
 {
-    PCB_BASE_FRAME* editFrame  = m_frame;
-    BOARD*          brd        = board();
-    PCB_LAYER_ID    layer      = editFrame->GetActiveLayer();
-    bool            wraparound = false;
+    BOARD*       brd        = board();
+    PCB_LAYER_ID layer      = m_frame->GetActiveLayer();
+    bool         wraparound = false;
 
     if( !IsCopperLayer( layer ) )
     {
-        editFrame->SwitchLayer( B_Cu );
+        m_frame->SwitchLayer( B_Cu );
         return 0;
     }
 
@@ -471,7 +474,7 @@ int PCB_CONTROL::LayerNext( const TOOL_EVENT& aEvent )
     }
 
     wxCHECK( IsCopperLayer( layer ), 0 );
-    editFrame->SwitchLayer( layer );
+    m_frame->SwitchLayer( layer );
 
     return 0;
 }
@@ -479,14 +482,13 @@ int PCB_CONTROL::LayerNext( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::LayerPrev( const TOOL_EVENT& aEvent )
 {
-    PCB_BASE_FRAME* editFrame  = m_frame;
-    BOARD*          brd        = board();
-    PCB_LAYER_ID    layer      = editFrame->GetActiveLayer();
-    bool            wraparound = false;
+    BOARD*       brd        = board();
+    PCB_LAYER_ID layer      = m_frame->GetActiveLayer();
+    bool         wraparound = false;
 
     if( !IsCopperLayer( layer ) )
     {
-        editFrame->SwitchLayer( F_Cu );
+        m_frame->SwitchLayer( F_Cu );
         return 0;
     }
 
@@ -531,7 +533,7 @@ int PCB_CONTROL::LayerPrev( const TOOL_EVENT& aEvent )
     }
 
     wxCHECK( IsCopperLayer( layer ), 0 );
-    editFrame->SwitchLayer( layer );
+    m_frame->SwitchLayer( layer );
 
     return 0;
 }
@@ -620,34 +622,33 @@ int PCB_CONTROL::LayerAlphaDec( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::CycleLayerPresets( const TOOL_EVENT& aEvent )
 {
-    PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
-
-    if( !editFrame )
-        return 0;
-
-    LAYER_PAIR_SETTINGS* settings = editFrame->GetLayerPairSettings();
-
-    if( !settings )
-        return 0;
-
-    int                          currentIndex;
-    std::vector<LAYER_PAIR_INFO> presets = settings->GetEnabledLayerPairs( currentIndex );
-
-    if( presets.size() < 2 )
-        return 0;
-
-    if( currentIndex < 0 )
+    if( PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame ) )
     {
-        wxASSERT_MSG( false, "Current layer pair not found in layer settings" );
-        currentIndex = 0;
+        LAYER_PAIR_SETTINGS* settings = editFrame->GetLayerPairSettings();
+
+        if( !settings )
+            return 0;
+
+        int                          currentIndex;
+        std::vector<LAYER_PAIR_INFO> presets = settings->GetEnabledLayerPairs( currentIndex );
+
+        if( presets.size() < 2 )
+            return 0;
+
+        if( currentIndex < 0 )
+        {
+            wxASSERT_MSG( false, "Current layer pair not found in layer settings" );
+            currentIndex = 0;
+        }
+
+        const int         nextIndex = ( currentIndex + 1 ) % presets.size();
+        const LAYER_PAIR& nextPair = presets[nextIndex].GetLayerPair();
+
+        settings->SetCurrentLayerPair( nextPair );
+
+        m_toolMgr->PostEvent( PCB_EVENTS::LayerPairPresetChangedByKeyEvent() );
     }
 
-    const int         nextIndex = ( currentIndex + 1 ) % presets.size();
-    const LAYER_PAIR& nextPair = presets[nextIndex].GetLayerPair();
-
-    settings->SetCurrentLayerPair( nextPair );
-
-    m_toolMgr->PostEvent( PCB_EVENTS::LayerPairPresetChangedByKeyEvent() );
     return 0;
 }
 
@@ -657,43 +658,39 @@ int PCB_CONTROL::LayerPresetFeedback( const TOOL_EVENT& aEvent )
     if( !Pgm().GetCommonSettings()->m_Input.hotkey_feedback )
         return 0;
 
-    PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
-
-    if( !editFrame )
-        return 0;
-
-    LAYER_PAIR_SETTINGS* settings = editFrame->GetLayerPairSettings();
-
-    if( !settings )
-        return 0;
-
-    PCB_LAYER_PRESENTATION layerPresentation( editFrame );
-
-    int                          currentIndex;
-    std::vector<LAYER_PAIR_INFO> presets = settings->GetEnabledLayerPairs( currentIndex );
-
-    wxArrayString labels;
-    for( const LAYER_PAIR_INFO& layerPairInfo : presets )
+    if( PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame ) )
     {
-        wxString label = layerPresentation.getLayerPairName( layerPairInfo.GetLayerPair() );
+        LAYER_PAIR_SETTINGS* settings = editFrame->GetLayerPairSettings();
 
-        if( layerPairInfo.GetName() )
+        if( !settings )
+            return 0;
+
+        PCB_LAYER_PRESENTATION layerPresentation( editFrame );
+
+        int                          currentIndex;
+        std::vector<LAYER_PAIR_INFO> presets = settings->GetEnabledLayerPairs( currentIndex );
+
+        wxArrayString labels;
+        for( const LAYER_PAIR_INFO& layerPairInfo : presets )
         {
-            label += wxT( " (" ) + *layerPairInfo.GetName() + wxT( ")" );
+            wxString label = layerPresentation.getLayerPairName( layerPairInfo.GetLayerPair() );
+
+            if( layerPairInfo.GetName() )
+                label += wxT( " (" ) + *layerPairInfo.GetName() + wxT( ")" );
+
+            labels.Add( label );
         }
 
-        labels.Add( label );
-    }
+        if( !editFrame->GetHotkeyPopup() )
+            editFrame->CreateHotkeyPopup();
 
-    if( !editFrame->GetHotkeyPopup() )
-        editFrame->CreateHotkeyPopup();
+        HOTKEY_CYCLE_POPUP* popup = editFrame->GetHotkeyPopup();
 
-    HOTKEY_CYCLE_POPUP* popup = editFrame->GetHotkeyPopup();
-
-    if( popup )
-    {
-        int selection = currentIndex;
-        popup->Popup( _( "Preset Layer Pairs" ), labels, selection );
+        if( popup )
+        {
+            int selection = currentIndex;
+            popup->Popup( _( "Preset Layer Pairs" ), labels, selection );
+        }
     }
 
     return 0;
@@ -958,7 +955,7 @@ void PCB_CONTROL::pruneItemLayers( std::vector<BOARD_ITEM*>& aItems )
     // layers are accepted, even if they are not enabled in the dummy board
     // This is mainly true for internal copper layers: all are allowed but only one
     // (In1.cu) is enabled for the GUI.
-    if( m_isFootprintEditor || frame()->IsType( FRAME_FOOTPRINT_EDITOR ) )
+    if( m_isFootprintEditor || m_frame->IsType( FRAME_FOOTPRINT_EDITOR ) )
         return;
 
     LSET                     enabledLayers = board()->GetEnabledLayers();
@@ -1023,10 +1020,11 @@ void PCB_CONTROL::pruneItemLayers( std::vector<BOARD_ITEM*>& aItems )
 int PCB_CONTROL::Paste( const TOOL_EVENT& aEvent )
 {
     // The viewer frames cannot paste
-    if( !frame()->IsType( FRAME_FOOTPRINT_EDITOR ) && !frame()->IsType( FRAME_PCB_EDITOR ) )
+    if( !m_frame->IsType( FRAME_FOOTPRINT_EDITOR ) && !m_frame->IsType( FRAME_PCB_EDITOR ) )
         return 0;
 
-    bool isFootprintEditor = m_isFootprintEditor || frame()->IsType( FRAME_FOOTPRINT_EDITOR );
+    bool isFootprintEditor = m_isFootprintEditor || m_frame->IsType( FRAME_FOOTPRINT_EDITOR );
+
     // The clipboard can contain two different things, an entire kicad_pcb or a single footprint
     if( isFootprintEditor && ( !board() || !footprint() ) )
         return 0;
@@ -1041,7 +1039,7 @@ int PCB_CONTROL::Paste( const TOOL_EVENT& aEvent )
     }
 #endif
 
-    BOARD_COMMIT commit( frame() );
+    BOARD_COMMIT commit( m_frame );
 
     CLIPBOARD_IO pi;
     BOARD_ITEM*  clipItem = pi.Parse();
@@ -1990,8 +1988,8 @@ int PCB_CONTROL::FlipPcbView( const TOOL_EVENT& aEvent )
 {
     view()->SetMirror( !view()->IsMirroredX(), false );
     view()->RecacheAllItems();
-    frame()->GetCanvas()->ForceRefresh();
-    frame()->OnDisplayOptionsChanged();
+    m_frame->GetCanvas()->ForceRefresh();
+    m_frame->OnDisplayOptionsChanged();
     return 0;
 }
 
