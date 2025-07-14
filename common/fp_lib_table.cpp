@@ -161,6 +161,7 @@ void FP_LIB_TABLE::Parse( LIB_TABLE_LEXER* in )
             case T_uri:
                 if( sawUri )
                     in->Duplicate( tok );
+
                 sawUri = true;
                 in->NeedSYMBOLorNUMBER();
                 row->SetFullURI( in->FromUTF8() );
@@ -169,6 +170,7 @@ void FP_LIB_TABLE::Parse( LIB_TABLE_LEXER* in )
             case T_type:
                 if( sawType )
                     in->Duplicate( tok );
+
                 sawType = true;
                 in->NeedSYMBOLorNUMBER();
                 row->SetType( in->FromUTF8() );
@@ -177,6 +179,7 @@ void FP_LIB_TABLE::Parse( LIB_TABLE_LEXER* in )
             case T_options:
                 if( sawOpts )
                     in->Duplicate( tok );
+
                 sawOpts = true;
                 in->NeedSYMBOLorNUMBER();
                 row->SetOptions( in->FromUTF8() );
@@ -185,6 +188,7 @@ void FP_LIB_TABLE::Parse( LIB_TABLE_LEXER* in )
             case T_descr:
                 if( sawDesc )
                     in->Duplicate( tok );
+
                 sawDesc = true;
                 in->NeedSYMBOLorNUMBER();
                 row->SetDescr( in->FromUTF8() );
@@ -193,6 +197,7 @@ void FP_LIB_TABLE::Parse( LIB_TABLE_LEXER* in )
             case T_disabled:
                 if( sawDisabled )
                     in->Duplicate( tok );
+
                 sawDisabled = true;
                 row->SetEnabled( false );
                 break;
