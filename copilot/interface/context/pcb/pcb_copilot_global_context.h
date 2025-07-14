@@ -26,7 +26,6 @@
 #define PCB_COPILOT_GLOBAL_CONTEXT_H
 
 
-#include "fab/pcb_fab_settings_context.h"
 #include "optional_sch_netlist.h"
 #include <context/copilot_global_context.h>
 #include <context/variable_context.h>
@@ -34,26 +33,18 @@
 #include <context/common/designators_context.h>
 
 
-struct PCB_COPILOT_GLOBAL_CONTEXT : COPILOT_GLOBAL_CONTEXT,
-                                    VARIABLE_CONTEXT,
-                                    DESIGNATORS_CONTEXT,
-                                    PCB_FAB_SETTINGS_CONTEXT,
-                                    OPTIONAL_SCH_NETLIST
+struct PCB_COPILOT_GLOBAL_CONTEXT : COPILOT_GLOBAL_CONTEXT, VARIABLE_CONTEXT, DESIGNATORS_CONTEXT, OPTIONAL_SCH_NETLIST
 {
-    friend void to_json( nlohmann ::json&                  nlohmann_json_j,
-                         const PCB_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
+    friend void to_json( nlohmann ::json& nlohmann_json_j, const PCB_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
     {
         to_json( nlohmann_json_j, static_cast<COPILOT_GLOBAL_CONTEXT const&>( nlohmann_json_t ) );
         to_json( nlohmann_json_j, static_cast<DESIGNATORS_CONTEXT const&>( nlohmann_json_t ) );
-        to_json( nlohmann_json_j, static_cast<PCB_FAB_SETTINGS_CONTEXT const&>( nlohmann_json_t ) );
         to_json( nlohmann_json_j, static_cast<OPTIONAL_SCH_NETLIST const&>( nlohmann_json_t ) );
     }
-    friend void from_json( const nlohmann ::json&      nlohmann_json_j,
-                           PCB_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
+    friend void from_json( const nlohmann ::json& nlohmann_json_j, PCB_COPILOT_GLOBAL_CONTEXT& nlohmann_json_t )
     {
         from_json( nlohmann_json_j, static_cast<COPILOT_GLOBAL_CONTEXT&>( nlohmann_json_t ) );
         from_json( nlohmann_json_j, static_cast<DESIGNATORS_CONTEXT&>( nlohmann_json_t ) );
-        from_json( nlohmann_json_j, static_cast<PCB_FAB_SETTINGS_CONTEXT&>( nlohmann_json_t ) );
         from_json( nlohmann_json_j, static_cast<OPTIONAL_SCH_NETLIST&>( nlohmann_json_t ) );
     }
     std::string dump() const override { return nlohmann::json( *this ).dump(); }
