@@ -74,15 +74,6 @@ void PCB_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
         return designators;
 
     })();
-
-    m_copilotContextCache.fab_settings.distance_settings = ([board](){
-
-        return  PCB_FAB_DISTANCE_SETTINGS{
-            board->GetDesignSettings().m_TrackMinWidth,
-            board->GetDesignSettings().m_MinClearance,
-             std::min(board->GetDesignSettings().m_MinThroughDrill, board->GetDesignSettings().m_ViasMinSize),
-        };
-    })();
 }
 
 
