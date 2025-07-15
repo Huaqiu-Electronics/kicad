@@ -28,7 +28,7 @@
 #include <wx/dialog.h>
 #include <wx/webview.h>
 
-#include "dialog_webview.h"
+#include <webview/dialog_webview.h>
 
 class DIALOG_IMAGE_VIEWER : public DIALOG_WEBVIEW
 {

@@ -53,7 +53,7 @@
 #include <wx/dialog.h>
 
 #include "http/http_client.h"
-#include "common/dialog_image_viewer.h"
+#include <common/dialog_image_viewer.h>
 #include "webview_constant.h"
 
 #ifndef _WIN32
