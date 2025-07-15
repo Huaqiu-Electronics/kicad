@@ -27,7 +27,7 @@
 
 namespace copilot {
 
-    constexpr const char* NETLIST_JSON_SCHEMA = R"json(
+constexpr const char* NETLIST_JSON_SCHEMA = R"json(
     {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "KiCad SCHEMATIC SELECTION Schema",
@@ -36,7 +36,7 @@ namespace copilot {
       "properties": {
         "components": {
           "type": "array",
-          "description": "List of components used in the schematic selections.",
+          "description": "List of components used in the schematic selections (including the ones that are connected to the selections).",
           "items": {
             "type": "object",
             "properties": {
@@ -109,13 +109,22 @@ namespace copilot {
             "required": ["net_name", "nodes"],
             "additionalProperties": false
           }
+        },
+        "selected_components_designators" : {
+            "type": "array",
+            "description": "The designators of the components that are selected in the netlist",
+            "items": {
+              "type": "string",
+              "description": "The designator of a component"
+            }
+
         }
       },
-      "required": ["components", "nets"],
+      "required": ["components", "nets" , "selected_components_designators"],
       "additionalProperties": false
     }
     )json";
-    
+
     } // namespace copilot
     
 

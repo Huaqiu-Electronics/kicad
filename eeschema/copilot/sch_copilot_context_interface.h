@@ -215,6 +215,7 @@ copilot::NETLIST SCH_EDIT_FRAME::GetSelection() const
             const auto ref = symbol->GetRef( sch_path ).ToStdString();
             netlist.components.emplace_back(
                     copilot::COMPONENT{ ref, get_fields( sch_path, symbol->GetFields() ) } );
+            netlist.selected_components_designators.push_back( ref );
 
             for( const auto pin : symbol->GetPins( sch_path ) )
                 selection_pins.insert( pin );

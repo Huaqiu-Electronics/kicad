@@ -72,10 +72,10 @@ struct NET
 
 struct NETLIST
 {
-    std::vector<COMPONENT> components;
-    std::vector<NET>       nets;
-
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NETLIST, components, nets )
+    std::vector<COMPONENT>   components;
+    std::vector<NET>         nets;
+    std::vector<std::string> selected_components_designators;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( NETLIST, components, nets, selected_components_designators )
 };
 
 
