@@ -28,9 +28,9 @@
 
 #include <wx/dialog.h>
 #include <wx/webview.h>
+#include <copilot_global.h>
 
-
-class DIALOG_WEBVIEW : public wxDialog
+class COPILOT_API DIALOG_WEBVIEW : public wxDialog
 {
 public:
     DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey );
