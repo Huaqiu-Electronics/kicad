@@ -89,7 +89,7 @@
 #include <widgets/wx_progress_reporters.h>
 #include <widgets/wx_infobar.h>
 #include <wx/hyperlink.h>
-#include "copilot/pcb_copilot_control.h"
+#include <copilot/pcb_copilot_control.h>
 
 
 using namespace std::placeholders;
@@ -3006,6 +3006,6 @@ void PCB_CONTROL::setTransitions()
 
     // Copilot
     Go( &PCB_CONTROL::ToggleCopilot,         ACTIONS::toggleCopilotPanel.MakeEvent() );
-    Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );    
+    Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );         
 }
 // clang-format on
