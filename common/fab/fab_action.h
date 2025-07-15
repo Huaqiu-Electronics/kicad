@@ -36,7 +36,6 @@
 TOOL_ACTION ACTIONS::placeOrder( TOOL_ACTION_ARGS()
                                          .Name( "common.fab.placeOrder" )
                                          .Scope( AS_GLOBAL )
-                                         .FriendlyName( _( "placeOrder" ) )
                                          .Tooltip( _( "Place order" ) )
                                          .Icon( BITMAPS::huaqiu ) );
 
