@@ -36,17 +36,20 @@ template <class EditorT>
 class FAB_INFO_GETTER
 {
 public:
+    auto self() { return static_cast<EditorT*>( this ); }
+    auto self() const { return static_cast<const EditorT*>( this ); }
+
     // For PCB query price
-    FAB_PCB_SPECIFICATIONS GetPCBSpecifications() const { return {}; }
+    FAB_PCB_SPECIFICATIONS GetPCBSpecifications() { return {}; }
 
     // For PCB fab
-    GERBER_FILENAME_CONTENT GetGerber() const { return {}; }
+    GERBER_FILENAME_CONTENT GetGerber() { return {}; }
 
     // For SMT
-    std::vector<FP_POSITION_LIST> GetComponentPosition() const { return {}; }
+    std::vector<FP_POSITION_LIST> GetComponentPosition() { return {}; }
 
     // For components
-    std::vector<FAB_BOM_ITEM> GetBOM() const { return {}; }
+    std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
 };
 
 

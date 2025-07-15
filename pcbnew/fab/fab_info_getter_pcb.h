@@ -25,6 +25,8 @@
 #ifndef FAB_INFO_GETTER_PCB_H
 #define FAB_INFO_GETTER_PCB_H
 
+#include <dialog_gen_footprint_position.h>
+#include <dialog_plot.h>
 #include <core/typeinfo.h>
 #include <footprint.h>
 #include <pcb_track.h>
@@ -33,12 +35,13 @@
 #include <board_design_settings.h>
 #include <base_units.h>
 #include <vector>
+#include <tools/pcb_actions.h>
 
 
 template <>
-FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications() const
+FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
 {
-    const auto board = static_cast<const PCB_EDIT_FRAME*>( this )->GetBoard();
+    const auto board = self()->GetBoard();
     const auto layers = board->GetCopperLayerCount();
     const auto height = board->GetBoundingBox().GetHeight();
     const auto width = board->GetBoundingBox().GetWidth();
@@ -56,6 +59,7 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications() const
         case PCB_VIA_T: minHoleSize = std::min( minHoleSize, static_cast<PCB_VIA*>( track )->GetDrillValue() ); break;
         case PCB_TRACE_T:
         case PCB_ARC_T: minTraceWidth = std::min( minTraceWidth, track->GetWidth() ); break;
+        default: break;
         }
     }
 
@@ -68,19 +72,27 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications() const
 }
 
 template <>
-GERBER_FILENAME_CONTENT FAB_INFO_GETTER_PCB::GetGerber() const
+GERBER_FILENAME_CONTENT FAB_INFO_GETTER_PCB::GetGerber()
 {
+    auto            editor = static_cast<PCB_EDIT_FRAME*>( this );
+    PCB_PLOT_PARAMS plotSettings = editor->GetPlotSettings();
+    plotSettings.SetFormat( PLOT_FORMAT::GERBER );
+    editor->SetPlotSettings( plotSettings );
+    DIALOG_PLOT dlg( self() );
+    dlg.ShowQuasiModal();
     return {};
 }
 
 template <>
-std::vector<FP_POSITION_LIST> FAB_INFO_GETTER_PCB::GetComponentPosition() const
+std::vector<FP_POSITION_LIST> FAB_INFO_GETTER_PCB::GetComponentPosition()
 {
+    DIALOG_GEN_FOOTPRINT_POSITION dlg( self() );
+    dlg.ShowModal();
     return {};
 }
 
 template <>
-std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM() const
+std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM()
 {
     std::vector<FAB_BOM_ITEM> items;
 
