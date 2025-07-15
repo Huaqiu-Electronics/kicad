@@ -342,36 +342,10 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
 
         config.AppendAction( PCB_ACTIONS::runDRC );
 
-        config.AppendSeparator();
-        config.AppendAction( PCB_ACTIONS::showEeschema );
-        config.AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::currentVariant );
-        config.AppendControl( ACTION_TOOLBAR_CONTROLS::ipcScripting );
+    m_mainToolBar->AddScaledSeparator( this );
+    m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
 
-        break;
-
-    case TOOLBAR_LOC::TOP_AUX:
-        config.AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::trackWidth )
-              .AppendAction( PCB_ACTIONS::autoTrackWidth );
-
-        config.AppendSeparator()
-              .AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::viaDiameter );
-
-        config.AppendSeparator()
-              .AppendControl( ACTION_TOOLBAR_CONTROLS::layerSelector )
-              .AppendAction( PCB_ACTIONS::selectLayerPair );
-
-        config.AppendSeparator()
-              .AppendControl( ACTION_TOOLBAR_CONTROLS::gridSelect );
-
-        config.AppendSeparator()
-              .AppendControl( ACTION_TOOLBAR_CONTROLS::zoomSelect );
-
-        config.AppendSeparator()
-              .AppendControl( ACTION_TOOLBAR_CONTROLS::overrideLocks );
-
-        break;
-    }
-
+    RecreateFabToolBar();
     RecreateCopilotToolBar();
     // clang-format on
     return config;

@@ -909,6 +909,9 @@ public:
     copilot::BOARD_SELECTIONS GetSelection() const;
 
     friend PCB_COPILOT_PANEL_CONTAINER;
+
+private:
+    friend FAB_INFO_GETTER_PCB;
 };
 
 #endif  // __PCB_EDIT_FRAME_H__
