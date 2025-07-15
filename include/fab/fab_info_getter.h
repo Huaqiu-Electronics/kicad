@@ -81,7 +81,7 @@ public:
 
 
 private:
-    DIALOG_WEBVIEW* m_placeOrderDialog;
+    DIALOG_WEBVIEW* m_placeOrderDialog{};
 };
 
 
