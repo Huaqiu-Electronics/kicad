@@ -303,6 +303,10 @@ public:
     static TOOL_ACTION toggleCopilotPanel;
     static TOOL_ACTION showCopilotPanel;
 
+    // Fab
+    static TOOL_ACTION placeOrder;
+    static TOOL_ACTION toggleHQPersonalCenter;
+
     ///< Cursor control event types
     enum CURSOR_EVENT_TYPE
     {

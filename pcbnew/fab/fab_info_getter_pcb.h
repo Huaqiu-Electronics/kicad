@@ -172,4 +172,14 @@ std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM()
 }
 
 
+template <>
+void FAB_INFO_GETTER_PCB::PlaceOrder()
+{
+}
+
+template <>
+void FAB_INFO_GETTER_PCB::ToggleHQPersonalCenter()
+{
+}
+
 #endif

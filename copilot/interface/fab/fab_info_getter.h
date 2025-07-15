@@ -50,6 +50,10 @@ public:
 
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
+
+    void PlaceOrder() {}
+
+    void ToggleHQPersonalCenter() {}
 };
 
 
