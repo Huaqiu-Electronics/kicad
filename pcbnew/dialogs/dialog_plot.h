@@ -1,3 +1,6 @@
+#ifndef __DIALOG_PLOT_H__
+#define __DIALOG_PLOT_H__
+
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
@@ -114,3 +117,5 @@ private:
     /// The plot on all layers ordering the last time the dialog was opened.
     static LSEQ         s_lastAllLayersOrder;
 };
+
+#endif // __DIALOG_PLOT_H__
