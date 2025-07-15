@@ -72,6 +72,7 @@
 #include <widgets/wx_infobar.h>
 #include <wx/hyperlink.h>
 #include <copilot/pcb_copilot_control.h>
+#include <fab/pcb_fab_ctrl.h>
 
 
 using namespace std::placeholders;
@@ -2082,6 +2083,10 @@ void PCB_CONTROL::setTransitions()
 
     // Copilot
     Go( &PCB_CONTROL::ToggleCopilot,         ACTIONS::toggleCopilotPanel.MakeEvent() );
-    Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );         
+    Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );
+    
+    // FAB
+    Go( &PCB_CONTROL::PlaceOrder,         ACTIONS::placeOrder.MakeEvent() );
+    Go( &PCB_CONTROL::ToggleHQPersonalCenter,    ACTIONS::toggleHQPersonalCenter.MakeEvent() );       
 }
 // clang-format on
