@@ -22,7 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "dialog_webview.h"
+#include <webview/dialog_webview.h>
 #include <settings/dialog_geometry.h>
 
 #include <settings/webview_settings_manager.h>
