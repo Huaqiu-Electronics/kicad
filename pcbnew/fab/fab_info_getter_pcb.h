@@ -36,6 +36,8 @@
 #include <base_units.h>
 #include <vector>
 #include <tools/pcb_actions.h>
+#include <webview/dialog_webview.h>
+#include <wx/string.h>
 
 
 template <>
@@ -171,15 +173,5 @@ std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM()
     return items;
 }
 
-
-template <>
-void FAB_INFO_GETTER_PCB::PlaceOrder()
-{
-}
-
-template <>
-void FAB_INFO_GETTER_PCB::ToggleHQPersonalCenter()
-{
-}
 
 #endif

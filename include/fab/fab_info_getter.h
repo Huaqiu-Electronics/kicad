@@ -25,10 +25,17 @@
 #ifndef FAB_INFO_GETTER_H
 #define FAB_INFO_GETTER_H
 
+
+#include <vector>
+#include <tool/action_toolbar.h>
+#include <tool/actions.h>
+
+
 #include "fab_pcb_specifications.h"
 #include "fab_bom.h"
 #include "fab_footprint_position.h"
-#include <vector>
+
+#include <webview/dialog_webview.h>
 
 
 using GERBER_FILENAME_CONTENT = std::map<std::string, std::string>;
@@ -51,9 +58,30 @@ public:
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
 
-    void PlaceOrder() {}
+    void PlaceOrder()
+    {
+        if( !m_placeOrderDialog )
+        {
+            m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB" );
+            m_placeOrderDialog->LoadUrl( "https://www.hqpcb.com/mycenter/" );
+        }
+
+        m_placeOrderDialog->Show();
+    }
 
     void ToggleHQPersonalCenter() {}
+
+
+    void RecreateFabToolBar()
+    {
+        auto aToolBar = self()->m_mainToolBar;
+        aToolBar->AddScaledSeparator( self() );
+        aToolBar->Add( ACTIONS::placeOrder );
+    }
+
+
+private:
+    DIALOG_WEBVIEW* m_placeOrderDialog;
 };
 
 
