@@ -27,7 +27,6 @@
 
 #include <nlohmann/json.hpp>
 
-
 struct AGENT_ACTION
 {
     std::string    action;
