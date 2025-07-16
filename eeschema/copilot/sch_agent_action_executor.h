@@ -75,28 +75,24 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         case AGENT_ACTION_TYPE::ask_selection:
         {
             const auto netlist = nlohmann::json( self()->GetSelection() ).dump();
-            m_copilotPanel->ExecuteCommand(
-                    nlohmann::json(
-                            GENERAL_CHAT_CMD{
-                                    { { aAction.context.get<std::string>() } },
-                                    { { fmt::format(
-                                            "The user is working on a schematic the "
-                                            "current selection of which is represented by "
-                                            "the following netlist:\n{}. The "
-                                            "netlist is defined "
-                                            "following the json schema:\n {}\n"
-                                            "NOTE: All the connections for any component "
-                                            "presented inside the components have been "
-                                            "included in the nets.\n"
-                                            "NOTE: You always provide clear answers "
-                                            "rather than asking for more information.\n "
-                                            "Please note that our users are hardware engineers who "
-                                            "are neither aware nor interested in the existence of "
-                                            "this JSON data. Never expose the existence of a JSON "
-                                            "file",
-                                            netlist, copilot::NETLIST_JSON_SCHEMA ) } } } )
-                            .dump()
-                            .c_str() );
+            auto       cmd = GENERAL_CHAT_CMD{ { { aAction.context.get<std::string>() } },
+                                               { { fmt::format( "The user is working on a schematic the "
+                                                                      "current selection of which is represented by "
+                                                                      "the following netlist:\n{}. The "
+                                                                      "netlist is defined "
+                                                                      "following the json schema:\n {}\n"
+                                                                      "NOTE: All the connections for any component "
+                                                                      "presented inside the components have been "
+                                                                      "included in the nets.\n"
+                                                                      "NOTE: You always provide clear answers "
+                                                                      "rather than asking for more information.\n "
+                                                                      "Please note that our users are hardware engineers who "
+                                                                      "are neither aware nor interested in the existence of "
+                                                                      "this JSON data. Never expose the existence of a JSON "
+                                                                      "file",
+                                                                netlist, copilot::NETLIST_JSON_SCHEMA ) } } };
+            cmd.type = "chat.user.ask_selection";
+            m_copilotPanel->ExecuteCommand( nlohmann::json( cmd ).dump().c_str() );
             break;
         }
         case AGENT_ACTION_TYPE::dump_selection_to_design_block:
@@ -109,8 +105,7 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::place_symbol_resource:
         {
-            self()->m_apiHandler->placeSymbol(
-                    aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
+            self()->m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
             break;
         }
         case AGENT_ACTION_TYPE::place_symbol_content:
@@ -122,8 +117,7 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::place_design_block_resource:
         {
-            self()->m_apiHandler->placeDesignBlock(
-                    aAction.context.get<PLACE_DESIGN_BLOCK_RESOURCE_COMMAND>() );
+            self()->m_apiHandler->placeDesignBlock( aAction.context.get<PLACE_DESIGN_BLOCK_RESOURCE_COMMAND>() );
             break;
         }
         case AGENT_ACTION_TYPE::place_design_block_content:
