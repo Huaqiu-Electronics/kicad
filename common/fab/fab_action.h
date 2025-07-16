@@ -36,7 +36,8 @@
 TOOL_ACTION ACTIONS::placeOrder( TOOL_ACTION_ARGS()
                                          .Name( "common.fab.placeOrder" )
                                          .Scope( AS_GLOBAL )
-                                         .Tooltip( _( "Place order" ) )
+                                         .FriendlyName( _( "Place order" ) )
+                                         .Tooltip( _( "Place order for PCB/SMT/BOM" ) )
                                          .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::toggleHQPersonalCenter( TOOL_ACTION_ARGS()
