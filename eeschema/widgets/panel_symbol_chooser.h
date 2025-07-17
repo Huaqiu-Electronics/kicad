@@ -66,7 +66,6 @@ public:
                           std::function<void()> aAcceptHandler,
                           std::function<void()> aEscapeHandler );
 
-
     ~PANEL_SYMBOL_CHOOSER();
 
     void OnChar( wxKeyEvent& aEvent );
@@ -167,7 +166,7 @@ protected:
     LIB_TREE*                 m_tree;
     HTML_WINDOW*              m_details;
 
-    SCH_BASE_FRAME*           m_frame;
+    static SCH_BASE_FRAME*    m_frame;      // Must be static becuase used in a static function
     std::function<void()>     m_acceptHandler;
     std::function<void()>     m_escapeHandler;
 
