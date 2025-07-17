@@ -38,6 +38,8 @@
 #include <string>
 #include <wx/log.h>
 #include <fmt/format.h>
+#include <chat/user_ask_selection_cmd.h>
+
 
 template <>
 void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -84,7 +86,8 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
                                                                "are neither aware nor interested in the existence of "
                                                                "this JSON data. Never expose the existence of a JSON "
                                                                "file.",
-                                                               pcb, copilot::BOARD_JSON_SCHEMA ) } } } )
+                                                               pcb, copilot::BOARD_JSON_SCHEMA ) } },
+                                              kUserAskSelectionCmdType } )
                             .dump()
                             .c_str() );
 
