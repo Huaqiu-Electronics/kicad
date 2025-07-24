@@ -199,8 +199,7 @@ void PCB_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
 
-    // NOTE This menu is not available until 9.0.4
-    // RecreateFabToolBar();
+    RecreateFabToolBar();
     RecreateCopilotToolBar();
 
     // Add SWIG and API plugins

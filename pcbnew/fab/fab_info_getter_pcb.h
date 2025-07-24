@@ -174,4 +174,18 @@ std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM()
 }
 
 
+template <>
+void FAB_INFO_GETTER_PCB::PlaceOrder()
+{
+    if( !m_placeOrderDialog )
+    {
+        m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB" );
+        m_placeOrderDialog->LoadUrl(
+                "https://www.hqpcb.com/mycenter/?token=695fb224-f5f5-5f8f-9a28-c0ede7f56f9e-6874cdbb" );
+    }
+
+    m_placeOrderDialog->Show();
+}
+
+
 #endif

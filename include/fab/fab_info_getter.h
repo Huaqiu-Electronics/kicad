@@ -58,16 +58,7 @@ public:
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
 
-    void PlaceOrder()
-    {
-        if( !m_placeOrderDialog )
-        {
-            m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB" );
-            m_placeOrderDialog->LoadUrl( "https://www.hqpcb.com/mycenter/" );
-        }
-
-        m_placeOrderDialog->Show();
-    }
+    void PlaceOrder() {}
 
     void ToggleHQPersonalCenter() {}
 
