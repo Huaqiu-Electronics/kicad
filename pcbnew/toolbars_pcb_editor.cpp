@@ -345,8 +345,7 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
     m_mainToolBar->AddScaledSeparator( this );
     m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
 
-    // NOTE This menu is not available until 9.0.4
-    // RecreateFabToolBar();
+    RecreateFabToolBar();
     RecreateCopilotToolBar();
     // clang-format on
     return config;
