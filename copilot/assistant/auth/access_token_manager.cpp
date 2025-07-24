@@ -31,12 +31,15 @@ ACCESS_TOKEN_MANAGER::~ACCESS_TOKEN_MANAGER()
 
 ACCESS_TOKEN_MANAGER& ACCESS_TOKEN_MANAGER::Get()
 {
+    static ACCESS_TOKEN_MANAGER instance;
+    return instance;
     
 }
 
 std::optional<ACCESS_TOKEN> ACCESS_TOKEN_MANAGER::GetAccessToken()
 {
     
+    return  {};
 }
 
 void ACCESS_TOKEN_MANAGER::SetAccessToken(ACCESS_TOKEN const& token)
@@ -51,7 +54,7 @@ ACCESS_TOKEN_MANAGER::ACCESS_TOKEN_MANAGER()
 
 bool ACCESS_TOKEN_MANAGER::LoadAccessToken()
 {
-    
+    return  {};
 }
 
 void ACCESS_TOKEN_MANAGER::SaveAccessToken()
