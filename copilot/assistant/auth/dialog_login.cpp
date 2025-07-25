@@ -24,10 +24,12 @@
 
 #include <auth/dialog_login.h>
 #include <wx/event.h>
+#include <settings/webview_settings_manager.h>
+
 
 DIALOG_LOGIN::DIALOG_LOGIN( wxWindow* aParent ) : DIALOG_WEBVIEW( aParent, wxID_ANY, _( "Login" ), "dialog_login" )
 {
-    LoadUrl( "https://eda.host/login" );
+    LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_path() );
 }
 
 DIALOG_LOGIN::~DIALOG_LOGIN()
