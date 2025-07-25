@@ -36,6 +36,22 @@ public:
     ~DIALOG_LOGIN();
 
 private:
+
+    void OnScriptMessage( wxWebViewEvent& evt );
+
+    void OnScriptResult( wxWebViewEvent& evt );
+
+    void OnNewWindow( wxWebViewEvent& evt );
+
+    void OnNavigationRequest( wxWebViewEvent& evt );
+
+    void OnError( wxWebViewEvent& evt );
+
+    void OnWebChannelMsg( std::string const& msg );
+
+    void OnWebChannelMsgWrapper( std::string const& msg );
+
+private:
 };
 
 #endif

@@ -22,42 +22,13 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include  <auth/access_token_manager.h>
-
-ACCESS_TOKEN_MANAGER::~ACCESS_TOKEN_MANAGER()
+#ifndef EXTRACT_HOST_FROM_URL_H
+#define EXTRACT_HOST_FROM_URL_H
+#include <string>
+inline auto extract_host_from_url( std::string const& url )
 {
-    
+    return url.substr( url.find( "://" ) + 3, url.find( "/", url.find( "://" ) + 3 ) - url.find( "://" ) - 3 );
 }
 
-ACCESS_TOKEN_MANAGER& ACCESS_TOKEN_MANAGER::Get()
-{
-    static ACCESS_TOKEN_MANAGER instance;
-    return instance;
-    
-}
 
-std::optional<ACCESS_TOKEN> ACCESS_TOKEN_MANAGER::GetAccessToken()
-{
-    
-    return  {};
-}
-
-void ACCESS_TOKEN_MANAGER::SetAccessToken(ACCESS_TOKEN const& token)
-{
-    
-}
-
-ACCESS_TOKEN_MANAGER::ACCESS_TOKEN_MANAGER()
-{
-    
-}
-
-bool ACCESS_TOKEN_MANAGER::LoadAccessToken()
-{
-    return  {};
-}
-
-void ACCESS_TOKEN_MANAGER::SaveAccessToken()
-{
-    
-};
+#endif

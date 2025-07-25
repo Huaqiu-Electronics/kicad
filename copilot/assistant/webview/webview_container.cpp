@@ -50,6 +50,7 @@
 #include <thread>
 #include <utils/httplib.h>
 #include <utils/wstring_to_string.h>
+#include <utils/extract_host_from_url.h>
 #include <wx/dialog.h>
 
 #include "http/http_client.h"
@@ -96,10 +97,6 @@ enum START_UP_SIZE
     HEIGHT = 1040
 };
 
-inline auto extract_host_from_url( std::string const& url )
-{
-    return url.substr( url.find( "://" ) + 3, url.find( "/", url.find( "://" ) + 3 ) - url.find( "://" ) - 3 );
-}
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
