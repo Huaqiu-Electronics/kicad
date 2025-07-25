@@ -25,6 +25,7 @@
 #include <settings/webview_settings_manager.h>
 #include <settings/immutable_settings.h>
 #include <settings/mutable_settings.h>
+#include <chrono>
 
 #include "config_io_helper.h"
 
@@ -149,4 +150,22 @@ DIALOG_GEOMETRY WEBVIEW_SETTINGS_MANAGER::get_dialog_geometry( std::string const
 void WEBVIEW_SETTINGS_MANAGER::set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& geometry )
 {
     _mutable_settings->dialog_geometries[aKey] = geometry;
+}
+
+
+std::optional<ACCESS_TOKEN> WEBVIEW_SETTINGS_MANAGER::get_access_token() const
+{
+    return _mutable_settings->access_token;
+}
+
+void WEBVIEW_SETTINGS_MANAGER::set_access_token( ACCESS_TOKEN const& token )
+{
+    _mutable_settings->access_token = token;
+}
+
+bool WEBVIEW_SETTINGS_MANAGER::is_token_valid() const
+{
+    return _mutable_settings->access_token.has_value()
+           && _mutable_settings->access_token->expires_at
+                      > std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
 }

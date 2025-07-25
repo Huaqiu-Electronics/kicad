@@ -1,5 +1,4 @@
 add_library(assistant SHARED
-    auth/access_token_manager.cpp
     auth/dialog_login.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp

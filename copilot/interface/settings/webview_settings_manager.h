@@ -26,9 +26,10 @@
 #define COPILOT_SETTINGS_MANAGER_H
 
 #include <memory>
+#include <optional>
 #include <string>
 #include <copilot_global.h>
-
+#include <auth/access_token.h>
 
 struct IMMUTABLE_SETTINGS;
 struct MUTABLE_SETTINGS;
@@ -63,6 +64,10 @@ public:
     DIALOG_GEOMETRY get_dialog_geometry( std::string const& aKey ) const;
     void            set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
+    std::optional<ACCESS_TOKEN> get_access_token() const;
+    void                        set_access_token( ACCESS_TOKEN const& token );
+    bool                        is_token_valid() const;
+
 private:
     WEBVIEW_SETTINGS_MANAGER();
     std::unique_ptr<IMMUTABLE_SETTINGS> _immutable_settings;
@@ -71,5 +76,6 @@ private:
     std::string                         _webview_image_viewer_path;
     std::string                         _login_path;
 };
+
 
 #endif
