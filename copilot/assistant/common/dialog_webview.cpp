@@ -31,14 +31,22 @@
 #include <wx/sizer.h>
 #include <fmt/format.h>
 
-DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey ) :
+DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
+                                const wxSize& size ) :
         wxDialog( aParent, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxRESIZE_BORDER,
                   settingKey ),
         _browser( wxWebView::New() ), _settingKey( settingKey )
 {
     const auto geometry = WEBVIEW_SETTINGS_MANAGER::get_instance().get_dialog_geometry( _settingKey.ToStdString() );
-    SetPosition( { geometry.x, geometry.y } );
-    SetSize( { geometry.width, geometry.height } );
+    if( geometry )
+    {
+        SetPosition( { geometry->x, geometry->y } );
+        SetSize( { geometry->width, geometry->height } );
+    }
+    else
+    {
+        SetSize( size );
+    }
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
     _browser->Create( this, wxID_ANY );

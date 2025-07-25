@@ -61,8 +61,8 @@ public:
 
     std::string const& get_login_path() const;
 
-    DIALOG_GEOMETRY get_dialog_geometry( std::string const& aKey ) const;
-    void            set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
+    std::optional<DIALOG_GEOMETRY> get_dialog_geometry( std::string const& aKey ) const;
+    void set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
     std::optional<ACCESS_TOKEN> get_access_token() const;
     void                        set_access_token( ACCESS_TOKEN const& token );

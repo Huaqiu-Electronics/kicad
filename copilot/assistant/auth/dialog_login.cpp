@@ -43,12 +43,14 @@
 
 enum FIXED_SIZE
 {
-    WIDTH = 200,
+    WIDTH = 400,
     HEIGHT = 600
 };
 
 DIALOG_LOGIN::DIALOG_LOGIN( wxWindow* aParent ) : DIALOG_WEBVIEW( aParent, wxID_ANY, _( "Login" ), "dialog_login" )
 {
+    // Make the dialog frameless
+    SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
     LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_path() );
 
     auto _browser = &GetBrowser();
@@ -60,6 +62,7 @@ DIALOG_LOGIN::DIALOG_LOGIN( wxWindow* aParent ) : DIALOG_WEBVIEW( aParent, wxID_
 
     SetMinSize( FromDIP( wxSize( FIXED_SIZE::WIDTH, FIXED_SIZE::HEIGHT ) ) );
     SetMaxSize( FromDIP( wxSize( FIXED_SIZE::WIDTH, FIXED_SIZE::HEIGHT ) ) );
+    SetSize( FromDIP( wxSize( FIXED_SIZE::WIDTH, FIXED_SIZE::HEIGHT ) ) );
 
     Bind( wxEVT_WEBVIEW_NAVIGATING, &DIALOG_LOGIN::OnNavigationRequest, this, _browser->GetId() );
     Bind( wxEVT_WEBVIEW_ERROR, &DIALOG_LOGIN::OnError, this, _browser->GetId() );
@@ -172,6 +175,7 @@ void DIALOG_LOGIN::OnWebChannelMsg( std::string const& msg )
                 }
                 auto token = cmd.data->get<ACCESS_TOKEN>();
                 WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( token );
+                EndModal( wxID_OK );
                 break;
             }
             default:
