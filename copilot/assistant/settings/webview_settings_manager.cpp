@@ -49,6 +49,9 @@ WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
 
     _webview_image_viewer_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
                                               _immutable_settings->copilot_webview_settings.path.image_viewer );
+
+    _login_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
+                               _immutable_settings->copilot_webview_settings.path.login );
 }
 
 WEBVIEW_SETTINGS_MANAGER::~WEBVIEW_SETTINGS_MANAGER()
@@ -126,6 +129,11 @@ std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_chat_path() const
 std::string const& WEBVIEW_SETTINGS_MANAGER::get_webview_image_viewer_path() const
 {
     return _webview_image_viewer_path;
+}
+
+std::string const& WEBVIEW_SETTINGS_MANAGER::get_login_path() const
+{
+    return _login_path;
 }
 
 DIALOG_GEOMETRY WEBVIEW_SETTINGS_MANAGER::get_dialog_geometry( std::string const& aKey ) const
