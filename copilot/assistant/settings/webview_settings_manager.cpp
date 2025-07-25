@@ -137,7 +137,7 @@ std::string const& WEBVIEW_SETTINGS_MANAGER::get_login_path() const
     return _login_path;
 }
 
-DIALOG_GEOMETRY WEBVIEW_SETTINGS_MANAGER::get_dialog_geometry( std::string const& aKey ) const
+std::optional<DIALOG_GEOMETRY> WEBVIEW_SETTINGS_MANAGER::get_dialog_geometry( std::string const& aKey ) const
 {
     if( !_mutable_settings->dialog_geometries.count( aKey ) )
     {

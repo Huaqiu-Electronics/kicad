@@ -33,7 +33,8 @@
 class COPILOT_API DIALOG_WEBVIEW : public wxDialog
 {
 public:
-    DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey );
+    DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
+                    const wxSize& size = wxDefaultSize );
     ~DIALOG_WEBVIEW();
 
 
