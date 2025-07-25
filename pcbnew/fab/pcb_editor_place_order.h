@@ -25,7 +25,6 @@
 #ifndef PCB_EDITOR_PLACE_ORDER_H
 #define PCB_EDITOR_PLACE_ORDER_H
 
-#include "fmt/format.h"
 #include <settings/webview_settings_manager.h>
 #include <dialog_gen_footprint_position.h>
 #include <dialog_plot.h>
@@ -48,6 +47,7 @@
 template <>
 void FAB_INFO_GETTER_PCB::PlaceOrder()
 {
+    // Ensure user is logged in before placing order
     if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
     {
         DIALOG_LOGIN login_dialog( self() );
@@ -60,11 +60,15 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
         }
     }
 
+    // Post the form for placing order and get the order ID
+
 
     if( !m_placeOrderDialog )
     {
-        m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB" , wxSize( 1500, 900) );
+        m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
     }
+
+    // https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id=3747806&tid=354&token=XXXXXXXXXXXXXXXXXXX
 
     m_placeOrderDialog->LoadUrl( fmt::format( "https://www.hqpcb.com/mycenter/?{}",
                                               WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token()->token ) );
