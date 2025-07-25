@@ -31,9 +31,9 @@
 #include <tool/actions.h>
 
 
-#include "fab_pcb_specifications.h"
-#include "fab_bom.h"
-#include "fab_footprint_position.h"
+#include <fab/fab_pcb_specifications.h>
+#include <fab/fab_bom.h>
+#include <fab/fab_footprint_position.h>
 
 #include <webview/dialog_webview.h>
 

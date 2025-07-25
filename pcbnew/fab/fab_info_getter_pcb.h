@@ -34,7 +34,6 @@
 #include <board.h>
 #include <board_design_settings.h>
 #include <base_units.h>
-#include <vector>
 #include <tools/pcb_actions.h>
 #include <webview/dialog_webview.h>
 #include <wx/string.h>

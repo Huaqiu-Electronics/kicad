@@ -2,6 +2,7 @@ add_library(assistant SHARED
     auth/dialog_login.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp
+    fab/place_order_controller.cpp
     settings/get_webview_chat_path.cpp
     settings/webview_settings_manager.cpp
     webview/webview_container.cpp
