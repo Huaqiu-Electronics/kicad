@@ -25,7 +25,7 @@
 #include "http_client.h"
 
 #include <settings/webview_settings_manager.h>
-#include <utils/httplib.h>
+#include <utils/httplib_wrapper.h>
 #include <wx/log.h>
 #include <data_buried_point.h>
 #include "http_utils.h"
