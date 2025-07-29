@@ -24,6 +24,8 @@
 
 #include "webview/copilot_webview_container.h"
 #include <settings/webview_settings_manager.h>
+#include <utils/httplib_wrapper.h>
+
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES             host_copilot_handles,
