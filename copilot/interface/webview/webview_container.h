@@ -35,7 +35,6 @@
 #include <data_buried_point.h>
 #include <thread>
 #include <memory>
-#include <utils/httplib.h>
 #include <optional>
 
 class DIALOG_IMAGE_VIEWER;
@@ -46,6 +45,13 @@ enum class WEBVIEW_MSG_CHANNELS
     POST_MSG,
     HTTP,
 };
+
+
+namespace httplib
+{
+class Server;
+}
+
 
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {

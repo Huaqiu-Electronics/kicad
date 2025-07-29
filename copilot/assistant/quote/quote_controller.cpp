@@ -23,7 +23,7 @@
  */
 
 #include <quote/quote_controller.h>
-#include <utils/httplib.h>
+#include <utils/httplib_wrapper.h>
 
 QUOTE_CONTROLLER::QUOTE_CONTROLLER()
 {

@@ -20,9 +20,17 @@ target_include_directories(assistant
     $<TARGET_PROPERTY:magic_enum,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
-target_link_libraries(assistant PRIVATE
+
+find_package(OpenSSL REQUIRED)
+find_package(ZLIB REQUIRED)
+
+
+target_link_libraries(assistant PUBLIC
     nlohmann_json
     fmt::fmt
+    OpenSSL::SSL 
+    OpenSSL::Crypto
+    ZLIB::ZLIB    
     ${wxWidgets_LIBRARIES}
 )
 

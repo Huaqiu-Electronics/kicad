@@ -48,7 +48,7 @@
 #include <magic_enum.hpp>
 #include <wx/timer.h>
 #include <thread>
-#include <utils/httplib.h>
+#include <utils/httplib_wrapper.h>
 #include <utils/wstring_to_string.h>
 #include <utils/extract_host_from_url.h>
 #include <wx/dialog.h>

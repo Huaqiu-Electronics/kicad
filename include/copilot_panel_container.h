@@ -46,7 +46,6 @@
 #include <copilot_clipboard.h>
 #include <tool/actions.h>
 #include <settings/get_webview_chat_path.h>
-#include <utils/httplib.h>
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
 
