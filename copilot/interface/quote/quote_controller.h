@@ -26,15 +26,23 @@
 #define QUOTE_CONTROLLER_H
 
 #include <copilot_global.h>
+#include <memory>
 
+namespace httplib
+{
+class Client;
+}
 
 class COPILOT_API QUOTE_CONTROLLER
 {
 public:
     QUOTE_CONTROLLER();
+
     ~QUOTE_CONTROLLER();
 
+
 private:
+    std::unique_ptr<httplib::Client> _client;
 };
 
 #endif
