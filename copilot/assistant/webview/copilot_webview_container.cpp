@@ -29,7 +29,7 @@
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES             host_copilot_handles,
-                                                      std::unique_ptr<httplib::Server> msgServer ) :
+                                                      std::shared_ptr<httplib::Server> msgServer ) :
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch", std::move( msgServer ) )
 {
 }

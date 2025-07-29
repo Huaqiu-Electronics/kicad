@@ -97,22 +97,9 @@ public:
         auto host_version_info = get_copilot_host_version( editor_type() );
         host_version_info.chat_id = m_chat_id;
         host_version_info.session_id = GetSessionId();
-
-#ifdef COPILOT_USE_HTTP_MSG_HANDLER
-
-        auto http_server = std::make_unique<httplib::Server>();
-        host_version_info.port = http_server->bind_to_any_port( "0.0.0.0" );
-
-        m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                self(), add_parameter_to_url( get_webview_chat_path(), host_version_info ),
-                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl }, http_server );
-
-#else
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
                 self(), add_parameter_to_url( get_webview_chat_path(), host_version_info ),
                 { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } );
-
-#endif
 
         m_copilotContextCache.host_version_info = std::move( host_version_info );
     }
