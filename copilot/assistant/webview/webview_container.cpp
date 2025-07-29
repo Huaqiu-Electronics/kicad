@@ -100,7 +100,7 @@ enum START_UP_SIZE
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
-                                      std::unique_ptr<httplib::Server> msgServer ) :
+                                      std::shared_ptr<httplib::Server> msgServer ) :
         wxPanel( parent ), _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
         _primary_url( std::move( url ) ), _web_msg_server( std::move( msgServer ) )
 {

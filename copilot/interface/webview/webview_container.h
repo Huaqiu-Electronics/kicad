@@ -58,7 +58,7 @@ class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 public:
     WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
                        std::optional<std::string>       data_buried_point = std::nullopt,
-                       std::unique_ptr<httplib::Server> msgServer = nullptr );
+                       std::shared_ptr<httplib::Server> msgServer = nullptr );
 
     ~WEBVIEW_CONTAINER() override;
 
@@ -100,7 +100,7 @@ protected:
     wxWebView*                       _browser;
     HOST_COPILOT_HANDLES             _host_copilot_handles;
     std::string                      _primary_url;
-    std::unique_ptr<httplib::Server> _web_msg_server;
+    std::shared_ptr<httplib::Server> _web_msg_server;
     std::unique_ptr<std::thread>     _web_msg_server_thread;
 };
 
