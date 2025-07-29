@@ -98,59 +98,81 @@ enum START_UP_SIZE
 };
 
 
+struct WEBVIEW_CONTAINER_IMPL
+{
+    std::set<std::string> _consumed_global_ctx_keys{};
+    DIALOG_IMAGE_VIEWER*  _image_viewer{};
+    DIALOG_WEBVIEW*       _ecad_viewer{};
+
+
+    wxWebView*                       _browser;
+    HOST_COPILOT_HANDLES             _host_copilot_handles;
+    std::string                      _primary_url;
+    std::shared_ptr<httplib::Server> _web_msg_server;
+    std::unique_ptr<std::thread>     _web_msg_server_thread;
+};
+
+
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
                                       std::shared_ptr<httplib::Server> msgServer ) :
-        wxPanel( parent ), _browser( wxWebView::New() ), _host_copilot_handles( std::move( host_copilot_handles ) ),
-        _primary_url( std::move( url ) ), _web_msg_server( std::move( msgServer ) )
+        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+
 {
+    _impl->_host_copilot_handles = std::move( host_copilot_handles );
+    _impl->_web_msg_server = std::move( msgServer );
+    _impl->_primary_url = std::move( url );
+    _impl->_browser = wxWebView::New();
+
+
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
-    _browser->Create( this, wxID_ANY, _primary_url, wxDefaultPosition, wxDefaultSize );
-    top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
+    _impl->_browser->Create( this, wxID_ANY, _impl->_primary_url, wxDefaultPosition, wxDefaultSize );
+    top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 
-    if( _web_msg_server )
+    if( _impl->_web_msg_server )
     {
-        _web_msg_server_thread = std::make_unique<std::thread>(
+        _impl->_web_msg_server_thread = std::make_unique<std::thread>(
                 [&]()
                 {
                     // Handle POST requests
-                    _web_msg_server->Post( "/passive_action",
-                                           [this]( const Request& req, Response& res )
-                                           {
-                                               // Add CORS headers
-                                               res.set_header( "Access-Control-Allow-Origin", "*" );
-                                               res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
-                                               res.set_header( "Access-Control-Allow-Headers", "*" );
+                    _impl->_web_msg_server->Post( "/passive_action",
+                                                  [this]( const Request& req, Response& res )
+                                                  {
+                                                      // Add CORS headers
+                                                      res.set_header( "Access-Control-Allow-Origin", "*" );
+                                                      res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
+                                                      res.set_header( "Access-Control-Allow-Headers", "*" );
 
-                                               const auto msg = req.body;
-                                               if( msg.empty() )
-                                               {
-                                                   res.set_content( "Invalid message", "text/plain" );
-                                                   return;
-                                               }
+                                                      const auto msg = req.body;
+                                                      if( msg.empty() )
+                                                      {
+                                                          res.set_content( "Invalid message", "text/plain" );
+                                                          return;
+                                                      }
 
-                                               // Process the message
-                                               OnWebChannelMsgWrapper( msg );
-                                               res.set_content( "OK", "text/plain" );
-                                           } );
+                                                      // Process the message
+                                                      OnWebChannelMsgWrapper( msg );
+                                                      res.set_content( "OK", "text/plain" );
+                                                  } );
 
                     // Handle OPTIONS preflight requests
-                    _web_msg_server->Options( "/passive_action",
-                                              []( const Request& req, Response& res )
-                                              {
-                                                  res.set_header( "Access-Control-Allow-Origin", "*" );
-                                                  res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
-                                                  res.set_header( "Access-Control-Allow-Headers", "*" );
-                                                  res.set_content( "", "text/plain" );
-                                              } );
+                    _impl->_web_msg_server->Options( "/passive_action",
+                                                     []( const Request& req, Response& res )
+                                                     {
+                                                         res.set_header( "Access-Control-Allow-Origin", "*" );
+                                                         res.set_header( "Access-Control-Allow-Methods",
+                                                                         "POST, OPTIONS" );
+                                                         res.set_header( "Access-Control-Allow-Headers", "*" );
+                                                         res.set_content( "", "text/plain" );
+                                                     } );
 
 
-                    _web_msg_server->listen_after_bind();
+                    _impl->_web_msg_server->listen_after_bind();
                 } );
     }
 
-    if( !_browser->AddScriptMessageHandler( magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
+    if( !_impl->_browser->AddScriptMessageHandler( magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
     {
         wxLogDebug( "Could not add script message handler " );
     }
@@ -160,16 +182,16 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_CO
     SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
 
     // Connect the webview events
-    Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_LOADED, &WEBVIEW_CONTAINER::OnDocumentLoaded, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_CONTAINER::OnError, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_NEWWINDOW, &WEBVIEW_CONTAINER::OnNewWindow, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_LOADED, &WEBVIEW_CONTAINER::OnDocumentLoaded, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_CONTAINER::OnError, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_NEWWINDOW, &WEBVIEW_CONTAINER::OnNewWindow, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _impl->_browser->GetId() );
 
-    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _browser->GetId() );
-    Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _browser->GetId() );
+    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _impl->_browser->GetId() );
 
     if( data_buried_point )
     {
@@ -179,7 +201,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_CO
 
 #ifdef DEBUG
 
-    _browser->EnableAccessToDevTools( true );
+    _impl->_browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
 
@@ -191,11 +213,11 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_CO
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
-    if( _web_msg_server )
-        _web_msg_server->stop();
+    if( _impl->_web_msg_server )
+        _impl->_web_msg_server->stop();
 
-    if( _web_msg_server_thread )
-        _web_msg_server_thread->join();
+    if( _impl->_web_msg_server_thread )
+        _impl->_web_msg_server_thread->join();
 
 #ifndef _WIN32
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
@@ -211,7 +233,7 @@ void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
             [this, js_call]()
             {
                 wxString out;
-                _browser->RunScriptAsync( js_call, &out );
+                _impl->_browser->RunScriptAsync( js_call, &out );
                 wxLogDebug( "ExecuteCommand (wrapped): %s", out );
             } );
 }
@@ -225,7 +247,7 @@ void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
 
 WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
 {
-    return _web_msg_server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
+    return _impl->_web_msg_server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
 }
 
 
@@ -233,9 +255,9 @@ void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {
     const auto url = evt.GetURL();
 
-    if( !url.Contains( extract_host_from_url( _primary_url ) ) )
+    if( !url.Contains( extract_host_from_url( _impl->_primary_url ) ) )
     {
-        // Launch the url in the system default browser
+        // Launch the url in the system default _impl->_browser
         wxLaunchDefaultBrowser( url );
         evt.Veto();
         return;
@@ -253,17 +275,8 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
 {
-    wxString flag = " (other)";
-
-    if( evt.GetNavigationAction() == wxWEBVIEW_NAV_ACTION_USER )
-    {
-        flag = " (user)";
-    }
-
-
-    //If we handle new window events then just load them in this window as we
-    //are a single window browser
-    _browser->LoadURL( evt.GetURL() );
+    _impl->_browser->LoadURL( evt.GetURL() );
+    evt.Veto(); // Prevent WebKit from creating a new page
 }
 
 void WEBVIEW_CONTAINER::OnTitleChanged( wxWebViewEvent& evt )
@@ -340,24 +353,24 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
             {
             case WEB_HOST_INTERNAL_CMD_TYPE::fetch_global_context_from_host:
             {
-                if( _host_copilot_handles.global_context_handle.expired() )
+                if( _impl->_host_copilot_handles.global_context_handle.expired() )
                 {
                     wxLogDebug( "Get design global context handle expired" );
                     break;
                 }
 
-                auto context_function = _host_copilot_handles.global_context_handle.lock();
+                auto context_function = _impl->_host_copilot_handles.global_context_handle.lock();
 
                 auto& global_ctx = ( *context_function )();
 
-                if( _consumed_global_ctx_keys.contains( global_ctx.uuid ) )
+                if( _impl->_consumed_global_ctx_keys.contains( global_ctx.uuid ) )
                     break;
 
                 auto global_ctx_value = global_ctx.dump();
                 auto ctx_id = global_ctx.uuid;
 
                 wxString out;
-                _browser->RunScriptAsync(
+                _impl->_browser->RunScriptAsync(
                         fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS "
                                      "exception:', e); }}",
                                      magic_enum::enum_name( WEBVIEW_FUNCTIONS::update_copilot_global_context ),
@@ -365,20 +378,22 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                         &out );
 
 
-                _consumed_global_ctx_keys.insert( ctx_id );
+                _impl->_consumed_global_ctx_keys.insert( ctx_id );
 
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::show_image:
             {
-                if( !_image_viewer )
+                if( !_impl->_image_viewer )
                 {
-                    _image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _( "Image Viewer" ), "image_viewer" );
-                    _image_viewer->LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
+                    _impl->_image_viewer =
+                            new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _( "Image Viewer" ), "image_viewer" );
+                    _impl->_image_viewer->LoadUrl(
+                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
 
-                _image_viewer->reload();
-                _image_viewer->Show();
+                _impl->_image_viewer->reload();
+                _impl->_image_viewer->Show();
 
                 break;
             }
@@ -390,13 +405,14 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                     {
                         const auto url = cmd.data->get<std::string>();
 
-                        if( !_ecad_viewer )
+                        if( !_impl->_ecad_viewer )
                         {
-                            _ecad_viewer = new DIALOG_WEBVIEW( m_parent, wxID_ANY, _( "ECAD Viewer" ), "ecad_viewer" );
+                            _impl->_ecad_viewer =
+                                    new DIALOG_WEBVIEW( m_parent, wxID_ANY, _( "ECAD Viewer" ), "ecad_viewer" );
                         }
 
-                        _ecad_viewer->LoadUrl( url );
-                        _ecad_viewer->Show();
+                        _impl->_ecad_viewer->LoadUrl( url );
+                        _impl->_ecad_viewer->Show();
                     }
                     catch( ... )
                     {
@@ -409,9 +425,9 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
         }
         case PA_AGENT:
         {
-            if( !_host_copilot_handles.agent_action_handle.expired() )
+            if( !_impl->_host_copilot_handles.agent_action_handle.expired() )
             {
-                auto context_function = _host_copilot_handles.agent_action_handle.lock();
+                auto context_function = _impl->_host_copilot_handles.agent_action_handle.lock();
                 ( *context_function )( act_container.data );
             }
             break;
