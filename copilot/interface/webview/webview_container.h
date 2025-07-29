@@ -30,10 +30,8 @@
 #include <wx/panel.h>
 #include <wx/log.h>
 #include <wx/webview.h>
-#include <set>
 #include <copilot_global.h>
 #include <data_buried_point.h>
-#include <thread>
 #include <memory>
 #include <optional>
 
@@ -52,6 +50,8 @@ namespace httplib
 class Server;
 }
 
+
+struct WEBVIEW_CONTAINER_IMPL;
 
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
@@ -91,17 +91,9 @@ protected:
 
     virtual void OnWebChannelMsgWrapper( std::string const& msg );
 
-protected:
-    std::set<std::string> _consumed_global_ctx_keys{};
-    DIALOG_IMAGE_VIEWER*  _image_viewer{};
-    DIALOG_WEBVIEW*       _ecad_viewer{};
 
-
-    wxWebView*                       _browser;
-    HOST_COPILOT_HANDLES             _host_copilot_handles;
-    std::string                      _primary_url;
-    std::shared_ptr<httplib::Server> _web_msg_server;
-    std::unique_ptr<std::thread>     _web_msg_server_thread;
+private:
+    std::unique_ptr<WEBVIEW_CONTAINER_IMPL> _impl;
 };
 
 #endif
