@@ -37,6 +37,8 @@
 #include <tools/pcb_actions.h>
 #include <webview/dialog_webview.h>
 #include <wx/string.h>
+#include <plotcontroller.h>
+#include <exporters/gendrill_Excellon_writer.h>
 
 
 template <>
@@ -72,16 +74,126 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
              static_cast<double>( minHoleSize ) / pcbIUScale.IU_PER_MM };
 }
 
+
 template <>
-GERBER_FILENAME_CONTENT FAB_INFO_GETTER_PCB::GetGerber()
+bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( std::string const& aOutDir )
 {
     auto            editor = static_cast<PCB_EDIT_FRAME*>( this );
-    PCB_PLOT_PARAMS plotSettings = editor->GetPlotSettings();
-    plotSettings.SetFormat( PLOT_FORMAT::GERBER );
-    editor->SetPlotSettings( plotSettings );
-    DIALOG_PLOT dlg( self() );
-    dlg.ShowQuasiModal();
-    return {};
+    auto            board = editor->GetBoard();
+    PLOT_CONTROLLER plotter( board );
+    auto            popt = plotter.GetPlotOptions();
+
+    popt.SetOutputDirectory( aOutDir );
+    // Set Gerber format
+    popt.SetFormat( PLOT_FORMAT::GERBER );
+
+    // General options
+    popt.SetPlotValue( true );
+    popt.SetPlotReference( true );
+    popt.SetPlotFPText( false );
+    popt.SetSketchPadsOnFabLayers( false );
+
+    // Gerber options
+    popt.SetUseGerberProtelExtensions( false );
+    popt.SetCreateGerberJobFile( false );
+    popt.SetSubtractMaskFromSilk( true );
+    popt.SetUseAuxOrigin( true );
+    popt.SetUseGerberX2format( true );
+    popt.SetIncludeGerberNetlistInfo( true );
+    popt.SetDisableGerberMacros( false );
+    popt.SetDrillMarksType( DRILL_MARKS::NO_DRILL_SHAPE );
+    popt.SetPlotFrameRef( false );
+
+    // Remove existing files in output directory (optional, not implemented here)
+
+    int layer_count = board->GetCopperLayerCount();
+
+    struct LayerInfo
+    {
+        const char*  name;
+        PCB_LAYER_ID id;
+        const char*  description;
+    };
+
+    std::vector<LayerInfo> plot_plan_top = { { "CuTop", F_Cu, "Top layer" },
+                                             { "SilkTop", F_SilkS, "Silk top" },
+                                             { "MaskTop", F_Mask, "Mask top" },
+                                             { "PasteTop", F_Paste, "Paste top" } };
+    std::vector<LayerInfo> plot_plan_bottom = {
+        { "CuBottom", B_Cu, "Bottom layer" },    { "SilkBottom", B_SilkS, "Silk bottom" },
+        { "MaskBottom", B_Mask, "Mask bottom" }, { "PasteBottom", B_Paste, "Paste bottom" },
+        { "EdgeCuts", Edge_Cuts, "Edges" },      { "VScore", Cmts_User, "V score cut" }
+    };
+
+    std::vector<LayerInfo> plot_plan;
+
+    if( layer_count == 1 )
+    {
+        plot_plan = plot_plan_top;
+        plot_plan.push_back( plot_plan_bottom[4] ); // EdgeCuts
+        plot_plan.push_back( plot_plan_bottom[5] ); // VScore
+    }
+    else if( layer_count == 2 )
+    {
+        plot_plan = plot_plan_top;
+        plot_plan.insert( plot_plan.end(), plot_plan_bottom.begin(), plot_plan_bottom.end() );
+    }
+    else
+    {
+        plot_plan = plot_plan_top;
+        for( int i = 1; i < layer_count - 1; ++i )
+        {
+            plot_plan.push_back( { ( "CuIn" + std::to_string( i ) ).c_str(), static_cast<PCB_LAYER_ID>( i ),
+                                   ( "Inner layer " + std::to_string( i ) ).c_str() } );
+        }
+        plot_plan.insert( plot_plan.end(), plot_plan_bottom.begin(), plot_plan_bottom.end() );
+    }
+
+    std::vector<std::string> gerber_files;
+
+    for( const auto& layer_info : plot_plan )
+    {
+        if( layer_info.id <= B_Cu )
+            popt.SetSkipPlotNPTH_Pads( true );
+        else
+            popt.SetSkipPlotNPTH_Pads( false );
+
+        plotter.SetLayer( layer_info.id );
+        plotter.OpenPlotfile( layer_info.name, PLOT_FORMAT::GERBER, layer_info.description );
+        if( plotter.PlotLayer() )
+        {
+            wxString file = plotter.GetPlotFileName();
+            gerber_files.push_back( file.ToStdString() );
+        }
+    }
+    plotter.ClosePlot();
+
+    return true;
+}
+
+// ...existing code...
+
+template <>
+bool FAB_INFO_GETTER_PCB::GenerateDrillFile( std::string const& aOutDir )
+{
+    auto editor = static_cast<PCB_EDIT_FRAME*>( this );
+    auto board = editor->GetBoard();
+
+    EXCELLON_WRITER drlwriter( board );
+    bool            mirror = false;
+    bool            minimalHeader = false;
+    const VECTOR2I  offset = board->GetDesignSettings().GetAuxOrigin();
+    bool            mergeNPTH = false;
+
+    drlwriter.SetOptions( mirror, minimalHeader, offset, mergeNPTH );
+    drlwriter.SetFormat( false ); // Use default format (not metric)
+    bool genDrl = true;
+    bool genMap = true;
+
+    drlwriter.CreateDrillandMapFilesSet( aOutDir, genDrl, genMap );
+
+
+    return true;
 }
 
 template <>

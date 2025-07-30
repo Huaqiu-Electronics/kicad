@@ -38,7 +38,6 @@
 #include <webview/dialog_webview.h>
 
 
-using GERBER_FILENAME_CONTENT = std::map<std::string, std::string>;
 template <class EditorT>
 class FAB_INFO_GETTER
 {
@@ -49,8 +48,9 @@ public:
     // For PCB query price
     FAB_PCB_SPECIFICATIONS GetPCBSpecifications() { return {}; }
 
-    // For PCB fab
-    GERBER_FILENAME_CONTENT GetGerber() { return {}; }
+    bool GenerateGerberFiles( std::string const& aOutDir ) { return {}; }
+
+    bool GenerateDrillFile( std::string const& aOutDir ) { return {}; }
 
     // For SMT
     std::vector<FP_POSITION_LIST> GetComponentPosition() { return {}; }
