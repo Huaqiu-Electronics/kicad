@@ -28,16 +28,22 @@
 #include <chrono>
 
 #include "config_io_helper.h"
+#include "settings/copilot_config_version.h"
 
 
 constexpr auto kMutableSettingsFileName = "mutable_settings.json";
 constexpr auto kImmutableSettingsFileName = "immutable_settings.json";
+constexpr auto kAccessTokenFN = "access_token.json";
+
 
 WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
-        _immutable_settings( new IMMUTABLE_SETTINGS ), _mutable_settings( new MUTABLE_SETTINGS )
+        _immutable_settings( new IMMUTABLE_SETTINGS ), _mutable_settings( new MUTABLE_SETTINGS ),
+        _access_token( new ACCESS_TOKEN )
 {
-    load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), *_immutable_settings );
-    load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings );
+    load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), *_immutable_settings, kConfigVersion );
+    load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings, kConfigVersion );
+    load_cnf( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
+
 
     auto url = _immutable_settings->copilot_webview_settings.url;
 
@@ -153,19 +159,17 @@ void WEBVIEW_SETTINGS_MANAGER::set_dialog_viewer_geometry( std::string const& aK
 }
 
 
-std::optional<ACCESS_TOKEN> WEBVIEW_SETTINGS_MANAGER::get_access_token() const
+ACCESS_TOKEN const& WEBVIEW_SETTINGS_MANAGER::get_access_token() const
 {
-    return _mutable_settings->access_token;
+    return *_access_token;
 }
 
 void WEBVIEW_SETTINGS_MANAGER::set_access_token( ACCESS_TOKEN const& token )
 {
-    _mutable_settings->access_token = token;
+    *_access_token = token;
 }
 
 bool WEBVIEW_SETTINGS_MANAGER::is_token_valid() const
 {
-    return _mutable_settings->access_token.has_value()
-           && _mutable_settings->access_token->expires_at
-                      > std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
+    return _access_token->expires_at > std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
 }

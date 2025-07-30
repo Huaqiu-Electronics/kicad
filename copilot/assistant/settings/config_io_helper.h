@@ -26,6 +26,7 @@
 #define CONFIG_IO_HELPER_H
 
 #include <nlohmann/json.hpp>
+#include <optional>
 #include <string>
 #include <wx/filename.h>
 #include <wx/log.h>
@@ -35,7 +36,6 @@
 #include <fmt/format.h>
 #include <iostream>
 #include <macros.h>
-#include <settings/copilot_config_version.h>
 
 inline auto save_cnf( std::string const& path, const auto& cnf )
 {
@@ -57,7 +57,7 @@ inline auto save_cnf( std::string const& path, const auto& cnf )
 
 
 template <typename T>
-auto load_cnf( std::string const& path, T& aCnf )
+auto load_cnf( std::string const& path, T& aCnf, std::optional<std::string> version = std::nullopt )    
 {
     if( !wxFileExists( path ) )
     {
@@ -75,7 +75,7 @@ auto load_cnf( std::string const& path, T& aCnf )
             std::ifstream in( path );
             auto          cnf = nlohmann::json::parse( in ).get<T>();
 
-            if( cnf.version == kConfigVersion )
+            if( version && cnf.version == *version )
             {
                 aCnf = cnf;
             }
