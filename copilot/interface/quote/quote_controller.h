@@ -35,7 +35,7 @@ class SSLClient;
 }
 
 
-struct FORM_PCB_QUOTE;
+struct PCB_ORDER;
 class COPILOT_API QUOTE_CONTROLLER
 {
 public:
@@ -43,7 +43,7 @@ public:
 
     ~QUOTE_CONTROLLER();
 
-    std::optional<PCB_QUOTE_RESPONSE> pcb_quote( FORM_PCB_QUOTE const& form, std::string const& attachment_file_path );
+    std::optional<PCB_QUOTE_RESPONSE> pcb_quote( PCB_ORDER const& form, std::string const& attachment_file_path );
 
 
 private:

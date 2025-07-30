@@ -42,6 +42,18 @@
 #include <auth/dialog_login.h>
 #include <wx/msgdlg.h>
 #include <fmt/format.h>
+#include <quote/pcb_order.h>
+#include <quote/quote_controller.h>
+
+#include <wx/filename.h>
+#include <wx/stdpaths.h>
+#include <wx/utils.h>
+#include <filesystem>
+#include <fstream>
+#include <random>
+#include <chrono>
+#include <minizip/zip.h>
+#include <minizip/ioapi.h>
 
 
 template <>
@@ -60,20 +72,65 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
         }
     }
 
-    // Post the form for placing order and get the order ID
+    // 1. Generate a UUID for this order (using timestamp for simplicity)
+    std::time_t now = std::time( nullptr );
+    std::string uuid_str = std::to_string( now );
 
+    // 2. Create a temp directory under system temp with the uuid
+    wxString tmpDir = wxFileName::GetTempDir() + wxFileName::GetPathSeparator() + uuid_str;
+    std::filesystem::create_directories( tmpDir.ToStdString() );
+
+    // 3. Generate Gerber and Drill files into the temp dir
+    this->GenerateGerberFiles( tmpDir );
+    this->GenerateDrillFile( tmpDir );
+
+    // 4. Zip the temp directory using minizip
+    wxString zipFilePath = tmpDir + ".zip";
+    {
+        zipFile zf = zipOpen( zipFilePath.mb_str().data(), APPEND_STATUS_CREATE );
+        if( zf )
+        {
+            for( const auto& entry : std::filesystem::directory_iterator( tmpDir.ToStdString() ) )
+            {
+                if( entry.is_regular_file() )
+                {
+                    std::ifstream     file( entry.path(), std::ios::binary );
+                    std::vector<char> buffer( ( std::istreambuf_iterator<char>( file ) ),
+                                              std::istreambuf_iterator<char>() );
+                    zip_fileinfo      zi = {};
+                    zipOpenNewFileInZip( zf, entry.path().filename().string().c_str(), &zi, nullptr, 0, nullptr, 0,
+                                         nullptr, Z_DEFLATED, Z_DEFAULT_COMPRESSION );
+                    zipWriteInFileInZip( zf, buffer.data(), static_cast<unsigned int>( buffer.size() ) );
+                    zipCloseFileInZip( zf );
+                }
+            }
+            zipClose( zf, nullptr );
+        }
+    }
+
+    PCB_ORDER form;
+
+    QUOTE_CONTROLLER controller;
+    auto             rsp = controller.pcb_quote( form, zipFilePath.ToStdString() );
+
+    if( !rsp.has_value() || rsp->quote_id.empty() )
+    {
+        wxMessageBox( _( "Failed to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
+        return;
+    }
+    std::string order_id = rsp->quote_id;
 
     if( !m_placeOrderDialog )
     {
         m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
     }
 
-    // https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id=3747806&tid=354&token=XXXXXXXXXXXXXXXXXXX
-
-    m_placeOrderDialog->LoadUrl( fmt::format( "https://www.hqpcb.com/mycenter/?{}",
-                                              WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+    m_placeOrderDialog->LoadUrl(
+            fmt::format( "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&tid=354&token={}", order_id,
+                         WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
 
     m_placeOrderDialog->Show();
 }
+
 
 #endif
