@@ -9,6 +9,7 @@ add_library(assistant SHARED
     webview/webview_evt_filter.cpp
     http/http_client.cpp
     quote/quote_controller.cpp
+    utils/copilot_zip_utils.cpp
 )
 
 set_target_properties(assistant PROPERTIES CXX_VISIBILITY_PRESET hidden)

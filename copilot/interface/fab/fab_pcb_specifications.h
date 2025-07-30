@@ -33,7 +33,7 @@ struct FAB_PCB_SPECIFICATIONS
 {
     int    layer_count;
     double length;
-    double width;
+    double width;                           
     double mini_trace_clearance;
     double mini_trace_width;
     double mini_hole_size;

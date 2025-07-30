@@ -26,16 +26,9 @@
 #define PCB_EDITOR_PLACE_ORDER_H
 
 #include <settings/webview_settings_manager.h>
-#include <dialog_gen_footprint_position.h>
-#include <dialog_plot.h>
-#include <core/typeinfo.h>
-#include <footprint.h>
-#include <pcb_track.h>
 #include <pcb_edit_frame.h>
 #include <board.h>
-#include <board_design_settings.h>
-#include <base_units.h>
-#include <tools/pcb_actions.h>
+#include <string>
 #include <webview/dialog_webview.h>
 #include <wx/gdicmn.h>
 #include <wx/string.h>
@@ -49,11 +42,65 @@
 #include <wx/stdpaths.h>
 #include <wx/utils.h>
 #include <filesystem>
-#include <fstream>
-#include <random>
-#include <chrono>
-#include <minizip/zip.h>
-#include <minizip/ioapi.h>
+#include <utils/copilot_zip_utils.h>
+
+
+template <>
+FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications();
+
+template <>
+bool FAB_INFO_GETTER_PCB::GenerateDrillFile( wxString const& aOutDir );
+
+template <>
+bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir );
+
+
+inline std::string get_pcb_thickness( int layer_count )
+{
+    switch( layer_count )
+    {
+    case 1:
+    case 2:
+    case 4: return "0.6";
+    case 6: return "0.8";
+    case 8: return "1.0";
+    case 10: return "1.2";
+    case 12: return "1.6";
+    case 14: return "1.6";
+    case 16: return "2.0";
+    case 18: return "2.0";
+    case 20: return "2.0";
+    default: return "1.6";
+    }
+}
+
+inline std::string get_min_trace_clearance( double aTraceWidth )
+{
+    // Corresponds to MIN_TRACE_WIDTH_CLEARANCE_CHOICE = [10, 8, 6, 5, 4, 3.5] (unit: mil)
+    // Return the first element >= aTraceWidth, else the smallest
+    static const double choices[] = { 10, 8, 6, 5, 4, 3.5 };
+    for( double v : choices )
+    {
+        if( aTraceWidth >= v )
+            return std::to_string( v );
+    }
+    // If smaller than all, return the smallest
+    return std::to_string( choices[sizeof( choices ) / sizeof( choices[0] ) - 1] );
+}
+
+inline std::string get_min_hole_size( double aHoleSize )
+{
+    // Corresponds to MIN_HOLE_SIZE_CHOICE = [0.3, 0.25, 0.2, 0.15] (unit: mm)
+    // Return the first element <= aHoleSize, else the largest
+    static const double choices[] = { 0.3, 0.25, 0.2, 0.15 };
+    for( double v : choices )
+    {
+        if( aHoleSize >= v )
+            return std::to_string( v );
+    }
+    // If smaller than all, return the smallest
+    return std::to_string( choices[sizeof( choices ) / sizeof( choices[0] ) - 1] );
+}
 
 
 template <>
@@ -72,43 +119,31 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
         }
     }
 
-    // 1. Generate a UUID for this order (using timestamp for simplicity)
     std::time_t now = std::time( nullptr );
     std::string uuid_str = std::to_string( now );
 
-    // 2. Create a temp directory under system temp with the uuid
     wxString tmpDir = wxFileName::GetTempDir() + wxFileName::GetPathSeparator() + uuid_str;
     std::filesystem::create_directories( tmpDir.ToStdString() );
 
-    // 3. Generate Gerber and Drill files into the temp dir
-    this->GenerateGerberFiles( tmpDir );
-    this->GenerateDrillFile( tmpDir );
+    GenerateGerberFiles( tmpDir );
+    GenerateDrillFile( tmpDir );
 
-    // 4. Zip the temp directory using minizip
     wxString zipFilePath = tmpDir + ".zip";
+
+    if( !COPILOT_ZIP_UTILS::zip( zipFilePath.ToStdString(), tmpDir.ToStdString() ) )
     {
-        zipFile zf = zipOpen( zipFilePath.mb_str().data(), APPEND_STATUS_CREATE );
-        if( zf )
-        {
-            for( const auto& entry : std::filesystem::directory_iterator( tmpDir.ToStdString() ) )
-            {
-                if( entry.is_regular_file() )
-                {
-                    std::ifstream     file( entry.path(), std::ios::binary );
-                    std::vector<char> buffer( ( std::istreambuf_iterator<char>( file ) ),
-                                              std::istreambuf_iterator<char>() );
-                    zip_fileinfo      zi = {};
-                    zipOpenNewFileInZip( zf, entry.path().filename().string().c_str(), &zi, nullptr, 0, nullptr, 0,
-                                         nullptr, Z_DEFLATED, Z_DEFAULT_COMPRESSION );
-                    zipWriteInFileInZip( zf, buffer.data(), static_cast<unsigned int>( buffer.size() ) );
-                    zipCloseFileInZip( zf );
-                }
-            }
-            zipClose( zf, nullptr );
-        }
+        return;
     }
 
+
     PCB_ORDER form;
+    auto      pcb_spec = GetPCBSpecifications();
+    form.blayer = std::to_string( pcb_spec.layer_count );
+    form.bwidth = std::to_string( pcb_spec.width / 10 );
+    form.bheight = get_pcb_thickness( pcb_spec.layer_count );
+
+    form.lineweight = get_min_trace_clearance( pcb_spec.mini_trace_width * 39.3701 );
+    form.vias = get_min_hole_size( pcb_spec.mini_hole_size );
 
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_quote( form, zipFilePath.ToStdString() );
@@ -126,7 +161,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
     }
 
     m_placeOrderDialog->LoadUrl(
-            fmt::format( "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&tid=354&token={}", order_id,
+            fmt::format( "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&tid=34526&token={}", "",
                          WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
 
     m_placeOrderDialog->Show();
