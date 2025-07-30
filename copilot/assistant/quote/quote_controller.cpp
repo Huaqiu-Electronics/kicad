@@ -24,7 +24,7 @@
 
 #include <quote/quote_controller.h>
 #include <utils/httplib_wrapper.h>
-#include <quote/form_pcb_quote.h>
+#include <quote/pcb_order.h>
 
 using httplib::SSLClient;
 QUOTE_CONTROLLER::QUOTE_CONTROLLER() : _client( std::make_unique<SSLClient>( "www.eda.cn" ) )
@@ -36,7 +36,7 @@ QUOTE_CONTROLLER::~QUOTE_CONTROLLER()
 }
 
 
-std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( FORM_PCB_QUOTE const& form,
+std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( PCB_ORDER const& form,
                                                                std::string const&    attachment_file_path )
 {
     // Serialize form to JSON
@@ -57,12 +57,7 @@ std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( FORM_PCB_QUOTE co
         }
     }
 
-    // ...existing code...
-
-    // POST request
     auto res = _client->Post( "/openapi/api/hqpcb/External/fileQuote", items );
-
-    // ...existing code...
 
     if( res && res->status == 200 )
     {

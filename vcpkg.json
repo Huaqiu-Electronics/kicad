@@ -48,7 +48,8 @@
     },
     "nng",
     "protobuf",
-    "zstd"
+    "zstd",
+    "minizip"
   ],
   "overrides": [
     {
