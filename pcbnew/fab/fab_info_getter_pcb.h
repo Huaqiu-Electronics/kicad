@@ -171,7 +171,6 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
     return true;
 }
 
-// ...existing code...
 
 template <>
 bool FAB_INFO_GETTER_PCB::GenerateDrillFile( wxString const& aOutDir )
