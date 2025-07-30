@@ -30,10 +30,11 @@
 struct ACCESS_TOKEN
 {
     std::string        token;
-    unsigned long long user_id;
+    unsigned long long user_id{};
     std::string        phone;
-    unsigned long long expires_at; // Unix timestamp in seconds
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ACCESS_TOKEN, token, user_id, phone, expires_at )
+    unsigned long long expires_at{}; // Unix timestamp in seconds
+    std::string        version = "0.0.1";
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( ACCESS_TOKEN, token, user_id, phone, expires_at, version )
 };
 
 #endif

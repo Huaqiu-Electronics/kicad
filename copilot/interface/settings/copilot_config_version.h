@@ -25,7 +25,7 @@
 #ifndef COPILOT_CONFIG_VERSION_H
 #define COPILOT_CONFIG_VERSION_H
 
-static constexpr auto kConfigVersion = "0.0.22";
+static constexpr auto kConfigVersion = "0.0.23";
 
 
 #endif

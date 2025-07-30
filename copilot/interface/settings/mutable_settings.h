@@ -26,8 +26,6 @@
 #define MUTABLE_SETTINGS_H
 
 #include <nlohmann/json.hpp>
-#include <optional>
-#include <auth/access_token.h>
 
 #include "copilot_config_version.h"
 #include "dialog_geometry.h"
@@ -37,8 +35,7 @@ struct MUTABLE_SETTINGS
 {
     std::string                            version = kConfigVersion;
     std::map<std::string, DIALOG_GEOMETRY> dialog_geometries;
-    std::optional<ACCESS_TOKEN>            access_token;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MUTABLE_SETTINGS, dialog_geometries, access_token, version )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MUTABLE_SETTINGS, dialog_geometries, version )
 };
 
 

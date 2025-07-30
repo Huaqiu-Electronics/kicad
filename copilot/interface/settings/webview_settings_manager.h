@@ -35,6 +35,8 @@ struct IMMUTABLE_SETTINGS;
 struct MUTABLE_SETTINGS;
 struct COPILOT_WEBVIEW_PATH;
 struct DIALOG_GEOMETRY;
+struct ACCESS_TOKEN;
+
 
 class COPILOT_API WEBVIEW_SETTINGS_MANAGER
 {
@@ -64,9 +66,9 @@ public:
     std::optional<DIALOG_GEOMETRY> get_dialog_geometry( std::string const& aKey ) const;
     void set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
-    std::optional<ACCESS_TOKEN> get_access_token() const;
-    void                        set_access_token( ACCESS_TOKEN const& token );
-    bool                        is_token_valid() const;
+    ACCESS_TOKEN const& get_access_token() const;
+    void                set_access_token( ACCESS_TOKEN const& token );
+    bool                is_token_valid() const;
 
 private:
     WEBVIEW_SETTINGS_MANAGER();
@@ -75,6 +77,7 @@ private:
     std::string                         _webview_chat_path;
     std::string                         _webview_image_viewer_path;
     std::string                         _login_path;
+    std::unique_ptr<ACCESS_TOKEN>       _access_token;
 };
 
 

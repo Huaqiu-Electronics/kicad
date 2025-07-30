@@ -71,7 +71,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
     // https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id=3747806&tid=354&token=XXXXXXXXXXXXXXXXXXX
 
     m_placeOrderDialog->LoadUrl( fmt::format( "https://www.hqpcb.com/mycenter/?{}",
-                                              WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token()->token ) );
+                                              WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
     m_placeOrderDialog->Show();
 }
 
