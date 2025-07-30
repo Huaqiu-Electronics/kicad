@@ -72,6 +72,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
 
     m_placeOrderDialog->LoadUrl( fmt::format( "https://www.hqpcb.com/mycenter/?{}",
                                               WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+
     m_placeOrderDialog->Show();
 }
 
