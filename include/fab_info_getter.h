@@ -48,9 +48,9 @@ public:
     // For PCB query price
     FAB_PCB_SPECIFICATIONS GetPCBSpecifications() { return {}; }
 
-    bool GenerateGerberFiles( std::string const& aOutDir ) { return {}; }
+    bool GenerateGerberFiles( wxString const& aOutDir ) { return {}; }
 
-    bool GenerateDrillFile( std::string const& aOutDir ) { return {}; }
+    bool GenerateDrillFile( wxString const& aOutDir ) { return {}; }
 
     // For SMT
     std::vector<FP_POSITION_LIST> GetComponentPosition() { return {}; }

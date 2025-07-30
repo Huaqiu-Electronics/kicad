@@ -76,7 +76,7 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
 
 
 template <>
-bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( std::string const& aOutDir )
+bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
 {
     auto            editor = static_cast<PCB_EDIT_FRAME*>( this );
     auto            board = editor->GetBoard();
@@ -174,7 +174,7 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( std::string const& aOutDir )
 // ...existing code...
 
 template <>
-bool FAB_INFO_GETTER_PCB::GenerateDrillFile( std::string const& aOutDir )
+bool FAB_INFO_GETTER_PCB::GenerateDrillFile( wxString const& aOutDir )
 {
     auto editor = static_cast<PCB_EDIT_FRAME*>( this );
     auto board = editor->GetBoard();
@@ -191,8 +191,6 @@ bool FAB_INFO_GETTER_PCB::GenerateDrillFile( std::string const& aOutDir )
     bool genMap = true;
 
     drlwriter.CreateDrillandMapFilesSet( aOutDir, genDrl, genMap );
-
-
     return true;
 }
 

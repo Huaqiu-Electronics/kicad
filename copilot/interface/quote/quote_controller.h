@@ -27,12 +27,15 @@
 
 #include <copilot_global.h>
 #include <memory>
-
+#include <optional>
+#include "pcb_quote_response.h"
 namespace httplib
 {
-class Client;
+class SSLClient;
 }
 
+
+struct FORM_PCB_QUOTE;
 class COPILOT_API QUOTE_CONTROLLER
 {
 public:
@@ -40,9 +43,11 @@ public:
 
     ~QUOTE_CONTROLLER();
 
+    std::optional<PCB_QUOTE_RESPONSE> pcb_quote( FORM_PCB_QUOTE const& form, std::string const& attachment_file_path );
+
 
 private:
-    std::unique_ptr<httplib::Client> _client;
+    std::unique_ptr<httplib::SSLClient> _client;
 };
 
 #endif

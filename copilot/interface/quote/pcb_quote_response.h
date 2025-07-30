@@ -22,14 +22,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <fab/place_order_controller.h>
+#ifndef PCB_QUOTE_RESPONSE_H
+#define PCB_QUOTE_RESPONSE_H
 
-PLACE_ORDER_CONTROLLER::PLACE_ORDER_CONTROLLER()
+#include <string>
+
+struct PCB_QUOTE_RESPONSE
 {
+    std::string quote_id;
+};
 
-}
-
-PLACE_ORDER_CONTROLLER::~PLACE_ORDER_CONTROLLER()
-{
-
-}
+#endif
