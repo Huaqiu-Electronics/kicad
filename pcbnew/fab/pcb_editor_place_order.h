@@ -43,6 +43,8 @@
 #include <wx/utils.h>
 #include <filesystem>
 #include <utils/copilot_zip_utils.h>
+#include <iomanip>
+#include <sstream>
 
 
 template <>
@@ -141,8 +143,16 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
 
     auto pcb_spec = GetPCBSpecifications();
     form.blayer = std::to_string( pcb_spec.layer_count );
-    form.bwidth = std::to_string( pcb_spec.width / 10 );
-    form.blength = std::to_string( pcb_spec.length / 10 );
+
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision( 2 ) << pcb_spec.width / 10;
+    form.bwidth = ss.str();
+
+    ss.str( "" );
+    ss.clear();
+    ss << std::fixed << std::setprecision( 2 ) << pcb_spec.length / 10;
+    form.blength = ss.str();
+
     form.bheight = get_pcb_thickness( pcb_spec.layer_count );
 
     form.lineweight =
