@@ -448,3 +448,14 @@ void WEBVIEW_CONTAINER::OnWebChannelMsgWrapper( std::string const& msg )
                 OnWebChannelMsg( msg );
             } );
 }
+
+
+std::string WEBVIEW_CONTAINER::GetUrl() const
+{
+    return _impl->_primary_url;
+}
+
+wxWebView* WEBVIEW_CONTAINER::GetWebView() const
+{
+    return _impl->_browser;
+}
