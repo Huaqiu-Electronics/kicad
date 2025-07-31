@@ -25,6 +25,7 @@
 #ifndef FAB_INFO_GETTER_PCB_H
 #define FAB_INFO_GETTER_PCB_H
 
+#include <array>
 #include <dialog_gen_footprint_position.h>
 #include <dialog_plot.h>
 #include <core/typeinfo.h>
@@ -140,13 +141,33 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
     }
     else
     {
-        plot_plan = k_plot_plan_top;
-        for( int i = 2; i < layer_count; ++i )
+        enum
         {
-            const auto layer_display_id = i - 1;
-            plot_plan.push_back( { ( "CuIn" + std::to_string( layer_display_id ) ), static_cast<PCB_LAYER_ID>( i * 2 ),
+            INNER_COPPER_LAYERS_COUNT = 30
+        };
+
+
+        static const std::array<PCB_LAYER_ID, INNER_COPPER_LAYERS_COUNT> kInnerCopperLayers = {
+            PCB_LAYER_ID::In1_Cu,  PCB_LAYER_ID::In2_Cu,  PCB_LAYER_ID::In3_Cu,  PCB_LAYER_ID::In4_Cu,
+            PCB_LAYER_ID::In5_Cu,  PCB_LAYER_ID::In6_Cu,  PCB_LAYER_ID::In7_Cu,  PCB_LAYER_ID::In8_Cu,
+            PCB_LAYER_ID::In9_Cu,  PCB_LAYER_ID::In10_Cu, PCB_LAYER_ID::In11_Cu, PCB_LAYER_ID::In12_Cu,
+            PCB_LAYER_ID::In13_Cu, PCB_LAYER_ID::In14_Cu, PCB_LAYER_ID::In15_Cu, PCB_LAYER_ID::In16_Cu,
+            PCB_LAYER_ID::In17_Cu, PCB_LAYER_ID::In18_Cu, PCB_LAYER_ID::In19_Cu, PCB_LAYER_ID::In20_Cu,
+            PCB_LAYER_ID::In21_Cu, PCB_LAYER_ID::In22_Cu, PCB_LAYER_ID::In23_Cu, PCB_LAYER_ID::In24_Cu,
+            PCB_LAYER_ID::In25_Cu, PCB_LAYER_ID::In26_Cu, PCB_LAYER_ID::In27_Cu, PCB_LAYER_ID::In28_Cu,
+            PCB_LAYER_ID::In29_Cu, PCB_LAYER_ID::In30_Cu
+        };
+
+        plot_plan = k_plot_plan_top;
+        // Add inner copper layers (layer_count - 2 layers between top and bottom)
+        const int inner_layers_count = std::min( layer_count - 2, static_cast<int>( kInnerCopperLayers.size() ) );
+        for( int i = 0; i < inner_layers_count; ++i )
+        {
+            const auto layer_display_id = i + 1;
+            plot_plan.push_back( { ( "CuIn" + std::to_string( layer_display_id ) ), kInnerCopperLayers[i],
                                    ( "Inner layer " + std::to_string( layer_display_id ) ) } );
         }
+
         plot_plan.insert( plot_plan.end(), k_plot_plan_bottom.begin(), k_plot_plan_bottom.end() );
     }
 
