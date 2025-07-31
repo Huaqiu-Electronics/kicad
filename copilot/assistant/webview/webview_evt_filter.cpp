@@ -64,8 +64,7 @@ int WEBVIEW_EVT_FILTER::FilterEvent( wxEvent& event )
     }
 
 
-    if( wxEVT_WEBVIEW_SCRIPT_RESULT == evt_type
-        || wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED == evt_type )
+    if( wxEVT_WEBVIEW_SCRIPT_RESULT == evt_type || wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED == evt_type )
     {
         if( auto it = m_panel_focused.find( obj ); it != m_panel_focused.end() && !it->second )
         {
@@ -84,13 +83,13 @@ WEBVIEW_EVT_FILTER& WEBVIEW_EVT_FILTER::Get()
     return instance;
 }
 
-void WEBVIEW_EVT_FILTER::AddPanel( wxPanel* aPanel )
+void WEBVIEW_EVT_FILTER::AddPanel( void* aPanel )
 {
     m_panels.insert( aPanel );
     m_panel_focused[aPanel] = false;
 }
 
-void WEBVIEW_EVT_FILTER::RemovePanel( wxPanel* aPanel )
+void WEBVIEW_EVT_FILTER::RemovePanel( void* aPanel )
 {
     m_panels.erase( aPanel );
     m_panel_focused.erase( aPanel );

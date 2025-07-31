@@ -35,8 +35,8 @@ class WEBVIEW_EVT_FILTER : public wxEventFilter
 {
     WEBVIEW_EVT_FILTER();
 
-    std::set<wxObject*>       m_panels;
-    std::map<wxObject*, bool> m_panel_focused;
+    std::set<void*>       m_panels;
+    std::map<void*, bool> m_panel_focused;
 
 public:
     ~WEBVIEW_EVT_FILTER() override;
@@ -45,9 +45,9 @@ public:
 
     static WEBVIEW_EVT_FILTER& Get();
 
-    void AddPanel( wxPanel* aPanel );
+    void AddPanel( void* aPanel );
 
-    void RemovePanel( wxPanel* aPanel );
+    void RemovePanel( void* aPanel );
 };
 
 #endif
