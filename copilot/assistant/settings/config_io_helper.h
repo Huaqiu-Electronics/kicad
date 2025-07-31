@@ -57,7 +57,7 @@ inline auto save_cnf( std::string const& path, const auto& cnf )
 
 
 template <typename T>
-auto load_cnf( std::string const& path, T& aCnf, std::optional<std::string> version = std::nullopt )    
+auto load_cnf( std::string const& path, T& aCnf, std::optional<std::string> version = std::nullopt )
 {
     if( !wxFileExists( path ) )
     {
@@ -75,7 +75,7 @@ auto load_cnf( std::string const& path, T& aCnf, std::optional<std::string> vers
             std::ifstream in( path );
             auto          cnf = nlohmann::json::parse( in ).get<T>();
 
-            if( version && cnf.version == *version )
+            if( !version || ( version && cnf.version == *version ) )
             {
                 aCnf = cnf;
             }

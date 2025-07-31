@@ -64,6 +64,7 @@ WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
 WEBVIEW_SETTINGS_MANAGER::~WEBVIEW_SETTINGS_MANAGER()
 {
     save_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings );
+    save_cnf( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
 }
 
 WEBVIEW_SETTINGS_MANAGER& WEBVIEW_SETTINGS_MANAGER::get_instance()

@@ -29,7 +29,8 @@
 
 struct PCB_QUOTE_RESPONSE
 {
-    std::string quote_id;
+    std::string id;
+    std::string guid;
 };
 
 #endif

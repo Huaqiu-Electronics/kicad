@@ -81,7 +81,7 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
     auto            editor = static_cast<PCB_EDIT_FRAME*>( this );
     auto            board = editor->GetBoard();
     PLOT_CONTROLLER plotter( board );
-    auto            popt = plotter.GetPlotOptions();
+    auto&           popt = plotter.GetPlotOptions();
 
     popt.SetOutputDirectory( aOutDir );
     // Set Gerber format
@@ -110,16 +110,16 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
 
     struct LayerInfo
     {
-        const char*  name;
+        std::string  name;
         PCB_LAYER_ID id;
-        const char*  description;
+        std::string  description;
     };
 
-    std::vector<LayerInfo> plot_plan_top = { { "CuTop", F_Cu, "Top layer" },
-                                             { "SilkTop", F_SilkS, "Silk top" },
-                                             { "MaskTop", F_Mask, "Mask top" },
-                                             { "PasteTop", F_Paste, "Paste top" } };
-    std::vector<LayerInfo> plot_plan_bottom = {
+    static const std::vector<LayerInfo> k_plot_plan_top = { { "CuTop", F_Cu, "Top layer" },
+                                                            { "SilkTop", F_SilkS, "Silk top" },
+                                                            { "MaskTop", F_Mask, "Mask top" },
+                                                            { "PasteTop", F_Paste, "Paste top" } };
+    static const std::vector<LayerInfo> k_plot_plan_bottom = {
         { "CuBottom", B_Cu, "Bottom layer" },    { "SilkBottom", B_SilkS, "Silk bottom" },
         { "MaskBottom", B_Mask, "Mask bottom" }, { "PasteBottom", B_Paste, "Paste bottom" },
         { "EdgeCuts", Edge_Cuts, "Edges" },      { "VScore", Cmts_User, "V score cut" }
@@ -129,24 +129,25 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
 
     if( layer_count == 1 )
     {
-        plot_plan = plot_plan_top;
-        plot_plan.push_back( plot_plan_bottom[4] ); // EdgeCuts
-        plot_plan.push_back( plot_plan_bottom[5] ); // VScore
+        plot_plan = k_plot_plan_top;
+        plot_plan.push_back( k_plot_plan_bottom[4] ); // EdgeCuts
+        plot_plan.push_back( k_plot_plan_bottom[5] ); // VScore
     }
     else if( layer_count == 2 )
     {
-        plot_plan = plot_plan_top;
-        plot_plan.insert( plot_plan.end(), plot_plan_bottom.begin(), plot_plan_bottom.end() );
+        plot_plan = k_plot_plan_top;
+        plot_plan.insert( plot_plan.end(), k_plot_plan_bottom.begin(), k_plot_plan_bottom.end() );
     }
     else
     {
-        plot_plan = plot_plan_top;
-        for( int i = 1; i < layer_count - 1; ++i )
+        plot_plan = k_plot_plan_top;
+        for( int i = 2; i < layer_count; ++i )
         {
-            plot_plan.push_back( { ( "CuIn" + std::to_string( i ) ).c_str(), static_cast<PCB_LAYER_ID>( i ),
-                                   ( "Inner layer " + std::to_string( i ) ).c_str() } );
+            const auto layer_display_id = i - 1;
+            plot_plan.push_back( { ( "CuIn" + std::to_string( layer_display_id ) ), static_cast<PCB_LAYER_ID>( i * 2 ),
+                                   ( "Inner layer " + std::to_string( layer_display_id ) ) } );
         }
-        plot_plan.insert( plot_plan.end(), plot_plan_bottom.begin(), plot_plan_bottom.end() );
+        plot_plan.insert( plot_plan.end(), k_plot_plan_bottom.begin(), k_plot_plan_bottom.end() );
     }
 
     std::vector<std::string> gerber_files;

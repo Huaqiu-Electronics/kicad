@@ -122,7 +122,8 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
     std::time_t now = std::time( nullptr );
     std::string uuid_str = std::to_string( now );
 
-    wxString tmpDir = wxFileName::GetTempDir() + wxFileName::GetPathSeparator() + uuid_str;
+    wxString tmpDir = wxFileName::GetTempDir() + wxFileName::GetPathSeparator()
+                      + wxFileName( self()->GetBoard()->GetFileName() ).GetName() + "-" + uuid_str;
     std::filesystem::create_directories( tmpDir.ToStdString() );
 
     GenerateGerberFiles( tmpDir );
@@ -137,32 +138,36 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
 
 
     PCB_ORDER form;
-    auto      pcb_spec = GetPCBSpecifications();
+
+    auto pcb_spec = GetPCBSpecifications();
     form.blayer = std::to_string( pcb_spec.layer_count );
     form.bwidth = std::to_string( pcb_spec.width / 10 );
+    form.blength = std::to_string( pcb_spec.length / 10 );
     form.bheight = get_pcb_thickness( pcb_spec.layer_count );
 
-    form.lineweight = get_min_trace_clearance( pcb_spec.mini_trace_width * 39.3701 );
+    form.lineweight =
+            get_min_trace_clearance( std::min( pcb_spec.mini_trace_clearance, pcb_spec.mini_trace_width ) * 39.3701 );
     form.vias = get_min_hole_size( pcb_spec.mini_hole_size );
 
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_quote( form, zipFilePath.ToStdString() );
 
-    if( !rsp.has_value() || rsp->quote_id.empty() )
+    if( !rsp.has_value() || rsp->id.empty() )
     {
         wxMessageBox( _( "Failed to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
         return;
     }
-    std::string order_id = rsp->quote_id;
 
     if( !m_placeOrderDialog )
     {
         m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
     }
 
-    m_placeOrderDialog->LoadUrl(
-            fmt::format( "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&tid=34526&token={}", "",
-                         WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+    constexpr auto kOrderFromDFM = "354";
+
+    m_placeOrderDialog->LoadUrl( fmt::format(
+            "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&guid={}&tid={}&token={}", rsp->id,
+            rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
 
     m_placeOrderDialog->Show();
 }
