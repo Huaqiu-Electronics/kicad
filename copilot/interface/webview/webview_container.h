@@ -52,6 +52,7 @@ class Server;
 
 
 struct WEBVIEW_CONTAINER_IMPL;
+class wxWebView;
 
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
@@ -67,6 +68,10 @@ public:
     virtual void ExecuteCommand( const char* cmd );
 
     virtual void OnHostSelectionChanged( bool has_selection );
+
+    std::string GetUrl() const;
+
+    wxWebView* GetWebView() const;
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );
