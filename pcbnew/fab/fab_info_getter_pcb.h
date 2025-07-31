@@ -194,7 +194,7 @@ bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
             popt.SetSkipPlotNPTH_Pads( false );
 
         plotter.SetLayer( layer_info.id );
-        plotter.OpenPlotfile( layer_info.name, PLOT_FORMAT::GERBER, layer_info.description );
+        plotter.OpenPlotfile( layer_info.name, PLOT_FORMAT::GERBER );
         if( plotter.PlotLayer() )
         {
             wxString file = plotter.GetPlotFileName();
@@ -233,6 +233,7 @@ std::vector<FP_POSITION_LIST> FAB_INFO_GETTER_PCB::GetComponentPosition()
 {
     DIALOG_GEN_FOOTPRINT_POSITION dlg( self() );
     dlg.ShowModal();
+
     return {};
 }
 
