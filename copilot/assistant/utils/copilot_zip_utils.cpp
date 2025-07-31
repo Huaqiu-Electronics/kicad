@@ -25,6 +25,7 @@
 #include <utils/copilot_zip_utils.h>
 
 #include <filesystem>
+#include <zlib.h>
 #include <minizip/zip.h>
 #include <minizip/ioapi.h>
 #include <fstream>
