@@ -30,6 +30,7 @@
 #include <wx/log.h>
 #include <wx/sizer.h>
 #include <fmt/format.h>
+#include <wx/display.h>
 
 DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
                                 const wxSize& size ) :
@@ -38,16 +39,28 @@ DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString
         _browser( wxWebView::New() ), _settingKey( settingKey )
 {
     const auto geometry = WEBVIEW_SETTINGS_MANAGER::get_instance().get_dialog_geometry( _settingKey.ToStdString() );
+
     if( geometry )
     {
-        SetPosition( { geometry->x, geometry->y } );
-        SetSize( { geometry->width, geometry->height } );
+        wxDisplay display( wxDisplay::GetFromWindow( this ) );
+        wxRect    screenRect = display.GetClientArea();
+
+        if( geometry->x + geometry->width <= screenRect.GetRight()
+            && geometry->y + geometry->height <= screenRect.GetBottom() && geometry->x >= screenRect.GetLeft()
+            && geometry->y >= screenRect.GetTop() )
+        {
+            SetPosition( { geometry->x, geometry->y } );
+            SetSize( { geometry->width, geometry->height } );
+        }
+        else
+        {
+            SetSize( size );
+        }
     }
     else
     {
         SetSize( size );
     }
-
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
     _browser->Create( this, wxID_ANY );
     top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
