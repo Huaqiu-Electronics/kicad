@@ -1,5 +1,6 @@
 add_library(assistant SHARED
     auth/dialog_login.cpp
+    common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp
     settings/get_webview_chat_path.cpp
