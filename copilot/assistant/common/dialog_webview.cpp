@@ -49,7 +49,7 @@ void DIALOG_WEBVIEW::LoadUrl( wxString const& aUrl )
     _webview_container->LoadUrl( aUrl.ToStdString() );
 }
 
-void DIALOG_WEBVIEW::RunScript( wxString const& aScript )
+void DIALOG_WEBVIEW::RunScriptAsync( wxString const& aScript )
 {
-    _webview_container->ExecuteCommand( aScript.ToStdString().c_str() );
+    _webview_container->RunScriptAsync( aScript );
 }

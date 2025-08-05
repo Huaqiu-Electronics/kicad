@@ -44,7 +44,8 @@ enum FIXED_SIZE
     HEIGHT = 600
 };
 
-DIALOG_LOGIN::DIALOG_LOGIN( wxWindow* aParent ) : DIALOG_WEBVIEW( aParent, wxID_ANY, _( "Login" ), "dialog_login", {} )
+DIALOG_LOGIN::DIALOG_LOGIN( wxWindow* aParent ) :
+        DIALOG_WEBVIEW( aParent, wxID_ANY, _( "Login" ), "dialog_login", { WIDTH, HEIGHT } )
 {
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
     LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_path() );
