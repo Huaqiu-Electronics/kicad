@@ -22,9 +22,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <webview/dialog_webview.h>
+#include <common/dialog_webview.h>
 #include <settings/dialog_geometry.h>
-
+#include <webview/webview_container.h>
 #include <settings/webview_settings_manager.h>
 #include <wx/event.h>
 #include <wx/log.h>
@@ -33,57 +33,11 @@
 #include <wx/display.h>
 
 DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
-                                const wxSize& size ) :
-        wxDialog( aParent, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxRESIZE_BORDER,
-                  settingKey ),
-        _browser( wxWebView::New() ), _settingKey( settingKey )
+                                const wxSize& size, HOST_COPILOT_HANDLES host_copilot_handles ) :
+        COPILOT_DIALOG( aParent, id, title, settingKey, size ),
+        _webview_container( new WEBVIEW_CONTAINER( this, {}, std::move( host_copilot_handles ) ) )
 {
-    const auto geometry = WEBVIEW_SETTINGS_MANAGER::get_instance().get_dialog_geometry( _settingKey.ToStdString() );
-
-    if( geometry )
-    {
-        wxDisplay display( wxDisplay::GetFromWindow( this ) );
-        wxRect    screenRect = display.GetClientArea();
-
-        if( geometry->x + geometry->width <= screenRect.GetRight()
-            && geometry->y + geometry->height <= screenRect.GetBottom() && geometry->x >= screenRect.GetLeft()
-            && geometry->y >= screenRect.GetTop() )
-        {
-            SetPosition( { geometry->x, geometry->y } );
-            SetSize( { geometry->width, geometry->height } );
-        }
-        else
-        {
-            SetSize( size );
-        }
-    }
-    else
-    {
-        SetSize( size );
-    }
-    auto top_sizer = new wxBoxSizer( wxVERTICAL );
-    _browser->Create( this, wxID_ANY );
-    top_sizer->Add( _browser, wxSizerFlags().Expand().Proportion( 1 ) );
-    SetSizer( top_sizer );
-
-    Bind( wxEVT_CLOSE_WINDOW,
-          [this]( wxCloseEvent& event )
-          {
-              const auto pos = GetPosition();
-              const auto size = GetSize();
-              WEBVIEW_SETTINGS_MANAGER::get_instance().set_dialog_viewer_geometry(
-                      _settingKey.ToStdString(), DIALOG_GEOMETRY{ pos.x, pos.y, size.x, size.y
-
-                                                 } );
-              event.Skip();
-          } );
-
-
-#ifdef DEBUG
-
-    _browser->EnableAccessToDevTools( true );
-
-#endif // DEBUG
+    Init( _webview_container );
 }
 
 DIALOG_WEBVIEW::~DIALOG_WEBVIEW()
@@ -92,10 +46,10 @@ DIALOG_WEBVIEW::~DIALOG_WEBVIEW()
 
 void DIALOG_WEBVIEW::LoadUrl( wxString const& aUrl )
 {
-    _browser->LoadURL( aUrl );
+    _webview_container->LoadUrl( aUrl.ToStdString() );
 }
 
-wxWebView& DIALOG_WEBVIEW::GetBrowser()
+void DIALOG_WEBVIEW::RunScript( wxString const& aScript )
 {
-    return *_browser;
+    _webview_container->ExecuteCommand( aScript.ToStdString().c_str() );
 }

@@ -35,9 +35,8 @@
 #include <fab/fab_bom.h>
 #include <fab/fab_footprint_position.h>
 
-#include <webview/dialog_webview.h>
 
-
+class DIALOG_WEBVIEW;
 template <class EditorT>
 class FAB_INFO_GETTER
 {

@@ -22,30 +22,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef DIALOG_WEBVIEW_H
-#define DIALOG_WEBVIEW_H
-
+#ifndef DIALOG_IMAGE_VIEWER_H
+#define DIALOG_IMAGE_VIEWER_H
 
 #include <wx/dialog.h>
 #include <wx/webview.h>
-#include <copilot_global.h>
 
-class COPILOT_API DIALOG_WEBVIEW : public wxDialog
+#include "dialog_webview.h"
+
+class COPILOT_API DIALOG_IMAGE_VIEWER : public DIALOG_WEBVIEW
 {
 public:
-    DIALOG_WEBVIEW( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
-                    const wxSize& size = wxDefaultSize );
-    ~DIALOG_WEBVIEW();
+    DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
+                         const wxSize& size = wxDefaultSize );
 
+    ~DIALOG_IMAGE_VIEWER();
 
-    void LoadUrl( wxString const& aUrl );
-
-protected:
-    wxWebView& GetBrowser();
-
-private:
-    wxWebView* _browser;
-    wxString   _settingKey;
+    void reload();
 };
+
 
 #endif

@@ -107,13 +107,14 @@ struct WEBVIEW_CONTAINER_IMPL
 
     wxWebView*                       _browser;
     HOST_COPILOT_HANDLES             _host_copilot_handles;
-    std::string                      _primary_url;
+    std::optional<std::string>       _primary_url;
     std::shared_ptr<httplib::Server> _web_msg_server;
     std::unique_ptr<std::thread>     _web_msg_server_thread;
 };
 
 
-WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
+WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
+                                      HOST_COPILOT_HANDLES             host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
                                       std::shared_ptr<httplib::Server> msgServer ) :
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
@@ -126,7 +127,9 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_CO
 
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
-    _impl->_browser->Create( this, wxID_ANY, _impl->_primary_url, wxDefaultPosition, wxDefaultSize );
+    _impl->_browser->Create( this, wxID_ANY,
+                             _impl->_primary_url ? *_impl->_primary_url : wxASCII_STR( wxWebViewDefaultURLStr ),
+                             wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
 
@@ -253,9 +256,11 @@ WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
 
 void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {
+    if( !_impl->_primary_url )
+        return;
     const auto url = evt.GetURL();
 
-    if( !url.Contains( extract_host_from_url( _impl->_primary_url ) ) )
+    if( !url.Contains( extract_host_from_url( *_impl->_primary_url ) ) )
     {
         // Launch the url in the system default _impl->_browser
         wxLaunchDefaultBrowser( url );
@@ -388,8 +393,6 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                 {
                     _impl->_image_viewer =
                             new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _( "Image Viewer" ), "image_viewer" );
-                    _impl->_image_viewer->LoadUrl(
-                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
 
                 _impl->_image_viewer->reload();
@@ -418,6 +421,23 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                     {
                     }
                 }
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::update_access_token:
+            {
+                if( !cmd.data.has_value() )
+                {
+                    wxLogDebug( "Invalid message received: %s", msg );
+                    return;
+                }
+                auto token = cmd.data->get<ACCESS_TOKEN>();
+                WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( token );
+
+                if( auto dialog = dynamic_cast<wxDialog*>( GetParent() ) )
+                {
+                    dialog->EndModal( wxID_OK );
+                }
+
                 break;
             }
             }
@@ -450,12 +470,14 @@ void WEBVIEW_CONTAINER::OnWebChannelMsgWrapper( std::string const& msg )
 }
 
 
-std::string WEBVIEW_CONTAINER::GetUrl() const
+std::optional<std::string> WEBVIEW_CONTAINER::GetUrl() const
 {
     return _impl->_primary_url;
 }
 
-wxWebView* WEBVIEW_CONTAINER::GetWebView() const
+
+void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 {
-    return _impl->_browser;
+    _impl->_primary_url = aUrl;
+    _impl->_browser->LoadURL( aUrl );
 }
