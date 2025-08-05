@@ -46,7 +46,7 @@ public:
 
     void LoadUrl( wxString const& aUrl );
 
-    void RunScript( wxString const& aScript );
+    void RunScriptAsync( wxString const& aScript );
 };
 
 

@@ -27,12 +27,14 @@
 
 #include <passive_action/agent/agent_action_handle.h>
 #include <context/copilot_global_context_handle.h>
+#include <webview/webview_msg_handle.h>
 
 struct HOST_COPILOT_HANDLES
 {
     COPILOT_GLOBAL_CONTEXT_HDL global_context_handle;
     AGENT_ACTION_HANDLE        agent_action_handle;
     COPILOT_SELECTION_HDL      selection_handle;
+    WEBVIEW_MSG_HANDLE_PTR     webview_msg_handle;
 };
 
 #endif

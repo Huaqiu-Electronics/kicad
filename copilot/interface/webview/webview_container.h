@@ -44,7 +44,6 @@ enum class WEBVIEW_MSG_CHANNELS
     HTTP,
 };
 
-
 namespace httplib
 {
 class Server;
@@ -72,6 +71,8 @@ public:
     std::optional<std::string> GetUrl() const;
 
     void LoadUrl( std::string const& aUrl );
+
+    void RunScriptAsync( wxString const& aScript );
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );

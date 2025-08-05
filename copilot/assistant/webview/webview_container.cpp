@@ -231,14 +231,7 @@ void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
 {
     const auto js_call = fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
                                       magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
-
-    CallAfter(
-            [this, js_call]()
-            {
-                wxString out;
-                _impl->_browser->RunScriptAsync( js_call, &out );
-                wxLogDebug( "ExecuteCommand (wrapped): %s", out );
-            } );
+    RunScriptAsync( js_call );
 }
 
 
@@ -302,6 +295,14 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 // Hover, it will lead to crash on MacOS , so the http way is preferred
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
+    if( !_impl->_host_copilot_handles.webview_msg_handle.expired() )
+    {
+        if( ( *_impl->_host_copilot_handles.webview_msg_handle.lock() )( evt ) )
+        {
+            return;
+        }
+    }
+
     OnWebChannelMsg( wxString2String( evt.GetString() ) );
 }
 
@@ -393,6 +394,8 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                 {
                     _impl->_image_viewer =
                             new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _( "Image Viewer" ), "image_viewer" );
+                    _impl->_image_viewer->LoadUrl(
+                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
 
                 _impl->_image_viewer->reload();
@@ -480,4 +483,16 @@ void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 {
     _impl->_primary_url = aUrl;
     _impl->_browser->LoadURL( aUrl );
+}
+
+
+void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
+{
+    CallAfter(
+            [this, aScript]()
+            {
+                wxString out;
+                _impl->_browser->RunScriptAsync( aScript, &out );
+                wxLogDebug( "ExecuteCommand (wrapped): %s", out );
+            } );
 }

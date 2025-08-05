@@ -25,7 +25,6 @@
 #ifndef FAB_INFO_GETTER_PCB_H
 #define FAB_INFO_GETTER_PCB_H
 
-#include <array>
 #include <dialog_gen_footprint_position.h>
 #include <dialog_plot.h>
 #include <core/typeinfo.h>
@@ -36,7 +35,7 @@
 #include <board_design_settings.h>
 #include <base_units.h>
 #include <tools/pcb_actions.h>
-#include <webview/dialog_webview.h>
+#include <common/dialog_webview.h>
 #include <wx/string.h>
 #include <plotcontroller.h>
 #include <exporters/gendrill_Excellon_writer.h>
