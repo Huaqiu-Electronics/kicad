@@ -57,7 +57,7 @@ class wxWebView;
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
-    WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
+    WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url, HOST_COPILOT_HANDLES host_copilot_handles,
                        std::optional<std::string>       data_buried_point = std::nullopt,
                        std::shared_ptr<httplib::Server> msgServer = nullptr );
 
@@ -69,9 +69,9 @@ public:
 
     virtual void OnHostSelectionChanged( bool has_selection );
 
-    std::string GetUrl() const;
+    std::optional<std::string> GetUrl() const;
 
-    wxWebView* GetWebView() const;
+    void LoadUrl( std::string const& aUrl );
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );

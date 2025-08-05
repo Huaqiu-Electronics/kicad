@@ -29,7 +29,7 @@
 #include <pcb_edit_frame.h>
 #include <board.h>
 #include <string>
-#include <webview/dialog_webview.h>
+#include <common/dialog_webview.h>
 #include <wx/gdicmn.h>
 #include <wx/string.h>
 #include <auth/dialog_login.h>

@@ -22,12 +22,20 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "dialog_image_viewer.h"
+#include "webview/webview_container.h"
+#include <common/dialog_image_viewer.h>
+#include <webview/copilot_webview_container.h>
+#include <settings/webview_settings_manager.h>
 
+DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, const wxString& title,
+                                          const wxString& settingKey, const wxSize& size ) :
+        DIALOG_WEBVIEW( aParent, id, title, settingKey, size )
+{
+}
 
 void DIALOG_IMAGE_VIEWER::reload()
 {
-    GetBrowser().RunScriptAsync( "window.dispatchEvent(new Event(\"updateLocalImage\"));" );
+    RunScript( "window.dispatchEvent(new Event(\"updateLocalImage\"));" );
 }
 
 DIALOG_IMAGE_VIEWER::~DIALOG_IMAGE_VIEWER()

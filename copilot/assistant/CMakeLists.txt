@@ -7,6 +7,7 @@ add_library(assistant SHARED
     webview/webview_container.cpp
     webview/copilot_webview_container.cpp
     webview/webview_evt_filter.cpp
+    webview/webview_token_controller.cpp
     http/http_client.cpp
     quote/quote_controller.cpp
     utils/copilot_zip_utils.cpp

@@ -26,7 +26,7 @@
 #define DIALOG_LOGIN_H
 
 #include <copilot_global.h>
-#include <webview/dialog_webview.h>
+#include <common/dialog_webview.h>
 
 
 class COPILOT_API DIALOG_LOGIN : public DIALOG_WEBVIEW
@@ -34,24 +34,6 @@ class COPILOT_API DIALOG_LOGIN : public DIALOG_WEBVIEW
 public:
     DIALOG_LOGIN( wxWindow* aParent );
     ~DIALOG_LOGIN();
-
-private:
-
-    void OnScriptMessage( wxWebViewEvent& evt );
-
-    void OnScriptResult( wxWebViewEvent& evt );
-
-    void OnNewWindow( wxWebViewEvent& evt );
-
-    void OnNavigationRequest( wxWebViewEvent& evt );
-
-    void OnError( wxWebViewEvent& evt );
-
-    void OnWebChannelMsg( std::string const& msg );
-
-    void OnWebChannelMsgWrapper( std::string const& msg );
-
-private:
 };
 
 #endif
