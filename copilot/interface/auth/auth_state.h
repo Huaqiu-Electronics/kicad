@@ -1,4 +1,3 @@
-
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
@@ -23,28 +22,16 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_CONSTANT_H
-#define WEBVIEW_CONSTANT_H
+#ifndef AUTH_STATE_H
+#define AUTH_STATE_H
 
-// Edge only supports a single message handler
-
-enum class WEBVIEW_MSG_HANDLES
+enum AUTH_STATE
 {
-    eda_host,
+    INVALID,
+    LOGIN_FAILED,
+    ACCESS_TOKEN_UPDATED,
+    ACCESS_TOKEN_EXPIRED,
+
 };
-
-
-enum class WEBVIEW_FUNCTIONS
-{
-    // Common
-    update_token,
-
-    // Copilot functions
-    fire_host_active_cmd,
-    new_session,
-    get_current_session_id,
-    update_copilot_global_context
-};
-
 
 #endif

@@ -34,6 +34,9 @@ class COPILOT_API DIALOG_LOGIN : public DIALOG_WEBVIEW
 public:
     DIALOG_LOGIN( wxWindow* aParent );
     ~DIALOG_LOGIN();
+
+    bool Success() const;
 };
+
 
 #endif

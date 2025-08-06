@@ -26,6 +26,7 @@
 #include <settings/immutable_settings.h>
 #include <settings/mutable_settings.h>
 #include <chrono>
+#include <webview/webview_token_controller.h>
 
 #include "config_io_helper.h"
 #include "settings/copilot_config_version.h"
@@ -168,6 +169,7 @@ ACCESS_TOKEN const& WEBVIEW_SETTINGS_MANAGER::get_access_token() const
 void WEBVIEW_SETTINGS_MANAGER::set_access_token( ACCESS_TOKEN const& token )
 {
     *_access_token = token;
+    WEBVIEW_TOKEN_CONTROLLER::Get().OnTokenUpdated();
 }
 
 bool WEBVIEW_SETTINGS_MANAGER::is_token_valid() const
