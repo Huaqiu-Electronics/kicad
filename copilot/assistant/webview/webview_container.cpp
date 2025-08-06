@@ -34,7 +34,6 @@
 #include <nlohmann/json.hpp>
 #include <settings/webview_settings_manager.h>
 #include <utils/generate_uuid.h>
-#include <passive_action/web/web_host.h>
 #include <webview/webview_token_controller.h>
 #include <webview/webview_script_msg_handler.h>
 #include <webview/webview_functions.h>

@@ -66,9 +66,12 @@ public:
     std::optional<DIALOG_GEOMETRY> get_dialog_geometry( std::string const& aKey ) const;
     void set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
-    ACCESS_TOKEN const& get_access_token() const;
-    void                set_access_token( ACCESS_TOKEN const& token );
-    bool                is_token_valid() const;
+    ACCESS_TOKEN   get_access_token() const;
+    nlohmann::json get_raw_access_token() const;
+    void           set_access_token( nlohmann::json const& token );
+    bool           is_token_valid() const;
+    void           save_token();
+    void           clear_token();
 
 private:
     WEBVIEW_SETTINGS_MANAGER();
@@ -77,8 +80,10 @@ private:
     std::string                         _webview_chat_path;
     std::string                         _webview_image_viewer_path;
     std::string                         _login_path;
-    std::unique_ptr<ACCESS_TOKEN>       _access_token;
+    std::unique_ptr<nlohmann::json>     _access_token;
 };
+
+
 
 
 #endif

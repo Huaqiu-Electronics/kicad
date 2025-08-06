@@ -27,7 +27,6 @@
 #include <wx/event.h>
 #include <settings/webview_settings_manager.h>
 #include <wx/log.h>
-#include <passive_action/web/web_host.h>
 #include <passive_action/passive_action_container.h>
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
