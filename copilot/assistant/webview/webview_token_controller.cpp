@@ -26,6 +26,7 @@
 #include <auth/access_token.h>
 #include <auth/auth_state.h>
 #include <settings/webview_settings_manager.h>
+#include <webview/webview_functions.h>
 
 inline auto fmt_cmd_syncing_token()
 {

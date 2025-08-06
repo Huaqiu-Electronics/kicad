@@ -25,7 +25,7 @@
 #ifndef AUTH_STATE_H
 #define AUTH_STATE_H
 
-enum AUTH_STATE
+enum class AUTH_STATE
 {
     INVALID,
     LOGIN_FAILED,

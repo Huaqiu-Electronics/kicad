@@ -26,7 +26,6 @@
 #include <string>
 #include <webview/webview_container.h>
 #include <settings/webview_settings_manager.h>
-#include <utils/copilot_utils.h>
 #include <passive_action/web/web_host.h>
 #include <passive_action/passive_action_container.h>
 #include <passive_action/agent/agent_action.h>
