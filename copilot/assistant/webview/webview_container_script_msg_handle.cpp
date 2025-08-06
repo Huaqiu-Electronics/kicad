@@ -26,12 +26,13 @@
 #include <string>
 #include <webview/webview_container.h>
 #include <settings/webview_settings_manager.h>
-#include <passive_action/web/web_host.h>
+#include "webview/internal/open_url_in_dialog.h"
+#include "webview/internal/webview_internal_cmd_type.h"
+#include "webview/internal/webview_internal_cmd.h"
 #include <passive_action/passive_action_container.h>
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
 #include <active_action/cmd/common/selection_change_cmd.h>
-#include <passive_action/web/open_url_in_webview_dialog_request.h>
 #include <webview/webview_token_controller.h>
 #include <webview/webview_script_msg_handler.h>
 #include <webview/webview_functions.h>
@@ -152,9 +153,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                     return;
                 }
 
-                auto token = cmd.data->get<ACCESS_TOKEN>();
-
-                WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( token );
+                WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( *cmd.data );
 
                 if( auto dialog = dynamic_cast<wxDialog*>( GetParent() ) )
                 {
@@ -179,6 +178,12 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                 break;
             }
 
+            case WEB_HOST_INTERNAL_CMD_TYPE::logout:
+            {
+                WEBVIEW_SETTINGS_MANAGER::get_instance().clear_token();
+                break;
+            }
+
             case WEB_HOST_INTERNAL_CMD_TYPE::open_url_in_webview_dialog:
             {
                 if( !cmd.data.has_value() )
@@ -186,7 +191,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                     wxLogDebug( "Invalid message received: %s", msg );
                     return;
                 }
-                auto url = cmd.data->get<OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST>().url;
+                auto url = cmd.data->get<OPEN_URL_IN_WEBVIEW_DIALOG>().url;
                 wxLaunchDefaultBrowser( url );
                 break;
             }

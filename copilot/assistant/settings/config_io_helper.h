@@ -94,4 +94,33 @@ auto load_cnf( std::string const& path, T& aCnf, std::optional<std::string> vers
     }
 }
 
+
+auto load_cnf_no_check( std::string const& path, auto& aCnf )
+{
+    if( !wxFileExists( path ) )
+    {
+        wxLogTrace( "WEBVIEW_SETTINGS_MANAGER",
+                    wxT( "WEBVIEW_SETTINGS_MANAGER(): Setting file %s does not exist, creating a "
+                         "new one." ),
+                    path.c_str() );
+
+        save_cnf( path, aCnf );
+    }
+    else
+    {
+        try
+        {
+            std::ifstream in( path );
+            aCnf = nlohmann::json::parse( in );
+        }
+        catch( const std::exception& e )
+        {
+            wxLogTrace( "WEBVIEW_SETTINGS_MANAGER",
+                        wxT( "WEBVIEW_SETTINGS_MANAGER(): Failed to parse setting file %s, using "
+                             "default settings." ) );
+            save_cnf( path, aCnf );
+        }
+    }
+}
+
 #endif

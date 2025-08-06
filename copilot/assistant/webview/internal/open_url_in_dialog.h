@@ -22,18 +22,17 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST_H
-#define OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST_H
-
+#ifndef OPEN_URL_IN_DIALOG_H
+#define OPEN_URL_IN_DIALOG_H
 
 #include "nlohmann/json.hpp"
 #include <string>
 
-struct OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST
+struct OPEN_URL_IN_WEBVIEW_DIALOG
 {
     std::string url;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST, url );
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( OPEN_URL_IN_WEBVIEW_DIALOG, url );
 };
 
 #endif

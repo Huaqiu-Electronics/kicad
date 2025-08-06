@@ -34,24 +34,12 @@
 #include <webview/webview_functions.h>
 #include <wx/debug.h>
 
-inline auto fmt_auth_state_change( AUTH_STATE state ) -> AUTH_STATE_CHANGE
-{
-    switch( state )
-    {
-    case AUTH_STATE::INVALID: wxASSERT( false ); break;
-    case AUTH_STATE::LOGIN_FAILED: return { state };
-    case AUTH_STATE::ACCESS_TOKEN_UPDATED:
-        return { state, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token() };
-    case AUTH_STATE::ACCESS_TOKEN_EXPIRED: return { state };
-    }
-
-    return {};
-}
-
-
 inline auto fmt_auth_state_change_script( AUTH_STATE state )
 {
-    const auto content = nlohmann::json( fmt_auth_state_change( state ) ).dump();
+    const auto content =
+            nlohmann::json(
+                    AUTH_STATE_CHANGE{ state, WEBVIEW_SETTINGS_MANAGER::get_instance().get_raw_access_token() } )
+                    .dump();
 
     return fmt::format( "{}({});", magic_enum::enum_name( WEBVIEW_FUNCTIONS::handle_auth ), content );
 }
@@ -97,7 +85,9 @@ void WEBVIEW_TOKEN_CONTROLLER::OnPageLoaded( WEBVIEW_CONTAINER* aWebviewContaine
 void WEBVIEW_TOKEN_CONTROLLER::OnTokenUpdated()
 {
     for( auto webview_container : _webview_container_set )
+    {
         UpdateToken( webview_container );
+    }
 }
 
 
@@ -114,4 +104,17 @@ void WEBVIEW_TOKEN_CONTROLLER::ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer
 void WEBVIEW_TOKEN_CONTROLLER::UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_UPDATED ) );
+}
+
+void WEBVIEW_TOKEN_CONTROLLER::OnLogout()
+{
+    for( auto webview_container : _webview_container_set )
+    {
+        Logout( webview_container );
+    }
+}
+
+void WEBVIEW_TOKEN_CONTROLLER::Logout( WEBVIEW_CONTAINER* aWebviewContainer )
+{
+    aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::LOGOUT ) );
 }

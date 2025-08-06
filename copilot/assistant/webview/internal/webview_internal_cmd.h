@@ -22,24 +22,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEB_HOST_H
-#define WEB_HOST_H
+#ifndef WEBVIEW_INTERNAL_CMD_H
+#define WEBVIEW_INTERNAL_CMD_H
 
 #include <nlohmann/json.hpp>
-#include <optional>
-
-enum class WEB_HOST_INTERNAL_CMD_TYPE
-{
-    fetch_global_context_from_host,
-    show_image,
-    show_ecad_viewer,
-
-    update_access_token,
-    launch_login_dialog,
-
-    open_url_in_webview_dialog,
-
-};
 
 
 struct WEB_HOST_INTERNAL_CMD
@@ -48,5 +34,4 @@ struct WEB_HOST_INTERNAL_CMD
     std::optional<nlohmann::json> data;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEB_HOST_INTERNAL_CMD, type, data )
 };
-
 #endif

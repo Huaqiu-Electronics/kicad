@@ -32,10 +32,10 @@
 
 struct AUTH_STATE_CHANGE
 {
-    AUTH_STATE                  state{};
-    std::optional<ACCESS_TOKEN> token;
+    AUTH_STATE                    state{};
+    std::optional<nlohmann::json> auth;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( AUTH_STATE_CHANGE, state, token )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( AUTH_STATE_CHANGE, state, auth )
 };
 
 #endif

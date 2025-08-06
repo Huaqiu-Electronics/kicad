@@ -39,12 +39,11 @@ constexpr auto kAccessTokenFN = "access_token.json";
 
 WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
         _immutable_settings( new IMMUTABLE_SETTINGS ), _mutable_settings( new MUTABLE_SETTINGS ),
-        _access_token( new ACCESS_TOKEN )
+        _access_token( new nlohmann::json )
 {
     load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), *_immutable_settings, kConfigVersion );
     load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings, kConfigVersion );
-    load_cnf( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
-
+    load_cnf_no_check( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
 
     auto url = _immutable_settings->copilot_webview_settings.url;
 
@@ -65,7 +64,6 @@ WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
 WEBVIEW_SETTINGS_MANAGER::~WEBVIEW_SETTINGS_MANAGER()
 {
     save_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings );
-    save_cnf( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
 }
 
 WEBVIEW_SETTINGS_MANAGER& WEBVIEW_SETTINGS_MANAGER::get_instance()
@@ -161,18 +159,55 @@ void WEBVIEW_SETTINGS_MANAGER::set_dialog_viewer_geometry( std::string const& aK
 }
 
 
-ACCESS_TOKEN const& WEBVIEW_SETTINGS_MANAGER::get_access_token() const
+ACCESS_TOKEN WEBVIEW_SETTINGS_MANAGER::get_access_token() const
 {
+    if( !is_token_valid() )
+    {
+        static ACCESS_TOKEN invalid_token;
+        return invalid_token;
+    }
+
     return *_access_token;
 }
 
-void WEBVIEW_SETTINGS_MANAGER::set_access_token( ACCESS_TOKEN const& token )
+void WEBVIEW_SETTINGS_MANAGER::set_access_token( nlohmann::json const& token )
 {
     *_access_token = token;
     WEBVIEW_TOKEN_CONTROLLER::Get().OnTokenUpdated();
+    save_token();
 }
 
 bool WEBVIEW_SETTINGS_MANAGER::is_token_valid() const
 {
-    return _access_token->expires_at > std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
+    if( !_access_token || !_access_token->contains( "expires_at" ) )
+    {
+        return false;
+    }
+
+    try
+    {
+        const auto expires_at = _access_token->at( "expires_at" ).get<unsigned long long>();
+        return expires_at > std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
+    }
+    catch( ... )
+    {
+        return false;
+    }
+}
+
+void WEBVIEW_SETTINGS_MANAGER::save_token()
+{
+    save_cnf( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
+}
+
+nlohmann::json WEBVIEW_SETTINGS_MANAGER::get_raw_access_token() const
+{
+    return *_access_token;
+}
+
+void WEBVIEW_SETTINGS_MANAGER::clear_token()
+{
+    *_access_token = nlohmann::json();
+    WEBVIEW_TOKEN_CONTROLLER::Get().OnLogout();
+    save_token();
 }

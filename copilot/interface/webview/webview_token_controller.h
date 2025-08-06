@@ -41,6 +41,8 @@ public:
 
     void OnTokenUpdated();
 
+    void OnLogout();
+
     void OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContainer );
 
     void AddWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer );
@@ -54,9 +56,12 @@ private:
 
     void UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer );
 
+    void Logout( WEBVIEW_CONTAINER* aWebviewContainer );
+
     WEBVIEW_MSG_HANDLE_T         _msg_handle;
     std::set<WEBVIEW_CONTAINER*> _webview_container_set;
 };
+
 
 
 #endif
