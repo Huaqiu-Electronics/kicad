@@ -47,7 +47,7 @@ void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
     // NOTE: Adhoc, on *nux the webview is not loading the url correctly on the first time if url start with https
     if( evt_url == WEBVIEW_SETTINGS_MANAGER::get_instance().get_copilot_webview_url() )
     {
-        GetWebView()->LoadURL( GetUrl() );
+        LoadUrl( *GetUrl() );
     }
 
 #endif // !_WIN32
