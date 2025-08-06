@@ -23,12 +23,40 @@
  */
 
 #include <webview/webview_token_controller.h>
+#include <auth/access_token.h>
+#include <settings/webview_settings_manager.h>
 
-WEBVIEW_TOKEN_CONTROLLER::WEBVIEW_TOKEN_CONTROLLER( wxWebView& aWebView, std::string const& aChannelName ) :
-        _webView( aWebView )
+WEBVIEW_TOKEN_CONTROLLER::WEBVIEW_TOKEN_CONTROLLER()
 {
 }
 
 WEBVIEW_TOKEN_CONTROLLER::~WEBVIEW_TOKEN_CONTROLLER()
 {
+}
+
+WEBVIEW_TOKEN_CONTROLLER& WEBVIEW_TOKEN_CONTROLLER::Get()
+{
+    static WEBVIEW_TOKEN_CONTROLLER instance;
+    return instance;
+};
+
+void WEBVIEW_TOKEN_CONTROLLER::AddWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer )
+{
+    _webview_container_set.insert( aWebviewContainer );
+}
+
+void WEBVIEW_TOKEN_CONTROLLER::RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer )
+{
+    _webview_container_set.erase( aWebviewContainer );
+}
+
+
+void WEBVIEW_TOKEN_CONTROLLER::OnPageLoaded(WEBVIEW_CONTAINER* aWebviewContainer)
+{
+    
+}
+
+void WEBVIEW_TOKEN_CONTROLLER::OnTokenUpdated()
+{
+    
 }
