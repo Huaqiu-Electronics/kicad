@@ -42,7 +42,6 @@
 #include <string>
 #include <wx/log.h>
 #include <active_action/cmd/sch/sch_copilot_cmd_type.h>
-#include <utils/copilot_utils.h>
 #include <webview/webview_container.h>
 #include <chat/general_chat_cmd.h>
 #include <context/sch/details/sch_netlist.h>
