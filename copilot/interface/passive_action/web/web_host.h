@@ -34,6 +34,7 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     show_image,
     show_ecad_viewer,
     update_access_token, // Used by the login dialog
+    open_url_in_webview_dialog,
 };
 
 
