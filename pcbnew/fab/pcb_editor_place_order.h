@@ -114,7 +114,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
         DIALOG_LOGIN login_dialog( self() );
         login_dialog.ShowModal();
 
-        if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
+        if( !login_dialog.Success() )
         {
             wxMessageBox( _( "Please login to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
             return;

@@ -33,8 +33,12 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     fetch_global_context_from_host,
     show_image,
     show_ecad_viewer,
-    update_access_token, // Used by the login dialog
+
+    update_access_token,
+    launch_login_dialog,
+
     open_url_in_webview_dialog,
+
 };
 
 

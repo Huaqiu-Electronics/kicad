@@ -24,7 +24,13 @@
 
 #include <webview/webview_token_controller.h>
 #include <auth/access_token.h>
+#include <auth/auth_state.h>
 #include <settings/webview_settings_manager.h>
+
+inline auto fmt_cmd_syncing_token()
+{
+}
+
 
 WEBVIEW_TOKEN_CONTROLLER::WEBVIEW_TOKEN_CONTROLLER()
 {
@@ -51,12 +57,33 @@ void WEBVIEW_TOKEN_CONTROLLER::RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebvi
 }
 
 
-void WEBVIEW_TOKEN_CONTROLLER::OnPageLoaded(WEBVIEW_CONTAINER* aWebviewContainer)
+void WEBVIEW_TOKEN_CONTROLLER::OnPageLoaded( WEBVIEW_CONTAINER* aWebviewContainer )
 {
-    
+    if( WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
+    {
+        UpdateToken( aWebviewContainer );
+    }
+    else
+    {
+        ExpireToken( aWebviewContainer );
+    }
 }
 
 void WEBVIEW_TOKEN_CONTROLLER::OnTokenUpdated()
 {
-    
+    for( auto webview_container : _webview_container_set )
+        UpdateToken( webview_container );
+}
+
+
+void WEBVIEW_TOKEN_CONTROLLER::OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContainer )
+{
+}
+
+void WEBVIEW_TOKEN_CONTROLLER::ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer )
+{
+}
+
+void WEBVIEW_TOKEN_CONTROLLER::UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer )
+{
 }

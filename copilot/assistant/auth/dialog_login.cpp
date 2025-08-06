@@ -26,7 +26,6 @@
 #include <auth/dialog_login.h>
 #include <wx/event.h>
 #include <settings/webview_settings_manager.h>
-#include <webview/webview_constant.h>
 #include <wx/log.h>
 #include <passive_action/web/web_host.h>
 #include <passive_action/passive_action_container.h>
@@ -53,4 +52,9 @@ DIALOG_LOGIN::DIALOG_LOGIN( wxWindow* aParent ) :
 
 DIALOG_LOGIN::~DIALOG_LOGIN()
 {
+}
+
+bool DIALOG_LOGIN::Success() const
+{
+    return WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid();
 }

@@ -24,41 +24,29 @@
 
 #include <memory>
 #include <string>
-#include <webview/webview_container.h>
-#include <nlohmann/json.hpp>
-#include <settings/webview_settings_manager.h>
-#include <settings/dialog_geometry.h>
-#include <utils/copilot_utils.h>
-#include <passive_action/web/web_host.h>
-#include <passive_action/passive_action_container.h>
-#include <passive_action/agent/agent_action.h>
-#include <passive_action/agent/agent_action_type.h>
-#include <active_action/cmd/common/selection_change_cmd.h>
-#include <passive_action/web/open_url_in_webview_dialog_request.h>
-#include <webview/webview_token_controller.h>
-
 #include <wx/log.h>
 #include <wx/sizer.h>
 #include <wx/filename.h>
 #include <wx/stdpaths.h>
 #include <wx/string.h>
 #include <wx/webview.h>
-#include <wx/webviewarchivehandler.h>
-#include <wx/webviewfshandler.h>
-#include <context/copilot_global_context_handle.h>
-#include <context/copilot_global_context.h>
-#include <fmt/format.h>
+#include <webview/webview_container.h>
+#include <nlohmann/json.hpp>
+#include <settings/webview_settings_manager.h>
+#include <utils/copilot_utils.h>
+#include <passive_action/web/web_host.h>
+#include <webview/webview_token_controller.h>
+#include <webview/webview_script_msg_handler.h>
+#include <webview/webview_functions.h>
+#include <webview/webview_container.h>
 #include <magic_enum.hpp>
-#include <wx/timer.h>
-#include <thread>
-#include <utils/httplib_wrapper.h>
-#include <utils/wstring_to_string.h>
+#include <active_action/cmd/common/selection_change_cmd.h>
+#include <http/http_client.h>
 #include <utils/extract_host_from_url.h>
-#include <wx/dialog.h>
-
-#include "http/http_client.h"
+#include <utils/wstring_to_string.h>
+#include "webview_container_impl.h"
 #include <common/dialog_image_viewer.h>
-#include "webview_constant.h"
+#include <fmt/format.h>
 
 #ifndef _WIN32
 #include "webview_evt_filter.h"
@@ -98,21 +86,6 @@ enum START_UP_SIZE
 {
     WIDTH = 400,
     HEIGHT = 1040
-};
-
-
-struct WEBVIEW_CONTAINER_IMPL
-{
-    std::set<std::string> _consumed_global_ctx_keys{};
-    DIALOG_IMAGE_VIEWER*  _image_viewer{};
-    DIALOG_WEBVIEW*       _ecad_viewer{};
-
-
-    wxWebView*                       _browser;
-    HOST_COPILOT_HANDLES             _host_copilot_handles;
-    std::optional<std::string>       _primary_url;
-    std::shared_ptr<httplib::Server> _web_msg_server;
-    std::unique_ptr<std::thread>     _web_msg_server_thread;
 };
 
 
@@ -178,7 +151,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                 } );
     }
 
-    if( !_impl->_browser->AddScriptMessageHandler( magic_enum::enum_name( WEBVIEW_MSG_HANDLES::eda_host ).data() ) )
+    if( !_impl->_browser->AddScriptMessageHandler(
+                magic_enum::enum_name( WEBVIEW_SCRIPT_MSG_HANDLER::eda_host ).data() ) )
     {
         wxLogDebug( "Could not add script message handler " );
     }
@@ -344,144 +318,6 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
     wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " (" + evt.GetString() + ")'" );
 }
 
-void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
-{
-    try
-    {
-        const auto act_container = nlohmann::json::parse( msg ).get<PASSIVE_ACTION_CONTAINER>();
-        switch( act_container.category )
-        {
-        case INVALID: throw std::runtime_error( "Invalid message received" );
-        case PA_WEB_HOST:
-        {
-            const auto cmd = act_container.data.get<WEB_HOST_INTERNAL_CMD>();
-            auto       t = magic_enum::enum_cast<WEB_HOST_INTERNAL_CMD_TYPE>( cmd.type );
-
-            if( !t.has_value() )
-            {
-                wxLogDebug( "Invalid message received: %s", msg );
-                return;
-            }
-
-            switch( *t )
-            {
-            case WEB_HOST_INTERNAL_CMD_TYPE::fetch_global_context_from_host:
-            {
-                if( _impl->_host_copilot_handles.global_context_handle.expired() )
-                {
-                    wxLogDebug( "Get design global context handle expired" );
-                    break;
-                }
-
-                auto context_function = _impl->_host_copilot_handles.global_context_handle.lock();
-
-                auto& global_ctx = ( *context_function )();
-
-                if( _impl->_consumed_global_ctx_keys.contains( global_ctx.uuid ) )
-                    break;
-
-                auto global_ctx_value = global_ctx.dump();
-                auto ctx_id = global_ctx.uuid;
-
-                wxString out;
-                _impl->_browser->RunScriptAsync(
-                        fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS "
-                                     "exception:', e); }}",
-                                     magic_enum::enum_name( WEBVIEW_FUNCTIONS::update_copilot_global_context ),
-                                     global_ctx_value ),
-                        &out );
-
-
-                _impl->_consumed_global_ctx_keys.insert( ctx_id );
-
-                break;
-            }
-            case WEB_HOST_INTERNAL_CMD_TYPE::show_image:
-            {
-                if( !_impl->_image_viewer )
-                {
-                    _impl->_image_viewer =
-                            new DIALOG_IMAGE_VIEWER( m_parent, wxID_ANY, _( "Image Viewer" ), "image_viewer" );
-                    _impl->_image_viewer->LoadUrl(
-                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
-                }
-
-                _impl->_image_viewer->reload();
-                _impl->_image_viewer->Show();
-
-                break;
-            }
-            case WEB_HOST_INTERNAL_CMD_TYPE::show_ecad_viewer:
-            {
-                if( cmd.data )
-                {
-                    try
-                    {
-                        const auto url = cmd.data->get<std::string>();
-
-                        if( !_impl->_ecad_viewer )
-                        {
-                            _impl->_ecad_viewer =
-                                    new DIALOG_WEBVIEW( m_parent, wxID_ANY, _( "ECAD Viewer" ), "ecad_viewer" );
-                        }
-
-                        _impl->_ecad_viewer->LoadUrl( url );
-                        _impl->_ecad_viewer->Show();
-                    }
-                    catch( ... )
-                    {
-                    }
-                }
-                break;
-            }
-            case WEB_HOST_INTERNAL_CMD_TYPE::update_access_token:
-            {
-                if( !cmd.data.has_value() )
-                {
-                    wxLogDebug( "Invalid message received: %s", msg );
-                    return;
-                }
-                auto token = cmd.data->get<ACCESS_TOKEN>();
-                WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( token );
-
-                if( auto dialog = dynamic_cast<wxDialog*>( GetParent() ) )
-                {
-                    dialog->EndModal( wxID_OK );
-                }
-
-                WEBVIEW_TOKEN_CONTROLLER::Get().OnTokenUpdated();
-                break;
-            }
-            case WEB_HOST_INTERNAL_CMD_TYPE::open_url_in_webview_dialog:
-            {
-                if( !cmd.data.has_value() )
-                {
-                    wxLogDebug( "Invalid message received: %s", msg );
-                    return;
-                }
-                auto url = cmd.data->get<OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST>().url;
-                wxLaunchDefaultBrowser( url );
-                break;
-            }
-            }
-            break;
-        }
-        case PA_AGENT:
-        {
-            if( !_impl->_host_copilot_handles.agent_action_handle.expired() )
-            {
-                auto context_function = _impl->_host_copilot_handles.agent_action_handle.lock();
-                ( *context_function )( act_container.data );
-            }
-            break;
-        }
-        }
-    }
-    catch( const std::exception& e )
-    {
-        wxLogDebug( "Invalid message received: %s , %s", msg, e.what() );
-    }
-}
 
 void WEBVIEW_CONTAINER::OnWebChannelMsgWrapper( std::string const& msg )
 {
