@@ -37,8 +37,6 @@
 #include <kiid.h>
 #include <hotkeys_basic.h>
 #include <widgets/lib_tree.h>
-#include <widgets/bitmap_button.h>
-#include <dialogs/dialog_promote_mall.h>
 
 class EDA_ITEM;
 class wxSingleInstanceChecker;
@@ -534,9 +532,6 @@ public:
 
     DECLARE_EVENT_TABLE()
 
-private:
-    void onNotificationsIconClick( wxMouseEvent& aEvent );//wxCommandEvent
-
 protected:
     virtual void SetScreen( BASE_SCREEN* aScreen )  { m_currentScreen = aScreen; }
 
@@ -627,11 +622,6 @@ private:
 
     /// This the frame's interface to setting GAL display options.
     GAL_DISPLAY_OPTIONS_IMPL  m_galDisplayOptions;
-
-    BITMAP_BUTTON*            m_notificationsButton;
-
-    DIALOG_PROMOTE_MALL*  m_promotedlg;
-   // DIALOG_PROMOTE_New*   m_promotenew;
 
     int m_lastToolbarIconSize;
 };
