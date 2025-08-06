@@ -3,15 +3,20 @@ add_library(assistant SHARED
     common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp
+
+    http/http_client.cpp
+
+    quote/quote_controller.cpp
+
     settings/get_webview_chat_path.cpp
     settings/webview_settings_manager.cpp
-    webview/webview_container.cpp
+
+    utils/copilot_zip_utils.cpp
+
     webview/copilot_webview_container.cpp
+    webview/webview_container.cpp
     webview/webview_evt_filter.cpp
     webview/webview_token_controller.cpp
-    http/http_client.cpp
-    quote/quote_controller.cpp
-    utils/copilot_zip_utils.cpp
 )
 
 set_target_properties(assistant PROPERTIES CXX_VISIBILITY_PRESET hidden)

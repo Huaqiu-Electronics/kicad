@@ -35,6 +35,8 @@
 #include <passive_action/agent/agent_action_type.h>
 #include <active_action/cmd/common/selection_change_cmd.h>
 #include <passive_action/web/open_url_in_webview_dialog_request.h>
+#include <webview/webview_token_controller.h>
+
 #include <wx/log.h>
 #include <wx/sizer.h>
 #include <wx/filename.h>
@@ -213,6 +215,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 #ifndef _WIN32
     WEBVIEW_EVT_FILTER::Get().AddPanel( this );
 #endif
+
+    WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -226,12 +230,14 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 #ifndef _WIN32
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
 #endif
+
+    WEBVIEW_TOKEN_CONTROLLER::Get().RemoveWebviewContainer( this );
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
 {
-    const auto js_call = fmt::format( "try {{ {}({}); }} catch (e) {{ console.error('JS exception:', e); }}",
-                                      magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
+    const auto js_call =
+            fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
     RunScriptAsync( js_call );
 }
 
@@ -270,6 +276,7 @@ void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
+    WEBVIEW_TOKEN_CONTROLLER::Get().OnPageLoaded( this );
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
@@ -442,6 +449,7 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                     dialog->EndModal( wxID_OK );
                 }
 
+                WEBVIEW_TOKEN_CONTROLLER::Get().OnTokenUpdated();
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::open_url_in_webview_dialog:
@@ -503,8 +511,10 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
     CallAfter(
             [this, aScript]()
             {
-                wxString out;
-                _impl->_browser->RunScriptAsync( aScript, &out );
+                const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
+                                                    aScript.ToStdString() );
+                wxString   out;
+                _impl->_browser->RunScriptAsync( js_script, &out );
                 wxLogDebug( "ExecuteCommand (wrapped): %s", out );
             } );
 }

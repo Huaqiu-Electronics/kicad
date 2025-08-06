@@ -26,18 +26,33 @@
 #define WEBVIEW_TOKEN_CONTROLLER_H
 
 #include <copilot_global.h>
-#include <string>
+#include <set>
+#include "webview_msg_handle.h"
 
-class wxWebView;
-
+class WEBVIEW_CONTAINER;
 class COPILOT_API WEBVIEW_TOKEN_CONTROLLER
 {
 public:
-    WEBVIEW_TOKEN_CONTROLLER( wxWebView& aWebView, std::string const& aChannelName );
     ~WEBVIEW_TOKEN_CONTROLLER();
 
+    static WEBVIEW_TOKEN_CONTROLLER& Get();
+
+    void OnPageLoaded( WEBVIEW_CONTAINER* aWebviewContainer );
+
+    void OnTokenUpdated();
+
+    void AddWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer );
+
+    void RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer );
+
 private:
-    wxWebView& _webView;
-};
+    WEBVIEW_TOKEN_CONTROLLER();
+
+    WEBVIEW_MSG_HANDLE_T         _msg_handle;
+    std::set<WEBVIEW_CONTAINER*> _webview_container_set;
+}
+
+;
+
 
 #endif
