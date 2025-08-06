@@ -22,14 +22,38 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include <webview/webview_container.h>
+#include <fmt/format.h>
+#include <magic_enum.hpp>
+#include <nlohmann/json.hpp>
 #include <webview/webview_token_controller.h>
 #include <auth/access_token.h>
 #include <auth/auth_state.h>
+#include <auth/auth_state_change.h>
 #include <settings/webview_settings_manager.h>
 #include <webview/webview_functions.h>
+#include <wx/debug.h>
 
-inline auto fmt_cmd_syncing_token()
+inline auto fmt_auth_state_change( AUTH_STATE state ) -> AUTH_STATE_CHANGE
 {
+    switch( state )
+    {
+    case AUTH_STATE::INVALID: wxASSERT( false ); break;
+    case AUTH_STATE::LOGIN_FAILED: return { state };
+    case AUTH_STATE::ACCESS_TOKEN_UPDATED:
+        return { state, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token() };
+    case AUTH_STATE::ACCESS_TOKEN_EXPIRED: return { state };
+    }
+
+    return {};
+}
+
+
+inline auto fmt_auth_state_change_script( AUTH_STATE state )
+{
+    const auto content = nlohmann::json( fmt_auth_state_change( state ) ).dump();
+
+    return fmt::format( "{}({});", magic_enum::enum_name( WEBVIEW_FUNCTIONS::handle_auth ), content );
 }
 
 
@@ -79,12 +103,15 @@ void WEBVIEW_TOKEN_CONTROLLER::OnTokenUpdated()
 
 void WEBVIEW_TOKEN_CONTROLLER::OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContainer )
 {
+    aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::LOGIN_FAILED ) );
 }
 
 void WEBVIEW_TOKEN_CONTROLLER::ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer )
 {
+    aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_EXPIRED ) );
 }
 
 void WEBVIEW_TOKEN_CONTROLLER::UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer )
 {
+    aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_UPDATED ) );
 }
