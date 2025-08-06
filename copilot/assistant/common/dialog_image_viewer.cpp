@@ -28,16 +28,9 @@
 #include <settings/webview_settings_manager.h>
 
 
-enum
-{
-
-    WIDTH = 800,
-    HEIGHT = 600
-};
-
 DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, wxWindowID id, const wxString& title,
                                           const wxString& settingKey ) :
-        DIALOG_WEBVIEW( aParent, id, title, settingKey, { WIDTH, HEIGHT } )
+        DIALOG_WEBVIEW( aParent, id, title, settingKey )
 {
 }
 
