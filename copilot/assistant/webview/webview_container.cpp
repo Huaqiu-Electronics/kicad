@@ -34,6 +34,7 @@
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
 #include <active_action/cmd/common/selection_change_cmd.h>
+#include <passive_action/web/open_url_in_webview_dialog_request.h>
 #include <wx/log.h>
 #include <wx/sizer.h>
 #include <wx/filename.h>
@@ -441,6 +442,17 @@ void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
                     dialog->EndModal( wxID_OK );
                 }
 
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::open_url_in_webview_dialog:
+            {
+                if( !cmd.data.has_value() )
+                {
+                    wxLogDebug( "Invalid message received: %s", msg );
+                    return;
+                }
+                auto url = cmd.data->get<OPEN_URL_IN_WEBVIEW_DIALOG_REQUEST>().url;
+                wxLaunchDefaultBrowser( url );
                 break;
             }
             }
