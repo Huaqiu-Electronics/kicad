@@ -465,7 +465,6 @@ set( COMMON_DLG_SRCS
     dialogs/dialog_group_properties.cpp
     dialogs/dialog_group_properties_base.cpp
     dialogs/dialog_hotkey_list.cpp
-    dialogs/dialog_promote_mall.cpp
     dialogs/dialog_import_choose_project.cpp
     dialogs/dialog_import_choose_project_base.cpp
     dialogs/dialog_multi_unit_entry.cpp
@@ -865,7 +864,6 @@ target_link_libraries( common
    	${FREETYPE_LIBRARIES}
    	${HarfBuzz_LIBRARIES}
 	${Fontconfig_LIBRARIES}
-    assistant
     )
 
 if( KICAD_USE_SENTRY )

@@ -124,9 +124,6 @@ EDA_DRAW_FRAME::EDA_DRAW_FRAME( KIWAY* aKiway, wxWindow* aParent, FRAME_T aFrame
     m_propertiesPanel     = nullptr;
     m_netInspectorPanel   = nullptr;
 
-    m_promotedlg          = nullptr;
-  //  m_promotenew          = nullptr;
-
     SetUserUnits( EDA_UNITS::MM );
 
     m_auimgr.SetFlags( wxAUI_MGR_DEFAULT );
@@ -173,22 +170,6 @@ EDA_DRAW_FRAME::EDA_DRAW_FRAME( KIWAY* aKiway, wxWindow* aParent, FRAME_T aFrame
 
               aEvent.Skip();
           } );
-
-
-    //add a bitmapbutton
-    wxStatusBar*  statusBar = GetStatusBar();
-    if(statusBar != nullptr)
-    {
-        m_notificationsButton = new BITMAP_BUTTON(statusBar, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-        m_notificationsButton->SetPadding( 0 );
-        m_notificationsButton->SetBitmap( KiBitmapBundle( BITMAPS::notifications ) );
-        m_notificationsButton->SetShowBadge( true );
-        m_notificationsButton->SetBitmapCentered( true );
-        //m_notificationsButton->Bind( wxEVT_BUTTON, &EDA_DRAW_FRAME::onNotificationsIconClick, this );
-        m_notificationsButton->Bind( wxEVT_LEFT_DOWN, &EDA_DRAW_FRAME::onNotificationsIconClick, this );
-
-    }
-    
 }
 
 
@@ -265,29 +246,6 @@ void EDA_DRAW_FRAME::ClearToolbarControl( int aId )
     }
 }
 
-void EDA_DRAW_FRAME::onNotificationsIconClick( wxMouseEvent& aEvent )
-{
-
-    int dlgWidth = 300;
-    int dlgheight = 500;
-    auto btnScreenPos = m_notificationsButton->GetScreenPosition();
-    int dialogX = btnScreenPos.x + 40 - dlgWidth;
-    int dialogY = btnScreenPos.y + 5 - dlgheight;
-    if(m_promotedlg == nullptr)
-    {
-
-        m_promotedlg = new DIALOG_PROMOTE_MALL(this, wxID_ANY, _( "Message" ), "Message",  wxSize( dlgWidth, dlgheight ));   //{x,y}
-
-        m_promotedlg->Move(wxPoint(dialogX, dialogY));
-        m_promotedlg->SetSize(wxSize( dlgWidth, dlgheight));
-
-        m_promotedlg->LoadUrl("http://www.fdatasheets.com/news/page/bottomNotice/index.html");
-                
-    }
-
-    m_promotedlg->Show();
-  
-}
 
 void EDA_DRAW_FRAME::ReleaseFile()
 {
@@ -780,19 +738,6 @@ void EDA_DRAW_FRAME::OnSize( wxSizeEvent& SizeEv )
     EDA_BASE_FRAME::OnSize( SizeEv );
 
     m_frameSize = GetClientSize( );
-
-    wxStatusBar* statusBar = GetStatusBar();
-    int lastFiled = statusBar->GetFieldsCount() -1;
-    wxRect r;
-    statusBar->GetFieldRect( lastFiled , r );
-    
-    auto buttonSize = m_notificationsButton->GetEffectiveMinSize();
-
-    int x = r.GetRight() - buttonSize.GetWidth() -20;
-    int y = r.GetTop();
-
-    m_notificationsButton->SetPosition( { x, y } );
-
 
     SizeEv.Skip();
 }
