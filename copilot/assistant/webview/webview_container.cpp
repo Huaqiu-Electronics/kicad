@@ -94,10 +94,9 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
-    _main_stack_holder = ([&] () -> MAIN_STACK_HOLDER* {
+    _main_stack_holder = ([=] () mutable -> MAIN_STACK_HOLDER* {
 
         MAIN_STACK_HOLDER* holder {};
-        wxWindow* parent  = GetParent();
 
         while (!holder){
 

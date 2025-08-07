@@ -31,7 +31,7 @@ class MAIN_STACK_HOLDER
 public:
     virtual ~MAIN_STACK_HOLDER() = default;
 
-    virtual void RunMainStack( std::function<void()> aFunc ) = 0;
+    virtual void RunMainStack( std::function<void()> ) {}
 
 
 private:
