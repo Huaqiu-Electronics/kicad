@@ -51,9 +51,6 @@ public:
 
     void RemovePanel( void* aPanel );
 
-    void SetByPassPanel( void* aPanel );
-
-    void ClearByPassPanel();
 };
 
 #endif

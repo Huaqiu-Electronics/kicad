@@ -44,12 +44,6 @@ int WEBVIEW_EVT_FILTER::FilterEvent( wxEvent& event )
     const auto evt_type = event.GetEventType();
     auto       obj = event.GetEventObject();
 
-    if( m_by_pass_panel && obj == m_by_pass_panel )
-    {
-        return Event_Skip;
-    }
-
-
     if( evt_type == wxEVT_SET_FOCUS )
     {
         if( m_panels.find( obj ) == m_panels.end() )
@@ -98,14 +92,4 @@ void WEBVIEW_EVT_FILTER::RemovePanel( void* aPanel )
 {
     m_panels.erase( aPanel );
     m_panel_focused.erase( aPanel );
-}
-
-void WEBVIEW_EVT_FILTER::SetByPassPanel( void* aPanel )
-{
-    m_by_pass_panel = aPanel;
-}
-
-void WEBVIEW_EVT_FILTER::ClearByPassPanel()
-{
-    m_by_pass_panel = nullptr;
 }

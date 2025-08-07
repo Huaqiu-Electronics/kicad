@@ -92,7 +92,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                                       HOST_COPILOT_HANDLES             host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
                                       std::shared_ptr<httplib::Server> msgServer ) :
-        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ),
+        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
