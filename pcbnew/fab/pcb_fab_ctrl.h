@@ -31,12 +31,17 @@
 
 int PCB_CONTROL::PlaceOrder( const TOOL_EVENT& aEvent )
 {
-    PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
+    RunMainStack(
+            [this]
+            {
+                PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
 
-    if( !editFrame )
-        return 1;
+                if( !editFrame )
+                    return;
 
-    editFrame->PlaceOrder();
+                editFrame->PlaceOrder();
+            } );
+
     return 0;
 }
 
