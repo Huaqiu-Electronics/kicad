@@ -68,14 +68,6 @@ public:
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrder );
     }
-
-
-private:
-
-#ifdef _WIN32
-    // NOTE : Only launch the dialog on windows , otherwise open the url in the default browser
-    DIALOG_WEBVIEW* m_placeOrderDialog{};
-#endif
 };
 
 
