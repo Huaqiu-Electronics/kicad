@@ -1,5 +1,11 @@
 add_library(assistant SHARED
-    auth/dialog_login.cpp
+
+    auth/dialog_login_base.cpp
+    auth/dialog_login_native.cpp
+    auth/dialog_login_webview.cpp
+    auth/panel_login_base.cpp
+    auth/panel_login.cpp
+
     common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp

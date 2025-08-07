@@ -168,18 +168,26 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
         return;
     }
 
-    if( !m_placeOrderDialog )
-    {
-        m_placeOrderDialog = new DIALOG_WEBVIEW( self(), wxID_ANY, _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
-    }
 
     constexpr auto kOrderFromDFM = "354";
 
-    m_placeOrderDialog->LoadUrl( fmt::format(
+    const auto url = fmt::format(
             "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&guid={}&tid={}&token={}", rsp->id,
-            rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+            rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 
+#ifdef _WIN32
+
+    if( !m_placeOrderDialog )
+    {
+        m_placeOrderDialog = new DIALOG_WEBVIEW( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
+    }
+
+    m_placeOrderDialog->LoadUrl( url );
     m_placeOrderDialog->Show();
+
+#else
+    wxLaunchDefaultBrowser( url );
+#endif
 }
 
 
