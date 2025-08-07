@@ -30,6 +30,7 @@
 #include <memory>
 #include <sch_editor_control.h>
 #include <tool/tool_manager.h>
+#include <tools/sch_editor_control.h>
 #include <sch_edit_frame.h>
 #include <fstream>
 #include <sstream>
@@ -103,5 +104,11 @@ wxString SCH_EDIT_FRAME::DumpSelectionToDesignBlock()
     buffer << file.rdbuf();
     return buffer.str();
 }
+
+void SCH_EDIT_FRAME::RunMainStack( std::function<void()> aFunc )()
+{
+    m_toolManager->GetTool<SCH_EDITOR_CONTROL>()->RunMainStack( aFunc );
+}
+
 
 #endif

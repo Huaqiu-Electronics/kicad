@@ -37,8 +37,8 @@ WEBVIEW_EVT_FILTER::~WEBVIEW_EVT_FILTER()
 
 int WEBVIEW_EVT_FILTER::FilterEvent( wxEvent& event )
 {
-#ifdef _WIN32
     return Event_Skip;
+#ifdef _WIN32
 #endif
 
     const auto evt_type = event.GetEventType();

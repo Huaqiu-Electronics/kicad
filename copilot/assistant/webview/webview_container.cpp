@@ -23,6 +23,7 @@
  */
 
 #include <memory>
+#include <stdexcept>
 #include <string>
 #include <wx/log.h>
 #include <wx/sizer.h>
@@ -45,6 +46,7 @@
 #include <utils/wstring_to_string.h>
 #include "webview_container_impl.h"
 #include <common/dialog_image_viewer.h>
+#include <main_stack_holder.h>
 #include <fmt/format.h>
 
 #ifndef _WIN32
@@ -92,10 +94,33 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                                       HOST_COPILOT_HANDLES             host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
                                       std::shared_ptr<httplib::Server> msgServer ) :
-        wxPanel( parent ),
-        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
+    _main_stack_holder = ([&] () -> MAIN_STACK_HOLDER* {
+
+        MAIN_STACK_HOLDER* holder {}
+        wxWindow* parent  = GetParent();
+
+        while (!holder){
+
+            holder = dynamic_cast<MAIN_STACK_HOLDER*>(parent);
+
+            if( holder )
+                return holder;
+
+            if(parent)
+                parent = parent->GetParent();
+
+            if(!parent)
+                break;
+        }        
+
+        throw new std::runtime_error( "main stack holder not found" ) ;
+
+    })();
+
+
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
     _impl->_web_msg_server = std::move( msgServer );
     _impl->_primary_url = std::move( url );
@@ -131,7 +156,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                                                       }
 
                                                       // Process the message
-                                                      OnWebChannelMsgWrapper( msg );
+                                                      OnScriptMessageWrapper( msg );
                                                       res.set_content( "OK", "text/plain" );
                                                   } );
 
@@ -170,7 +195,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _impl->_browser->GetId() );
 
-    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessageWrapper, this,
+          _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _impl->_browser->GetId() );
 
     if( data_buried_point )
@@ -279,29 +305,16 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 }
 
 
-// NOTE : This is the entrypoint for HQ distribution v9.0.2 , which has been released on 2025-05
-// The msg is posted through _browser->AddScriptMessageHandler( "eda_host" )
-// Hover, it will lead to crash on MacOS , so the http way is preferred
-void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
-{
-    if( !_impl->_host_copilot_handles.webview_msg_handle.expired() )
-    {
-        if( ( *_impl->_host_copilot_handles.webview_msg_handle.lock() )( evt ) )
-        {
-            return;
-        }
-    }
-
-    OnWebChannelMsg( wxString2String( evt.GetString() ) );
-}
-
-
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
-    if( evt.IsError() )
-        wxLogDebug( "Async JS failed: %s", evt.GetString() );
-    else
-        wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
+    _main_stack_holder->RunMainStack(
+            [&]
+            {
+                if( evt.IsError() )
+                    wxLogDebug( "Async JS failed: %s", evt.GetString() );
+                else
+                    wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
+            } );
 }
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
@@ -326,16 +339,6 @@ void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
 }
 
 
-void WEBVIEW_CONTAINER::OnWebChannelMsgWrapper( std::string const& msg )
-{
-    CallAfter(
-            [this, msg]()
-            {
-                OnWebChannelMsg( msg );
-            } );
-}
-
-
 std::optional<std::string> WEBVIEW_CONTAINER::GetUrl() const
 {
     return _impl->_primary_url;
@@ -351,7 +354,7 @@ void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 
 void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 {
-    CallAfter(
+    _main_stack_holder->RunMainStack(
             [this, aScript]()
             {
                 const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
@@ -359,5 +362,15 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
                 wxString   out;
                 _impl->_browser->RunScriptAsync( js_script, &out );
                 wxLogDebug( "ExecuteCommand (wrapped): %s", out );
+            } );
+}
+
+
+void OnScriptMessageWrapper( wxWebViewEvent& evt )
+{
+    _main_stack_holder->RunMainStack(
+            [&]()
+            {
+                OnScriptMessage( evt );
             } );
 }

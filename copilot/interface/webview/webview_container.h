@@ -53,6 +53,7 @@ class Server;
 struct WEBVIEW_CONTAINER_IMPL;
 class wxWebView;
 
+class MAIN_STACK_HOLDER;
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
@@ -77,6 +78,8 @@ public:
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );
 
+    void OnScriptMessageWrapper( wxWebViewEvent& evt );
+
     virtual void OnScriptMessage( wxWebViewEvent& evt );
 
     virtual void OnScriptResult( wxWebViewEvent& evt );
@@ -93,13 +96,9 @@ protected:
 
     virtual void OnFullScreenChanged( wxWebViewEvent& evt );
 
-    virtual void OnWebChannelMsg( std::string const& msg );
-
-    virtual void OnWebChannelMsgWrapper( std::string const& msg );
-
-
 private:
     std::unique_ptr<WEBVIEW_CONTAINER_IMPL> _impl;
+    MAIN_STACK_HOLDER*                      _main_stack_holder;
 };
 
 #endif
