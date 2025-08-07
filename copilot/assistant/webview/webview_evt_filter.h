@@ -38,6 +38,8 @@ class WEBVIEW_EVT_FILTER : public wxEventFilter
     std::set<void*>       m_panels;
     std::map<void*, bool> m_panel_focused;
 
+    void* m_by_pass_panel = nullptr;
+
 public:
     ~WEBVIEW_EVT_FILTER() override;
 
@@ -48,6 +50,10 @@ public:
     void AddPanel( void* aPanel );
 
     void RemovePanel( void* aPanel );
+
+    void SetByPassPanel( void* aPanel );
+
+    void ClearByPassPanel();
 };
 
 #endif
