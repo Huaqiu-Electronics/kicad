@@ -49,10 +49,6 @@
 #include <main_stack_holder.h>
 #include <fmt/format.h>
 
-#ifndef _WIN32
-#include "webview_evt_filter.h"
-#endif
-
 
 using json = nlohmann::json;
 using namespace httplib;
@@ -94,12 +90,13 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                                       HOST_COPILOT_HANDLES             host_copilot_handles,
                                       std::optional<std::string>       data_buried_point,
                                       std::shared_ptr<httplib::Server> msgServer ) :
-        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ),
+        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _main_stack_holder = ([&] () -> MAIN_STACK_HOLDER* {
 
-        MAIN_STACK_HOLDER* holder {}
+        MAIN_STACK_HOLDER* holder {};
         wxWindow* parent  = GetParent();
 
         while (!holder){
@@ -156,7 +153,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                                                       }
 
                                                       // Process the message
-                                                      OnScriptMessageWrapper( msg );
+                                                      //   OnScriptMessageWrapper( msg );
                                                       res.set_content( "OK", "text/plain" );
                                                   } );
 
@@ -212,10 +209,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 #endif // DEBUG
 
 
-#ifndef _WIN32
-    WEBVIEW_EVT_FILTER::Get().AddPanel( this );
-#endif
-
     WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
 }
 
@@ -226,10 +219,6 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 
     if( _impl->_web_msg_server_thread )
         _impl->_web_msg_server_thread->join();
-
-#ifndef _WIN32
-    WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
-#endif
 
     WEBVIEW_TOKEN_CONTROLLER::Get().RemoveWebviewContainer( this );
 }
@@ -366,7 +355,7 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 }
 
 
-void OnScriptMessageWrapper( wxWebViewEvent& evt )
+void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
 {
     _main_stack_holder->RunMainStack(
             [&]()

@@ -22,7 +22,6 @@ add_library(assistant SHARED
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp
     webview/webview_container.cpp
-    webview/webview_evt_filter.cpp
     webview/webview_token_controller.cpp
 )
 
