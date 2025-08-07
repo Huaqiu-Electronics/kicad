@@ -28,6 +28,8 @@
 #include <pcb_edit_frame.h>
 #include <action_plugin.h>
 #include <wx/log.h>
+#include <tool/tool_manager.h>
+#include <tools/pcb_control.h>
 #include <wx/msgdlg.h>
 #include "pcb_agent_py_plugin_arg.h"
 
@@ -55,5 +57,9 @@ void PCB_EDIT_FRAME::LaunchPlugin( std::string const& aPluginName, std::optional
     wxLogError( wxT( "Action plugin %s not installed" ), aPluginName );
 }
 
+void PCB_EDIT_FRAME::RunMainStack( std::function<void()> aFunc )()
+{
+    m_toolManager->GetTool<PCB_CONTROL>()->RunMainStack( aFunc );
+}
 
 #endif

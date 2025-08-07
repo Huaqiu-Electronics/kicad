@@ -55,8 +55,17 @@
 
 #include <common/dialog_image_viewer.h>
 
-void WEBVIEW_CONTAINER::OnWebChannelMsg( std::string const& msg )
+void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
+    const auto msg = wxString2String( evt.GetString() );
+    if( !_impl->_host_copilot_handles.webview_msg_handle.expired() )
+    {
+        if( ( *_impl->_host_copilot_handles.webview_msg_handle.lock() )( evt ) )
+        {
+            return;
+        }
+    }
+
     try
     {
         const auto act_container = nlohmann::json::parse( msg ).get<PASSIVE_ACTION_CONTAINER>();
