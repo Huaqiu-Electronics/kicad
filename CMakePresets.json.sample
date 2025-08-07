@@ -1,56 +1,86 @@
 {
-  "version": 3,
-  "configurePresets": [
-    {
-      "name": "base",
-      "hidden": true,
-      "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build",
-      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-      "condition": {
-        "type": "equals",
-        "lhs": "${hostSystemName}",
-        "rhs": "Windows"
-      },
-      "cacheVariables": {
-        "KICAD_BUILD_QA_TESTS": "OFF",
-        "KICAD_BUILD_I18N": "ON",
-        "KICAD_SCRIPTING_WXPYTHON": "ON"
-      }
-    },
-    {
-      "name": "win64",
-      "hidden": true,
-      "cacheVariables": {
-        "KICAD_WIN32_DPI_AWARE": "ON",
-        "CMAKE_INSTALL_PREFIX": "out",
-        "CMAKE_PDB_OUTPUT_DIRECTORY": "out/pdb"
-      },
-      "architecture": {
-        "value": "x64",
-        "strategy": "external"
-      },
-      "inherits": [
-        "base"
-      ]
-    },
-    {
-      "name": "x64-debug",
-      "displayName": "x64 Debug",
-      "description": "Sets debug build type and x64 arch",
-      "inherits": "win64",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
-    },
-    {
-      "name": "x64-release",
-      "displayName": "x64 Release",
-      "description": "Sets release build type",
-      "inherits": "win64",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-      }
-    }
-  ]
+    "version": 9,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "cacheVariables": {
+                "KICAD_BUILD_QA_TESTS": "OFF",
+                "KICAD_BUILD_I18N": "ON",
+                "KICAD_SCRIPTING_WXPYTHON": "ON",
+                "IS_RC_BUILD": "ON"
+
+            }
+        },
+        {
+            "name": "win64",
+            "hidden": true,
+            "cacheVariables": {
+                "KICAD_WIN32_DPI_AWARE": "ON",
+                "CMAKE_INSTALL_PREFIX": "out",
+                "CMAKE_PDB_OUTPUT_DIRECTORY": "out/pdb"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "x64-debug",
+            "displayName": "x64 Debug",
+            "description": "Sets debug build type and x64 arch",
+            "inherits": "win64",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "x64-release",
+            "displayName": "x64 Release",
+            "description": "Sets release build type",
+            "inherits": "win64",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        }
+    ],  
+    "buildPresets": [
+        {
+          "name": "install",
+          "configurePreset": "x64-debug",
+          "configuration": "Debug",
+          "targets": [
+            "install"
+          ]
+        }
+
+      ],
+    "workflowPresets": [
+        {
+            "name": "build_and_install",
+            "description": "build_and_install",
+            "displayName": "build_and_install",
+            "steps": [
+                {
+                  "type": "configure",
+                  "name": "x64-debug"
+                },
+                {
+                  "type": "build",
+                  "name": "install"
+                }
+              ]
+        }
+    ]
 }
