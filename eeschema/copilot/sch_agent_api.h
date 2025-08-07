@@ -105,7 +105,7 @@ wxString SCH_EDIT_FRAME::DumpSelectionToDesignBlock()
     return buffer.str();
 }
 
-void SCH_EDIT_FRAME::RunMainStack( std::function<void()> aFunc )()
+void SCH_EDIT_FRAME::RunMainStack( std::function<void()> aFunc )
 {
     m_toolManager->GetTool<SCH_EDITOR_CONTROL>()->RunMainStack( aFunc );
 }
