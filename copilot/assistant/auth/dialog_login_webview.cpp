@@ -33,7 +33,7 @@ DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( wxWindow* aParent ) :
 {
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
     LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_path() );
-    WEBVIEW_EVT_FILTER::Get().SetByPassPanel(this);
+    WEBVIEW_EVT_FILTER::Get().SetByPassPanel( GetWebviewContainer() );
 }
 
 DIALOG_LOGIN_WEBVIEW::~DIALOG_LOGIN_WEBVIEW()
