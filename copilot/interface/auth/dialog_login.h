@@ -28,14 +28,7 @@
 #include "dialog_login_native.h"
 #include "dialog_login_webview.h"
 
-#ifndef _WIN32
-
-using DIALOG_LOGIN = DIALOG_LOGIN_NATIVE;
-
-#else
-
 using DIALOG_LOGIN = DIALOG_LOGIN_WEBVIEW;
 
-#endif
 
 #endif
