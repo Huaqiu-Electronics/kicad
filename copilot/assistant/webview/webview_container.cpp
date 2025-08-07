@@ -229,8 +229,9 @@ WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
 
 void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {
-    if( !_impl->_primary_url )
+    if( !_impl->_primary_url || *_impl->_primary_url == wxWebViewDefaultURLStr )
         return;
+
     const auto url = evt.GetURL();
 
     if( !url.Contains( extract_host_from_url( *_impl->_primary_url ) ) )
