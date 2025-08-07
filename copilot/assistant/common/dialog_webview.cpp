@@ -53,3 +53,8 @@ void DIALOG_WEBVIEW::RunScriptAsync( wxString const& aScript )
 {
     _webview_container->RunScriptAsync( aScript );
 }
+
+WEBVIEW_CONTAINER* DIALOG_WEBVIEW::GetWebviewContainer() const
+{
+    return _webview_container;
+}

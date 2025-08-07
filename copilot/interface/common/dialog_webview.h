@@ -33,6 +33,7 @@
 #include <host_copilot_handles.h>
 
 class WEBVIEW_CONTAINER;
+class wxPanel;
 class COPILOT_API DIALOG_WEBVIEW : public COPILOT_DIALOG
 {
     using COPILOT_DIALOG::Init;
@@ -48,7 +49,10 @@ public:
     void LoadUrl( wxString const& aUrl );
 
     void RunScriptAsync( wxString const& aScript );
+
+    WEBVIEW_CONTAINER* GetWebviewContainer() const;
 };
+
 
 
 #endif
