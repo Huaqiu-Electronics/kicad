@@ -25,18 +25,17 @@
 #ifndef DIALOG_LOGIN_H
 #define DIALOG_LOGIN_H
 
-#include <copilot_global.h>
-#include <common/dialog_webview.h>
+#include "dialog_login_native.h"
+#include "dialog_login_webview.h"
 
+#ifndef _WIN32
 
-class COPILOT_API DIALOG_LOGIN : public DIALOG_WEBVIEW
-{
-public:
-    DIALOG_LOGIN( wxWindow* aParent );
-    ~DIALOG_LOGIN();
+using DIALOG_LOGIN = DIALOG_LOGIN_NATIVE;
 
-    bool Success() const;
-};
+#else
 
+using DIALOG_LOGIN = DIALOG_LOGIN_WEBVIEW;
+
+#endif
 
 #endif

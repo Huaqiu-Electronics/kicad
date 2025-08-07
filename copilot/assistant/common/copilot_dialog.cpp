@@ -23,7 +23,6 @@
  */
 
 #include <common/copilot_dialog.h>
-#include <mutex>
 #include <settings/dialog_geometry.h>
 
 #include <settings/webview_settings_manager.h>
@@ -32,8 +31,8 @@
 #include <wx/sizer.h>
 #include <fmt/format.h>
 #include <wx/display.h>
-COPILOT_DIALOG::COPILOT_DIALOG( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
-                                const wxSize& size ) :
+COPILOT_DIALOG::COPILOT_DIALOG( wxWindow* aParent, const wxString& title, const wxString& settingKey,
+                                const wxSize& size, wxWindowID id ) :
         wxDialog( aParent, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxRESIZE_BORDER,
                   settingKey )
 {

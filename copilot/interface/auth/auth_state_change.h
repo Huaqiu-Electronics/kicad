@@ -28,7 +28,6 @@
 #include <optional>
 #include <nlohmann/json.hpp>
 #include "auth_state.h"
-#include "access_token.h"
 
 struct AUTH_STATE_CHANGE
 {

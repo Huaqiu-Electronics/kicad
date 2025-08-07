@@ -31,8 +31,8 @@
 class COPILOT_API COPILOT_DIALOG : public wxDialog
 {
 public:
-    COPILOT_DIALOG( wxWindow* aParent, wxWindowID id, const wxString& title, const wxString& settingKey,
-                    const wxSize& size = wxDefaultSize );
+    COPILOT_DIALOG( wxWindow* aParent, const wxString& title, const wxString& settingKey,
+                    const wxSize& size = wxDefaultSize, wxWindowID id = wxID_ANY );
     ~COPILOT_DIALOG();
 
     void Init( wxWindow* aContent );
