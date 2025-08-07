@@ -102,7 +102,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
-    _impl->_browser->Create( this, wxID_ANY, _impl->_primary_url ? *_impl->_primary_url : wxWebViewDefaultURLStr,
+    _impl->_browser->Create( this, wxID_ANY,
+                             _impl->_primary_url ? *_impl->_primary_url : wxASCII_STR( wxWebViewDefaultURLStr ),
                              wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
