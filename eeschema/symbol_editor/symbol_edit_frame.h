@@ -34,11 +34,13 @@
 #include <optional>
 #include <copilot_panel_container.h>
 #include <context/copilot_global_context.h>
+#include <fab_frame_note.h>
 
 class SYMBOL_EDIT_FRAME;
 using SYMBOL_COPILOT_PANEL_CONTAINER =
         COPILOT_PANEL_CONTAINER<SYMBOL_EDIT_FRAME, COPILOT_GLOBAL_CONTEXT>;
 
+using FAB_FRAME_NOTE_SYMBOL = FAB_FRAME_NOTE<SYMBOL_EDIT_FRAME>;
 
 class SCH_EDIT_FRAME;
 class SYMBOL_LIB_TABLE;
@@ -53,7 +55,7 @@ class EDA_LIST_DIALOG;
 /**
  * The symbol library editor main window.
  */
-class SYMBOL_EDIT_FRAME : public SCH_BASE_FRAME , public SYMBOL_COPILOT_PANEL_CONTAINER
+class SYMBOL_EDIT_FRAME : public SCH_BASE_FRAME , public SYMBOL_COPILOT_PANEL_CONTAINER , public FAB_FRAME_NOTE_SYMBOL
 {
 public:
     SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent );

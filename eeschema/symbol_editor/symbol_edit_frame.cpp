@@ -103,6 +103,7 @@ BEGIN_EVENT_TABLE( SYMBOL_EDIT_FRAME, SCH_BASE_FRAME )
     // Drop files event
     EVT_DROP_FILES( SYMBOL_EDIT_FRAME::OnDropFiles )
 
+
 END_EVENT_TABLE()
 
 
@@ -285,6 +286,11 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
     if( loadingCancelled )
         ShowInfoBarWarning( _( "Symbol library loading was cancelled by user." ) );
+
+
+
+    CreateNoteButton();
+
 }
 
 
