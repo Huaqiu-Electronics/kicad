@@ -46,7 +46,6 @@
 #include <magic_enum.hpp>
 #include <wx/timer.h>
 #include <utils/httplib_wrapper.h>
-#include <utils/wstring_to_string.h>
 #include <utils/extract_host_from_url.h>
 #include <wx/dialog.h>
 
@@ -55,17 +54,8 @@
 
 #include <common/dialog_image_viewer.h>
 
-void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
+void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 {
-    const auto msg = wxString2String( evt.GetString() );
-    if( !_impl->_host_copilot_handles.webview_msg_handle.expired() )
-    {
-        if( ( *_impl->_host_copilot_handles.webview_msg_handle.lock() )( evt ) )
-        {
-            return;
-        }
-    }
-
     try
     {
         const auto act_container = nlohmann::json::parse( msg ).get<PASSIVE_ACTION_CONTAINER>();

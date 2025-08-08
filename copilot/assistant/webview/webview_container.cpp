@@ -67,8 +67,7 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
                                       HOST_COPILOT_HANDLES       host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ),
-        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _main_stack_holder = ([=] () mutable -> MAIN_STACK_HOLDER* {
@@ -125,8 +124,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _impl->_browser->GetId() );
 
-    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessageWrapper, this,
-          _impl->_browser->GetId() );
+    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _impl->_browser->GetId() );
 
     if( data_buried_point )
@@ -285,11 +283,11 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 }
 
 
-void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
+void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
     _main_stack_holder->RunMainStack(
             [&]()
             {
-                OnScriptMessage( evt );
+                HandleScriptMessage( wxString2String( evt.GetString() ) );
             } );
 }
