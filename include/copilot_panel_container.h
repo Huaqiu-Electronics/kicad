@@ -49,6 +49,8 @@
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
 #include <common/main_stack_holder.h>
+#include <tool/tool_interactive.h>
+
 
 template <class Derived, class ContextT>
 
@@ -257,6 +259,27 @@ public:
     {
         WriteClipBoard( aContent );
         self()->GetToolManager()->RunAction( ACTIONS::paste );
+    }
+
+    void EnsureMainstackForWebKit( std::function<void()> aFunc ) override
+    {
+        auto mgr = self()->GetToolManager();
+
+        if( !mgr->GetCurrentToolState() )
+        {
+            return aFunc();
+        }
+
+        auto cur_tool = mgr->GetCurrentTool();
+
+        if( auto interactive = dynamic_cast<TOOL_INTERACTIVE*>( cur_tool ) )
+        {
+            interactive->RunMainStack( aFunc );
+        }
+        else
+        {
+            return aFunc();
+        }
     }
 
 protected:
