@@ -260,7 +260,7 @@ public:
     }
 
     template <class TOOL_T>
-    void RunMainFrame( std::function<void()> aFunc )
+    void RunMainStack( std::function<void()> aFunc )
     {
         self()->GetToolManager()->template GetTool<TOOL_T>()->RunMainStack( aFunc );
     }
