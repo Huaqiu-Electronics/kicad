@@ -225,13 +225,17 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
-    _main_stack_holder->RunMainStack(
+    CallAfter(
             [&]
             {
-                if( evt.IsError() )
-                    wxLogDebug( "Async JS failed: %s", evt.GetString() );
-                else
-                    wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
+                _main_stack_holder->RunMainStack(
+                        [&]
+                        {
+                            if( evt.IsError() )
+                                wxLogDebug( "Async JS failed: %s", evt.GetString() );
+                            else
+                                wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
+                        } );
             } );
 }
 
@@ -272,23 +276,32 @@ void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 
 void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 {
-    _main_stack_holder->RunMainStack(
-            [this, aScript]()
+    CallAfter(
+            [&]
             {
-                const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
-                                                    aScript.ToStdString() );
-                wxString   out;
-                _impl->_browser->RunScriptAsync( js_script, &out );
-                wxLogDebug( "ExecuteCommand (wrapped): %s", out );
+                _main_stack_holder->RunMainStack(
+                        [this, aScript]()
+                        {
+                            const auto js_script =
+                                    fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
+                                                 aScript.ToStdString() );
+                            wxString out;
+                            _impl->_browser->RunScriptAsync( js_script, &out );
+                            wxLogDebug( "ExecuteCommand (wrapped): %s", out );
+                        } );
             } );
 }
 
 
 void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
 {
-    _main_stack_holder->RunMainStack(
-            [&]()
+    CallAfter(
+            [&]
             {
-                OnScriptMessage( evt );
+                _main_stack_holder->RunMainStack(
+                        [&]()
+                        {
+                            OnScriptMessage( evt );
+                        } );
             } );
 }
