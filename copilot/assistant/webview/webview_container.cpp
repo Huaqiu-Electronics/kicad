@@ -263,23 +263,15 @@ void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 
 void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 {
-    _main_stack_holder->EnsureMainstackForWebKit(
-            [=]
-            {
-                const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
-                                                    aScript.ToStdString() );
-                wxString   out;
-                _impl->_browser->RunScriptAsync( js_script, &out );
-                wxLogDebug( "ExecuteCommand (wrapped): %s", out );
-            } );
+    const auto js_script =
+            fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}", aScript.ToStdString() );
+    wxString out;
+    _impl->_browser->RunScriptAsync( js_script, &out );
+    wxLogDebug( "ExecuteCommand (wrapped): %s", out );
 }
 
 
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
-    _main_stack_holder->EnsureMainstackForWebKit(
-            [=]
-            {
-                HandleScriptMessage( wxString2String( evt.GetString() ) );
-            } );
+    HandleScriptMessage( wxString2String( evt.GetString() ) );
 }
