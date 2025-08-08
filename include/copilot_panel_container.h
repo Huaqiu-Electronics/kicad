@@ -50,6 +50,7 @@
 #include <api/api_open_project_url.h>
 #include <common/main_stack_holder.h>
 #include <tool/tool_interactive.h>
+#include <tool/tool_manager.h>
 
 
 template <class Derived, class ContextT>
@@ -263,16 +264,13 @@ public:
 
     void EnsureMainstackForWebKit( std::function<void()> aFunc ) override
     {
-        auto mgr = self()->GetToolManager();
-
-        if( !mgr->GetCurrentToolState() )
+        if( !self()->GetToolManager()->GetCurrentToolState() )
         {
             return aFunc();
         }
 
-        auto cur_tool = mgr->GetCurrentTool();
 
-        if( auto interactive = dynamic_cast<TOOL_INTERACTIVE*>( cur_tool ) )
+        if( auto interactive = dynamic_cast<TOOL_INTERACTIVE*>( self()->GetToolManager()->GetCurrentTool() ) )
         {
             interactive->RunMainStack( aFunc );
         }
