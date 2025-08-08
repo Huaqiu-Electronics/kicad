@@ -1259,11 +1259,13 @@ void TOOL_MANAGER::UpdateUI( const TOOL_EVENT& aEvent )
 
 TOOL_BASE* TOOL_MANAGER::GetRunningTool() const
 {
-    for( const auto& state : m_toolState )
+    for( const auto& tid : m_activeTools )
     {
-        if( state.second->cofunc->Running() )
+        const auto& st = m_toolIdIndex.at( tid );
+
+        if( st->cofunc && st->cofunc->Running() )
         {
-            return state.second->theTool;
+            return st->theTool;
         }
     }
 
