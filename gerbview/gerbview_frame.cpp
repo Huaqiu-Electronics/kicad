@@ -206,6 +206,11 @@ GERBVIEW_FRAME::GERBVIEW_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
                    // Ensure the controls on the toolbars all are correctly sized
                     UpdateToolbarControlSizes();
                } );
+
+
+
+
+    CreateNoteButton();
 }
 
 

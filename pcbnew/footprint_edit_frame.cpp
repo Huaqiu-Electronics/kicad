@@ -357,6 +357,10 @@ BEGIN_EVENT_TABLE( FOOTPRINT_EDIT_FRAME, PCB_BASE_FRAME )
                     UpdateToolbarControlSizes();
                     m_treePane->FocusSearchFieldIfExists();
                 } );
+    
+
+                
+        CreateNoteButton();
 }
 
 
