@@ -41,13 +41,13 @@
 #include <webview/webview_container.h>
 #include <magic_enum.hpp>
 #include <active_action/cmd/common/selection_change_cmd.h>
-#include <http/http_client.h>
 #include <utils/extract_host_from_url.h>
 #include <utils/wstring_to_string.h>
 #include "webview_container_impl.h"
 #include <common/dialog_image_viewer.h>
 #include <main_stack_holder.h>
 #include <fmt/format.h>
+#include <utils/send_data_buried_point.h>
 
 #ifndef _WIN32
 #include "webview_evt_filter.h"
@@ -55,32 +55,6 @@
 
 
 using json = nlohmann::json;
-using namespace httplib;
-
-inline auto send_data_buried_point( std::string const& name )
-{
-    std::thread t(
-            [=]()
-            {
-                try
-                {
-                    HTTP_CLIENT http_client;
-                    http_client.send_data_buried_point( DATA_BURIED_POINT{ name, fmt::format( "{}_in_kicad", name )
-
-                    } );
-                }
-                catch( std::exception const& e )
-                {
-                    wxLogDebug( wxString::Format( "send_data_buried_point error: %s", e.what() ),
-                                "send_data_buried_point" );
-                }
-                catch( ... )
-                {
-                    wxLogDebug( wxString::Format( "send_data_buried_point error: unknown" ), "send_data_buried_point" );
-                }
-            } );
-    t.detach();
-}
 
 
 enum START_UP_SIZE
@@ -91,9 +65,8 @@ enum START_UP_SIZE
 
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
-                                      HOST_COPILOT_HANDLES             host_copilot_handles,
-                                      std::optional<std::string>       data_buried_point,
-                                      std::shared_ptr<httplib::Server> msgServer ) :
+                                      HOST_COPILOT_HANDLES       host_copilot_handles,
+                                      std::optional<std::string> data_buried_point ) :
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
@@ -122,7 +95,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 
 
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
-    _impl->_web_msg_server = std::move( msgServer );
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
 
@@ -133,48 +105,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
                              wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
-
-    if( _impl->_web_msg_server )
-    {
-        _impl->_web_msg_server_thread = std::make_unique<std::thread>(
-                [&]()
-                {
-                    // Handle POST requests
-                    _impl->_web_msg_server->Post( "/passive_action",
-                                                  [this]( const Request& req, Response& res )
-                                                  {
-                                                      // Add CORS headers
-                                                      res.set_header( "Access-Control-Allow-Origin", "*" );
-                                                      res.set_header( "Access-Control-Allow-Methods", "POST, OPTIONS" );
-                                                      res.set_header( "Access-Control-Allow-Headers", "*" );
-
-                                                      const auto msg = req.body;
-                                                      if( msg.empty() )
-                                                      {
-                                                          res.set_content( "Invalid message", "text/plain" );
-                                                          return;
-                                                      }
-
-                                                      // Process the message
-                                                      OnScriptMessageWrapper( msg );
-                                                      res.set_content( "OK", "text/plain" );
-                                                  } );
-
-                    // Handle OPTIONS preflight requests
-                    _impl->_web_msg_server->Options( "/passive_action",
-                                                     []( const Request& req, Response& res )
-                                                     {
-                                                         res.set_header( "Access-Control-Allow-Origin", "*" );
-                                                         res.set_header( "Access-Control-Allow-Methods",
-                                                                         "POST, OPTIONS" );
-                                                         res.set_header( "Access-Control-Allow-Headers", "*" );
-                                                         res.set_content( "", "text/plain" );
-                                                     } );
-
-
-                    _impl->_web_msg_server->listen_after_bind();
-                } );
-    }
 
     if( !_impl->_browser->AddScriptMessageHandler(
                 magic_enum::enum_name( WEBVIEW_SCRIPT_MSG_HANDLER::eda_host ).data() ) )
@@ -221,12 +151,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
-    if( _impl->_web_msg_server )
-        _impl->_web_msg_server->stop();
-
-    if( _impl->_web_msg_server_thread )
-        _impl->_web_msg_server_thread->join();
-
 #ifndef _WIN32
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
 #endif
@@ -245,12 +169,6 @@ void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
 void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
 {
     ExecuteCommand( json( SELECTION_CHANGE_CMD{ has_selection } ).dump().c_str() );
-}
-
-
-WEBVIEW_MSG_CHANNELS WEBVIEW_CONTAINER::MsgChannelType() const
-{
-    return _impl->_web_msg_server != nullptr ? WEBVIEW_MSG_CHANNELS::HTTP : WEBVIEW_MSG_CHANNELS::POST_MSG;
 }
 
 
@@ -366,7 +284,7 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 }
 
 
-void OnScriptMessageWrapper( wxWebViewEvent& evt )
+void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
 {
     _main_stack_holder->RunMainStack(
             [&]()

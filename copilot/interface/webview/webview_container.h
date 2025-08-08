@@ -38,17 +38,6 @@
 class DIALOG_IMAGE_VIEWER;
 class DIALOG_WEBVIEW;
 
-enum class WEBVIEW_MSG_CHANNELS
-{
-    POST_MSG,
-    HTTP,
-};
-
-namespace httplib
-{
-class Server;
-}
-
 
 struct WEBVIEW_CONTAINER_IMPL;
 class wxWebView;
@@ -58,12 +47,9 @@ class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
     WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url, HOST_COPILOT_HANDLES host_copilot_handles,
-                       std::optional<std::string>       data_buried_point = std::nullopt,
-                       std::shared_ptr<httplib::Server> msgServer = nullptr );
+                       std::optional<std::string> data_buried_point = std::nullopt );
 
     ~WEBVIEW_CONTAINER() override;
-
-    WEBVIEW_MSG_CHANNELS MsgChannelType() const;
 
     virtual void ExecuteCommand( const char* cmd );
 

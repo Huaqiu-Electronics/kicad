@@ -32,7 +32,6 @@
 #include <magic_enum.hpp>
 #include <host_version_info.h>
 #include <webview/copilot_webview_container.h>
-#include <webview/webview_channel_ctrl.h>
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
 #include <wx/aui/auibar.h>

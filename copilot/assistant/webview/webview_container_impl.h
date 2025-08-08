@@ -43,11 +43,9 @@ struct WEBVIEW_CONTAINER_IMPL
     DIALOG_WEBVIEW*       _ecad_viewer{};
 
 
-    wxWebView*                       _browser;
-    HOST_COPILOT_HANDLES             _host_copilot_handles;
-    std::optional<std::string>       _primary_url;
-    std::shared_ptr<httplib::Server> _web_msg_server;
-    std::unique_ptr<std::thread>     _web_msg_server_thread;
+    wxWebView*                 _browser;
+    HOST_COPILOT_HANDLES       _host_copilot_handles;
+    std::optional<std::string> _primary_url;
 };
 
 
