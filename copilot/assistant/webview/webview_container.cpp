@@ -67,13 +67,13 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
                                       HOST_COPILOT_HANDLES       host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ),
+        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _main_stack_holder = ([=] () mutable -> MAIN_STACK_HOLDER* {
 
         MAIN_STACK_HOLDER* holder {};
-        wxWindow* parent  = GetParent();
 
         while (!holder){
 
@@ -225,18 +225,15 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
-    CallAfter(
-            [&]
+    _main_stack_holder->RunMainStack(
+            [=]
             {
-                _main_stack_holder->RunMainStack(
-                        [&]
-                        {
-                            if( evt.IsError() )
-                                wxLogDebug( "Async JS failed: %s", evt.GetString() );
-                            else
-                                wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
-                        } );
+                if( evt.IsError() )
+                    wxLogDebug( "Async JS failed: %s", evt.GetString() );
+                else
+                    wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
             } );
+    ;
 }
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
@@ -276,32 +273,23 @@ void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 
 void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 {
-    CallAfter(
-            [&]
+    _main_stack_holder->RunMainStack(
+            [=]()
             {
-                _main_stack_holder->RunMainStack(
-                        [this, aScript]()
-                        {
-                            const auto js_script =
-                                    fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
-                                                 aScript.ToStdString() );
-                            wxString out;
-                            _impl->_browser->RunScriptAsync( js_script, &out );
-                            wxLogDebug( "ExecuteCommand (wrapped): %s", out );
-                        } );
+                const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
+                                                    aScript.ToStdString() );
+                wxString   out;
+                _impl->_browser->RunScriptAsync( js_script, &out );
+                wxLogDebug( "ExecuteCommand (wrapped): %s", out );
             } );
 }
 
 
 void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
 {
-    CallAfter(
-            [&]
+    _main_stack_holder->RunMainStack(
+            [&]()
             {
-                _main_stack_holder->RunMainStack(
-                        [&]()
-                        {
-                            OnScriptMessage( evt );
-                        } );
+                OnScriptMessage( evt );
             } );
 }

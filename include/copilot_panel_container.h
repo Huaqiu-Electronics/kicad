@@ -25,6 +25,7 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
+#include <functional>
 #include <tool/action_toolbar.h>
 #include <fmt/format.h>
 #include <memory>
@@ -256,6 +257,12 @@ public:
     {
         WriteClipBoard( aContent );
         self()->GetToolManager()->RunAction( ACTIONS::paste );
+    }
+
+    template <class TOOL_T>
+    void RunMainFrame( std::function<void()> aFunc )
+    {
+        self()->GetToolManager()->template GetTool<TOOL_T>()->RunMainStack( aFunc );
     }
 
 
