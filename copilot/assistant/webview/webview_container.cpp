@@ -45,7 +45,7 @@
 #include <utils/wstring_to_string.h>
 #include "webview_container_impl.h"
 #include <common/dialog_image_viewer.h>
-#include <main_stack_holder.h>
+#include <common/main_stack_holder.h>
 #include <fmt/format.h>
 #include <utils/send_data_buried_point.h>
 
@@ -291,5 +291,4 @@ void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
             {
                 OnScriptMessage( evt );
             } );
-            
 }
