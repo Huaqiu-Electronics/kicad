@@ -24,6 +24,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "tool/actions.h"
+#include "tool/tool_action.h"
 #include "tool/tool_event.h"
 #include <core/kicad_algo.h>
 #include <optional>
@@ -53,27 +55,23 @@
 /// Struct describing the current execution state of a TOOL
 struct TOOL_MANAGER::TOOL_STATE
 {
-    TOOL_STATE( TOOL_BASE* aTool ) :
-        theTool( aTool )
-    {
-        clear();
-    }
+    TOOL_STATE( TOOL_BASE* aTool ) : theTool( aTool ) { clear(); }
 
     TOOL_STATE( const TOOL_STATE& aState )
     {
-        theTool            = aState.theTool;
-        idle               = aState.idle;
-        shutdown           = aState.shutdown;
-        pendingWait        = aState.pendingWait;
+        theTool = aState.theTool;
+        idle = aState.idle;
+        shutdown = aState.shutdown;
+        pendingWait = aState.pendingWait;
         pendingContextMenu = aState.pendingContextMenu;
-        contextMenu        = aState.contextMenu;
+        contextMenu = aState.contextMenu;
         contextMenuTrigger = aState.contextMenuTrigger;
-        cofunc             = aState.cofunc;
-        initialEvent       = aState.initialEvent;
-        wakeupEvent        = aState.wakeupEvent;
-        waitEvents         = aState.waitEvents;
-        transitions        = aState.transitions;
-        vcSettings         = aState.vcSettings;
+        cofunc = aState.cofunc;
+        initialEvent = aState.initialEvent;
+        wakeupEvent = aState.wakeupEvent;
+        waitEvents = aState.waitEvents;
+        transitions = aState.transitions;
+        vcSettings = aState.vcSettings;
         // do not copy stateStack
     }
 
@@ -126,33 +124,27 @@ struct TOOL_MANAGER::TOOL_STATE
 
     TOOL_STATE& operator=( const TOOL_STATE& aState )
     {
-        theTool            = aState.theTool;
-        idle               = aState.idle;
-        shutdown           = aState.shutdown;
-        pendingWait        = aState.pendingWait;
+        theTool = aState.theTool;
+        idle = aState.idle;
+        shutdown = aState.shutdown;
+        pendingWait = aState.pendingWait;
         pendingContextMenu = aState.pendingContextMenu;
-        contextMenu        = aState.contextMenu;
+        contextMenu = aState.contextMenu;
         contextMenuTrigger = aState.contextMenuTrigger;
-        cofunc             = aState.cofunc;
-        initialEvent       = aState.initialEvent;
-        wakeupEvent        = aState.wakeupEvent;
-        waitEvents         = aState.waitEvents;
-        transitions        = aState.transitions;
-        vcSettings         = aState.vcSettings;
+        cofunc = aState.cofunc;
+        initialEvent = aState.initialEvent;
+        wakeupEvent = aState.wakeupEvent;
+        waitEvents = aState.waitEvents;
+        transitions = aState.transitions;
+        vcSettings = aState.vcSettings;
 
         // do not copy stateStack
         return *this;
     }
 
-    bool operator==( const TOOL_MANAGER::TOOL_STATE& aRhs ) const
-    {
-        return aRhs.theTool == theTool;
-    }
+    bool operator==( const TOOL_MANAGER::TOOL_STATE& aRhs ) const { return aRhs.theTool == theTool; }
 
-    bool operator!=( const TOOL_MANAGER::TOOL_STATE& aRhs ) const
-    {
-        return aRhs.theTool != theTool;
-    }
+    bool operator!=( const TOOL_MANAGER::TOOL_STATE& aRhs ) const { return aRhs.theTool != theTool; }
 
     /**
      * Store the current state of the tool on stack. Stacks are stored internally and are not
@@ -195,12 +187,12 @@ private:
     /// Restores the initial state.
     void clear()
     {
-        idle               = true;
-        shutdown           = false;
-        pendingWait        = false;
+        idle = true;
+        shutdown = false;
+        pendingWait = false;
         pendingContextMenu = false;
-        cofunc             = nullptr;
-        contextMenu        = nullptr;
+        cofunc = nullptr;
+        contextMenu = nullptr;
         contextMenuTrigger = CMENU_OFF;
         vcSettings.Reset();
         transitions.clear();
@@ -209,15 +201,8 @@ private:
 
 
 TOOL_MANAGER::TOOL_MANAGER() :
-        m_model( nullptr ),
-        m_view( nullptr ),
-        m_viewControls( nullptr ),
-        m_frame( nullptr ),
-        m_settings( nullptr ),
-        m_warpMouseAfterContextMenu( true ),
-        m_menuActive( false ),
-        m_menuOwner( -1 ),
-        m_activeState( nullptr ),
+        m_model( nullptr ), m_view( nullptr ), m_viewControls( nullptr ), m_frame( nullptr ), m_settings( nullptr ),
+        m_warpMouseAfterContextMenu( true ), m_menuActive( false ), m_menuOwner( -1 ), m_activeState( nullptr ),
         m_shuttingDown( false )
 {
     m_actionMgr = new ACTION_MANAGER( this );
@@ -230,9 +215,9 @@ TOOL_MANAGER::~TOOL_MANAGER()
 
     for( it = m_toolState.begin(), it_end = m_toolState.end(); it != it_end; ++it )
     {
-        delete it->second->cofunc;  // delete cofunction
-        delete it->second;          // delete TOOL_STATE
-        delete it->first;           // delete the tool itself
+        delete it->second->cofunc; // delete cofunction
+        delete it->second;         // delete TOOL_STATE
+        delete it->first;          // delete the tool itself
     }
 
     delete m_actionMgr;
@@ -242,14 +227,13 @@ TOOL_MANAGER::~TOOL_MANAGER()
 void TOOL_MANAGER::RegisterTool( TOOL_BASE* aTool )
 {
     wxASSERT_MSG( m_toolNameIndex.find( aTool->GetName() ) == m_toolNameIndex.end(),
-                  wxT( "Adding two tools with the same name may result in unexpected behavior.") );
+                  wxT( "Adding two tools with the same name may result in unexpected behavior." ) );
     wxASSERT_MSG( m_toolIdIndex.find( aTool->GetId() ) == m_toolIdIndex.end(),
-                  wxT( "Adding two tools with the same ID may result in unexpected behavior.") );
+                  wxT( "Adding two tools with the same ID may result in unexpected behavior." ) );
     wxASSERT_MSG( m_toolTypes.find( typeid( *aTool ).name() ) == m_toolTypes.end(),
-                  wxT( "Adding two tools of the same type may result in unexpected behavior.") );
+                  wxT( "Adding two tools of the same type may result in unexpected behavior." ) );
 
-    wxLogTrace( kicadTraceToolStack,
-                wxS( "TOOL_MANAGER::RegisterTool: Registering tool %s with ID %d" ),
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::RegisterTool: Registering tool %s with ID %d" ),
                 aTool->GetName(), aTool->GetId() );
 
     m_toolOrder.push_back( aTool );
@@ -272,10 +256,9 @@ bool TOOL_MANAGER::InvokeTool( TOOL_ID aToolId )
     if( tool && tool->GetType() == INTERACTIVE )
         return invokeTool( tool );
 
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::InvokeTool - no tool with ID %d" ),
-                                     aToolId );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::InvokeTool - no tool with ID %d" ), aToolId );
 
-    return false;       // there is no tool with the given id
+    return false; // there is no tool with the given id
 }
 
 
@@ -286,15 +269,13 @@ bool TOOL_MANAGER::InvokeTool( const std::string& aToolName )
     if( tool && tool->GetType() == INTERACTIVE )
         return invokeTool( tool );
 
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::InvokeTool - no tool with name %s" ),
-                aToolName );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::InvokeTool - no tool with name %s" ), aToolName );
 
-    return false;       // there is no tool with the given name
+    return false; // there is no tool with the given name
 }
 
 
-bool TOOL_MANAGER::doRunAction( const std::string& aActionName, bool aNow, const ki::any& aParam,
-                                COMMIT* aCommit )
+bool TOOL_MANAGER::doRunAction( const std::string& aActionName, bool aNow, const ki::any& aParam, COMMIT* aCommit )
 {
     TOOL_ACTION* action = m_actionMgr->FindAction( aActionName );
 
@@ -321,15 +302,15 @@ VECTOR2D TOOL_MANAGER::GetMousePosition() const
 
 VECTOR2D TOOL_MANAGER::GetCursorPosition() const
 {
-   if( m_viewControls )
-       return m_viewControls->GetCursorPosition();
-   else
-       return ToVECTOR2D( KIPLATFORM::UI::GetMousePosition() );
+    if( m_viewControls )
+        return m_viewControls->GetCursorPosition();
+    else
+        return ToVECTOR2D( KIPLATFORM::UI::GetMousePosition() );
 }
 
 
-bool TOOL_MANAGER::doRunAction( const TOOL_ACTION& aAction, bool aNow, const ki::any& aParam,
-                                COMMIT* aCommit, bool aFromAPI )
+bool TOOL_MANAGER::doRunAction( const TOOL_ACTION& aAction, bool aNow, const ki::any& aParam, COMMIT* aCommit,
+                                bool aFromAPI )
 {
     if( m_shuttingDown )
         return true;
@@ -362,11 +343,11 @@ bool TOOL_MANAGER::doRunAction( const TOOL_ACTION& aAction, bool aNow, const ki:
 
             while( synchronousControl == STS_RUNNING )
             {
-                wxYield();          // Needed to honor mouse (and other) events during editing
-                wxMilliSleep( 1 );  // Needed to avoid 100% use of one cpu core.
-                                    // The sleeping time must be must be small to avoid
-                                    // noticeable lag in mouse and editing events
-                                    // (1 to 5 ms is a good value)
+                wxYield();         // Needed to honor mouse (and other) events during editing
+                wxMilliSleep( 1 ); // Needed to avoid 100% use of one cpu core.
+                                   // The sleeping time must be must be small to avoid
+                                   // noticeable lag in mouse and editing events
+                                   // (1 to 5 ms is a good value)
             }
 
             retVal = synchronousControl != STS_CANCELLED;
@@ -471,8 +452,7 @@ bool TOOL_MANAGER::runTool( TOOL_BASE* aTool )
 
     TOOL_ID id = aTool->GetId();
 
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::runTool - running tool %s" ),
-                aTool->GetName() );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::runTool - running tool %s" ), aTool->GetName() );
 
     if( aTool->GetType() == INTERACTIVE )
         static_cast<TOOL_INTERACTIVE*>( aTool )->resetTransitions();
@@ -536,8 +516,7 @@ void TOOL_MANAGER::ShutdownTool( TOOL_ID aToolId )
     if( tool && tool->GetType() == INTERACTIVE )
         ShutdownTool( tool );
 
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ShutdownTool - no tool with ID %d" ),
-                aToolId );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ShutdownTool - no tool with ID %d" ), aToolId );
 }
 
 
@@ -548,8 +527,7 @@ void TOOL_MANAGER::ShutdownTool( const std::string& aToolName )
     if( tool && tool->GetType() == INTERACTIVE )
         ShutdownTool( tool );
 
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ShutdownTool - no tool with name %s" ),
-                aToolName );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ShutdownTool - no tool with name %s" ), aToolName );
 }
 
 
@@ -561,8 +539,7 @@ void TOOL_MANAGER::ShutdownTool( TOOL_BASE* aTool )
 
     if( isActive( aTool ) )
     {
-        TOOL_MANAGER::ID_LIST::iterator it = std::find( m_activeTools.begin(),
-                                                        m_activeTools.end(), id );
+        TOOL_MANAGER::ID_LIST::iterator it = std::find( m_activeTools.begin(), m_activeTools.end(), id );
 
         TOOL_STATE* st = m_toolIdIndex[*it];
 
@@ -576,8 +553,7 @@ void TOOL_MANAGER::ShutdownTool( TOOL_BASE* aTool )
 
             if( st->cofunc )
             {
-                wxLogTrace( kicadTraceToolStack,
-                            wxS( "TOOL_MANAGER::ShutdownTool - Shutting down tool %s" ),
+                wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ShutdownTool - Shutting down tool %s" ),
                             st->theTool->GetName() );
 
                 setActiveState( st );
@@ -630,8 +606,7 @@ void TOOL_MANAGER::ResetTools( TOOL_BASE::RESET_REASON aReason )
     {
         TOOL_BASE* tool = state.first;
 
-        wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ResetTools: Resetting tool '%s'" ),
-                                             tool->GetName() );
+        wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::ResetTools: Resetting tool '%s'" ), tool->GetName() );
 
         setActiveState( state.second );
         tool->Reset( aReason );
@@ -650,12 +625,11 @@ void TOOL_MANAGER::InitTools()
         wxASSERT( m_toolState.count( tool ) );
         TOOL_STATE* state = m_toolState[tool];
         setActiveState( state );
-        ++it;   // keep the iterator valid if the element is going to be erased
+        ++it; // keep the iterator valid if the element is going to be erased
 
         if( !tool->Init() )
         {
-            wxLogTrace( kicadTraceToolStack,
-                        wxS( "TOOL_MANAGER initialization of tool '%s' failed" ),
+            wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER initialization of tool '%s' failed" ),
                         tool->GetName() );
 
             // Unregister the tool
@@ -692,8 +666,7 @@ int TOOL_MANAGER::GetPriority( int aToolId ) const
 }
 
 
-void TOOL_MANAGER::ScheduleNextState( TOOL_BASE* aTool, TOOL_STATE_FUNC& aHandler,
-                                      const TOOL_EVENT_LIST& aConditions )
+void TOOL_MANAGER::ScheduleNextState( TOOL_BASE* aTool, TOOL_STATE_FUNC& aHandler, const TOOL_EVENT_LIST& aConditions )
 {
     TOOL_STATE* st = m_toolState[aTool];
 
@@ -707,17 +680,20 @@ void TOOL_MANAGER::ClearTransitions( TOOL_BASE* aTool )
 }
 
 
+static auto  ii = ( [] {
+    auto cofunc = new COROUTINE<int, const TOOL_EVENT&>( (
+            []( TOOL_EVENT const& )
+            {
+                return 0;
+            } ) );
+    cofunc->Call( ACTIONS::paste.MakeEvent() );
+    return cofunc;
+})();
+
+
 void TOOL_MANAGER::RunMainStack( TOOL_BASE* aTool, std::function<void()> aFunc )
 {
-    TOOL_STATE* st = m_toolState[aTool];
-    setActiveState( st );
-
-    if(!st->cofunc){
-                    st->cofunc = new COROUTINE<int, const TOOL_EVENT&>( std::move( []( TOOL_EVENT const& ) { return 0;} ) );
-    }
-
-    wxCHECK( st->cofunc, /* void */ );
-    st->cofunc->RunMainStack( std::move( aFunc ) );
+    ii->RunMainStack( std::move( aFunc ) );
 }
 
 
@@ -749,8 +725,7 @@ bool TOOL_MANAGER::dispatchInternal( TOOL_EVENT& aEvent )
 {
     bool handled = false;
 
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchInternal - received event: %s" ),
-                aEvent.Format() );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchInternal - received event: %s" ), aEvent.Format() );
 
     auto it = m_activeTools.begin();
 
@@ -758,7 +733,7 @@ bool TOOL_MANAGER::dispatchInternal( TOOL_EVENT& aEvent )
     while( it != m_activeTools.end() )
     {
         TOOL_STATE* st = m_toolIdIndex[*it];
-        bool increment = true;
+        bool        increment = true;
 
         // forward context menu events to the tool that created the menu
         if( aEvent.IsChoiceMenu() )
@@ -784,8 +759,7 @@ bool TOOL_MANAGER::dispatchInternal( TOOL_EVENT& aEvent )
             st->pendingWait = false;
             st->waitEvents.clear();
 
-            wxLogTrace( kicadTraceToolStack,
-                        wxS( "TOOL_MANAGER::dispatchInternal - Waking tool %s for event: %s" ),
+            wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchInternal - Waking tool %s for event: %s" ),
                         st->theTool->GetName(), aEvent.Format() );
 
             setActiveState( st );
@@ -816,7 +790,7 @@ bool TOOL_MANAGER::dispatchInternal( TOOL_EVENT& aEvent )
     for( const auto& state : m_toolState )
     {
         TOOL_STATE* st = state.second;
-        bool finished = false;
+        bool        finished = false;
 
         // no state handler in progress - check if there are any transitions (defined by
         // Go() method that match the event.
@@ -867,7 +841,7 @@ bool TOOL_MANAGER::dispatchInternal( TOOL_EVENT& aEvent )
         }
 
         if( finished )
-            break;      // only the first tool gets the event
+            break; // only the first tool gets the event
     }
 
     wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchInternal - %s handle event: %s" ),
@@ -888,8 +862,7 @@ bool TOOL_MANAGER::DispatchHotKey( const TOOL_EVENT& aEvent )
 
 bool TOOL_MANAGER::dispatchActivation( const TOOL_EVENT& aEvent )
 {
-    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchActivation - Received event: %s" ),
-                aEvent.Format() );
+    wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchActivation - Received event: %s" ), aEvent.Format() );
 
     if( aEvent.IsActivate() )
     {
@@ -897,8 +870,7 @@ bool TOOL_MANAGER::dispatchActivation( const TOOL_EVENT& aEvent )
 
         if( tool != m_toolNameIndex.end() )
         {
-            wxLogTrace( kicadTraceToolStack,
-                        wxS( "TOOL_MANAGER::dispatchActivation - Running tool %s for event: %s" ),
+            wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::dispatchActivation - Running tool %s for event: %s" ),
                         tool->second->theTool->GetName(), aEvent.Format() );
 
             runTool( tool->second->theTool );
@@ -993,8 +965,7 @@ void TOOL_MANAGER::DispatchContextMenu( const TOOL_EVENT& aEvent )
         m_menuOwner = -1;
 
         // Restore cursor settings
-        for( const std::pair<const TOOL_ID,
-             std::optional<VECTOR2D>>& cursorSetting : m_cursorSettings )
+        for( const std::pair<const TOOL_ID, std::optional<VECTOR2D>>& cursorSetting : m_cursorSettings )
         {
             auto it = m_toolIdIndex.find( cursorSetting.first );
             wxASSERT( it != m_toolIdIndex.end() );
@@ -1060,8 +1031,7 @@ bool TOOL_MANAGER::ProcessEvent( const TOOL_EVENT& aEvent )
 }
 
 
-void TOOL_MANAGER::ScheduleContextMenu( TOOL_BASE* aTool, ACTION_MENU* aMenu,
-                                        CONTEXT_MENU_TRIGGER aTrigger )
+void TOOL_MANAGER::ScheduleContextMenu( TOOL_BASE* aTool, ACTION_MENU* aMenu, CONTEXT_MENU_TRIGGER aTrigger )
 {
     TOOL_STATE* st = m_toolState[aTool];
 
@@ -1087,8 +1057,7 @@ TOOL_ID TOOL_MANAGER::MakeToolId( const std::string& aToolName )
 }
 
 
-void TOOL_MANAGER::SetEnvironment( EDA_ITEM* aModel, KIGFX::VIEW* aView,
-                                   KIGFX::VIEW_CONTROLS* aViewControls,
+void TOOL_MANAGER::SetEnvironment( EDA_ITEM* aModel, KIGFX::VIEW* aView, KIGFX::VIEW_CONTROLS* aViewControls,
                                    APP_SETTINGS_BASE* aSettings, TOOLS_HOLDER* aFrame )
 {
     m_model = aModel;
@@ -1170,9 +1139,8 @@ bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
         if( GetToolHolder() && !GetToolHolder()->GetDoImmediateActions() )
         {
             // An tool-selection-event has no position
-            if( !mod_event.getCommandStr().empty()
-                    && mod_event.getCommandStr() != GetToolHolder()->CurrentToolName()
-                    && !mod_event.ForceImmediate() )
+            if( !mod_event.getCommandStr().empty() && mod_event.getCommandStr() != GetToolHolder()->CurrentToolName()
+                && !mod_event.ForceImmediate() )
             {
                 mod_event.SetHasPosition( false );
             }
@@ -1196,7 +1164,7 @@ bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
     }
 
     wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::processEvent - %s handle event: %s" ),
-                                     ( handled ? "Did" : "Did not" ), aEvent.Format() );
+                ( handled ? "Did" : "Did not" ), aEvent.Format() );
 
     return handled;
 }
