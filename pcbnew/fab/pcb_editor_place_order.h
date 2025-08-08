@@ -106,7 +106,7 @@ inline std::string get_min_hole_size( double aHoleSize )
 
 
 template <>
-void FAB_INFO_GETTER_PCB::PlaceOrder()
+void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
 {
     // Ensure user is logged in before placing order
     if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
@@ -176,9 +176,18 @@ void FAB_INFO_GETTER_PCB::PlaceOrder()
             rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 
 
-    DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
-    place_order_dialog.LoadUrl( url );
-    place_order_dialog.ShowModal();
+    self()->RunMainStack(
+            [&]
+            {
+                DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
+                place_order_dialog.LoadUrl( url );
+                place_order_dialog.ShowModal();
+            } );
+}
+
+template <>
+void FAB_INFO_GETTER_PCB::PlaceOrderForAll()
+{
 }
 
 
