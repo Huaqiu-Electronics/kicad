@@ -1234,7 +1234,7 @@ public:
 
     void SaveWebViewLibraryCnf();
 
-    void RunMainStack( std::function<void()> aFunc ) override;
+    void EnsureMainstackForWebKit( std::function<void()> aFunc ) override;
 
 
 private:

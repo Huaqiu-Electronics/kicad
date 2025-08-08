@@ -57,7 +57,7 @@ void PCB_EDIT_FRAME::LaunchPlugin( std::string const& aPluginName, std::optional
     wxLogError( wxT( "Action plugin %s not installed" ), aPluginName );
 }
 
-void PCB_EDIT_FRAME::RunMainStack( std::function<void()> aFunc )
+void PCB_EDIT_FRAME::EnsureMainstackForWebKit( std::function<void()> aFunc )
 {
     m_toolManager->GetTool<PCB_CONTROL>()->RunMainStack( aFunc );
 }

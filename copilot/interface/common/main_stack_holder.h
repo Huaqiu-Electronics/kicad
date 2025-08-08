@@ -35,7 +35,7 @@ public:
 
     virtual ~MAIN_STACK_HOLDER();
 
-    virtual void RunMainStack( std::function<void()> aFunc );
+    virtual void EnsureMainstackForWebKit( std::function<void()> aFunc );
 };
 
 
