@@ -264,13 +264,7 @@ public:
 
     void EnsureMainstackForWebKit( std::function<void()> aFunc ) override
     {
-        if( !self()->GetToolManager()->GetCurrentToolState() )
-        {
-            return aFunc();
-        }
-
-
-        if( auto interactive = dynamic_cast<TOOL_INTERACTIVE*>( self()->GetToolManager()->GetCurrentTool() ) )
+        if( auto interactive = dynamic_cast<TOOL_INTERACTIVE*>( self()->GetToolManager()->GetRunningTool() ) )
         {
             interactive->RunMainStack( aFunc );
         }

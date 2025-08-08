@@ -1256,3 +1256,16 @@ void TOOL_MANAGER::UpdateUI( const TOOL_EVENT& aEvent )
     if( frame )
         frame->UpdateStatusBar();
 }
+
+TOOL_BASE* TOOL_MANAGER::GetRunningTool() const
+{
+    for( const auto& state : m_toolState )
+    {
+        if( state.second->cofunc->Running() )
+        {
+            return state.second->theTool;
+        }
+    }
+
+    return nullptr;
+}
