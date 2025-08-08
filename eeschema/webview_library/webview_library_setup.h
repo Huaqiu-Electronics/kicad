@@ -30,12 +30,16 @@
 #include <sch_actions.h>
 #include "webview_library_container.h"
 #include "webview_library_aui_settings.h"
+#include <utils/web_utils.h>
 
 
 void SCH_EDIT_FRAME::WebViewLibraryInit()
 {
-    m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER( this, eeconfig()->m_WebViewLibrarySettings.url.ToStdString(),
-                                                        { {}, m_copilotAgentActionHdl } );
+    m_webSymbolChooser =
+            new WEBVIEW_LIBRARY_CONTAINER( this,
+                                           add_parameter_to_url( eeconfig()->m_WebViewLibrarySettings.url.ToStdString(),
+                                                                 get_copilot_host_version( editor_type() ) ),
+                                           { {}, m_copilotAgentActionHdl } );
 }
 
 
