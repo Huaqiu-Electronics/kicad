@@ -53,18 +53,14 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
     // Ensure user is logged in before placing order
     if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
     {
-        self()->RunMainStack(
-                [=]
-                {
-                    DIALOG_LOGIN login_dialog( self() );
-                    login_dialog.ShowModal();
+        DIALOG_LOGIN login_dialog( self() );
+        login_dialog.ShowModal();
 
-                    if( !login_dialog.Success() )
-                    {
-                        wxMessageBox( _( "Please login to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
-                        return;
-                    }
-                } );
+        if( !login_dialog.Success() )
+        {
+            wxMessageBox( _( "Please login to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
+            return;
+        }
     }
 
     std::time_t now = std::time( nullptr );
@@ -121,14 +117,9 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
             "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&guid={}&tid={}&token={}", rsp->id,
             rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 
-
-    self()->RunMainStack(
-            [=]
-            {
-                DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
-                place_order_dialog.LoadUrl( url );
-                place_order_dialog.ShowModal();
-            } );
+    DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
+    place_order_dialog.LoadUrl( url );
+    place_order_dialog.ShowModal();
 }
 
 
