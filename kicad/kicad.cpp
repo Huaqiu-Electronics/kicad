@@ -51,6 +51,7 @@
 #include <trace_helpers.h>
 #include <wildcards_and_files_ext.h>
 #include <confirm.h>
+#include <tool/main_stack_entrypoint.h>
 
 #ifdef _WIN32
     #include <check_win_ver.h>
@@ -102,8 +103,9 @@ PGM_KICAD& PgmTop()
 
 
 bool PGM_KICAD::OnPgmInit()
-{
+{    
     App().SetAppDisplayName( wxT( "KiCad" ) );
+    MAIN_STACK_ENTRYPOINT::Get().RunMainStack([]{ });
 
 
 #if defined(DEBUG)
