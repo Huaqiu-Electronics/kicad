@@ -95,14 +95,14 @@ public:
     void CopilotPanelInit()
     {
         m_containerCfg = self()->config();
-        auto host_version_info = get_copilot_host_version( editor_type() );
-        host_version_info.chat_id = m_chat_id;
-        host_version_info.session_id = GetSessionId();
+        m_hostVersionInfo = get_copilot_host_version( editor_type() );
+        m_hostVersionInfo.chat_id = m_chat_id;
+        m_hostVersionInfo.session_id = GetSessionId();
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                self(), add_parameter_to_url( get_webview_chat_path(), host_version_info ),
+                self(), add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
                 { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } );
 
-        m_copilotContextCache.host_version_info = std::move( host_version_info );
+        m_copilotContextCache.host_version_info = m_hostVersionInfo;
     }
 
     void InitCopilotAui()
@@ -269,6 +269,7 @@ protected:
     AGENT_ACTION_OWNED_HANDLE        m_copilotAgentActionHdl;
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
     std::string                      m_chat_id = random_substring();
+    HOST_VERSION_INFO                m_hostVersionInfo;
 };
 
 #endif

@@ -34,7 +34,7 @@
 #if !defined( IS_RC_BUILD )
 constexpr auto kSymbolChooserUrl = "https://www.eda.cn/library/";
 #else
-constexpr auto kSymbolChooserUrl = "http://www.fdatasheets.com/library/";
+constexpr auto kSymbolChooserUrl = "http://47.116.118.182/library/";
 #endif
 
 
