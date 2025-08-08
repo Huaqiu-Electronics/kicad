@@ -32,23 +32,32 @@
 
 int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
 {
-    PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
+    RunMainStack(
+            [this]
+            {
+                PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
 
-    if( !editFrame )
-        return 1;
+                if( !editFrame )
+                    return;
 
-    editFrame->PlaceOrderForPCB();
+                editFrame->PlaceOrderForPCB();
+            } );
+
     return 0;
 }
 
 int PCB_CONTROL::PlaceOrderForAll( const TOOL_EVENT& aEvent )
 {
-    PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
+    RunMainStack(
+            [this]
+            {
+                PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
 
-    if( !editFrame )
-        return 1;
+                if( !editFrame )
+                    return;
 
-    editFrame->PlaceOrderForAll();
+                editFrame->PlaceOrderForAll();
+            } );
     return 0;
 }
 
