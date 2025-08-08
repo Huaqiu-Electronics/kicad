@@ -710,8 +710,15 @@ void TOOL_MANAGER::RunMainStack( TOOL_BASE* aTool, std::function<void()> aFunc )
 {
     TOOL_STATE* st = m_toolState[aTool];
     setActiveState( st );
-    wxCHECK( st->cofunc, /* void */ );
-    st->cofunc->RunMainStack( std::move( aFunc ) );
+    // wxCHECK( st->cofunc, /* void */ );
+    if( st->cofunc )
+    {
+        st->cofunc->RunMainStack( std::move( aFunc ) );
+    }
+    else
+    {
+        aFunc();
+    }
 }
 
 
