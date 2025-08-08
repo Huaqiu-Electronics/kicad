@@ -334,5 +334,3 @@ void ACTION_MANAGER::processHotKey( TOOL_ACTION*                                
         aAction->SetHotKey( keys.first, keys.second );
     }
 }
-
-#include "main_stack_entrypoint.cpp"
