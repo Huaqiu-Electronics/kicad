@@ -98,7 +98,7 @@ void WEBVIEW_TOKEN_CONTROLLER::OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContain
 
 void WEBVIEW_TOKEN_CONTROLLER::ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer )
 {
-    // aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_EXPIRED ) );
+    aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_EXPIRED ) );
 }
 
 void WEBVIEW_TOKEN_CONTROLLER::UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer )
