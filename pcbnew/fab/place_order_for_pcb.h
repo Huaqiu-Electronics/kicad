@@ -54,12 +54,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
     if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
     {
         DIALOG_LOGIN login_dialog( self() );
-        self()->EnsureMainstackForWebKit(
-                [&]
-                {
-                    login_dialog.ShowModal();
-                } );
-
+        login_dialog.ShowModal();
 
         if( !login_dialog.Success() )
         {
@@ -125,12 +120,8 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
 
     DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
 
-    self()->EnsureMainstackForWebKit(
-            [&]
-            {
-                place_order_dialog.LoadUrl( url );
-                place_order_dialog.ShowModal();
-            } );
+    place_order_dialog.LoadUrl( url );
+    place_order_dialog.ShowModal();
 }
 
 
