@@ -37,11 +37,7 @@ int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
     if( !editFrame )
         return 1;
 
-    editFrame->EnsureMainstackForWebKit(
-            [=]
-            {
-                editFrame->PlaceOrderForPCB();
-            } );
+    editFrame->PlaceOrderForPCB();
     return 0;
 }
 
@@ -52,11 +48,7 @@ int PCB_CONTROL::PlaceOrderForAll( const TOOL_EVENT& aEvent )
     if( !editFrame )
         return 1;
 
-    editFrame->EnsureMainstackForWebKit(
-            [=]
-            {
-                editFrame->PlaceOrderForAll();
-            } );
+    editFrame->PlaceOrderForAll();
     return 0;
 }
 
