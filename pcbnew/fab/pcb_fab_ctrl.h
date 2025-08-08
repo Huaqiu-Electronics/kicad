@@ -25,7 +25,8 @@
 #ifndef PCB_FAB_CTRL_H
 #define PCB_FAB_CTRL_H
 
-#include "pcb_editor_place_order.h"
+#include "place_order_for_pcb.h"
+#include "place_order_for_all.h"
 #include "tools/pcb_control.h"
 
 
