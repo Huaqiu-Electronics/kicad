@@ -176,13 +176,9 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
             rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 
 
-    self()->RunMainStack(
-            [&]
-            {
-                DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
-                place_order_dialog.LoadUrl( url );
-                place_order_dialog.ShowModal();
-            } );
+    DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
+    place_order_dialog.LoadUrl( url );
+    place_order_dialog.ShowModal();
 }
 
 template <>
