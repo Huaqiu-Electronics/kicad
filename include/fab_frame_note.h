@@ -78,10 +78,10 @@ public:
             m_promotedlg->Move(wxPoint(dialogX, dialogY));
             m_promotedlg->SetSize(wxSize( dlgWidth, dlgheight));
             m_promotedlg->LoadUrl("http://www.fdatasheets.com/news/page/bottomNotice/index.html");
-            m_promotedlg->visible = false;    
+            m_promotedlg->SetVisible(false);
         }
-        
-        m_promotedlg->Show(m_promotedlg->visible = !m_promotedlg->visible);
+        m_promotedlg->SetVisible(!m_promotedlg->GetVisible());
+        m_promotedlg->Show(m_promotedlg->GetVisible());
     }
 
 private:
