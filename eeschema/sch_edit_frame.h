@@ -1210,9 +1210,6 @@ public:
 
     void SaveWebViewLibraryCnf();
 
-    void EnsureMainstackForWebKit( std::function<void()> aFunc ) override;
-
-
 private:
     friend SCH_COPILOT_PANEL_CONTAINER;
     std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
