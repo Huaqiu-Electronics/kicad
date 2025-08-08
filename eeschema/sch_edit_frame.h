@@ -48,7 +48,6 @@
 
 #include <context/sch/sch_copilot_global_context.h>
 #include <copilot_panel_container.h>
-#include <main_stack_holder.h>
 
 struct SYMBOL_CMD_CONTEXT;
 
@@ -147,7 +146,7 @@ private:
 /**
  * Schematic editor (Eeschema) main window.
  */
-class SCH_EDIT_FRAME : public SCH_BASE_FRAME, public SCH_COPILOT_PANEL_CONTAINER, public MAIN_STACK_HOLDER
+class SCH_EDIT_FRAME : public SCH_BASE_FRAME, public SCH_COPILOT_PANEL_CONTAINER
 {
 public:
     SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent );

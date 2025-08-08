@@ -31,14 +31,7 @@ class MAIN_STACK_HOLDER
 public:
     virtual ~MAIN_STACK_HOLDER() = default;
 
-    virtual void RunMainStack( std::function<void()> ) {}
-
-    void fool() {}
-
-
-private:
-    // FIXME Without this , MacOS dynamic_cast will not working
-    int _fool{};
+    virtual void RunMainStack( std::function<void()> ) = 0;
 };
 
 #endif
