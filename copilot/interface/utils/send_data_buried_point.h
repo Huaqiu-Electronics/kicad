@@ -22,15 +22,40 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_CHANNEL_CTRL_H
-#define WEBVIEW_CHANNEL_CTRL_H
+#ifndef SEND_DATA_BURIED_POINT_H
+#define SEND_DATA_BURIED_POINT_H
 
-#ifndef COPILOT_USE_HTTP_MSG_HANDLER
+#include <http/http_client.h>
+#include <thread>
+#include <nlohmann/json.hpp>
+#include <fmt/format.h>
+#include <wx/log.h>
+#include <data_buried_point.h>
 
-#ifdef __WXMAC__
-#define COPILOT_USE_HTTP_MSG_HANDLER
-#endif // __WXMAC__
 
-#endif // !COPILOT_USE_HTTP_MSG_HANDLER
+inline auto send_data_buried_point( std::string const& name )
+{
+    std::thread t(
+            [=]()
+            {
+                try
+                {
+                    HTTP_CLIENT http_client;
+                    http_client.send_data_buried_point( DATA_BURIED_POINT{ name, fmt::format( "{}_in_kicad", name )
+
+                    } );
+                }
+                catch( std::exception const& e )
+                {
+                    wxLogDebug( wxString::Format( "send_data_buried_point error: %s", e.what() ),
+                                "send_data_buried_point" );
+                }
+                catch( ... )
+                {
+                    wxLogDebug( wxString::Format( "send_data_buried_point error: unknown" ), "send_data_buried_point" );
+                }
+            } );
+    t.detach();
+}
 
 #endif

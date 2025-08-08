@@ -25,16 +25,13 @@
 #ifndef WEBVIEW_LIBRARY_CONTAINER_H
 #define WEBVIEW_LIBRARY_CONTAINER_H
 
-#include <memory>
 #include <webview/webview_container.h>
 
 class WEBVIEW_LIBRARY_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
-    WEBVIEW_LIBRARY_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles,
-                               std::shared_ptr<httplib::Server> msgServer = nullptr ) :
-            WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_desktop_webview_library",
-                               std::move( msgServer ) )
+    WEBVIEW_LIBRARY_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles ) :
+            WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_desktop_webview_library" )
     {
     }
 

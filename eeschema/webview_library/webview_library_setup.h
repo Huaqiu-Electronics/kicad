@@ -35,7 +35,7 @@
 void SCH_EDIT_FRAME::WebViewLibraryInit()
 {
     m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER( this, eeconfig()->m_WebViewLibrarySettings.url.ToStdString(),
-                                                        { {}, m_copilotAgentActionHdl, {} } );
+                                                        { {}, m_copilotAgentActionHdl } );
 }
 
 
