@@ -57,16 +57,17 @@ public:
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
 
-    void PlaceOrder() {}
+    void PlaceOrderForPCB() {}
+
+    void PlaceOrderForAll() {}
 
     void ToggleHQPersonalCenter() {}
-
 
     void RecreateFabToolBar()
     {
         auto aToolBar = self()->m_mainToolBar;
         aToolBar->AddScaledSeparator( self() );
-        aToolBar->Add( ACTIONS::placeOrder );
+        aToolBar->Add( ACTIONS::placeOrderMenu );
     }
 };
 

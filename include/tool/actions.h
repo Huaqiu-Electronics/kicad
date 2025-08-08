@@ -304,8 +304,11 @@ public:
     static TOOL_ACTION showCopilotPanel;
 
     // Fab
-    static TOOL_ACTION placeOrder;
+    static TOOL_ACTION placeOrderMenu;
     static TOOL_ACTION toggleHQPersonalCenter;
+    static TOOL_ACTION placeOrderForPCB;
+    static TOOL_ACTION placeOrderForAll;
+
 
     ///< Cursor control event types
     enum CURSOR_EVENT_TYPE

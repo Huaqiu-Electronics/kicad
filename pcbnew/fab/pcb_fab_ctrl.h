@@ -29,7 +29,7 @@
 #include "tools/pcb_control.h"
 
 
-int PCB_CONTROL::PlaceOrder( const TOOL_EVENT& aEvent )
+int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
 {
     RunMainStack(
             [this]
@@ -39,11 +39,28 @@ int PCB_CONTROL::PlaceOrder( const TOOL_EVENT& aEvent )
                 if( !editFrame )
                     return;
 
-                editFrame->PlaceOrder();
+                editFrame->PlaceOrderForPCB();
             } );
 
     return 0;
 }
+
+int PCB_CONTROL::PlaceOrderForAll( const TOOL_EVENT& aEvent )
+{
+    RunMainStack(
+            [this]
+            {
+                PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
+
+                if( !editFrame )
+                    return;
+
+                editFrame->PlaceOrderForAll();
+            } );
+
+    return 0;
+}
+
 
 int PCB_CONTROL::ToggleHQPersonalCenter( const TOOL_EVENT& aEvent )
 {

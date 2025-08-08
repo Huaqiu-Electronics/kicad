@@ -3010,7 +3010,8 @@ void PCB_CONTROL::setTransitions()
     Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );
     
     // FAB
-    Go( &PCB_CONTROL::PlaceOrder,         ACTIONS::placeOrder.MakeEvent() );
+    Go( &PCB_CONTROL::PlaceOrderForPCB,         ACTIONS::placeOrderMenu.MakeEvent() );
+    Go( &PCB_CONTROL::PlaceOrderForAll,         ACTIONS::placeOrderForAll.MakeEvent() );
     Go( &PCB_CONTROL::ToggleHQPersonalCenter,    ACTIONS::toggleHQPersonalCenter.MakeEvent() );       
 }
 // clang-format on

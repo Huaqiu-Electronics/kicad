@@ -175,7 +175,8 @@ public:
     int ToggleCopilot( const TOOL_EVENT& aEvent );
     int ShowCopilot( const TOOL_EVENT& aEvent );
 
-    int PlaceOrder( const TOOL_EVENT& aEvent );
+    int PlaceOrderForPCB( const TOOL_EVENT& aEvent );
+    int PlaceOrderForAll( const TOOL_EVENT& aEvent );
     int ToggleHQPersonalCenter( const TOOL_EVENT& aEvent );
 };
 
