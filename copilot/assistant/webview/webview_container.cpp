@@ -295,14 +295,10 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 {
-    _main_stack_holder->RunMainStack(
-            [&]
-            {
-                if( evt.IsError() )
-                    wxLogDebug( "Async JS failed: %s", evt.GetString() );
-                else
-                    wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
-            } );
+    if( evt.IsError() )
+        wxLogDebug( "Async JS failed: %s", evt.GetString() );
+    else
+        wxLogDebug( "Async JS succeeded: %s", evt.GetString() );
 }
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
@@ -343,7 +339,7 @@ void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 {
     _main_stack_holder->RunMainStack(
-            [this, aScript]()
+            [=]()
             {
                 const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
                                                     aScript.ToStdString() );
@@ -357,7 +353,7 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
 {
     _main_stack_holder->RunMainStack(
-            [&]()
+            [=, &evt]()
             {
                 OnScriptMessage( evt );
             } );
