@@ -47,10 +47,11 @@
 #include <settings/get_webview_chat_path.h>
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
+#include <main_stack_holder.h>
 
 template <class Derived, class ContextT>
 
-class COPILOT_PANEL_CONTAINER
+class COPILOT_PANEL_CONTAINER : public MAIN_STACK_HOLDER
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :

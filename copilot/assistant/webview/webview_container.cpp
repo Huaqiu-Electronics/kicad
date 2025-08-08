@@ -291,4 +291,5 @@ void WEBVIEW_CONTAINER::OnScriptMessageWrapper( wxWebViewEvent& evt )
             {
                 OnScriptMessage( evt );
             } );
+            
 }
