@@ -24,7 +24,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "tool/tool_event.h"
 #include <core/kicad_algo.h>
 #include <optional>
 #include <map>
@@ -711,11 +710,6 @@ void TOOL_MANAGER::RunMainStack( TOOL_BASE* aTool, std::function<void()> aFunc )
 {
     TOOL_STATE* st = m_toolState[aTool];
     setActiveState( st );
-
-    if(!st->cofunc){
-                    st->cofunc = new COROUTINE<int, const TOOL_EVENT&>( std::move( []( TOOL_EVENT const& ) { return 0;} ) );
-    }
-
     wxCHECK( st->cofunc, /* void */ );
     st->cofunc->RunMainStack( std::move( aFunc ) );
 }
