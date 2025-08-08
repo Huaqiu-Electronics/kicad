@@ -47,7 +47,7 @@
 #include <settings/get_webview_chat_path.h>
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
-#include <main_stack_holder.h>
+#include <common/main_stack_holder.h>
 
 template <class Derived, class ContextT>
 

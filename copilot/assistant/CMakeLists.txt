@@ -9,6 +9,7 @@ add_library(assistant SHARED
     common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp
+    common/main_stack_holder.cpp
 
     http/http_client.cpp
 
