@@ -41,7 +41,7 @@ DIALOG_NOTE::DIALOG_NOTE( wxWindow* aParent ) :
     //LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_path() );
     Bind(wxEVT_CLOSE_WINDOW, &DIALOG_NOTE::OnClose, this);
 
-    visible = true;
+    m_visible = true;
 }
 
 DIALOG_NOTE::~DIALOG_NOTE()
@@ -52,5 +52,5 @@ DIALOG_NOTE::~DIALOG_NOTE()
 void DIALOG_NOTE::OnClose(wxCloseEvent& event)
 {
     Show(false);
-    visible = false;
+    m_visible = false;
 }

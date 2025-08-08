@@ -38,8 +38,17 @@ public:
 public:
     void OnClose(wxCloseEvent& event);
 
+    void SetVisible(bool value)
+    {
+        m_visible = value;
+    }
+    bool GetVisible() const
+    {
+        return m_visible;
+    }
+
 public:
-    bool visible;
+    bool m_visible;
 
 };
 
