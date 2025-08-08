@@ -64,9 +64,9 @@ public:
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );
 
-    void OnScriptMessageWrapper( wxWebViewEvent& evt );
-
     virtual void OnScriptMessage( wxWebViewEvent& evt );
+
+    virtual void HandleScriptMessage( std::string const& aMessage );
 
     virtual void OnScriptResult( wxWebViewEvent& evt );
 
