@@ -144,7 +144,10 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     WEBVIEW_EVT_FILTER::Get().AddPanel( this );
 #endif
 
-    WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
+    if( !dynamic_cast<wxDialog*>( parent ) )
+    {
+        WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
+    }
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -153,6 +156,7 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
 #endif
 
+    //   This is safe
     WEBVIEW_TOKEN_CONTROLLER::Get().RemoveWebviewContainer( this );
 }
 
@@ -160,7 +164,7 @@ void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
 {
     const auto js_call =
             fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::fire_host_active_cmd ), cmd );
-    RunScriptAsync( js_call );
+    RunScriptAsync( std::move( js_call ) );
 }
 
 
@@ -228,23 +232,7 @@ void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
 {
-#define WX_ERROR_CASE( type )                                                                                          \
-    case type: category = #type; break;
-
-    wxString category;
-    switch( evt.GetInt() )
-    {
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_CONNECTION );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_CERTIFICATE );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_AUTH );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_SECURITY );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_NOT_FOUND );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_REQUEST );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_USER_CANCELLED );
-        WX_ERROR_CASE( wxWEBVIEW_NAV_ERR_OTHER );
-    }
-
-    wxLogDebug( "%s", "Error; url='" + evt.GetURL() + "', error='" + category + " (" + evt.GetString() + ")'" );
+    WXUNUSED( evt );
 }
 
 
@@ -265,9 +253,7 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 {
     const auto js_script =
             fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}", aScript.ToStdString() );
-    wxString out;
-    _impl->_browser->RunScriptAsync( js_script, &out );
-    wxLogDebug( "ExecuteCommand (wrapped): %s", out );
+    _impl->_browser->RunScriptAsync( std::move( js_script ) );
 }
 
 
