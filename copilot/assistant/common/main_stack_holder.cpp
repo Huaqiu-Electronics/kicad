@@ -32,7 +32,7 @@ MAIN_STACK_HOLDER::~MAIN_STACK_HOLDER()
 {
 }
 
-void MAIN_STACK_HOLDER::RunMainStack( std::function<void()> aFunc )
+void MAIN_STACK_HOLDER::EnsureMainstackForWebKit( std::function<void()> aFunc )
 {
     aFunc();
 }

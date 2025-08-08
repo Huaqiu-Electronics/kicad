@@ -259,13 +259,6 @@ public:
         self()->GetToolManager()->RunAction( ACTIONS::paste );
     }
 
-    template <class TOOL_T>
-    void RunMainStack( std::function<void()> aFunc )
-    {
-        self()->GetToolManager()->template GetTool<TOOL_T>()->RunMainStack( aFunc );
-    }
-
-
 protected:
     ContextT                   m_copilotContextCache;
     COPILOT_WEBVIEW_CONTAINER* m_copilotPanel{};

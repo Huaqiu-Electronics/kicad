@@ -924,7 +924,7 @@ public:
 
     friend PCB_COPILOT_PANEL_CONTAINER;
 
-    void RunMainStack( std::function<void()> aFunc ) override;
+    void EnsureMainstackForWebKit( std::function<void()> aFunc ) override;
 
 private:
     friend FAB_INFO_GETTER_PCB;
