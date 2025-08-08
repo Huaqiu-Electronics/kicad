@@ -26,22 +26,15 @@
 #define MAIN_STACK_HOLDER_H
 
 #include <functional>
-#include <iostream>
-#include <copilot_global.h>
-
-
-class COPILOT_API MAIN_STACK_HOLDER
+class MAIN_STACK_HOLDER
 {
 public:
     virtual ~MAIN_STACK_HOLDER() = default;
 
     virtual void RunMainStack( std::function<void()> ) {}
 
-    void fool() { std::cout << "fool" << std::endl; }
-
 
 private:
-    int _fool{};
 };
 
 #endif
