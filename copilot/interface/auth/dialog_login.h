@@ -28,6 +28,12 @@
 #include "dialog_login_native.h"
 #include "dialog_login_webview.h"
 
+#if defined( __WXOSX_MAC__ )
+
+using DIALOG_LOGIN = DIALOG_LOGIN_NATIVE;
+
+#endif // __WXOSX_MAC__
+
 using DIALOG_LOGIN = DIALOG_LOGIN_WEBVIEW;
 
 

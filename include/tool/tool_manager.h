@@ -428,9 +428,6 @@ public:
         return FindTool( GetCurrentToolId() );
     }
 
-    // Get the running TOOL , null if none
-    TOOL_BASE* GetRunningTool() const;
-
     /**
      * Return the #TOOL_STATE object representing the state of the active tool. If there are no
      * tools active, it returns nullptr.

@@ -48,14 +48,12 @@
 #include <settings/get_webview_chat_path.h>
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
-#include <common/main_stack_holder.h>
-#include <tool/tool_interactive.h>
 #include <tool/tool_manager.h>
 
 
 template <class Derived, class ContextT>
 
-class COPILOT_PANEL_CONTAINER : public MAIN_STACK_HOLDER
+class COPILOT_PANEL_CONTAINER
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
@@ -245,12 +243,8 @@ public:
 
     void SetHasSelection( bool aHasSelection )
     {
-        self()->CallAfter(
-                [=, this]()
-                {
-                    if( m_copilotPanel )
-                        m_copilotPanel->OnHostSelectionChanged( aHasSelection );
-                } );
+        if( m_copilotPanel )
+            m_copilotPanel->OnHostSelectionChanged( aHasSelection );
     }
 
     std::string GetJsonifySelection() const { return ( nlohmann::json() ).dump(); }
@@ -262,17 +256,6 @@ public:
         self()->GetToolManager()->RunAction( ACTIONS::paste );
     }
 
-    void EnsureMainstackForWebKit( std::function<void()> aFunc ) override
-    {
-        if( auto interactive = dynamic_cast<TOOL_INTERACTIVE*>( self()->GetToolManager()->GetRunningTool() ) )
-        {
-            interactive->RunMainStack( aFunc );
-        }
-        else
-        {
-            return aFunc();
-        }
-    }
 
 protected:
     ContextT                   m_copilotContextCache;

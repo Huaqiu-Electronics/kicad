@@ -1249,18 +1249,3 @@ void TOOL_MANAGER::UpdateUI( const TOOL_EVENT& aEvent )
     if( frame )
         frame->UpdateStatusBar();
 }
-
-TOOL_BASE* TOOL_MANAGER::GetRunningTool() const
-{
-    for( const auto& tid : m_activeTools )
-    {
-        const auto& st = m_toolIdIndex.at( tid );
-
-        if( st->cofunc && st->cofunc->Running() )
-        {
-            return st->theTool;
-        }
-    }
-
-    return nullptr;
-}
