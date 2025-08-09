@@ -42,7 +42,6 @@ class DIALOG_WEBVIEW;
 struct WEBVIEW_CONTAINER_IMPL;
 class wxWebView;
 
-class MAIN_STACK_HOLDER;
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
@@ -84,7 +83,6 @@ protected:
 
 private:
     std::unique_ptr<WEBVIEW_CONTAINER_IMPL> _impl;
-    MAIN_STACK_HOLDER*                      _main_stack_holder;
 };
 
 #endif

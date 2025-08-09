@@ -70,27 +70,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
-    _main_stack_holder = ([=] () mutable -> MAIN_STACK_HOLDER* {
 
-        MAIN_STACK_HOLDER* holder {};
-
-        while (!holder){
-
-            holder = dynamic_cast<MAIN_STACK_HOLDER*>(parent);
-
-            if( holder )
-                return holder;
-
-            if(parent)
-                parent = parent->GetParent();
-
-            if(!parent)
-                break;
-        }        
-
-        throw new std::runtime_error( "main stack holder not found" ) ;
-
-    })();
 
 
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
@@ -112,10 +92,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     }
 
     SetSizer( top_sizer );
-    //Set a more sensible size for web browsing
     SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
 
-    // Connect the webview events
     Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_LOADED, &WEBVIEW_CONTAINER::OnDocumentLoaded, this, _impl->_browser->GetId() );
@@ -144,10 +122,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     WEBVIEW_EVT_FILTER::Get().AddPanel( this );
 #endif
 
-    if( !dynamic_cast<wxDialog*>( parent ) )
-    {
-        WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
-    }
+    WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -156,7 +131,6 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
 #endif
 
-    //   This is safe
     WEBVIEW_TOKEN_CONTROLLER::Get().RemoveWebviewContainer( this );
 }
 
