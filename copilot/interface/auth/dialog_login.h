@@ -32,9 +32,11 @@
 
 using DIALOG_LOGIN = DIALOG_LOGIN_NATIVE;
 
-#endif // __WXOSX_MAC__
+#else
 
 using DIALOG_LOGIN = DIALOG_LOGIN_WEBVIEW;
+
+#endif // __WXOSX_MAC__
 
 
 #endif
