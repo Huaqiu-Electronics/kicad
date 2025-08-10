@@ -3,7 +3,6 @@ add_library(assistant SHARED
     auth/dialog_login_base.cpp
     auth/dialog_login_native.cpp
     auth/dialog_login_webview.cpp
-    auth/dialog_note.cpp
     auth/panel_login_base.cpp
     auth/panel_login.cpp
 

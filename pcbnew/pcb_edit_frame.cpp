@@ -119,7 +119,6 @@
 #include <footprint_chooser_frame.h>
 
 #include "fab/fab_info_getter_pcb.h"
-//#include "fab/fab_frame_note_pcb.h"
 #include <pcb_copilot_pch.h>
 
 #ifdef KICAD_IPC_API
@@ -582,11 +581,6 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     DragAcceptFiles( true );
 
     Bind( EDA_EVT_CLOSE_DIALOG_BOOK_REPORTER, &PCB_EDIT_FRAME::onCloseModelessBookReporterDialogs, this );
-
-
-
-    
-    CreateNoteButton();
 }
 
 
