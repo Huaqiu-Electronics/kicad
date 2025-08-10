@@ -28,8 +28,6 @@
 #include <wx/anybutton.h>
 #include <widgets/bitmap_button.h>
 #include <auth/dialog_note.h>
-#include <wx/frame.h>
-#include <bitmaps.h>
 
 template <class EditorT>
 class FAB_FRAME_NOTE
