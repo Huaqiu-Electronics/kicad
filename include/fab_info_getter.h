@@ -69,8 +69,8 @@ public:
         auto aToolBar = self()->m_mainToolBar;
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
-        auto placeOrderMenu =
-                std::make_unique<ACTION_MENU>( false, self()->GetToolManager()->GetTool<SELECTION_TOOL>() );
+        auto selection_tool = self()->GetToolManager()->template GetTool<SELECTION_TOOL>();
+        auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, selection_tool );
         placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
