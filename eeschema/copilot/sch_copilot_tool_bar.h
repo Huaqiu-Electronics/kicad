@@ -28,9 +28,8 @@
 #include <sch_edit_frame.h>
 
 template <>
-void SCH_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar( bool aAddSplitter )
+void SCH_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
 {
-    WXUNUSED(aAddSplitter );
     self()->m_mainToolBar->Add( ACTIONS::toggleCopilotPanel );
 }
 
