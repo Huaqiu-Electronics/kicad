@@ -37,7 +37,7 @@
 
 
 class DIALOG_WEBVIEW;
-template <class EDITOR_T, class TOOL_T>
+template <class EDITOR_T>
 class FAB_INFO_GETTER
 {
 public:
@@ -63,13 +63,12 @@ public:
 
     void ToggleHQPersonalCenter() {}
 
-    void RecreateFabToolBar()
+    void RecreateFabToolBar( TOOL_INTERACTIVE* tool )
     {
         auto aToolBar = self()->m_mainToolBar;
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
-        auto selection_tool = self()->GetToolManager()->template GetTool<TOOL_T>();
-        auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, dynamic_cast<TOOL_INTERACTIVE*>( selection_tool ) );
+        auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, tool );
         placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
