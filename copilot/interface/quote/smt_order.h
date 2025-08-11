@@ -33,13 +33,14 @@ struct SMT_ORDER
     std::string bom_file_path;
     std::string coord_file_name;
     std::string coord_file_path;
-    std::string is_plug;
-    std::string number;
-    std::string patch_pad_number;
     std::string pcb_ban_height;
     std::string pcb_ban_width;
-    std::string plug_number;
-    std::string single_or_double_technique;
+
+    std::string is_plug = "1";
+    std::string number = "5";
+    std::string patch_pad_number = "1133";
+    std::string plug_number = "64";
+    std::string single_or_double_technique = "1";
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( SMT_ORDER, bom_file_name, bom_file_path, coord_file_name, coord_file_path, is_plug,
                                     number, patch_pad_number, pcb_ban_height, pcb_ban_width, plug_number,
                                     single_or_double_technique )
