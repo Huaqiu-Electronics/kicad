@@ -30,6 +30,18 @@
 #include "tools/pcb_control.h"
 
 
+int PCB_CONTROL::TriggerPlaceOrderMenu( const TOOL_EVENT& aEvent )
+{
+    PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
+
+    if( !editFrame )
+        return 1;
+
+    editFrame->TriggerPlaceOrderMenu();
+    return 0;
+}
+
+
 int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
 {
     PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
