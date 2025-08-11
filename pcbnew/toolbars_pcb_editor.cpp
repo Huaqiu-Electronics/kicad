@@ -63,6 +63,7 @@
 #include <wx/combobox.h>
 #include <toolbars_pcb_editor.h>
 #include <settings/settings_manager.h>
+#include "copilot/pcb_copilot_tool_bar.h"
 
 #include "../scripting/python_scripting.h"
 
