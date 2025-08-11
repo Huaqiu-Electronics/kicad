@@ -26,6 +26,7 @@
 #define FAB_INFO_GETTER_H
 
 
+#include <optional>
 #include <vector>
 #include <tool/action_toolbar.h>
 #include <tool/actions.h>
@@ -34,7 +35,12 @@
 #include <fab/fab_pcb_specifications.h>
 #include <fab/fab_bom.h>
 #include <fab/fab_footprint_position.h>
+#include <memory>
+#include <wx/string.h>
 
+
+struct PCB_ORDER;
+struct SMT_ORDER;
 
 class DIALOG_WEBVIEW;
 template <class EDITOR_T>
@@ -82,6 +88,12 @@ public:
         evt.SetToolId( ACTIONS::placeOrderMenu.GetUIId() );
         aToolBar->ProcessCommand( evt );
     }
+
+    std::optional<wxString> GetPCBFileZip() { return {}; }
+
+    std::unique_ptr<PCB_ORDER> GetPCB_ORDER() { return {}; }
+
+    std::unique_ptr<SMT_ORDER> GetSTM_ORDER() { return {}; }
 };
 
 

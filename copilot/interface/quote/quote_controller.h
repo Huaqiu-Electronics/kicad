@@ -29,6 +29,7 @@
 #include <memory>
 #include <optional>
 #include "pcb_quote_response.h"
+#include "pcb_smt_quote_response.h"
 namespace httplib
 {
 class SSLClient;
@@ -36,6 +37,15 @@ class SSLClient;
 
 
 struct PCB_ORDER;
+struct PCB_SMT_ORDER;
+
+struct PCB_SMT_QUOTE_FILE_PATHS
+{
+    std::string pcb_file_path;
+    std::string bom_file_path;
+    std::string coord_file_path;
+};
+
 class COPILOT_API QUOTE_CONTROLLER
 {
 public:
@@ -44,6 +54,9 @@ public:
     ~QUOTE_CONTROLLER();
 
     std::optional<PCB_QUOTE_RESPONSE> pcb_quote( PCB_ORDER const& form, std::string const& attachment_file_path );
+
+    std::optional<PCB_SMT_QUOTE_RESPONSE> pcb_smt_quote( PCB_SMT_ORDER const&            form,
+                                                         PCB_SMT_QUOTE_FILE_PATHS const& file_paths );
 
 
 private:
