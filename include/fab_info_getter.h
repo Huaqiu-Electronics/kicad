@@ -30,6 +30,7 @@
 #include <tool/action_toolbar.h>
 #include <tool/actions.h>
 #include <tool/action_menu.h>
+#include <tool/selection_tool.h>
 
 #include <fab/fab_pcb_specifications.h>
 #include <fab/fab_bom.h>
@@ -68,7 +69,8 @@ public:
         auto aToolBar = self()->m_mainToolBar;
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
-        auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, nullptr );
+        auto placeOrderMenu =
+                std::make_unique<ACTION_MENU>( false, self()->GetToolManager()->GetTool<SELECTION_TOOL>() );
         placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
@@ -81,7 +83,7 @@ public:
         wxAuiToolBarEvent evt;
         evt.SetEventType( wxEVT_AUITOOLBAR_RIGHT_CLICK );
         evt.SetToolId( ACTIONS::placeOrderMenu.GetUIId() );
-        aToolBar->HandleWindowEvent( evt );
+        aToolBar->ProcessCommand( evt );
     }
 };
 
