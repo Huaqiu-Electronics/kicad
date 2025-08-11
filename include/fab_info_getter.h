@@ -30,7 +30,6 @@
 #include <tool/action_toolbar.h>
 #include <tool/actions.h>
 #include <tool/action_menu.h>
-#include <tool/selection_tool.h>
 
 #include <fab/fab_pcb_specifications.h>
 #include <fab/fab_bom.h>
@@ -38,12 +37,12 @@
 
 
 class DIALOG_WEBVIEW;
-template <class EditorT>
+template <class EDITOR_T, class TOOL_T>
 class FAB_INFO_GETTER
 {
 public:
-    auto self() { return static_cast<EditorT*>( this ); }
-    auto self() const { return static_cast<const EditorT*>( this ); }
+    auto self() { return static_cast<EDITOR_T*>( this ); }
+    auto self() const { return static_cast<const EDITOR_T*>( this ); }
 
     // For PCB query price
     FAB_PCB_SPECIFICATIONS GetPCBSpecifications() { return {}; }
@@ -69,7 +68,7 @@ public:
         auto aToolBar = self()->m_mainToolBar;
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
-        auto selection_tool = self()->GetToolManager()->template GetTool<SELECTION_TOOL>();
+        auto selection_tool = self()->GetToolManager()->template GetTool<TOOL_T>();
         auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, selection_tool );
         placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
