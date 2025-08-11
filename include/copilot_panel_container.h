@@ -112,12 +112,15 @@ public:
             m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ) );
     }
 
-    void RecreateCopilotToolBar()
+    void RecreateCopilotToolBar( bool aAddSeparator = true )
     {
         if( m_copilotPanel )
         {
             auto aToolBar = self()->m_mainToolBar;
-            aToolBar->AddScaledSeparator( self() );
+
+            if( aAddSeparator )
+                aToolBar->AddScaledSeparator( self() );
+
             aToolBar->Add( ACTIONS::toggleCopilotPanel );
         }
     }

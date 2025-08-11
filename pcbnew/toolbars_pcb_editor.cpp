@@ -200,7 +200,7 @@ void PCB_EDIT_FRAME::ReCreateHToolbar()
     m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
 
     RecreateFabToolBar( m_toolManager->GetTool<PCB_SELECTION_TOOL>() );
-    RecreateCopilotToolBar();
+    RecreateCopilotToolBar( false );
 
     // Add SWIG and API plugins
     bool scriptingAvailable = SCRIPTING::IsWxAvailable();
