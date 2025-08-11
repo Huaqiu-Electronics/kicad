@@ -69,10 +69,9 @@ public:
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
         auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, tool );
-        placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
+        placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
-        aToolBar->AddScaledSeparator( self() );
     }
 
     void TriggerPlaceOrderMenu()
