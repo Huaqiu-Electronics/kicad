@@ -3011,8 +3011,11 @@ void PCB_CONTROL::setTransitions()
     
     // FAB
     Go( &PCB_CONTROL::TriggerPlaceOrderMenu,         ACTIONS::placeOrderMenu.MakeEvent() );
+
     Go( &PCB_CONTROL::PlaceOrderForPCB,         ACTIONS::placeOrderForPCB.MakeEvent() );
+
     Go( &PCB_CONTROL::PlaceOrderForAll,         ACTIONS::placeOrderForAll.MakeEvent() );
+    
     Go( &PCB_CONTROL::ToggleHQPersonalCenter,    ACTIONS::toggleHQPersonalCenter.MakeEvent() );       
 }
 // clang-format on
