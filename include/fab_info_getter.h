@@ -69,7 +69,7 @@ public:
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
         auto selection_tool = self()->GetToolManager()->template GetTool<TOOL_T>();
-        auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, selection_tool );
+        auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, dynamic_cast<TOOL_INTERACTIVE*>( selection_tool ) );
         placeOrderMenu->Add( ACTIONS::placeOrderForAll );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
