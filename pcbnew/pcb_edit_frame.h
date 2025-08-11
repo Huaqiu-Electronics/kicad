@@ -29,8 +29,8 @@
 #include <context/copilot_global_context_handle.h>
 #include <passive_action/agent/agent_action_handle.h>
 #include <context/pcb/pcb_copilot_global_context.h>
-#include <fab_info_getter.h>
 #include "tools/pcb_selection.h"
+#include <fab_info_getter.h>
 #include <copilot_panel_container.h>
 namespace copilot
 {

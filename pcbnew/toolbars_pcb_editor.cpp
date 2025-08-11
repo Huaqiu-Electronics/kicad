@@ -35,6 +35,9 @@
 #include <kiface_base.h>
 #include <kiplatform/ui.h>
 #include <macros.h>
+
+#include "tools/pcb_selection.h"
+
 #include <pcb_edit_frame.h>
 #include <pcb_layer_box_selector.h>
 #include <pcbnew_id.h>
