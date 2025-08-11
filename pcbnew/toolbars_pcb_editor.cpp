@@ -57,6 +57,7 @@
 #include <widgets/wx_aui_utils.h>
 #include <wx/wupdlock.h>
 #include <wx/combobox.h>
+#include "copilot/pcb_copilot_tool_bar.h"
 
 #include "../scripting/python_scripting.h"
 
