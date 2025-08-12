@@ -30,6 +30,7 @@
 #include <settings/webview_settings_manager.h>
 #include <wx/msgdlg.h>
 #include <quote/pcb_smt_order.h>
+#include <quote/pcb_smt_quote_response.h>
 
 using httplib::SSLClient;
 using nlohmann::json;

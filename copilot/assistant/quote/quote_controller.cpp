@@ -27,7 +27,15 @@
 
 using httplib::Client;
 using httplib::SSLClient;
-QUOTE_CONTROLLER::QUOTE_CONTROLLER() : _client( std::make_unique<Client>( "www.fdatasheets.com" ) )
+
+QUOTE_CONTROLLER::QUOTE_CONTROLLER() :
+#if !defined( IS_RC_BUILD )
+        _client( std::make_unique<QuoteClient>( "www.eda.cn", 443 ) )
+#else
+        _client( std::make_unique<QuoteClient>( "www.fdatasheets.com" ) )
+#endif
+
+
 {
 }
 
