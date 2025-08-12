@@ -32,7 +32,7 @@
 #include "pcb_smt_quote_response.h"
 namespace httplib
 {
-class SSLClient;
+class Client;
 }
 
 
@@ -55,12 +55,12 @@ public:
 
     std::optional<PCB_QUOTE_RESPONSE> pcb_quote( PCB_ORDER const& form, std::string const& attachment_file_path );
 
-    std::optional<PCB_SMT_QUOTE_RESPONSE> pcb_smt_quote( PCB_SMT_ORDER const&            form,
+    std::optional<std::string> pcb_smt_quote( PCB_SMT_ORDER const&            form,
                                                          PCB_SMT_QUOTE_FILE_PATHS const& file_paths );
 
 
 private:
-    std::unique_ptr<httplib::SSLClient> _client;
+    std::unique_ptr<httplib::Client> _client;
 };
 
 #endif

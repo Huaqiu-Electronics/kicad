@@ -25,8 +25,9 @@
 #include <quote/quote_controller.h>
 #include <utils/httplib_wrapper.h>
 
+using httplib::Client;
 using httplib::SSLClient;
-QUOTE_CONTROLLER::QUOTE_CONTROLLER() : _client( std::make_unique<SSLClient>( "www.eda.cn", 443 ) )
+QUOTE_CONTROLLER::QUOTE_CONTROLLER() : _client( std::make_unique<Client>( "www.fdatasheets.com" ) )
 {
 }
 
