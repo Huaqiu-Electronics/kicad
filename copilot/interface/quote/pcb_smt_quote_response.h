@@ -26,10 +26,18 @@
 #define PCB_SMT_QUOTE_RESPONSE_H
 
 #include <string>
+#include <nlohmann/json.hpp>
 
 struct PCB_SMT_QUOTE_RESPONSE
 {
-    std::string url;
+    struct RESULT
+    {
+        std::string url;
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE( RESULT, url )
+    };
+
+    RESULT result;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_SMT_QUOTE_RESPONSE, result )
 };
 
 #endif

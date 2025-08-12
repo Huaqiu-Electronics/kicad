@@ -149,14 +149,14 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForAll()
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb, *smt }, paths );
 
-    if( !rsp.has_value() || rsp->url.empty() )
+    if( !rsp.has_value() || rsp->empty() )
     {
         wxMessageBox( _( "Failed to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
         return;
     }
 
     LaunchPlaceOrderUrl(
-            fmt::format( "{}&token={}", rsp->url, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+            fmt::format( "{}&token={}", *rsp, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
 }
 
 #endif

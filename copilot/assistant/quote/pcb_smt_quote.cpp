@@ -22,17 +22,66 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include <exception>
 #include <quote/quote_controller.h>
 #include <utils/httplib_wrapper.h>
 #include <quote/pcb_order.h>
 #include <nlohmann/json.hpp>
 #include <settings/webview_settings_manager.h>
+#include <wx/msgdlg.h>
+#include <quote/pcb_smt_order.h>
 
 using httplib::SSLClient;
 using nlohmann::json;
 
-std::optional<PCB_SMT_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_smt_quote( PCB_SMT_ORDER const&            form,
-                                                                       PCB_SMT_QUOTE_FILE_PATHS const& file_paths )
+
+inline auto add_file_form( std::string const& attachment_file_path, httplib::MultipartFormDataItems& items,
+                           std::string const& field_name )
 {
+    // Attach file if path is not empty
+    if( !attachment_file_path.empty() )
+    {
+        std::ifstream file( attachment_file_path, std::ios::binary );
+
+        if( file )
+        {
+            std::string file_content( ( std::istreambuf_iterator<char>( file ) ), std::istreambuf_iterator<char>() );
+            std::string filename = attachment_file_path.substr( attachment_file_path.find_last_of( "/\\" ) + 1 );
+            items.push_back(
+                    { field_name, file_content, filename,
+                      attachment_file_path.ends_with( ".zip" ) ? "application/zip" : "application/octet-stream" } );
+        }
+    }
+}
+std::optional<std::string> QUOTE_CONTROLLER::pcb_smt_quote( PCB_SMT_ORDER const&            form,
+                                                            PCB_SMT_QUOTE_FILE_PATHS const& file_paths )
+{
+    // Prepare multipart form data
+    httplib::MultipartFormDataItems items;
+    httplib::Headers                headers;
+    headers.insert(
+            std::make_pair( "authorization", WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+
+    add_file_form( file_paths.pcb_file_path, items, "pcbFile" );
+    add_file_form( file_paths.coord_file_path, items, "coordFile" );
+    add_file_form( file_paths.bom_file_path, items, "bomFile" );
+    items.push_back( { "reqParseVO", json( form ).dump() } );
+
+
+    auto res = _client->Post( "/openapi/pcba/saveDfmTmpOrder", headers, items );
+
+    if( res && res->status == 200 )
+    {
+        try
+        {
+            return nlohmann::json::parse( res->body ).get<PCB_SMT_QUOTE_RESPONSE>().result.url;
+        }
+
+        catch( std::exception& e )
+        {
+            wxMessageBox( wxString::FromUTF8( e.what() ) );
+        }
+    }
+
     return {};
 }
