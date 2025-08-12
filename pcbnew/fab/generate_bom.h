@@ -93,9 +93,8 @@ std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM()
     }
 
     // Print list. Also delete temporary created objects.
-    for( size_t ii = list.size(); ii > 0; ii-- )
+    for( auto& curEntry : list )
     {
-        BOM_ENTRY* curEntry = *list.begin();
         // TODO : Add MPN
 
         items.push_back( {

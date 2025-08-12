@@ -42,6 +42,7 @@
 #include <wx/stdpaths.h>
 #include <wx/utils.h>
 #include <utils/copilot_zip_utils.h>
+#include <utils/wstring_to_string.h>
 
 
 template <>
@@ -62,6 +63,16 @@ std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER();
 template <>
 std::unique_ptr<SMT_ORDER> FAB_INFO_GETTER_PCB::GetSTM_ORDER();
 
+template <>
+std::vector<FP_POSITION> FAB_INFO_GETTER_PCB::GetComponentPosition();
+
+template <>
+std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM();
+
+inline auto get_board_filename( BOARD* board )
+{
+    return ws2s( wxFileName( board->GetFileName() ).GetName().ToStdWstring() );
+}
 
 inline std::string get_pcb_thickness( int layer_count )
 {
