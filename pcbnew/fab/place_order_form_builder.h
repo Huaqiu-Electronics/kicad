@@ -49,7 +49,7 @@ std::optional<wxString> FAB_INFO_GETTER_PCB::GetPCBFileZip()
         return {};
     }
 
-    auto zipFilePath = tmpDir + ".zip";
+    auto zipFilePath = tmpDir + get_board_filename( self()->GetBoard() ) + ".zip";
 
     if( !COPILOT_ZIP_UTILS::zip( zipFilePath, tmpDir ) )
     {

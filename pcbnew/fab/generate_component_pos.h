@@ -27,14 +27,81 @@
 
 
 #include <pcb_edit_frame.h>
-#
-#include <exporters/gerber_placefile_writer.h>
+#include <exporters/place_file_exporter.h>
+#include <utils/file_path_generator.h>
+#include <fstream>
+
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+
+inline std::vector<FP_POSITION> parse_csv( const std::string& csv )
+{
+    std::vector<FP_POSITION> result;
+    std::istringstream       ss( csv );
+    std::string              line;
+
+    // Skip header line
+    std::getline( ss, line );
+
+    while( std::getline( ss, line ) )
+    {
+        if( line.empty() )
+            continue;
+
+        FP_POSITION        fp;
+        std::istringstream line_ss( line );
+        std::string        token;
+
+        auto get_field = [&]( std::string& out )
+        {
+            if( !std::getline( line_ss, token, ',' ) )
+                return false;
+            if( !token.empty() && token.front() == '"' && token.back() == '"' )
+                token = token.substr( 1, token.size() - 2 );
+            out = token;
+            return true;
+        };
+
+        auto get_double = [&]( double& out )
+        {
+            if( !std::getline( line_ss, token, ',' ) )
+                return false;
+            out = std::stod( token );
+            return true;
+        };
+
+        if( !get_field( fp.Ref ) )
+            continue;
+        if( !get_field( fp.Val ) )
+            continue;
+        if( !get_field( fp.Package ) )
+            continue;
+        if( !get_double( fp.PosX ) )
+            continue;
+        if( !get_double( fp.PosY ) )
+            continue;
+        if( !get_double( fp.Rot ) )
+            continue;
+        if( !get_field( fp.Side ) )
+            continue;
+
+        result.push_back( std::move( fp ) );
+    }
+
+    return result;
+}
+
 
 template <>
 std::vector<FP_POSITION> FAB_INFO_GETTER_PCB::GetComponentPosition()
 {
-    PLACEFILE_GERBER_WRITER writer( self()->GetBoard() );
-    return {};
+    PLACE_FILE_EXPORTER exporter( self()->GetBoard(), true, false, false, true, true, true, true, true, false );
+    auto                data = exporter.GenPositionData();
+
+    return parse_csv( data );
 }
 
 

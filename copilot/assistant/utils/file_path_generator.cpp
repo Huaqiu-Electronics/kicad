@@ -28,7 +28,6 @@
 #include <utils/generate_uuid.h>
 #include <filesystem>
 #include <wx/filename.h>
-#include <thread>
 
 FILE_PATH_GENERATOR::FILE_PATH_GENERATOR()
 {
@@ -36,26 +35,21 @@ FILE_PATH_GENERATOR::FILE_PATH_GENERATOR()
 
 FILE_PATH_GENERATOR::~FILE_PATH_GENERATOR()
 {
-    std::thread cleanup_thread(
-            [this]()
-            {
-                try
-                {
-                    for( auto& path : _tmp_paths )
-                        std::filesystem::remove_all( path );
-                }
-                catch( std::filesystem::filesystem_error& e )
-                {
-                    std::cerr << e.what() << '\n';
-                }
-                catch( ... )
-                {
-                    std::cerr << "Unknown error" << '\n';
-                }
+    try
+    {
+        for( auto& path : _tmp_paths )
+            std::filesystem::remove_all( path );
+    }
+    catch( std::filesystem::filesystem_error& e )
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch( ... )
+    {
+        std::cerr << "Unknown error" << '\n';
+    }
 
-                _tmp_paths.clear();
-            } );
-    cleanup_thread.detach();
+    _tmp_paths.clear();
 }
 
 

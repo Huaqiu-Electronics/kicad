@@ -28,6 +28,92 @@
 #include "place_order_utils.h"
 
 #include <quote/pcb_smt_order.h>
+#include <vector>
+#include <filesystem>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <utils/file_path_generator.h>
+
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+inline auto write_positions_to_csv( std::vector<FP_POSITION> const& aPositions, std::string const& aPath )
+{
+    std::ofstream ofs( aPath, std::ios::binary );
+    if( !ofs.is_open() )
+        return;
+
+    // Write UTF-8 BOM
+    const unsigned char bom[] = { 0xEF, 0xBB, 0xBF };
+    ofs.write( reinterpret_cast<const char*>( bom ), sizeof( bom ) );
+
+    // Write header
+    ofs << "Designator,Footprint,PosX,PosY,Layer,Rotation,Comment\n";
+
+    for( auto const& pos : aPositions )
+    {
+        ofs << pos.Ref << ',' << pos.Package << ',' << pos.PosX << "mm," << pos.PosY << "mm,"
+            << ( pos.Side == "top" ? "T" : "B" ) << ',' << pos.Rot << ',' << pos.Val << '\n';
+    }
+}
+
+
+inline std::string csv_escape( const std::string& field )
+{
+    bool needs_quotes = field.find_first_of( ",\"\n\r" ) != std::string::npos;
+    if( !needs_quotes )
+        return field;
+
+    std::string escaped;
+    escaped.reserve( field.size() + 2 );
+    escaped.push_back( '"' );
+    for( char c : field )
+    {
+        if( c == '"' )
+            escaped += "\"\""; // escape quotes
+        else
+            escaped.push_back( c );
+    }
+    escaped.push_back( '"' );
+    return escaped;
+}
+
+inline auto write_bom_to_csv( const std::string& aFilename, const std::vector<FAB_BOM_ITEM>& aBom )
+{
+    std::ofstream ofs( aFilename, std::ios::binary ); // binary to control BOM writing
+    if( !ofs.is_open() )
+        return;
+
+    // Write UTF-8 BOM
+    const unsigned char bom[] = { 0xEF, 0xBB, 0xBF };
+    ofs.write( reinterpret_cast<const char*>( bom ), sizeof( bom ) );
+
+    // Header
+    ofs << "序号,型号,规格参数,封装,品牌,位号,单机用量\n";
+
+    // Rows
+    for( size_t i = 0; i < aBom.size(); ++i )
+    {
+        const auto& item = aBom[i];
+
+        // Join designators
+        std::ostringstream desig_ss;
+        for( size_t j = 0; j < item.designators.size(); ++j )
+        {
+            if( j > 0 )
+                desig_ss << ",";
+            desig_ss << item.designators[j];
+        }
+
+        ofs << ( i + 1 ) << "," << csv_escape( item.mpn ) << "," << csv_escape( item.name ) << ","
+            << csv_escape( item.footprint ) << ","
+            << "" << "," // brand empty
+            << csv_escape( desig_ss.str() ) << "," << item.quantity << "\n";
+    }
+}
 
 
 template <>
@@ -43,8 +129,22 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForAll()
     auto pcb = GetPCB_ORDER();
     auto smt = GetSTM_ORDER();
 
+
+    const auto bom = GetBOM();
+    const auto positions = GetComponentPosition();
+    const auto tmp_dir = FILE_PATH_GENERATOR::get().gen_tmp_dir();
+    const auto tmp_fp_prefix =
+            ( std::filesystem::path( tmp_dir ) / ( get_board_filename( self()->GetBoard() ) ) ).string();
+
+    const auto position_fp = tmp_fp_prefix + "-positions.csv";
+    write_positions_to_csv( positions, position_fp );
+    const auto bom_fp = tmp_fp_prefix + "-bom.csv";
+    write_bom_to_csv( bom_fp, bom );
+
     PCB_SMT_QUOTE_FILE_PATHS paths;
     paths.pcb_file_path = zipFilePath->ToStdString();
+    paths.coord_file_path = position_fp;
+    paths.bom_file_path = bom_fp;
 
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb, *smt }, paths );

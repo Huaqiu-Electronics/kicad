@@ -34,7 +34,6 @@ class COPILOT_API FILE_PATH_GENERATOR
 {
     FILE_PATH_GENERATOR();
 
-
     std::vector<std::string> _tmp_paths;
 
     std::mutex _mutex;
