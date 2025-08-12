@@ -29,11 +29,19 @@
 #include <memory>
 #include <optional>
 #include "pcb_quote_response.h"
-#include "pcb_smt_quote_response.h"
+
 namespace httplib
 {
 class Client;
-}
+class SSLClient;
+} // namespace httplib
+
+
+#if !defined( IS_RC_BUILD )
+using QuoteClient = httplib::SSLClient;
+#else
+using QuoteClient = httplib::Client;
+#endif
 
 
 struct PCB_ORDER;
@@ -55,12 +63,11 @@ public:
 
     std::optional<PCB_QUOTE_RESPONSE> pcb_quote( PCB_ORDER const& form, std::string const& attachment_file_path );
 
-    std::optional<std::string> pcb_smt_quote( PCB_SMT_ORDER const&            form,
-                                                         PCB_SMT_QUOTE_FILE_PATHS const& file_paths );
+    std::optional<std::string> pcb_smt_quote( PCB_SMT_ORDER const& form, PCB_SMT_QUOTE_FILE_PATHS const& file_paths );
 
 
 private:
-    std::unique_ptr<httplib::Client> _client;
+    std::unique_ptr<QuoteClient> _client;
 };
 
 #endif
