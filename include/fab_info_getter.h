@@ -26,6 +26,7 @@
 #define FAB_INFO_GETTER_H
 
 
+#include <common/dialog_webview.h>
 #include <optional>
 #include <vector>
 #include <tool/action_toolbar.h>
@@ -37,7 +38,7 @@
 #include <fab/fab_footprint_position.h>
 #include <memory>
 #include <wx/string.h>
-
+#include <wx/utils.h>
 
 struct PCB_ORDER;
 struct SMT_ORDER;
@@ -47,18 +48,32 @@ template <class EDITOR_T>
 class FAB_INFO_GETTER
 {
 public:
+    enum PLACE_ORDER_DIALOG_SIZE
+    {
+        WIDTH = 1500,
+        HEIGHT = 900
+    };
+
     auto self() { return static_cast<EDITOR_T*>( this ); }
     auto self() const { return static_cast<const EDITOR_T*>( this ); }
 
     // For PCB query price
     FAB_PCB_SPECIFICATIONS GetPCBSpecifications() { return {}; }
 
-    bool GenerateGerberFiles( wxString const& aOutDir ) { return {}; }
+    bool GenerateGerberFiles( wxString const& aOutDir )
+    {
+        WXUNUSED( aOutDir )
+        return {};
+    }
 
-    bool GenerateDrillFile( wxString const& aOutDir ) { return {}; }
+    bool GenerateDrillFile( wxString const& aOutDir )
+    {
+        WXUNUSED( aOutDir )
+        return {};
+    }
 
     // For SMT
-    std::vector<FP_POSITION_LIST> GetComponentPosition() { return {}; }
+    std::vector<FP_POSITION> GetComponentPosition() { return {}; }
 
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
@@ -94,6 +109,21 @@ public:
     std::unique_ptr<PCB_ORDER> GetPCB_ORDER() { return {}; }
 
     std::unique_ptr<SMT_ORDER> GetSTM_ORDER() { return {}; }
+
+    void LaunchPlaceOrderUrl( std::string const& aUrl )
+    {
+#ifndef __WXOSX_MAC__
+        DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB",
+                                           wxSize( PLACE_ORDER_DIALOG_SIZE::WIDTH, PLACE_ORDER_DIALOG_SIZE::HEIGHT ) );
+
+        place_order_dialog.LoadUrl( aUrl );
+        place_order_dialog.ShowModal();
+
+#else
+        wxLaunchDefaultBrowser( aUrl );
+
+#endif // !__WXOSX_MAC__
+    }
 };
 
 

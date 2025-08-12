@@ -42,10 +42,8 @@
 #include <wx/filename.h>
 #include <wx/stdpaths.h>
 #include <wx/utils.h>
-#include <filesystem>
 #include <utils/copilot_zip_utils.h>
-#include <iomanip>
-#include <sstream>
+
 
 template <>
 void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
@@ -65,46 +63,16 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
     }
 
 
-    std::time_t now = std::time( nullptr );
-    std::string uuid_str = std::to_string( now );
+    auto zipFilePath = GetPCBFileZip();
 
-    wxString tmpDir = wxFileName::GetTempDir() + wxFileName::GetPathSeparator()
-                      + wxFileName( self()->GetBoard()->GetFileName() ).GetName() + "-" + uuid_str;
-    std::filesystem::create_directories( tmpDir.ToStdString() );
-
-    GenerateGerberFiles( tmpDir );
-    GenerateDrillFile( tmpDir );
-
-    wxString zipFilePath = tmpDir + ".zip";
-
-    if( !COPILOT_ZIP_UTILS::zip( zipFilePath.ToStdString(), tmpDir.ToStdString() ) )
+    if( !zipFilePath )
     {
         return;
     }
 
 
-    PCB_ORDER form;
-
-    auto pcb_spec = GetPCBSpecifications();
-    form.blayer = std::to_string( pcb_spec.layer_count );
-
-    std::stringstream ss;
-    ss << std::fixed << std::setprecision( 2 ) << pcb_spec.width / 10;
-    form.bwidth = ss.str();
-
-    ss.str( "" );
-    ss.clear();
-    ss << std::fixed << std::setprecision( 2 ) << pcb_spec.length / 10;
-    form.blength = ss.str();
-
-    form.bheight = get_pcb_thickness( pcb_spec.layer_count );
-
-    form.lineweight =
-            get_min_trace_clearance( std::min( pcb_spec.mini_trace_clearance, pcb_spec.mini_trace_width ) * 39.3701 );
-    form.vias = get_min_hole_size( pcb_spec.mini_hole_size );
-
     QUOTE_CONTROLLER controller;
-    auto             rsp = controller.pcb_quote( form, zipFilePath.ToStdString() );
+    auto             rsp = controller.pcb_quote( *GetPCB_ORDER(), zipFilePath->ToStdString() );
 
     if( !rsp.has_value() || rsp->id.empty() )
     {
@@ -119,8 +87,8 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
             "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&guid={}&tid={}&token={}", rsp->id,
             rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 
-    DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB", wxSize( 1500, 900 ) );
-
+    DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB",
+                                       wxSize( PLACE_ORDER_DIALOG_SIZE::WIDTH, PLACE_ORDER_DIALOG_SIZE::HEIGHT ) );
     place_order_dialog.LoadUrl( url );
     place_order_dialog.ShowModal();
 }

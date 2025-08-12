@@ -196,8 +196,8 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     root.push_back( &Schematic().Root() );
     SetCurrentSheet( root );
 
-    WebViewLibraryInit();
     CopilotPanelInit();
+    WebViewLibraryInit();
     setupTools();
     setupUIConditions();
     ReCreateMenuBar();
