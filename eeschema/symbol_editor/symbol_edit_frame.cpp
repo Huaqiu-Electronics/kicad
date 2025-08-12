@@ -290,7 +290,7 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
 
     CreateNoteButton();
-
+    MoveNoteButton();
 }
 
 

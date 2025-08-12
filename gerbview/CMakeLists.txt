@@ -114,7 +114,6 @@ target_link_libraries( gerbview
     kicommon
     nlohmann_json
     ${wxWidgets_LIBRARIES}
-    assistant
     )
 
 target_link_options( gerbview PRIVATE
@@ -161,7 +160,6 @@ target_link_libraries( gerbview_kiface
         core
         gerbview_kiface_objects
         ${wxWidgets_LIBRARIES}
-        assistant
     )
 
 if( MINGW )

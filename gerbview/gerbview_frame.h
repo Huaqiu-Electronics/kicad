@@ -29,7 +29,6 @@
 #include <gbr_layout.h>
 #include <page_info.h>
 #include <gbr_display_options.h>
-#include <fab_frame_note.h>
 
 #include <memory>
 
@@ -48,17 +47,13 @@ class SELECTION;
 class wxStaticText;
 class NL_GERBVIEW_PLUGIN;
 
-
-class GERBVIEW_FRAME;
-using FAB_FRAME_NOTE_GERB = FAB_FRAME_NOTE<GERBVIEW_FRAME>;
-
 /**
  * The main window used in GerbView.
  */
 
 #define GERBVIEW_FRAME_NAME wxT( "GerberFrame" )
 
-class GERBVIEW_FRAME : public EDA_DRAW_FRAME, public FAB_FRAME_NOTE_GERB
+class GERBVIEW_FRAME : public EDA_DRAW_FRAME
 {
 public:
     GERBVIEW_FRAME( KIWAY* aKiway, wxWindow* aParent );

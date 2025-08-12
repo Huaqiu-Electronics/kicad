@@ -38,7 +38,7 @@ public:
 
     void CreateNoteButton()
     {
-        self()->Show(true);
+        //self()->Show(true);
         wxStatusBar*  statusBar = self()->GetStatusBar();
         if(statusBar == nullptr) return;
         m_notification = new BITMAP_BUTTON(statusBar, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
@@ -49,7 +49,7 @@ public:
         m_notification->SetBitmapCentered( true );
         m_notification->Bind( wxEVT_LEFT_DOWN, &FAB_FRAME_NOTE<EditorT>::OnNaticateIconClick, self() );
 
-        MoveNoteButton();
+        //MoveNoteButton();
     }
 
     void MoveNoteButton()

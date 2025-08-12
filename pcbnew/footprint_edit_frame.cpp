@@ -361,6 +361,7 @@ BEGIN_EVENT_TABLE( FOOTPRINT_EDIT_FRAME, PCB_BASE_FRAME )
 
                 
         CreateNoteButton();
+        MoveNoteButton();
 }
 
 

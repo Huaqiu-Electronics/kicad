@@ -2382,6 +2382,9 @@ void SCH_EDIT_FRAME::onSize( wxSizeEvent& aEvent )
 
     // Skip() is called in the base class.
     EDA_DRAW_FRAME::OnSize( aEvent );
+
+    
+    MoveNoteButton();
 }
 
 
