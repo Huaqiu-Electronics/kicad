@@ -53,6 +53,15 @@ bool FAB_INFO_GETTER_PCB::GenerateDrillFile( wxString const& aOutDir );
 template <>
 bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir );
 
+template <>
+std::optional<wxString> FAB_INFO_GETTER_PCB::GetPCBFileZip();
+
+template <>
+std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER();
+
+template <>
+std::unique_ptr<SMT_ORDER> FAB_INFO_GETTER_PCB::GetSTM_ORDER();
+
 
 inline std::string get_pcb_thickness( int layer_count )
 {

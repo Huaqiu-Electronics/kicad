@@ -27,17 +27,36 @@
 
 #include "place_order_utils.h"
 
-
+#include <quote/pcb_smt_order.h>
 
 
 template <>
 void FAB_INFO_GETTER_PCB::PlaceOrderForAll()
 {
+    auto zipFilePath = GetPCBFileZip();
 
+    if( !zipFilePath )
+    {
+        return;
+    }
 
+    auto pcb = GetPCB_ORDER();
+    auto smt = GetSTM_ORDER();
 
+    PCB_SMT_QUOTE_FILE_PATHS paths;
+    paths.pcb_file_path = zipFilePath->ToStdString();
 
+    QUOTE_CONTROLLER controller;
+    auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb, *smt }, paths );
 
+    if( !rsp.has_value() || rsp->url.empty() )
+    {
+        wxMessageBox( _( "Failed to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
+        return;
+    }
+
+    LaunchPlaceOrderUrl(
+            fmt::format( "{}&token={}", rsp->url, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
 }
 
 #endif

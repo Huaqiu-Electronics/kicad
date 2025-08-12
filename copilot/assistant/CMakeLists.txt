@@ -21,6 +21,7 @@ add_library(assistant SHARED
     settings/webview_settings_manager.cpp
 
     utils/copilot_zip_utils.cpp
+    utils/file_path_generator.cpp
 
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp

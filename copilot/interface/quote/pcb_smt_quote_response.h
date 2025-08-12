@@ -29,8 +29,7 @@
 
 struct PCB_SMT_QUOTE_RESPONSE
 {
-    std::string id;
-    std::string guid;
+    std::string url;
 };
 
 #endif

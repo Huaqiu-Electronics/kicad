@@ -29,33 +29,15 @@
 #include <string>
 
 
-enum FP_SIDE
-{
-    TOP,
-    BOTTOM
-};
-
-
 struct FP_POSITION
 {
-    std::string ref;
-    std::string value;
-    std::string package;
-    double      pos_x;
-    double      pos_y;
-    double      rot;
-    FP_SIDE     side;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FP_POSITION, ref, value, package, pos_x, pos_y, rot, side )
-};
-
-
-struct FP_POSITION_LIST
-{
-    FP_SIDE                  side;
-    std::vector<FP_POSITION> positions;
-    std::string              unit = "mm";
-    std::string              angle = "deg";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FP_POSITION_LIST, side, positions, unit, angle )
+    std::string Ref;
+    std::string Val;
+    std::string Package;
+    double      PosX;
+    double      PosY;
+    double      Rot;
+    std::string Side; // top or bottom
 };
 
 
