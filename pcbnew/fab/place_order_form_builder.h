@@ -36,24 +36,27 @@ std::optional<wxString> FAB_INFO_GETTER_PCB::GetPCBFileZip()
 {
     auto tmpDir = FILE_PATH_GENERATOR::get().gen_tmp_dir();
 
+    ReportProgress( _( "Generating Gerber files" ) );
     if( !GenerateGerberFiles( tmpDir ) )
     {
-        wxMessageBox( _( "Generate gerber failed" ), _( "Place Order" ), wxOK | wxICON_ERROR );
+        ReportProgress( _( "Generate gerber failed" ) );
         return {};
     }
 
 
+    ReportProgress( _( "Generating drill files" ) );
     if( !GenerateDrillFile( tmpDir ) )
     {
-        wxMessageBox( _( "Generate drill failed" ), _( "Place Order" ), wxOK | wxICON_ERROR );
+        ReportProgress( _( "Generate drill failed" ) );
         return {};
     }
 
     auto zipFilePath = tmpDir + get_board_filename( self()->GetBoard() ) + ".zip";
 
+    ReportProgress( _( "Compression PCB files" ) );
     if( !COPILOT_ZIP_UTILS::zip( zipFilePath, tmpDir ) )
     {
-        wxMessageBox( _( "Compress PCB files failed" ), _( "Place Order" ), wxOK | wxICON_ERROR );
+        ReportProgress( _( "Compress PCB files failed" ) );
         return {};
     }
 

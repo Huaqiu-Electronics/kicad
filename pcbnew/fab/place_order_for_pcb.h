@@ -26,11 +26,10 @@
 #define PLACE_ORDER_FOR_PCB_H
 
 #include "place_order_utils.h"
-#include <settings/webview_settings_manager.h>
+#include <memory>
 #include <pcb_edit_frame.h>
 #include <board.h>
 #include <string>
-#include <common/dialog_webview.h>
 #include <wx/gdicmn.h>
 #include <wx/string.h>
 #include <auth/dialog_login.h>
@@ -46,51 +45,30 @@
 
 
 template <>
-void FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
+std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
 {
-    // Ensure user is logged in before placing order
-    if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
-    {
-        DIALOG_LOGIN login_dialog( self() );
-
-        login_dialog.ShowModal();
-
-        if( !login_dialog.Success() )
-        {
-            wxMessageBox( _( "Please login to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
-            return;
-        }
-    }
-
-
     auto zipFilePath = GetPCBFileZip();
 
     if( !zipFilePath )
     {
-        return;
+        return {};
     }
 
-
+    ReportProgress( _( "Sending Order" ) );
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_quote( *GetPCB_ORDER(), zipFilePath->ToStdString() );
 
     if( !rsp.has_value() || rsp->id.empty() )
     {
-        wxMessageBox( _( "Failed to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
-        return;
+        ReportProgress( _( "Failed to send order" ) );
+        return {};
     }
-
 
     constexpr auto kOrderFromDFM = "354";
 
-    const auto url = fmt::format(
-            "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&guid={}&tid={}&token={}", rsp->id,
-            rsp->guid, kOrderFromDFM, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
-
-    DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB",
-                                       wxSize( PLACE_ORDER_DIALOG_SIZE::WIDTH, PLACE_ORDER_DIALOG_SIZE::HEIGHT ) );
-    place_order_dialog.LoadUrl( url );
-    place_order_dialog.ShowModal();
+    return fmt::format( "https://www.hqpcb.com/mycenter/orders/pcb/quote?type=PCB&id={}&guid={}&tid={}&token={}",
+                        rsp->id, rsp->guid, kOrderFromDFM,
+                        WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 }
 
 
