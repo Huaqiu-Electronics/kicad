@@ -117,13 +117,13 @@ inline auto write_bom_to_csv( const std::string& aFilename, const std::vector<FA
 
 
 template <>
-void FAB_INFO_GETTER_PCB::PlaceOrderForAll()
+std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForAll()
 {
     auto zipFilePath = GetPCBFileZip();
 
     if( !zipFilePath )
     {
-        return;
+        return {};
     }
 
     auto pcb = GetPCB_ORDER();
@@ -146,17 +146,18 @@ void FAB_INFO_GETTER_PCB::PlaceOrderForAll()
     paths.coord_file_path = position_fp;
     paths.bom_file_path = bom_fp;
 
+
+    ReportProgress( _( "Sending Order" ) );
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb, *smt }, paths );
 
     if( !rsp.has_value() || rsp->empty() )
     {
-        wxMessageBox( _( "Failed to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
-        return;
+        ReportProgress( _( "Failed to send order" ) );
+        return {};
     }
 
-    LaunchPlaceOrderUrl(
-            fmt::format( "{}&token={}", *rsp, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token ) );
+    return fmt::format( "{}&token={}", *rsp, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 }
 
 #endif

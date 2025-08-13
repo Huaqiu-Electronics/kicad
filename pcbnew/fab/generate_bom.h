@@ -37,6 +37,8 @@
 template <>
 std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM()
 {
+    ReportProgress( _( "Generating BOM" ) );
+
     std::vector<FAB_BOM_ITEM> items;
 
     const auto board = static_cast<const PCB_EDIT_FRAME*>( this )->GetBoard();

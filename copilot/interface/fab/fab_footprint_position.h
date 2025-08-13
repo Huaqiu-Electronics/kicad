@@ -34,9 +34,9 @@ struct FP_POSITION
     std::string Ref;
     std::string Val;
     std::string Package;
-    double      PosX;
-    double      PosY;
-    double      Rot;
+    std::string PosX;
+    std::string PosY;
+    std::string Rot;
     std::string Side; // top or bottom
 };
 

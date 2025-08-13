@@ -41,6 +41,7 @@
 #include <wx/utils.h>
 #include <widgets/wx_progress_reporters.h>
 
+
 struct PCB_ORDER;
 struct SMT_ORDER;
 
@@ -53,6 +54,13 @@ public:
     {
         WIDTH = 1500,
         HEIGHT = 900
+    };
+
+
+    enum ORDER_TYPE
+    {
+        PCB,
+        ALL,
     };
 
     auto self() { return static_cast<EDITOR_T*>( this ); }
@@ -79,9 +87,11 @@ public:
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
 
-    void PlaceOrderForPCB() {}
+    std::optional<std::string> PlaceOrderForPCB() {}
 
-    void PlaceOrderForAll() {}
+    std::optional<std::string> PlaceOrderForAll() {}
+
+    void PlaceOrder( ORDER_TYPE aOrderType ) { WXUNUSED( aOrderType ) }
 
     void ToggleHQPersonalCenter() {}
 
@@ -105,16 +115,6 @@ public:
         aToolBar->ProcessCommand( evt );
     }
 
-
-    void AdvancePhase()
-    {
-        if( !m_progress_reporter )
-        {
-            return;
-        }
-
-        m_progress_reporter->AdvancePhase();
-    }
     void ReportProgress( wxString const& aMessage )
     {
         if( !m_progress_reporter )
@@ -122,7 +122,8 @@ public:
             return;
         }
 
-        m_progress_reporter->Report( aMessage );
+        m_progress_reporter->AdvancePhase( aMessage );
+        m_progress_reporter->KeepRefreshing();
     }
 
     std::optional<wxString> GetPCBFileZip() { return {}; }

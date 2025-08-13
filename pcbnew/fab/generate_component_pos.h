@@ -65,25 +65,17 @@ inline std::vector<FP_POSITION> parse_csv( const std::string& csv )
             return true;
         };
 
-        auto get_double = [&]( double& out )
-        {
-            if( !std::getline( line_ss, token, ',' ) )
-                return false;
-            out = std::stod( token );
-            return true;
-        };
-
         if( !get_field( fp.Ref ) )
             continue;
         if( !get_field( fp.Val ) )
             continue;
         if( !get_field( fp.Package ) )
             continue;
-        if( !get_double( fp.PosX ) )
+        if( !get_field( fp.PosX ) )
             continue;
-        if( !get_double( fp.PosY ) )
+        if( !get_field( fp.PosY ) )
             continue;
-        if( !get_double( fp.Rot ) )
+        if( !get_field( fp.Rot ) )
             continue;
         if( !get_field( fp.Side ) )
             continue;
@@ -98,6 +90,7 @@ inline std::vector<FP_POSITION> parse_csv( const std::string& csv )
 template <>
 std::vector<FP_POSITION> FAB_INFO_GETTER_PCB::GetComponentPosition()
 {
+    ReportProgress( _( "Generating component positions" ) );
     PLACE_FILE_EXPORTER exporter( self()->GetBoard(), true, false, false, true, true, true, true, true, false );
     auto                data = exporter.GenPositionData();
 

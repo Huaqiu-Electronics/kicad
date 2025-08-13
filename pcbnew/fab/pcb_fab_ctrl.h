@@ -25,9 +25,11 @@
 #ifndef PCB_FAB_CTRL_H
 #define PCB_FAB_CTRL_H
 
+#include "pcb_edit_frame.h"
 #include "place_order_form_builder.h"
 #include "place_order_for_pcb.h"
 #include "place_order_for_all.h"
+#include "place_order_wrapper.h"
 #include "tools/pcb_control.h"
 
 
@@ -50,7 +52,7 @@ int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
     if( !editFrame )
         return 1;
 
-    editFrame->PlaceOrderForPCB();
+    editFrame->PlaceOrder( PCB_EDIT_FRAME::ORDER_TYPE::PCB );
     return 0;
 }
 
@@ -61,7 +63,7 @@ int PCB_CONTROL::PlaceOrderForAll( const TOOL_EVENT& aEvent )
     if( !editFrame )
         return 1;
 
-    editFrame->PlaceOrderForAll();
+    editFrame->PlaceOrder( PCB_EDIT_FRAME::ORDER_TYPE::ALL );
     return 0;
 }
 
