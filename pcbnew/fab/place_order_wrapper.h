@@ -64,7 +64,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
 
     thread_pool& tp = GetKiCadThreadPool();
     auto         ret = tp.submit(
-            [&]() -> std::optional<std::string>
+            [=]() -> std::optional<std::string>
             {
                 switch( aOrderType )
                 {
