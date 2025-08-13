@@ -71,7 +71,7 @@ std::vector<FAB_BOM_ITEM> FAB_INFO_GETTER_PCB::GetBOM();
 
 inline auto get_board_filename( BOARD* board )
 {
-    return ws2s( wxFileName( board->GetFileName() ).GetName().ToStdWstring() );
+    return wxString2String( wxFileName( board->GetFileName() ).GetName() );
 }
 
 inline std::string get_pcb_thickness( int layer_count )
