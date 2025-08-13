@@ -105,6 +105,26 @@ public:
         aToolBar->ProcessCommand( evt );
     }
 
+
+    void AdvancePhase()
+    {
+        if( !m_progress_reporter )
+        {
+            return;
+        }
+
+        m_progress_reporter->AdvancePhase();
+    }
+    void ReportProgress( wxString const& aMessage )
+    {
+        if( !m_progress_reporter )
+        {
+            return;
+        }
+
+        m_progress_reporter->Report( aMessage );
+    }
+
     std::optional<wxString> GetPCBFileZip() { return {}; }
 
     std::unique_ptr<PCB_ORDER> GetPCB_ORDER() { return {}; }
