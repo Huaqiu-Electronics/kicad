@@ -429,6 +429,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_24.png" ), 24, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_24.png" ), 24, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_24.png" ), 24, wxT( "light" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_24.png" ), 24, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_24.png" ), 24, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_24.png" ), 24, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_24.png" ), 24, wxT( "light" ) );
@@ -868,6 +869,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_dark_24.png" ), 24, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_dark_24.png" ), 24, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_dark_24.png" ), 24, wxT( "dark" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_dark_24.png" ), 24, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_dark_24.png" ), 24, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_dark_24.png" ), 24, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_dark_24.png" ), 24, wxT( "dark" ) );
@@ -1307,6 +1309,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_16.png" ), 16, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_16.png" ), 16, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_16.png" ), 16, wxT( "light" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_16.png" ), 16, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_16.png" ), 16, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_16.png" ), 16, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_16.png" ), 16, wxT( "light" ) );
@@ -1746,6 +1749,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_dark_16.png" ), 16, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_dark_16.png" ), 16, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_dark_16.png" ), 16, wxT( "dark" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_dark_16.png" ), 16, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_dark_16.png" ), 16, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_dark_16.png" ), 16, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_dark_16.png" ), 16, wxT( "dark" ) );
@@ -2185,6 +2189,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_32.png" ), 32, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_32.png" ), 32, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_32.png" ), 32, wxT( "light" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_32.png" ), 32, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_32.png" ), 32, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_32.png" ), 32, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_32.png" ), 32, wxT( "light" ) );
@@ -2624,6 +2629,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_dark_32.png" ), 32, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_dark_32.png" ), 32, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_dark_32.png" ), 32, wxT( "dark" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_dark_32.png" ), 32, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_dark_32.png" ), 32, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_dark_32.png" ), 32, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_dark_32.png" ), 32, wxT( "dark" ) );
@@ -3063,6 +3069,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_48.png" ), 48, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_48.png" ), 48, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_48.png" ), 48, wxT( "light" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_48.png" ), 48, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_48.png" ), 48, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_48.png" ), 48, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_48.png" ), 48, wxT( "light" ) );
@@ -3502,6 +3509,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_dark_48.png" ), 48, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_dark_48.png" ), 48, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_dark_48.png" ), 48, wxT( "dark" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_dark_48.png" ), 48, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_dark_48.png" ), 48, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_dark_48.png" ), 48, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_dark_48.png" ), 48, wxT( "dark" ) );
@@ -3941,6 +3949,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_64.png" ), 64, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_64.png" ), 64, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_64.png" ), 64, wxT( "light" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_64.png" ), 64, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_64.png" ), 64, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_64.png" ), 64, wxT( "light" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_64.png" ), 64, wxT( "light" ) );
@@ -4380,6 +4389,7 @@ void BuildBitmapInfo( std::unordered_map<BITMAPS, std::vector<BITMAP_INFO>>& aBi
     aBitmapInfoCache[BITMAPS::bug].emplace_back( BITMAPS::bug, wxT( "bug_dark_64.png" ), 64, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::bus_definition_tool].emplace_back( BITMAPS::bus_definition_tool, wxT( "bus_definition_tool_dark_64.png" ), 64, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::cancel].emplace_back( BITMAPS::cancel, wxT( "cancel_dark_64.png" ), 64, wxT( "dark" ) );
+    aBitmapInfoCache[BITMAPS::cart].emplace_back( BITMAPS::cart, wxT( "cart_dark_64.png" ), 64, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::chamfer].emplace_back( BITMAPS::chamfer, wxT( "chamfer_dark_64.png" ), 64, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::change_entry_orient].emplace_back( BITMAPS::change_entry_orient, wxT( "change_entry_orient_dark_64.png" ), 64, wxT( "dark" ) );
     aBitmapInfoCache[BITMAPS::checked_ok].emplace_back( BITMAPS::checked_ok, wxT( "checked_ok_dark_64.png" ), 64, wxT( "dark" ) );
