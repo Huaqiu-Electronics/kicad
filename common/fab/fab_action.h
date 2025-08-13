@@ -38,21 +38,21 @@ TOOL_ACTION ACTIONS::placeOrderMenu( TOOL_ACTION_ARGS()
                                              .Scope( AS_GLOBAL )
                                              .FriendlyName( _( "Place order" ) )
                                              .Tooltip( _( "Place order" ) )
-                                             .Icon( BITMAPS::cart ) );
+                                             .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::placeOrderForPCB( TOOL_ACTION_ARGS()
                                                .Name( "common.fab.placeOrderForPCB" )
                                                .Scope( AS_GLOBAL )
                                                .FriendlyName( _( "Place pcb order" ) )
                                                .Tooltip( _( "Place order for PCB" ) )
-                                               .Icon( BITMAPS::cart ) );
+                                               .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::placeOrderForAll( TOOL_ACTION_ARGS()
                                                .Name( "common.fab.placeOrderForAll" )
                                                .Scope( AS_GLOBAL )
                                                .FriendlyName( _( "Place order for all" ) )
                                                .Tooltip( _( "Place order for PCB/SMT/BOM" ) )
-                                               .Icon( BITMAPS::cart ) );
+                                               .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::toggleHQPersonalCenter( TOOL_ACTION_ARGS()
                                                      .Name( "common.fab.HQPersonalCenter" )
