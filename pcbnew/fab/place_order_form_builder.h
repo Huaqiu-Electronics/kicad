@@ -65,6 +65,14 @@ std::optional<wxString> FAB_INFO_GETTER_PCB::GetPCBFileZip()
     return wxString( zipFilePath );
 }
 
+inline auto to_fixed_double( double aValue, int aPrecision = 2 )
+{
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision( aPrecision ) << aValue;
+    return ss.str();
+}
+
+
 template <>
 std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER()
 {
@@ -73,20 +81,22 @@ std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER()
     auto pcb_spec = GetPCBSpecifications();
     form->blayer = std::to_string( pcb_spec.layer_count );
 
-    std::stringstream ss;
-    ss << std::fixed << std::setprecision( 2 ) << pcb_spec.width / 10;
-    form->bwidth = ss.str();
+    // mm to cm
+    form->bwidth = to_fixed_double( pcb_spec.width / 10 );
+    form->blength = to_fixed_double( pcb_spec.length / 10 );
+    form->bheight = get_pcb_thickness( pcb_spec.board_thickness );
 
-    ss.str( "" );
-    ss.clear();
-    ss << std::fixed << std::setprecision( 2 ) << pcb_spec.length / 10;
-    form->blength = ss.str();
 
-    form->bheight = get_pcb_thickness( pcb_spec.layer_count );
-
-    form->lineweight =
-            get_min_trace_clearance( std::min( pcb_spec.mini_trace_clearance, pcb_spec.mini_trace_width ) * 39.3701 );
+    form->lineweight = get_min_trace_clearance( std::min( pcb_spec.mini_trace_clearance, pcb_spec.mini_trace_width )
+                                                * 39.3701 ); // mm to mil
     form->vias = get_min_hole_size( pcb_spec.mini_hole_size );
+
+    if( pcb_spec.outer_copper_thickness )
+        form->copper = get_copper_thickness( *pcb_spec.outer_copper_thickness, CopperThicknessType::OUTER );
+
+    if( pcb_spec.inner_copper_thickness )
+        form->insidecopper = get_copper_thickness( *pcb_spec.inner_copper_thickness, CopperThicknessType::INNER );
+
     return form;
 }
 
