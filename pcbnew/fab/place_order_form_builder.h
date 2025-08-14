@@ -26,6 +26,8 @@
 #define PLACE_ORDER_FORM_BUILDER_H
 
 #include "place_order_utils.h"
+#include "get_pcb_thickness.h"
+
 #include <utils/file_path_generator.h>
 #include <quote/smt_order.h>
 #include <memory>
@@ -77,14 +79,15 @@ template <>
 std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER()
 {
     auto form = std::make_unique<PCB_ORDER>();
-
     auto pcb_spec = GetPCBSpecifications();
-    form->blayer = std::to_string( pcb_spec.layer_count );
+
+    const auto layer_count = pcb_spec.layer_count;
+    form->blayer = std::to_string( layer_count );
 
     // mm to cm
     form->bwidth = to_fixed_double( pcb_spec.width / 10 );
     form->blength = to_fixed_double( pcb_spec.length / 10 );
-    form->bheight = get_pcb_thickness( pcb_spec.board_thickness );
+    form->bheight = get_pcb_thickness( layer_count, pcb_spec.board_thickness );
 
 
     form->lineweight = get_min_trace_clearance( std::min( pcb_spec.mini_trace_clearance, pcb_spec.mini_trace_width )
