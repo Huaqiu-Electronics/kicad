@@ -98,7 +98,7 @@ inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessTy
 
     for( const auto& t : available_thicknesses )
     {
-        if( oz >= t.second )
+        if( t.second >= oz )
         {
             return t.first;
         }
@@ -134,7 +134,7 @@ inline std::string get_min_trace_clearance( double aTraceWidth )
         }
     }
 
-    return available_trace_clearance[0].first;
+    return available_trace_clearance.front().first;
 }
 inline std::string get_min_hole_size( double aHoleSize )
 {
@@ -163,7 +163,7 @@ inline std::string get_min_hole_size( double aHoleSize )
         }
     }
 
-    return available_hole_size[0].first;
+    return available_hole_size.front().first;
 }
 
 
