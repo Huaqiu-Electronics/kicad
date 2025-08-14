@@ -69,7 +69,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
                 switch( aOrderType )
                 {
                 case PCB: return self()->PlaceOrderForPCB();
-                case ALL: return self()->PlaceOrderForAll();
+                case SMT: return self()->PlaceOrderForSMT();
                 }
 
                 return {};
