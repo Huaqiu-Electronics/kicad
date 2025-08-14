@@ -56,14 +56,14 @@ int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
     return 0;
 }
 
-int PCB_CONTROL::PlaceOrderForAll( const TOOL_EVENT& aEvent )
+int PCB_CONTROL::PlaceOrderForSMT( const TOOL_EVENT& aEvent )
 {
     PCB_EDIT_FRAME* editFrame = dynamic_cast<PCB_EDIT_FRAME*>( m_frame );
 
     if( !editFrame )
         return 1;
 
-    editFrame->PlaceOrder( PCB_EDIT_FRAME::ORDER_TYPE::ALL );
+    editFrame->PlaceOrder( PCB_EDIT_FRAME::ORDER_TYPE::SMT );
     return 0;
 }
 

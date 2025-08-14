@@ -3014,7 +3014,7 @@ void PCB_CONTROL::setTransitions()
 
     Go( &PCB_CONTROL::PlaceOrderForPCB,         ACTIONS::placeOrderForPCB.MakeEvent() );
 
-    Go( &PCB_CONTROL::PlaceOrderForAll,         ACTIONS::placeOrderForAll.MakeEvent() );
+    Go( &PCB_CONTROL::PlaceOrderForSMT,         ACTIONS::placeOrderForSMT.MakeEvent() );
     
     Go( &PCB_CONTROL::ToggleHQPersonalCenter,    ACTIONS::toggleHQPersonalCenter.MakeEvent() );       
 }

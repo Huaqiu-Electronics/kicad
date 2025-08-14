@@ -60,7 +60,7 @@ public:
     enum ORDER_TYPE
     {
         PCB,
-        ALL,
+        SMT,
     };
 
     auto self() { return static_cast<EDITOR_T*>( this ); }
@@ -89,7 +89,7 @@ public:
 
     std::optional<std::string> PlaceOrderForPCB() {}
 
-    std::optional<std::string> PlaceOrderForAll() {}
+    std::optional<std::string> PlaceOrderForSMT() {}
 
     void PlaceOrder( ORDER_TYPE aOrderType ) { WXUNUSED( aOrderType ) }
 
@@ -102,7 +102,7 @@ public:
         aToolBar->Add( ACTIONS::placeOrderMenu );
         auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, tool );
         placeOrderMenu->Add( ACTIONS::placeOrderForPCB );
-        placeOrderMenu->Add( ACTIONS::placeOrderForAll );
+        placeOrderMenu->Add( ACTIONS::placeOrderForSMT );
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
     }
 

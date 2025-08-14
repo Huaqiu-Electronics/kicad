@@ -43,15 +43,15 @@ TOOL_ACTION ACTIONS::placeOrderMenu( TOOL_ACTION_ARGS()
 TOOL_ACTION ACTIONS::placeOrderForPCB( TOOL_ACTION_ARGS()
                                                .Name( "common.fab.placeOrderForPCB" )
                                                .Scope( AS_GLOBAL )
-                                               .FriendlyName( _( "Place pcb order" ) )
+                                               .FriendlyName( _( "Place PCB Order" ) )
                                                .Tooltip( _( "Place order for PCB" ) )
                                                .Icon( BITMAPS::huaqiu ) );
 
-TOOL_ACTION ACTIONS::placeOrderForAll( TOOL_ACTION_ARGS()
-                                               .Name( "common.fab.placeOrderForAll" )
+TOOL_ACTION ACTIONS::placeOrderForSMT( TOOL_ACTION_ARGS()
+                                               .Name( "common.fab.placeOrderForSMT" )
                                                .Scope( AS_GLOBAL )
-                                               .FriendlyName( _( "Place order for all" ) )
-                                               .Tooltip( _( "Place order for PCB/SMT/BOM" ) )
+                                               .FriendlyName( _( " Place SMT Order" ) )
+                                               .Tooltip( _( "Place order for SMT" ) )
                                                .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::toggleHQPersonalCenter( TOOL_ACTION_ARGS()

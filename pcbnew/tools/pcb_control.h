@@ -177,7 +177,7 @@ public:
 
     int TriggerPlaceOrderMenu( const TOOL_EVENT& aEvent );
     int PlaceOrderForPCB( const TOOL_EVENT& aEvent );
-    int PlaceOrderForAll( const TOOL_EVENT& aEvent );
+    int PlaceOrderForSMT( const TOOL_EVENT& aEvent );
     int ToggleHQPersonalCenter( const TOOL_EVENT& aEvent );
 };
 

@@ -307,7 +307,7 @@ public:
     static TOOL_ACTION placeOrderMenu;
     static TOOL_ACTION toggleHQPersonalCenter;
     static TOOL_ACTION placeOrderForPCB;
-    static TOOL_ACTION placeOrderForAll;
+    static TOOL_ACTION placeOrderForSMT;
 
 
     ///< Cursor control event types

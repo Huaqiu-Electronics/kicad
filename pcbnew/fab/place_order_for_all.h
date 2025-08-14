@@ -117,7 +117,7 @@ inline auto write_bom_to_csv( const std::string& aFilename, const std::vector<FA
 
 
 template <>
-std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForAll()
+std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
 {
     auto zipFilePath = GetPCBFileZip();
 
