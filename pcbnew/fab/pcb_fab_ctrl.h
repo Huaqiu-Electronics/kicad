@@ -28,7 +28,7 @@
 #include "pcb_edit_frame.h"
 #include "place_order_form_builder.h"
 #include "place_order_for_pcb.h"
-#include "place_order_for_all.h"
+#include "place_order_for_smt.h"
 #include "place_order_wrapper.h"
 #include "tools/pcb_control.h"
 
