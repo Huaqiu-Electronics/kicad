@@ -81,20 +81,15 @@ inline std::string get_pcb_thickness( double aBrdThickness )
         { "2.0", 2.0 }, { "2.5", 2.5 }, { "3.0", 3.0 }, { "3.2", 3.2 }
     };
 
-    auto   closest = available_thicknesses.begin();
-    double min_diff = std::abs( aBrdThickness - closest->second );
-
-    for( auto it = available_thicknesses.begin(); it != available_thicknesses.end(); ++it )
+    for( const auto& thickness : available_thicknesses )
     {
-        double diff = std::abs( aBrdThickness - it->second );
-        if( diff < min_diff )
+        if( thickness.second >= aBrdThickness )
         {
-            min_diff = diff;
-            closest = it;
+            return thickness.first;
         }
     }
 
-    return closest->first;
+    return available_thicknesses.back().first;
 }
 
 enum class CopperThicknessType
@@ -119,21 +114,15 @@ inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessTy
 
     const auto oz = aBrdThickness * 1000 / 34.7;
 
-
-    auto   closest = available_thicknesses.begin();
-    double min_diff = std::abs( oz - closest->second );
-
-    for( auto it = available_thicknesses.begin(); it != available_thicknesses.end(); ++it )
+    for( const auto& t : available_thicknesses )
     {
-        double diff = std::abs( oz - it->second );
-        if( diff < min_diff )
+        if( oz >= t.second )
         {
-            min_diff = diff;
-            closest = it;
+            return t.first;
         }
     }
 
-    return closest->first;
+    return available_thicknesses.back().first;
 }
 
 inline std::string get_min_trace_clearance( double aTraceWidth )
