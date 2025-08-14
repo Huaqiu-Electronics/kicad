@@ -106,7 +106,7 @@ inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessTy
     };
 
     static const std::vector<std::pair<std::string, double>> available_outer_thicknesses = {
-        { "0.5", 0.5 }, { "1", 1.0 }, { "2", 2.0 }, { "3", 3.0 }, { "4", 4.0 }
+        { "1", 1.0 }, { "2", 2.0 }, { "3", 3.0 }, { "4", 4.0 }
     };
 
     const auto& available_thicknesses =
