@@ -87,9 +87,9 @@ public:
     // For components
     std::vector<FAB_BOM_ITEM> GetBOM() { return {}; }
 
-    std::optional<std::string> PlaceOrderForPCB() {}
+    std::optional<std::string> PlaceOrderForPCB() { return {}; }
 
-    std::optional<std::string> PlaceOrderForSMT() {}
+    std::optional<std::string> PlaceOrderForSMT() { return {}; }
 
     void PlaceOrder( ORDER_TYPE aOrderType ) { WXUNUSED( aOrderType ) }
 

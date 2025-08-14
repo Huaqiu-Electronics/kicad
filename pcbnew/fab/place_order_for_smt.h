@@ -22,8 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef PLACE_ORDER_FOR_ALL_H
-#define PLACE_ORDER_FOR_ALL_H
+#ifndef PLACE_ORDER_FOR_SMT_H
+#define PLACE_ORDER_FOR_SMT_H
 
 #include "place_order_utils.h"
 
@@ -126,11 +126,13 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
         return {};
     }
 
-    auto pcb = GetPCB_ORDER();
-    auto smt = GetSTM_ORDER();
+    const auto pcb_form = GetPCB_ORDER();
+    const auto smt_form = GetSTM_ORDER();
 
 
     const auto bom = GetBOM();
+    smt_form->bom_material_type_number = std::to_string( bom.size() );
+
     const auto positions = GetComponentPosition();
     const auto tmp_dir = FILE_PATH_GENERATOR::get().gen_tmp_dir();
     const auto tmp_fp_prefix =
@@ -149,7 +151,7 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
 
     ReportProgress( _( "Sending Order" ) );
     QUOTE_CONTROLLER controller;
-    auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb, *smt }, paths );
+    auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb_form, *smt_form }, paths );
 
     if( !rsp.has_value() || rsp->empty() )
     {
@@ -159,5 +161,6 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
 
     return fmt::format( "{}&token={}", *rsp, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
 }
+
 
 #endif
