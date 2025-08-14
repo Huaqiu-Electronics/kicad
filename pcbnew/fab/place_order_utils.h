@@ -74,24 +74,6 @@ inline auto get_board_filename( BOARD* board )
     return wxString2String( wxFileName( board->GetFileName() ).GetName() );
 }
 
-inline std::string get_pcb_thickness( double aBrdThickness )
-{
-    static const std::vector<std::pair<std::string, double>> available_thicknesses = {
-        { "0.6", 0.6 }, { "0.8", 0.8 }, { "1.0", 1.0 }, { "1.2", 1.2 }, { "1.6", 1.6 },
-        { "2.0", 2.0 }, { "2.5", 2.5 }, { "3.0", 3.0 }, { "3.2", 3.2 }
-    };
-
-    for( const auto& thickness : available_thicknesses )
-    {
-        if( thickness.second >= aBrdThickness )
-        {
-            return thickness.first;
-        }
-    }
-
-    return available_thicknesses.back().first;
-}
-
 enum class CopperThicknessType
 {
 
