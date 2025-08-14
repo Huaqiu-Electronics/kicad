@@ -34,6 +34,28 @@
 template <>
 FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
 {
+    BOARD_DESIGN_SETTINGS& dsnSettings = self()->GetDesignSettings();
+    BOARD_STACKUP&         stackup = dsnSettings.GetStackupDescriptor();
+    stackup.SynchronizeWithBoard( &dsnSettings );
+
+    double                boardThickness = stackup.BuildBoardThicknessFromStackup();
+    std::optional<double> outer_copper_thickness{}, inner_copper_thickness{};
+
+    for( const auto& layer : stackup.GetList() )
+    {
+        if( layer->GetBrdLayerId() == F_Cu || layer->GetBrdLayerId() == B_Cu )
+        {
+            outer_copper_thickness = std::max( layer->GetThickness() / pcbIUScale.IU_PER_MM,
+                                               outer_copper_thickness ? *outer_copper_thickness : 0 );
+        }
+        else if( layer->GetType() == BOARD_STACKUP_ITEM_TYPE::BS_ITEM_TYPE_COPPER )
+        {
+            inner_copper_thickness = std::max( layer->GetThickness() / pcbIUScale.IU_PER_MM,
+                                               inner_copper_thickness ? *inner_copper_thickness : 0 );
+        }
+    }
+
+
     const auto board = self()->GetBoard();
     const auto layers = board->GetCopperLayerCount();
     const auto height = board->GetBoundingBox().GetHeight();
@@ -56,12 +78,17 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
         }
     }
 
-    return { layers,
-             static_cast<double>( height ) / pcbIUScale.IU_PER_MM,
-             static_cast<double>( width ) / pcbIUScale.IU_PER_MM,
-             static_cast<double>( minTraceClearance ) / pcbIUScale.IU_PER_MM,
-             static_cast<double>( minTraceWidth ) / pcbIUScale.IU_PER_MM,
-             static_cast<double>( minHoleSize ) / pcbIUScale.IU_PER_MM };
+    return {
+        layers,
+        static_cast<double>( height ) / pcbIUScale.IU_PER_MM,
+        static_cast<double>( width ) / pcbIUScale.IU_PER_MM,
+        static_cast<double>( minTraceClearance ) / pcbIUScale.IU_PER_MM,
+        static_cast<double>( minTraceWidth ) / pcbIUScale.IU_PER_MM,
+        static_cast<double>( minHoleSize ) / pcbIUScale.IU_PER_MM,
+        static_cast<double>( boardThickness ) / pcbIUScale.IU_PER_MM,
+        inner_copper_thickness,
+        outer_copper_thickness,
+    };
 }
 
 

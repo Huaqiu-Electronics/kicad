@@ -74,51 +74,125 @@ inline auto get_board_filename( BOARD* board )
     return wxString2String( wxFileName( board->GetFileName() ).GetName() );
 }
 
-inline std::string get_pcb_thickness( int layer_count )
+inline std::string get_pcb_thickness( double aBrdThickness )
 {
-    switch( layer_count )
+    static const std::vector<std::pair<std::string, double>> available_thicknesses = {
+        { "0.6", 0.6 }, { "0.8", 0.8 }, { "1.0", 1.0 }, { "1.2", 1.2 }, { "1.6", 1.6 },
+        { "2.0", 2.0 }, { "2.5", 2.5 }, { "3.0", 3.0 }, { "3.2", 3.2 }
+    };
+
+    auto   closest = available_thicknesses.begin();
+    double min_diff = std::abs( aBrdThickness - closest->second );
+
+    for( auto it = available_thicknesses.begin(); it != available_thicknesses.end(); ++it )
     {
-    case 1:
-    case 2:
-    case 4: return "0.6";
-    case 6: return "0.8";
-    case 8: return "1.0";
-    case 10: return "1.2";
-    case 12: return "1.6";
-    case 14: return "1.6";
-    case 16: return "2.0";
-    case 18: return "2.0";
-    case 20: return "2.0";
-    default: return "1.6";
+        double diff = std::abs( aBrdThickness - it->second );
+        if( diff < min_diff )
+        {
+            min_diff = diff;
+            closest = it;
+        }
     }
+
+    return closest->first;
+}
+
+enum class CopperThicknessType
+{
+
+    INNER,
+    OUTER
+};
+
+inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessType aType )
+{
+    static const std::vector<std::pair<std::string, double>> available_inner_thicknesses = {
+        { "0.5", 0.5 }, { "1", 1.0 }, { "2", 2.0 }, { "3", 3.0 }, { "4", 4.0 }
+    };
+
+    static const std::vector<std::pair<std::string, double>> available_outer_thicknesses = {
+        { "0.5", 0.5 }, { "1", 1.0 }, { "2", 2.0 }, { "3", 3.0 }, { "4", 4.0 }
+    };
+
+    const auto& available_thicknesses =
+            aType == CopperThicknessType::INNER ? available_inner_thicknesses : available_outer_thicknesses;
+
+    const auto oz = aBrdThickness * 1000 / 34.7;
+
+
+    auto   closest = available_thicknesses.begin();
+    double min_diff = std::abs( oz - closest->second );
+
+    for( auto it = available_thicknesses.begin(); it != available_thicknesses.end(); ++it )
+    {
+        double diff = std::abs( oz - it->second );
+        if( diff < min_diff )
+        {
+            min_diff = diff;
+            closest = it;
+        }
+    }
+
+    return closest->first;
 }
 
 inline std::string get_min_trace_clearance( double aTraceWidth )
 {
-    // Corresponds to MIN_TRACE_WIDTH_CLEARANCE_CHOICE = [10, 8, 6, 5, 4, 3.5] (unit: mil)
-    // Return the first element >= aTraceWidth, else the smallest
-    static const double choices[] = { 10, 8, 6, 5, 4, 3.5 };
-    for( double v : choices )
-    {
-        if( aTraceWidth >= v )
-            return std::to_string( v );
-    }
-    // If smaller than all, return the smallest
-    return std::to_string( choices[sizeof( choices ) / sizeof( choices[0] ) - 1] );
-}
+    static const std::vector<std::pair<std::string, double>> available_trace_clearance = {
+        { "3.5", 3.5 }, { "4", 4.0 }, { "5", 5.0 }, { "6", 6.0 }, { "8", 8.0 }, { "10", 10.0 }
+    };
 
+    if( aTraceWidth <= available_trace_clearance.front().second )
+    {
+        return available_trace_clearance.front().first;
+    }
+
+    if( aTraceWidth >= available_trace_clearance.back().second )
+    {
+        return available_trace_clearance.back().first;
+    }
+
+    for( size_t i = 0; i < available_trace_clearance.size() - 1; ++i )
+    {
+        double a = available_trace_clearance[i].second;
+        double b = available_trace_clearance[i + 1].second;
+
+        if( aTraceWidth > a && aTraceWidth <= b )
+        {
+            return available_trace_clearance[i].first;
+        }
+    }
+
+    return available_trace_clearance[0].first;
+}
 inline std::string get_min_hole_size( double aHoleSize )
 {
-    // Corresponds to MIN_HOLE_SIZE_CHOICE = [0.3, 0.25, 0.2, 0.15] (unit: mm)
-    // Return the first element <= aHoleSize, else the largest
-    static const double choices[] = { 0.3, 0.25, 0.2, 0.15 };
-    for( double v : choices )
+    static const std::vector<std::pair<std::string, double>> available_hole_size = {
+        { "0.15", 0.15 }, { "0.2", 0.2 }, { "0.25", 0.25 }, { "0.3", 0.3 }
+    };
+
+    if( aHoleSize <= available_hole_size.front().second )
     {
-        if( aHoleSize >= v )
-            return std::to_string( v );
+        return available_hole_size.front().first;
     }
-    // If smaller than all, return the smallest
-    return std::to_string( choices[sizeof( choices ) / sizeof( choices[0] ) - 1] );
+
+    if( aHoleSize >= available_hole_size.back().second )
+    {
+        return available_hole_size.back().first;
+    }
+
+    for( size_t i = 0; i < available_hole_size.size() - 1; ++i )
+    {
+        double a = available_hole_size[i].second;
+        double b = available_hole_size[i + 1].second;
+
+        if( aHoleSize > a && aHoleSize <= b )
+        {
+            return available_hole_size[i].first;
+        }
+    }
+
+    return available_hole_size[0].first;
 }
 
 
