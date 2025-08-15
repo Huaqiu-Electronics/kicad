@@ -31,6 +31,7 @@
 #include <wx/msgdlg.h>
 #include <quote/pcb_smt_order.h>
 #include <quote/pcb_smt_quote_response.h>
+#include <wx/log.h>
 
 using httplib::SSLClient;
 using nlohmann::json;
@@ -57,7 +58,8 @@ inline auto add_file_form( std::string const& attachment_file_path, httplib::Mul
 std::optional<std::string> QUOTE_CONTROLLER::pcb_smt_quote( PCB_SMT_ORDER const&            form,
                                                             PCB_SMT_QUOTE_FILE_PATHS const& file_paths )
 {
-    // Prepare multipart form data
+    wxLogDebug( "Quote SMT order with form: %s", nlohmann::json( form ).dump() );
+    
     httplib::MultipartFormDataItems items;
     httplib::Headers                headers;
     headers.insert(

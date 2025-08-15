@@ -128,7 +128,8 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
 
     const auto pcb_form = GetPCB_ORDER();
     const auto smt_form = GetSTM_ORDER();
-
+    smt_form->pcb_ban_height = pcb_form->bheight;
+    smt_form->pcb_ban_width = pcb_form->blength;
 
     const auto bom = GetBOM();
     smt_form->bom_material_type_number = std::to_string( bom.size() );

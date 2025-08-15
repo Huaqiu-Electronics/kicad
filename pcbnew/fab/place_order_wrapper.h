@@ -92,6 +92,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
         if( !res )
             return;
 
+        wxLogDebug( "Launching place order url : %s", *res );
         LaunchPlaceOrderUrl( *res );
     }
     catch( const std::exception& e )
