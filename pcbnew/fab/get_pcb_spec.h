@@ -90,6 +90,9 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
 
     for( const auto& pad : board->GetPads() )
     {
+        if( !pad->HasHole() )
+            continue;
+
         minHoleSize = std::min( minHoleSize, pad->GetDrillSize().x );
     }
 
