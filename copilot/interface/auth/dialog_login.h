@@ -25,16 +25,7 @@
 #ifndef DIALOG_LOGIN_H
 #define DIALOG_LOGIN_H
 
-#if defined( __WXOSX_MAC__ )
-
-#include "dialog_login_native.h"
-using DIALOG_LOGIN = DIALOG_LOGIN_NATIVE;
-
-#else
-
 #include "dialog_login_webview.h"
 using DIALOG_LOGIN = DIALOG_LOGIN_WEBVIEW;
-
-#endif // __WXOSX_MAC__
 
 #endif

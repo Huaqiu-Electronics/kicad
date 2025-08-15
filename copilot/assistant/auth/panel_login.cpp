@@ -5,13 +5,29 @@
 #include <utils/httplib_wrapper.h>
 #include <regex>
 
-static const std::string AWSC_URL = "https://passport.elecfans.com";
+constexpr auto AWSC_URL = "https://passport.elecfans.com";
 
 #if !defined( IS_RC_BUILD )
 constexpr auto API_BASE_URL = "https://www.eda.cn";
 #else
 constexpr auto API_BASE_URL = "http://47.116.118.182";
 #endif
+
+// FIXME : Cannot by pass Alibaba Cloud’s sliding verification
+constexpr auto kDefaultForm = R"(
+{
+    "sig": "05a1C7nT4bR5hcbZlAujcdyUhL5f0xTnwuXsBOhw4p3yrDJrozWRmx3N11iL1QTZdmFtf04wPqHwuQAVHKkLxoXqxp9seTh6Gp36wKRzRt9sdiGp4-RSlo2wwzH2kqN58cemMv1O1Tl8TPVuavnRjknbOI5pVSNOjD8Xf8qHgkVHhsi0TvSHDNkVSeYMyD7vJGBmgsoc78Zs-9K-Twvn2Kys6mkxK0-d2rv6v5MtV9uKufmHLdzTzNOfb7RP9uEYRL6bX8cJCHtTkg0zHpy0KNkQjtxCNbsXsJnYpjgWVD3aURGjoSGtT4TQdoNBevxCuQPRkVLWbPjPgc_kP0-Qd1BAsCh2wx9tO-BMfrowW7sF5K2AsK82rrvcRlU7hnOXU93-F18EHCtNdce7G32HI2aA",
+    "sessionId": "0152JIZgtMjy7iQLwB8JakWVRO_6q2wsVkoGxcokKqJGZZwM6LwVqkHOr4zXdTIRhZ4bIttMqbB2GB3a_oIpaiIKzc4bFLhdPOXkW8hsASX1l_qkDqYXD0zAl-Bh-46HvlQwttU8q4L5aX6wAjaDDj6Q",
+    "token": "FFFF0000000001784D08:1755236418915:0.6512899670250883",
+    "scene": "quick",
+    "csessionid": "0152JIZgtMjy7iQLwB8JakWVRO_6q2wsVkoGxcokKqJGZZwM6LwVqkHOr4zXdTIRhZ4bIttMqbB2GB3a_oIpaiIKzc4bFLhdPOXkW8hsASX1l_qkDqYXD0zAl-Bh-46HvlQwttU8q4L5aX6wAjaDDj6Q",
+    "aliscene": "login",
+    "siteid": 35,
+    "account": "17317499234",
+    "smscode": "",
+    "areacode": "86"
+}
+)";
 
 
 class CountdownTimer : public wxTimer
@@ -75,23 +91,17 @@ void PANEL_LOGIN::OnBtnGetCodeClicked( wxCommandEvent& event )
 
     try
     {
-        httplib::SSLClient cli( AWSC_URL.c_str(), 443 );
-        cli.set_connection_timeout( 5, 0 ); // 5 sec
+        httplib::SSLClient cli( AWSC_URL, 443 );
+        nlohmann::json     obj{ nlohmann::json::parse( kDefaultForm ) };
+        obj["account"] = phone.ToStdString();
 
-        nlohmann::json obj = { { "csessionid", "" }, { "aliscene", "login" },
-                               { "siteid", 35 },     { "account", std::string( phone.mb_str() ) },
-                               { "smscode", "" },    { "areacode", "86" } };
-
-        auto res = cli.Post( "/register/regsms", obj.dump(), "application/json" );
+        httplib::Headers headers = { { "Content-Type", "application/json" } };
+        auto             res = cli.Post( "/register/regsms", headers, obj.dump(), "application/json" );
 
         if( !res || res->status != 200 )
         {
             wxQueueEvent( this, new wxCommandEvent( wxEVT_BUTTON, m_btn_get_code->GetId() ) );
-            CallAfter(
-                    [=]
-                    {
-                        wxMessageBox( "验证码请求失败", "错误", wxICON_ERROR );
-                    } );
+            wxMessageBox( "验证码请求失败", "错误", wxICON_ERROR );
             return;
         }
 
@@ -99,20 +109,12 @@ void PANEL_LOGIN::OnBtnGetCodeClicked( wxCommandEvent& event )
         auto jsonRes = nlohmann::json::parse( body, nullptr, false );
         if( jsonRes.is_discarded() || jsonRes["error_code"].get<int>() > 0 )
         {
-            CallAfter(
-                    [=]
-                    {
-                        wxMessageBox( wxString::FromUTF8( jsonRes.value( "msg", "未知错误" ) ), "错误", wxICON_ERROR );
-                    } );
+            wxMessageBox( wxString::FromUTF8( jsonRes.value( "msg", "未知错误" ) ), "错误", wxICON_ERROR );
         }
     }
     catch( const std::exception& e )
     {
-        CallAfter(
-                [=]
-                {
-                    wxMessageBox( wxString::Format( "请求异常: %s", e.what() ), "错误", wxICON_ERROR );
-                } );
+        wxMessageBox( wxString::Format( "请求异常: %s", e.what() ), "错误", wxICON_ERROR );
     }
 }
 
