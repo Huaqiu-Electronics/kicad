@@ -96,15 +96,21 @@ inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessTy
 
     const auto oz = aBrdThickness * 1000 / 34.7;
 
-    for( const auto& t : available_thicknesses )
+
+    auto   closest = available_thicknesses.begin();
+    double min_diff = std::abs( oz - closest->second );
+
+    for( auto it = available_thicknesses.begin(); it != available_thicknesses.end(); ++it )
     {
-        if( t.second >= oz )
+        double diff = std::abs( oz - it->second );
+        if( diff < min_diff )
         {
-            return t.first;
+            min_diff = diff;
+            closest = it;
         }
     }
 
-    return available_thicknesses.back().first;
+    return closest->first;
 }
 
 inline std::string get_min_trace_clearance( double aTraceWidth )
