@@ -109,11 +109,11 @@ public:
 
     void TriggerPlaceOrderMenu()
     {
-        auto              aToolBar = self()->m_mainToolBar;
+        ACTION_TOOLBAR*   aToolBar = self()->m_mainToolBar;
         wxAuiToolBarEvent evt;
         evt.SetEventType( wxEVT_AUITOOLBAR_RIGHT_CLICK );
         evt.SetToolId( ACTIONS::placeOrderMenu.GetUIId() );
-        aToolBar->ProcessCommand( evt );
+        aToolBar->Command( evt );
     }
 
     void ReportProgress( wxString const& aMessage )
