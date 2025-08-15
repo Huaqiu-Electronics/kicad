@@ -173,11 +173,13 @@ void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 {
+    wxLogDebug( "OnNavigationComplete , %s", evt.GetURL() );
+    WEBVIEW_TOKEN_CONTROLLER::Get().OnPageLoaded( this );
 }
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
-    WEBVIEW_TOKEN_CONTROLLER::Get().OnPageLoaded( this );
+    wxLogDebug( "OnDocumentLoaded , %s", evt.GetURL() );
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
