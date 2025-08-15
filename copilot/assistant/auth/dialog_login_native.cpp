@@ -31,7 +31,6 @@ DIALOG_LOGIN_NATIVE::DIALOG_LOGIN_NATIVE( wxWindow* aParent ) :
         COPILOT_DIALOG( aParent, _( "Login" ), "DIALOG_LOGIN_NATIVE", { WIDTH, HEIGHT } )
 {
     Init( new PANEL_LOGIN( this ) );
-    // SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
 }
 
 DIALOG_LOGIN_NATIVE::~DIALOG_LOGIN_NATIVE()

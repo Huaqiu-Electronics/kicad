@@ -29,6 +29,7 @@
 #include "panel_login_base.h"
 
 
+class CountdownTimer;
 class PANEL_LOGIN : public PANEL_LOGIN_BASE
 {
 public:
@@ -38,7 +39,11 @@ public:
     void OnBtnGetCodeClicked( wxCommandEvent& event ) override;
     void OnLoginClicked( wxCommandEvent& event ) override;
 
+    bool ValidatePhone( const wxString& phone );
+
 private:
+    int             m_countdown{};
+    CountdownTimer* m_timer{};
 };
 
 #endif
