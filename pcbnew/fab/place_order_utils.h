@@ -105,6 +105,11 @@ inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessTy
 
     for( auto it = available_thicknesses.begin(); it != available_thicknesses.end(); ++it )
     {
+        if( std::abs( oz - it->second ) < kFloatNumberPrecision )
+        {
+            return it->first;
+        }
+
         double diff = std::abs( oz - it->second );
         if( diff < min_diff )
         {
@@ -137,11 +142,13 @@ inline std::string get_min_trace_clearance( double aTraceWidth )
         double a = available_trace_clearance[i].second;
         double b = available_trace_clearance[i + 1].second;
 
-        if(std::abs(aTraceWidth -a) < kFloatNumberPrecision){
+        if( std::abs( aTraceWidth - a ) < kFloatNumberPrecision )
+        {
             return available_trace_clearance[i].first;
         }
 
-        if(std::abs(aTraceWidth -b) < kFloatNumberPrecision){
+        if( std::abs( aTraceWidth - b ) < kFloatNumberPrecision )
+        {
             return available_trace_clearance[i + 1].first;
         }
 
@@ -184,11 +191,13 @@ inline std::string get_min_hole_size( double aHoleSize, double aBoardThickness )
         double a = available_hole_size[i].second;
         double b = available_hole_size[i + 1].second;
 
-        if(std::abs(aHoleSize - a) < kFloatNumberPrecision){
+        if( std::abs( aHoleSize - a ) < kFloatNumberPrecision )
+        {
             return available_hole_size[i].first;
         }
 
-        if(std::abs(aHoleSize - b) < kFloatNumberPrecision){
+        if( std::abs( aHoleSize - b ) < kFloatNumberPrecision )
+        {
             return available_hole_size[i + 1].first;
         }
 
