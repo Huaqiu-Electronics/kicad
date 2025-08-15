@@ -35,7 +35,7 @@
 #include <auth/dialog_login.h>
 #include <wx/msgdlg.h>
 #include <fmt/format.h>
-#include <quote/pcb_order.h>
+#include <quote/pcb_form.h>
 #include <quote/quote_controller.h>
 
 #include <wx/filename.h>
@@ -58,10 +58,10 @@ template <>
 std::optional<wxString> FAB_INFO_GETTER_PCB::GetPCBFileZip();
 
 template <>
-std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER();
+std::unique_ptr<PCB_FORM> FAB_INFO_GETTER_PCB::GetPCB_FORM();
 
 template <>
-std::unique_ptr<SMT_ORDER> FAB_INFO_GETTER_PCB::GetSTM_ORDER();
+std::unique_ptr<SMT_FORM> FAB_INFO_GETTER_PCB::GetSTM_FORM();
 
 template <>
 std::vector<FP_POSITION> FAB_INFO_GETTER_PCB::GetComponentPosition();

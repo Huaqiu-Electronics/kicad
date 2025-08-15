@@ -26,13 +26,13 @@
 #define FORM_PCB_QUOTE_H
 
 #include <nlohmann/json.hpp>
-#include "pcb_order.h"
-#include "smt_order.h"
+#include "pcb_form.h"
+#include "smt_form.h"
 
 struct FORM_PCB_QUOTE
 {
-    PCB_ORDER pcb_order;
-    SMT_ORDER smt_order;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FORM_PCB_QUOTE, pcb_order, smt_order )
+    PCB_FORM pcb_form;
+    SMT_FORM smt_form;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FORM_PCB_QUOTE, pcb_form, smt_form )
 };
 #endif

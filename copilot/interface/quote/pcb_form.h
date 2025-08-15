@@ -22,8 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef PCB_ORDER_H
-#define PCB_ORDER_H
+#ifndef PCB_FORM_H
+#define PCB_FORM_H
 
 #include <nlohmann/json.hpp>
 
@@ -31,7 +31,7 @@
 static constexpr auto kPCB_QUOTE_API = "https://www.eda.cn/openapi/api/hqpcb/External/fileQuote";
 
 // BaseInfoModel
-struct PCB_ORDER
+struct PCB_FORM
 {
     std::string blayer = "4";         // Layer Count
     std::string blength = "31.22";    // GetPcbLength
@@ -95,7 +95,7 @@ struct PCB_ORDER
     std::string express;   // Express option
     std::string type;      // File type
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_ORDER, blayer, blength, bwidth, bcount, sidedirection, plate_type, units,
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_FORM, blayer, blength, bwidth, bcount, sidedirection, plate_type, units,
                                     layoutx, layouty, sidewidth, testpoint, pbnum, board_tg, bheight, copper,
                                     lineweight, vias, color, charcolor, cover, spray, insidecopper, impendance, bankong,
                                     blind, via_in_pad, beveledge, pressing, baobian, bga, zknum, test, shipment_report,

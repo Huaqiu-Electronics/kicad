@@ -35,7 +35,7 @@
 #include <auth/dialog_login.h>
 #include <wx/msgdlg.h>
 #include <fmt/format.h>
-#include <quote/pcb_order.h>
+#include <quote/pcb_form.h>
 #include <quote/quote_controller.h>
 
 #include <wx/filename.h>
@@ -56,7 +56,7 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
 
     ReportProgress( _( "Sending Order" ) );
     QUOTE_CONTROLLER controller;
-    auto             rsp = controller.pcb_quote( *GetPCB_ORDER(), zipFilePath->ToStdString() );
+    auto             rsp = controller.pcb_quote( *GetPCB_FORM(), zipFilePath->ToStdString() );
 
     if( !rsp.has_value() || rsp->id.empty() )
     {

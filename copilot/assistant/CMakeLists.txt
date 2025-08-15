@@ -14,7 +14,7 @@ add_library(assistant SHARED
     http/http_client.cpp
 
     quote/pcb_quote.cpp
-    quote/pcb_smt_quote.cpp
+    quote/smt_quote.cpp
     quote/quote_controller.cpp
 
     settings/get_webview_chat_path.cpp

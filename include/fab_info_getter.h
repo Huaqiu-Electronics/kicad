@@ -40,10 +40,11 @@
 #include <wx/string.h>
 #include <wx/utils.h>
 #include <widgets/wx_progress_reporters.h>
+#include <wx/log.h>
 
 
-struct PCB_ORDER;
-struct SMT_ORDER;
+struct PCB_FORM;
+struct SMT_FORM;
 
 class DIALOG_WEBVIEW;
 template <class EDITOR_T>
@@ -128,12 +129,13 @@ public:
 
     std::optional<wxString> GetPCBFileZip() { return {}; }
 
-    std::unique_ptr<PCB_ORDER> GetPCB_ORDER() { return {}; }
+    std::unique_ptr<PCB_FORM> GetPCB_FORM() { return {}; }
 
-    std::unique_ptr<SMT_ORDER> GetSTM_ORDER() { return {}; }
+    std::unique_ptr<SMT_FORM> GetSTM_FORM() { return {}; }
 
     void LaunchPlaceOrderUrl( std::string const& aUrl )
     {
+        wxLogDebug( "Launching place order url : %s", aUrl );
         if( m_progress_reporter )
         {
             m_progress_reporter.reset();

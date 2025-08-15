@@ -22,18 +22,19 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef PCB_SMT_ORDER_H
-#define PCB_SMT_ORDER_H
+#ifndef PCB_SMT_FORM_H
+#define PCB_SMT_FORM_H
 
 #include <nlohmann/json.hpp>
-#include "pcb_order.h"
-#include "smt_order.h"
+#include "pcb_form.h"
+#include "smt_form.h"
 
-struct PCB_SMT_ORDER
+struct PCB_SMT_FORM
 {
-    PCB_ORDER pcb_order;
-    SMT_ORDER smt_order;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_SMT_ORDER, pcb_order, smt_order )
+    PCB_FORM pcb_form;
+    SMT_FORM smt_form;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_SMT_FORM, pcb_form, smt_form )
 };
+
 
 #endif

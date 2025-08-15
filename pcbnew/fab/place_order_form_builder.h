@@ -29,7 +29,7 @@
 #include "get_pcb_thickness.h"
 
 #include <utils/file_path_generator.h>
-#include <quote/smt_order.h>
+#include <quote/smt_form.h>
 #include <memory>
 #include <wx/log.h>
 
@@ -77,13 +77,13 @@ inline auto to_fixed_double( double aValue, int aPrecision = 2 )
 
 
 template <>
-std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER()
+std::unique_ptr<PCB_FORM> FAB_INFO_GETTER_PCB::GetPCB_FORM()
 {    
     auto pcb_spec = GetPCBSpecifications();
     wxLogDebug( "PCB Specification: %s", nlohmann::json( pcb_spec ).dump() );
 
     const auto layer_count = pcb_spec.layer_count;
-    auto form = std::make_unique<PCB_ORDER>();
+    auto form = std::make_unique<PCB_FORM>();
     form->blayer = std::to_string( layer_count );
 
     // mm to cm
@@ -106,10 +106,10 @@ std::unique_ptr<PCB_ORDER> FAB_INFO_GETTER_PCB::GetPCB_ORDER()
 }
 
 template <>
-std::unique_ptr<SMT_ORDER> FAB_INFO_GETTER_PCB::GetSTM_ORDER()
+std::unique_ptr<SMT_FORM> FAB_INFO_GETTER_PCB::GetSTM_FORM()
 {
-    auto pcb_from = GetPCB_ORDER();
-    auto form = std::make_unique<SMT_ORDER>();
+    auto pcb_from = GetPCB_FORM();
+    auto form = std::make_unique<SMT_FORM>();
     return form;
 }
 
