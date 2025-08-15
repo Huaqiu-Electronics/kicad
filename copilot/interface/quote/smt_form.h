@@ -22,12 +22,13 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SMT_ORDER_H
-#define SMT_ORDER_H
+#ifndef SMT_FORM_H
+#define SMT_FORM_H
+
 
 #include <nlohmann/json.hpp>
 
-struct SMT_ORDER
+struct SMT_FORM
 {
     std::string bom_file_name;
     std::string bom_file_path;
@@ -43,10 +44,9 @@ struct SMT_ORDER
     std::string plug_number = "64";
     std::string single_or_double_technique = "1";
     std::string plug_material_type = "";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SMT_ORDER, bom_file_name, bom_file_path, coord_file_name, coord_file_path,
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SMT_FORM, bom_file_name, bom_file_path, coord_file_name, coord_file_path,
                                     pcb_ban_height, pcb_ban_width, bom_material_type_number, is_plug, number,
                                     patch_pad_number, plug_number, single_or_double_technique, plug_material_type )
 };
-
 
 #endif

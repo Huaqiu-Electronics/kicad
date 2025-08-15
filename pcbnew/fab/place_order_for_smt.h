@@ -27,7 +27,7 @@
 
 #include "place_order_utils.h"
 
-#include <quote/pcb_smt_order.h>
+#include <quote/pcb_smt_form.h>
 #include <vector>
 #include <filesystem>
 #include <fstream>
@@ -126,8 +126,8 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
         return {};
     }
 
-    const auto pcb_form = GetPCB_ORDER();
-    const auto smt_form = GetSTM_ORDER();
+    const auto pcb_form = GetPCB_FORM();
+    const auto smt_form = GetSTM_FORM();
     smt_form->pcb_ban_height = pcb_form->bheight;
     smt_form->pcb_ban_width = pcb_form->blength;
 
@@ -152,7 +152,7 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
 
     ReportProgress( _( "Sending Order" ) );
     QUOTE_CONTROLLER controller;
-    auto             rsp = controller.pcb_smt_quote( PCB_SMT_ORDER{ *pcb_form, *smt_form }, paths );
+    auto             rsp = controller.smt_quote( PCB_SMT_FORM{ *pcb_form, *smt_form }, paths );
 
     if( !rsp.has_value() || rsp->empty() )
     {

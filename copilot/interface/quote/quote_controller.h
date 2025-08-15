@@ -44,8 +44,8 @@ using QuoteClient = httplib::Client;
 #endif
 
 
-struct PCB_ORDER;
-struct PCB_SMT_ORDER;
+struct PCB_FORM;
+struct PCB_SMT_FORM;
 
 struct PCB_SMT_QUOTE_FILE_PATHS
 {
@@ -61,9 +61,9 @@ public:
 
     ~QUOTE_CONTROLLER();
 
-    std::optional<PCB_QUOTE_RESPONSE> pcb_quote( PCB_ORDER const& form, std::string const& attachment_file_path );
+    std::optional<PCB_QUOTE_RESPONSE> pcb_quote( PCB_FORM const& form, std::string const& attachment_file_path );
 
-    std::optional<std::string> pcb_smt_quote( PCB_SMT_ORDER const& form, PCB_SMT_QUOTE_FILE_PATHS const& file_paths );
+    std::optional<std::string> smt_quote( PCB_SMT_FORM const& form, PCB_SMT_QUOTE_FILE_PATHS const& file_paths );
 
 
 private:

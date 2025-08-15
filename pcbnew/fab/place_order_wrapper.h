@@ -29,7 +29,7 @@
 #include <optional>
 #include <thread_pool.h>
 
-#include <quote/pcb_smt_order.h>
+#include <quote/pcb_smt_form.h>
 #include <utils/file_path_generator.h>
 
 #include <settings/webview_settings_manager.h>
@@ -92,7 +92,6 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
         if( !res )
             return;
 
-        wxLogDebug( "Launching place order url : %s", *res );
         LaunchPlaceOrderUrl( *res );
     }
     catch( const std::exception& e )
