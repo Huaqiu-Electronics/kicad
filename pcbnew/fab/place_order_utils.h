@@ -81,6 +81,9 @@ enum class CopperThicknessType
     OUTER
 };
 
+
+constexpr auto kFloatNumberPrecision = 0.0001;
+
 inline std::string get_copper_thickness( double aBrdThickness, CopperThicknessType aType )
 {
     static const std::vector<std::pair<std::string, double>> available_inner_thicknesses = {
@@ -134,6 +137,15 @@ inline std::string get_min_trace_clearance( double aTraceWidth )
         double a = available_trace_clearance[i].second;
         double b = available_trace_clearance[i + 1].second;
 
+        if(std::abs(aTraceWidth -a) < kFloatNumberPrecision){
+            return available_trace_clearance[i].first;
+        }
+
+        if(std::abs(aTraceWidth -b) < kFloatNumberPrecision){
+            return available_trace_clearance[i + 1].first;
+        }
+
+
         if( aTraceWidth > a && aTraceWidth <= b )
         {
             return available_trace_clearance[i].first;
@@ -171,6 +183,15 @@ inline std::string get_min_hole_size( double aHoleSize, double aBoardThickness )
     {
         double a = available_hole_size[i].second;
         double b = available_hole_size[i + 1].second;
+
+        if(std::abs(aHoleSize - a) < kFloatNumberPrecision){
+            return available_hole_size[i].first;
+        }
+
+        if(std::abs(aHoleSize - b) < kFloatNumberPrecision){
+            return available_hole_size[i + 1].first;
+        }
+
 
         if( aHoleSize > a && aHoleSize <= b )
         {
