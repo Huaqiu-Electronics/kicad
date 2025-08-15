@@ -37,7 +37,7 @@ TOOL_ACTION ACTIONS::placeOrderMenu( TOOL_ACTION_ARGS()
                                              .Name( "common.fab.placeOrderMenu" )
                                              .Scope( AS_GLOBAL )
                                              .FriendlyName( _( "Place order" ) )
-                                             .Tooltip( _( "Place order" ) )
+                                            //  .Tooltip( _( "Place order" ) )
                                              .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::placeOrderForPCB( TOOL_ACTION_ARGS()

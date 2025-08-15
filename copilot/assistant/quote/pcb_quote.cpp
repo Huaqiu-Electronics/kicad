@@ -27,6 +27,7 @@
 #include <quote/pcb_order.h>
 #include "nlohmann/json.hpp"
 #include <settings/webview_settings_manager.h>
+#include <wx/log.h>
 
 using httplib::SSLClient;
 using nlohmann::json;
@@ -35,6 +36,7 @@ using nlohmann::json;
 std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( PCB_ORDER const&   form,
                                                                std::string const& attachment_file_path )
 {
+    wxLogDebug( "Quote PCB order with form: %s"  , nlohmann::json(form).dump() );
     // Prepare multipart form data
     httplib::MultipartFormDataItems items;
     nlohmann::json                  j( form );
