@@ -25,7 +25,8 @@
 #ifndef GET_PCB_SPEC_H
 #define GET_PCB_SPEC_H
 
-
+#include <pad.h>
+#include <optional>
 #include <pcb_edit_frame.h>
 #include <board.h>
 #include <board_design_settings.h>
@@ -61,9 +62,8 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
     const auto height = board->GetBoundingBox().GetHeight();
     const auto width = board->GetBoundingBox().GetWidth();
 
-    auto       minTraceWidth = board->GetDesignSettings().m_TrackMinWidth;
-    const auto minTraceClearance = board->GetDesignSettings().m_MinClearance;
-    auto       minHoleSize =
+    std::optional<int> minTraceWidth{};
+    auto               minHoleSize =
             std::min( board->GetDesignSettings().m_MinThroughDrill, board->GetDesignSettings().m_ViasMinSize );
 
 
@@ -73,17 +73,32 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
         {
         case PCB_VIA_T: minHoleSize = std::min( minHoleSize, static_cast<PCB_VIA*>( track )->GetDrillValue() ); break;
         case PCB_TRACE_T:
-        case PCB_ARC_T: minTraceWidth = std::min( minTraceWidth, track->GetWidth() ); break;
+        case PCB_ARC_T:
+        {
+            if( !minTraceWidth )
+            {
+                minTraceWidth = track->GetWidth();
+                break;
+            }
+
+            minTraceWidth = std::min( *minTraceWidth, track->GetWidth() );
+            break;
+        }
         default: break;
         }
     }
+
+    for( const auto& pad : board->GetPads() )
+    {
+        minHoleSize = std::min( minHoleSize, pad->GetDrillSize().x );
+    }
+
 
     return {
         layers,
         static_cast<double>( height ) / pcbIUScale.IU_PER_MM,
         static_cast<double>( width ) / pcbIUScale.IU_PER_MM,
-        static_cast<double>( minTraceClearance ) / pcbIUScale.IU_PER_MM,
-        static_cast<double>( minTraceWidth ) / pcbIUScale.IU_PER_MM,
+        static_cast<double>( minTraceWidth ? *minTraceWidth : 0 ) / pcbIUScale.IU_PER_MM,
         static_cast<double>( minHoleSize ) / pcbIUScale.IU_PER_MM,
         static_cast<double>( boardThickness ) / pcbIUScale.IU_PER_MM,
         inner_copper_thickness,

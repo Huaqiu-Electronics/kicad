@@ -33,16 +33,14 @@ struct FAB_PCB_SPECIFICATIONS
     int                   layer_count{};
     double                length{};
     double                width{};
-    double                mini_trace_clearance{};
     double                mini_trace_width{};
     double                mini_hole_size{};
     double                board_thickness{};
     std::optional<double> inner_copper_thickness{};
     std::optional<double> outer_copper_thickness{};
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FAB_PCB_SPECIFICATIONS, layer_count, length, width, mini_trace_clearance,
-                                    mini_trace_width, mini_hole_size, board_thickness, inner_copper_thickness,
-                                    outer_copper_thickness )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FAB_PCB_SPECIFICATIONS, layer_count, length, width, mini_trace_width,
+                                    mini_hole_size, board_thickness, inner_copper_thickness, outer_copper_thickness )
 };
 
 

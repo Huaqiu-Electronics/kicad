@@ -142,11 +142,20 @@ inline std::string get_min_trace_clearance( double aTraceWidth )
 
     return available_trace_clearance.front().first;
 }
-inline std::string get_min_hole_size( double aHoleSize )
+inline std::string get_min_hole_size( double aHoleSize, double aBoardThickness )
 {
-    static const std::vector<std::pair<std::string, double>> available_hole_size = {
+    static const std::vector<std::pair<std::string, double>> all_hole_size = {
         { "0.15", 0.15 }, { "0.2", 0.2 }, { "0.25", 0.25 }, { "0.3", 0.3 }
     };
+
+    static const std::vector<std::pair<std::string, double>> hole_size_for_thick_board = { { "0.2", 0.2 },
+                                                                                           { "0.25", 0.25 },
+                                                                                           { "0.3", 0.3 } };
+
+
+    // Check if the board thickness <=1.2
+    const auto& available_hole_size = aBoardThickness <= 1.2 ? all_hole_size : hole_size_for_thick_board;
+
 
     if( aHoleSize <= available_hole_size.front().second )
     {

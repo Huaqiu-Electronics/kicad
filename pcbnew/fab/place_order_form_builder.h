@@ -78,12 +78,12 @@ inline auto to_fixed_double( double aValue, int aPrecision = 2 )
 
 template <>
 std::unique_ptr<PCB_FORM> FAB_INFO_GETTER_PCB::GetPCB_FORM()
-{    
+{
     auto pcb_spec = GetPCBSpecifications();
     wxLogDebug( "PCB Specification: %s", nlohmann::json( pcb_spec ).dump() );
 
     const auto layer_count = pcb_spec.layer_count;
-    auto form = std::make_unique<PCB_FORM>();
+    auto       form = std::make_unique<PCB_FORM>();
     form->blayer = std::to_string( layer_count );
 
     // mm to cm
@@ -92,9 +92,8 @@ std::unique_ptr<PCB_FORM> FAB_INFO_GETTER_PCB::GetPCB_FORM()
     form->bheight = get_pcb_thickness( layer_count, pcb_spec.board_thickness );
 
 
-    form->lineweight = get_min_trace_clearance( std::min( pcb_spec.mini_trace_clearance, pcb_spec.mini_trace_width )
-                                                * 39.3701 ); // mm to mil
-    form->vias = get_min_hole_size( pcb_spec.mini_hole_size );
+    form->lineweight = get_min_trace_clearance( pcb_spec.mini_trace_width * 39.3701 ); // mm to mil
+    form->vias = get_min_hole_size( pcb_spec.mini_hole_size, pcb_spec.board_thickness );
 
     if( pcb_spec.outer_copper_thickness )
         form->copper = get_copper_thickness( *pcb_spec.outer_copper_thickness, CopperThicknessType::OUTER );
