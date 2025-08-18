@@ -263,7 +263,7 @@ HANDLER_RESULT<ItemRequestStatus> API_HANDLER_SCH::handleCreateUpdateItemsIntern
         if( aCreate )
         {
             item->Serialize( newItem );
-            commit->Add( item.release() );
+            commit->Add( item.release(), screen );
 
             if( !m_activeClients.count( aClientName ) )
                 pushCurrentCommit( aClientName, _( "Added items via API" ) );
@@ -276,7 +276,7 @@ HANDLER_RESULT<ItemRequestStatus> API_HANDLER_SCH::handleCreateUpdateItemsIntern
             {
                 schItem->SwapData( static_cast<SCH_ITEM*>( item.get() ) );
                 schItem->Serialize( newItem );
-                commit->Modify( schItem );
+                commit->Modify( schItem, screen );
             }
             else
             {
