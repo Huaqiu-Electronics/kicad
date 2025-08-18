@@ -25,7 +25,6 @@
 #include <auth/dialog_login_webview.h>
 
 #include <settings/webview_settings_manager.h>
-#include <webview/webview_evt_filter.h>
 
 
 DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( wxWindow* aParent ) :

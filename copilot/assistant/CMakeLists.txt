@@ -11,6 +11,11 @@ add_library(assistant SHARED
     common/dialog_webview.cpp
     common/main_stack_holder.cpp
 
+    webview_library/dialog_add_component.cpp
+    webview_library/dialog_add_design_block.cpp
+    webview_library/panel_add_component.cpp
+    webview_library/panel_add_design_block.cpp
+
     http/http_client.cpp
 
     quote/pcb_quote.cpp
@@ -23,11 +28,12 @@ add_library(assistant SHARED
     utils/copilot_zip_utils.cpp
     utils/file_path_generator.cpp
 
+    webview/internal/webview_controller.cpp
+    webview/internal/webview_evt_filter.cpp
+
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp
     webview/webview_container.cpp
-    webview/webview_evt_filter.cpp
-    webview/webview_token_controller.cpp
 )
 
 set_target_properties(assistant PROPERTIES CXX_VISIBILITY_PRESET hidden)

@@ -22,6 +22,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+
+#include "webview_container_impl.h"
+
 #include <memory>
 #include <string>
 #include <webview/webview_container.h>
@@ -32,14 +35,11 @@
 #include <passive_action/passive_action_container.h>
 #include <passive_action/agent/agent_action.h>
 #include <passive_action/agent/agent_action_type.h>
-#include <active_action/cmd/common/selection_change_cmd.h>
-#include <webview/webview_token_controller.h>
+#include <active_action/common/selection_change_cmd.h>
 #include <webview/webview_script_msg_handler.h>
 #include <webview/webview_functions.h>
-
+#include <webview/webview_controller.h>
 #include <auth/dialog_login.h>
-
-
 #include <context/copilot_global_context_handle.h>
 #include <context/copilot_global_context.h>
 #include <fmt/format.h>
@@ -48,11 +48,8 @@
 #include <utils/httplib_wrapper.h>
 #include <utils/extract_host_from_url.h>
 #include <wx/dialog.h>
-
-#include "webview_container_impl.h"
-
-
 #include <common/dialog_image_viewer.h>
+#include <webview_library/dialog_add_component.h>
 
 void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 {
@@ -168,7 +165,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
                 if( !dialog.Success() )
                 {
-                    WEBVIEW_TOKEN_CONTROLLER::Get().OnLoginFailed( this );
+                    WEBVIEW_CONTROLLER::Get().OnLoginFailed( this );
                     return;
                 }
 
@@ -190,6 +187,12 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 }
                 auto url = cmd.data->get<OPEN_URL_IN_WEBVIEW_DIALOG>().url;
                 wxLaunchDefaultBrowser( url );
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::add_component:
+            {
+                DIALOG_ADD_COMPONENT dialog( GetParent() );
+                dialog.ShowModal();
                 break;
             }
             }

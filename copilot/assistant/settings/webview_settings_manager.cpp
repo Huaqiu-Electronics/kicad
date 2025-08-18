@@ -26,7 +26,7 @@
 #include <settings/immutable_settings.h>
 #include <settings/mutable_settings.h>
 #include <chrono>
-#include <webview/webview_token_controller.h>
+#include <webview/webview_controller.h>
 
 #include "config_io_helper.h"
 #include "settings/copilot_config_version.h"
@@ -173,7 +173,7 @@ ACCESS_TOKEN WEBVIEW_SETTINGS_MANAGER::get_access_token() const
 void WEBVIEW_SETTINGS_MANAGER::set_access_token( nlohmann::json const& token )
 {
     *_access_token = token;
-    WEBVIEW_TOKEN_CONTROLLER::Get().OnTokenUpdated();
+    WEBVIEW_CONTROLLER::Get().OnTokenUpdated();
     save_token();
 }
 
@@ -208,6 +208,6 @@ nlohmann::json WEBVIEW_SETTINGS_MANAGER::get_raw_access_token() const
 void WEBVIEW_SETTINGS_MANAGER::clear_token()
 {
     *_access_token = nlohmann::json();
-    WEBVIEW_TOKEN_CONTROLLER::Get().OnLogout();
+    WEBVIEW_CONTROLLER::Get().OnLogout();
     save_token();
 }

@@ -28,15 +28,8 @@
 #include <eeschema_settings.h>
 #include <settings/app_settings.h>
 #include <settings/parameters.h>
+#include <webview_library/webview_library_url.h>
 #include "webview_library_settings.h"
-
-
-#if !defined( IS_RC_BUILD )
-constexpr auto kSymbolChooserUrl = "https://www.eda.cn/library/";
-#else
-constexpr auto kSymbolChooserUrl = "http://47.116.118.182/library/";
-#endif
-
 
 void EESCHEMA_SETTINGS::InitWebviewLibrarySettings()
 {

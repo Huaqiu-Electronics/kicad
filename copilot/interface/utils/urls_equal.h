@@ -22,35 +22,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_EVT_FILTER_H
-#define WEBVIEW_EVT_FILTER_H
+#ifndef URLS_EQUAL_H
+#define URLS_EQUAL_H
 
-#include <wx/eventfilter.h>
-#include <wx/object.h>
-#include <wx/panel.h>
-#include <set>
-#include <map>
+#include <string>
 
-class WEBVIEW_EVT_FILTER : public wxEventFilter
+inline bool urls_equal( std::string const& a, std::string const& b )
 {
-    WEBVIEW_EVT_FILTER();
-
-    std::set<void*>       m_panels;
-    std::map<void*, bool> m_panel_focused;
-
-    void* m_by_pass_panel = nullptr;
-
-public:
-    ~WEBVIEW_EVT_FILTER() override;
-
-    int FilterEvent( wxEvent& event ) override;
-
-    static WEBVIEW_EVT_FILTER& Get();
-
-    void AddPanel( void* aPanel );
-
-    void RemovePanel( void* aPanel );
-
-};
+    return a == b || a.find( b ) != std::string::npos || b.find( a ) != std::string::npos;
+}
 
 #endif

@@ -41,7 +41,7 @@
 #include <magic_enum.hpp>
 #include <string>
 #include <wx/log.h>
-#include <active_action/cmd/sch/sch_copilot_cmd_type.h>
+#include <active_action/sch/sch_copilot_cmd_type.h>
 #include <webview/webview_container.h>
 #include <chat/general_chat_cmd.h>
 #include <context/sch/details/sch_netlist.h>
@@ -50,6 +50,7 @@
 #include <api/api_sch_placement_command.h>
 #include <utils/wstring_to_string.h>
 #include <chat/user_ask_selection_cmd.h>
+#include <webview_library/dialog_add_design_block.h>
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -98,14 +99,6 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
                             .c_str() );
             break;
         }
-        case AGENT_ACTION_TYPE::dump_selection_to_design_block:
-        {
-            const auto sch = wxString2String( self()->DumpSelectionToDesignBlock() );
-
-
-            break;
-        }
-
         case AGENT_ACTION_TYPE::place_symbol_resource:
         {
             self()->m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
@@ -130,6 +123,12 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
             break;
         }
 
+        case AGENT_ACTION_TYPE::add_design_block:
+        {
+            DIALOG_ADD_DESIGN_BLOCK dialog( self(), wxString2String( self()->DumpSelectionToDesignBlock() ) );
+            dialog.ShowModal();
+            break;
+        }
 
         default: return BaseExecuteAgentAction( aAction );
         }

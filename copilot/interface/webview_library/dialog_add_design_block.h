@@ -22,46 +22,19 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_TOKEN_CONTROLLER_H
-#define WEBVIEW_TOKEN_CONTROLLER_H
+#ifndef DIALOG_ADD_DESIGN_BLOCK_H
+#define DIALOG_ADD_DESIGN_BLOCK_H
 
-#include <copilot_global.h>
-#include <set>
-#include "webview_msg_handle.h"
+#include <common/copilot_dialog.h>
 
-class WEBVIEW_CONTAINER;
-class COPILOT_API WEBVIEW_TOKEN_CONTROLLER
+
+class COPILOT_API DIALOG_ADD_DESIGN_BLOCK : public COPILOT_DIALOG
 {
 public:
-    ~WEBVIEW_TOKEN_CONTROLLER();
-
-    static WEBVIEW_TOKEN_CONTROLLER& Get();
-
-    void OnPageLoaded( WEBVIEW_CONTAINER* aWebviewContainer );
-
-    void OnTokenUpdated();
-
-    void OnLogout();
-
-    void OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContainer );
-
-    void AddWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer );
-
-    void RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer );
+    DIALOG_ADD_DESIGN_BLOCK( wxWindow* aParent, std::string design_block );
+    ~DIALOG_ADD_DESIGN_BLOCK();
 
 private:
-    WEBVIEW_TOKEN_CONTROLLER();
-
-    void ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer );
-
-    void UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer );
-
-    void Logout( WEBVIEW_CONTAINER* aWebviewContainer );
-
-    WEBVIEW_MSG_HANDLE_T         _msg_handle;
-    std::set<WEBVIEW_CONTAINER*> _webview_container_set;
 };
-
-
 
 #endif
