@@ -30,8 +30,8 @@
 #include <sch_edit_frame.h>
 #include <build_version.h>
 #include <context/context_fields.h>
-#include <active_action/cmd/copilot_cmd_base.h>
-#include <active_action/cmd/sch/sch_copilot_cmd_type.h>
+#include <active_action/copilot_cmd_base.h>
+#include <active_action/sch/sch_copilot_cmd_type.h>
 #include <context/sch/sch_copilot_global_context.h>
 #include <webview/webview_container.h>
 #include "context/symbol_context.h"

@@ -33,34 +33,29 @@
 
 
 template <class GLOBAL_CONTEXT>
-struct COPILOT_CMD_BASE 
+struct COPILOT_CMD_BASE
 {
     std::optional<std::string>    global_context_uuid;
     std::optional<GLOBAL_CONTEXT> design_global_context;
-    friend void to_json( nlohmann ::json& nlohmann_json_j, const COPILOT_CMD_BASE& nlohmann_json_t )
+    friend void                   to_json( nlohmann ::json& nlohmann_json_j, const COPILOT_CMD_BASE& nlohmann_json_t )
     {
         if( nlohmann_json_t.global_context_uuid )
             nlohmann_json_j[kGlobalContextUUID] = *nlohmann_json_t.global_context_uuid;
 
         if( nlohmann_json_t.design_global_context )
             nlohmann_json_j[kDesignGlobalContext] = *nlohmann_json_t.design_global_context;
-
     }
-    friend void from_json( const nlohmann ::json& nlohmann_json_j,
-                           COPILOT_CMD_BASE&      nlohmann_json_t )
+    friend void from_json( const nlohmann ::json& nlohmann_json_j, COPILOT_CMD_BASE& nlohmann_json_t )
     {
         if( nlohmann_json_j.contains( kGlobalContextUUID ) )
         {
-            nlohmann_json_t.global_context_uuid =
-                    nlohmann_json_j.at( kGlobalContextUUID ).get<std::string>();
+            nlohmann_json_t.global_context_uuid = nlohmann_json_j.at( kGlobalContextUUID ).get<std::string>();
         }
 
         if( nlohmann_json_j.contains( kDesignGlobalContext ) )
         {
-            nlohmann_json_t.design_global_context =
-                    nlohmann_json_j.at( kDesignGlobalContext ).get<GLOBAL_CONTEXT>();
+            nlohmann_json_t.design_global_context = nlohmann_json_j.at( kDesignGlobalContext ).get<GLOBAL_CONTEXT>();
         }
-
     }
 };
 
@@ -92,18 +87,14 @@ template <class GLOBAL_CONTEXT>
 struct CONCRETE_TYPE_COPILOT_CMD : COPILOT_CMD_BASE<GLOBAL_CONTEXT>
 {
     std::string type;
-    friend void to_json( nlohmann ::json&                 nlohmann_json_j,
-                         const CONCRETE_TYPE_COPILOT_CMD& nlohmann_json_t )
+    friend void to_json( nlohmann ::json& nlohmann_json_j, const CONCRETE_TYPE_COPILOT_CMD& nlohmann_json_t )
     {
-        to_json( nlohmann_json_j,
-                 static_cast<COPILOT_CMD_BASE<GLOBAL_CONTEXT> const&>( nlohmann_json_t ) );
+        to_json( nlohmann_json_j, static_cast<COPILOT_CMD_BASE<GLOBAL_CONTEXT> const&>( nlohmann_json_t ) );
         nlohmann_json_j[kType] = nlohmann_json_t.type;
     }
-    friend void from_json( const nlohmann ::json&     nlohmann_json_j,
-                           CONCRETE_TYPE_COPILOT_CMD& nlohmann_json_t )
+    friend void from_json( const nlohmann ::json& nlohmann_json_j, CONCRETE_TYPE_COPILOT_CMD& nlohmann_json_t )
     {
-        from_json( nlohmann_json_j,
-                   static_cast<COPILOT_CMD_BASE<GLOBAL_CONTEXT>&>( nlohmann_json_t ) );
+        from_json( nlohmann_json_j, static_cast<COPILOT_CMD_BASE<GLOBAL_CONTEXT>&>( nlohmann_json_t ) );
         nlohmann_json_j.at( kType ).get_to( nlohmann_json_t.type );
     }
 };
@@ -113,18 +104,14 @@ template <typename GLOBAL_CONTEXT, typename CONTEXT>
 struct COPILOT_CMD_WITH_CONTEXT : CONCRETE_TYPE_COPILOT_CMD<GLOBAL_CONTEXT>
 {
     CONTEXT     context;
-    friend void to_json( nlohmann ::json&                nlohmann_json_j,
-                         const COPILOT_CMD_WITH_CONTEXT& nlohmann_json_t )
+    friend void to_json( nlohmann ::json& nlohmann_json_j, const COPILOT_CMD_WITH_CONTEXT& nlohmann_json_t )
     {
-        to_json( nlohmann_json_j,
-                 static_cast<CONCRETE_TYPE_COPILOT_CMD<GLOBAL_CONTEXT> const&>( nlohmann_json_t ) );
+        to_json( nlohmann_json_j, static_cast<CONCRETE_TYPE_COPILOT_CMD<GLOBAL_CONTEXT> const&>( nlohmann_json_t ) );
         nlohmann_json_j[kContext] = nlohmann_json_t.context;
     }
-    friend void from_json( const nlohmann ::json&    nlohmann_json_j,
-                           COPILOT_CMD_WITH_CONTEXT& nlohmann_json_t )
+    friend void from_json( const nlohmann ::json& nlohmann_json_j, COPILOT_CMD_WITH_CONTEXT& nlohmann_json_t )
     {
-        from_json( nlohmann_json_j,
-                   static_cast<CONCRETE_TYPE_COPILOT_CMD<GLOBAL_CONTEXT>&>( nlohmann_json_t ) );
+        from_json( nlohmann_json_j, static_cast<CONCRETE_TYPE_COPILOT_CMD<GLOBAL_CONTEXT>&>( nlohmann_json_t ) );
         nlohmann_json_j.at( kContext ).get_to( nlohmann_json_t.context );
     }
 };

@@ -38,7 +38,6 @@ enum class AGENT_ACTION_TYPE
     ask_selection,
     paste,
     open_project_zip_achieve,
-    dump_selection_to_design_block,
 
     SCH_EDITOR_BEGIN,
     highlight_symbol,
@@ -46,6 +45,7 @@ enum class AGENT_ACTION_TYPE
     place_symbol_content,
     place_design_block_resource,
     place_design_block_content,
+    add_design_block,
 
     PCB_EDITOR_BEGIN,
     launch_plugin,

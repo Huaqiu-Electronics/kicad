@@ -22,8 +22,23 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef ACTIVE_ACTION_CATEGORY_H
-#define ACTIVE_ACTION_CATEGORY_H
+#ifndef PANEL_ADD_COMPONENT_H
+#define PANEL_ADD_COMPONENT_H
 
+#include <webview/webview_container.h>
+#include <wx/dialog.h>
+
+class PANEL_ADD_COMPONENT : public WEBVIEW_CONTAINER
+{
+    wxDialog* _parent;
+
+public:
+    PANEL_ADD_COMPONENT( wxDialog* parent, std::optional<std::string> url );
+    ~PANEL_ADD_COMPONENT();
+
+    void HandleScriptMessage( std::string const& msg ) override;
+
+private:
+};
 
 #endif

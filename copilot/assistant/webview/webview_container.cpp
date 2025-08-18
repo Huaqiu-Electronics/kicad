@@ -22,6 +22,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+
+#include "webview_container_impl.h"
+#include "internal/webview_evt_filter.h"
+
+#ifndef _WIN32
+#include "internal/webview_evt_filter.h"
+#endif
+
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -31,27 +39,21 @@
 #include <wx/stdpaths.h>
 #include <wx/string.h>
 #include <wx/webview.h>
-#include <webview/webview_container.h>
 #include <nlohmann/json.hpp>
 #include <settings/webview_settings_manager.h>
 #include <utils/generate_uuid.h>
-#include <webview/webview_token_controller.h>
 #include <webview/webview_script_msg_handler.h>
 #include <webview/webview_functions.h>
+#include <webview/webview_controller.h>
 #include <webview/webview_container.h>
 #include <magic_enum.hpp>
-#include <active_action/cmd/common/selection_change_cmd.h>
+#include <active_action/common/selection_change_cmd.h>
 #include <utils/extract_host_from_url.h>
 #include <utils/wstring_to_string.h>
-#include "webview_container_impl.h"
 #include <common/dialog_image_viewer.h>
 #include <common/main_stack_holder.h>
 #include <fmt/format.h>
 #include <utils/send_data_buried_point.h>
-
-#ifndef _WIN32
-#include "webview_evt_filter.h"
-#endif
 
 
 using json = nlohmann::json;
@@ -70,9 +72,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
-
-
-
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
@@ -122,7 +121,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     WEBVIEW_EVT_FILTER::Get().AddPanel( this );
 #endif
 
-    WEBVIEW_TOKEN_CONTROLLER::Get().AddWebviewContainer( this );
+    WEBVIEW_CONTROLLER::Get().AddWebviewContainer( this );
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -131,7 +130,7 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
     WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
 #endif
 
-    WEBVIEW_TOKEN_CONTROLLER::Get().RemoveWebviewContainer( this );
+    WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( this );
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
@@ -174,7 +173,7 @@ void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 {
     wxLogDebug( "OnNavigationComplete , %s", evt.GetURL() );
-    WEBVIEW_TOKEN_CONTROLLER::Get().OnPageLoaded( this );
+    WEBVIEW_CONTROLLER::Get().OnWebViewNavigationComplete( this );
 }
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )

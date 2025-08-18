@@ -22,18 +22,18 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include <webview/webview_controller.h>
 #include <webview/webview_container.h>
 #include <fmt/format.h>
 #include <magic_enum.hpp>
 #include <nlohmann/json.hpp>
-#include <webview/webview_token_controller.h>
 #include <auth/access_token.h>
 #include <auth/auth_state.h>
 #include <auth/auth_state_change.h>
 #include <settings/webview_settings_manager.h>
 #include <webview/webview_functions.h>
 #include <wx/debug.h>
-
+#include <utils/urls_equal.h>
 inline auto fmt_auth_state_change_script( AUTH_STATE state )
 {
     const auto content =
@@ -45,32 +45,32 @@ inline auto fmt_auth_state_change_script( AUTH_STATE state )
 }
 
 
-WEBVIEW_TOKEN_CONTROLLER::WEBVIEW_TOKEN_CONTROLLER()
+WEBVIEW_CONTROLLER::WEBVIEW_CONTROLLER()
 {
 }
 
-WEBVIEW_TOKEN_CONTROLLER::~WEBVIEW_TOKEN_CONTROLLER()
+WEBVIEW_CONTROLLER::~WEBVIEW_CONTROLLER()
 {
 }
 
-WEBVIEW_TOKEN_CONTROLLER& WEBVIEW_TOKEN_CONTROLLER::Get()
+WEBVIEW_CONTROLLER& WEBVIEW_CONTROLLER::Get()
 {
-    static WEBVIEW_TOKEN_CONTROLLER instance;
+    static WEBVIEW_CONTROLLER instance;
     return instance;
 };
 
-void WEBVIEW_TOKEN_CONTROLLER::AddWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::AddWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     _webview_container_set.insert( aWebviewContainer );
 }
 
-void WEBVIEW_TOKEN_CONTROLLER::RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     _webview_container_set.erase( aWebviewContainer );
 }
 
 
-void WEBVIEW_TOKEN_CONTROLLER::OnPageLoaded( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::OnWebViewNavigationComplete( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     if( WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
     {
@@ -82,7 +82,7 @@ void WEBVIEW_TOKEN_CONTROLLER::OnPageLoaded( WEBVIEW_CONTAINER* aWebviewContaine
     }
 }
 
-void WEBVIEW_TOKEN_CONTROLLER::OnTokenUpdated()
+void WEBVIEW_CONTROLLER::OnTokenUpdated()
 {
     for( auto webview_container : _webview_container_set )
     {
@@ -91,22 +91,22 @@ void WEBVIEW_TOKEN_CONTROLLER::OnTokenUpdated()
 }
 
 
-void WEBVIEW_TOKEN_CONTROLLER::OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::OnLoginFailed( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::LOGIN_FAILED ) );
 }
 
-void WEBVIEW_TOKEN_CONTROLLER::ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::ExpireToken( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_EXPIRED ) );
 }
 
-void WEBVIEW_TOKEN_CONTROLLER::UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::UpdateToken( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::ACCESS_TOKEN_UPDATED ) );
 }
 
-void WEBVIEW_TOKEN_CONTROLLER::OnLogout()
+void WEBVIEW_CONTROLLER::OnLogout()
 {
     for( auto webview_container : _webview_container_set )
     {
@@ -114,7 +114,24 @@ void WEBVIEW_TOKEN_CONTROLLER::OnLogout()
     }
 }
 
-void WEBVIEW_TOKEN_CONTROLLER::Logout( WEBVIEW_CONTAINER* aWebviewContainer )
+void WEBVIEW_CONTROLLER::Logout( WEBVIEW_CONTAINER* aWebviewContainer )
 {
     aWebviewContainer->RunScriptAsync( fmt_auth_state_change_script( AUTH_STATE::LOGOUT ) );
+}
+
+void WEBVIEW_CONTROLLER::RunScript( wxString const& aScript, std::string const& aUrlLoadedByWebview )
+{
+    for( const auto& webview_container : _webview_container_set )
+    {
+        if( webview_container )
+        {
+            if( const auto url = webview_container->GetUrl(); url )
+            {
+                if( urls_equal( aUrlLoadedByWebview, *url ) )
+                {
+                    webview_container->RunScriptAsync( aScript );
+                }
+            }
+        }
+    }
 }
