@@ -150,13 +150,13 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
     paths.bom_file_path = bom_fp;
 
 
-    ReportProgress( _( "Sending Order" ) );
+    ReportProgress( _( "Sending SMT Order" ) );
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.smt_quote( PCB_SMT_FORM{ *pcb_form, *smt_form }, paths );
 
     if( !rsp.has_value() || rsp->empty() )
     {
-        ReportProgress( _( "Failed to send order" ) );
+        wxLogError( _( "Failed to send order" ) );
         return {};
     }
 

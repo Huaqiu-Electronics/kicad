@@ -26,6 +26,7 @@
 #define PLACE_ORDER_WRAPPER_H
 
 #include "place_order_utils.h"
+#include "place_order_progress_reporter.h"
 #include <optional>
 #include <thread_pool.h>
 
@@ -35,6 +36,14 @@
 #include <settings/webview_settings_manager.h>
 #include <auth/dialog_login.h>
 #include <wx/utils.h>
+
+
+enum
+{
+    PCB_ORDER_PHASES = 5,
+    SMT_ORDER_PHASES = 7
+
+};
 
 
 template <>
@@ -54,8 +63,8 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
         }
     }
 
-    m_progress_reporter =
-            std::make_unique<WX_PROGRESS_REPORTER>( self(), _( "Preparing Order" ), aOrderType == PCB ? 4 : 6 );
+    m_progress_reporter = std::make_unique<PLACE_ORDER_PROGRESS_REPORTER>(
+            self(), _( "Preparing Order" ), aOrderType == PCB ? PCB_ORDER_PHASES : SMT_ORDER_PHASES );
     std::shared_ptr<nullptr_t> on_leave{ nullptr, [this]( nullptr_t )
                                          {
                                              m_progress_reporter.reset();
@@ -66,13 +75,15 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
     auto         ret = tp.submit(
             [=]() -> std::optional<std::string>
             {
+                std::optional<std::string> order_link;
                 switch( aOrderType )
                 {
-                case PCB: return self()->PlaceOrderForPCB();
-                case SMT: return self()->PlaceOrderForSMT();
+                case PCB: order_link = self()->PlaceOrderForPCB(); break;
+                case SMT: order_link = self()->PlaceOrderForSMT(); break;
                 }
 
-                return {};
+                ReportProgress( _( "End placing order" ) );
+                return order_link;
             } );
 
     std::future_status status = ret.wait_for( std::chrono::milliseconds( 250 ) );
@@ -80,7 +91,12 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
     while( status != std::future_status::ready )
     {
         if( m_progress_reporter )
-            m_progress_reporter->KeepRefreshing();
+        {
+            if( !m_progress_reporter->KeepRefreshing( true ) )
+            {
+                return;
+            }
+        }
 
         status = ret.wait_for( std::chrono::milliseconds( 250 ) );
     }
