@@ -82,7 +82,7 @@ std::optional<std::string> QUOTE_CONTROLLER::smt_quote( PCB_SMT_FORM const&     
 
         catch( std::exception& e )
         {
-            wxMessageBox( wxString::FromUTF8( e.what() ) );
+            wxLogError( wxString::FromUTF8( e.what() ) );
         }
     }
 
