@@ -42,13 +42,14 @@
 #include <widgets/progress_reporter_base.h>
 #include <wx/log.h>
 
+#include "place_order_action_container.h"
 
 struct PCB_FORM;
 struct SMT_FORM;
 
 class DIALOG_WEBVIEW;
 template <class EDITOR_T>
-class FAB_INFO_GETTER
+class FAB_INFO_GETTER : public PLACE_ORDER_ACTION_CONTAINER
 {
 public:
     enum PLACE_ORDER_DIALOG_SIZE
@@ -57,12 +58,6 @@ public:
         HEIGHT = 900
     };
 
-
-    enum ORDER_TYPE
-    {
-        PCB,
-        SMT,
-    };
 
     auto self() { return static_cast<EDITOR_T*>( this ); }
     auto self() const { return static_cast<const EDITOR_T*>( this ); }
@@ -92,7 +87,7 @@ public:
 
     std::optional<std::string> PlaceOrderForSMT() { return {}; }
 
-    void PlaceOrder( ORDER_TYPE aOrderType ) { WXUNUSED( aOrderType ) }
+    void PlaceOrder( ORDER_TYPE aOrderType ) override { WXUNUSED( aOrderType ) }
 
     void ToggleHQPersonalCenter() {}
 

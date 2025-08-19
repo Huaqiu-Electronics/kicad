@@ -25,6 +25,7 @@
 #ifndef PLACE_ORDER_WRAPPER_H
 #define PLACE_ORDER_WRAPPER_H
 
+#include "pcb_edit_frame.h"
 #include "place_order_utils.h"
 #include "place_order_progress_reporter.h"
 #include <optional>
@@ -46,13 +47,12 @@ enum
 };
 
 
-template <>
-void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
+void PCB_EDIT_FRAME::PlaceOrder( ORDER_TYPE aOrderType )
 {
     // Ensure user is logged in before placing order
     if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
     {
-        DIALOG_LOGIN login_dialog( self() );
+        DIALOG_LOGIN login_dialog( this );
 
         login_dialog.ShowModal();
 
@@ -64,7 +64,7 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
     }
 
     m_progress_reporter = std::make_unique<PLACE_ORDER_PROGRESS_REPORTER>(
-            self(), _( "Preparing Order" ), aOrderType == PCB ? PCB_ORDER_PHASES : SMT_ORDER_PHASES );
+            this, _( "Preparing Order" ), aOrderType == ORDER_TYPE::PCB ? PCB_ORDER_PHASES : SMT_ORDER_PHASES );
     std::shared_ptr<nullptr_t> on_leave{ nullptr, [this]( nullptr_t )
                                          {
                                              m_progress_reporter.reset();
@@ -78,8 +78,8 @@ void FAB_INFO_GETTER_PCB::PlaceOrder( ORDER_TYPE aOrderType )
                 std::optional<std::string> order_link;
                 switch( aOrderType )
                 {
-                case PCB: order_link = self()->PlaceOrderForPCB(); break;
-                case SMT: order_link = self()->PlaceOrderForSMT(); break;
+                case ORDER_TYPE::PCB: order_link = this->PlaceOrderForPCB(); break;
+                case ORDER_TYPE::SMT: order_link = this->PlaceOrderForSMT(); break;
                 }
 
                 ReportProgress( _( "End placing order" ) );

@@ -923,6 +923,8 @@ public:
     // Agent APIS
     void LaunchPlugin(std::string const& aPluginName, std::optional<nlohmann::json> aParams);
 
+    void PlaceOrder( ORDER_TYPE aOrderType ) override;
+
     copilot::BOARD_SELECTIONS GetSelection() const;
 
     friend PCB_COPILOT_PANEL_CONTAINER;

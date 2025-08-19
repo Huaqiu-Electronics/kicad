@@ -52,7 +52,7 @@ int PCB_CONTROL::PlaceOrderForPCB( const TOOL_EVENT& aEvent )
     if( !editFrame )
         return 1;
 
-    editFrame->PlaceOrder( PCB_EDIT_FRAME::ORDER_TYPE::PCB );
+    editFrame->PlaceOrder( ORDER_TYPE::PCB );
     return 0;
 }
 
@@ -63,7 +63,7 @@ int PCB_CONTROL::PlaceOrderForSMT( const TOOL_EVENT& aEvent )
     if( !editFrame )
         return 1;
 
-    editFrame->PlaceOrder( PCB_EDIT_FRAME::ORDER_TYPE::SMT );
+    editFrame->PlaceOrder( ORDER_TYPE::SMT );
     return 0;
 }
 
