@@ -50,6 +50,7 @@
 #include <tool/action_manager.h>
 
 #include <class_draw_panel_gal.h>
+#include <place_order_action_container.h>
 
 /// Struct describing the current execution state of a TOOL
 struct TOOL_MANAGER::TOOL_STATE
@@ -1175,6 +1176,19 @@ void TOOL_MANAGER::applyViewControls( const TOOL_STATE* aState )
 bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
 {
     wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::processEvent - %s" ), aEvent.Format() );
+
+    {
+        const auto& name = aEvent.getCommandStr();
+
+        if(name == "common.fab.placeOrderForSMT" || name == "common.fab.placeOrderForPCB")
+        {
+           
+            const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame );
+            pcb_frame->PlaceOrder( name == "common.fab.placeOrderForSMT" ? ORDER_TYPE::SMT : ORDER_TYPE::PCB);
+
+            return true;
+        }
+    }
 
     // First try to dispatch the action associated with the event if it is a key press event
     bool handled = DispatchHotKey( aEvent );
