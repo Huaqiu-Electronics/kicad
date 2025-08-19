@@ -1157,13 +1157,23 @@ bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
     {
         const auto& name = aEvent.getCommandStr();
 
-        if(name == "common.fab.placeOrderForSMT" || name == "common.fab.placeOrderForPCB")
+        if( name == "common.fab.placeOrderMenu" )
         {
-           
-            const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame );
-            pcb_frame->PlaceOrder( name == "common.fab.placeOrderForSMT" ? ORDER_TYPE::SMT : ORDER_TYPE::PCB);
+            if( const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame ) )
+            {
+                pcb_frame->TriggerPlaceOrderMenu();
+                return true;
+            }
+        }
 
-            return true;
+        else if( name == "common.fab.placeOrderForSMT" || name == "common.fab.placeOrderForPCB" )
+        {
+            if( const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame ) )
+            {
+                pcb_frame->PlaceOrder( name == "common.fab.placeOrderForSMT" ? ORDER_TYPE::SMT : ORDER_TYPE::PCB );
+
+                return true;
+            }
         }
     }
 

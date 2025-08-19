@@ -32,11 +32,13 @@ enum class ORDER_TYPE
 };
 
 class PLACE_ORDER_ACTION_CONTAINER
-{   
+{
 public:
     virtual ~PLACE_ORDER_ACTION_CONTAINER() = default;
 
     virtual void PlaceOrder( ORDER_TYPE aOrderType ) { (void) aOrderType; }
+
+    virtual void TriggerPlaceOrderMenu() {}
 };
 
 #endif

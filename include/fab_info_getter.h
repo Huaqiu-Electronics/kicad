@@ -102,7 +102,7 @@ public:
         aToolBar->AddToolContextMenu( ACTIONS::placeOrderMenu, std::move( placeOrderMenu ) );
     }
 
-    void TriggerPlaceOrderMenu()
+    void TriggerPlaceOrderMenu() override
     {
         ACTION_TOOLBAR*   aToolBar = self()->m_mainToolBar;
         wxAuiToolBarEvent evt;
