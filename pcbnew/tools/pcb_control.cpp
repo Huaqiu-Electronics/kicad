@@ -3010,7 +3010,7 @@ void PCB_CONTROL::setTransitions()
     Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );
     
     // FAB
-    Go( &PCB_CONTROL::TriggerPlaceOrderMenu,         ACTIONS::placeOrderMenu.MakeEvent() );
+    // Go( &PCB_CONTROL::TriggerPlaceOrderMenu,         ACTIONS::placeOrderMenu.MakeEvent() );
 
     // Go( &PCB_CONTROL::PlaceOrderForPCB,         ACTIONS::placeOrderForPCB.MakeEvent() );
 
