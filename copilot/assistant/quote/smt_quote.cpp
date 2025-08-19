@@ -55,7 +55,7 @@ inline auto add_file_form( std::string const& attachment_file_path, httplib::Mul
         }
     }
 }
-std::optional<std::string> QUOTE_CONTROLLER::smt_quote( PCB_SMT_FORM const&            form,
+std::optional<std::string> QUOTE_CONTROLLER::smt_quote( PCB_SMT_FORM const&             form,
                                                         PCB_SMT_QUOTE_FILE_PATHS const& file_paths )
 {
     wxLogDebug( "Quote SMT order with form: %s", nlohmann::json( form ).dump() );
@@ -82,7 +82,7 @@ std::optional<std::string> QUOTE_CONTROLLER::smt_quote( PCB_SMT_FORM const&     
 
         catch( std::exception& e )
         {
-            wxLogError( wxString::FromUTF8( e.what() ) );
+            wxLogError( "Error while sending order: " + wxString::FromUTF8( e.what() ) + "\n" + res->body );
         }
     }
 
