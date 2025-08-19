@@ -149,24 +149,7 @@ void WEBVIEW_CONTAINER::OnHostSelectionChanged( bool has_selection )
 
 void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 {
-    if( !_impl->_primary_url )
-        return;
-
-    const auto url = evt.GetURL();
-
-    if( url == wxASCII_STR( wxWebViewDefaultURLStr ) )
-    {
-        evt.Veto();
-        return;
-    }
-
-    if( !url.Contains( extract_host_from_url( *_impl->_primary_url ) ) )
-    {
-        // Launch the url in the system default _impl->_browser
-        wxLaunchDefaultBrowser( url );
-        evt.Veto();
-        return;
-    }
+    WXUNUSED( evt );
 }
 
 
@@ -183,8 +166,7 @@ void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
 {
-    _impl->_browser->LoadURL( evt.GetURL() );
-    evt.Veto(); // Prevent WebKit from creating a new page
+    wxLaunchDefaultBrowser( evt.GetURL() );
 }
 
 void WEBVIEW_CONTAINER::OnTitleChanged( wxWebViewEvent& evt )

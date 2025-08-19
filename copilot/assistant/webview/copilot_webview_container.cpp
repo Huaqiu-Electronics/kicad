@@ -64,3 +64,9 @@ void COPILOT_WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
         return;
     }
 }
+
+void COPILOT_WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
+{
+    LoadUrl( evt.GetURL().ToStdString() );
+    evt.Veto(); // Prevent WebKit from creating a new page
+}
