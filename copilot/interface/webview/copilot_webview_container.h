@@ -40,9 +40,11 @@ protected:
 
     void OnNavigationRequest( wxWebViewEvent& evt ) override;
 
+    void OnNewWindow( wxWebViewEvent& evt ) override;
 
 private:
 };
+
 
 
 #endif
