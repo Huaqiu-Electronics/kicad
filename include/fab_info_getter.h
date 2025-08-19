@@ -39,7 +39,7 @@
 #include <memory>
 #include <wx/string.h>
 #include <wx/utils.h>
-#include <widgets/wx_progress_reporters.h>
+#include <widgets/progress_reporter_base.h>
 #include <wx/log.h>
 
 
@@ -156,7 +156,7 @@ public:
 
 
 protected:
-    std::unique_ptr<WX_PROGRESS_REPORTER> m_progress_reporter;
+    std::unique_ptr<PROGRESS_REPORTER_BASE> m_progress_reporter;
 };
 
 

@@ -31,6 +31,7 @@
 #include <board.h>
 #include <string>
 #include <wx/gdicmn.h>
+#include <wx/log.h>
 #include <wx/string.h>
 #include <auth/dialog_login.h>
 #include <wx/msgdlg.h>
@@ -54,13 +55,13 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForPCB()
         return {};
     }
 
-    ReportProgress( _( "Sending Order" ) );
+    ReportProgress( _( "Sending PCB Order" ) );
     QUOTE_CONTROLLER controller;
     auto             rsp = controller.pcb_quote( *GetPCB_FORM(), zipFilePath->ToStdString() );
 
     if( !rsp.has_value() || rsp->id.empty() )
     {
-        ReportProgress( _( "Failed to send order" ) );
+        wxLogError( _( "Failed to send order" ) );
         return {};
     }
 

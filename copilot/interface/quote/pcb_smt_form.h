@@ -31,9 +31,9 @@
 
 struct PCB_SMT_FORM
 {
-    PCB_FORM pcb_form;
-    SMT_FORM smt_form;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_SMT_FORM, pcb_form, smt_form )
+    PCB_FORM pcb_order;
+    SMT_FORM smt_order;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_SMT_FORM, pcb_order, smt_order )
 };
 
 
