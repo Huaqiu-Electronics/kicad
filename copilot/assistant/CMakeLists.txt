@@ -9,7 +9,6 @@ add_library(assistant SHARED
     common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
     common/dialog_webview.cpp
-    common/main_stack_holder.cpp
 
     webview_library/dialog_add_component.cpp
     webview_library/dialog_add_design_block.cpp
@@ -34,6 +33,7 @@ add_library(assistant SHARED
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp
     webview/webview_container.cpp
+    webview/webview_evt_dispatcher.cpp
 )
 
 set_target_properties(assistant PROPERTIES CXX_VISIBILITY_PRESET hidden)
