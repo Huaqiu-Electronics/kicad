@@ -34,7 +34,6 @@ add_library(assistant SHARED
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp
     webview/webview_container.cpp
-    webview/webview_evt_dispatcher.cpp
 )
 
 set_target_properties(assistant PROPERTIES CXX_VISIBILITY_PRESET hidden)
