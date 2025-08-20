@@ -270,7 +270,6 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     // PCB drawings start in the upper left corner.
     GetScreen()->m_Center = false;
 
-    CopilotPanelInit();
     setupTools();
     setupUIConditions();
 
@@ -279,6 +278,8 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     RecreateToolbars();
     PrepareLayerIndicator( true );
 
+    CopilotPanelInit();
+    
     ReCreateMenuBar();
 
 #ifdef KICAD_IPC_API

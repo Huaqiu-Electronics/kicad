@@ -162,7 +162,6 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     SetPageSettings( PAGE_INFO( PAGE_SIZE_TYPE::A4 ) );
     SetScreen( new PCB_SCREEN( GetPageSettings().GetSizeIU( pcbIUScale.IU_PER_MILS ) ) );
 
-        CopilotPanelInit();
         // Create the manager and dispatcher & route draw panel events to the dispatcher
         setupTools();
         setupUIConditions();
@@ -174,6 +173,8 @@ FOOTPRINT_EDIT_FRAME::FOOTPRINT_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     configureToolbars();
     RecreateToolbars();
     ReCreateLayerBox( false );
+
+        CopilotPanelInit();
 
     ReCreateMenuBar();
 

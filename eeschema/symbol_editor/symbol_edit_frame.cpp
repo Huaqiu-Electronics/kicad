@@ -174,9 +174,10 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     GetRenderSettings()->m_IsSymbolEditor = true;
     GetCanvas()->GetGAL()->SetAxesColor( m_colorSettings->GetColor( LAYER_SCHEMATIC_GRID_AXES ) );
 
-    CopilotPanelInit();
     setupTools();
     setupUIConditions();
+
+    CopilotPanelInit();
 
     ReCreateMenuBar();
 
