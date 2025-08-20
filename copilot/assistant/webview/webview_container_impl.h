@@ -41,7 +41,12 @@ struct WEBVIEW_CONTAINER_IMPL
     std::set<std::string>  _consumed_global_ctx_keys{};
     DIALOG_IMAGE_VIEWER*   _image_viewer{};
     DIALOG_WEBVIEW*        _ecad_viewer{};
+
+#ifdef __WXMAC__
+
     EVT_DISPATCHER_HOLDER* _evt_dispatcher_holder{};
+
+#endif
 
 
     wxWebView*                 _browser;
