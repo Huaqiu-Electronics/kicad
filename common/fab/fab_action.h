@@ -50,7 +50,7 @@ TOOL_ACTION ACTIONS::placeOrderForPCB( TOOL_ACTION_ARGS()
 TOOL_ACTION ACTIONS::placeOrderForSMT( TOOL_ACTION_ARGS()
                                                .Name( "common.fab.placeOrderForSMT" )
                                                .Scope( AS_GLOBAL )
-                                               .FriendlyName( _( " Place SMT Order" ) )
+                                               .FriendlyName( _( "Place SMT Order" ) )
                                                .Tooltip( _( "Place order for SMT" ) )
                                                .Icon( BITMAPS::huaqiu ) );
 
