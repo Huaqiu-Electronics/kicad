@@ -48,7 +48,11 @@
 #include <tool/action_manager.h>
 
 #include <class_draw_panel_gal.h>
+
+
 #include <place_order_action_container.h>
+#include <fab_cmd_str.h>
+
 
 /// Struct describing the current execution state of a TOOL
 struct TOOL_MANAGER::TOOL_STATE
@@ -1154,28 +1158,32 @@ bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
 {
     wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::processEvent - %s" ), aEvent.Format() );
 
+#ifdef __WXMAC__
+
+    FlushEvents();
+    const auto& cmdStr = aEvent.getCommandStr();
+
+
+    if( cmdStr == kPlaceOrderMenu )
     {
-        const auto& name = aEvent.getCommandStr();
-
-        if( name == "common.fab.placeOrderMenu" )
+        if( const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame ) )
         {
-            if( const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame ) )
-            {
-                pcb_frame->TriggerPlaceOrderMenu();
-                return true;
-            }
-        }
-
-        else if( name == "common.fab.placeOrderForSMT" || name == "common.fab.placeOrderForPCB" )
-        {
-            if( const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame ) )
-            {
-                pcb_frame->PlaceOrder( name == "common.fab.placeOrderForSMT" ? ORDER_TYPE::SMT : ORDER_TYPE::PCB );
-
-                return true;
-            }
+            pcb_frame->TriggerPlaceOrderMenu();
+            return true;
         }
     }
+
+    else if( cmdStr == kPlaceOrderForSMT || cmdStr == kPlaceOrderForPCB )
+    {
+        if( const auto pcb_frame = dynamic_cast<PLACE_ORDER_ACTION_CONTAINER*>( m_frame ) )
+        {
+            pcb_frame->PlaceOrder( cmdStr == kPlaceOrderForSMT ? ORDER_TYPE::SMT : ORDER_TYPE::PCB );
+
+            return true;
+        }
+    }
+
+#endif
 
     // First try to dispatch the action associated with the event if it is a key press event
     bool handled = DispatchHotKey( aEvent );

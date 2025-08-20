@@ -29,33 +29,34 @@
 #include <common.h>
 #include <tool/actions.h>
 #include <tool/tool_action.h>
+#include <fab_cmd_str.h>
 
 #undef _
 #define _( s ) s
 
 TOOL_ACTION ACTIONS::placeOrderMenu( TOOL_ACTION_ARGS()
-                                             .Name( "common.fab.placeOrderMenu" )
+                                             .Name( kPlaceOrderMenu )
                                              .Scope( AS_GLOBAL )
                                              .FriendlyName( _( "Place order" ) )
-                                            //  .Tooltip( _( "Place order" ) )
+                                             //  .Tooltip( _( "Place order" ) )
                                              .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::placeOrderForPCB( TOOL_ACTION_ARGS()
-                                               .Name( "common.fab.placeOrderForPCB" )
+                                               .Name( kPlaceOrderForPCB )
                                                .Scope( AS_GLOBAL )
                                                .FriendlyName( _( "Place PCB Order" ) )
                                                .Tooltip( _( "Place order for PCB" ) )
                                                .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::placeOrderForSMT( TOOL_ACTION_ARGS()
-                                               .Name( "common.fab.placeOrderForSMT" )
+                                               .Name( kPlaceOrderForSMT )
                                                .Scope( AS_GLOBAL )
                                                .FriendlyName( _( "Place SMT Order" ) )
                                                .Tooltip( _( "Place order for SMT" ) )
                                                .Icon( BITMAPS::huaqiu ) );
 
 TOOL_ACTION ACTIONS::toggleHQPersonalCenter( TOOL_ACTION_ARGS()
-                                                     .Name( "common.fab.HQPersonalCenter" )
+                                                     .Name( kToggleHQPersonalCenter )
                                                      .Scope( AS_GLOBAL )
                                                      .FriendlyName( _( "HQPersonalCenter" ) )
                                                      .Tooltip( _( "Show/Hide HQ PersonalCenter" ) )
