@@ -257,9 +257,17 @@ public:
         self()->GetToolManager()->RunAction( ACTIONS::paste );
     }
 
-    void AddPanel( void* aPanel ) override { self()->m_toolManager->AddPanel( aPanel ); }
+    void AddPanel( void* aPanel ) override
+    {
+        if( self()->m_toolManage )
+            self()->m_toolManager->AddPanel( aPanel );
+    }
 
-    void RemovePanel( void* aPanel ) override { self()->m_toolManager->RemovePanel( aPanel ); }
+    void RemovePanel( void* aPanel ) override
+    {
+        if( self()->m_toolManage )
+            self()->m_toolManager->RemovePanel( aPanel );
+    }
 
 protected:
     ContextT                   m_copilotContextCache;
