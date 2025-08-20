@@ -24,14 +24,9 @@
 
 
 #include "webview_container_impl.h"
-#include "internal/webview_evt_filter.h"
 
-#ifndef _WIN32
-#include "internal/webview_evt_filter.h"
-#endif
-
+#include <evt_dispatcher_holder.h>
 #include <memory>
-#include <stdexcept>
 #include <string>
 #include <wx/log.h>
 #include <wx/sizer.h>
@@ -51,7 +46,6 @@
 #include <utils/extract_host_from_url.h>
 #include <utils/wstring_to_string.h>
 #include <common/dialog_image_viewer.h>
-#include <common/main_stack_holder.h>
 #include <fmt/format.h>
 #include <utils/send_data_buried_point.h>
 
@@ -72,6 +66,36 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
+    _impl->_evt_dispatcher_holder= ([&] () -> EVT_DISPATCHER_HOLDER* {
+
+        EVT_DISPATCHER_HOLDER* holder {};
+        wxWindow* parent  = GetParent();
+
+        while (!holder){
+
+            holder = dynamic_cast<EVT_DISPATCHER_HOLDER*>(parent);
+
+            if( holder )
+                return holder;
+
+            if(parent)
+                parent = parent->GetParent();
+
+            if(!parent)
+                break;
+        }        
+
+        throw new std::runtime_error( "main stack holder not found" ) ;
+
+    })();
+
+
+    if( _impl->_evt_dispatcher_holder )
+    {
+        _impl->_evt_dispatcher_holder->AddPanel( this );
+    }
+
+
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
@@ -117,18 +141,15 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 #endif // DEBUG
 
 
-#ifndef _WIN32
-    WEBVIEW_EVT_FILTER::Get().AddPanel( this );
-#endif
-
     WEBVIEW_CONTROLLER::Get().AddWebviewContainer( this );
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
-#ifndef _WIN32
-    WEBVIEW_EVT_FILTER::Get().RemovePanel( this );
-#endif
+    if( _impl->_evt_dispatcher_holder )
+    {
+        _impl->_evt_dispatcher_holder->RemovePanel( this );
+    }
 
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( this );
 }

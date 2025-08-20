@@ -22,20 +22,20 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef MAIN_STACK_HOLDER_H
-#define MAIN_STACK_HOLDER_H
+#ifndef EVT_DISPATCHER_HOLDER_H
+#define EVT_DISPATCHER_HOLDER_H
 
-#include <functional>
+
 #include <copilot_global.h>
 
-class COPILOT_API MAIN_STACK_HOLDER
+class COPILOT_API EVT_DISPATCHER_HOLDER
 {
 public:
-    MAIN_STACK_HOLDER();
+    virtual ~EVT_DISPATCHER_HOLDER() = default;
 
-    virtual ~MAIN_STACK_HOLDER();
+    virtual void AddPanel( void* aPanel ) { (void) aPanel; }
 
-    virtual void EnsureMainstackForWebKit( std::function<void()> aFunc );
+    virtual void RemovePanel( void* aPanel ) { (void) aPanel; }
 };
 
 
