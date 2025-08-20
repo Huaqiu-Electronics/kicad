@@ -174,13 +174,14 @@ BEGIN_EVENT_TABLE( FOOTPRINT_EDIT_FRAME, PCB_BASE_FRAME )
         SetPageSettings( PAGE_INFO( PAGE_INFO::A4 ) );
         SetScreen( new PCB_SCREEN( GetPageSettings().GetSizeIU( pcbIUScale.IU_PER_MILS ) ) );
 
-        CopilotPanelInit();
         // Create the manager and dispatcher & route draw panel events to the dispatcher
         setupTools();
         setupUIConditions();
 
         initLibraryTree();
         m_treePane = new FOOTPRINT_TREE_PANE( this );
+
+        CopilotPanelInit();
 
         ReCreateMenuBar();
         ReCreateHToolbar();
