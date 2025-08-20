@@ -37,7 +37,7 @@
 
 #include <tool/tool_base.h>
 #include <tool/tool_event.h>
-#include <webview/webview_evt_dispatcher.h>
+#include "webview_evt_dispatcher.h"
 
 namespace KIGFX
 {
