@@ -66,6 +66,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
+#ifdef __WXMAC__
     _impl->_evt_dispatcher_holder= ([&] () -> EVT_DISPATCHER_HOLDER* {
 
         EVT_DISPATCHER_HOLDER* holder {};
@@ -95,6 +96,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         _impl->_evt_dispatcher_holder->AddPanel( this );
     }
 
+#endif
 
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
     _impl->_primary_url = std::move( url );
@@ -146,10 +148,14 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 {
+#ifdef __WXMAC__
+
     if( _impl->_evt_dispatcher_holder )
     {
         _impl->_evt_dispatcher_holder->RemovePanel( this );
     }
+
+#endif
 
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( this );
 }
