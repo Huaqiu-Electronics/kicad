@@ -259,13 +259,13 @@ public:
 
     void AddPanel( void* aPanel ) override
     {
-        if( self()->m_toolManage )
+        if( self()->m_toolManager )
             self()->m_toolManager->AddPanel( aPanel );
     }
 
     void RemovePanel( void* aPanel ) override
     {
-        if( self()->m_toolManage )
+        if( self()->m_toolManager )
             self()->m_toolManager->RemovePanel( aPanel );
     }
 
