@@ -42,6 +42,8 @@ struct WEBVIEW_CONTAINER_IMPL
     DIALOG_IMAGE_VIEWER*  _image_viewer{};
     DIALOG_WEBVIEW*       _ecad_viewer{};
 
+#endif
+
 
     wxWebView*                 _browser;
     HOST_COPILOT_HANDLES       _host_copilot_handles;
