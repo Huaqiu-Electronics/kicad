@@ -28,6 +28,8 @@
 #include <wx/eventfilter.h>
 #include <wx/object.h>
 #include <wx/panel.h>
+#include <wx/app.h>
+
 #include <set>
 #include <queue>
 class WEBVIEW_EVT_DISPATCHER : public wxEventFilter
@@ -46,7 +48,16 @@ public:
 
     void RemovePanel( void* aPanel );
 
-    void FlushEvents();
+    inline void FlushEvents()
+    {
+        while( !m_events.empty() )
+        {
+            wxEvent* event = m_events.front();
+            wxTheApp->ProcessEvent( *event );
+            delete event;
+            m_events.pop();
+        }
+    }
 };
 
 #endif
