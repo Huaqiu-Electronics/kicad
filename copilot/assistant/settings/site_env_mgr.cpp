@@ -101,3 +101,8 @@ bool WEBVIEW_SETTINGS_MANAGER::use_https() const
 {
     return _site_env->use_https;
 }
+
+std::string get_news_url()
+{
+    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_news_url();
+}
