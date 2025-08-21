@@ -63,9 +63,15 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
                                       HOST_COPILOT_HANDLES       host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ),
+        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
+    _impl->_host_copilot_handles = std::move( host_copilot_handles );
+    _impl->_primary_url = std::move( url );
+    _impl->_browser = wxWebView::New();
+
+
 #ifdef __WXMAC__
     _impl->_evt_dispatcher_holder= ([&] () -> EVT_DISPATCHER_HOLDER* {
 
@@ -93,15 +99,10 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 
     if( _impl->_evt_dispatcher_holder )
     {
-        _impl->_evt_dispatcher_holder->AddPanel( this );
+        _impl->_evt_dispatcher_holder->AddPanel( _impl->_browser );
     }
 
-#endif
-
-    _impl->_host_copilot_handles = std::move( host_copilot_handles );
-    _impl->_primary_url = std::move( url );
-    _impl->_browser = wxWebView::New();
-
+#endif    
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
     _impl->_browser->Create( this, wxID_ANY,
@@ -135,15 +136,13 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         send_data_buried_point( *data_buried_point );
     }
 
+    WEBVIEW_CONTROLLER::Get().AddWebviewContainer( this );
 
 #ifdef DEBUG
 
     _impl->_browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
-
-
-    WEBVIEW_CONTROLLER::Get().AddWebviewContainer( this );
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
@@ -152,7 +151,7 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 
     if( _impl->_evt_dispatcher_holder )
     {
-        _impl->_evt_dispatcher_holder->RemovePanel( this );
+        _impl->_evt_dispatcher_holder->RemovePanel( _impl->_browser );
     }
 
 #endif
