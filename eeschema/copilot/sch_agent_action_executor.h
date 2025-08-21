@@ -125,7 +125,14 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::add_design_block:
         {
-            DIALOG_ADD_DESIGN_BLOCK dialog( self(), wxString2String( self()->DumpSelectionToDesignBlock() ) );
+            const auto content = self()->DumpSelectionToDesignBlock();
+
+            if( content.IsEmpty() )
+            {
+                return;
+            }
+
+            DIALOG_ADD_DESIGN_BLOCK dialog( self(), wxString2String( std::move( content ) ) );
             dialog.ShowModal();
             break;
         }
