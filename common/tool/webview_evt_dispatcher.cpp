@@ -26,6 +26,7 @@
 
 #include <wx/event.h>
 #include <wx/webview.h>
+#include <wx/log.h>
 
 inline auto isWebviewEvent( wxEventType evt_type )
 {
@@ -56,6 +57,12 @@ int WEBVIEW_EVT_DISPATCHER::FilterEvent( wxEvent& event )
 
     if( isWebviewEvent( event.GetEventType() ) )
     {
+        if(auto web_evt = dynamic_cast<wxWebViewEvent*>(&event))
+        {
+                    const auto content = web_evt->GetString().ToStdString();
+                    wxLogDebug(content.c_str());
+        }
+        
         m_events.push( event.Clone() );
         return Event_Ignore;
     }
