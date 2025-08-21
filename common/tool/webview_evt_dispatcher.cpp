@@ -27,7 +27,7 @@
 #include <wx/event.h>
 #include <wx/webview.h>
 #include <wx/log.h>
-
+#include <webview/webview_container.h>
 inline auto isWebviewEvent( wxEventType evt_type )
 {
     return evt_type == wxEVT_WEBVIEW_NAVIGATING || evt_type == wxEVT_WEBVIEW_NAVIGATED
@@ -40,8 +40,8 @@ WEBVIEW_EVT_DISPATCHER::~WEBVIEW_EVT_DISPATCHER()
 {
     while( !m_events.empty() )
     {
-        wxEvent* event = m_events.front();
-        delete event;
+        auto event = m_events.front();
+        delete event.second;
         m_events.pop();
     }
 
@@ -50,32 +50,35 @@ WEBVIEW_EVT_DISPATCHER::~WEBVIEW_EVT_DISPATCHER()
 
 int WEBVIEW_EVT_DISPATCHER::FilterEvent( wxEvent& event )
 {
-    if( m_panels.find( event.GetEventObject() ) == m_panels.end() )
+    auto panel = m_panels.find( reinterpret_cast<wxWebView*>( event.GetEventObject() ) );
+
+    if( panel == m_panels.end() )
     {
         return Event_Skip;
     }
 
     if( isWebviewEvent( event.GetEventType() ) )
     {
-        if(auto web_evt = dynamic_cast<wxWebViewEvent*>(&event))
+        if( auto webview = ( dynamic_cast<wxWebView*>( event.GetEventObject() ) ) )
         {
-                    const auto content = web_evt->GetString().ToStdString();
-                    wxLogDebug(content.c_str());
+            if( auto webEvt = dynamic_cast<wxWebViewEvent*>( event.Clone() ) )
+            {
+                m_events.push( { webview, webEvt } );
+
+                return Event_Ignore;
+            }
         }
-        
-        m_events.push( event.Clone() );
-        return Event_Ignore;
     }
 
     return Event_Skip;
 }
 
-void WEBVIEW_EVT_DISPATCHER::AddPanel( void* aPanel )
+void WEBVIEW_EVT_DISPATCHER::AddPanel( wxWebView* aPanel )
 {
     m_panels.insert( aPanel );
 }
 
-void WEBVIEW_EVT_DISPATCHER::RemovePanel( void* aPanel )
+void WEBVIEW_EVT_DISPATCHER::RemovePanel( wxWebView* aPanel )
 {
     m_panels.erase( aPanel );
 }
@@ -84,4 +87,21 @@ void WEBVIEW_EVT_DISPATCHER::RemovePanel( void* aPanel )
 WEBVIEW_EVT_DISPATCHER::WEBVIEW_EVT_DISPATCHER()
 {
     wxEvtHandler::AddFilter( this );
+}
+
+
+void WEBVIEW_EVT_DISPATCHER::FlushEvents()
+{
+    while( !m_events.empty() )
+    {
+        auto cur = m_events.front();
+
+        if( m_panels.contains( cur.first ) )
+        {
+            static_cast<WEBVIEW_CONTAINER*>( ( cur.first->GetParent() ) )->GenericProcessWebviewEvent( *cur.second );
+        }
+
+        delete cur.second;
+        m_events.pop();
+    }
 }

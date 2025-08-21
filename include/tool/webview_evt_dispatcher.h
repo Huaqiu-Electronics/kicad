@@ -25,6 +25,7 @@
 #ifndef WEBVIEW_EVT_DISPATCHER_H
 #define WEBVIEW_EVT_DISPATCHER_H
 
+#include <utility>
 #include <wx/eventfilter.h>
 #include <wx/object.h>
 #include <wx/panel.h>
@@ -32,10 +33,14 @@
 
 #include <set>
 #include <queue>
+#include <map>
+class wxWebViewEvent;
+class WEBVIEW_CONTAINER;
+class wxWebView;
 class WEBVIEW_EVT_DISPATCHER : public wxEventFilter
 {
-    std::set<void*>      m_panels;
-    std::queue<wxEvent*> m_events;
+    std::set<wxWebView*>                               m_panels;
+    std::queue<std::pair<wxWebView*, wxWebViewEvent*>> m_events;
 
 public:
     WEBVIEW_EVT_DISPATCHER();
@@ -44,20 +49,12 @@ public:
 
     int FilterEvent( wxEvent& event ) override;
 
-    void AddPanel( void* aPanel );
+    void AddPanel( wxWebView* aPanel );
 
-    void RemovePanel( void* aPanel );
+    void RemovePanel( wxWebView* aPanel );
 
-    inline void FlushEvents()
-    {
-        while( !m_events.empty() )
-        {
-            wxEvent* event = m_events.front();
-            wxTheApp->ProcessEvent( *event );
-            delete event;
-            m_events.pop();
-        }
-    }
+    void FlushEvents();
 };
+
 
 #endif
