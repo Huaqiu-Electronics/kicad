@@ -24,6 +24,8 @@
 
 #include <settings/webview_settings_manager.h>
 #include <settings/site_env.h>
+#include <settings/get_news_url.h>
+#include <settings/get_webview_chat_path.h>
 #include <fmt/format.h>
 
 inline const auto& get_edn_cn_url()
@@ -105,4 +107,9 @@ bool WEBVIEW_SETTINGS_MANAGER::use_https() const
 std::string get_news_url()
 {
     return WEBVIEW_SETTINGS_MANAGER::get_instance().get_news_url();
+}
+
+std::string get_webview_chat_path()
+{
+    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path();
 }
