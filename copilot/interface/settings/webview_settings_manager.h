@@ -100,6 +100,8 @@ public:
 
     bool use_https() const;
 
+    bool webview_dev_tool_enabled() const;
+
 private:
     WEBVIEW_SETTINGS_MANAGER();
     std::unique_ptr<IMMUTABLE_SETTINGS> _immutable_settings;
@@ -109,8 +111,6 @@ private:
     std::unique_ptr<nlohmann::json>     _access_token;
     std::unique_ptr<SITE_ENV>           _site_env;
 };
-
-
 
 
 #endif

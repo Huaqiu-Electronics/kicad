@@ -215,8 +215,13 @@ std::string get_webview_chat_path()
 {
     return WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path();
 }
-
-std::string get_news_url()
+bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 {
-    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_news_url();
+#ifdef DEBUG
+
+    return true;
+
+#endif
+
+    return _immutable_settings->enable_webview_dev_tool;
 }

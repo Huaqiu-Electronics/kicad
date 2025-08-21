@@ -108,12 +108,10 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         send_data_buried_point( *data_buried_point );
     }
 
-
-#ifdef DEBUG
-
-    _impl->_browser->EnableAccessToDevTools( true );
-
-#endif // DEBUG
+    if( WEBVIEW_SETTINGS_MANAGER::get_instance().webview_dev_tool_enabled() )
+    {
+        _impl->_browser->EnableAccessToDevTools( true );
+    }
 
 
 #ifndef _WIN32

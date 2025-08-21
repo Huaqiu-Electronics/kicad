@@ -36,9 +36,10 @@ struct IMMUTABLE_SETTINGS
 {
     DATA_BURIED_POINT_SETTINGS data_buried_point_settings;
     COPILOT_WEBVIEW_SETTINGS   copilot_webview_settings;
+    bool                       enable_webview_dev_tool{};
     std::string                version = kConfigVersion;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( IMMUTABLE_SETTINGS, data_buried_point_settings,
-                                    copilot_webview_settings, version )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( IMMUTABLE_SETTINGS, data_buried_point_settings, copilot_webview_settings,
+                                    enable_webview_dev_tool, version )
 };
 
 
