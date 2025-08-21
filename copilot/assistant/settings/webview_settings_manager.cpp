@@ -27,8 +27,6 @@
 #include <settings/mutable_settings.h>
 #include <chrono>
 #include <webview/webview_controller.h>
-#include <settings/get_webview_chat_path.h>
-#include <settings/get_news_url.h>
 #include <settings/site_env.h>
 
 #include "config_io_helper.h"
@@ -211,10 +209,7 @@ void WEBVIEW_SETTINGS_MANAGER::clear_token()
 }
 
 
-std::string get_webview_chat_path()
-{
-    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path();
-}
+
 bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 {
 #ifdef DEBUG
