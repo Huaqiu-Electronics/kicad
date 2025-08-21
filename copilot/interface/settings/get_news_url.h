@@ -22,23 +22,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef DIALOG_LOGIN_NATIVE_H
-#define DIALOG_LOGIN_NATIVE_H
-
-#include <common/copilot_dialog.h>
-#include "dialog_login_base.h"
+#ifndef GET_NEWS_URL_H
+#define GET_NEWS_URL_H
 
 
-class COPILOT_API DIALOG_LOGIN_NATIVE : public COPILOT_DIALOG, public DIALOG_LOGIN_BASE
-{
-    using COPILOT_DIALOG::Init;
-
-public:
-    DIALOG_LOGIN_NATIVE( wxWindow* aParent );
-    ~DIALOG_LOGIN_NATIVE();
+#include <string>
+#include <copilot_global.h>
 
 
-private:
-};
+std::string COPILOT_API get_news_url();
 
 #endif

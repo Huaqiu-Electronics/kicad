@@ -22,10 +22,35 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <settings/get_webview_chat_path.h>
-#include <settings/webview_settings_manager.h>
+#ifndef SITE_ENV_H
+#define SITE_ENV_H
 
-std::string get_webview_chat_path()
+#include <nlohmann/json.hpp>
+#include <string>
+#include "copilot_config_version.h"
+#include "site_paths.h"
+
+#if !defined( IS_RC_BUILD )
+
+constexpr auto kEDA_CN_HOST = "www.eda.cn";
+constexpr auto kUseHttps = true;
+
+#else
+
+constexpr auto kEDA_CN_HOST = "www.fdatasheets.com";
+constexpr auto kUseHttps = false;
+
+#endif
+
+
+struct SITE_ENV
 {
-    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path();
-}
+    std::string eda_cn_host = kEDA_CN_HOST;
+    std::string version = kConfigVersion;
+    bool        use_https = kUseHttps;
+    SITE_PATHS  site_paths;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SITE_ENV, eda_cn_host, version, use_https, site_paths )
+};
+
+#endif

@@ -190,8 +190,29 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::add_component:
+            case WEB_HOST_INTERNAL_CMD_TYPE::add_component_type:
+            case WEB_HOST_INTERNAL_CMD_TYPE::add_design_block_type:
             {
-                DIALOG_ADD_COMPONENT dialog( GetParent() );
+                static const std::map<WEB_HOST_INTERNAL_CMD_TYPE, std::string> type_to_url = {
+                    { WEB_HOST_INTERNAL_CMD_TYPE::add_component,
+                      WEBVIEW_SETTINGS_MANAGER::get_instance().get_add_component_url() },
+                    { WEB_HOST_INTERNAL_CMD_TYPE::add_component_type,
+                      WEBVIEW_SETTINGS_MANAGER::get_instance().get_add_component_type_url() },
+                    { WEB_HOST_INTERNAL_CMD_TYPE::add_design_block_type,
+                      WEBVIEW_SETTINGS_MANAGER::get_instance().get_add_design_block_type_url() }
+
+                };
+
+                static const std::map<WEB_HOST_INTERNAL_CMD_TYPE, wxString> type_to_name = {
+                    { WEB_HOST_INTERNAL_CMD_TYPE::add_component, _( "Add Component" ) },
+                    { WEB_HOST_INTERNAL_CMD_TYPE::add_component_type, _( "Add Component Type" ) },
+                    { WEB_HOST_INTERNAL_CMD_TYPE::add_design_block_type, _( "Add Design Block Type" ) }
+
+                };
+
+
+                DIALOG_ADD_COMPONENT dialog( GetParent(), type_to_url.at( *t ), type_to_name.at( *t ),
+                                             magic_enum::enum_name( *t ).data() );
                 dialog.ShowModal();
                 break;
             }

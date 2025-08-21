@@ -27,6 +27,9 @@
 #include <settings/mutable_settings.h>
 #include <chrono>
 #include <webview/webview_controller.h>
+#include <settings/get_webview_chat_path.h>
+#include <settings/get_news_url.h>
+#include <settings/site_env.h>
 
 #include "config_io_helper.h"
 #include "settings/copilot_config_version.h"
@@ -35,15 +38,18 @@
 constexpr auto kMutableSettingsFileName = "mutable_settings.json";
 constexpr auto kImmutableSettingsFileName = "immutable_settings.json";
 constexpr auto kAccessTokenFN = "access_token.json";
+constexpr auto kSitEnv = "site_env.json";
 
 
 WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
         _immutable_settings( new IMMUTABLE_SETTINGS ), _mutable_settings( new MUTABLE_SETTINGS ),
-        _access_token( new nlohmann::json )
+        _access_token( new nlohmann::json ), _site_env( new SITE_ENV )
 {
     load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), *_immutable_settings, kConfigVersion );
     load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings, kConfigVersion );
     load_cnf_no_check( get_copilot_setting_path( kAccessTokenFN ), *_access_token );
+    load_cnf( get_copilot_setting_path( kSitEnv ), *_site_env, kConfigVersion );
+
 
     auto url = _immutable_settings->copilot_webview_settings.url;
 
@@ -202,4 +208,15 @@ void WEBVIEW_SETTINGS_MANAGER::clear_token()
     *_access_token = nlohmann::json();
     WEBVIEW_CONTROLLER::Get().OnLogout();
     save_token();
+}
+
+
+std::string get_webview_chat_path()
+{
+    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_chat_path();
+}
+
+std::string get_news_url()
+{
+    return WEBVIEW_SETTINGS_MANAGER::get_instance().get_news_url();
 }

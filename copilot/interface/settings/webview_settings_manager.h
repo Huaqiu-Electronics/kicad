@@ -36,7 +36,7 @@ struct MUTABLE_SETTINGS;
 struct COPILOT_WEBVIEW_PATH;
 struct DIALOG_GEOMETRY;
 struct ACCESS_TOKEN;
-
+struct SITE_ENV;
 
 class COPILOT_API WEBVIEW_SETTINGS_MANAGER
 {
@@ -64,12 +64,41 @@ public:
     std::optional<DIALOG_GEOMETRY> get_dialog_geometry( std::string const& aKey ) const;
     void set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
-    ACCESS_TOKEN   get_access_token() const;
+    ACCESS_TOKEN get_access_token() const;
+
     nlohmann::json get_raw_access_token() const;
-    void           set_access_token( nlohmann::json const& token );
-    bool           is_token_valid() const;
-    void           save_token();
-    void           clear_token();
+
+    void set_access_token( nlohmann::json const& token );
+
+    bool is_token_valid() const;
+
+    void save_token();
+
+    void clear_token();
+
+    std::string get_edn_cn_host() const;
+
+    std::string get_edn_cn_url() const;
+
+    std::string get_library_url() const;
+
+    std::string get_add_design_block_url() const;
+
+    std::string get_add_design_block_type_url() const;
+
+    std::string get_add_component_url() const;
+
+    std::string get_add_component_type_url() const;
+
+    std::string get_login_url() const;
+
+    std::string get_pcb_quote_path() const;
+
+    std::string get_smt_quote_path() const;
+
+    std::string get_news_url() const;
+
+    bool use_https() const;
 
 private:
     WEBVIEW_SETTINGS_MANAGER();
@@ -78,6 +107,7 @@ private:
     std::string                         _webview_chat_path;
     std::string                         _webview_image_viewer_path;
     std::unique_ptr<nlohmann::json>     _access_token;
+    std::unique_ptr<SITE_ENV>           _site_env;
 };
 
 

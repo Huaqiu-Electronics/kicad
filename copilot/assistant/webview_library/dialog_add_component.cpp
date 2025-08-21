@@ -25,16 +25,11 @@
 #include <webview_library/dialog_add_component.h>
 #include "panel_add_component.h"
 
-#if !defined( IS_RC_BUILD )
-constexpr auto kAddComponentUrl = "https://www.eda.cn/addSymbolDevice/";
-#else
-constexpr auto kAddComponentUrl = "http://47.116.118.182/addSymbolDevice/";
-#endif
 
-DIALOG_ADD_COMPONENT::DIALOG_ADD_COMPONENT( wxWindow* aParent ) :
-        COPILOT_DIALOG( aParent, _( "Component Editor" ), "component_editor" )
+DIALOG_ADD_COMPONENT::DIALOG_ADD_COMPONENT( wxWindow* aParent, std::string aUrl, wxString aTitle, std::string aKey ) :
+        COPILOT_DIALOG( aParent, aTitle, aKey )
 {
-    Init( new PANEL_ADD_COMPONENT( this, kAddComponentUrl ) );
+    Init( new PANEL_ADD_COMPONENT( this, aUrl ) );
 }
 
 DIALOG_ADD_COMPONENT::~DIALOG_ADD_COMPONENT()

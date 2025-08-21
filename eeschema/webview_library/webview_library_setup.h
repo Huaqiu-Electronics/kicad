@@ -28,15 +28,18 @@
 #include <sch_edit_frame.h>
 #include <tool/action_toolbar.h>
 #include <sch_actions.h>
+#include <utils/web_utils.h>
+#include <settings/webview_settings_manager.h>
+
 #include "webview_library_container.h"
 #include "webview_library_aui_settings.h"
-#include <utils/web_utils.h>
 
 
 void SCH_EDIT_FRAME::WebViewLibraryInit()
 {
     m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER(
-            this, add_parameter_to_url( eeconfig()->m_WebViewLibrarySettings.url.ToStdString(), m_hostVersionInfo ),
+            this,
+            add_parameter_to_url( WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url(), m_hostVersionInfo ),
             { {}, m_copilotAgentActionHdl } );
 }
 

@@ -31,8 +31,8 @@ class COPILOT_API DIALOG_LOGIN_BASE
 public:
     enum FIXED_SIZE
     {
-        WIDTH = 400,
-        HEIGHT = 600
+        WIDTH = 320,
+        HEIGHT = 424
     };
 
     virtual ~DIALOG_LOGIN_BASE() = default;

@@ -28,7 +28,6 @@
 #include <eeschema_settings.h>
 #include <settings/app_settings.h>
 #include <settings/parameters.h>
-#include <webview_library/webview_library_url.h>
 #include "webview_library_settings.h"
 
 void EESCHEMA_SETTINGS::InitWebviewLibrarySettings()
@@ -46,9 +45,6 @@ void EESCHEMA_SETTINGS::InitWebviewLibrarySettings()
 
     m_params.emplace_back(
             new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
-
-    m_params.emplace_back(
-            new PARAM<wxString>( "webview_library.url", &m_WebViewLibrarySettings.url, kSymbolChooserUrl ) );
 }
 
 #endif

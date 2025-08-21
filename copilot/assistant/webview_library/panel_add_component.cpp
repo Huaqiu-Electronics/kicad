@@ -23,16 +23,16 @@
  */
 
 #include "panel_add_component.h"
-#include "fmt/format.h"
+#include <fmt/format.h>
 #include "webview/internal/webview_internal_cmd.h"
 #include "webview/internal/webview_internal_cmd_type.h"
 
 #include <webview/webview_container.h>
 #include <passive_action/passive_action_container.h>
-#include <webview_library/webview_library_url.h>
 #include <magic_enum.hpp>
 #include <webview/webview_controller.h>
-#include <webview_library/webview_library_url.h>
+#include <settings/webview_settings_manager.h>
+
 PANEL_ADD_COMPONENT::PANEL_ADD_COMPONENT( wxDialog* parent, std::optional<std::string> url ) :
         WEBVIEW_CONTAINER( parent, std::move( url ), {}, "adding_online_library" ), _parent( parent )
 {
@@ -65,9 +65,12 @@ void PANEL_ADD_COMPONENT::HandleScriptMessage( std::string const& msg )
             {
             case WEB_HOST_INTERNAL_CMD_TYPE::finish_adding_design_block:
             case WEB_HOST_INTERNAL_CMD_TYPE::finish_adding_component:
+            case WEB_HOST_INTERNAL_CMD_TYPE::finish_adding_component_type:
+            case WEB_HOST_INTERNAL_CMD_TYPE::finish_adding_design_block_type:
+
             {
                 WEBVIEW_CONTROLLER::Get().RunScript( fmt::format( "{}();", magic_enum::enum_name( *t ) ),
-                                                     kSymbolChooserUrl );
+                                                     WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url() );
                 _parent->EndModal( wxID_OK );
                 break;
             }

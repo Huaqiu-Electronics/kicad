@@ -26,19 +26,12 @@
 
 #include <settings/webview_settings_manager.h>
 
-
-#if !defined( IS_RC_BUILD )
-constexpr auto kLoginURL = "https://www.eda.cn/login/";
-#else
-constexpr auto kLoginURL = "http://47.116.118.182/login/";
-#endif
-
-
 DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( wxWindow* aParent ) :
-        DIALOG_WEBVIEW( aParent, _( "Login" ), "DIALOG_LOGIN_WEBVIEW", { WIDTH, HEIGHT } )
+        DIALOG_WEBVIEW( aParent, _( "Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in directly" ),
+                        "DIALOG_LOGIN_WEBVIEW", { WIDTH, HEIGHT } )
 {
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
-    LoadUrl( kLoginURL );
+    LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_url() );
 }
 
 DIALOG_LOGIN_WEBVIEW::~DIALOG_LOGIN_WEBVIEW()

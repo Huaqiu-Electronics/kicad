@@ -37,13 +37,6 @@ class SSLClient;
 } // namespace httplib
 
 
-#if !defined( IS_RC_BUILD )
-using QuoteClient = httplib::SSLClient;
-#else
-using QuoteClient = httplib::Client;
-#endif
-
-
 struct PCB_FORM;
 struct PCB_SMT_FORM;
 
@@ -67,7 +60,8 @@ public:
 
 
 private:
-    std::unique_ptr<QuoteClient> _client;
+    std::unique_ptr<httplib::SSLClient> _ssl_client;
+    std::unique_ptr<httplib::Client>    _client;
 };
 
 #endif

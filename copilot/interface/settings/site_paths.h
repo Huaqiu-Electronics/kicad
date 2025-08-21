@@ -22,13 +22,29 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_LIBRARY_URL_H
-#define WEBVIEW_LIBRARY_URL_H
+#ifndef SITE_PATHS_H
+#define SITE_PATHS_H
 
-#if !defined( IS_RC_BUILD )
-constexpr auto kSymbolChooserUrl = "https://www.eda.cn/library/";
-#else
-constexpr auto kSymbolChooserUrl = "http://47.116.118.182/library/";
-#endif
+
+#include <nlohmann/json.hpp>
+
+struct SITE_PATHS
+{
+    std::string library = "/library";
+    std::string login = "/login";
+
+    std::string add_component = "/addSymbolDevice";
+    std::string add_design_block = "/addFragment";
+
+    std::string add_component_type = "/addComponentType";
+    std::string add_design_block_type = "/addDesignBlockType";
+
+    std::string pcb_quote = "/openapi/api/hqpcb/External/fileQuote";
+    std::string smt_quote = "/openapi/pcba/saveDfmTmpOrder";
+    std::string news_url = "/news/page/bottomNotice/index.html";
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SITE_PATHS, library, login, add_component, add_design_block, add_component_type,
+                                    add_design_block_type, pcb_quote, smt_quote, news_url )
+};
 
 #endif
