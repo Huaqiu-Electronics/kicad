@@ -63,13 +63,35 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
                                       HOST_COPILOT_HANDLES       host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ),
-        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
+
+    auto top_sizer = new wxBoxSizer( wxVERTICAL );
+    _impl->_browser->Create( this, wxID_ANY,
+                             _impl->_primary_url ? *_impl->_primary_url : wxASCII_STR( wxWebViewDefaultURLStr ),
+                             wxDefaultPosition, wxDefaultSize );
+    top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
+
+
+    if( !_impl->_browser->AddScriptMessageHandler(
+                magic_enum::enum_name( WEBVIEW_SCRIPT_MSG_HANDLER::eda_host ).data() ) )
+    {
+        wxLogDebug( "Could not add script message handler " );
+    }
+
+    SetSizer( top_sizer );
+    SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
+
+    if( data_buried_point )
+    {
+        send_data_buried_point( *data_buried_point );
+    }
+
+    WEBVIEW_CONTROLLER::Get().AddWebviewContainer( this );
 
 
 #ifdef __WXMAC__
@@ -102,23 +124,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
         _impl->_evt_dispatcher_holder->AddPanel( _impl->_browser );
     }
 
-#endif    
-
-    auto top_sizer = new wxBoxSizer( wxVERTICAL );
-    _impl->_browser->Create( this, wxID_ANY,
-                             _impl->_primary_url ? *_impl->_primary_url : wxASCII_STR( wxWebViewDefaultURLStr ),
-                             wxDefaultPosition, wxDefaultSize );
-    top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
-
-
-    if( !_impl->_browser->AddScriptMessageHandler(
-                magic_enum::enum_name( WEBVIEW_SCRIPT_MSG_HANDLER::eda_host ).data() ) )
-    {
-        wxLogDebug( "Could not add script message handler " );
-    }
-
-    SetSizer( top_sizer );
-    SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
+#else
 
     Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, _impl->_browser->GetId() );
@@ -131,18 +137,61 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _impl->_browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _impl->_browser->GetId() );
 
-    if( data_buried_point )
-    {
-        send_data_buried_point( *data_buried_point );
-    }
+#endif
 
-    WEBVIEW_CONTROLLER::Get().AddWebviewContainer( this );
 
 #ifdef DEBUG
 
     _impl->_browser->EnableAccessToDevTools( true );
 
 #endif // DEBUG
+}
+
+void WEBVIEW_CONTAINER::GenericProcessWebviewEvent( wxWebViewEvent& evt )
+{
+    auto evt_type = evt.GetEventType();
+
+    if( evt_type == wxEVT_WEBVIEW_NAVIGATING )
+    {
+        OnNavigationRequest( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_NAVIGATED )
+    {
+        OnNavigationComplete( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_LOADED )
+    {
+        OnDocumentLoaded( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_ERROR )
+    {
+        OnError( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_NEWWINDOW )
+    {
+        OnNewWindow( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_TITLE_CHANGED )
+    {
+        OnTitleChanged( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_FULLSCREEN_CHANGED )
+    {
+        OnFullScreenChanged( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED )
+    {
+        OnScriptMessage( evt );
+    }
+    else if( evt_type == wxEVT_WEBVIEW_SCRIPT_RESULT )
+    {
+        OnScriptResult( evt );
+    }
+    else
+    {
+        // Handle any unknown event types
+        wxLogDebug( "Unknown webview event type: %d", evt_type );
+    }
 }
 
 WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
