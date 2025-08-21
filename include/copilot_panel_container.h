@@ -49,12 +49,11 @@
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
 #include <tool/tool_manager.h>
-#include <evt_dispatcher_holder.h>
 
 
 template <class Derived, class ContextT>
 
-class COPILOT_PANEL_CONTAINER : public EVT_DISPATCHER_HOLDER
+class COPILOT_PANEL_CONTAINER
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
@@ -257,9 +256,6 @@ public:
         self()->GetToolManager()->RunAction( ACTIONS::paste );
     }
 
-    void AddPanel( void* aPanel ) override { self()->m_toolManager->AddPanel( aPanel ); }
-
-    void RemovePanel( void* aPanel ) override { self()->m_toolManager->RemovePanel( aPanel ); }
 
 protected:
     ContextT                   m_copilotContextCache;

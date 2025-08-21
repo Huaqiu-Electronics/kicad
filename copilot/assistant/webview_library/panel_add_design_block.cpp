@@ -40,5 +40,5 @@ PANEL_ADD_DESIGN_BLOCK::~PANEL_ADD_DESIGN_BLOCK()
 void PANEL_ADD_DESIGN_BLOCK::OnNavigationComplete( wxWebViewEvent& evt )
 {
     PANEL_ADD_COMPONENT::OnNavigationComplete( evt );
-    RunScriptAsync( fmt::format( "load_design_block(`{}`);", _design_block ) );
+    RunScriptAsync( fmt::format( "load_design_block('{}');", _design_block ) );
 }

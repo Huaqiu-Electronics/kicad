@@ -37,7 +37,6 @@
 
 #include <tool/tool_base.h>
 #include <tool/tool_event.h>
-#include <webview/webview_evt_dispatcher.h>
 
 namespace KIGFX
 {
@@ -59,7 +58,7 @@ class APP_SETTINGS_BASE;
  * - pumps UI events to tools requesting them
  * - manages tool state machines (transitions and wait requests)
  */
-class TOOL_MANAGER : public WEBVIEW_EVT_DISPATCHER
+class TOOL_MANAGER
 {
 private:
     struct TOOL_STATE;

@@ -35,13 +35,12 @@
 class wxWebView;
 class DIALOG_WEBVIEW;
 class DIALOG_IMAGE_VIEWER;
-class EVT_DISPATCHER_HOLDER;
+
 struct WEBVIEW_CONTAINER_IMPL
 {
-    std::set<std::string>  _consumed_global_ctx_keys{};
-    DIALOG_IMAGE_VIEWER*   _image_viewer{};
-    DIALOG_WEBVIEW*        _ecad_viewer{};
-    EVT_DISPATCHER_HOLDER* _evt_dispatcher_holder{};
+    std::set<std::string> _consumed_global_ctx_keys{};
+    DIALOG_IMAGE_VIEWER*  _image_viewer{};
+    DIALOG_WEBVIEW*       _ecad_viewer{};
 
 
     wxWebView*                 _browser;
