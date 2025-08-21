@@ -28,15 +28,14 @@
 
 #include <copilot_global.h>
 
-class wxWebView;
 class COPILOT_API EVT_DISPATCHER_HOLDER
 {
 public:
     virtual ~EVT_DISPATCHER_HOLDER() = default;
 
-    virtual void AddPanel( wxWebView* aPanel ) { (void) aPanel; }
+    virtual void AddPanel( void* aPanel ) { (void) aPanel; }
 
-    virtual void RemovePanel( wxWebView* aPanel ) { (void) aPanel; }
+    virtual void RemovePanel( void* aPanel ) { (void) aPanel; }
 };
 
 
