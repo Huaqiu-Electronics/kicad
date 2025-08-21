@@ -22,32 +22,17 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_EVT_DISPATCHER_H
-#define WEBVIEW_EVT_DISPATCHER_H
+#include <common/main_stack_holder.h>
 
-#include <wx/eventfilter.h>
-#include <wx/object.h>
-#include <wx/panel.h>
-#include <set>
-#include <queue>
-#include <copilot_global.h>
-class COPILOT_API WEBVIEW_EVT_DISPATCHER : public wxEventFilter
+MAIN_STACK_HOLDER::MAIN_STACK_HOLDER()
 {
-    std::set<void*>      m_panels;
-    std::queue<wxEvent*> m_events;
+}
 
-public:
-    WEBVIEW_EVT_DISPATCHER();
+MAIN_STACK_HOLDER::~MAIN_STACK_HOLDER()
+{
+}
 
-    ~WEBVIEW_EVT_DISPATCHER() override;
-
-    int FilterEvent( wxEvent& event ) override;
-
-    void AddPanel( void* aPanel );
-
-    void RemovePanel( void* aPanel );
-
-    void FlushEvents();
-};
-
-#endif
+void MAIN_STACK_HOLDER::EnsureMainstackForWebKit( std::function<void()> aFunc )
+{
+    aFunc();
+}

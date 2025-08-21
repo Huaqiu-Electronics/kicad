@@ -1178,7 +1178,6 @@ bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
     wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::processEvent - %s" ), aEvent.Format() );
 
     {
-        FlushEvents();
         const auto& name = aEvent.getCommandStr();
 
         if( name == "common.fab.placeOrderMenu" )
