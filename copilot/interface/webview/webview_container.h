@@ -67,8 +67,6 @@ protected:
 
     virtual void HandleScriptMessage( std::string const& aMessage );
 
-    virtual void OnScriptResult( wxWebViewEvent& evt );
-
     virtual void OnNewWindow( wxWebViewEvent& evt );
 
     virtual void OnTitleChanged( wxWebViewEvent& evt );

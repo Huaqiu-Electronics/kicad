@@ -102,7 +102,6 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
     Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _impl->_browser->GetId() );
 
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_CONTAINER::OnScriptResult, this, _impl->_browser->GetId() );
 
     if( data_buried_point )
     {
@@ -179,12 +178,6 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
         p->ShowFullScreen( evt.GetInt() != 0 );
 
     evt.Veto();
-}
-
-
-void WEBVIEW_CONTAINER::OnScriptResult( wxWebViewEvent& evt )
-{
-    WXUNUSED( evt );
 }
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
