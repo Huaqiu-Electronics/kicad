@@ -1274,6 +1274,3 @@ void TOOL_MANAGER::UpdateUI( const TOOL_EVENT& aEvent )
     if( frame )
         frame->UpdateStatusBar();
 }
-
-
-#include "webview_evt_dispatcher.cpp"
