@@ -1260,8 +1260,4 @@ void TOOL_MANAGER::UpdateUI( const TOOL_EVENT& aEvent )
 }
 
 
-#if defined( __WXMAC__ )
-
 #include "webview_evt_dispatcher.cpp"
-
-#endif // __WXMAC__
