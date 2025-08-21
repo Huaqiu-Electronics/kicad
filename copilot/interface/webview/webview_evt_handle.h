@@ -31,7 +31,7 @@ class wxWebViewEvent;
 class COPILOT_API WEBVIEW_EVT_HANDLE
 {
 public:
-    virtual ~WEBVIEW_EVT_HANDLE() = default;
+    virtual ~WEBVIEW_EVT_HANDLE();
 
     virtual void ProcessWebviewEvent( wxWebViewEvent& evt ) { (void) evt; }
 };
