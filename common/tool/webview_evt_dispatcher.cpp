@@ -23,11 +23,10 @@
  */
 
 #include <tool/webview_evt_dispatcher.h>
-
+#include <webview/webview_evt_handle.h>
 #include <wx/event.h>
 #include <wx/webview.h>
 #include <wx/log.h>
-#include <webview/webview_container.h>
 inline auto isWebviewEvent( wxEventType evt_type )
 {
     return evt_type == wxEVT_WEBVIEW_NAVIGATING || evt_type == wxEVT_WEBVIEW_NAVIGATED
@@ -98,7 +97,8 @@ void WEBVIEW_EVT_DISPATCHER::FlushEvents()
 
         if( m_panels.contains( cur.first ) )
         {
-            static_cast<WEBVIEW_CONTAINER*>( ( cur.first->GetParent() ) )->GenericProcessWebviewEvent( *cur.second );
+            if( auto hdl = dynamic_cast<WEBVIEW_EVT_HANDLE*>( ( cur.first->GetParent() ) ) )
+                hdl->ProcessWebviewEvent( *cur.second );
         }
 
         delete cur.second;

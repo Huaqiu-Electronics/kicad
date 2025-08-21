@@ -25,17 +25,13 @@
 #ifndef WEBVIEW_EVT_DISPATCHER_H
 #define WEBVIEW_EVT_DISPATCHER_H
 
-#include <utility>
 #include <wx/eventfilter.h>
-#include <wx/object.h>
 #include <wx/panel.h>
-#include <wx/app.h>
 
 #include <set>
 #include <queue>
-#include <map>
+
 class wxWebViewEvent;
-class WEBVIEW_CONTAINER;
 class wxWebView;
 class WEBVIEW_EVT_DISPATCHER : public wxEventFilter
 {

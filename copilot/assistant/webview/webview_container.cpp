@@ -147,7 +147,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::strin
 #endif // DEBUG
 }
 
-void WEBVIEW_CONTAINER::GenericProcessWebviewEvent( wxWebViewEvent& evt )
+void WEBVIEW_CONTAINER::ProcessWebviewEvent( wxWebViewEvent& evt )
 {
     auto evt_type = evt.GetEventType();
 
