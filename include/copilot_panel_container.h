@@ -271,13 +271,13 @@ public:
 
 #ifdef __WXMAC__
 
-    void AddPanel( wxWebView* aPanel ) override
+    void AddPanel( void* aPanel ) override
     {
         if( self()->m_toolManager )
             self()->m_toolManager->AddPanel( aPanel );
     }
 
-    void RemovePanel( wxWebView* aPanel ) override
+    void RemovePanel( void* aPanel ) override
     {
         if( self()->m_toolManager )
             self()->m_toolManager->RemovePanel( aPanel );
