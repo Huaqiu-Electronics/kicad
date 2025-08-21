@@ -39,8 +39,6 @@ struct WEBVIEW_LIBRARY_SETTINGS
     int  panel_docked_height{ DEFAULT_SIZE };
     int  panel_float_width{ DEFAULT_SIZE };
     int  panel_float_height{ DEFAULT_SIZE };
-
-    wxString url;
 };
 
 

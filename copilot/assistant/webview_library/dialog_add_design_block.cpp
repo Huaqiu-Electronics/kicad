@@ -23,18 +23,14 @@
  */
 
 #include <webview_library/dialog_add_design_block.h>
+#include <settings/webview_settings_manager.h>
 #include "panel_add_design_block.h"
 
-#if !defined( IS_RC_BUILD )
-constexpr auto kAddDesignBlockUrl = "https://www.eda.cn/addFragment/";
-#else
-constexpr auto kAddDesignBlockUrl = "http://47.116.118.182/addFragment/";
-#endif
-
 DIALOG_ADD_DESIGN_BLOCK::DIALOG_ADD_DESIGN_BLOCK( wxWindow* aParent, std::string design_block ) :
-        COPILOT_DIALOG( aParent, _( "Design Block Editor" ), "design_block_editor" )
+        COPILOT_DIALOG( aParent, _( "Add Design Block" ), "design_block_editor" )
 {
-    Init( new PANEL_ADD_DESIGN_BLOCK( this, kAddDesignBlockUrl, std::move( design_block ) ) );
+    Init( new PANEL_ADD_DESIGN_BLOCK( this, WEBVIEW_SETTINGS_MANAGER::get_instance().get_add_design_block_url(),
+                                      std::move( design_block ) ) );
 }
 
 DIALOG_ADD_DESIGN_BLOCK::~DIALOG_ADD_DESIGN_BLOCK()

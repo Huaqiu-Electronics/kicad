@@ -27,9 +27,6 @@
 
 #include <nlohmann/json.hpp>
 
-
-static constexpr auto kPCB_QUOTE_API = "https://www.eda.cn/openapi/api/hqpcb/External/fileQuote";
-
 // BaseInfoModel
 struct PCB_FORM
 {

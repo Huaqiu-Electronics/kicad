@@ -1,11 +1,8 @@
 add_library(assistant SHARED
 
     auth/dialog_login_base.cpp
-    auth/dialog_login_native.cpp
     auth/dialog_login_webview.cpp
     auth/dialog_note.cpp
-    auth/panel_login_base.cpp
-    auth/panel_login.cpp
 
     common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
@@ -23,7 +20,7 @@ add_library(assistant SHARED
     quote/smt_quote.cpp
     quote/quote_controller.cpp
 
-    settings/get_webview_chat_path.cpp
+    settings/site_env_mgr.cpp
     settings/webview_settings_manager.cpp
 
     utils/copilot_zip_utils.cpp

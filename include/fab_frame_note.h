@@ -28,6 +28,7 @@
 #include <wx/anybutton.h>
 #include <widgets/bitmap_button.h>
 #include <auth/dialog_note.h>
+#include <settings/get_news_url.h>
 
 template <class EditorT>
 class FAB_FRAME_NOTE
@@ -39,10 +40,13 @@ public:
     void CreateNoteButton()
     {
         //self()->Show(true);
-        wxStatusBar*  statusBar = self()->GetStatusBar();
-        if(statusBar == nullptr) return;
-        m_notification = new BITMAP_BUTTON(statusBar, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-        if(m_notification == nullptr) return;
+        wxStatusBar* statusBar = self()->GetStatusBar();
+        if( statusBar == nullptr )
+            return;
+        m_notification =
+                new BITMAP_BUTTON( statusBar, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+        if( m_notification == nullptr )
+            return;
         m_notification->SetPadding( 0 );
         m_notification->SetBitmap( KiBitmapBundle( BITMAPS::notifications ) );
         m_notification->SetShowBadge( true );
@@ -55,41 +59,41 @@ public:
     void MoveNoteButton()
     {
         wxStatusBar* statusBar = self()->GetStatusBar();
-        if(statusBar == nullptr) return;
-        int lastFiled = statusBar->GetFieldsCount() - 1;
+        if( statusBar == nullptr )
+            return;
+        int    lastFiled = statusBar->GetFieldsCount() - 1;
         wxRect r;
-        statusBar->GetFieldRect( lastFiled , r );
+        statusBar->GetFieldRect( lastFiled, r );
         auto buttonSize = m_notification->GetEffectiveMinSize();
-        int x = r.GetRight() - buttonSize.GetWidth() -20;
-        int y = r.GetTop();
+        int  x = r.GetRight() - buttonSize.GetWidth() - 20;
+        int  y = r.GetTop();
         m_notification->SetPosition( { x, y } );
     }
 
-    void OnNaticateIconClick(wxMouseEvent& aEvent)
+    void OnNaticateIconClick( wxMouseEvent& aEvent )
     {
-        int dlgWidth = 300;
-        int dlgheight = 500;
+        int  dlgWidth = 300;
+        int  dlgheight = 500;
         auto btnScreenPos = m_notification->GetScreenPosition();
-        int dialogX = btnScreenPos.x + 40 - dlgWidth;
-        int dialogY = btnScreenPos.y + 5 - dlgheight;
-        if(m_promotedlg == nullptr)
+        int  dialogX = btnScreenPos.x + 40 - dlgWidth;
+        int  dialogY = btnScreenPos.y + 5 - dlgheight;
+        if( m_promotedlg == nullptr )
         {
-            m_promotedlg = new DIALOG_NOTE(self()); 
-            m_promotedlg->Move(wxPoint(dialogX, dialogY));
-            m_promotedlg->SetSize(wxSize( dlgWidth, dlgheight));
-            m_promotedlg->LoadUrl("http://www.fdatasheets.com/news/page/bottomNotice/index.html");
-            m_promotedlg->SetVisible(false);
+            m_promotedlg = new DIALOG_NOTE( self() );
+            m_promotedlg->Move( wxPoint( dialogX, dialogY ) );
+            m_promotedlg->SetSize( wxSize( dlgWidth, dlgheight ) );
+            m_promotedlg->LoadUrl( get_news_url() );
+            m_promotedlg->SetVisible( false );
         }
-        m_promotedlg->SetVisible(!m_promotedlg->GetVisible());
-        m_promotedlg->Show(m_promotedlg->GetVisible());
+        m_promotedlg->SetVisible( !m_promotedlg->GetVisible() );
+        m_promotedlg->Show( m_promotedlg->GetVisible() );
     }
 
 private:
-    BITMAP_BUTTON*  m_notification{};
+    BITMAP_BUTTON* m_notification{};
 
-    DIALOG_NOTE*    m_promotedlg{};
+    DIALOG_NOTE* m_promotedlg{};
 };
-
 
 
 #endif

@@ -45,6 +45,12 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     add_component,
     finish_adding_component,
 
+    add_component_type,
+    finish_adding_component_type,
+
+    add_design_block_type,
+    finish_adding_design_block_type,
+
 
 };
 

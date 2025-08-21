@@ -33,10 +33,10 @@ using httplib::SSLClient;
 using nlohmann::json;
 
 
-std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( PCB_FORM const&   form,
+std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( PCB_FORM const&    form,
                                                                std::string const& attachment_file_path )
 {
-    wxLogDebug( "Quote PCB order with form: %s"  , nlohmann::json(form).dump() );
+    wxLogDebug( "Quote PCB order with form: %s", nlohmann::json( form ).dump() );
     // Prepare multipart form data
     httplib::MultipartFormDataItems items;
     nlohmann::json                  j( form );
@@ -58,7 +58,9 @@ std::optional<PCB_QUOTE_RESPONSE> QUOTE_CONTROLLER::pcb_quote( PCB_FORM const&  
         }
     }
 
-    auto res = _client->Post( "/openapi/api/hqpcb/External/fileQuote", items );
+    static const auto pcb_path = WEBVIEW_SETTINGS_MANAGER::get_instance().get_pcb_quote_path();
+    auto              res = WEBVIEW_SETTINGS_MANAGER::get_instance().use_https() ? _ssl_client->Post( pcb_path, items )
+                                                                                 : _client->Post( pcb_path, items );
 
     if( res && res->status == 200 )
     {

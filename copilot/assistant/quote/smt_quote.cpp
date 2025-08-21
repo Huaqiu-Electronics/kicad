@@ -71,7 +71,9 @@ std::optional<std::string> QUOTE_CONTROLLER::smt_quote( PCB_SMT_FORM const&     
     items.push_back( { "reqParseVO", json( form ).dump() } );
 
 
-    auto res = _client->Post( "/openapi/pcba/saveDfmTmpOrder", headers, items );
+    static const auto smt_path = WEBVIEW_SETTINGS_MANAGER::get_instance().get_smt_quote_path();
+    auto              res = WEBVIEW_SETTINGS_MANAGER::get_instance().use_https() ? _ssl_client->Post( smt_path, items )
+                                                                                 : _client->Post( smt_path, items );
 
     if( res && res->status == 200 )
     {
