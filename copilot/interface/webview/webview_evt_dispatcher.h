@@ -30,7 +30,8 @@
 #include <wx/panel.h>
 #include <set>
 #include <queue>
-class WEBVIEW_EVT_DISPATCHER : public wxEventFilter
+#include <copilot_global.h>
+class COPILOT_API WEBVIEW_EVT_DISPATCHER : public wxEventFilter
 {
     std::set<void*>      m_panels;
     std::queue<wxEvent*> m_events;

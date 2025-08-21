@@ -22,7 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <tool/webview_evt_dispatcher.h>
+#include <webview/webview_evt_dispatcher.h>
 
 #include <wx/app.h>
 #include <wx/event.h>
