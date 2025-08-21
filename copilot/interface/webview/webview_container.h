@@ -35,8 +35,6 @@
 #include <memory>
 #include <optional>
 
-#include "webview_evt_handle.h"
-
 class DIALOG_IMAGE_VIEWER;
 class DIALOG_WEBVIEW;
 
@@ -44,7 +42,7 @@ class DIALOG_WEBVIEW;
 struct WEBVIEW_CONTAINER_IMPL;
 class wxWebView;
 
-class COPILOT_API WEBVIEW_CONTAINER : public wxPanel, public WEBVIEW_EVT_HANDLE
+class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
     std::unique_ptr<WEBVIEW_CONTAINER_IMPL> _impl;
 
@@ -64,7 +62,7 @@ public:
 
     void RunScriptAsync( wxString const& aScript );
 
-    void ProcessWebviewEvent( wxWebViewEvent& evt ) override;
+    void GenericProcessWebviewEvent( wxWebViewEvent& evt );
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );
