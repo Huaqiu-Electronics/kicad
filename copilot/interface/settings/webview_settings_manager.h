@@ -61,8 +61,6 @@ public:
 
     std::string const& get_webview_image_viewer_path() const;
 
-    std::string const& get_login_path() const;
-
     std::optional<DIALOG_GEOMETRY> get_dialog_geometry( std::string const& aKey ) const;
     void set_dialog_viewer_geometry( std::string const& aKey, DIALOG_GEOMETRY const& aGeometry );
 
@@ -79,7 +77,6 @@ private:
     std::unique_ptr<MUTABLE_SETTINGS>   _mutable_settings;
     std::string                         _webview_chat_path;
     std::string                         _webview_image_viewer_path;
-    std::string                         _login_path;
     std::unique_ptr<nlohmann::json>     _access_token;
 };
 

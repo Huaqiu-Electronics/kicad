@@ -32,8 +32,7 @@ struct COPILOT_WEBVIEW_PATH
     std::string home = "/";
     std::string chat = "/chat";
     std::string image_viewer = "/image-viewer";
-    std::string login = "/login";
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_PATH, home, chat, image_viewer, login )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( COPILOT_WEBVIEW_PATH, home, chat, image_viewer )
 };
 
 
