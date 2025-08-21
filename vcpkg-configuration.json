@@ -9,7 +9,7 @@
     {
       "kind": "git",
       "repository": "https://gitlab.com/liangtie/kicad-vcpkg-registry.git",
-      "baseline": "f8730a1e6a9473651adb5f957c282793b99fc2f0",
+      "baseline": "613f842c6631622ff1a9cd749e06ca1be67d587f",
       "packages": [
         "wxpython",
         "python3",
