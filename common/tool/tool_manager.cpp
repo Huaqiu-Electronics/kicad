@@ -1159,10 +1159,7 @@ bool TOOL_MANAGER::processEvent( const TOOL_EVENT& aEvent )
     wxLogTrace( kicadTraceToolStack, wxS( "TOOL_MANAGER::processEvent - %s" ), aEvent.Format() );
 
 #ifdef __WXMAC__
-
-    FlushEvents();
     const auto& cmdStr = aEvent.getCommandStr();
-
 
     if( cmdStr == kPlaceOrderMenu )
     {
