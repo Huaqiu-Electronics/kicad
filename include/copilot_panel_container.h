@@ -49,23 +49,12 @@
 #include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
 #include <tool/tool_manager.h>
-
-#ifdef __WXMAC__
-
 #include <evt_dispatcher_holder.h>
-
-#endif
 
 
 template <class Derived, class ContextT>
 
-class COPILOT_PANEL_CONTAINER
-
-#ifdef __WXMAC__
-
-        : public EVT_DISPATCHER_HOLDER
-
-#endif
+class COPILOT_PANEL_CONTAINER : public EVT_DISPATCHER_HOLDER
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
@@ -268,9 +257,6 @@ public:
         self()->GetToolManager()->RunAction( ACTIONS::paste );
     }
 
-
-#ifdef __WXMAC__
-
     void AddPanel( void* aPanel ) override
     {
         if( self()->m_toolManager )
@@ -282,8 +268,6 @@ public:
         if( self()->m_toolManager )
             self()->m_toolManager->RemovePanel( aPanel );
     }
-
-#endif
 
 protected:
     ContextT                   m_copilotContextCache;
