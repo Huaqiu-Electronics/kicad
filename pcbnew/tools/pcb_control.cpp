@@ -3010,18 +3010,12 @@ void PCB_CONTROL::setTransitions()
     Go( &PCB_CONTROL::ShowCopilot,    ACTIONS::showCopilotPanel.MakeEvent() );
     
     // FIXME: Launching WebView through TOOL_MANAGER coroutine transition will crash on MacOS
+    // Go( &PCB_CONTROL::TriggerPlaceOrderMenu,         ACTIONS::placeOrderMenu.MakeEvent() );
+
+    // Go( &PCB_CONTROL::PlaceOrderForPCB,         ACTIONS::placeOrderForPCB.MakeEvent() );
+
+    // Go( &PCB_CONTROL::PlaceOrderForSMT,         ACTIONS::placeOrderForSMT.MakeEvent() );
     
-#ifndef __WXMAC__
-
-    Go( &PCB_CONTROL::TriggerPlaceOrderMenu,         ACTIONS::placeOrderMenu.MakeEvent() );
-
-    Go( &PCB_CONTROL::PlaceOrderForPCB,         ACTIONS::placeOrderForPCB.MakeEvent() );
-
-    Go( &PCB_CONTROL::PlaceOrderForSMT,         ACTIONS::placeOrderForSMT.MakeEvent() );
-    
-    Go( &PCB_CONTROL::ToggleHQPersonalCenter,    ACTIONS::toggleHQPersonalCenter.MakeEvent() );  
-
-#endif
-    
+    // Go( &PCB_CONTROL::ToggleHQPersonalCenter,    ACTIONS::toggleHQPersonalCenter.MakeEvent() );       
 }
 // clang-format on
