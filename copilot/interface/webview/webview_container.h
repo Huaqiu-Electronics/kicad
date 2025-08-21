@@ -44,8 +44,6 @@ class wxWebView;
 
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
-    std::unique_ptr<WEBVIEW_CONTAINER_IMPL> _impl;
-
 public:
     WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url, HOST_COPILOT_HANDLES host_copilot_handles,
                        std::optional<std::string> data_buried_point = std::nullopt );
@@ -61,8 +59,6 @@ public:
     void LoadUrl( std::string const& aUrl );
 
     void RunScriptAsync( wxString const& aScript );
-
-    void GenericProcessWebviewEvent( wxWebViewEvent& evt );
 
 protected:
     virtual void OnDocumentLoaded( wxWebViewEvent& evt );
@@ -84,7 +80,9 @@ protected:
     virtual void OnError( wxWebViewEvent& evt );
 
     virtual void OnFullScreenChanged( wxWebViewEvent& evt );
-};
 
+private:
+    std::unique_ptr<WEBVIEW_CONTAINER_IMPL> _impl;
+};
 
 #endif
