@@ -24,6 +24,7 @@
 
 #include <tool/webview_evt_dispatcher.h>
 
+#include <wx/app.h>
 #include <wx/event.h>
 #include <wx/webview.h>
 
@@ -37,13 +38,6 @@ inline auto isWebviewEvent( wxEventType evt_type )
 
 WEBVIEW_EVT_DISPATCHER::~WEBVIEW_EVT_DISPATCHER()
 {
-    while( !m_events.empty() )
-    {
-        wxEvent* event = m_events.front();
-        delete event;
-        m_events.pop();
-    }
-
     wxEvtHandler::RemoveFilter( this );
 }
 
@@ -73,6 +67,16 @@ void WEBVIEW_EVT_DISPATCHER::RemovePanel( void* aPanel )
     m_panels.erase( aPanel );
 }
 
+void WEBVIEW_EVT_DISPATCHER::FlushEvents()
+{
+    while( !m_events.empty() )
+    {
+        wxEvent* event = m_events.front();
+        wxTheApp->ProcessEvent( *event );
+        delete event;
+        m_events.pop();
+    }
+}
 
 WEBVIEW_EVT_DISPATCHER::WEBVIEW_EVT_DISPATCHER()
 {
