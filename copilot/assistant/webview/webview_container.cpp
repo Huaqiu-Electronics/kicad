@@ -69,7 +69,8 @@ enum START_UP_SIZE
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
                                       HOST_COPILOT_HANDLES       host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ),
+        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
@@ -168,6 +169,7 @@ void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnTitleChanged( wxWebViewEvent& evt )
 {
+    evt.Veto();
 }
 
 void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
@@ -180,7 +182,7 @@ void WEBVIEW_CONTAINER::OnFullScreenChanged( wxWebViewEvent& evt )
 
 void WEBVIEW_CONTAINER::OnError( wxWebViewEvent& evt )
 {
-    WXUNUSED( evt );
+    evt.Veto();
 }
 
 
@@ -208,4 +210,5 @@ void WEBVIEW_CONTAINER::RunScriptAsync( wxString const& aScript )
 void WEBVIEW_CONTAINER::OnScriptMessage( wxWebViewEvent& evt )
 {
     HandleScriptMessage( wxString2String( evt.GetString() ) );
+    evt.Veto(); // Prevent default handling
 }
