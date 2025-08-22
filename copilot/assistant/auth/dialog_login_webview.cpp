@@ -25,11 +25,14 @@
 #include <auth/dialog_login_webview.h>
 
 #include <settings/webview_settings_manager.h>
+#include <webview/webview_controller.h>
 
 DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( wxWindow* aParent ) :
         DIALOG_WEBVIEW( aParent, _( "Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in directly" ),
-                        "DIALOG_LOGIN_WEBVIEW" , aParent ? aParent->FromDIP( wxSize{ WIDTH, HEIGHT } ) : wxSize{ WIDTH, HEIGHT })
+                        "DIALOG_LOGIN_WEBVIEW",
+                        aParent ? aParent->FromDIP( wxSize{ WIDTH, HEIGHT } ) : wxSize{ WIDTH, HEIGHT } )
 {
+    WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( GetWebviewContainer() );
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
     LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_url() );
 }

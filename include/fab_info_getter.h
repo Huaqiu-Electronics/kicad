@@ -136,17 +136,11 @@ public:
             m_progress_reporter.reset();
         }
 
-#ifndef __WXOSX_MAC__
         DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB",
                                            wxSize( PLACE_ORDER_DIALOG_SIZE::WIDTH, PLACE_ORDER_DIALOG_SIZE::HEIGHT ) );
 
         place_order_dialog.LoadUrl( aUrl );
         place_order_dialog.ShowModal();
-
-#else
-        wxLaunchDefaultBrowser( aUrl );
-
-#endif // !__WXOSX_MAC__
     }
 
 

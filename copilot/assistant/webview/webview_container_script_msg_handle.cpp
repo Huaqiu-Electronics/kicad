@@ -147,13 +147,14 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                     return;
                 }
 
-                WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( *cmd.data );
 
                 if( auto dialog = dynamic_cast<wxDialog*>( GetParent() ) )
                 {
                     dialog->EndModal( wxID_OK );
                 }
 
+
+                WEBVIEW_SETTINGS_MANAGER::get_instance().set_access_token( *cmd.data );
 
                 break;
             }
