@@ -31,7 +31,7 @@
 class COPILOT_API DIALOG_ADD_DESIGN_BLOCK : public COPILOT_DIALOG
 {
 public:
-    DIALOG_ADD_DESIGN_BLOCK( wxWindow* aParent, std::string design_block );
+    DIALOG_ADD_DESIGN_BLOCK( wxWindow* aParent, std::string design_block, const wxSize& size = wxDefaultSize );
     ~DIALOG_ADD_DESIGN_BLOCK();
 
 private:

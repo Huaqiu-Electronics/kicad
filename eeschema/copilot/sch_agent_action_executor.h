@@ -51,6 +51,7 @@
 #include <utils/wstring_to_string.h>
 #include <chat/user_ask_selection_cmd.h>
 #include <webview_library/dialog_add_design_block.h>
+#include <webview/launch_webview_dialog_param.h>
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -132,7 +133,18 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
                 return;
             }
 
-            DIALOG_ADD_DESIGN_BLOCK dialog( self(), wxString2String( std::move( content ) ) );
+            PREFERRED_SIZE size;
+
+            try
+            {
+                size = aAction.context.get<LAUNCH_WEBVIEW_DIALOG_PARAM>().size;
+            }
+            catch( ... )
+            {
+            }
+
+            DIALOG_ADD_DESIGN_BLOCK dialog( self(), wxString2String( std::move( content ) ),
+                                            { size.width, size.height } );
             dialog.ShowModal();
             break;
         }

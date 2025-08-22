@@ -50,6 +50,8 @@
 #include <wx/dialog.h>
 #include <common/dialog_image_viewer.h>
 #include <webview_library/dialog_add_component.h>
+#include <webview/launch_webview_dialog_param.h>
+
 
 void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 {
@@ -211,9 +213,20 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
                 };
 
+                PREFERRED_SIZE size;
+
+                try
+                {
+                    if( cmd.data.has_value() )
+                        size = cmd.data->get<LAUNCH_WEBVIEW_DIALOG_PARAM>().size;
+                }
+                catch( ... )
+                {
+                }
+
 
                 DIALOG_ADD_COMPONENT dialog( GetParent(), type_to_url.at( *t ), type_to_name.at( *t ),
-                                             magic_enum::enum_name( *t ).data() );
+                                             magic_enum::enum_name( *t ).data(), { size.width, size.height } );
                 dialog.ShowModal();
                 break;
             }
