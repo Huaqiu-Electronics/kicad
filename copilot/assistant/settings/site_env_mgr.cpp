@@ -80,12 +80,12 @@ std::string WEBVIEW_SETTINGS_MANAGER::get_login_url() const
 
 std::string WEBVIEW_SETTINGS_MANAGER::get_pcb_quote_path() const
 {
-    return get_eda_cn_url_from_path( _site_env->site_paths.pcb_quote );
+    return _site_env->site_paths.pcb_quote;
 }
 
 std::string WEBVIEW_SETTINGS_MANAGER::get_smt_quote_path() const
 {
-    return get_eda_cn_url_from_path( _site_env->site_paths.smt_quote );
+    return _site_env->site_paths.smt_quote;
 }
 
 std::string WEBVIEW_SETTINGS_MANAGER::get_news_url() const
