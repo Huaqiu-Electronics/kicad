@@ -441,7 +441,7 @@ OPT_BOX2I PIN_LAYOUT_CACHE::getUntransformedPinNumberBox() const
 
     // The number goes below, if there is a name outside
     if( pinNameOffset == 0 && !m_pin.GetShownName().empty()
-        && m_pin.GetParentSymbol()->GetShowPinNames() )
+        && m_pin.GetParentSymbol() && m_pin.GetParentSymbol()->GetShowPinNames() )
         textPos *= -1;
 
     // Bump it up (or down)
