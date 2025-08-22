@@ -26,8 +26,8 @@
 #include <settings/webview_settings_manager.h>
 #include "panel_add_design_block.h"
 
-DIALOG_ADD_DESIGN_BLOCK::DIALOG_ADD_DESIGN_BLOCK( wxWindow* aParent, std::string design_block ) :
-        COPILOT_DIALOG( aParent, _( "Add Design Block" ), "design_block_editor" )
+DIALOG_ADD_DESIGN_BLOCK::DIALOG_ADD_DESIGN_BLOCK( wxWindow* aParent, std::string design_block, const wxSize& size ) :
+        COPILOT_DIALOG( aParent, _( "Add Design Block" ), "design_block_editor", size )
 {
     Init( new PANEL_ADD_DESIGN_BLOCK( this, WEBVIEW_SETTINGS_MANAGER::get_instance().get_add_design_block_url(),
                                       std::move( design_block ) ) );
