@@ -26,6 +26,7 @@
 #include "panel_add_component.h"
 #include <webview/webview_controller.h>
 #include <fmt/format.h>
+#include <utils/base64.hpp>
 
 PANEL_ADD_DESIGN_BLOCK::PANEL_ADD_DESIGN_BLOCK( wxDialog* parent, std::optional<std::string> url,
                                                 std::string design_block ) :
@@ -40,7 +41,8 @@ PANEL_ADD_DESIGN_BLOCK::~PANEL_ADD_DESIGN_BLOCK()
 void PANEL_ADD_DESIGN_BLOCK::OnNavigationComplete( wxWebViewEvent& evt )
 {
     PANEL_ADD_COMPONENT::OnNavigationComplete( evt );
-    RunScriptAsync( fmt::format( "load_design_block(`{}`);", _design_block ) );
-    RunScriptAsync( fmt::format( "console.log(`{}`);", _design_block ) );
+    const auto encoded = base64::to_base64( _design_block );
+    RunScriptAsync( fmt::format( "load_design_block(\"{}\");", encoded ) );
+    RunScriptAsync( fmt::format( "console.log(\"{}\");", encoded ) );
 
 }
