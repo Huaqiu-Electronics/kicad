@@ -41,8 +41,11 @@ enum class AGENT_ACTION_TYPE
 
     SCH_EDITOR_BEGIN,
     highlight_symbol,
+
     place_symbol_resource,
     place_symbol_content,
+    place_base64_encoded_symbol,
+
     place_design_block_resource,
     place_design_block_content,
     add_design_block,

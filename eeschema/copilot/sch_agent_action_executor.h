@@ -30,6 +30,7 @@
 #include <api/api_design_content.h>
 #include <api/api_server.h>
 #include <pgm_base.h>
+#include "decode_base64_encoded_component.h"
 #include "sch_editor_control.h"
 #include <context/symbol_context.h>
 #include <exception>
@@ -52,6 +53,8 @@
 #include <chat/user_ask_selection_cmd.h>
 #include <webview_library/dialog_add_design_block.h>
 #include <webview/launch_webview_dialog_param.h>
+
+#include "decode_base64_encoded_component.h"
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -108,6 +111,14 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         case AGENT_ACTION_TYPE::place_symbol_content:
         {
             const auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_COMMAND>();
+            self()->m_apiHandler->placeSymbol( content.component, content.option );
+            break;
+        }
+
+        case AGENT_ACTION_TYPE::place_base64_encoded_symbol:
+        {
+            auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_COMMAND>();
+            decode_base64_encoded_component( content.component );
             self()->m_apiHandler->placeSymbol( content.component, content.option );
             break;
         }
