@@ -30,8 +30,6 @@
 #include <api/api_design_content.h>
 #include <api/api_server.h>
 #include <pgm_base.h>
-#include "decode_base64_encoded_component.h"
-#include "sch_editor_control.h"
 #include <context/symbol_context.h>
 #include <exception>
 #include <passive_action/agent/agent_action.h>
@@ -46,15 +44,15 @@
 #include <webview/webview_container.h>
 #include <chat/general_chat_cmd.h>
 #include <context/sch/details/sch_netlist.h>
-#include <context/sch/details/netlist_json_schema.h>
 #include <fmt/format.h>
 #include <api/api_sch_placement_command.h>
 #include <utils/wstring_to_string.h>
-#include <chat/user_ask_selection_cmd.h>
 #include <webview_library/dialog_add_design_block.h>
 #include <webview/launch_webview_dialog_param.h>
 
 #include "decode_base64_encoded_component.h"
+#include "sch_editor_control.h"
+#include "fmt_sch_selection_cmd.h"
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -79,28 +77,8 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::ask_selection:
         {
-            const auto netlist = nlohmann::json( self()->GetSelection() ).dump();
             m_copilotPanel->ExecuteCommand(
-                    nlohmann::json(
-                            GENERAL_CHAT_CMD{ { { aAction.context.get<std::string>() } },
-                                              { { fmt::format( "The user is working on a schematic the "
-                                                               "current selection of which is represented by "
-                                                               "the following netlist:\n{}. The "
-                                                               "netlist is defined "
-                                                               "following the json schema:\n {}\n"
-                                                               "NOTE: All the connections for any component "
-                                                               "presented inside the components have been "
-                                                               "included in the nets.\n"
-                                                               "NOTE: You always provide clear answers "
-                                                               "rather than asking for more information.\n "
-                                                               "Please note that our users are hardware engineers who "
-                                                               "are neither aware nor interested in the existence of "
-                                                               "this JSON data. Never expose the existence of a JSON "
-                                                               "file",
-                                                               netlist, copilot::NETLIST_JSON_SCHEMA ) } },
-                                              kUserAskSelectionCmdType } )
-                            .dump()
-                            .c_str() );
+                    fmt_sch_selection_cmd( aAction.context, nlohmann::json( self()->GetSelection() ).dump() ).c_str() );
             break;
         }
         case AGENT_ACTION_TYPE::place_symbol_resource:
