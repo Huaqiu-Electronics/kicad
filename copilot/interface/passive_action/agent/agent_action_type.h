@@ -40,6 +40,7 @@ enum class AGENT_ACTION_TYPE
     open_project_zip_achieve,
 
     SCH_EDITOR_BEGIN,
+
     highlight_symbol,
 
     place_symbol_resource,
@@ -51,7 +52,11 @@ enum class AGENT_ACTION_TYPE
     add_design_block,
 
     PCB_EDITOR_BEGIN,
+
     launch_plugin,
+    place_footprint_resource,
+    place_base64_encoded_footprint,
+
 
     SYMBOL_EDITOR_BEGIN,
 

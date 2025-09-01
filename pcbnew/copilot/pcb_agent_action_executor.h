@@ -26,7 +26,6 @@
 #define PCB_AGENT_ACTION_EXECUTOR_H
 
 #include <chat/general_chat_cmd.h>
-#include <context/pcb/details/board_json_schema.h>
 #include <context/symbol_context.h>
 #include <exception>
 #include <passive_action/agent/agent_action.h>
@@ -38,7 +37,7 @@
 #include <string>
 #include <wx/log.h>
 #include <fmt/format.h>
-#include <chat/user_ask_selection_cmd.h>
+#include "fmt_pcb_selection_cmd.h"
 
 
 template <>
@@ -64,37 +63,19 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         }
         case AGENT_ACTION_TYPE::ask_selection:
         {
-            const auto pcb = self()->GetJsonifySelection();
-
-#ifdef DEBUG
-            dump( pcb, "pcb_selection." );
-#endif // DEBUG
-
-
             m_copilotPanel->ExecuteCommand(
-                    nlohmann::json(
-                            GENERAL_CHAT_CMD{ { { aAction.context.get<std::string>() } },
-                                              { { fmt::format( "The user is working on a pcb board design, and has "
-                                                               "just selected some items on the board. All the "
-                                                               "selected items are serialized into the "
-                                                               "the following json :\n{}. It's "
-                                                               "defined "
-                                                               "following the json schema:\n {}\n"
-                                                               "NOTE: You always provide clear answers "
-                                                               "rather than asking for more information.\n "
-                                                               "Please note that our users are hardware engineers who "
-                                                               "are neither aware nor interested in the existence of "
-                                                               "this JSON data. Never expose the existence of a JSON "
-                                                               "file.",
-                                                               pcb, copilot::BOARD_JSON_SCHEMA ) } },
-                                              kUserAskSelectionCmdType } )
-                            .dump()
-                            .c_str() );
+                    fmt_pcb_selection_cmd( aAction.context, self()->GetJsonifySelection() ).c_str() );
 
             break;
         }
-
-
+        case AGENT_ACTION_TYPE::place_footprint_resource:
+        {
+            break;
+        }
+        case AGENT_ACTION_TYPE::place_base64_encoded_footprint:
+        {
+            break;
+        }
         default: return BaseExecuteAgentAction( aAction );
         }
     }
