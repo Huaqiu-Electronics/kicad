@@ -1228,6 +1228,9 @@ void KICAD_MANAGER_FRAME::OnIdle( wxIdleEvent& aEvent )
         m_updateManager->CheckForUpdate( this );
     }
 #endif
+
+    // This little diddy is needed to get the window put into the Mac dock icon's context menu.
+    Raise();
 }
 
 
