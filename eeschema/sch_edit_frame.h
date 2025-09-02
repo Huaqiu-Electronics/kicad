@@ -46,7 +46,7 @@
 
 #include <context/sch/sch_copilot_global_context.h>
 #include <copilot_panel_container.h>
-
+#include <webview_library_panel_container.h>
 #include <fab_frame_note.h>
 
 struct SYMBOL_CMD_CONTEXT;
@@ -61,6 +61,7 @@ struct NETLIST;
 using SCH_COPILOT_PANEL_CONTAINER =
         COPILOT_PANEL_CONTAINER<SCH_EDIT_FRAME, SCH_COPILOT_GLOBAL_CONTEXT>;
 
+using SCH_WEBVIEW_LIBRARY_CONTAINER = WEBVIEW_LIBRARY_PANEL_CONTAINER<SCH_EDIT_FRAME>;
 using FAB_FRAME_NOTE_SCH = FAB_FRAME_NOTE<SCH_EDIT_FRAME>;
 
 class SCH_ITEM;
@@ -145,7 +146,10 @@ private:
 /**
  * Schematic editor (Eeschema) main window.
  */
-class SCH_EDIT_FRAME : public SCH_BASE_FRAME, public SCH_COPILOT_PANEL_CONTAINER, public FAB_FRAME_NOTE_SCH
+class SCH_EDIT_FRAME : public SCH_BASE_FRAME,
+                       public SCH_COPILOT_PANEL_CONTAINER,
+                       public FAB_FRAME_NOTE_SCH,
+                       public SCH_WEBVIEW_LIBRARY_CONTAINER
 {
 public:
     SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent );
@@ -1149,28 +1153,10 @@ public:
 
     wxString DumpSelectionToDesignBlock();
 
-    // WebView Library
-public:
-    void WebViewLibraryInit();
-
-    void InitWebViewLibraryAui();
-
-    void RecreateWebViewLibraryToolBar();
-
-    void WebViewLibraryShowChangedLanguage();
-
-    void ToggleWebViewLibrary();
-
-    void ShowWebViewLibrary( bool aShow );
-
-    void LoadWebViewLibraryCnf();
-
-    void SaveWebViewLibraryCnf();
-
 private:
     friend SCH_COPILOT_PANEL_CONTAINER;
+    friend SCH_WEBVIEW_LIBRARY_CONTAINER;
     std::unique_ptr<SYMBOL_CMD_CONTEXT> m_symbolCmdContext;
-    class WEBVIEW_LIBRARY_CONTAINER*    m_webSymbolChooser;
 };
 
 

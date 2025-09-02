@@ -28,7 +28,6 @@
 
 #include <settings/app_settings.h>
 #include <sim/sim_preferences.h>
-#include "webview_library/webview_library_settings.h"
 
 using KIGFX::COLOR4D;
 
@@ -395,10 +394,6 @@ public:
     bool m_RescueNeverShow;
 
     wxString m_lastSymbolLibDir;
-
-    WEBVIEW_LIBRARY_SETTINGS m_WebViewLibrarySettings;
-
-    void InitWebviewLibrarySettings();
 };
 
 

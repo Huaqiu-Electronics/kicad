@@ -336,7 +336,4 @@ public:
         wxString sheetFileName;
         bool     place_as_sheet = false;
     };
-
-
-    static TOOL_ACTION toggleWebViewLibrary;
 };

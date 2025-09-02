@@ -29,8 +29,6 @@
 #include <tool/actions.h>
 #include <tool/tool_action.h>
 #include <tool/tool_event.h>
-#include <copilot/copilot_common_action.h>
-#include <fab/fab_action.h>
 
 // Actions, being statically-defined, require specialized I18N handling.  We continue to
 // use the _() macro so that string harvesting by the I18N framework doesn't have to be
@@ -1303,3 +1301,8 @@ const TOOL_EVENT
 
 const TOOL_EVENT EVENTS::UndoRedoPreEvent( TC_MESSAGE, TA_UNDO_REDO_POST, AS_GLOBAL );
 const TOOL_EVENT EVENTS::UndoRedoPostEvent( TC_MESSAGE, TA_UNDO_REDO_POST, AS_GLOBAL );
+
+
+#include "copilot/copilot_common_action.cpp"
+#include "webview_library/webview_library_action.cpp"
+#include "fab/fab_action.cpp"

@@ -256,6 +256,8 @@ public:
     static TOOL_ACTION placeOrderForPCB;
     static TOOL_ACTION placeOrderForSMT;
 
+    // Webview Library
+    static TOOL_ACTION toggleWebViewLibrary;
 
     ///< Cursor control event types
     enum CURSOR_EVENT_TYPE

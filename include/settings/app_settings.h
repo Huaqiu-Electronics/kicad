@@ -25,6 +25,7 @@
 #include <settings/json_settings.h>
 #include <settings/grid_settings.h>
 #include <copilot_panel_settings.h>
+#include <webview_library/webview_library_settings.h>
 
 /**
  * Cross-probing behavior.
@@ -202,6 +203,7 @@ public:
     /// Active color theme name.
     wxString m_ColorTheme;
 
+    WEBVIEW_LIBRARY_SETTINGS m_WebViewLibrarySettings;
 
     ///! Local schema version for common app settings.
     int m_appSettingsSchemaVersion;
@@ -238,8 +240,9 @@ protected:
      */
     bool migrateLibTreeWidth();
 
-
     void initCopilotSettings();
+
+    void InitWebviewLibrarySettings();
 };
 
 #endif

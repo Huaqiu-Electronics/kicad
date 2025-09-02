@@ -1591,15 +1591,7 @@ TOOL_ACTION SCH_ACTIONS::editUserDefinedSignals( TOOL_ACTION_ARGS()
         .Icon( BITMAPS::sim_add_signal ) );
 
 TOOL_ACTION SCH_ACTIONS::showNetlist( TOOL_ACTION_ARGS()
-        .Name( "eeschema.Simulation.showNetlist" )
-        .Scope( AS_GLOBAL )
-        .FriendlyName( _( "Show SPICE Netlist" ) )
-        .Icon( BITMAPS::netlist ) );
-
-
-TOOL_ACTION SCH_ACTIONS::toggleWebViewLibrary(
-        TOOL_ACTION_ARGS()
-                .Name( "eeschema.AUI.toggleWebViewLibrary" )
-                .Scope( AS_GLOBAL )
-                .FriendlyName( _( "Toggle Online Library" ) )
-                .Icon( BITMAPS::hq_add_symbol_to_schematic ) );
+                                              .Name( "eeschema.Simulation.showNetlist" )
+                                              .Scope( AS_GLOBAL )
+                                              .FriendlyName( _( "Show SPICE Netlist" ) )
+                                              .Icon( BITMAPS::netlist ) );
