@@ -114,9 +114,9 @@ std::string API_DESIGN_RESOURCE_MGR::RemoveFileExt( std::string const& aFileName
     return aFileName.substr( 0, pos );
 }
 
-std::string API_DESIGN_RESOURCE_MGR::FormatSymbolFpPropertyValue( std::string const& aSymbolName )
+std::string API_DESIGN_RESOURCE_MGR::FormatSymbolFpPropertyValue( std::string const& aFootprintName )
 {
-    return fmt::format( "{}:{}", GetAPIFootprintPrettyName(), aSymbolName );
+    return fmt::format( "{}:{}", GetAPIFootprintPrettyName(), aFootprintName );
 }
 
 std::string API_DESIGN_RESOURCE_MGR::GetAPIFootprintPrettyName()
