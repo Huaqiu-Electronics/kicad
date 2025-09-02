@@ -22,8 +22,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef FAB_ACTION_H
-#define FAB_ACTION_H
 
 #include <bitmaps/bitmaps_list.h>
 #include <common.h>
@@ -61,5 +59,3 @@ TOOL_ACTION ACTIONS::toggleHQPersonalCenter( TOOL_ACTION_ARGS()
                                                      .FriendlyName( _( "HQPersonalCenter" ) )
                                                      .Tooltip( _( "Show/Hide HQ PersonalCenter" ) )
                                                      .Icon( BITMAPS::huaqiu ) );
-
-#endif

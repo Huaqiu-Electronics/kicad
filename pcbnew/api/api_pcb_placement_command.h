@@ -22,31 +22,16 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <bitmaps/bitmaps_list.h>
-#include <common.h>
-#include <tool/actions.h>
-#include <tool/tool_action.h>
+#ifndef API_PCB_PLACEMENT_COMMAND_H
+#define API_PCB_PLACEMENT_COMMAND_H
 
-#ifndef COPILOT_COMMON_ACTION_H
-#define COPILOT_COMMON_ACTION_H
+class API_PCB_PLACEMENT_COMMAND
+{
+public:
+    API_PCB_PLACEMENT_COMMAND();
+    ~API_PCB_PLACEMENT_COMMAND();
 
-#undef _
-#define _( s ) s
-
-TOOL_ACTION ACTIONS::toggleCopilotPanel(
-        TOOL_ACTION_ARGS()
-                .Name( "common.copilot.toggleCopilotPanel" )
-                .Scope( AS_GLOBAL )
-                .FriendlyName( _( "Copilot" ) )
-                .Tooltip( _( "Show/hide copilot panel" ) )
-                .Icon( BITMAPS::copilot ) );
-
-TOOL_ACTION ACTIONS::showCopilotPanel(
-        TOOL_ACTION_ARGS()
-                .Name( "common.copilot.showCopilotPanel" )
-                .Scope( AS_GLOBAL )
-                .FriendlyName( _( "Show copilot" ) )
-                .Tooltip( _( "Show copilot panel" ) )
-                .Icon( BITMAPS::copilot ) );
+private:
+};
 
 #endif

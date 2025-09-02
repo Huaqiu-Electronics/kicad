@@ -302,6 +302,7 @@ APP_SETTINGS_BASE::APP_SETTINGS_BASE( const std::string& aFilename, int aSchemaV
             &m_CrossProbing.flash_selection, false ) );
 
     initCopilotSettings();
+    InitWebviewLibrarySettings();
 }
 
 
@@ -682,3 +683,4 @@ bool APP_SETTINGS_BASE::migrateLibTreeWidth()
 
 
 #include "copilot_panel_settings.cpp"
+#include "webview_library_settings.cpp"

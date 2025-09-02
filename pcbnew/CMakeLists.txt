@@ -530,6 +530,7 @@ set( PCBNEW_SCRIPTING_PYTHON_HELPERS
 if( KICAD_IPC_API )
     set( PCBNEW_SRCS ${PCBNEW_SRCS}
         api/api_handler_pcb.cpp
+        api/api_handler_pcb_placement.cpp
         )
 endif()
 

@@ -257,6 +257,10 @@ public:
     }
 
 
+    auto GetCopilotAgentActionHandle() const { return m_copilotAgentActionHdl; }
+
+    auto GetHostVersionInfo() const { return m_hostVersionInfo; }
+
 protected:
     ContextT                   m_copilotContextCache;
     COPILOT_WEBVIEW_CONTAINER* m_copilotPanel{};

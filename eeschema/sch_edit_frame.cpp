@@ -128,7 +128,6 @@
 
 
 #include <sch_copilot_pch.h>
-#include <webview_library_pch.h>
 
 #ifdef KICAD_IPC_API
 #include <api/api_plugin_manager.h>
@@ -171,6 +170,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
         SCH_BASE_FRAME( aKiway, aParent, FRAME_SCH, wxT( "Eeschema" ), wxDefaultPosition,
                         wxDefaultSize, KICAD_DEFAULT_DRAWFRAME_STYLE, SCH_EDIT_FRAME_NAME ),
     COPILOT_PANEL_CONTAINER( m_auimgr),
+    WEBVIEW_LIBRARY_PANEL_CONTAINER( m_auimgr),
     m_ercDialog( nullptr ),
     m_diffSymbolDialog( nullptr ),
     m_symbolFieldsTableDialog( nullptr ),

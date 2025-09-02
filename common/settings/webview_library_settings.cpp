@@ -22,12 +22,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEBVIEW_LIBRARY_PCH_H
-#define WEBVIEW_LIBRARY_PCH_H
 
+#include <settings/app_settings.h>
+#include <settings/parameters.h>
 #include <webview_library/webview_library_settings.h>
-#include <webview_library/webview_library_setup.h>
-#include <webview_library/init_webview_library_settings.h>
-#include <webview_library/webview_library_container.h>
 
-#endif
+void APP_SETTINGS_BASE::InitWebviewLibrarySettings()
+{
+    m_params.emplace_back( new PARAM<bool>( "webview_library.show", &m_WebViewLibrarySettings.panel_show, true ) );
+
+    m_params.emplace_back(
+            new PARAM<int>( "webview_library.docked_width", &m_WebViewLibrarySettings.panel_docked_width, -1 ) );
+
+    m_params.emplace_back(
+            new PARAM<int>( "webview_library.float_width", &m_WebViewLibrarySettings.panel_float_width, -1 ) );
+
+    m_params.emplace_back(
+            new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
+
+    m_params.emplace_back(
+            new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
+}

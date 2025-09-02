@@ -22,29 +22,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef INIT_WEBVIEW_LIBRARY_SETTINGS_H
-#define INIT_WEBVIEW_LIBRARY_SETTINGS_H
+#include <bitmaps/bitmaps_list.h>
+#include <common.h>
+#include <tool/actions.h>
+#include <tool/tool_action.h>
 
-#include <eeschema_settings.h>
-#include <settings/app_settings.h>
-#include <settings/parameters.h>
-#include "webview_library_settings.h"
+#undef _
+#define _( s ) s
 
-void EESCHEMA_SETTINGS::InitWebviewLibrarySettings()
-{
-    m_params.emplace_back( new PARAM<bool>( "webview_library.show", &m_WebViewLibrarySettings.panel_show, true ) );
+TOOL_ACTION ACTIONS::toggleCopilotPanel( TOOL_ACTION_ARGS()
+                                                 .Name( "common.copilot.toggleCopilotPanel" )
+                                                 .Scope( AS_GLOBAL )
+                                                 .FriendlyName( _( "Copilot" ) )
+                                                 .Tooltip( _( "Show/hide copilot panel" ) )
+                                                 .Icon( BITMAPS::copilot ) );
 
-    m_params.emplace_back(
-            new PARAM<int>( "webview_library.docked_width", &m_WebViewLibrarySettings.panel_docked_width, -1 ) );
-
-    m_params.emplace_back(
-            new PARAM<int>( "webview_library.float_width", &m_WebViewLibrarySettings.panel_float_width, -1 ) );
-
-    m_params.emplace_back(
-            new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
-
-    m_params.emplace_back(
-            new PARAM<int>( "webview_library.float_height", &m_WebViewLibrarySettings.panel_float_height, -1 ) );
-}
-
-#endif
+TOOL_ACTION ACTIONS::showCopilotPanel( TOOL_ACTION_ARGS()
+                                               .Name( "common.copilot.showCopilotPanel" )
+                                               .Scope( AS_GLOBAL )
+                                               .FriendlyName( _( "Show copilot" ) )
+                                               .Tooltip( _( "Show copilot panel" ) )
+                                               .Icon( BITMAPS::copilot ) );
