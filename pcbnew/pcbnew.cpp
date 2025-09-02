@@ -82,13 +82,14 @@
 #include <3d_viewer/toolbars_3d.h>
 #include <toolbars_footprint_editor.h>
 #include <toolbars_pcb_editor.h>
+#include "insert_fp_lib_table_row.h"
+#include "update_fp_model_path.h"
 
 #include <wx/crt.h>
 
 /* init functions defined by swig */
 
 extern "C" PyObject* PyInit__pcbnew( void );
-
 
 static bool InsertFpLibTableRow( FP_LIB_TABLE* fpT, const wxString& aNick, const wxString& aURI, const wxString& aType,
                                  const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
@@ -104,6 +105,8 @@ static bool InsertFpLibTableRow( FP_LIB_TABLE* fpT, const wxString& aNick, const
     }
     return false;
 }
+
+
 
 
 

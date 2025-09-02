@@ -262,7 +262,6 @@ void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand
             return component_content.footprints.empty()
                            ? fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( aUri ) )
                            : API_DESIGN_RESOURCE_MGR::ExtractFileName( aUri );
-            ;
         };
 
 
