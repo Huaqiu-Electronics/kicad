@@ -257,10 +257,16 @@ void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand
         }
 
         // NOTE : The footprint name from eda.cn maybe messy, while the symbol name is always the MPN, so we use the symbol name as footprint name.
-        footprint_resource.footprint.filename =
-                component_content.footprints.empty()
-                        ? fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( fp_uri ) )
-                        : API_DESIGN_RESOURCE_MGR::ExtractFileName( fp_uri );
+        const auto ensure_name_is_meaningful = [&]( const auto& aUri )
+        {
+            return component_content.footprints.empty()
+                           ? fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( aUri ) )
+                           : API_DESIGN_RESOURCE_MGR::ExtractFileName( aUri );
+            ;
+        };
+
+
+        footprint_resource.footprint.filename = ensure_name_is_meaningful( fp_uri );
 
         footprint_resource.footprint.content = *fp_content;
 
@@ -277,10 +283,7 @@ void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand
                 continue;
             }
 
-            model.filename = component_content.footprints.empty()
-                                     ? fmt::format( "{}.{}", symbol_name,
-                                                    API_DESIGN_RESOURCE_MGR::ExtactFileExtension( model_uri ) )
-                                     : API_DESIGN_RESOURCE_MGR::ExtractFileName( model_uri );
+            model.filename = ensure_name_is_meaningful( model_uri );
             model.content = *model_content;
             footprint_resource.models.push_back( model );
         }
