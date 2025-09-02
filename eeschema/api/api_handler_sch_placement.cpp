@@ -256,7 +256,11 @@ void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand
             continue;
         }
 
-        footprint_resource.footprint.filename = API_DESIGN_RESOURCE_MGR::ExtractFileName( fp_uri );
+        // NOTE : The footprint name from eda.cn maybe messy, while the symbol name is always the MPN, so we use the symbol name as footprint name.
+        footprint_resource.footprint.filename =
+                component_content.footprints.empty()
+                        ? fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( fp_uri ) )
+                        : API_DESIGN_RESOURCE_MGR::ExtractFileName( fp_uri );
 
         footprint_resource.footprint.content = *fp_content;
 
