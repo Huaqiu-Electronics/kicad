@@ -44,7 +44,7 @@ public:
     bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
 
     //  Write symbol fields ,return the updated symbol if successful
-    LIB_ID WriteSymbolFields( std::string const& aFileName, auto const& aFields );
+    LIB_ID WriteSymbolFields( std::string const& aFileName, auto const& aFields, auto const& aFootprintName );
 };
 
 #endif
