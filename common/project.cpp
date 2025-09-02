@@ -426,6 +426,40 @@ FP_LIB_TABLE* PROJECT::PcbFootprintLibs( KIWAY& aKiway )
 }
 
 
+DESIGN_BLOCK_LIB_TABLE* PROJECT::DesignBlockLibs()
+{
+    // This is a lazy loading function, it loads the project specific table when
+    // that table is asked for, not before.
+
+    DESIGN_BLOCK_LIB_TABLE* tbl = (DESIGN_BLOCK_LIB_TABLE*) GetElem( ELEM::DESIGN_BLOCK_LIB_TABLE );
+
+    if( tbl )
+    {
+        wxASSERT( tbl->ProjectElementType() == PROJECT::ELEM::DESIGN_BLOCK_LIB_TABLE );
+    }
+    else
+    {
+        try
+        {
+            tbl = new DESIGN_BLOCK_LIB_TABLE( &DESIGN_BLOCK_LIB_TABLE::GetGlobalLibTable() );
+            tbl->Load( DesignBlockLibTblName() );
+
+            SetElem( ELEM::DESIGN_BLOCK_LIB_TABLE, tbl );
+        }
+        catch( const IO_ERROR& ioe )
+        {
+            DisplayErrorMessage( nullptr, _( "Error loading project design block library table." ), ioe.What() );
+        }
+        catch( ... )
+        {
+            DisplayErrorMessage( nullptr, _( "Error loading project design block library table." ) );
+        }
+    }
+
+    return tbl;
+}
+
+
 bool PROJECT::InsertFpLibTableRow( KIWAY& aKiway, const wxString& aNick, const wxString& aURI, const wxString& aType,
                                    const wxString& fpTablePath, const wxString& aOptions, const wxString& aDescr )
 {
@@ -473,37 +507,36 @@ bool PROJECT::InsertFpLibTableRow( KIWAY& aKiway, const wxString& aNick, const w
 }
 
 
-DESIGN_BLOCK_LIB_TABLE* PROJECT::DesignBlockLibs()
+bool PROJECT::UpdateFootprintModelPath( KIWAY& aKiway, const wxString& aFootprintPath, const wxString& aModelPath )
 {
-    // This is a lazy loading function, it loads the project specific table when
-    // that table is asked for, not before.
-
-    DESIGN_BLOCK_LIB_TABLE* tbl = (DESIGN_BLOCK_LIB_TABLE*) GetElem( ELEM::DESIGN_BLOCK_LIB_TABLE );
-
-    if( tbl )
+    try
     {
-        wxASSERT( tbl->ProjectElementType() == PROJECT::ELEM::DESIGN_BLOCK_LIB_TABLE );
-    }
-    else
-    {
-        try
-        {
-            tbl = new DESIGN_BLOCK_LIB_TABLE( &DESIGN_BLOCK_LIB_TABLE::GetGlobalLibTable() );
-            tbl->Load( DesignBlockLibTblName() );
+        using UPDATE_HANDLE_T = bool ( * )( const wxString&, const wxString& );
 
-            SetElem( ELEM::DESIGN_BLOCK_LIB_TABLE, tbl );
-        }
-        catch( const IO_ERROR& ioe )
+
+        KIFACE* kiface = aKiway.KiFACE( KIWAY::FACE_PCB );
+
+        UPDATE_HANDLE_T updateFpHdl = (UPDATE_HANDLE_T) kiface->IfaceOrAddress( KIFACE_UPDATE_FOOTPRINT_MODEL_PATH );
+
+        if( !updateFpHdl )
         {
-            DisplayErrorMessage( nullptr, _( "Error loading project design block library table." ),
-                                 ioe.What() );
+            wxLogError( "Failed to get function updateFootprintModelPath from KIFACE." );
+            return false;
         }
-        catch( ... )
+
+        if( !updateFpHdl( aFootprintPath, aModelPath ) )
         {
-            DisplayErrorMessage( nullptr,
-                                 _( "Error loading project design block library table." ) );
+            wxLogError( "Failed to update 3d model for footprint %s", aFootprintPath );
+            return false;
         }
+
+        return true;
     }
 
-    return tbl;
+    catch( ... )
+    {
+        DisplayErrorMessage( nullptr, _( "Error updating footprint model path." ) );
+    }
+
+    return false;
 }

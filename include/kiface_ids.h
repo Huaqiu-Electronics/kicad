@@ -52,6 +52,11 @@ enum KIFACE_ADDR_ID : int
     KIFACE_INSERT_ROW_FOOTPRINT_TABLE,
 
     /**
+     * Return a function ptr for updating the 3D model path of a footprint
+     */
+    KIFACE_UPDATE_FOOTPRINT_MODEL_PATH,
+
+    /**
      * Return the global FP_LIB_TABLE.
      * Type is FP_LIB_TABLE*
      * Caller does NOT own.

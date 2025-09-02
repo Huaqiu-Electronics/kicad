@@ -82,19 +82,34 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
 
     for( const auto& footprint : aComponent.footprints )
     {
+        std::optional<std::string> model_name;
+
+        for( const auto& model : footprint.models )
+        {
+            if( !model_name )
+            {
+                model_name = model.filename;
+            }
+
+            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
+            {
+                wxLogError( "Failed to save 3D model %s to project", model.filename );
+                continue;
+            }
+        }
+
         if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
         {
             wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
             continue;
         }
 
-        for( const auto& model : footprint.models )
+
+        if( model_name )
         {
-            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
-            {
-                wxLogError( "Failed to save 3D model %s to project", model.filename );
-                continue;
-            }
+            m_frame.Prj().UpdateFootprintModelPath(
+                    m_frame.Kiway(), *GetProjectResourceSavePath( PRETTY_DIR, footprint.footprint.filename ),
+                    "${KIPRJMOD}/kicad_api_libs/3d_models/" + model_name.value() );
         }
     }
 

@@ -299,6 +299,8 @@ public:
                                       const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
                                       const wxString& aDescr = wxEmptyString );
 
+    virtual bool UpdateFootprintModelPath( KIWAY& aKiway, const wxString& aFootprintPath, const wxString& aModelPath );
+
     /**
      * Return the table of design block libraries.
      */
