@@ -1252,7 +1252,7 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
         }
         else if( evt->IsClick( BUT_LEFT ) )
         {
-            if( !fp )
+            if( !fp && !m_inApiPlaceFootprint )
             {
                 // Pick the footprint to be placed
                 fp = m_frame->SelectFootprintFromLibrary();
@@ -1349,6 +1349,18 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
     m_frame->GetCanvas()->SetCurrentCursor( KICURSOR::ARROW );
 
     return 0;
+}
+
+int BOARD_EDITOR_CONTROL::ApiPlaceFootprint( const TOOL_EVENT& aEvent )
+{
+    if( m_inApiPlaceFootprint )
+        return 0;
+
+
+    REENTRANCY_GUARD guard( &m_inApiPlaceFootprint );
+
+
+    return ApiPlaceFootprint( aEvent );
 }
 
 
@@ -1874,6 +1886,7 @@ void BOARD_EDITOR_CONTROL::setTransitions()
 
     // Placing tools
     Go( &BOARD_EDITOR_CONTROL::PlaceFootprint,         PCB_ACTIONS::placeFootprint.MakeEvent() );
+    Go( &BOARD_EDITOR_CONTROL::ApiPlaceFootprint, PCB_ACTIONS::apiPlaceFootprint.MakeEvent() );
     Go( &BOARD_EDITOR_CONTROL::DrillOrigin,            PCB_ACTIONS::drillOrigin.MakeEvent() );
     Go( &BOARD_EDITOR_CONTROL::DrillOrigin,            PCB_ACTIONS::drillResetOrigin.MakeEvent() );
     Go( &BOARD_EDITOR_CONTROL::DrillOrigin,            PCB_ACTIONS::drillSetOrigin.MakeEvent() );

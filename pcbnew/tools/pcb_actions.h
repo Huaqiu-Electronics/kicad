@@ -222,6 +222,9 @@ public:
     static TOOL_ACTION placeCharacteristics;
     static TOOL_ACTION placeStackup;
     static TOOL_ACTION placeFootprint;
+
+    static TOOL_ACTION apiPlaceFootprint;
+
     static TOOL_ACTION placeImportedGraphics;
     static TOOL_ACTION setAnchor;
     static TOOL_ACTION deleteLastPoint;
