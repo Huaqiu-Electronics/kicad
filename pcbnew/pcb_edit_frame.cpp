@@ -118,9 +118,7 @@
 #include <footprint_viewer_frame.h>
 #include <footprint_chooser_frame.h>
 
-#include "fab/fab_info_getter_pcb.h"
-//#include "fab/fab_frame_note_pcb.h"
-#include <pcb_copilot_pch.h>
+#include "pcb_hq_dist_pch.h"
 
 #ifdef KICAD_IPC_API
 #include <api/api_server.h>
@@ -280,12 +278,14 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     setupUIConditions();
 
     CopilotPanelInit();
-    
+    WebViewLibraryInit();
+
     ReCreateMenuBar();
     ReCreateHToolbar();
     ReCreateAuxiliaryToolbar();
     ReCreateVToolbar();
     ReCreateOptToolbar();
+
 
 #ifdef KICAD_IPC_API
     wxTheApp->Bind( EDA_EVT_PLUGIN_AVAILABILITY_CHANGED,
@@ -352,6 +352,8 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
                       .BestSize( m_selectionFilterPanel->GetBestSize().x, -1 )
                       .FloatingSize( m_selectionFilterPanel->GetBestSize() )
                       .CloseButton( false ) );
+
+    InitWebViewLibraryAui();
     InitCopilotAui();
 
 
@@ -430,6 +432,7 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_appearancePanel->SetTabIndex( aui_cfg.appearance_panel_tab );
 
     LoadCopilotCnf();
+    LoadWebViewLibraryCnf();
 
     {
         m_layerPairSettings = std::make_unique<LAYER_PAIR_SETTINGS>();
@@ -1503,6 +1506,9 @@ void PCB_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
 
         if( m_copilotPanel )
             SaveCopilotCnf();
+
+        if( m_webSymbolChooser )
+            SaveWebViewLibraryCnf();
     }
 }
 
@@ -1735,6 +1741,7 @@ void PCB_EDIT_FRAME::ShowChangedLanguage()
     PCB_BASE_EDIT_FRAME::ShowChangedLanguage();
 
     CopilotPanelShowChangedLanguage();
+    WebViewLibraryShowChangedLanguage();
 
     m_auimgr.GetPane( m_appearancePanel ).Caption( _( "Appearance" ) );
     m_auimgr.GetPane( m_selectionFilterPanel ).Caption( _( "Selection Filter" ) );

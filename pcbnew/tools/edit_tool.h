@@ -235,6 +235,9 @@ private:
                                              std::unordered_set<BOARD_ITEM*>& children );
 
 
+    int ToggleWebViewLibrary( const TOOL_EVENT& aEvent );
+
+
 private:
     PCB_SELECTION_TOOL*   m_selectionTool;
     bool                  m_dragging;         // Indicates objects are currently being dragged

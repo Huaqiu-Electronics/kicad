@@ -76,9 +76,11 @@ public:
         }
     }
 
-    void RecreateWebViewLibraryToolBar()
+    void RecreateWebViewLibraryToolBar( bool aAddSeparator = true )
     {
-        self()->m_mainToolBar->AddScaledSeparator( self() );
+        if( aAddSeparator )
+            self()->m_mainToolBar->AddScaledSeparator( self() );
+
         self()->m_mainToolBar->Add( ACTIONS::toggleWebViewLibrary );
     }
 
