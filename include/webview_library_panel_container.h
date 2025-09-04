@@ -26,6 +26,7 @@
 #define WEBVIEW_LIBRARY_PANEL_CONTAINER_H
 
 
+#include "webview_library/webview_library_caption.h"
 #include <webview_library/webview_library_container.h>
 #include <tool/action_toolbar.h>
 #include <fmt/format.h>
@@ -87,7 +88,7 @@ public:
         {
             wxAuiPaneInfo& web_panel_info = m_auiMgr.GetPane( m_webSymbolChooser );
             bool           is_shown = web_panel_info.IsShown();
-            web_panel_info.Caption( _( "Library" ) );
+            web_panel_info.Caption( GetWebviewLibraryCaption() );
             web_panel_info.Show( is_shown );
         }
     }
