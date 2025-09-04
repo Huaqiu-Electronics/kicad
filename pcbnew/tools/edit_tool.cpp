@@ -3867,5 +3867,14 @@ void EDIT_TOOL::setTransitions()
     Go( &EDIT_TOOL::copyToClipboard,       PCB_ACTIONS::copyWithReference.MakeEvent() );
     Go( &EDIT_TOOL::copyToClipboardAsText, ACTIONS::copyAsText.MakeEvent() );
     Go( &EDIT_TOOL::cutToClipboard,        ACTIONS::cut.MakeEvent() );
+
+    Go( &EDIT_TOOL::ToggleWebViewLibrary,        ACTIONS::toggleWebViewLibrary.MakeEvent() );
 }
 // clang-format on
+
+
+int EDIT_TOOL::ToggleWebViewLibrary( const TOOL_EVENT& aEvent )
+{
+    static_cast<PCB_EDIT_FRAME*>( frame() )->ToggleWebViewLibrary();
+    return 0;
+}

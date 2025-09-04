@@ -347,6 +347,7 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
     m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
 
     RecreateFabToolBar( m_toolManager->GetTool<PCB_SELECTION_TOOL>() );
+    RecreateWebViewLibraryToolBar( false );
     RecreateCopilotToolBar();
     // clang-format on
     return config;

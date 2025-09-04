@@ -76,6 +76,7 @@
 #include <project/net_settings.h>
 #include <tools/sch_tool_utils.h>
 #include "copilot/sch_copilot_symbol_ctx_menu.h"
+#include "tool/tool_action.h"
 
 
 class SYMBOL_UNIT_MENU : public ACTION_MENU
@@ -3505,7 +3506,7 @@ void SCH_EDIT_TOOL::setTransitions()
     Go( &SCH_EDIT_TOOL::DdAddImage,        SCH_ACTIONS::ddAddImage.MakeEvent() );
 
 
-    Go( &SCH_EDIT_TOOL::ToggleWebViewLibrary,       SCH_ACTIONS::toggleWebViewLibrary.MakeEvent() );
+    Go( &SCH_EDIT_TOOL::ToggleWebViewLibrary,       ACTIONS::toggleWebViewLibrary.MakeEvent() );
 
     // clang-format on
 }

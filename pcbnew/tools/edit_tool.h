@@ -237,6 +237,10 @@ private:
     ///< Rebuilds the ratsnest for operations that require it outside the commit rebuild
     void rebuildConnectivity();
 
+
+    int ToggleWebViewLibrary( const TOOL_EVENT& aEvent );
+
+
 private:
     PCB_SELECTION_TOOL*   m_selectionTool;
     bool                  m_dragging;         // Indicates objects are currently being dragged
