@@ -33,6 +33,7 @@
 #include <wx/aui/auibar.h>
 #include <wx/aui/auibook.h>
 #include <wx/chartype.h>
+#include "webview_library_caption.h"
 inline auto WebviewLibraryName()
 {
     return ( "Library" );
@@ -43,7 +44,7 @@ inline auto DefaultWebviewLibraryPanelInfo( wxWindow* aWindow )
 {
     return wxAuiPaneInfo()
             .Name( WebviewLibraryName() )
-            .Caption( _( "Library" ) )
+            .Caption( GetWebviewLibraryCaption() )
             .PaneBorder( false )
             .Right()
             .Layer( 4 )
