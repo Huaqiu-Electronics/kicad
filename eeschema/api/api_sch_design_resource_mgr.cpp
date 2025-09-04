@@ -27,6 +27,8 @@
 #include "sch_base_frame.h"
 #include "sch_field_names.h"
 #include "template_fieldnames.h"
+
+#include <api/api_fmt_fp_model_path.h>
 #include <lib_symbol.h>
 #include <sch_field.h>
 #include <api/api_design_content.h>
@@ -109,7 +111,7 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
         {
             m_frame.Prj().UpdateFootprintModelPath(
                     m_frame.Kiway(), *GetProjectResourceSavePath( PRETTY_DIR, footprint.footprint.filename ),
-                    "${KIPRJMOD}/kicad_api_libs/3d_models/" + model_name.value() );
+                    FormatFootprintModelPath( model_name.value() ) );
         }
     }
 

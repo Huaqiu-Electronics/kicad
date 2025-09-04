@@ -111,6 +111,8 @@ public:
      */
     int PlaceFootprint( const TOOL_EVENT& aEvent );
 
+    int ApiPlaceFootprint( const TOOL_EVENT& aEvent );
+
     /**
      * Re-entrancy checker for above.
      */
@@ -148,6 +150,8 @@ private:
     bool             m_inPlaceFootprint;      // Re-entrancy guard for tool.
     bool             m_placingFootprint;      // Re-entrancy guard for placement loop.
     bool             m_inPlaceTarget;         // Re-entrancy guard.
+    bool             m_inApiPlaceFootprint;   // Re-entrancy guard.
+
 
     std::unique_ptr<KIGFX::ORIGIN_VIEWITEM> m_placeOrigin;
 

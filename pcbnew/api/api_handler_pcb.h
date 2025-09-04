@@ -170,6 +170,12 @@ private:
             const google::protobuf::RepeatedPtrField<google::protobuf::Any>& aItems,
             std::function<void(commands::ItemStatus, google::protobuf::Any)> aItemHandler )
             override;
+
+
+public:
+    void placeFootprint( struct COMPONENT_RESOURCE const& aComponent );
+
+    void placeFootprint( struct COMPONENT_CONTENT const& aComponent );
 };
 
 #endif //KICAD_API_HANDLER_PCB_H

@@ -25,13 +25,25 @@
 #ifndef API_PCB_PLACEMENT_COMMAND_H
 #define API_PCB_PLACEMENT_COMMAND_H
 
-class API_PCB_PLACEMENT_COMMAND
-{
-public:
-    API_PCB_PLACEMENT_COMMAND();
-    ~API_PCB_PLACEMENT_COMMAND();
+#include <api/api_design_resource.h>
+#include <api/api_design_content.h>
+#include <optional>
 
-private:
+// NOTE : The default JSON value for optional<STRUCT T>  is null instead of undefined.
+
+
+struct PLACE_FOOTPRINT_RESOURCE_COMMAND
+{
+    COMPONENT_RESOURCE component;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_FOOTPRINT_RESOURCE_COMMAND, component )
 };
+
+
+struct PLACE_FOOTPRINT_CONTENT_COMMAND
+{
+    COMPONENT_CONTENT component;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_FOOTPRINT_CONTENT_COMMAND, component )
+};
+
 
 #endif

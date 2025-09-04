@@ -1139,6 +1139,15 @@ TOOL_ACTION PCB_ACTIONS::placeFootprint( TOOL_ACTION_ARGS()
         .Flags( AF_ACTIVATE )
         .Parameter<FOOTPRINT*>( nullptr ) );
 
+
+TOOL_ACTION PCB_ACTIONS::apiPlaceFootprint( TOOL_ACTION_ARGS()
+        .Name( "pcbnew.EditorControl.apiPlaceFootprint" )
+        .Scope( AS_GLOBAL )
+        .Icon( BITMAPS::module )
+        .Flags( AF_ACTIVATE )
+        .Parameter<FOOTPRINT*>( nullptr ) );
+
+
 TOOL_ACTION PCB_ACTIONS::drillOrigin( TOOL_ACTION_ARGS()
         .Name( "pcbnew.EditorControl.drillOrigin" )
         .Scope( AS_GLOBAL )

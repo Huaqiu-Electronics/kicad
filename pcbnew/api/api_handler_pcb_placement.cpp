@@ -21,3 +21,16 @@
  * or you may write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
+
+#include "api_handler_pcb.h"
+#include <api/api_design_resource.h>
+#include <api/api_design_content.h>
+#include <properties/property.h>
+
+void API_HANDLER_PCB::placeFootprint( COMPONENT_RESOURCE const& aComponent )
+{
+}
+
+void API_HANDLER_PCB::placeFootprint( COMPONENT_CONTENT const& aComponent )
+{
+}
