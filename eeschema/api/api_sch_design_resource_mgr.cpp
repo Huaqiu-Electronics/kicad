@@ -74,44 +74,25 @@ API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
 
 LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aComponent )
 {
-    const auto& symbol_file_name = aComponent.symbol.filename;
+    const auto symbol_file_name = aComponent.symbol.filename;
 
-    if( !WriteProjectResource( SYMBOL_DIR, symbol_file_name, aComponent.symbol.content ) )
-    {
-        wxLogError( "Failed to save symbol %s to project", symbol_file_name );
+    if( !SaveSymbolContentToProject( aComponent.symbol ) )
         return {};
-    }
 
-    for( const auto& footprint : aComponent.footprints )
+
+    for( const auto& fpc : aComponent.footprints )
     {
-        std::optional<std::string> model_name;
-
-        for( const auto& model : footprint.models )
+        if( !SaveFootprintContentToProject( fpc.footprint ) )
         {
-            if( !model_name )
-            {
-                model_name = model.filename;
-            }
-
-            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
-            {
-                wxLogError( "Failed to save 3D model %s to project", model.filename );
-                continue;
-            }
-        }
-
-        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
-        {
-            wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
+            wxLogError( "Failed to save footprint %s to project", fpc.footprint.filename );
             continue;
         }
 
+        const auto fp_path = *GetProjectResourceSavePath( PRETTY_DIR, fpc.footprint.filename );
 
-        if( model_name )
+        for( const auto& model : fpc.models )
         {
-            m_frame.Prj().UpdateFootprintModelPath(
-                    m_frame.Kiway(), *GetProjectResourceSavePath( PRETTY_DIR, footprint.footprint.filename ),
-                    FormatFootprintModelPath( model_name.value() ) );
+            Save3dModelToProject( model, fp_path );
         }
     }
 
@@ -156,7 +137,9 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
 bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aBlock )
 {
     for( const auto& component : aBlock.components )
+    {
         SaveComponentToProject( component );
+    }
 
     for( const auto [schematic_file_name, schematic_content] : aBlock.schematics )
     {
@@ -183,9 +166,6 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT
 bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName,
                                                   const wxString& aURI )
 {
-    static const auto libType = wxT( "KiCad" );
-    static const auto desc = wxT( "Added by schematic API" );
-
     switch( aLibT )
     {
     case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_SYMBOL_TABLE:
@@ -198,7 +178,7 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
             return false;
         }
 
-        const auto row = new SYMBOL_LIB_TABLE_ROW( aNickName, aURI, libType, desc );
+        const auto row = new SYMBOL_LIB_TABLE_ROW( aNickName, aURI, GetKiCadLibType(), GetIPClibDesc() );
 
         if( !symbolTb->InsertRow( row, true ) )
         {
@@ -210,21 +190,14 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
         static_cast<SCH_BASE_FRAME&>( m_frame ).SavePrjSymbolLibTables();
         return true;
     }
-    case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_FP_TABLE:
-    {
-        // Update the footprint library table using the global function.
-        return m_frame.Prj().InsertFpLibTableRow( m_frame.Kiway(), aNickName, aURI, libType,
-                                                  m_frame.Prj().FootprintLibTblName(), desc );
-    }
+
     case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_DESIGN_BLOCK_TABLE:
     {
         // TODO
         break;
     }
+    default: return API_DESIGN_RESOURCE_MGR::UpdateLibTable( aLibT, aNickName, aURI );
     }
-
-
-    return false;
 }
 
 LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName, auto const& aFields,

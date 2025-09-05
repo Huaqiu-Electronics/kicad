@@ -22,9 +22,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "fmt/format.h"
+#include <fmt/format.h>
 #include <project.h>
 #include <api/api_design_resource_mgr.h>
+#include <api/api_fmt_fp_model_path.h>
 #include <kicad_curl/kicad_curl_easy.h>
 #include <optional>
 #include <wx/debug.h>
@@ -284,3 +285,73 @@ bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( ProjectResourceDir aType, wx
 
     return WriteProjectResource( *savePath, aContent );
 }
+
+wxString API_DESIGN_RESOURCE_MGR::GetKiCadLibType()
+{
+    return wxT( "KiCad" );
+}
+
+wxString API_DESIGN_RESOURCE_MGR::GetIPClibDesc()
+{
+    return wxT( "Added by KiCad IPC API" );
+}
+
+
+bool API_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI )
+{
+    switch( aLibT )
+    {
+    case API_LIB_TABLE_T::API_LIB_FP_TABLE:
+    {
+        return m_frame.Prj().InsertFpLibTableRow( m_frame.Kiway(), aNickName, aURI, GetKiCadLibType(),
+                                                  m_frame.Prj().FootprintLibTblName(), GetIPClibDesc() );
+    }
+    default:
+    {
+        wxLogWarning( "Unsupported library table type" );
+    }
+    }
+
+    return {};
+}
+
+bool API_DESIGN_RESOURCE_MGR::SaveSymbolContentToProject( NAMED_CONTENT const& aContent )
+{
+    if( !WriteProjectResource( SYMBOL_DIR, aContent.filename, aContent.content ) )
+    {
+        wxLogError( "Failed to save symbol %s to project", aContent.filename );
+        return false;
+    }
+
+    return true;
+}
+
+bool API_DESIGN_RESOURCE_MGR::SaveFootprintContentToProject( NAMED_CONTENT const& aContent )
+{
+    if( !WriteProjectResource( PRETTY_DIR, aContent.filename, aContent.content ) )
+    {
+        wxLogError( "Failed to save footprint %s to project", aContent.filename );
+        return false;
+    }
+
+    return true;
+}
+
+bool API_DESIGN_RESOURCE_MGR::Save3dModelToProject( NAMED_CONTENT const&           aContent,
+                                                    std::optional<wxString> const& aFootprintPath )
+{
+    const auto model_name = aContent.filename;
+
+    if( !WriteProjectResource( MODEL_3D_DIR, aContent.filename, aContent.content ) )
+    {
+        wxLogError( "Failed to save 3d model %s to project", aContent.filename );
+        return false;
+    }
+
+    if( aFootprintPath )
+
+        m_frame.Prj().UpdateFootprintModelPath( m_frame.Kiway(), *aFootprintPath,
+                                                FormatFootprintModelPath( model_name ) );
+    return true;
+}
+

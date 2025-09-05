@@ -44,12 +44,26 @@ API_PCB_DESIGN_RESOURCE_MGR::~API_PCB_DESIGN_RESOURCE_MGR()
 
 FOOTPRINT* API_PCB_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTENT const& aComponent )
 {
-    const auto& symbol_file_name = aComponent.symbol.filename;
+    if( !SaveSymbolContentToProject( aComponent.symbol ) )
+        return {};
 
-    if( !WriteProjectResource( SYMBOL_DIR, symbol_file_name, aComponent.symbol.content ) )
+
+    for( const auto& fpc : aComponent.footprints )
     {
-        wxLogError( "Failed to save symbol %s to project", symbol_file_name );
+        if( !SaveFootprintContentToProject( fpc.footprint ) )
+        {
+            wxLogError( "Failed to save footprint %s to project", fpc.footprint.filename );
+            continue;
+        }
+
+        const auto fp_path = *GetProjectResourceSavePath( PRETTY_DIR, fpc.footprint.filename );
+
+        for( const auto& model : fpc.models )
+        {
+            Save3dModelToProject( model, fp_path );
+        }
     }
+
 
     auto libTable = PROJECT_PCB::PcbFootprintLibs( &m_frame.Prj() );
 
@@ -59,104 +73,17 @@ FOOTPRINT* API_PCB_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTEN
         return {};
     }
 
-
-    std::optional<FOOTPRINT*> footprint;
-
-    for( const auto& footprint : aComponent.footprints )
-    {
-        std::optional<std::string> model_name;
-
-        for( const auto& model : footprint.models )
-        {
-            if( !model_name )
-            {
-                model_name = model.filename;
-            }
-
-            if( !WriteProjectResource( MODEL_3D_DIR, model.filename, model.content ) )
-            {
-                wxLogError( "Failed to save 3D model %s to project", model.filename );
-                continue;
-            }
-        }
-
-        if( !WriteProjectResource( PRETTY_DIR, footprint.footprint.filename, footprint.footprint.content ) )
-        {
-            wxLogError( "Failed to save footprint %s to project", footprint.footprint.filename );
-            continue;
-        }
-
-
-        if( model_name )
-        {
-            m_frame.Prj().UpdateFootprintModelPath(
-                    m_frame.Kiway(), *GetProjectResourceSavePath( PRETTY_DIR, footprint.footprint.filename ),
-                    FormatFootprintModelPath( model_name.value() ) );
-        }
-    }
-
-
-    const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
-
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, FormatAPISymbolURI( symbol_file_name ) ) )
-    {
-        wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
-        return {};
-    }
-
-    auto lib_id = WriteFootprintFields( symbol_file_name, aComponent.attributes,
-                                        RemoveFileExt( aComponent.footprints.size()
-                                                               ? aComponent.footprints.front().footprint.filename
-                                                               : aComponent.symbol.filename ) );
-
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, FormatAPISymbolURI( symbol_file_name ) ) )
-    {
-        wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
-        return {};
-    }
-
-
     auto fp = libTable->FootprintLoad( GetAPIFootprintPrettyName(), GetProjectApiFpUri(), true );
-
 
     if( !fp )
     {
-        wxLogError( "Failed to load fp for %s", symbol_nick_name );
-        return {};
-    }
-
-
-    if( !UpdateLibTable( API_LIB_FP_TABLE, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
-    {
-        wxLogError( "Failed to update fp library table for %s", symbol_nick_name );
+        wxLogError( "Failed to load fp for " );
         return {};
     }
 
     return fp;
 }
 
-bool API_PCB_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName,
-                                                  const wxString& aURI )
-{
-    static const auto libType = wxT( "KiCad" );
-    static const auto desc = wxT( "Added by PCB API" );
-
-    switch( aLibT )
-    {
-    case API_LIB_TABLE_T::API_LIB_FP_TABLE:
-    {
-        // Update the footprint library table using the global function.
-        return m_frame.Prj().InsertFpLibTableRow( m_frame.Kiway(), aNickName, aURI, libType,
-                                                  m_frame.Prj().FootprintLibTblName(), desc );
-    }
-    default:
-    {
-        wxLogWarning( "Unsupported library table type" );
-    }
-    }
-
-    return {};
-}
 
 LIB_ID API_PCB_DESIGN_RESOURCE_MGR::WriteFootprintFields( std::string const& aFileName, auto const& aFields,
                                                           auto const& aFootprintName )
