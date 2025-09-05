@@ -32,6 +32,7 @@
 class EDA_BASE_FRAME;
 struct DESIGN_BLOCK_CONTENT;
 struct COMPONENT_CONTENT;
+struct NAMED_CONTENT;
 
 class API_DESIGN_RESOURCE_MGR
 {
@@ -79,7 +80,11 @@ public:
 
     static std::string FormatToValidFileName( std::string const& aComponentName );
 
-    static wxString FormatAPISymbolURI( std::string const& aSymbolName);
+    static wxString FormatAPISymbolURI( std::string const& aSymbolName );
+
+    static wxString GetKiCadLibType();
+
+    static wxString GetIPClibDesc();
 
     wxString GetProjectApiFpUri() const;
 
@@ -87,13 +92,23 @@ public:
 
     //  Get the project resource directory for the given type.
     std::optional<wxString> GetProjectResourceDir( ProjectResourceDir aType );
-    
+
     // Get the project resource save path for the given type and name.
     std::optional<wxString> GetProjectResourceSavePath( ProjectResourceDir aType, wxString const& aName );
 
     bool WriteProjectResource( ProjectResourceDir aType, wxString const& aName, std::string const& aContent );
 
     bool WriteProjectResource( wxString const& aPath, std::string const& aContent );
+
+    virtual bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
+
+    bool SaveSymbolContentToProject( NAMED_CONTENT const& aContent );
+
+    bool SaveFootprintContentToProject( NAMED_CONTENT const& aContent );
+
+    // Save the 3d model to project and link it to the footprint if aFootprintPath is provided.
+    bool Save3dModelToProject( NAMED_CONTENT const& aContent, std::optional<wxString> const& aFootprintPath );
+
 
 private:
     wxString GetProjectResourceDirInternal( ProjectResourceDir aType ) const;

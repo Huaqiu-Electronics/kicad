@@ -41,8 +41,6 @@ public:
     // Save a component to project, return the new/updated FOOTPRINT if successful
     FOOTPRINT* SaveComponentToProject( COMPONENT_CONTENT const& aComponent );
 
-    bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
-
     //  Write fp fields ,return the updated fp if successful
     LIB_ID WriteFootprintFields( std::string const& aFileName, auto const& aFields, auto const& aFootprintName );
 
