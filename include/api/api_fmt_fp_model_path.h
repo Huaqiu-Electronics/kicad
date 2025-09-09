@@ -27,9 +27,9 @@
 
 #include <string>
 
-inline std::string FormatFootprintModelPath( std::string const& model_name )
+inline std::string FormatFootprintModelPath( std::string const& model_file_name )
 {
-    return "${KIPRJMOD}/kicad_api_libs/3d_models/" + model_name;
+    return "${KIPRJMOD}/kicad_api_libs/3d_models/" + model_file_name;
 }
 
 
