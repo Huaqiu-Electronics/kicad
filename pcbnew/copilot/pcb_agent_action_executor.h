@@ -37,7 +37,10 @@
 #include <string>
 #include <wx/log.h>
 #include <fmt/format.h>
+#include "api/api_handler_pcb.h"
 #include "fmt_pcb_selection_cmd.h"
+#include <api/api_place_component_cmd.h>
+#include <api/decode_base64_encoded_component.h>
 
 
 template <>
@@ -68,12 +71,22 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
             break;
         }
-        case AGENT_ACTION_TYPE::place_footprint_resource:
+        case AGENT_ACTION_TYPE::place_component_resource:
         {
+            const auto resource = aAction.context.get<PLACE_COMPONENT_RESOURCE_COMMAND>().component;
+            self()->m_apiHandler->placeFootprint( resource );
             break;
         }
-        case AGENT_ACTION_TYPE::place_base64_encoded_footprint:
+        case AGENT_ACTION_TYPE::place_base64_encoded_component:
         {
+            auto cmd = aAction.context.get<PLACE_COMPONENT_CONTENT_COMMAND>();
+
+            if( cmd.base64_encoded_content )
+            {
+                decode_base64_encoded_component( cmd.component );
+            }
+
+            self()->m_apiHandler->placeFootprint( cmd.component );
             break;
         }
         default: return BaseExecuteAgentAction( aAction );

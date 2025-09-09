@@ -22,28 +22,25 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef API_PCB_PLACEMENT_COMMAND_H
-#define API_PCB_PLACEMENT_COMMAND_H
+#ifndef API_PLACE_COMPONENT_CMD_H
+#define API_PLACE_COMPONENT_CMD_H
 
-#include <api/api_design_resource.h>
-#include <api/api_design_content.h>
-#include <optional>
-
-// NOTE : The default JSON value for optional<STRUCT T>  is null instead of undefined.
+#include "api_design_resource.h"
+#include "api_design_content.h"
 
 
-struct PLACE_FOOTPRINT_RESOURCE_COMMAND
+struct PLACE_COMPONENT_RESOURCE_COMMAND
 {
     COMPONENT_RESOURCE component;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_FOOTPRINT_RESOURCE_COMMAND, component )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_COMPONENT_RESOURCE_COMMAND, component )
 };
 
 
-struct PLACE_FOOTPRINT_CONTENT_COMMAND
+struct PLACE_COMPONENT_CONTENT_COMMAND
 {
     COMPONENT_CONTENT component;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_FOOTPRINT_CONTENT_COMMAND, component )
+    bool              base64_encoded_content;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_COMPONENT_CONTENT_COMMAND, component, base64_encoded_content )
 };
-
 
 #endif

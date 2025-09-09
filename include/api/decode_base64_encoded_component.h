@@ -25,7 +25,8 @@
 #ifndef DECODE_BASE64_ENCODED_COMPONENT_H
 #define DECODE_BASE64_ENCODED_COMPONENT_H
 
-#include "api/api_design_content.h"
+#include "api_design_content.h"
+
 #include <utils/base64.hpp>
 inline auto decode_base64_encoded_component( COMPONENT_CONTENT& component )
 {
