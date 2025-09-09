@@ -51,6 +51,8 @@
 #include <webview/launch_webview_dialog_param.h>
 
 #include <api/decode_base64_encoded_component.h>
+#include <api/api_place_component_cmd.h>
+
 #include "sch_editor_control.h"
 #include "fmt_sch_selection_cmd.h"
 
@@ -110,6 +112,25 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         {
             const auto content = aAction.context.get<PLACE_DESIGN_BLOCK_CONTENT_COMMAND>();
             self()->m_apiHandler->placeDesignBlock( content.design_block, content.option );
+            break;
+        }
+
+        case AGENT_ACTION_TYPE::place_component_resource:
+        {
+            self()->m_apiHandler->placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND{
+                    aAction.context.get<PLACE_COMPONENT_RESOURCE_COMMAND>().component } );
+            break;
+        }
+        case AGENT_ACTION_TYPE::place_base64_encoded_component:
+        {
+            auto cmd = aAction.context.get<PLACE_COMPONENT_CONTENT_COMMAND>();
+
+            if( cmd.base64_encoded_content )
+            {
+                decode_base64_encoded_component( cmd.component );
+            }
+
+            self()->m_apiHandler->placeSymbol( cmd.component, {} );
             break;
         }
 

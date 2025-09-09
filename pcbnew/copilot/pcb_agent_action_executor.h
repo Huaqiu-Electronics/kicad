@@ -74,6 +74,14 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         case AGENT_ACTION_TYPE::place_component_resource:
         {
             const auto resource = aAction.context.get<PLACE_COMPONENT_RESOURCE_COMMAND>().component;
+
+            // NOTE AD HOC: History workaround for eda.cn
+            if( resource.footprint_resources.size() == 1
+                && resource.footprint_resources[0].uri == "https://www.eda.cn/all/empty.kicad_mod" )
+            {
+                return;
+            }
+
             self()->m_apiHandler->placeFootprint( resource );
             break;
         }

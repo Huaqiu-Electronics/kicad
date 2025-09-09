@@ -275,6 +275,11 @@ bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( wxString const& aPath, std::
 bool API_DESIGN_RESOURCE_MGR::WriteProjectResource( ProjectResourceDir aType, wxString const& aName,
                                                     std::string const& aContent )
 {
+    if( aContent.empty() )
+    {
+        return false;
+    }
+
     const auto savePath = GetProjectResourceSavePath( aType, aName );
 
     if( !savePath )
@@ -355,3 +360,75 @@ bool API_DESIGN_RESOURCE_MGR::Save3dModelToProject( NAMED_CONTENT const&        
     return true;
 }
 
+COMPONENT_CONTENT API_DESIGN_RESOURCE_MGR::GetComponentConent( COMPONENT_RESOURCE const& aResource )
+{
+    const auto& symbol_uri = aResource.symbol_resource.uri;
+    const auto  symbol_content = API_DESIGN_RESOURCE_MGR::DownloadURL( symbol_uri );
+
+    if( !symbol_content )
+    {
+        wxLogWarning( "Failed to download symbol from %s", symbol_uri );
+    }
+
+
+    const auto symbol_name = API_DESIGN_RESOURCE_MGR::FormatToValidFileName(
+            aResource.component_name ? *aResource.component_name
+                                     : API_DESIGN_RESOURCE_MGR::ExtractFileName( symbol_uri ) );
+
+    COMPONENT_CONTENT component_content{
+        fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( symbol_uri ) ), *symbol_content
+    };
+    for( const auto& attr : aResource.attributes )
+        component_content.attributes.push_back( { attr.name, attr.value } );
+
+    for( const auto& fp : aResource.footprint_resources )
+    {
+        if( !fp.uri || fp.uri->empty() )
+            continue;
+
+        FOOTPRINT_CONENT footprint_resource;
+        const auto       fp_uri = *fp.uri;
+        const auto       fp_content = API_DESIGN_RESOURCE_MGR::DownloadURL( fp_uri );
+
+        if( !fp_content )
+        {
+            wxLogWarning( "Failed to download footprint from %s", fp_uri );
+            continue;
+        }
+
+        // NOTE : The footprint name from eda.cn maybe messy, while the symbol name is always the MPN, so we use the symbol name as footprint name.
+        const auto ensure_name_is_meaningful = [&]( const auto& aUri )
+        {
+            return component_content.footprints.empty()
+                           ? fmt::format( "{}.{}", symbol_name, API_DESIGN_RESOURCE_MGR::ExtactFileExtension( aUri ) )
+                           : API_DESIGN_RESOURCE_MGR::ExtractFileName( aUri );
+        };
+
+
+        footprint_resource.footprint.filename = ensure_name_is_meaningful( fp_uri );
+
+        footprint_resource.footprint.content = *fp_content;
+
+        for( const auto& ml : fp.models )
+        {
+            NAMED_CONTENT model;
+
+            const auto model_uri = ml.uri;
+            const auto model_content = API_DESIGN_RESOURCE_MGR::DownloadURL( model_uri );
+
+            if( !model_content )
+            {
+                wxLogWarning( "Failed to download 3D model from %s", model_uri );
+                continue;
+            }
+
+            model.filename = ensure_name_is_meaningful( model_uri );
+            model.content = *model_content;
+            footprint_resource.models.push_back( model );
+        }
+
+        component_content.footprints.push_back( std::move( footprint_resource ) );
+    }
+
+    return component_content;
+}

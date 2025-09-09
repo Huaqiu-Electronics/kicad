@@ -29,10 +29,12 @@
 #include <optional>
 #include <wx/string.h>
 
+
+#include "api_design_content.h"
+#include "api_design_resource.h"
+
 class EDA_BASE_FRAME;
-struct DESIGN_BLOCK_CONTENT;
-struct COMPONENT_CONTENT;
-struct NAMED_CONTENT;
+
 
 class API_DESIGN_RESOURCE_MGR
 {
@@ -85,6 +87,8 @@ public:
     static wxString GetKiCadLibType();
 
     static wxString GetIPClibDesc();
+
+    static COMPONENT_CONTENT GetComponentConent( COMPONENT_RESOURCE const& aResource );
 
     wxString GetProjectApiFpUri() const;
 

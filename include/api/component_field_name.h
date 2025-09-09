@@ -22,8 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SCH_FIELD_NAMES_H
-#define SCH_FIELD_NAMES_H
+#ifndef COMPONENT_FIELD_NAME_H
+#define COMPONENT_FIELD_NAME_H
 
 namespace
 {
@@ -36,6 +36,5 @@ constexpr auto kDESCRIPTION = "Description";
 constexpr auto kFOOTPRINT = "Footprint";
 
 } // namespace
-
 
 #endif
