@@ -141,7 +141,8 @@ BOARD_EDITOR_CONTROL::BOARD_EDITOR_CONTROL() :
     m_frame( nullptr ),
     m_inPlaceFootprint( false ),
     m_placingFootprint( false ),
-    m_inPlaceTarget( false )
+    m_inPlaceTarget( false ),
+    m_inApiPlaceFootprint(false)
 {
     m_placeOrigin = std::make_unique<KIGFX::ORIGIN_VIEWITEM>( KIGFX::COLOR4D( 0.8, 0.0, 0.0, 1.0 ),
                                                              KIGFX::ORIGIN_VIEWITEM::CIRCLE_CROSS );
