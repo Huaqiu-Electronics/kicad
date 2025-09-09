@@ -50,7 +50,7 @@
 #include <webview_library/dialog_add_design_block.h>
 #include <webview/launch_webview_dialog_param.h>
 
-#include "decode_base64_encoded_component.h"
+#include <api/decode_base64_encoded_component.h>
 #include "sch_editor_control.h"
 #include "fmt_sch_selection_cmd.h"
 

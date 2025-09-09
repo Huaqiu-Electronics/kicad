@@ -35,9 +35,13 @@ enum class AGENT_ACTION_TYPE
 
 
     COMMON_BEGIN,
+
     ask_selection,
     paste,
     open_project_zip_achieve,
+
+    place_component_resource,
+    place_base64_encoded_component,
 
     SCH_EDITOR_BEGIN,
 
@@ -54,8 +58,6 @@ enum class AGENT_ACTION_TYPE
     PCB_EDITOR_BEGIN,
 
     launch_plugin,
-    place_footprint_resource,
-    place_base64_encoded_footprint,
 
 
     SYMBOL_EDITOR_BEGIN,
