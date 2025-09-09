@@ -1144,9 +1144,17 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
     if( m_inPlaceFootprint )
         return 0;
 
+
     REENTRANCY_GUARD guard( &m_inPlaceFootprint );
 
     FOOTPRINT*            fp = aEvent.Parameter<FOOTPRINT*>();
+
+    if( m_inApiPlaceFootprint && !fp )
+    {
+        // FIXME : Shall not come here
+        return 0;
+    }
+
     bool                  fromOtherCommand = fp != nullptr;
     KIGFX::VIEW_CONTROLS* controls = getViewControls();
     BOARD_COMMIT          commit( m_frame );
@@ -1190,14 +1198,17 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
     // Must be done after Activate() so that it gets set into the correct context
     controls->ShowCursor( true );
     // Set initial cursor
-    setCursor();
+    if( !m_inApiPlaceFootprint )
+    {
+        setCursor();
+    }
 
     VECTOR2I cursorPos = controls->GetCursorPosition();
     bool     ignorePrimePosition = false;
     bool     reselect = false;
 
     // Prime the pump
-    if( fp )
+    if( fp && !m_inApiPlaceFootprint )
     {
         m_placingFootprint = true;
         fp->SetPosition( cursorPos );
@@ -1312,6 +1323,11 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
                 commit.Push( _( "Place Footprint" ) );
                 fp = nullptr;  // to indicate that there is no footprint that we currently modify
                 m_placingFootprint = false;
+
+                if( m_inApiPlaceFootprint )
+                {
+                    break;
+                }
             }
         }
         else if( evt->IsClick( BUT_RIGHT ) )
@@ -1359,9 +1375,7 @@ int BOARD_EDITOR_CONTROL::ApiPlaceFootprint( const TOOL_EVENT& aEvent )
 
 
     REENTRANCY_GUARD guard( &m_inApiPlaceFootprint );
-
-
-    return ApiPlaceFootprint( aEvent );
+    return PlaceFootprint( aEvent );
 }
 
 

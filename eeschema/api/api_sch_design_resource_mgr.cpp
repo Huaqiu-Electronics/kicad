@@ -25,10 +25,11 @@
 #include "api_sch_design_resource_mgr.h"
 #include "api/api_design_resource_mgr.h"
 #include "sch_base_frame.h"
-#include "sch_field_names.h"
+
 #include "template_fieldnames.h"
 
 #include <api/api_fmt_fp_model_path.h>
+#include <api/component_field_name.h>
 #include <lib_symbol.h>
 #include <sch_field.h>
 #include <api/api_design_content.h>

@@ -29,6 +29,7 @@
 #include <api/common/commands/editor_commands.pb.h>
 #include <api/common/commands/project_commands.pb.h>
 #include <kiid.h>
+#include <memory>
 #include <properties/property_mgr.h>
 
 using namespace kiapi;
@@ -45,6 +46,7 @@ class EDA_ITEM;
 class PCB_EDIT_FRAME;
 class PCB_TRACK;
 class PROPERTY_BASE;
+class API_PCB_DESIGN_RESOURCE_MGR;
 
 
 class API_HANDLER_PCB : public API_HANDLER_EDITOR
@@ -188,6 +190,10 @@ public:
     void placeFootprint( struct COMPONENT_RESOURCE const& aComponent );
 
     void placeFootprint( struct COMPONENT_CONTENT const& aComponent );
+
+
+private:
+    std::unique_ptr<API_PCB_DESIGN_RESOURCE_MGR> m_designResourceMgr;
 };
 
 #endif //KICAD_API_HANDLER_PCB_H

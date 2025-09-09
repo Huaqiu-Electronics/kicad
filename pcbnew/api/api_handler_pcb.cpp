@@ -28,6 +28,7 @@
 #include <board_design_settings.h>
 #include <footprint.h>
 #include <kicad_clipboard.h>
+#include <memory>
 #include <netinfo.h>
 #include <pad.h>
 #include <pcb_edit_frame.h>
@@ -51,6 +52,8 @@
 #include <widgets/appearance_controls.h>
 #include <widgets/report_severity.h>
 
+#include "api_pcb_design_resource_mgr.h"
+
 using namespace kiapi::common::commands;
 using types::CommandStatus;
 using types::DocumentType;
@@ -58,7 +61,7 @@ using types::ItemRequestStatus;
 
 
 API_HANDLER_PCB::API_HANDLER_PCB( PCB_EDIT_FRAME* aFrame ) :
-        API_HANDLER_EDITOR( aFrame )
+        API_HANDLER_EDITOR( aFrame ), m_designResourceMgr( std::make_unique<API_PCB_DESIGN_RESOURCE_MGR>( *aFrame ) )
 {
     registerHandler<RunAction, RunActionResponse>( &API_HANDLER_PCB::handleRunAction );
     registerHandler<GetOpenDocuments, GetOpenDocumentsResponse>(

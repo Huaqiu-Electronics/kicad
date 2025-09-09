@@ -23,14 +23,28 @@
  */
 
 #include "api_handler_pcb.h"
+#include "api_pcb_design_resource_mgr.h"
+#include "tools/pcb_actions.h"
+#include <pcb_edit_frame.h>
+#include <tool/tool_manager.h>
+#include <tools/pcb_actions.h>
 #include <api/api_design_resource.h>
 #include <api/api_design_content.h>
 #include <properties/property.h>
 
 void API_HANDLER_PCB::placeFootprint( COMPONENT_RESOURCE const& aComponent )
 {
+    return placeFootprint( API_DESIGN_RESOURCE_MGR::GetComponentConent( aComponent ) );
 }
 
 void API_HANDLER_PCB::placeFootprint( COMPONENT_CONTENT const& aComponent )
 {
+    auto fp = m_designResourceMgr->SaveComponentToProject( aComponent );
+
+    if( !fp )
+    {
+        return;
+    }
+
+    m_frame->GetToolManager()->RunAction( PCB_ACTIONS::apiPlaceFootprint, fp );
 }
