@@ -1225,6 +1225,40 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
         ignorePrimePosition = true;
     }
 
+    if( m_inApiPlaceFootprint )
+    {
+        m_placingFootprint = true;
+
+        fp->SetLink( niluuid );
+
+        fp->SetFlags( IS_NEW ); // whatever
+
+        // Set parent so that clearance can be loaded
+        fp->SetParent( board );
+        board->UpdateUserUnits( fp, m_frame->GetCanvas()->GetView() );
+
+        for( PAD* pad : fp->Pads() )
+        {
+            pad->SetLocalRatsnestVisible( m_frame->GetPcbNewSettings()->m_Display.m_ShowGlobalRatsnest );
+
+            // Pads in the library all have orphaned nets.  Replace with Default.
+            pad->SetNetCode( 0 );
+        }
+
+        // Put it on FRONT layer,
+        // (Can be stored flipped if the lib is an archive built from a board)
+        if( fp->IsFlipped() )
+            fp->Flip( fp->GetPosition(), m_frame->GetPcbNewSettings()->m_FlipDirection );
+
+        fp->SetOrientation( ANGLE_0 );
+        fp->SetPosition( cursorPos );
+
+        commit.Add( fp );
+        m_toolMgr->RunAction<EDA_ITEM*>( PCB_ACTIONS::selectItem, fp );
+
+        m_toolMgr->PostAction( ACTIONS::refreshPreview );
+    }
+
     // Main loop: keep receiving events
     while( TOOL_EVENT* evt = Wait() )
     {
@@ -1326,6 +1360,7 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
 
                 if( m_inApiPlaceFootprint )
                 {
+                    frame()->PopTool( aEvent );
                     break;
                 }
             }
@@ -1370,9 +1405,8 @@ int BOARD_EDITOR_CONTROL::PlaceFootprint( const TOOL_EVENT& aEvent )
 
 int BOARD_EDITOR_CONTROL::ApiPlaceFootprint( const TOOL_EVENT& aEvent )
 {
-    if( m_inApiPlaceFootprint )
+    if( m_inApiPlaceFootprint || !aEvent.Parameter<FOOTPRINT*>() )
         return 0;
-
 
     REENTRANCY_GUARD guard( &m_inApiPlaceFootprint );
     return PlaceFootprint( aEvent );
