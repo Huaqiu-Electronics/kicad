@@ -134,6 +134,7 @@
 #include <api/api_handler_pcb.h>
 #include <api/api_handler_common.h>
 #include <api/api_utils.h>
+#include <api/api_pcb_design_resource_mgr.h>
 #endif
 
 #include <action_plugin.h>

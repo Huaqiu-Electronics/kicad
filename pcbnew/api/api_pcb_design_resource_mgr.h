@@ -26,8 +26,7 @@
 #define API_PCB_DESIGN_RESOURCE_MGR_H
 
 
-#include "footprint.h"
-#include "lib_id.h"
+#include <footprint.h>
 #include <api/api_design_resource_mgr.h>
 
 
