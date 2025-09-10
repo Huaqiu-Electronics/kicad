@@ -199,6 +199,8 @@ bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const w
     }
     default: return API_DESIGN_RESOURCE_MGR::UpdateLibTable( aLibT, aNickName, aURI );
     }
+
+    return {};
 }
 
 LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName, auto const& aFields,
