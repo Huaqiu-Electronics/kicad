@@ -98,6 +98,7 @@ static FOOTPRINT* UpdateFpAttributes( wxString const& fpFilePath, std::optional<
             }
 
             PCB_FIELD field( footprint, ++usr_filed, name );
+            field.SetLayer( PCB_LAYER_ID::F_Fab );
             field.SetText( value );
             field.SetVisible( false );
             footprint->AddField( field );
