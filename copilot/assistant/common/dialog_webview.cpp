@@ -33,9 +33,11 @@
 #include <wx/display.h>
 
 DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, const wxString& title, const wxString& settingKey,
-                                const wxSize& size, wxWindowID id, HOST_COPILOT_HANDLES host_copilot_handles ) :
+                                const wxSize& size, wxWindowID id, HOST_COPILOT_HANDLES host_copilot_handles,
+                                WEBVIEW_CONTAINER* parent_webview ) :
         COPILOT_DIALOG( aParent, title, settingKey, size, id ),
-        _webview_container( new WEBVIEW_CONTAINER( this, {}, std::move( host_copilot_handles ) ) )
+        _webview_container( new WEBVIEW_CONTAINER( this, {}, std::move( host_copilot_handles ) ) ),
+        _parent_webview( parent_webview )
 {
     Init( _webview_container );
 }

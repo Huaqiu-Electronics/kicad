@@ -38,11 +38,12 @@ class COPILOT_API DIALOG_WEBVIEW : public COPILOT_DIALOG
 {
     using COPILOT_DIALOG::Init;
     WEBVIEW_CONTAINER* _webview_container{};
+    WEBVIEW_CONTAINER* _parent_webview{};
 
 public:
     DIALOG_WEBVIEW( wxWindow* aParent, const wxString& title, const wxString& settingKey,
                     const wxSize& size = { 800, 600 }, wxWindowID id = wxID_ANY,
-                    HOST_COPILOT_HANDLES host_copilot_handles = {} );
+                    HOST_COPILOT_HANDLES host_copilot_handles = {}, WEBVIEW_CONTAINER* parent_webview = nullptr );
     ~DIALOG_WEBVIEW();
 
 
@@ -51,8 +52,9 @@ public:
     void RunScriptAsync( wxString const& aScript );
 
     WEBVIEW_CONTAINER* GetWebviewContainer() const;
-};
 
+    WEBVIEW_CONTAINER* GetParentWebView() const { return _parent_webview; }
+};
 
 
 #endif

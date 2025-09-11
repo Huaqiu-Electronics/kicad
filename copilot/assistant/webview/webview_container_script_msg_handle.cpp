@@ -24,6 +24,8 @@
 
 
 #include "webview_container_impl.h"
+#include "internal/modal_dialog/end_modal.h"
+#include "internal/modal_dialog/show_modal.h"
 
 #include <memory>
 #include <string>
@@ -228,6 +230,47 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 DIALOG_ADD_COMPONENT dialog( GetParent(), type_to_url.at( *t ), type_to_name.at( *t ),
                                              magic_enum::enum_name( *t ).data(), { size.width, size.height } );
                 dialog.ShowModal();
+                break;
+            }
+
+            case WEB_HOST_INTERNAL_CMD_TYPE::show_modal:
+            {
+                const auto     show_model = cmd.data->get<SHOW_MODAL>();
+                DIALOG_WEBVIEW modal_dialog( GetParent(), show_model.title, show_model.key,
+                                             { show_model.size.width, show_model.size.height }, wxID_ANY,
+                                             _impl->_host_copilot_handles );
+                modal_dialog.LoadUrl( show_model.url );
+                modal_dialog.ShowModal();
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::end_modal:
+            {
+                if( auto parent = dynamic_cast<DIALOG_WEBVIEW*>( GetParent() ) )
+                {
+                    const auto end_modal = cmd.data->get<END_MODAL>();
+
+                    if( end_modal.callback )
+                    {
+                        if( auto parent_web = parent->GetParentWebView() )
+                        {
+                            if( !end_modal.data )
+                            {
+                                parent_web->RunScriptAsync( fmt::format( "{}()", *end_modal.callback ) );
+                            }
+                            else
+                            {
+                                parent_web->RunScriptAsync(
+                                        fmt::format( "{}({})", *end_modal.callback, end_modal.data->dump() ) );
+                            }
+                        }
+                    }
+
+                    parent->EndModal( wxID_OK );
+                }
+                else
+                {
+                    wxLogDebug( "Invalid message received: %s", msg );
+                }
                 break;
             }
             }

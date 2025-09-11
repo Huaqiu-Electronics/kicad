@@ -51,6 +51,9 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     add_design_block_type,
     finish_adding_design_block_type,
 
+    // Launch a webview dialog with URL
+    show_modal,
+    end_modal,
 
 };
 
