@@ -743,7 +743,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
                 {
                     EESCHEMA_SETTINGS::PANEL_ANNOTATE& annotate = cfg->m_AnnotatePanel;
 
-                    if( annotate.automatic )
+                    if( annotate.automatic || isApiPlaceSheet )
                     {
                         NULL_REPORTER reporter;
                         m_frame->AnnotateSymbols( &commit, ANNOTATE_SELECTION,
