@@ -729,6 +729,8 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
     int                           suffix = 1;
     EESCHEMA_SETTINGS* cfg = m_frame->eeconfig();
     bool               place_as_sheet = cfg->m_DesignBlockChooserPanel.place_as_sheet;
+    bool               keepAnnotations = cfg->m_DesignBlockChooserPanel.keep_annotations;
+
 
     if( placingDesignBlock )
     {
@@ -748,8 +750,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
                 return 0;
             }
 
-            sheetFileName = designBlock->GetSchematicFile();
-            
+            sheetFileName = designBlock->GetSchematicFile();            
             if( sheetFileName.IsEmpty() || !wxFileExists( sheetFileName ) )
             {
                 m_frame->ShowInfoBarError( _( "Design block has no schematic to place." ), true );
@@ -763,6 +764,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
 
         sheetFileName = toolParams.sheetFileName;
         place_as_sheet = toolParams.place_as_sheet;
+        keepAnnotations = toolParams.keep_annotations;
     }
     else if( isApiPlaceSheet )
     {
@@ -770,6 +772,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
 
         sheetFileName = toolParams.sheetFileName;
         place_as_sheet = toolParams.place_as_sheet;
+        keepAnnotations = toolParams.keep_annotations;
     }
     else
     {

@@ -59,7 +59,8 @@ struct PLACE_SYMBOL_CONTENT_COMMAND
 struct PLACE_DESIGN_BLOCK_OPTION
 {
     std::optional<bool> place_as_sheet;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_DESIGN_BLOCK_OPTION, place_as_sheet )
+    std::optional<bool> keep_annotations;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_DESIGN_BLOCK_OPTION, place_as_sheet, keep_annotations )
 };
 
 
