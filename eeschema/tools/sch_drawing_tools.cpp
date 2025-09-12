@@ -890,7 +890,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
 
                 if( !keepAnnotations )
                 {
-                    if( cfg->m_AnnotatePanel.automatic )
+                    if( cfg->m_AnnotatePanel.automatic || isApiPlaceSheet )
                     {
                         NULL_REPORTER reporter;
                         m_frame->AnnotateSymbols( &commit, ANNOTATE_SELECTION,
