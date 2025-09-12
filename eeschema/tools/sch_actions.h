@@ -335,5 +335,6 @@ public:
     {
         wxString sheetFileName;
         bool     place_as_sheet = false;
+        bool     keep_annotations = false;
     };
 };

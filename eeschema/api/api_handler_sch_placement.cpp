@@ -205,11 +205,22 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const&             
         return;
     }
 
+    SCH_ACTIONS::PLACE_SHEET_PARAMS param{ target_sch_file };
 
-    m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SHEET_PARAMS>(
-            SCH_ACTIONS::apiPlaceSheet,
-            { target_sch_file,
-              aOption.has_value() && aOption->place_as_sheet.has_value() ? aOption->place_as_sheet.value() : false } );
+    if( aOption.has_value() )
+    {
+        if( aOption->keep_annotations.has_value() )
+        {
+            param.keep_annotations = aOption->keep_annotations.value();
+        }
+
+        if( aOption->place_as_sheet.has_value() )
+        {
+            param.place_as_sheet = aOption->place_as_sheet.value();
+        }
+    }
+
+    m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SHEET_PARAMS>( SCH_ACTIONS::apiPlaceSheet, param );
 }
 
 

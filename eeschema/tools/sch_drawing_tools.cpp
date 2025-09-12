@@ -628,6 +628,8 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
     wxString      sheetFileName = wxEmptyString;
     EESCHEMA_SETTINGS* cfg = m_frame->eeconfig();
     bool               place_as_sheet = cfg->m_DesignBlockChooserPanel.place_as_sheet;
+    bool               keepAnnotations = cfg->m_DesignBlockChooserPanel.keep_annotations;
+
 
     if( placingDesignBlock )
     {
@@ -648,6 +650,7 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
 
         sheetFileName = toolParams.sheetFileName;
         place_as_sheet = toolParams.place_as_sheet;
+        keepAnnotations = toolParams.keep_annotations;
     }
     else
     {
@@ -686,7 +689,6 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
                 SCH_SELECTION_TOOL* selectionTool = m_toolMgr->GetTool<SCH_SELECTION_TOOL>();
 
                 EDA_ITEMS newItems;
-                bool      keepAnnotations = cfg->m_DesignBlockChooserPanel.keep_annotations;
 
                 selectionTool->ClearSelection();
 
