@@ -238,7 +238,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 const auto     show_model = cmd.data->get<SHOW_MODAL>();
                 DIALOG_WEBVIEW modal_dialog( GetParent(), show_model.title, show_model.key,
                                              { show_model.size.width, show_model.size.height }, wxID_ANY,
-                                             _impl->_host_copilot_handles );
+                                             _impl->_host_copilot_handles, this );
                 modal_dialog.LoadUrl( show_model.url );
                 modal_dialog.ShowModal();
                 break;
