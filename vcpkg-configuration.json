@@ -19,7 +19,7 @@
     {
         "kind": "git",
         "repository": "https://gitlab.com/kicad/packaging/kicad-vcpkg-registry.git",
-        "baseline": "18325356d628c2690e381e55bc7922f03c46353f",
+        "baseline": "b31e1a80d213ec39594c96807f86993196d31176",
         "packages": [
           "glew",
           "opencascade",
