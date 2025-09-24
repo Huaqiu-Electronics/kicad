@@ -52,7 +52,7 @@
 DIALOG_SHEET_PROPERTIES::DIALOG_SHEET_PROPERTIES( SCH_EDIT_FRAME* aParent, SCH_SHEET* aSheet,
                                                   bool* aIsUndoable, bool* aClearAnnotationNewItems,
                                                   bool* aUpdateHierarchyNavigator,
-                                                  wxString* aSourceSheetFilename ) :
+                                                  wxString* aSourceSheetFilename ,bool aCalledByApi  ) :
     DIALOG_SHEET_PROPERTIES_BASE( aParent ),
     m_frame( aParent ),
     m_isUndoable( aIsUndoable ),
@@ -61,7 +61,8 @@ DIALOG_SHEET_PROPERTIES::DIALOG_SHEET_PROPERTIES( SCH_EDIT_FRAME* aParent, SCH_S
     m_sourceSheetFilename( aSourceSheetFilename ),
     m_borderWidth( aParent, m_borderWidthLabel, m_borderWidthCtrl, m_borderWidthUnits ),
     m_dummySheet( *aSheet ),
-    m_dummySheetNameField( VECTOR2I( -1, -1 ), SHEETNAME, &m_dummySheet )
+    m_dummySheetNameField( VECTOR2I( -1, -1 ), SHEETNAME, &m_dummySheet ),
+    m_calledByApi(aCalledByApi)
 {
     m_sheet = aSheet;
     m_fields = new FIELDS_GRID_TABLE( this, aParent, m_grid, m_sheet );
@@ -510,6 +511,8 @@ bool DIALOG_SHEET_PROPERTIES::onSheetFilenameChanged( const wxString& aNewFilena
         {
             clearAnnotation = true;
 
+            if( !m_calledByApi )
+            {
             if( !IsOK( this, wxString::Format( _( "'%s' already exists." ),
                                                sheetFileName.GetFullName() )
                              + wxT( "\n\n" )
@@ -517,6 +520,7 @@ bool DIALOG_SHEET_PROPERTIES::onSheetFilenameChanged( const wxString& aNewFilena
                                                  newAbsoluteFilename ) ) )
             {
                 return false;
+            }
             }
         }
         // If we are drawing a sheet from a design block/sheet import, we need to copy the

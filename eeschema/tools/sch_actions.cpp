@@ -538,6 +538,16 @@ TOOL_ACTION SCH_ACTIONS::drawSheetFromFile( TOOL_ACTION_ARGS()
         .Flags( AF_ACTIVATE )
         .Parameter<wxString*> ( nullptr ) );
 
+TOOL_ACTION SCH_ACTIONS::drawSheetFromAPI(
+        TOOL_ACTION_ARGS()
+                .Name( "eeschema.InteractiveDrawing.drawSheetFromAPI" )
+                .Scope( AS_GLOBAL )
+                .FriendlyName( _( "Draw Sheet from API, the sheet file has been copied to project directory" ) )
+                .Tooltip( _( "Draw sheet received from API" ) )
+                .Icon( BITMAPS::add_hierarchical_subsheet )
+                .Flags( AF_ACTIVATE )
+                .Parameter<wxString*>( nullptr ) );
+
 TOOL_ACTION SCH_ACTIONS::drawSheetFromDesignBlock( TOOL_ACTION_ARGS()
         .Name( "eeschema.InteractiveDrawing.drawSheetFromDesignBlock" )
         .Scope( AS_GLOBAL )

@@ -572,7 +572,7 @@ public:
     bool EditSheetProperties( SCH_SHEET* aSheet, SCH_SHEET_PATH* aHierarchy,
                               bool* aIsUndoable = nullptr, bool* aClearAnnotationNewItems = nullptr,
                               bool* aUpdateHierarchyNavigator = nullptr,
-                              wxString* aSourceSheetFilename = nullptr );
+                              wxString* aSourceSheetFilename = nullptr , bool aCalledByApi = false);
 
     void InitSheet( SCH_SHEET* aSheet, const wxString& aNewFilename );
 

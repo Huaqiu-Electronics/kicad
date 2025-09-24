@@ -886,6 +886,10 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
             {
                 m_toolMgr->PostAction( SCH_ACTIONS::drawSheetFromDesignBlock, designBlock );
             }
+            else if( isApiPlaceSheet )
+            {
+                m_toolMgr->PostAction( SCH_ACTIONS::drawSheetFromAPI, new wxString( sheetFileName ) );
+            }
             else
             {
                 // drawSheet must delete
@@ -3425,6 +3429,7 @@ void SCH_DRAWING_TOOLS::setTransitions()
     Go( &SCH_DRAWING_TOOLS::TwoClickPlace,       SCH_ACTIONS::placeGlobalLabel.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::DrawSheet,           SCH_ACTIONS::drawSheet.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::DrawSheet,           SCH_ACTIONS::drawSheetFromFile.MakeEvent() );
+    Go( &SCH_DRAWING_TOOLS::DrawSheetFromAPI,    SCH_ACTIONS::drawSheetFromAPI.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::DrawSheet,           SCH_ACTIONS::drawSheetFromDesignBlock.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::TwoClickPlace,       SCH_ACTIONS::placeSheetPin.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::ImportSheet,         SCH_ACTIONS::placeDesignBlock.MakeEvent() );
@@ -3444,3 +3449,6 @@ void SCH_DRAWING_TOOLS::setTransitions()
     Go( &SCH_DRAWING_TOOLS::SyncAllSheetsPins,   SCH_ACTIONS::syncAllSheetsPins.MakeEvent() );
     // clang-format on
 }
+
+
+#include "draw_sheet_from_api.cpp"
