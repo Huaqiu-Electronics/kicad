@@ -44,11 +44,11 @@ public:
 
 
     using wxDialog::AcceptAndClose;
+    bool TransferDataToWindow() override;
 
 private:
     bool onSheetFilenameChanged( const wxString& aNewFilename );
 
-    bool TransferDataToWindow() override;
     bool TransferDataFromWindow() override;
 
     bool Validate() override;

@@ -858,6 +858,7 @@ bool SCH_EDIT_FRAME::EditSheetProperties( SCH_SHEET* aSheet, SCH_SHEET_PATH* aHi
 
     if( aCalledByApi )
     {
+        dlg.TransferDataToWindow();
         dlg.AcceptAndClose();
         m_toolManager->ProcessEvent( EVENTS::SelectedItemsModified );
         return true;
