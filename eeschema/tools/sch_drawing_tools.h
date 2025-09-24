@@ -61,6 +61,7 @@ public:
     int DrawRuleArea( const TOOL_EVENT& aEvent );
     int DrawTable( const TOOL_EVENT& aEvent );
     int DrawSheet( const TOOL_EVENT& aEvent );
+    int DrawSheetFromAPI( const TOOL_EVENT& aEvent );
     int PlaceImage( const TOOL_EVENT& aEvent );
     int ImportGraphics( const TOOL_EVENT& aEvent );
     int SyncSheetsPins( const TOOL_EVENT& aEvent );

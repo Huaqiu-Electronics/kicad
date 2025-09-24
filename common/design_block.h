@@ -1,3 +1,6 @@
+#ifndef __DESIGN_BLOCK_H__
+#define __DESIGN_BLOCK_H__
+
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *

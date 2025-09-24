@@ -38,9 +38,12 @@ class DIALOG_SHEET_PROPERTIES : public DIALOG_SHEET_PROPERTIES_BASE
 public:
     DIALOG_SHEET_PROPERTIES( SCH_EDIT_FRAME* aParent, SCH_SHEET* aSheet, bool* aIsUndoable,
                              bool* aClearAnnotationNewItems, bool* aUpdateHierarchyNavigator,
-                             wxString* aSourceSheetFilename );
+                             wxString* aSourceSheetFilename, bool aCalledByApi = false );
 
     ~DIALOG_SHEET_PROPERTIES() override;
+
+
+    using wxDialog::AcceptAndClose;
 
 private:
     bool onSheetFilenameChanged( const wxString& aNewFilename );
@@ -75,4 +78,5 @@ private:
 
     SCH_SHEET          m_dummySheet;
     SCH_FIELD          m_dummySheetNameField;
+    bool               m_calledByApi;
 };

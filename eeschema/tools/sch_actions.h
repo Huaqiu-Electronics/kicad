@@ -81,6 +81,7 @@ public:
     static TOOL_ACTION placeHierLabel;
     static TOOL_ACTION drawSheet;
     static TOOL_ACTION drawSheetFromFile;
+    static TOOL_ACTION drawSheetFromAPI;
     static TOOL_ACTION drawSheetFromDesignBlock;
     static TOOL_ACTION placeSheetPin;
     static TOOL_ACTION autoplaceAllSheetPins;
