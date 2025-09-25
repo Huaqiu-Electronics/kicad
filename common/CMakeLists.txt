@@ -679,7 +679,6 @@ set( COMMON_SRCS
 
     http_lib/http_lib_connection.cpp
     http_lib/http_lib_settings.cpp
-    http_lib/http_hq_connection.cpp
 
     api/api_enums.cpp
     )
