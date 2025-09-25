@@ -114,8 +114,7 @@ inline auto get_sheet_symbol_lb_padding( const std::vector<SCH_HIERLABEL*>& pins
 }
 
 
-inline auto GetSheetFilledWithPins( const VECTOR2I& aPos, SCH_EDIT_FRAME* aFrame, wxString const& aFileName,
-                                    EE_GRID_HELPER& aGridHelper )
+inline auto GetSheetFilledWithPins( const VECTOR2I& aPos, SCH_EDIT_FRAME* aFrame, wxString const& aFileName )
 {
     const auto                 schematic = &aFrame->Schematic();
     std::unique_ptr<SCH_SHEET> tmpSheet = std::make_unique<SCH_SHEET>( schematic );
@@ -156,15 +155,11 @@ inline auto GetSheetFilledWithPins( const VECTOR2I& aPos, SCH_EDIT_FRAME* aFrame
         }
     }
 
-    constexpr auto MIL_TO_MM = 0.0254;
-
-
     const auto pin_count = static_cast<int>( lbs.size() );
-    const auto GRID_SIZE =
-            std::max( 100 * MIL_TO_MM, aGridHelper.GetGridSize( GRID_HELPER_GRIDS::GRID_CONNECTABLE ).x );
+    constexpr auto GRID_SIZE = 2540; // 100 mils
     const auto BLOCK_PIN_TB_MARGIN = 8 * GRID_SIZE;
     const auto BLOCK_PIN_GAP = 16 * GRID_SIZE;
-    const auto FONT_SIZE = schIUScale.MilsToIU( 100 );
+    const auto     FONT_SIZE = GRID_SIZE;
     const auto BLOCK_START_Y = aPos.y;
     const auto BLOCK_START_X = aPos.x;
     const auto INTERNAL_LABEL_MARGIN = FONT_SIZE;
@@ -275,7 +270,7 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
         if( !initialized )
         {
             initialized = true;
-            sheet = GetSheetFilledWithPins( cursorPos, m_frame, filename, grid );
+            sheet = GetSheetFilledWithPins( cursorPos, m_frame, filename );
 
             sheet->SetScreen( nullptr );
 
