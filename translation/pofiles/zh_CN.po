@@ -41,7 +41,7 @@ msgstr ""
 "Project-Id-Version: KiCad_zh_CN_Master_v0.0.32\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-25 10:24+0800\n"
-"PO-Revision-Date: 2025-09-25 13:48+0800\n"
+"PO-Revision-Date: 2025-09-25 15:20+0800\n"
 "Last-Translator: CloverGit <w991593239@163.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/projects/kicad/v9/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -8531,7 +8531,7 @@ msgstr "KiCad 作业集文件"
 
 #: copilot/assistant/auth/dialog_login_webview.cpp:31
 msgid "Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in directly"
-msgstr ""
+msgstr "电子发烧友/华秋电子/华秋商城账号可以直接登录"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:114
 msgid "Image Viewer"
