@@ -209,6 +209,7 @@ inline auto GetSheetFilledWithPins( const VECTOR2I& aPos, SCH_EDIT_FRAME* aFrame
 int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
 {
     SCH_SHEET* sheet = nullptr;
+    bool       initialized = false;
     wxString   filename;
 
 
@@ -271,8 +272,9 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
         cursorPos = grid.Align( controls->GetMousePosition(), GRID_HELPER_GRIDS::GRID_GRAPHICS );
         controls->ForceCursorPosition( true, cursorPos );
 
-        if( !sheet )
+        if( !initialized )
         {
+            initialized = true;
             sheet = GetSheetFilledWithPins( cursorPos, m_frame, filename, grid );
 
             sheet->SetScreen( nullptr );
@@ -314,11 +316,9 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
             {
                 cleanup();
             }
-            else
-            {
-                m_frame->PopTool( aEvent );
-                break;
-            }
+
+            m_frame->PopTool( aEvent );
+            break;
         }
         else if( evt->IsActivate() && !isSyntheticClick )
         {
