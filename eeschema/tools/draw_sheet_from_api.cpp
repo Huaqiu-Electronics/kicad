@@ -155,16 +155,16 @@ inline auto GetSheetFilledWithPins( const VECTOR2I& aPos, SCH_EDIT_FRAME* aFrame
         }
     }
 
-    const auto pin_count = static_cast<int>( lbs.size() );
+    const auto     pin_count = static_cast<int>( lbs.size() );
     constexpr auto GRID_SIZE = 2540; // 100 mils
-    const auto BLOCK_PIN_TB_MARGIN = 8 * GRID_SIZE;
-    const auto BLOCK_PIN_GAP = 16 * GRID_SIZE;
-    const auto     FONT_SIZE = GRID_SIZE;
-    const auto BLOCK_START_Y = aPos.y;
-    const auto BLOCK_START_X = aPos.x;
-    const auto INTERNAL_LABEL_MARGIN = FONT_SIZE;
-    const int  h_count = std::ceil( pin_count / 2 );
-    auto       paddings = get_sheet_symbol_lb_padding( lbs, FONT_SIZE );
+    const auto     BLOCK_PIN_TB_MARGIN = 8 * GRID_SIZE;
+    const auto     BLOCK_PIN_GAP = 16 * GRID_SIZE;
+    const auto     FONT_SIZE = schIUScale.MilsToIU( 100 );
+    const auto     BLOCK_START_Y = aPos.y;
+    const auto     BLOCK_START_X = aPos.x;
+    const auto     INTERNAL_LABEL_MARGIN = FONT_SIZE;
+    const int      h_count = std::ceil( pin_count / 2 );
+    auto           paddings = get_sheet_symbol_lb_padding( lbs, FONT_SIZE );
 
 
     const int sheet_width =
