@@ -140,3 +140,4 @@ qa/data/**/*.csv
 /resources/msw/RC*
 
 mcp_agent.secrets.yaml
+kicad.pot
