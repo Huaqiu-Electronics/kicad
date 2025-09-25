@@ -151,3 +151,4 @@ qa/data/**/*.spice
 /resources/msw/RC*
 
 mcp_agent.secrets.yaml
+kicad.pot
