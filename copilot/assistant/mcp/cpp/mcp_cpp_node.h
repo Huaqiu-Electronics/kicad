@@ -31,8 +31,13 @@ public:
     MCP_CPP_NODE();
     ~MCP_CPP_NODE();
 
-private:
 
+    bool Running() const;
+
+    void Run();
+
+
+private:
 };
 
 #endif

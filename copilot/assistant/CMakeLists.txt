@@ -14,7 +14,7 @@ add_library(assistant SHARED
     webview_library/panel_add_design_block.cpp
 
     http/http_client.cpp
-    mcp/cpp_node/mcp_cpp_node.cpp
+    mcp/cpp/mcp_cpp_node.cpp
 
     quote/pcb_quote.cpp
     quote/smt_quote.cpp
