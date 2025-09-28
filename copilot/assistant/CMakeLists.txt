@@ -15,6 +15,7 @@ add_library(assistant SHARED
     webview_library/panel_add_design_block.cpp
 
     http/http_client.cpp
+    mcp/cpp_node/mcp_cpp_node.cpp
 
     quote/pcb_quote.cpp
     quote/smt_quote.cpp
@@ -44,14 +45,16 @@ target_include_directories(assistant
 
 add_subdirectory(third_party)
 find_package(OpenSSL REQUIRED)
+find_package(nng CONFIG REQUIRED)
 
 target_link_libraries(assistant PUBLIC
     nlohmann_json
     fmt::fmt
     OpenSSL::SSL
     OpenSSL::Crypto
-    minizip
+    minizip    
     ${wxWidgets_LIBRARIES}
+    nng::nng
 )
 
 target_compile_definitions(assistant PRIVATE COPILOT_SHARED_LIBRARY)
