@@ -16,6 +16,16 @@ mcp:
       command: "python"
       args: ["demo_server.py"]
       description: "Demo MCP server for resources and prompts"
+    markitdown:
+      url : "http://127.0.0.1:3001/mcp"
+      transport : "streamable_http"
+
+    playwright:
+      command: "npx"
+      args:
+        - "@playwright/mcp@latest"
+
+
 
 openai:
   # Secrets (API keys, etc.) are stored in an mcp_agent.secrets.yaml file which can be gitignored

@@ -17,9 +17,13 @@ settings = Settings(
     logger=LoggerSettings(type="console", level="debug"),
     mcp=MCPSettings(
         servers={
-            "demo_server": MCPServerSettings(
-                command="uvx", args=["run", "demo_server.py"]
-            )
+            # "demo_server": MCPServerSettings(
+            #     command="uvx", args=["run", "demo_server.py"]
+            # ),
+            # "markitdown" : MCPServerSettings(
+            #     url="http://127.0.0.1:3001",
+            #     transport="streamable_http"
+            # )
         }
     ),
     openai=OpenAISettings(
@@ -80,9 +84,42 @@ async def example_usage():
             logger.info(f"Summary: {res}")
 
 
+async def std_usage():
+    async with app.run() as agent_app:
+        logger = agent_app.logger
+        context = agent_app.context
+
+        logger.info("Current config:", data=context.config.model_dump())
+
+        # --- Example: Using the demo_server MCP server ---
+        agent = Agent(
+            name="agent",
+            server_names=[ "markitdown", "playwright"],
+        )
+
+        async with agent:
+            # List all resources from demo_server server
+            resources = await agent.list_resources("markitdown")
+            logger.info(
+                "Resources available from markitdown:",
+                data=resources.model_dump(),
+            )
+
+
+            llm = await agent.attach_llm(OpenAIAugmentedLLM)
+            res = await llm.generate_str(
+                [
+                    # "Convert D:/test.pdf to markdown",
+                    "从https://kicad.eda.cn/download上下载Windows 9.0.4的安装包",
+
+                ]
+            )
+            logger.info(f"Summary: {res}")
+
+
 if __name__ == "__main__":
     start = time.time()
-    asyncio.run(example_usage())
+    asyncio.run(std_usage())
     end = time.time()
     t = end - start
 
