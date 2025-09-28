@@ -23,14 +23,23 @@
  */
 
 #include "webview/copilot_webview_container.h"
+#include <memory>
 #include <settings/webview_settings_manager.h>
 #include <utils/httplib_wrapper.h>
+#include <mcp/cpp/mcp_cpp_node.h>
 
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" )
 {
+    static std::unique_ptr<MCP_CPP_NODE> node;
+    
+    if( !node )
+    {
+        node = std::make_unique<MCP_CPP_NODE>();
+        node->Run();
+    }
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
