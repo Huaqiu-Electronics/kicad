@@ -23,22 +23,20 @@
  */
 
 #include "mcp_cpp_node.h"
-
+#include <thread>
+#include <string>
 MCP_CPP_NODE::MCP_CPP_NODE()
 {
-
 }
 
 MCP_CPP_NODE::~MCP_CPP_NODE()
 {
-
 }
 
 bool MCP_CPP_NODE::Running() const
 {
-        
+    return true;
 }
-
 
 
 #include <stdio.h>
@@ -48,92 +46,101 @@ bool MCP_CPP_NODE::Running() const
 #include <nng/nng.h>
 #include <nng/protocol/pair0/pair.h>
 
-#define NODE0 "node0"
-#define NODE1 "node1"
 
-void
-fatal(const char *func, int rv)
+const char* node0_name = "node0";
+const char* node1_name = "node1";
+
+const auto DEFAULT_SETTINGS = R"(
+)";
+
+
+const auto DEFAULT_CMD = R"(
 {
-        fprintf(stderr, "%s: %s\n", func, nng_strerror(rv));
-        exit(1);
+    "cmd_type": "complete",
+    "msg": "截图https://www.eda.cn/ 的首页，并提取所有的标题",
+    "server_names": ["markitdown", "playwright"]
+}
+    )";
+
+void fatal( const char* func, int rv )
+{
+    fprintf( stderr, "%s: %s\n", func, nng_strerror( rv ) );
+    exit( 1 );
 }
 
-int
-send_name(nng_socket sock, char *name)
+int send_cmd( nng_socket sock, const char* name )
 {
-        int rv;
-        printf("%s: SENDING \"%s\"\n", name, name);
-        if ((rv = nng_send(sock, name, strlen(name) + 1, 0)) != 0) {
-                fatal("nng_send", rv);
-        }
-        return (rv);
+    nng_send( sock, (void*) name, strlen( name ), 0 );
+    return 1;
 }
 
-int
-recv_name(nng_socket sock, char *name)
+int recv_result( nng_socket sock )
 {
-        char *buf = NULL;
-        int rv;
-        size_t sz;
-        if ((rv = nng_recv(sock, &buf, &sz, NNG_FLAG_ALLOC)) == 0) {
-                printf("%s: RECEIVED \"%s\"\n", name, buf); 
-                nng_free(buf, sz);
+    char*  buf = NULL;
+    int    rv;
+    size_t sz;
+    rv = nng_recv( sock, &buf, &sz, NNG_FLAG_ALLOC );
+    if( rv == 0 && buf )
+    {
+        // Convert to std::string using size
+        std::string str( buf, sz );
+
+        // Print to console/log
+        printf( "Received: %s\n", str.c_str() );
+
+        // Append to D:/test.log
+        FILE* fp = fopen( "D:/test.log", "a" );
+        if( fp )
+        {
+            fwrite( str.c_str(), 1, str.size(), fp );
+            fputc( '\n', fp );
+            fclose( fp );
         }
-        return (rv);
+
+        nng_free( buf, sz );
+    }
+    return rv;
+}
+int send_recv( nng_socket sock )
+{
+    int rv;
+    if( ( rv = nng_setopt_ms( sock, NNG_OPT_RECVTIMEO, 100 ) ) != 0 )
+    {
+        fatal( "nng_setopt_ms", rv );
+    }
+    for( ;; )
+    {
+        send_cmd( sock, DEFAULT_SETTINGS );
+        send_cmd( sock, DEFAULT_CMD );
+        _sleep( 1 );
+        recv_result( sock );
+    }
 }
 
-int
-send_recv(nng_socket sock, char *name)
+int node0( const char* url )
 {
-        int rv;
-        if ((rv = nng_setopt_ms(sock, NNG_OPT_RECVTIMEO, 100)) != 0) {
-                fatal("nng_setopt_ms", rv);
-        }
-        for (;;) {
-                recv_name(sock, name);
-                _sleep(1);
-                send_name(sock, name);
-        }
+    nng_socket sock;
+    int        rv;
+    if( ( rv = nng_pair0_open( &sock ) ) != 0 )
+    {
+        fatal( "nng_pair0_open", rv );
+    }
+    if( ( rv = nng_listen( sock, url, NULL, 0 ) ) != 0 )
+    {
+        fatal( "nng_listen", rv );
+    }
+    return ( send_recv( sock ) );
 }
 
-int
-node0(const char *url)
-{
-        nng_socket sock;
-        int rv;
-        if ((rv = nng_pair0_open(&sock)) != 0) {
-                fatal("nng_pair0_open", rv);
-        }
-         if ((rv = nng_listen(sock, url, NULL, 0)) !=0) {
-                fatal("nng_listen", rv);
-        }
-        return (send_recv(sock, NODE0));
-}
 
-int
-node1(const char *url)
+int run()
 {
-        nng_socket sock;
-        int rv;
-        _sleep(1);
-        if ((rv = nng_pair0_open(&sock)) != 0) {
-                fatal("nng_pair0_open", rv);
-        }
-        if ((rv = nng_dial(sock, url, NULL, 0)) != 0) {
-                fatal("nng_dial", rv);
-        }
-        return (send_recv(sock, NODE1));
+    node0( "ipc:///tmp/pair.ipc" );
+    return 1;
 }
-
-int
-run()
-{
-        node0("ipc:///tmp/pair.ipc");
-        return 1;
-}
-
 
 void MCP_CPP_NODE::Run()
 {
-    run();
+    std::thread t{ run };
+    t.detach();
 }

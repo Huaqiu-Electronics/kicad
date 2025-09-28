@@ -25,6 +25,8 @@
 #ifndef MCP_CPP_NODE_H
 #define MCP_CPP_NODE_H
 
+#include <string>
+
 class MCP_CPP_NODE
 {
 public:
@@ -35,6 +37,10 @@ public:
     bool Running() const;
 
     void Run();
+
+    void ApplySettings( const std::string& aMcpSettingsJson );
+
+    void Complete( const std::string& aUserInput );
 
 
 private:
