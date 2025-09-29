@@ -30,9 +30,8 @@
 
 struct MCP_APPLY_SETTING : MCP_CMD_BASE
 {
-
     nlohmann::json mcp_settings;
-
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_APPLY_SETTING, cmd_type, mcp_settings )
 };
 
 #endif
