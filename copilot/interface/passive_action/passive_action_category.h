@@ -31,7 +31,8 @@ enum PASSIVE_ACTION_CATEGORY
       // The action is not binding to specific host type
     PA_WEB_HOST,
       // The action must be executed in specific host type
-    PA_AGENT
+    PA_AGENT,
+    PA_MCP,
 
 };
 

@@ -285,6 +285,11 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             }
             break;
         }
+        case PA_MCP:
+        {
+            wxLogError( "MCP is not supported in base webview" );
+            break;
+        }
         }
     }
     catch( const std::exception& e )

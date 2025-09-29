@@ -30,6 +30,7 @@ enum MCP_CMD_TYPE
     invalid,
     apply_settings,
     complete,
+    quit,
 
 };
 

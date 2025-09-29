@@ -27,6 +27,8 @@
 
 #include "webview_container.h"
 
+struct COPILOT_WEBVIEW_CONTAINER_IMPL;
+class MCP_CLIENT_EVENT;
 class COPILOT_API COPILOT_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
@@ -42,8 +44,15 @@ protected:
 
     void OnNewWindow( wxWebViewEvent& evt ) override;
 
+    void HandleScriptMessage( std::string const& aMessage ) override;
+
+    void OnMcpCompleteMessage( MCP_CLIENT_EVENT& aMessage );
+
+
 private:
+    std::unique_ptr<COPILOT_WEBVIEW_CONTAINER_IMPL> _impl;
 };
+
 
 
 
