@@ -22,16 +22,21 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef MCP_APPLY_SETTING_H
-#define MCP_APPLY_SETTING_H
+#ifndef MCP_CLIENT_EVENT_H
+#define MCP_CLIENT_EVENT_H
 
-#include "mcp_cmd_base.h"
-#include <nlohmann/json.hpp>
+#include <wx/thread.h>
+#include <wx/event.h>
 
-struct MCP_APPLY_SETTING : MCP_CMD_BASE
+
+class MCP_CLIENT_EVENT : public wxThreadEvent
 {
-    nlohmann::json mcp_settings;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_APPLY_SETTING, cmd_type, mcp_settings )
+public:
+    MCP_CLIENT_EVENT( wxEventType eventType );
+
+    ~MCP_CLIENT_EVENT();
 };
+
+wxDECLARE_EVENT( EVT_MCP_COMPLETE_MSG, MCP_CLIENT_EVENT );
 
 #endif

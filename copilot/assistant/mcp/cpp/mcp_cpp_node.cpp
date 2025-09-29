@@ -42,9 +42,6 @@ bool MCP_CPP_NODE::Running() const
 }
 
 
-
-
-
 const char* node0_name = "node0";
 const char* node1_name = "node1";
 
