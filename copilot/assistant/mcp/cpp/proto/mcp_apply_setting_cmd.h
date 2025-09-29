@@ -22,17 +22,17 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef MCP_COMPLETE_H
-#define MCP_COMPLETE_H
+#ifndef MCP_APPLY_SETTING_CMD_H
+#define MCP_APPLY_SETTING_CMD_H
 
-class MCP_COMPLETE
+
+#include "mcp_cmd_base.h"
+#include <nlohmann/json.hpp>
+
+struct MCP_APPLY_SETTING_CMD : MCP_CMD_BASE
 {
-public:
-    MCP_COMPLETE();
-    ~MCP_COMPLETE();
-
-private:
-
+    nlohmann::json mcp_settings;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_APPLY_SETTING_CMD, cmd_type, mcp_settings )
 };
 
 #endif

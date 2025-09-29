@@ -135,7 +135,7 @@ int node0( const char* url )
 
 int run()
 {
-    node0( "ipc:///tmp/pair.ipc" );
+    node0( "ipc:///tmp/kicad_copilot_pair.ipc" );
     return 1;
 }
 
