@@ -23,18 +23,34 @@
  */
 
 #include "webview/copilot_webview_container.h"
+#include "copilot_webview_container_impl.h"
+
+#include <fmt/format.h>
+#include <magic_enum.hpp>
+#include <utils/wstring_to_string.h>
+#include <passive_action/passive_action_container.h>
+#include <mcp/cpp/mcp_client_event.h>
 #include <settings/webview_settings_manager.h>
 #include <utils/httplib_wrapper.h>
-
+#include <webview/webview_functions.h>
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
-        WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" )
+        WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
+        _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
+    _impl->mcpClientThread = std::make_unique<MCP_CLIENT_THREAD>( *this, _impl->mcpClientRequestQueue );
 
+    if( _impl->mcpClientThread->Run() != wxTHREAD_NO_ERROR )
+    {
+        wxLogError( "Start MCP client thread failed." );
+    }
+
+    Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
+    _impl->mcpClientThread->Delete();
 }
 
 void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
@@ -70,4 +86,31 @@ void COPILOT_WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
 {
     LoadUrl( evt.GetURL().ToStdString() );
     evt.Veto(); // Prevent WebKit from creating a new page
+}
+
+void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage )
+{
+    try
+    {
+        const auto act_container = nlohmann::json::parse( aMessage ).get<PASSIVE_ACTION_CONTAINER>();
+        switch( act_container.category )
+        {
+        case PA_MCP:
+        {
+            _impl->mcpClientRequestQueue.Post( act_container.data.dump() );
+            break;
+        }
+        default: return WEBVIEW_CONTAINER::HandleScriptMessage( aMessage );
+        }
+    }
+    catch( std::exception& e )
+    {
+        wxLogError( "Failed to parse MCP message: %s", e.what() );
+    }
+}
+
+void COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage( MCP_CLIENT_EVENT& aMessage )
+{
+    RunScriptAsync( fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::on_mcp_completion_msg ),
+                                 wxString2String( aMessage.GetString() ) ) );
 }

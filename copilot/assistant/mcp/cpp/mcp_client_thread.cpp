@@ -23,6 +23,42 @@
  */
 
 #include "mcp_client_thread.h"
+#include "nlohmann/json.hpp"
+#include "proto/mcp_cmd_type.h"
+#include "proto/mcp_cmd_base.h"
+#include "mcp_client_event.h"
+
+#include <optional>
+#include <string>
+#include <utils/generate_uuid.h>
+#include <nng/nng.h>
+#include <nng/protocol/pair0/pair.h>
+#include <fmt/format.h>
+#include <wx/log.h>
+#include <magic_enum.hpp>
+
+inline auto recv_result( nng_socket& sock )
+{
+    char*  buf = nullptr;
+    int    rv{};
+    size_t sz{};
+    rv = nng_recv( sock, &buf, &sz, NNG_FLAG_ALLOC );
+    std::optional<std::string> result;
+
+    if( rv == 0 && buf )
+    {
+        result = std::string( buf, sz );
+
+        nng_free( buf, sz );
+    }
+    return result;
+}
+
+
+inline auto nng_send( nng_socket& sock, std::string const& msg )
+{
+    return nng_send( sock, const_cast<char*>( msg.c_str() ), msg.length(), 0 ) == 0;
+}
 
 MCP_CLIENT_THREAD::MCP_CLIENT_THREAD( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ) :
         m_eventSink( eventSink ), m_requestQueue( requestQueue )
@@ -36,6 +72,75 @@ MCP_CLIENT_THREAD::~MCP_CLIENT_THREAD()
 wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
 {
     SetName( "MCP_CLIENT_THREAD" );
+
+    nng_socket sock;
+
+    if( nng_pair0_open( &sock ) != 0 )
+    {
+        wxLogError( "nng_pair0_open" );
+        return nullptr;
+    }
+
+    if( nng_listen( sock, "ipc:///tmp/kicad_copilot_pair.ipc", NULL, 0 ) != 0 )
+    {
+        wxLogError( "nng_listen" );
+        return nullptr;
+    }
+
+    if( nng_setopt_ms( sock, NNG_OPT_RECVTIMEO, 100 ) != 0 )
+    {
+        wxLogError( "nng_setopt_ms" );
+        return nullptr;
+    }
+
+    while( !TestDestroy() )
+    {
+        std::string request;
+
+        if( m_requestQueue.ReceiveTimeout( 0, request ) == wxMSGQUEUE_NO_ERROR )
+        {
+            try
+            {
+                const auto cmd_t = magic_enum::enum_cast<MCP_CMD_TYPE>(
+                                           nlohmann::json::parse( request ).get<MCP_CMD_BASE>().cmd_type )
+                                           .value_or( invalid );
+
+                if( cmd_t != invalid )
+                {
+                    nng_send( sock, request );
+                }
+
+                switch( cmd_t )
+                {
+                case complete:
+                {
+                    if( auto res = recv_result( sock ) )
+                    {
+                        auto event = new MCP_CLIENT_EVENT( EVT_MCP_COMPLETE_MSG );
+                        event->SetString( *res );
+                        m_eventSink.QueueEvent( event );
+                    }
+
+                    break;
+                }
+
+                default:
+                {
+                    break;
+                }
+                }
+            }
+            catch( std::exception& e )
+            {
+                wxLogError( "Exception: %s", e.what() );
+            }
+        }
+    }
+
+    static const auto kQuit = nlohmann::json( MCP_CMD_BASE{ magic_enum::enum_name( quit ).data() } ).dump();
+    nng_send( sock, kQuit );
+
+    nng_close( sock );
 
     return nullptr;
 }

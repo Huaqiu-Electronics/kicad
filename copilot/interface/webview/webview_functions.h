@@ -34,7 +34,8 @@ enum class WEBVIEW_FUNCTIONS
     fire_host_active_cmd,
     new_session,
     get_current_session_id,
-    update_copilot_global_context
+    update_copilot_global_context ,
+    on_mcp_completion_msg,
 };
 
 

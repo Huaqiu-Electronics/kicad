@@ -30,17 +30,17 @@
 #include <wx/msgqueue.h>
 
 typedef wxMessageQueue<std::string> MCP_CLIENT_REQUEST_QUEUE;
+enum MCP_CMD_TYPE;
 
 
 class MCP_CLIENT_THREAD : public wxThread
 {
 public:
     MCP_CLIENT_THREAD( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue );
+
     ~MCP_CLIENT_THREAD();
 
-
     ExitCode Entry() override;
-
 
 private:
     wxEvtHandler&             m_eventSink;
