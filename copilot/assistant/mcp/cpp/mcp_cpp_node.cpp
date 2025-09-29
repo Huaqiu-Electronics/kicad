@@ -23,6 +23,9 @@
  */
 
 #include "mcp_cpp_node.h"
+
+#include <nng/nng.h>
+#include <nng/protocol/pair0/pair.h>
 #include <thread>
 #include <string>
 MCP_CPP_NODE::MCP_CPP_NODE()
@@ -39,12 +42,7 @@ bool MCP_CPP_NODE::Running() const
 }
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-#include <nng/nng.h>
-#include <nng/protocol/pair0/pair.h>
 
 
 const char* node0_name = "node0";
@@ -112,7 +110,7 @@ int send_recv( nng_socket sock )
     {
         send_cmd( sock, DEFAULT_SETTINGS );
         send_cmd( sock, DEFAULT_CMD );
-        _sleep( 1 );
+        std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
         recv_result( sock );
     }
 }
