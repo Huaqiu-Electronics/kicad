@@ -581,7 +581,7 @@ bool SCH_EDIT_TOOL::Init()
             [&]()
             {
                 CONDITIONAL_MENU* menu = new CONDITIONAL_MENU( moveTool );
-                menu->SetTitle( _( "Transform Selection" ) );
+                menu->SetUntranslatedTitle( _HKI( "Transform Selection" ) );
 
                 menu->AddItem( SCH_ACTIONS::rotateCCW,   orientCondition );
                 menu->AddItem( SCH_ACTIONS::rotateCW,    orientCondition );
@@ -595,7 +595,7 @@ bool SCH_EDIT_TOOL::Init()
             [&]()
             {
                 CONDITIONAL_MENU* menu = new CONDITIONAL_MENU( moveTool );
-                menu->SetTitle( _( "Attributes" ) );
+                menu->SetUntranslatedTitle( _HKI( "Attributes" ) );
 
                 menu->AddCheckItem( SCH_ACTIONS::setExcludeFromSimulation,    S_C::ShowAlways );
                 menu->AddCheckItem( SCH_ACTIONS::setExcludeFromBOM,           S_C::ShowAlways );
@@ -609,7 +609,7 @@ bool SCH_EDIT_TOOL::Init()
             [&]()
             {
                 CONDITIONAL_MENU* menu = new CONDITIONAL_MENU( m_selectionTool );
-                menu->SetTitle( _( "Edit Main Fields" ) );
+                menu->SetUntranslatedTitle( _HKI( "Edit Main Fields" ) );
 
                 menu->AddItem( SCH_ACTIONS::editReference,    S_C::SingleSymbol, 200 );
                 menu->AddItem( SCH_ACTIONS::editValue,        S_C::SingleSymbol, 200 );
@@ -622,7 +622,7 @@ bool SCH_EDIT_TOOL::Init()
             [&]()
             {
                 CONDITIONAL_MENU* menu = new CONDITIONAL_MENU( m_selectionTool );
-                menu->SetTitle( _( "Change To" ) );
+                menu->SetUntranslatedTitle( _HKI( "Change To" ) );
                 menu->SetIcon( BITMAPS::right );
 
                 menu->AddItem( SCH_ACTIONS::toLabel,    toLabelCondition );
