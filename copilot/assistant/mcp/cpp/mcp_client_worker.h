@@ -45,7 +45,7 @@ public:
 
     void Stop();
 
-    static bool launch_mcp_py_client( std::string const& url );
+    static long launch_mcp_py_client( std::string const& url );
 
     static std::string fmt_client_url();
 

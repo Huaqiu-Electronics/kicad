@@ -54,7 +54,7 @@ inline auto get_py_exe_path()
     return py_exe_path;
 }
 
-bool MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
+long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 {
     // Get python executable path
     auto py_exe = get_py_exe_path();
@@ -69,10 +69,9 @@ bool MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
     if( pid == 0 )
     {
         wxLogError( "Failed to launch MCP Python client: %s", cmd );
-        return false;
     }
 
-    return true;
+    return pid;
 }
 // ...existing code...
 inline auto recv_result( nng_socket& sock )
