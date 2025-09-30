@@ -37,7 +37,44 @@
 #include <fmt/format.h>
 #include <wx/log.h>
 #include <magic_enum.hpp>
+#include <wx/stdpaths.h>
+#include <wx/filename.h>
+#include <wx/process.h>
 
+
+inline auto get_exe_dir()
+{
+    return wxFileName( wxStandardPaths::Get().GetExecutablePath() ).GetPath();
+}
+
+
+inline auto get_py_exe_path()
+{
+    static const auto py_exe_path = get_exe_dir() + wxFileName::GetPathSeparator() + "python";
+    return py_exe_path;
+}
+
+bool MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
+{
+    // Get python executable path
+    auto py_exe = get_py_exe_path();
+
+    // Compose the command: python ./kicad-mcp-client <url>
+    wxString script_path = get_exe_dir() + wxFileName::GetPathSeparator() + "kicad-mcp-client";
+    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\"", py_exe, script_path, url );
+
+    // Launch the process (non-blocking)
+    long pid = wxExecute( cmd, wxEXEC_ASYNC );
+
+    if( pid == 0 )
+    {
+        wxLogError( "Failed to launch MCP Python client: %s", cmd );
+        return false;
+    }
+
+    return true;
+}
+// ...existing code...
 inline auto recv_result( nng_socket& sock )
 {
     char*  buf = nullptr;
@@ -69,8 +106,9 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
     }
 }
 
-MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ) :
-        m_eventSink( eventSink ), m_requestQueue( requestQueue )
+MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
+                                      std::string aUrl ) :
+        m_eventSink( eventSink ), m_requestQueue( requestQueue ), m_url( std::move( aUrl ) )
 {
 }
 
@@ -88,7 +126,7 @@ void MCP_CLIENT_WORKER::Start()
         return;
     }
 
-    if( nng_dial( sock, "ipc:///tmp/kicad_copilot_pair.ipc", NULL, 0 ) != 0 )
+    if( nng_dial( sock, m_url.c_str(), NULL, 0 ) != 0 )
     {
         wxLogError( "nng_dial" );
         return;
@@ -151,4 +189,9 @@ void MCP_CLIENT_WORKER::Start()
 void MCP_CLIENT_WORKER::Stop()
 {
     m_shouldStop = true;
+}
+
+std::string MCP_CLIENT_WORKER::fmt_client_url()
+{
+    return fmt::format( "ipc:///tmp/kicad_copilot_pair-{}.ipc", generate_uuid() );
 }
