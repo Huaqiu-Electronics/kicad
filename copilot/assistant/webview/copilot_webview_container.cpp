@@ -112,6 +112,6 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
 
 void COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage( MCP_CLIENT_EVENT& aMessage )
 {
-    RunScriptAsync( fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::on_mcp_completion_msg ),
+    RunScriptAsync( fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::on_mcp_msg ),
                                  wxString2String( aMessage.GetString() ) ) );
 }

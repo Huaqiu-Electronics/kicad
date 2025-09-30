@@ -30,6 +30,7 @@
 
 #include <optional>
 #include <string>
+#include <thread>
 #include <utils/generate_uuid.h>
 #include <nng/nng.h>
 #include <nng/protocol/pair0/pair.h>
@@ -57,7 +58,13 @@ inline auto recv_result( nng_socket& sock )
 
 inline auto nng_send( nng_socket& sock, std::string const& msg )
 {
-    return nng_send( sock, const_cast<char*>( msg.c_str() ), msg.length(), 0 ) == 0;
+    for( auto i = 0; i < 3; i++ )
+    {
+        if( nng_send( sock, const_cast<char*>( msg.c_str() ), msg.length(), 0 ) == 0 )
+        {
+            break;
+        }
+    }
 }
 
 MCP_CLIENT_THREAD::MCP_CLIENT_THREAD( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ) :
@@ -81,9 +88,9 @@ wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
         return nullptr;
     }
 
-    if( nng_listen( sock, "ipc:///tmp/kicad_copilot_pair.ipc", NULL, 0 ) != 0 )
+    if( nng_dial( sock, "ipc:///tmp/kicad_copilot_pair.ipc", NULL, 0 ) != 0 )
     {
-        wxLogError( "nng_listen" );
+        wxLogError( "nng_dial" );
         return nullptr;
     }
 
@@ -105,29 +112,23 @@ wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
                                            nlohmann::json::parse( request ).get<MCP_CMD_BASE>().cmd_type )
                                            .value_or( invalid );
 
-                if( cmd_t != invalid )
+                if( cmd_t == invalid )
                 {
-                    nng_send( sock, request );
+                    wxLogError( "Invalid command type" );
+                    continue;
                 }
 
-                switch( cmd_t )
-                {
-                case complete:
+                nng_send( sock, request );
+
+                for( ;; )
                 {
                     if( auto res = recv_result( sock ) )
                     {
                         auto event = new MCP_CLIENT_EVENT( EVT_MCP_COMPLETE_MSG );
                         event->SetString( *res );
                         m_eventSink.QueueEvent( event );
+                        break;
                     }
-
-                    break;
-                }
-
-                default:
-                {
-                    break;
-                }
                 }
             }
             catch( std::exception& e )
@@ -139,6 +140,8 @@ wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
 
     static const auto kQuit = nlohmann::json( MCP_CMD_BASE{ magic_enum::enum_name( quit ).data() } ).dump();
     nng_send( sock, kQuit );
+    // Wait for the msg to be received by the other side
+    std::this_thread::sleep_for( std::chrono::milliseconds( 500 ) );
 
     nng_close( sock );
 
