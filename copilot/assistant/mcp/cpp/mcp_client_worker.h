@@ -22,28 +22,33 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef MCP_CPP_NODE_H
-#define MCP_CPP_NODE_H
+#ifndef MCP_CLIENT_WORKER_H
+#define MCP_CLIENT_WORKER_H
 
-#include <string>
+#include <atomic>
+#include <wx/event.h>
+#include <wx/msgqueue.h>
 
-class MCP_CPP_NODE
+
+typedef wxMessageQueue<std::string> MCP_CLIENT_REQUEST_QUEUE;
+enum class MCP_CMD_TYPE;
+
+
+class MCP_CLIENT_WORKER
 {
 public:
-    MCP_CPP_NODE();
-    ~MCP_CPP_NODE();
+    MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue );
 
+    ~MCP_CLIENT_WORKER();
 
-    bool Running() const;
+    void Start();
 
-    void Run();
-
-    void ApplySettings( const std::string& aMcpSettingsJson );
-
-    void Complete( const std::string& aUserInput );
-
+    void Stop();
 
 private:
+    wxEvtHandler&             m_eventSink;
+    MCP_CLIENT_REQUEST_QUEUE& m_requestQueue;
+    std::atomic_bool          m_shouldStop{ false };
 };
 
 #endif

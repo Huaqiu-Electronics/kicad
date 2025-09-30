@@ -25,11 +25,13 @@
 #ifndef COPILOT_WEBVIEW_CONTAINER_IMPL_H
 #define COPILOT_WEBVIEW_CONTAINER_IMPL_H
 
-#include <mcp/cpp/mcp_client_thread.h>
+#include <mcp/cpp/mcp_client_worker.h>
+#include <thread>
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL
 {
-    MCP_CLIENT_THREAD*       mcpClientThread{};
+    MCP_CLIENT_WORKER*       mcpClientWorker{};
+    std::thread              mcpClientWorkerThread;
     MCP_CLIENT_REQUEST_QUEUE mcpClientRequestQueue;
 };
 

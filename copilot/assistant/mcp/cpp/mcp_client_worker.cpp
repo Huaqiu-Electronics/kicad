@@ -22,12 +22,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "mcp_client_thread.h"
-#include "nlohmann/json.hpp"
+#include "mcp_client_worker.h"
 #include "proto/mcp_cmd_type.h"
 #include "proto/mcp_cmd_base.h"
 #include "mcp_client_event.h"
 
+#include <atomic>
 #include <optional>
 #include <string>
 #include <thread>
@@ -67,40 +67,39 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
     }
 }
 
-MCP_CLIENT_THREAD::MCP_CLIENT_THREAD( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ) :
+MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ) :
         m_eventSink( eventSink ), m_requestQueue( requestQueue )
 {
 }
 
-MCP_CLIENT_THREAD::~MCP_CLIENT_THREAD()
+MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
 {
 }
 
-wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
+void MCP_CLIENT_WORKER::Start()
 {
-    SetName( "MCP_CLIENT_THREAD" );
-
     nng_socket sock;
 
     if( nng_pair0_open( &sock ) != 0 )
     {
         wxLogError( "nng_pair0_open" );
-        return nullptr;
+        return;
     }
 
     if( nng_dial( sock, "ipc:///tmp/kicad_copilot_pair.ipc", NULL, 0 ) != 0 )
     {
         wxLogError( "nng_dial" );
-        return nullptr;
+        return;
     }
 
     if( nng_setopt_ms( sock, NNG_OPT_RECVTIMEO, 100 ) != 0 )
     {
         wxLogError( "nng_setopt_ms" );
-        return nullptr;
+        return;
     }
 
-    while( !TestDestroy() )
+
+    while( !m_shouldStop )
     {
         std::string request;
 
@@ -145,6 +144,9 @@ wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
     std::this_thread::sleep_for( std::chrono::milliseconds( 500 ) );
 
     nng_close( sock );
+}
 
-    return nullptr;
+void MCP_CLIENT_WORKER::Stop()
+{
+    m_shouldStop = true;
 }
