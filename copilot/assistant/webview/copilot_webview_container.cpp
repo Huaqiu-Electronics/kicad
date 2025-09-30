@@ -27,6 +27,7 @@
 
 #include <fmt/format.h>
 #include <magic_enum.hpp>
+#include <thread>
 #include <utils/wstring_to_string.h>
 #include <passive_action/passive_action_container.h>
 #include <mcp/cpp/mcp_client_event.h>
@@ -39,20 +40,26 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
-    _impl->mcpClientThread = new MCP_CLIENT_THREAD( *this, _impl->mcpClientRequestQueue );
+    _impl->mcpClientWorker = new MCP_CLIENT_WORKER( *this, _impl->mcpClientRequestQueue );
 
-    if( _impl->mcpClientThread->Run() != wxTHREAD_NO_ERROR )
-    {
-        wxLogError( "Start MCP client thread failed." );
-    }
+    _impl->mcpClientWorkerThread = std::thread(
+            [this]()
+            {
+                _impl->mcpClientWorker->Start();
+            } );
 
     Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
-    if( _impl->mcpClientThread )
+    if( _impl->mcpClientWorker )
     {
-        _impl->mcpClientThread->Delete();
+        _impl->mcpClientWorker->Stop();
+    }
+
+    if( _impl->mcpClientWorkerThread.joinable() )
+    {
+        _impl->mcpClientWorkerThread.join();
     }
 }
 
