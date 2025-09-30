@@ -64,6 +64,8 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
         {
             break;
         }
+
+        std::this_thread::sleep_for( std::chrono::milliseconds( 200 ) );
     }
 }
 
