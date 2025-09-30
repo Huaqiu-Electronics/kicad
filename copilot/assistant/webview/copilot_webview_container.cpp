@@ -39,7 +39,7 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
-    _impl->mcpClientThread = std::make_unique<MCP_CLIENT_THREAD>( *this, _impl->mcpClientRequestQueue );
+    _impl->mcpClientThread = new MCP_CLIENT_THREAD( *this, _impl->mcpClientRequestQueue );
 
     if( _impl->mcpClientThread->Run() != wxTHREAD_NO_ERROR )
     {
@@ -98,6 +98,7 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
         case PA_MCP:
         {
             _impl->mcpClientRequestQueue.Post( act_container.data.dump() );
+            
             break;
         }
         default: return WEBVIEW_CONTAINER::HandleScriptMessage( aMessage );
