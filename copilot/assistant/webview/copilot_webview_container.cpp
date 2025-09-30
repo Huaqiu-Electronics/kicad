@@ -24,6 +24,7 @@
 
 #include "webview/copilot_webview_container.h"
 #include "copilot_webview_container_impl.h"
+#include "mcp/cpp/mcp_client_worker.h"
 
 #include <fmt/format.h>
 #include <magic_enum.hpp>
@@ -40,7 +41,9 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
-    _impl->mcpClientWorker = new MCP_CLIENT_WORKER( *this, _impl->mcpClientRequestQueue );
+    auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
+    MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url );
+    _impl->mcpClientWorker = new MCP_CLIENT_WORKER( *this, _impl->mcpClientRequestQueue, pair_url );
 
     _impl->mcpClientWorkerThread = std::thread(
             [this]()

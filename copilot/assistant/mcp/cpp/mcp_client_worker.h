@@ -37,7 +37,7 @@ enum class MCP_CMD_TYPE;
 class MCP_CLIENT_WORKER
 {
 public:
-    MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue );
+    MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ,std::string  aUrl);
 
     ~MCP_CLIENT_WORKER();
 
@@ -45,10 +45,15 @@ public:
 
     void Stop();
 
+    static bool launch_mcp_py_client( std::string const& url );
+
+    static std::string fmt_client_url();
+
 private:
     wxEvtHandler&             m_eventSink;
     MCP_CLIENT_REQUEST_QUEUE& m_requestQueue;
     std::atomic_bool          m_shouldStop{ false };
+    std::string  m_url;
 };
 
 #endif
