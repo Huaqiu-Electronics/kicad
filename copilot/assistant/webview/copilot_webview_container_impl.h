@@ -33,6 +33,7 @@ struct COPILOT_WEBVIEW_CONTAINER_IMPL
     MCP_CLIENT_WORKER*       mcpClientWorker{};
     std::thread              mcpClientWorkerThread;
     MCP_CLIENT_REQUEST_QUEUE mcpClientRequestQueue;
+    long                     pyMcpClientPid = 0;
 };
 
 #endif

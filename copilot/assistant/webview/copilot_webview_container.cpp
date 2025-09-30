@@ -35,6 +35,7 @@
 #include <settings/webview_settings_manager.h>
 #include <utils/httplib_wrapper.h>
 #include <webview/webview_functions.h>
+#include <wx/utils.h>
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
                                                       HOST_COPILOT_HANDLES host_copilot_handles ) :
@@ -42,7 +43,7 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
     auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
-    MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url );
+    _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url );
     _impl->mcpClientWorker = new MCP_CLIENT_WORKER( *this, _impl->mcpClientRequestQueue, pair_url );
 
     _impl->mcpClientWorkerThread = std::thread(
@@ -63,6 +64,11 @@ COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
     if( _impl->mcpClientWorkerThread.joinable() )
     {
         _impl->mcpClientWorkerThread.join();
+    }
+
+    if( _impl->pyMcpClientPid )
+    {
+        wxKill( _impl->pyMcpClientPid );
     }
 }
 
