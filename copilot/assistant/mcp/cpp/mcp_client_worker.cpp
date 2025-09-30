@@ -64,7 +64,7 @@ bool MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
     wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\"", py_exe, script_path, url );
 
     // Launch the process (non-blocking)
-    long pid = wxExecute( cmd, wxEXEC_ASYNC );
+    long pid = wxExecute( cmd, wxEXEC_ASYNC |wxEXEC_HIDE_CONSOLE );
 
     if( pid == 0 )
     {
