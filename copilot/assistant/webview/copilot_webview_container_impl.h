@@ -26,11 +26,10 @@
 #define COPILOT_WEBVIEW_CONTAINER_IMPL_H
 
 #include <mcp/cpp/mcp_client_thread.h>
-#include <memory>
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL
 {
-    std::unique_ptr<MCP_CLIENT_THREAD> mcpClientThread;
+    MCP_CLIENT_THREAD*       mcpClientThread;
     MCP_CLIENT_REQUEST_QUEUE mcpClientRequestQueue;
 };
 
