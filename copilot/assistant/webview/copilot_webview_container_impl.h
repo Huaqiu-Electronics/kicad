@@ -29,7 +29,7 @@
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL
 {
-    MCP_CLIENT_THREAD*       mcpClientThread;
+    MCP_CLIENT_THREAD*       mcpClientThread{};
     MCP_CLIENT_REQUEST_QUEUE mcpClientRequestQueue;
 };
 

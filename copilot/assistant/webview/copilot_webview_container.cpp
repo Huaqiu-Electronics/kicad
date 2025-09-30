@@ -50,7 +50,10 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
-    _impl->mcpClientThread->Delete();
+    if( _impl->mcpClientThread )
+    {
+        _impl->mcpClientThread->Delete();
+    }
 }
 
 void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
@@ -98,7 +101,7 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
         case PA_MCP:
         {
             _impl->mcpClientRequestQueue.Post( act_container.data.dump() );
-            
+
             break;
         }
         default: return WEBVIEW_CONTAINER::HandleScriptMessage( aMessage );

@@ -30,7 +30,7 @@
 #include <wx/msgqueue.h>
 
 typedef wxMessageQueue<std::string> MCP_CLIENT_REQUEST_QUEUE;
-enum MCP_CMD_TYPE;
+enum class MCP_CMD_TYPE;
 
 
 class MCP_CLIENT_THREAD : public wxThread

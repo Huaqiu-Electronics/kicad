@@ -25,7 +25,7 @@
 #ifndef MCP_CMD_TYPE_H
 #define MCP_CMD_TYPE_H
 
-enum MCP_CMD_TYPE
+enum class MCP_CMD_TYPE
 {
     invalid,
     apply_settings,
