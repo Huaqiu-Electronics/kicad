@@ -110,9 +110,9 @@ wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
             {
                 const auto cmd_t = magic_enum::enum_cast<MCP_CMD_TYPE>(
                                            nlohmann::json::parse( request ).get<MCP_CMD_BASE>().cmd_type )
-                                           .value_or( invalid );
+                                           .value_or( MCP_CMD_TYPE::invalid );
 
-                if( cmd_t == invalid )
+                if( cmd_t == MCP_CMD_TYPE::invalid )
                 {
                     wxLogError( "Invalid command type" );
                     continue;
@@ -138,7 +138,8 @@ wxThread::ExitCode MCP_CLIENT_THREAD::Entry()
         }
     }
 
-    static const auto kQuit = nlohmann::json( MCP_CMD_BASE{ magic_enum::enum_name( quit ).data() } ).dump();
+    static const auto kQuit =
+            nlohmann::json( MCP_CMD_BASE{ magic_enum::enum_name( MCP_CMD_TYPE::quit ).data() } ).dump();
     nng_send( sock, kQuit );
     // Wait for the msg to be received by the other side
     std::this_thread::sleep_for( std::chrono::milliseconds( 500 ) );
