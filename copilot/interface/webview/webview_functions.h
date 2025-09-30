@@ -35,7 +35,7 @@ enum class WEBVIEW_FUNCTIONS
     new_session,
     get_current_session_id,
     update_copilot_global_context ,
-    on_mcp_completion_msg,
+    on_mcp_msg,
 };
 
 
