@@ -2164,7 +2164,7 @@ int SCH_EDITOR_CONTROL::Paste( const TOOL_EVENT& aEvent )
 
             if( pasteMode == PASTE_MODE::UNIQUE_ANNOTATIONS )
             {
-                annotatedSymbols[path].ReannotateDuplicates( existingRefs, annotate.method );
+                annotatedSymbols[path].ReannotateDuplicates( existingRefs, (ANNOTATE_ALGO_T) annotate.method );
             }
             else
             {
@@ -2186,7 +2186,7 @@ int SCH_EDITOR_CONTROL::Paste( const TOOL_EVENT& aEvent )
 
                 if( pasteMode == PASTE_MODE::UNIQUE_ANNOTATIONS )
                 {
-                    annotatedSymbols[pastedSheetPath].ReannotateDuplicates( existingRefs, annotate.method );
+                    annotatedSymbols[pastedSheetPath].ReannotateDuplicates( existingRefs, (ANNOTATE_ALGO_T) annotate.method );
                 }
                 else
                 {
