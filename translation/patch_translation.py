@@ -45,6 +45,8 @@ def update_po_with_translations(po_path: Path, updates: dict):
             new_str = updates[entry.msgid]
             if new_str and entry.msgstr != new_str:
                 entry.msgstr = new_str
+                entry.flags=[]
+                entry.previous_msgid = None
                 updated_count += 1
 
     backup_path = po_path.with_suffix(".bak.po")
