@@ -1940,8 +1940,6 @@ msgid "No shape in black and white image to convert: no outline created."
 msgstr "黑白图像中没有可转换的形状: 未创建轮廓。"
 
 #: common/api/api_design_resource_mgr.cpp:206
-#, fuzzy, c-format
-#| msgid "Cannot create project remap back up folder '%s'."
 msgid "Cannot create project resource path '%s'."
 msgstr "无法创建项目资源路径 '%s'。"
 
@@ -2107,19 +2105,14 @@ msgstr "AI助手"
 
 #: common/copilot/copilot_common_action.cpp:37
 #: pcbnew/copilot_fpedit/fpedit_copilot_recreate_tool_bar.h:38
-#, fuzzy
-#| msgid "Show/hide the search panel"
 msgid "Show/hide copilot panel"
 msgstr "显示/隐藏 AI助手"
 
 #: common/copilot/copilot_common_action.cpp:43
-#, fuzzy
 msgid "Show copilot"
 msgstr "显示AI助手"
 
 #: common/copilot/copilot_common_action.cpp:44
-#, fuzzy
-#| msgid "Show pin name"
 msgid "Show copilot panel"
 msgstr "显示AI助手"
 
@@ -6866,38 +6859,26 @@ msgid "Full error text:"
 msgstr "Full error text:"
 
 #: common/fab/fab_action.cpp:38
-#, fuzzy
-#| msgid "Place Corner"
 msgid "Place order"
 msgstr "下单"
 
 #: common/fab/fab_action.cpp:45
-#, fuzzy
-#| msgid "Place Corner"
 msgid "Place PCB Order"
 msgstr "PCB下单"
 
 #: common/fab/fab_action.cpp:46
-#, fuzzy
-#| msgid "Place power port"
 msgid "Place order for PCB"
 msgstr "PCB下单"
 
 #: common/fab/fab_action.cpp:52
-#, fuzzy
-#| msgid "Place Corner"
 msgid "Place SMT Order"
 msgstr "SMT下单"
 
 #: common/fab/fab_action.cpp:53
-#, fuzzy
-#| msgid "Place power port"
 msgid "Place order for SMT"
 msgstr "SMT下单"
 
 #: common/fab/fab_action.cpp:59
-#, fuzzy
-#| msgid "Horizontal center:"
 msgid "HQPersonalCenter"
 msgstr "华秋个人中心"
 
@@ -8494,14 +8475,10 @@ msgid "Error loading project design block library table."
 msgstr "加载工程设计图块库表时出错。"
 
 #: common/project.cpp:503
-#, fuzzy
-#| msgid "Error saving footprint library"
 msgid "Error inserting footprint library."
 msgstr "更新封装库表失败"
 
 #: common/project.cpp:538
-#, fuzzy
-#| msgid "Error saving footprint library"
 msgid "Error updating footprint model path."
 msgstr "更新封装模型失败"
 
@@ -9824,8 +9801,6 @@ msgid "Mirroring for Y axis is not supported yet"
 msgstr "尚未支持 Y 轴的镜像"
 
 #: common/webview_library/webview_library_action.cpp:35
-#, fuzzy
-#| msgid "[Read Only Library]"
 msgid "Toggle Online Library"
 msgstr "显示/隐藏在线库"
 
@@ -10476,32 +10451,22 @@ msgid ""
 msgstr "电子发烧友/华秋电子/华秋商城账号可以直接登录"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:114
-#, fuzzy
-#| msgid "Image files"
 msgid "Image Viewer"
 msgstr "图片查看器"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:134
-#, fuzzy
-#| msgid "3D Viewer"
 msgid "ECAD Viewer"
 msgstr "EDA图纸查看器"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:212
-#, fuzzy
-#| msgid "Component:"
 msgid "Add Component"
 msgstr "添加器件"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:213
-#, fuzzy
-#| msgid "Component type:"
 msgid "Add Component Type"
 msgstr "添加器件类型"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:214
-#, fuzzy
-#| msgid "Add Design Block"
 msgid "Add Design Block Type"
 msgstr "添加设计图块类型"
 
@@ -11038,38 +11003,26 @@ msgid "Explain design intention"
 msgstr "设计意图"
 
 #: eeschema/copilot/sch_copilot_actions.h:49
-#, fuzzy
-#| msgid "Export components"
 msgid "Explain core components"
 msgstr "核心器件"
 
 #: eeschema/copilot/sch_copilot_actions.h:56
-#, fuzzy
-#| msgid "Parent symbol:"
 msgid "Explain current symbol"
 msgstr "解释当前符号"
 
 #: eeschema/copilot/sch_copilot_actions.h:63
-#, fuzzy
-#| msgid "Add similar zone"
 msgid "Find similar components"
 msgstr "替代料"
 
 #: eeschema/copilot/sch_copilot_actions.h:70
-#, fuzzy
-#| msgid "Checking %s zone connection: %s."
 msgid "Check symbol connections"
 msgstr "检查符号连接"
 
 #: eeschema/copilot/sch_copilot_actions.h:76
-#, fuzzy
-#| msgid "Exit sync pins mode"
 msgid "Explain pins details"
 msgstr "解释符号引脚"
 
 #: eeschema/copilot/sch_copilot_actions.h:82
-#, fuzzy
-#| msgid "Checking net connections..."
 msgid "Check unconnected pins"
 msgstr "检查未连接的引脚"
 
@@ -22602,8 +22555,6 @@ msgid ""
 msgstr ""
 
 #: eeschema/tools/sch_actions.cpp:546
-#, fuzzy
-#| msgid "Draw Sheet from File"
 msgid "Draw sheet received from API"
 msgstr "由API触发的图纸绘制"
 
@@ -22632,8 +22583,6 @@ msgid "Import sheet into project"
 msgstr "导入图纸到工程"
 
 #: eeschema/tools/sch_actions.cpp:597
-#, fuzzy
-#| msgid "Import sheet into project"
 msgid "API import sheet into project"
 msgstr "API导入图纸到项目"
 
@@ -25494,8 +25443,6 @@ msgid "Reset all colors in this theme to the KiCad defaults"
 msgstr "将此主题中的所有配色重置为 KiCad 默认值"
 
 #: include/fab_info_getter.h:139 pcbnew/fab/place_order_wrapper.h:61
-#, fuzzy
-#| msgid "Place Corner"
 msgid "Place Order"
 msgstr "下单"
 
@@ -41605,14 +41552,10 @@ msgid "Could not transfer model data from file '%s'."
 msgstr "无法从文件 '%s' 中获取模型数据。"
 
 #: pcbnew/fab/generate_bom.h:40
-#, fuzzy
-#| msgid "Generating BOM section"
 msgid "Generating BOM"
 msgstr "正在生成BOM"
 
 #: pcbnew/fab/generate_component_pos.h:93
-#, fuzzy
-#| msgid "Generating content section"
 msgid "Generating component positions"
 msgstr "正在生成器件位置"
 
@@ -41621,8 +41564,6 @@ msgid "Sending PCB Order"
 msgstr "正在发送PCB订单"
 
 #: pcbnew/fab/place_order_for_pcb.h:64 pcbnew/fab/place_order_for_smt.h:159
-#, fuzzy
-#| msgid "Failed to read a word."
 msgid "Failed to send order"
 msgstr "发送订单失败"
 
@@ -41631,38 +41572,26 @@ msgid "Sending SMT Order"
 msgstr "正在发送SMT订单"
 
 #: pcbnew/fab/place_order_form_builder.h:42
-#, fuzzy
-#| msgid "Generate Gerber job file"
 msgid "Generating Gerber files"
 msgstr "正在生成Gerber文件"
 
 #: pcbnew/fab/place_order_form_builder.h:45
-#, fuzzy
-#| msgid "Generate Gerber job file"
 msgid "Generate gerber failed"
 msgstr "生成Gerber文件失败"
 
 #: pcbnew/fab/place_order_form_builder.h:50
-#, fuzzy
-#| msgid "Generate Drill Files"
 msgid "Generating drill files"
 msgstr "正在生成钻孔文件"
 
 #: pcbnew/fab/place_order_form_builder.h:53
-#, fuzzy
-#| msgid "Generate Drill File"
 msgid "Generate drill failed"
 msgstr "生成钻孔文件失败"
 
 #: pcbnew/fab/place_order_form_builder.h:59
-#, fuzzy
-#| msgid "Altium Designer PCB files"
 msgid "Compression PCB files"
 msgstr "正在压缩PCB文件"
 
 #: pcbnew/fab/place_order_form_builder.h:62
-#, fuzzy
-#| msgid "New PCB file is unsaved"
 msgid "Compress PCB files failed"
 msgstr "压缩PCB文件失败"
 
@@ -41671,14 +41600,10 @@ msgid "Please login to place order"
 msgstr "下单前请先登录"
 
 #: pcbnew/fab/place_order_wrapper.h:67
-#, fuzzy
-#| msgid "Footprint Order"
 msgid "Preparing Order"
 msgstr "正在准备订单"
 
 #: pcbnew/fab/place_order_wrapper.h:85
-#, fuzzy
-#| msgid "Grid Spacing Modifiers"
 msgid "End placing order"
 msgstr "完成下单"
 
