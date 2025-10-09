@@ -35,8 +35,7 @@
 
 static bool UpdateFpModelPath( wxString const& fpFilePath, wxString const& modelPath )
 {
-    PCB_IO_KICAD_SEXPR pi;
-
+    PCB_IO_KICAD_SEXPR pi( CTL_FOR_LIBRARY );
 
     if( pi.CanReadFootprint( fpFilePath ) )
     {
