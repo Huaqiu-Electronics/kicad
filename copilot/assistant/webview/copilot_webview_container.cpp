@@ -42,6 +42,9 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
         WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
+    // TODO: Enable MCP client
+#if defined( IS_RC_BUILD )
+
     auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
     _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url );
     _impl->mcpClientWorker = new MCP_CLIENT_WORKER( *this, _impl->mcpClientRequestQueue, pair_url );
@@ -53,6 +56,8 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::str
             } );
 
     Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
+
+#endif
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
