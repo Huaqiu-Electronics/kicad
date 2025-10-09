@@ -37,7 +37,7 @@ enum class MCP_CMD_TYPE;
 class MCP_CLIENT_WORKER
 {
 public:
-    MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue ,std::string  aUrl);
+    MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string aUrl );
 
     ~MCP_CLIENT_WORKER();
 
@@ -53,7 +53,9 @@ private:
     wxEvtHandler&             m_eventSink;
     MCP_CLIENT_REQUEST_QUEUE& m_requestQueue;
     std::atomic_bool          m_shouldStop{ false };
-    std::string  m_url;
+    std::string               m_url;
+                std::string m_request;
+
 };
 
 #endif

@@ -64,7 +64,18 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
     wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\"", py_exe, script_path, url );
 
     // Launch the process (non-blocking)
-    long pid = wxExecute( cmd, wxEXEC_ASYNC |wxEXEC_HIDE_CONSOLE );
+    long pid = wxExecute( cmd,
+
+#ifndef NDEBUG
+
+                          wxEXEC_ASYNC | wxEXEC_HIDE_CONSOLE
+#else
+                          wxEXEC_ASYNC
+
+#endif // !NDEBUG
+
+
+    );
 
     if( pid == 0 )
     {
@@ -117,6 +128,11 @@ MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
 
 void MCP_CLIENT_WORKER::Start()
 {
+    enum
+    {
+        REC_SEND_TIMEOUT_MS = 100
+    };
+
     nng_socket sock;
 
     if( nng_pair0_open( &sock ) != 0 )
@@ -131,49 +147,59 @@ void MCP_CLIENT_WORKER::Start()
         return;
     }
 
-    if( nng_setopt_ms( sock, NNG_OPT_RECVTIMEO, 100 ) != 0 )
+    if( nng_socket_set_ms( sock, NNG_OPT_RECVTIMEO, REC_SEND_TIMEOUT_MS ) != 0 )
     {
-        wxLogError( "nng_setopt_ms" );
+        wxLogError( "nng_socket_set_ms NNG_OPT_RECVTIMEO" );
         return;
     }
 
 
+    const auto pull_request = [&]
+    {
+        if( m_requestQueue.ReceiveTimeout( REC_SEND_TIMEOUT_MS, m_request ) != wxMSGQUEUE_NO_ERROR )
+        {
+            return;
+        }
+
+        try
+        {
+            const auto cmd_t = magic_enum::enum_cast<MCP_CMD_TYPE>(
+                                       nlohmann::json::parse( m_request ).get<MCP_CMD_BASE>().cmd_type )
+                                       .value_or( MCP_CMD_TYPE::invalid );
+
+            if( cmd_t == MCP_CMD_TYPE::invalid )
+            {
+                wxLogError( "Invalid command type: %s", m_request );
+                return;
+            }
+
+            nng_send( sock, m_request );
+        }
+        catch( std::exception& e )
+        {
+            wxLogError( "Exception: %s", e.what() );
+        }
+    };
+
+    const auto fetch_response = [&]
+    {
+        auto res = recv_result( sock );
+
+        if( !res )
+        {
+            return;
+        }
+
+        auto event = new MCP_CLIENT_EVENT( EVT_MCP_COMPLETE_MSG );
+        event->SetString( *res );
+        m_eventSink.QueueEvent( event );
+    };
+
+
     while( !m_shouldStop )
     {
-        std::string request;
-
-        if( m_requestQueue.ReceiveTimeout( 0, request ) == wxMSGQUEUE_NO_ERROR )
-        {
-            try
-            {
-                const auto cmd_t = magic_enum::enum_cast<MCP_CMD_TYPE>(
-                                           nlohmann::json::parse( request ).get<MCP_CMD_BASE>().cmd_type )
-                                           .value_or( MCP_CMD_TYPE::invalid );
-
-                if( cmd_t == MCP_CMD_TYPE::invalid )
-                {
-                    wxLogError( "Invalid command type" );
-                    continue;
-                }
-
-                nng_send( sock, request );
-
-                for( ;; )
-                {
-                    if( auto res = recv_result( sock ) )
-                    {
-                        auto event = new MCP_CLIENT_EVENT( EVT_MCP_COMPLETE_MSG );
-                        event->SetString( *res );
-                        m_eventSink.QueueEvent( event );
-                        break;
-                    }
-                }
-            }
-            catch( std::exception& e )
-            {
-                wxLogError( "Exception: %s", e.what() );
-            }
-        }
+        pull_request();
+        fetch_response();
     }
 
     static const auto kQuit =
