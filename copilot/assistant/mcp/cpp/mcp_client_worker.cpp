@@ -66,7 +66,7 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
     // Launch the process (non-blocking)
     long pid = wxExecute( cmd,
 
-#ifndef NDEBUG
+#ifdef NDEBUG
 
                           wxEXEC_ASYNC | wxEXEC_HIDE_CONSOLE
 #else
