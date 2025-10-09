@@ -28,6 +28,7 @@
 #include <atomic>
 #include <wx/event.h>
 #include <wx/msgqueue.h>
+#include <nlohmann/json.hpp>
 
 
 typedef wxMessageQueue<std::string> MCP_CLIENT_REQUEST_QUEUE;
@@ -53,9 +54,9 @@ private:
     wxEvtHandler&             m_eventSink;
     MCP_CLIENT_REQUEST_QUEUE& m_requestQueue;
     std::atomic_bool          m_shouldStop{ false };
+    nlohmann::json            m_mcp_settings{};
     std::string               m_url;
-                std::string m_request;
-
+    std::string               m_request;
 };
 
 #endif
