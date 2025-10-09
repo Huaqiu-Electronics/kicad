@@ -96,7 +96,7 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 
     if( pid == 0 )
     {
-        wxLogError( "Failed to launch MCP Python client: %s", cmd );
+        wxLogDebug( "Failed to launch MCP Python client: %s", cmd );
     }
 
     return pid;
@@ -132,7 +132,7 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
         std::this_thread::sleep_for( std::chrono::milliseconds( REC_SEND_TIMEOUT_MS ) );
     }
 
-    wxLogError( "MCP Client Failed to send message: %s", msg );
+    wxLogDebug( "MCP Client Failed to send message: %s", msg );
 }
 
 MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
@@ -170,13 +170,13 @@ void MCP_CLIENT_WORKER::Start()
 
     if( nng_pair0_open( &sock ) != 0 )
     {
-        wxLogError( "nng_pair0_open" );
+        wxLogDebug( "nng_pair0_open" );
         return;
     }
 
     if( nng_socket_set_ms( sock, NNG_OPT_RECVTIMEO, REC_SEND_TIMEOUT_MS ) != 0 )
     {
-        wxLogError( "nng_socket_set_ms NNG_OPT_RECVTIMEO" );
+        wxLogDebug( "nng_socket_set_ms NNG_OPT_RECVTIMEO" );
         return;
     }
 
@@ -193,7 +193,7 @@ void MCP_CLIENT_WORKER::Start()
 
     if( !dial_succeeded )
     {
-        wxLogError( "nng_dial failed" );
+        wxLogDebug( "nng_dial failed" );
         return;
     }
 
@@ -213,7 +213,7 @@ void MCP_CLIENT_WORKER::Start()
 
             if( cmd_t == MCP_CMD_TYPE::invalid )
             {
-                wxLogError( "Invalid command type: %s", m_request );
+                wxLogDebug( "Invalid command type: %s", m_request );
                 return;
             }
 
@@ -246,7 +246,7 @@ void MCP_CLIENT_WORKER::Start()
         }
         catch( std::exception& e )
         {
-            wxLogError( "Exception: %s", e.what() );
+            wxLogDebug( "Exception: %s", e.what() );
         }
     };
 
