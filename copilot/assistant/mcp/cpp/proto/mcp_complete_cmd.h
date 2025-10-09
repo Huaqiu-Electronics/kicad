@@ -31,9 +31,11 @@
 
 struct MCP_COMPLETE_CMD : MCP_CMD_BASE
 {
-    std::string            msg;
-    std::list<std::string> server_names;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_COMPLETE_CMD, cmd_type, msg, server_names )
+    std::string                   msg;
+    std::list<std::string>        server_names;
+    std::optional<nlohmann::json> mcp_settings;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_COMPLETE_CMD, cmd_type, msg, server_names, mcp_settings )
 };
 
 

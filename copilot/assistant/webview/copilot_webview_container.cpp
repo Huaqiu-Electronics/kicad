@@ -68,13 +68,19 @@ COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 
     if( _impl->pyMcpClientPid )
     {
-        wxKill( _impl->pyMcpClientPid );
+        wxKillError err{};
+
+        if( auto su = wxKill( _impl->pyMcpClientPid, wxSIGTERM, &err ); !su )
+        {
+            wxLogDebug( "Failed to kill mcp client: %d", err );
+        }
     }
 }
 
 void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
     WEBVIEW_CONTAINER::OnDocumentLoaded( evt );
+
 #ifndef _WIN32
 
     const auto evt_url = evt.GetURL().ToStdString();

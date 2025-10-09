@@ -26,8 +26,10 @@
 #include "proto/mcp_cmd_type.h"
 #include "proto/mcp_cmd_base.h"
 #include "mcp_client_event.h"
+#include "proto/mcp_apply_setting_cmd.h"
 
 #include <atomic>
+#include <memory>
 #include <optional>
 #include <string>
 #include <thread>
@@ -40,6 +42,12 @@
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 #include <wx/process.h>
+
+enum
+{
+    REC_SEND_TIMEOUT_MS = 100,
+    OP_TIMEOUT_MS = 500
+};
 
 
 inline auto get_exe_dir()
@@ -59,8 +67,17 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
     // Get python executable path
     auto py_exe = get_py_exe_path();
 
-    // Compose the command: python ./kicad-mcp-client <url>
+#ifdef NDEBUG
+
     wxString script_path = get_exe_dir() + wxFileName::GetPathSeparator() + "kicad-mcp-client";
+
+#else
+
+    wxString script_path = "C:/code/kicad-mcp-client";
+
+#endif
+
+    // Compose the command: python ./kicad-mcp-client <url>
     wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\"", py_exe, script_path, url );
 
     // Launch the process (non-blocking)
@@ -109,11 +126,13 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
     {
         if( nng_send( sock, const_cast<char*>( msg.c_str() ), msg.length(), 0 ) == 0 )
         {
-            break;
+            return;
         }
 
-        std::this_thread::sleep_for( std::chrono::milliseconds( 200 ) );
+        std::this_thread::sleep_for( std::chrono::milliseconds( REC_SEND_TIMEOUT_MS ) );
     }
+
+    wxLogError( "MCP Client Failed to send message: %s", msg );
 }
 
 MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
@@ -128,12 +147,26 @@ MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
 
 void MCP_CLIENT_WORKER::Start()
 {
-    enum
-    {
-        REC_SEND_TIMEOUT_MS = 100
-    };
-
     nng_socket sock;
+    bool       dial_succeeded = false;
+
+    std::shared_ptr<nullptr_t> clear_up = std::shared_ptr<nullptr_t>{
+        nullptr,
+        [&]( nullptr_t )
+        {
+            if( dial_succeeded )
+            {
+                static const auto kQuit =
+                        nlohmann::json( MCP_CMD_BASE{ magic_enum::enum_name( MCP_CMD_TYPE::quit ).data() } ).dump();
+
+                nng_send( sock, kQuit );
+                // Wait for the msg to be received by the other side
+                std::this_thread::sleep_for( std::chrono::milliseconds( OP_TIMEOUT_MS ) );
+            }
+
+            nng_close( sock );
+        }
+    };
 
     if( nng_pair0_open( &sock ) != 0 )
     {
@@ -141,15 +174,26 @@ void MCP_CLIENT_WORKER::Start()
         return;
     }
 
-    if( nng_dial( sock, m_url.c_str(), NULL, 0 ) != 0 )
-    {
-        wxLogError( "nng_dial" );
-        return;
-    }
-
     if( nng_socket_set_ms( sock, NNG_OPT_RECVTIMEO, REC_SEND_TIMEOUT_MS ) != 0 )
     {
         wxLogError( "nng_socket_set_ms NNG_OPT_RECVTIMEO" );
+        return;
+    }
+
+    while( !m_shouldStop )
+    {
+        if( nng_dial( sock, m_url.c_str(), NULL, 0 ) == 0 )
+        {
+            dial_succeeded = true;
+            break;
+        }
+
+        std::this_thread::sleep_for( std::chrono::milliseconds( OP_TIMEOUT_MS ) );
+    }
+
+    if( !dial_succeeded )
+    {
+        wxLogError( "nng_dial failed" );
         return;
     }
 
@@ -163,8 +207,8 @@ void MCP_CLIENT_WORKER::Start()
 
         try
         {
-            const auto cmd_t = magic_enum::enum_cast<MCP_CMD_TYPE>(
-                                       nlohmann::json::parse( m_request ).get<MCP_CMD_BASE>().cmd_type )
+            auto       request_json = nlohmann::json::parse( m_request );
+            const auto cmd_t = magic_enum::enum_cast<MCP_CMD_TYPE>( request_json.get<MCP_CMD_BASE>().cmd_type )
                                        .value_or( MCP_CMD_TYPE::invalid );
 
             if( cmd_t == MCP_CMD_TYPE::invalid )
@@ -173,7 +217,32 @@ void MCP_CLIENT_WORKER::Start()
                 return;
             }
 
-            nng_send( sock, m_request );
+            switch( cmd_t )
+            {
+            case MCP_CMD_TYPE::apply_settings:
+            {
+                try
+                {
+                    m_mcp_settings = request_json.get<MCP_APPLY_SETTING_CMD>().mcp_settings;
+                }
+                catch( ... )
+                {
+                }
+                break;
+            }
+            case MCP_CMD_TYPE::complete:
+            {
+                request_json["mcp_settings"] = m_mcp_settings;
+                break;
+            }
+            default:
+            {
+                break;
+            }
+            }
+
+
+            nng_send( sock, request_json.dump() );
         }
         catch( std::exception& e )
         {
@@ -201,14 +270,6 @@ void MCP_CLIENT_WORKER::Start()
         pull_request();
         fetch_response();
     }
-
-    static const auto kQuit =
-            nlohmann::json( MCP_CMD_BASE{ magic_enum::enum_name( MCP_CMD_TYPE::quit ).data() } ).dump();
-    nng_send( sock, kQuit );
-    // Wait for the msg to be received by the other side
-    std::this_thread::sleep_for( std::chrono::milliseconds( 500 ) );
-
-    nng_close( sock );
 }
 
 void MCP_CLIENT_WORKER::Stop()
