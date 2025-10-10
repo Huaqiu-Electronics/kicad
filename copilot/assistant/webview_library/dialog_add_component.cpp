@@ -26,10 +26,11 @@
 #include "panel_add_component.h"
 
 
-DIALOG_ADD_COMPONENT::DIALOG_ADD_COMPONENT( wxWindow* aParent, std::string aUrl, wxString aTitle, std::string aKey,
-                                            const wxSize& size ) : COPILOT_DIALOG( aParent, aTitle, aKey, size )
+DIALOG_ADD_COMPONENT::DIALOG_ADD_COMPONENT( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent,
+                                            std::string aUrl, wxString aTitle, std::string aKey, const wxSize& size ) :
+        COPILOT_DIALOG( aParent, aTitle, aKey, size )
 {
-    Init( new PANEL_ADD_COMPONENT( this, aUrl ) );
+    Init( new PANEL_ADD_COMPONENT( host_version_info, this, aUrl ) );
 }
 
 DIALOG_ADD_COMPONENT::~DIALOG_ADD_COMPONENT()

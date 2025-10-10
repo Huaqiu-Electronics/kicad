@@ -34,23 +34,22 @@ enum DIALOG_SIZE
 };
 
 
-DIALOG_NOTE::DIALOG_NOTE( wxWindow* aParent ) :
-        DIALOG_WEBVIEW( aParent, _T( "Message" ), "Message", { WIDTH, HEIGHT } )
+DIALOG_NOTE::DIALOG_NOTE( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent ) :
+        DIALOG_WEBVIEW( host_version_info, aParent, _T( "Message" ), "Message", { WIDTH, HEIGHT } )
 {
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
     //LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_path() );
-    Bind(wxEVT_CLOSE_WINDOW, &DIALOG_NOTE::OnClose, this);
+    Bind( wxEVT_CLOSE_WINDOW, &DIALOG_NOTE::OnClose, this );
 
     m_visible = true;
 }
 
 DIALOG_NOTE::~DIALOG_NOTE()
 {
-
 }
 
-void DIALOG_NOTE::OnClose(wxCloseEvent& event)
+void DIALOG_NOTE::OnClose( wxCloseEvent& event )
 {
-    Show(false);
+    Show( false );
     m_visible = false;
 }

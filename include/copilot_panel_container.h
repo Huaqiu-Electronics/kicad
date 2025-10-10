@@ -46,7 +46,6 @@
 #include <copilot_clipboard.h>
 #include <tool/actions.h>
 #include <settings/get_webview_chat_path.h>
-#include <utils/web_utils.h>
 #include <api/api_open_project_url.h>
 #include <tool/tool_manager.h>
 
@@ -100,7 +99,7 @@ public:
         m_hostVersionInfo.chat_id = m_chat_id;
         m_hostVersionInfo.session_id = GetSessionId();
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                self(), add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
+                m_hostVersionInfo, self(), get_webview_chat_path(),
                 { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } );
 
         m_copilotContextCache.host_version_info = m_hostVersionInfo;

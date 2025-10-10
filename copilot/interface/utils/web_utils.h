@@ -26,7 +26,6 @@
 #define WEB_UTILS_H
 
 #include <map>
-#include <optional>
 #include <string>
 #include <host_type.h>
 #include <iostream>
@@ -51,24 +50,6 @@ inline auto add_parameter_to_url( std::string const& url, std::map<std::string, 
     }
 
     return result;
-}
-
-inline auto add_parameter_to_url( std::string const& url, std::optional<HOST_TYPE> const& host )
-{
-    if( !host )
-        return url;
-
-    std::map<std::string, std::string> parameters{
-        { "host_name", host->host_name }, { "host_version", host->host_version }, { "editor_name", host->editor_name },
-        { "locale", host->locale },       { "session_id", host->session_id },     { "chat_id", host->chat_id },
-    };
-
-    if( host->port )
-    {
-        parameters.emplace( "port", std::to_string( *host->port ) );
-    }
-
-    return add_parameter_to_url( url, parameters );
 }
 
 

@@ -33,7 +33,7 @@ class PANEL_ADD_COMPONENT : public WEBVIEW_CONTAINER
     wxDialog* _parent;
 
 public:
-    PANEL_ADD_COMPONENT( wxDialog* parent, std::optional<std::string> url );
+    PANEL_ADD_COMPONENT( HOST_VERSION_INFO const& host_version_info, wxDialog* parent, std::optional<std::string> url );
     ~PANEL_ADD_COMPONENT();
 
     void HandleScriptMessage( std::string const& msg ) override;

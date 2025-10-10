@@ -111,7 +111,8 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             {
                 if( !_impl->_image_viewer )
                 {
-                    _impl->_image_viewer = new DIALOG_IMAGE_VIEWER( m_parent, _( "Image Viewer" ), "image_viewer" );
+                    _impl->_image_viewer = new DIALOG_IMAGE_VIEWER( _impl->host_version_info, m_parent,
+                                                                    _( "Image Viewer" ), "image_viewer" );
                     _impl->_image_viewer->LoadUrl(
                             WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_image_viewer_path() );
                 }
@@ -131,7 +132,8 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
                         if( !_impl->_ecad_viewer )
                         {
-                            _impl->_ecad_viewer = new DIALOG_WEBVIEW( m_parent, _( "ECAD Viewer" ), "ecad_viewer" );
+                            _impl->_ecad_viewer = new DIALOG_WEBVIEW( _impl->host_version_info, m_parent,
+                                                                      _( "ECAD Viewer" ), "ecad_viewer" );
                         }
 
                         _impl->_ecad_viewer->LoadUrl( url );
@@ -165,7 +167,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
             case WEB_HOST_INTERNAL_CMD_TYPE::launch_login_dialog:
             {
-                DIALOG_LOGIN dialog( GetParent() );
+                DIALOG_LOGIN dialog( _impl->host_version_info, GetParent() );
                 dialog.ShowModal();
 
                 if( !dialog.Success() )
@@ -227,8 +229,9 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 }
 
 
-                DIALOG_ADD_COMPONENT dialog( GetParent(), type_to_url.at( *t ), type_to_name.at( *t ),
-                                             magic_enum::enum_name( *t ).data(), { size.width, size.height } );
+                DIALOG_ADD_COMPONENT dialog( _impl->host_version_info, GetParent(), type_to_url.at( *t ),
+                                             type_to_name.at( *t ), magic_enum::enum_name( *t ).data(),
+                                             { size.width, size.height } );
                 dialog.ShowModal();
                 break;
             }
@@ -236,7 +239,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             case WEB_HOST_INTERNAL_CMD_TYPE::show_modal:
             {
                 const auto     show_model = cmd.data->get<SHOW_MODAL>();
-                DIALOG_WEBVIEW modal_dialog( GetParent(), show_model.title, show_model.key,
+                DIALOG_WEBVIEW modal_dialog( _impl->host_version_info, GetParent(), show_model.title, show_model.key,
                                              { show_model.size.width, show_model.size.height }, wxID_ANY,
                                              _impl->_host_copilot_handles, this );
                 modal_dialog.LoadUrl( show_model.url );

@@ -33,8 +33,9 @@
 #include <webview/webview_controller.h>
 #include <settings/webview_settings_manager.h>
 
-PANEL_ADD_COMPONENT::PANEL_ADD_COMPONENT( wxDialog* parent, std::optional<std::string> url ) :
-        WEBVIEW_CONTAINER( parent, std::move( url ), {}, "adding_online_library" ), _parent( parent )
+PANEL_ADD_COMPONENT::PANEL_ADD_COMPONENT( HOST_VERSION_INFO const& host_version_info, wxDialog* parent,
+                                          std::optional<std::string> url ) :
+        WEBVIEW_CONTAINER( host_version_info, parent, std::move( url ), {}, "adding_online_library" ), _parent( parent )
 {
 }
 

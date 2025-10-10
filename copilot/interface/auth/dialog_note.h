@@ -32,7 +32,7 @@
 class COPILOT_API DIALOG_NOTE : public DIALOG_WEBVIEW
 {
 public:
-    DIALOG_NOTE( wxWindow* aParent );
+    DIALOG_NOTE( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent );
     ~DIALOG_NOTE();
 
 public:

@@ -33,7 +33,8 @@
 class COPILOT_API DIALOG_IMAGE_VIEWER : public DIALOG_WEBVIEW
 {
 public:
-    DIALOG_IMAGE_VIEWER( wxWindow* aParent, const wxString& title, const wxString& settingKey );
+    DIALOG_IMAGE_VIEWER( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent, const wxString& title,
+                         const wxString& settingKey );
 
     ~DIALOG_IMAGE_VIEWER();
 

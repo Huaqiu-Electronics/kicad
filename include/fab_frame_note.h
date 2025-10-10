@@ -29,6 +29,8 @@
 #include <widgets/bitmap_button.h>
 #include <auth/dialog_note.h>
 #include <settings/get_news_url.h>
+#include <get_copilot_host_version.h>
+
 
 template <class EditorT>
 class FAB_FRAME_NOTE
@@ -79,7 +81,7 @@ public:
         int  dialogY = btnScreenPos.y + 5 - dlgheight;
         if( m_promotedlg == nullptr )
         {
-            m_promotedlg = new DIALOG_NOTE( self() );
+            m_promotedlg = new DIALOG_NOTE( get_copilot_host_version( KICAD_COPILOT_EDITORS::unknown ), self() );
             m_promotedlg->Move( wxPoint( dialogX, dialogY ) );
             m_promotedlg->SetSize( wxSize( dlgWidth, dlgheight ) );
             m_promotedlg->LoadUrl( get_news_url() );

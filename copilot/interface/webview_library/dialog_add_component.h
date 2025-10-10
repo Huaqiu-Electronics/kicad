@@ -31,8 +31,8 @@
 class COPILOT_API DIALOG_ADD_COMPONENT : public COPILOT_DIALOG
 {
 public:
-    DIALOG_ADD_COMPONENT( wxWindow* aParent, std::string aUrl, wxString aTitle, std::string aKey,
-                          const wxSize& size = wxDefaultSize );
+    DIALOG_ADD_COMPONENT( struct HOST_VERSION_INFO const& host_version_info, wxWindow* aParent, std::string aUrl,
+                          wxString aTitle, std::string aKey, const wxSize& size = wxDefaultSize );
     ~DIALOG_ADD_COMPONENT();
 
 private:

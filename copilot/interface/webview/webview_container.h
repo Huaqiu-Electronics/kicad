@@ -40,12 +40,14 @@ class DIALOG_WEBVIEW;
 
 
 struct WEBVIEW_CONTAINER_IMPL;
+struct HOST_VERSION_INFO;
 class wxWebView;
 
 class COPILOT_API WEBVIEW_CONTAINER : public wxPanel
 {
 public:
-    WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url, HOST_COPILOT_HANDLES host_copilot_handles,
+    WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent, std::optional<std::string> url,
+                       HOST_COPILOT_HANDLES       host_copilot_handles,
                        std::optional<std::string> data_buried_point = std::nullopt );
 
     ~WEBVIEW_CONTAINER() override;

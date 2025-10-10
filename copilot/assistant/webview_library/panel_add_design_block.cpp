@@ -28,9 +28,9 @@
 #include <fmt/format.h>
 #include <utils/base64.hpp>
 
-PANEL_ADD_DESIGN_BLOCK::PANEL_ADD_DESIGN_BLOCK( wxDialog* parent, std::optional<std::string> url,
-                                                std::string design_block ) :
-        PANEL_ADD_COMPONENT( parent, url ), _design_block( std::move( design_block ) )
+PANEL_ADD_DESIGN_BLOCK::PANEL_ADD_DESIGN_BLOCK( HOST_VERSION_INFO const& host_version_info, wxDialog* parent,
+                                                std::optional<std::string> url, std::string design_block ) :
+        PANEL_ADD_COMPONENT( host_version_info, parent, url ), _design_block( std::move( design_block ) )
 {
 }
 
@@ -44,5 +44,4 @@ void PANEL_ADD_DESIGN_BLOCK::OnNavigationComplete( wxWebViewEvent& evt )
     const auto encoded = base64::to_base64( _design_block );
     RunScriptAsync( fmt::format( "load_design_block(\"{}\");", encoded ) );
     RunScriptAsync( fmt::format( "console.log(\"{}\");", encoded ) );
-
 }
