@@ -25,7 +25,6 @@
 #ifndef HOST_TYPE_H
 #define HOST_TYPE_H
 
-#include <optional>
 #include <string>
 #include <nlohmann/json.hpp>
 
@@ -43,8 +42,7 @@ struct HOST_TYPE
     // Used by the the server to identify the user session
     std::string chat_id;
 
-    std::optional<int> port;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale, port, host_version )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale, host_version )
 };
 
 #endif
