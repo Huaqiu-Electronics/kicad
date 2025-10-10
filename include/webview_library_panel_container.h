@@ -39,7 +39,6 @@
 #include <get_copilot_host_version.h>
 #include <widgets/wx_aui_utils.h>
 #include <tool/actions.h>
-#include <utils/web_utils.h>
 #include <tool/tool_manager.h>
 #include <settings/webview_settings_manager.h>
 #include <webview_library/webview_library_aui_settings.h>
