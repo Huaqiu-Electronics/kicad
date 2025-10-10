@@ -94,15 +94,17 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
     SetSizer( top_sizer );
     SetSize( FromDIP( wxSize( START_UP_SIZE::WIDTH, START_UP_SIZE::HEIGHT ) ) );
 
-    Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_LOADED, &WEBVIEW_CONTAINER::OnDocumentLoaded, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_CONTAINER::OnError, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_NEWWINDOW, &WEBVIEW_CONTAINER::OnNewWindow, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, _impl->_browser->GetId() );
-    Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, _impl->_browser->GetId() );
 
-    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, _impl->_browser->GetId() );
+    const auto browser_id = _impl->_browser->GetId();
+    Bind( wxEVT_WEBVIEW_NAVIGATING, &WEBVIEW_CONTAINER::OnNavigationRequest, this, browser_id );
+    Bind( wxEVT_WEBVIEW_NAVIGATED, &WEBVIEW_CONTAINER::OnNavigationComplete, this, browser_id );
+    Bind( wxEVT_WEBVIEW_LOADED, &WEBVIEW_CONTAINER::OnDocumentLoaded, this, browser_id );
+    Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_CONTAINER::OnError, this, browser_id );
+    Bind( wxEVT_WEBVIEW_NEWWINDOW, &WEBVIEW_CONTAINER::OnNewWindow, this, browser_id );
+    Bind( wxEVT_WEBVIEW_TITLE_CHANGED, &WEBVIEW_CONTAINER::OnTitleChanged, this, browser_id );
+    Bind( wxEVT_WEBVIEW_FULLSCREEN_CHANGED, &WEBVIEW_CONTAINER::OnFullScreenChanged, this, browser_id );
+    Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_CONTAINER::OnScriptMessage, this, browser_id );
+
 
     if( data_buried_point )
     {
@@ -154,12 +156,14 @@ void WEBVIEW_CONTAINER::OnNavigationRequest( wxWebViewEvent& evt )
 void WEBVIEW_CONTAINER::OnNavigationComplete( wxWebViewEvent& evt )
 {
     wxLogDebug( "OnNavigationComplete , %s", evt.GetURL() );
-    WEBVIEW_CONTROLLER::Get().OnWebViewNavigationComplete( this );
 }
 
 void WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
 {
     wxLogDebug( "OnDocumentLoaded , %s", evt.GetURL() );
+
+    RunScriptAsync( fmt::format( "window.host_version_info={};", nlohmann::json( _impl->host_version_info ).dump() ) );
+    WEBVIEW_CONTROLLER::Get().OnWebViewNavigationComplete( this );
 }
 
 void WEBVIEW_CONTAINER::OnNewWindow( wxWebViewEvent& evt )
