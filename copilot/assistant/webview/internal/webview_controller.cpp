@@ -41,7 +41,9 @@ inline auto fmt_auth_state_change_script( AUTH_STATE state )
                     AUTH_STATE_CHANGE{ state, WEBVIEW_SETTINGS_MANAGER::get_instance().get_raw_access_token() } )
                     .dump();
 
-    return fmt::format( "{}({});", magic_enum::enum_name( WEBVIEW_FUNCTIONS::handle_auth ), content );
+
+    const auto fn = magic_enum::enum_name( WEBVIEW_FUNCTIONS::handle_auth );
+    return fmt::format( "typeof {} === 'function' && {}({});", fn, fn, content );
 }
 
 
