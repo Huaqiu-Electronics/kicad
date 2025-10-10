@@ -180,6 +180,14 @@ void MCP_CLIENT_WORKER::Start()
         return;
     }
 
+
+    if( nng_socket_set_ms( sock, NNG_OPT_SENDTIMEO, REC_SEND_TIMEOUT_MS ) != 0 )
+    {
+        wxLogDebug( "nng_socket_set_ms NNG_OPT_SENDTIMEO" );
+        return;
+    }
+
+
     while( !m_shouldStop )
     {
         if( nng_dial( sock, m_url.c_str(), NULL, 0 ) == 0 )
