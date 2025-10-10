@@ -45,6 +45,7 @@ struct WEBVIEW_CONTAINER_IMPL
     wxWebView*                 _browser;
     HOST_COPILOT_HANDLES       _host_copilot_handles;
     std::optional<std::string> _primary_url;
+    HOST_VERSION_INFO          host_version_info;
 };
 
 #endif

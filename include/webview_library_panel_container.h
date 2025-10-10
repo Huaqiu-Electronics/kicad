@@ -61,11 +61,9 @@ public:
 
     void WebViewLibraryInit()
     {
-        m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER(
-                self(),
-                add_parameter_to_url( WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url(),
-                                      self()->GetHostVersionInfo() ),
-                { {}, self()->GetCopilotAgentActionHandle() } );
+        m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER( self()->GetHostVersionInfo(), self(),
+                                                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url(),
+                                                            { {}, self()->GetCopilotAgentActionHandle() } );
     }
 
     void InitWebViewLibraryAui()

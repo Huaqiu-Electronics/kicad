@@ -66,16 +66,16 @@ enum START_UP_SIZE
 };
 
 
-WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( wxWindow* parent, std::optional<std::string> url,
-                                      HOST_COPILOT_HANDLES       host_copilot_handles,
+WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent,
+                                      std::optional<std::string> url, HOST_COPILOT_HANDLES host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ),
-        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _impl->_host_copilot_handles = std::move( host_copilot_handles );
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
+    _impl->host_version_info = host_version_info;
 
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );

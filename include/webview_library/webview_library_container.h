@@ -30,8 +30,9 @@
 class WEBVIEW_LIBRARY_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
-    WEBVIEW_LIBRARY_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles ) :
-            WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_desktop_webview_library" )
+    WEBVIEW_LIBRARY_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent, std::string url,
+                               HOST_COPILOT_HANDLES host_copilot_handles ) :
+            WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, "kicad_desktop_webview_library" )
     {
     }
 

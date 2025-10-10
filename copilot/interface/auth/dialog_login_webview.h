@@ -33,7 +33,7 @@
 class COPILOT_API DIALOG_LOGIN_WEBVIEW : public DIALOG_WEBVIEW, public DIALOG_LOGIN_BASE
 {
 public:
-    DIALOG_LOGIN_WEBVIEW( wxWindow* aParent );
+    DIALOG_LOGIN_WEBVIEW( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent );
     ~DIALOG_LOGIN_WEBVIEW();
 };
 

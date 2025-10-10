@@ -37,9 +37,9 @@
 #include <webview/webview_functions.h>
 #include <wx/utils.h>
 
-COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url,
-                                                      HOST_COPILOT_HANDLES host_copilot_handles ) :
-        WEBVIEW_CONTAINER( parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
+COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent,
+                                                      std::string url, HOST_COPILOT_HANDLES host_copilot_handles ) :
+        WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
     // TODO: Enable MCP client

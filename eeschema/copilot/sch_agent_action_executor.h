@@ -153,7 +153,7 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
             {
             }
 
-            DIALOG_ADD_DESIGN_BLOCK dialog( self(), wxString2String( std::move( content ) ),
+            DIALOG_ADD_DESIGN_BLOCK dialog( m_hostVersionInfo, self(), wxString2String( std::move( content ) ),
                                             { size.width, size.height } );
             dialog.ShowModal();
             break;

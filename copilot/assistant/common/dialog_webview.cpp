@@ -32,11 +32,11 @@
 #include <fmt/format.h>
 #include <wx/display.h>
 
-DIALOG_WEBVIEW::DIALOG_WEBVIEW( wxWindow* aParent, const wxString& title, const wxString& settingKey,
-                                const wxSize& size, wxWindowID id, HOST_COPILOT_HANDLES host_copilot_handles,
-                                WEBVIEW_CONTAINER* parent_webview ) :
+DIALOG_WEBVIEW::DIALOG_WEBVIEW( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent, const wxString& title,
+                                const wxString& settingKey, const wxSize& size, wxWindowID id,
+                                HOST_COPILOT_HANDLES host_copilot_handles, WEBVIEW_CONTAINER* parent_webview ) :
         COPILOT_DIALOG( aParent, title, settingKey, size, id ),
-        _webview_container( new WEBVIEW_CONTAINER( this, {}, std::move( host_copilot_handles ) ) ),
+        _webview_container( new WEBVIEW_CONTAINER( host_version_info, this, {}, std::move( host_copilot_handles ) ) ),
         _parent_webview( parent_webview )
 {
     Init( _webview_container );

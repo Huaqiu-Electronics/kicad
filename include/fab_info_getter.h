@@ -41,7 +41,9 @@
 #include <wx/utils.h>
 #include <widgets/progress_reporter_base.h>
 #include <wx/log.h>
+#include <get_copilot_host_version.h>
 
+#include "kicad_copilot_editors.h"
 #include "place_order_action_container.h"
 
 struct PCB_FORM;
@@ -136,7 +138,8 @@ public:
             m_progress_reporter.reset();
         }
 
-        DIALOG_WEBVIEW place_order_dialog( self(), _( "Place Order" ), "HQ_PCB",
+        DIALOG_WEBVIEW place_order_dialog( get_copilot_host_version( KICAD_COPILOT_EDITORS::unknown ), self(),
+                                           _( "Place Order" ), "HQ_PCB",
                                            wxSize( PLACE_ORDER_DIALOG_SIZE::WIDTH, PLACE_ORDER_DIALOG_SIZE::HEIGHT ) );
 
         place_order_dialog.LoadUrl( aUrl );

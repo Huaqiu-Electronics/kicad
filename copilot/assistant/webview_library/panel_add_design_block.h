@@ -32,7 +32,8 @@ class PANEL_ADD_DESIGN_BLOCK : public PANEL_ADD_COMPONENT
     std::string _design_block;
 
 public:
-    PANEL_ADD_DESIGN_BLOCK( wxDialog* parent, std::optional<std::string> url, std::string design_block );
+    PANEL_ADD_DESIGN_BLOCK( HOST_VERSION_INFO const& host_version_info, wxDialog* parent,
+                            std::optional<std::string> url, std::string design_block );
 
     ~PANEL_ADD_DESIGN_BLOCK();
 

@@ -27,7 +27,7 @@
 
 #include <kicad_version_info.h>
 #include "host_type.h"
-#include "nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 struct HOST_VERSION_INFO : HOST_TYPE
 {

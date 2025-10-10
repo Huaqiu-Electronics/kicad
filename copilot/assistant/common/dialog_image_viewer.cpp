@@ -28,8 +28,9 @@
 #include <settings/webview_settings_manager.h>
 
 
-DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( wxWindow* aParent, const wxString& title, const wxString& settingKey ) :
-        DIALOG_WEBVIEW( aParent, title, settingKey )
+DIALOG_IMAGE_VIEWER::DIALOG_IMAGE_VIEWER( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent,
+                                          const wxString& title, const wxString& settingKey ) :
+        DIALOG_WEBVIEW( host_version_info, aParent, title, settingKey )
 {
 }
 

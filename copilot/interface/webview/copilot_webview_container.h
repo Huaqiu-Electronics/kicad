@@ -32,7 +32,8 @@ class MCP_CLIENT_EVENT;
 class COPILOT_API COPILOT_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
 {
 public:
-    COPILOT_WEBVIEW_CONTAINER( wxWindow* parent, std::string url, HOST_COPILOT_HANDLES host_copilot_handles );
+    COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent, std::string url,
+                               HOST_COPILOT_HANDLES host_copilot_handles );
 
     ~COPILOT_WEBVIEW_CONTAINER() override;
 

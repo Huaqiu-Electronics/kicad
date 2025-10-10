@@ -52,7 +52,7 @@ void PCB_EDIT_FRAME::PlaceOrder( ORDER_TYPE aOrderType )
     // Ensure user is logged in before placing order
     if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
     {
-        DIALOG_LOGIN login_dialog( this );
+        DIALOG_LOGIN login_dialog( m_hostVersionInfo, this );
 
         login_dialog.ShowModal();
 
