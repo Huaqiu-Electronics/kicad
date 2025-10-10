@@ -22,10 +22,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef WEB_UTILS_H
-#define WEB_UTILS_H
+#ifndef RANDOM_SUBSTRING_H
+#define RANDOM_SUBSTRING_H
 
-#include <map>
 #include <string>
 #include <host_type.h>
 #include <iostream>
@@ -33,24 +32,6 @@
 #include <sstream>
 #include <random>
 #include <string>
-
-inline auto add_parameter_to_url( std::string const& url, std::map<std::string, std::string> const& parameters )
-{
-    std::string result = url;
-
-    // Check if the URL already contains a query string
-    bool has_query = result.find( '?' ) != std::string::npos;
-
-    // Append each parameter to the URL
-    for( auto const& [key, value] : parameters )
-    {
-        // Add either '&' or '?' depending on whether the URL already has a query string
-        result += ( has_query ? '&' : '?' ) + key + '=' + value;
-        has_query = true; // After the first parameter, always use '&'
-    }
-
-    return result;
-}
 
 
 inline std::string random_substring()
@@ -67,6 +48,5 @@ inline std::string random_substring()
     // extract 5 characters after "0."
     return ( str.size() >= 2 + 5 ) ? str.substr( 2, 5 ) : "00000";
 }
-
 
 #endif

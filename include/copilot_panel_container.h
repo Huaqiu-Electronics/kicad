@@ -48,6 +48,7 @@
 #include <settings/get_webview_chat_path.h>
 #include <api/api_open_project_url.h>
 #include <tool/tool_manager.h>
+#include <utils/random_substring.h>
 
 
 template <class Derived, class ContextT>
