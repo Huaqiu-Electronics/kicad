@@ -70,7 +70,7 @@ enum START_UP_SIZE
 
 inline auto ensure_load_page_from_srv( std::string const& url )
 {
-    return query_string_cache_busting( url, kConfigVersion );
+    return query_string_cache_busting( url, "copilot_config_version", kConfigVersion );
 }
 
 

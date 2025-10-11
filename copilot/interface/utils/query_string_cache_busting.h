@@ -33,9 +33,9 @@
 
 #include "add_parameter_to_url.h"
 
-inline auto query_string_cache_busting( std::string const& url , std::string const& version)
+inline auto query_string_cache_busting( std::string const& url, std::string const& key, std::string const& value )
 {
-    return add_parameter_to_url( url, { { "v", version } } );
+    return add_parameter_to_url( url, { { key, value } } );
 }
 
 #endif
