@@ -64,7 +64,6 @@ inline auto get_py_exe_path()
 
 long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 {
-    // Get python executable path
     auto py_exe = get_py_exe_path();
 
 #ifdef NDEBUG
@@ -77,10 +76,8 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 
 #endif
 
-    // Compose the command: python ./kicad-mcp-client <url>
     wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\"", py_exe, script_path, url );
 
-    // Launch the process (non-blocking)
     long pid = wxExecute( cmd,
 
 #ifdef NDEBUG
@@ -91,7 +88,6 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 
 #endif // !NDEBUG
 
-
     );
 
     if( pid == 0 )
@@ -101,7 +97,6 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 
     return pid;
 }
-// ...existing code...
 inline auto recv_result( nng_socket& sock )
 {
     char*  buf = nullptr;
@@ -174,17 +169,13 @@ void MCP_CLIENT_WORKER::Start()
         return;
     }
 
-    if( nng_socket_set_ms( sock, NNG_OPT_RECVTIMEO, REC_SEND_TIMEOUT_MS ) != 0 )
+    for( const auto& opt : { NNG_OPT_RECVTIMEO, NNG_OPT_SENDTIMEO } )
     {
-        wxLogDebug( "nng_socket_set_ms NNG_OPT_RECVTIMEO" );
-        return;
-    }
-
-
-    if( nng_socket_set_ms( sock, NNG_OPT_SENDTIMEO, REC_SEND_TIMEOUT_MS ) != 0 )
-    {
-        wxLogDebug( "nng_socket_set_ms NNG_OPT_SENDTIMEO" );
-        return;
+        if( nng_socket_set_ms( sock, opt, REC_SEND_TIMEOUT_MS ) != 0 )
+        {
+            wxLogDebug( "nng_socket_set_ms %s failed", opt );
+            return;
+        }
     }
 
 
@@ -229,13 +220,7 @@ void MCP_CLIENT_WORKER::Start()
             {
             case MCP_CMD_TYPE::apply_settings:
             {
-                try
-                {
-                    m_mcp_settings = request_json.get<MCP_APPLY_SETTING_CMD>().mcp_settings;
-                }
-                catch( ... )
-                {
-                }
+                m_mcp_settings = request_json.get<MCP_APPLY_SETTING_CMD>().mcp_settings;
                 break;
             }
             case MCP_CMD_TYPE::complete:
@@ -254,7 +239,7 @@ void MCP_CLIENT_WORKER::Start()
         }
         catch( std::exception& e )
         {
-            wxLogDebug( "Exception: %s", e.what() );
+            wxLogDebug( "pull_request error: %s", e.what() );
         }
     };
 
