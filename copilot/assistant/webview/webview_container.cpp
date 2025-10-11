@@ -25,6 +25,7 @@
 
 #include "webview_container_impl.h"
 #include "internal/webview_evt_filter.h"
+#include <optional>
 
 #ifndef _WIN32
 #include "internal/webview_evt_filter.h"
@@ -54,7 +55,8 @@
 #include <common/main_stack_holder.h>
 #include <fmt/format.h>
 #include <utils/send_data_buried_point.h>
-
+#include <utils/query_string_cache_busting.h>
+#include <settings/copilot_config_version.h>
 
 using json = nlohmann::json;
 
@@ -64,6 +66,12 @@ enum START_UP_SIZE
     WIDTH = 400,
     HEIGHT = 1040
 };
+
+
+inline auto ensure_load_page_from_srv( std::string const& url )
+{
+    return query_string_cache_busting( url, kConfigVersion );
+}
 
 
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent,
@@ -80,7 +88,8 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
     _impl->_browser->Create( this, wxID_ANY,
-                             _impl->_primary_url ? *_impl->_primary_url : wxASCII_STR( wxWebViewDefaultURLStr ),
+                             _impl->_primary_url ? ensure_load_page_from_srv( *_impl->_primary_url )
+                                                 : wxASCII_STR( wxWebViewDefaultURLStr ),
                              wxDefaultPosition, wxDefaultSize );
     top_sizer->Add( _impl->_browser, wxSizerFlags().Expand().Proportion( 1 ) );
 
@@ -199,7 +208,7 @@ std::optional<std::string> WEBVIEW_CONTAINER::GetUrl() const
 void WEBVIEW_CONTAINER::LoadUrl( std::string const& aUrl )
 {
     _impl->_primary_url = aUrl;
-    _impl->_browser->LoadURL( aUrl );
+    _impl->_browser->LoadURL( ensure_load_page_from_srv( aUrl ) );
 }
 
 
