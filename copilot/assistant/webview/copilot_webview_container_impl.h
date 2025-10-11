@@ -25,7 +25,7 @@
 #ifndef COPILOT_WEBVIEW_CONTAINER_IMPL_H
 #define COPILOT_WEBVIEW_CONTAINER_IMPL_H
 
-#include <mcp/cpp/mcp_client_worker.h>
+#include <mcp/mcp_client_worker.h>
 #include <thread>
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL

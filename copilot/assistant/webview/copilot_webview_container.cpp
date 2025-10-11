@@ -24,14 +24,13 @@
 
 #include "webview/copilot_webview_container.h"
 #include "copilot_webview_container_impl.h"
-#include "mcp/cpp/mcp_client_worker.h"
 
 #include <fmt/format.h>
 #include <magic_enum.hpp>
 #include <thread>
 #include <utils/wstring_to_string.h>
 #include <passive_action/passive_action_container.h>
-#include <mcp/cpp/mcp_client_event.h>
+#include <mcp/mcp_client_event.h>
 #include <settings/webview_settings_manager.h>
 #include <utils/httplib_wrapper.h>
 #include <webview/webview_functions.h>

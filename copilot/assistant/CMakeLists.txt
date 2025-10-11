@@ -15,8 +15,8 @@ add_library(assistant SHARED
 
     http/http_client.cpp
 
-    mcp/cpp/mcp_client_event.cpp
-    mcp/cpp/mcp_client_worker.cpp
+    mcp/mcp_client_event.cpp
+    mcp/mcp_client_worker.cpp
 
     quote/pcb_quote.cpp
     quote/smt_quote.cpp
