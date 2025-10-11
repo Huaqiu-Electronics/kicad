@@ -24,7 +24,6 @@
 
 
 #include "webview_container_impl.h"
-#include "internal/webview_evt_filter.h"
 #include <optional>
 
 #ifndef _WIN32
@@ -32,7 +31,6 @@
 #endif
 
 #include <memory>
-#include <stdexcept>
 #include <string>
 #include <wx/log.h>
 #include <wx/sizer.h>
