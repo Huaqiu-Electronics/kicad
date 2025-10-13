@@ -34,6 +34,7 @@
 #include <vector>
 #include <string>
 #include <utils/file_path_generator.h>
+#include <utils/add_parameter_to_url.h>
 
 #include <fstream>
 #include <sstream>
@@ -160,7 +161,10 @@ std::optional<std::string> FAB_INFO_GETTER_PCB::PlaceOrderForSMT()
         return {};
     }
 
-    return fmt::format( "{}&token={}", *rsp, WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token );
+
+    return add_parameter_to_url( *rsp, { { "token", WEBVIEW_SETTINGS_MANAGER::get_instance().get_access_token().token },
+                                         // For trigger BOM Match Option in the front end
+                                         { "source", "bom" } } );
 }
 
 
