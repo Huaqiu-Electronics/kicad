@@ -73,13 +73,13 @@ void PCB_EDIT_FRAME::PlaceOrder( ORDER_TYPE aOrderType )
 
     thread_pool& tp = GetKiCadThreadPool();
     auto         ret = tp.submit(
-            [=]() -> std::optional<std::string>
+            [=, this]() -> std::optional<std::string>
             {
                 std::optional<std::string> order_link;
                 switch( aOrderType )
                 {
-                case ORDER_TYPE::PCB: order_link = this->PlaceOrderForPCB(); break;
-                case ORDER_TYPE::SMT: order_link = this->PlaceOrderForSMT(); break;
+                case ORDER_TYPE::PCB: order_link = PlaceOrderForPCB(); break;
+                case ORDER_TYPE::SMT: order_link = PlaceOrderForSMT(); break;
                 }
 
                 ReportProgress( _( "End placing order" ) );
