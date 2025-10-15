@@ -55,6 +55,9 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     show_modal,
     end_modal,
 
+    // Launch a webview window with URL
+    show_webview_window,
+
 };
 
 

@@ -27,6 +27,7 @@
 
 
 #include <host_copilot_handles.h>
+#include <map>
 #include <utils/httplib_wrapper.h>
 #include <context/copilot_global_context_handle.h>
 #include <context/copilot_global_context.h>
@@ -42,10 +43,11 @@ struct WEBVIEW_CONTAINER_IMPL
     DIALOG_IMAGE_VIEWER*  _image_viewer{};
     DIALOG_WEBVIEW*       _ecad_viewer{};
 
-    wxWebView*                 _browser;
-    HOST_COPILOT_HANDLES       _host_copilot_handles;
-    std::optional<std::string> _primary_url;
-    HOST_VERSION_INFO          host_version_info;
+    wxWebView*                             _browser;
+    HOST_COPILOT_HANDLES                   _host_copilot_handles;
+    std::optional<std::string>             _primary_url;
+    HOST_VERSION_INFO                      host_version_info;
+    std::map<std::string, DIALOG_WEBVIEW*> webview_windows;
 };
 
 #endif

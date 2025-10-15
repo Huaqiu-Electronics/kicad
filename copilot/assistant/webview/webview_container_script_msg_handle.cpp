@@ -276,6 +276,26 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 }
                 break;
             }
+
+            case WEB_HOST_INTERNAL_CMD_TYPE::show_webview_window:
+            {
+                const auto show_window = cmd.data->get<SHOW_WEBVIEW_WINDOW>();
+
+                if( auto win = _impl->webview_windows.find( show_window.key ); win != _impl->webview_windows.end() )
+                {
+                    delete win->second;
+                }
+
+                auto webview_win =
+                        new DIALOG_WEBVIEW( _impl->host_version_info, GetParent(), show_window.title, show_window.key,
+                                            { show_window.size.width, show_window.size.height }, wxID_ANY,
+                                            _impl->_host_copilot_handles, this );
+
+                _impl->webview_windows[show_window.key] = webview_win;
+                webview_win->LoadUrl( show_window.url );
+                webview_win->Show();
+                break;
+            }
             }
             break;
         }
