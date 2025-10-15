@@ -27,17 +27,9 @@
 
 #include <nlohmann/json.hpp>
 #include <settings/preferred_size.h>
+#include <assistant/webview/internal/show_webview_window.h>
 
 
-struct SHOW_MODAL
-{
-    std::string    url;
-    PREFERRED_SIZE size;
-    std::string    title;
-    // Key for persisting the settings for modal dialog
-    std::string key;
-
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SHOW_MODAL, url, size, title, key )
-};
+using SHOW_MODAL = SHOW_WEBVIEW_WINDOW;
 
 #endif
