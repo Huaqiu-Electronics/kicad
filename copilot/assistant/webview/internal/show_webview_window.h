@@ -26,7 +26,10 @@
 #define SHOW_WEBVIEW_WINDOW_H
 
 #include <nlohmann/json.hpp>
+#include <optional>
 #include <settings/preferred_size.h>
+#include <settings/preferred_pos.h>
+
 
 struct SHOW_WEBVIEW_WINDOW
 {
@@ -34,9 +37,10 @@ struct SHOW_WEBVIEW_WINDOW
     PREFERRED_SIZE size;
     std::string    title;
     // Key for persisting the settings for modal dialog
-    std::string key;
+    std::string                  key;
+    std::optional<PREFERRED_POS> pos;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SHOW_WEBVIEW_WINDOW, url, size, title, key )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SHOW_WEBVIEW_WINDOW, url, size, title, key, pos )
 };
 
 #endif

@@ -42,7 +42,7 @@ class COPILOT_API DIALOG_WEBVIEW : public COPILOT_DIALOG
 
 public:
     DIALOG_WEBVIEW( struct HOST_VERSION_INFO const& host_version_info, wxWindow* aParent, const wxString& title,
-                    const wxString& settingKey, const wxSize& size = { 800, 600 }, wxWindowID id = wxID_ANY,
+                    const wxString& settingKey, const wxSize& size = { 800, 600 }, const wxPoint& pt = wxDefaultPosition, wxWindowID id = wxID_ANY,
                     HOST_COPILOT_HANDLES host_copilot_handles = {}, WEBVIEW_CONTAINER* parent_webview = nullptr );
     ~DIALOG_WEBVIEW();
 

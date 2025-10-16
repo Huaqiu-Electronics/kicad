@@ -32,7 +32,7 @@
 #include <fmt/format.h>
 #include <wx/display.h>
 COPILOT_DIALOG::COPILOT_DIALOG( wxWindow* aParent, const wxString& title, const wxString& settingKey,
-                                const wxSize& size, wxWindowID id ) :
+                                const wxSize& size, const wxPoint& pt, wxWindowID id ) :
         wxDialog( aParent, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxRESIZE_BORDER,
                   settingKey )
 {
@@ -58,6 +58,7 @@ COPILOT_DIALOG::COPILOT_DIALOG( wxWindow* aParent, const wxString& title, const 
     else
     {
         SetSize( size );
+        SetPosition( pt );
     }
 
 
