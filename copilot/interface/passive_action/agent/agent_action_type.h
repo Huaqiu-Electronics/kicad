@@ -61,9 +61,13 @@ enum class AGENT_ACTION_TYPE
 
 
     SYMBOL_EDITOR_BEGIN,
+    // open the symbol editor and load the symbol content
+    edit_symbol_content,
 
 
     FOOTPRINT_EDITOR_BEGIN,
+    // open the footprint editor and load the footprint content
+    edit_footprint_content,
 
 
 };
