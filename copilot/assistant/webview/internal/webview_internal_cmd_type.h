@@ -58,6 +58,11 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     // Launch a webview window with URL
     show_webview_window,
 
+    // Freerouting
+    free_routing_cancel,
+    free_routing_start,
+    load_ses_data,
+
 };
 
 

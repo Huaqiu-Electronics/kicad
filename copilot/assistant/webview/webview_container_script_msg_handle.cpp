@@ -300,6 +300,53 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 webview_win->Show();
                 break;
             }
+            case WEB_HOST_INTERNAL_CMD_TYPE::free_routing_cancel:
+            {
+                auto get_job_id_function = *(_impl->_host_copilot_handles.freerouting_handle.get_job_id_handle);
+                std::string job_id = get_job_id_function();;
+                const auto js_call = fmt::format( "window.free_routing_cancel( \"{}\" );", job_id.c_str());
+                wxString out;
+                const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}", js_call.c_str() );
+                RunScriptAsync( std::move( js_script ) );
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::load_ses_data:
+            {
+                const auto content = cmd.data->get<PCB_Specc_Job_Data>();
+                auto& base64_data = content.data;
+                auto&  job_id = content.job_id;
+                auto set_job_id_function = *(_impl->_host_copilot_handles.freerouting_handle.set_job_id_handle);
+                set_job_id_function(job_id);
+
+                if(!base64_data.empty())
+                {
+                    auto import_specc_function = *(_impl->_host_copilot_handles.freerouting_handle.specc_handle);
+                    import_specc_function(base64_data);
+                }
+
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::free_routing_start:
+            {
+                std::string file_name, data;
+                int draw_time = 5;
+
+                if(cmd.data.has_value())
+                {
+
+                    if(cmd.data->contains("drawtime"))
+                    {
+                        draw_time = cmd.data.value()["drawtime"];
+                    }
+                    
+                }
+
+                auto dsn_function = *(_impl->_host_copilot_handles.freerouting_handle.dsn_handle);
+                dsn_function(file_name, data);
+                const auto js_call = fmt::format( "window.load_dsn_file( \"{}\",\"{}\",\"{}\" );" ,file_name.c_str(), data.c_str(), std::to_string(draw_time).c_str() );
+                RunScriptAsync( std::move( js_call ) );
+                break;
+            }
             }
             break;
         }
