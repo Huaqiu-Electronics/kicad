@@ -35,7 +35,7 @@
 
 inline auto query_string_cache_busting( std::string const& url, std::string const& key, std::string const& value )
 {
-    return add_parameter_to_url( url, { { key, value } } );
+    return add_parameter_to_url( url, std::map<std::string, std::string>{ { key, value } } );
 }
 
 #endif

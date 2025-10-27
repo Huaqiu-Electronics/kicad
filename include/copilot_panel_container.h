@@ -49,6 +49,7 @@
 #include <api/api_open_project_url.h>
 #include <tool/tool_manager.h>
 #include <utils/random_substring.h>
+#include <utils/add_parameter_to_url.h>
 
 
 template <class Derived, class ContextT>
@@ -75,28 +76,25 @@ public:
                         return GetJsonifySelection();
                     } ) ),
             m_copilotDsnHdl( std::make_shared<DSN_HDL_T>(
-                    [this](std::string& filename, std::string& base64Data)
+                    [this]( std::string& filename, std::string& base64Data )
                     {
-                        return GetDSNFileBase64Data(filename, base64Data);
+                        return GetDSNFileBase64Data( filename, base64Data );
                     } ) ),
             m_copilotSetJobIdHdl( std::make_shared<SETJOBID_HDL_T>(
-                [this](const std::string& job_id)
-                {
-                    return SetJobId(job_id);
-                }
-            )),
+                    [this]( const std::string& job_id )
+                    {
+                        return SetJobId( job_id );
+                    } ) ),
             m_copilotGetJobIdHdl( std::make_shared<GETJOBID_HDL_T>(
-                [this]() ->std::string
-                {
-                    return GetJobId();
-                }
-            )),
+                    [this]() -> std::string
+                    {
+                        return GetJobId();
+                    } ) ),
             m_copilotSpeccHdl( std::make_shared<SPECC_HDL_T>(
-                [this](const std::string& data)
-                {
-                    return ImportSpecctraBase64Data(data);
-                }
-            ))
+                    [this]( const std::string& data )
+                    {
+                        return ImportSpecctraBase64Data( data );
+                    } ) )
     {
     }
 
@@ -126,8 +124,9 @@ public:
         //freerouting handles
         m_copilotFreeroutingHdl = { m_copilotDsnHdl, m_copilotSetJobIdHdl, m_copilotGetJobIdHdl, m_copilotSpeccHdl };
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                m_hostVersionInfo, self(), get_webview_chat_path(),
-                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl , m_copilotFreeroutingHdl } );//m_copilotDsnHdl
+                m_hostVersionInfo, self(), add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
+                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl,
+                  m_copilotFreeroutingHdl } ); //m_copilotDsnHdl
 
         m_copilotContextCache.host_version_info = m_hostVersionInfo;
     }
@@ -288,13 +287,13 @@ public:
     auto GetHostVersionInfo() const { return m_hostVersionInfo; }
 
     //freerouting
-    void GetDSNFileBase64Data(std::string& filename, std::string& base64Data) { return; }
+    void GetDSNFileBase64Data( std::string& filename, std::string& base64Data ) { return; }
 
-    void ImportSpecctraBase64Data(const std::string& base64Data) { return; }
+    void ImportSpecctraBase64Data( const std::string& base64Data ) { return; }
 
-    void SetJobId(const std::string& jobId) { m_jobId = jobId; }
+    void SetJobId( const std::string& jobId ) { m_jobId = jobId; }
 
-    std::string GetJobId() {return m_jobId;}
+    std::string GetJobId() { return m_jobId; }
 
 protected:
     ContextT                   m_copilotContextCache;
@@ -309,12 +308,12 @@ protected:
     HOST_VERSION_INFO                m_hostVersionInfo;
 
     //freerouting
-    std::string                      m_jobId;
-    COPILOT_DSN_OWNED_HDL            m_copilotDsnHdl;
-    COPILOT_SETJOBID_OWNER_HDL       m_copilotSetJobIdHdl;
-    COPILOT_GETJOBID_OWNED_HDL       m_copilotGetJobIdHdl;
-    COPILOT_SPECC_OWNER_HDL          m_copilotSpeccHdl;
-    FREEROUTING_OWNED_HDL            m_copilotFreeroutingHdl;
+    std::string                m_jobId;
+    COPILOT_DSN_OWNED_HDL      m_copilotDsnHdl;
+    COPILOT_SETJOBID_OWNER_HDL m_copilotSetJobIdHdl;
+    COPILOT_GETJOBID_OWNED_HDL m_copilotGetJobIdHdl;
+    COPILOT_SPECC_OWNER_HDL    m_copilotSpeccHdl;
+    FREEROUTING_OWNED_HDL      m_copilotFreeroutingHdl;
 };
 
 #endif

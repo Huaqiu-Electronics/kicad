@@ -43,6 +43,7 @@
 #include <settings/webview_settings_manager.h>
 #include <webview_library/webview_library_aui_settings.h>
 #include <tool/actions.h>
+#include <utils/add_parameter_to_url.h>
 
 
 class WEBVIEW_LIBRARY_CONTAINER;
@@ -60,9 +61,11 @@ public:
 
     void WebViewLibraryInit()
     {
-        m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER( self()->GetHostVersionInfo(), self(),
-                                                            WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url(),
-                                                            { {}, self()->GetCopilotAgentActionHandle() } );
+        m_webSymbolChooser = new WEBVIEW_LIBRARY_CONTAINER(
+                self()->GetHostVersionInfo(), self(),
+                add_parameter_to_url( WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url(),
+                                      self()->GetHostVersionInfo() ),
+                { {}, self()->GetCopilotAgentActionHandle() } );
     }
 
     void InitWebViewLibraryAui()
