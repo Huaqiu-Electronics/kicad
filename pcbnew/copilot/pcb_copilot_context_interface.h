@@ -40,6 +40,8 @@
 #include <string>
 #include <board.h>
 #include <footprint.h>
+#include <utils/base64.hpp>
+#include <filesystem>
 
 
 template <>
@@ -90,6 +92,69 @@ copilot::BOARD_SELECTIONS PCB_EDIT_FRAME::GetSelection() const
 {
     return jsonify_pcb_items( GetToolManager()->GetTool<PCB_SELECTION_TOOL>()->GetSelection() );
 }
+
+
+template <>
+void PCB_COPILOT_PANEL_CONTAINER::GetDSNFileBase64Data(std::string& fileName, std::string& base64Data)
+{
+    wxFileName  fn = self()->GetBoard()->GetFileName();
+    fn.SetExt( FILEEXT::SpecctraDsnFileExtension );
+    wxString fullFileName = fn.GetAbsolutePath();
+    wxString baseName = fn.GetFullName();
+    fileName = baseName;
+
+    if(!self()->ExportSpecctraFile(fullFileName))
+    {
+        return ;
+    }
+
+    std::string filePath = fullFileName.ToStdString();
+    std::ifstream file(filePath, std::ios::in | std::ios::binary);
+
+    if(!file)
+    {
+        return ;
+    }
+
+    std::ostringstream  ss;
+    ss << file.rdbuf();
+    std::string context =  ss.str();
+    file.close();
+    base64Data = base64::to_base64( context );
+    return ;
+}
+
+
+
+template<>
+void PCB_COPILOT_PANEL_CONTAINER::ImportSpecctraBase64Data(const std::string& base64Data)
+{
+    std::string data = base64::from_base64(base64Data);
+    wxString boardFileName = self()->GetBoard()->GetFileName();
+    wxString boardPath;
+    wxString boardName;
+    wxString boardExt;
+    wxFileName::SplitPath( boardFileName, &boardPath, &boardName, &boardExt );
+    wxString sesName =  boardName + wxT( "." ) + wxString( FILEEXT::SpecctraSessionFileExtension );
+    wxString  sesPath = boardPath + boardName;
+
+    if(!sesPath.IsEmpty())
+    {
+        std::ofstream sesFile(sesPath.ToStdString().c_str());
+        sesFile << data;
+        sesFile.close();
+        std::filesystem::path  filepath(sesPath.ToStdString().data());
+
+        if(std::filesystem::exists(filepath))
+        {
+            self()->ImportSpecctraSession(sesPath);
+        }
+
+    }
+    
+    return;
+}
+
 
 
 #endif

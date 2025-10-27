@@ -42,7 +42,6 @@
 #include <api/api_place_component_cmd.h>
 #include <api/decode_base64_encoded_component.h>
 
-
 template <>
 void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {

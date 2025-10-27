@@ -28,7 +28,7 @@
 #include <nlohmann/json.hpp>
 #include <settings/preferred_size.h>
 #include <assistant/webview/internal/show_webview_window.h>
-
+#include <assistant/webview/internal/pcb_specc_job_data.h>
 
 using SHOW_MODAL = SHOW_WEBVIEW_WINDOW;
 
