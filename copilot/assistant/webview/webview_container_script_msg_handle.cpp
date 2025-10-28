@@ -54,6 +54,7 @@
 #include <common/dialog_image_viewer.h>
 #include <webview_library/dialog_add_component.h>
 #include <webview/launch_webview_dialog_param.h>
+#include <assistant/webview/internal/pcb_specc_job_data.h>
 
 
 void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
