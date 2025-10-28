@@ -117,14 +117,9 @@ inline auto recv_result( nng_socket& sock )
 
 inline auto nng_send( nng_socket& sock, std::string const& msg )
 {
-    for( auto i = 0; i < 3; i++ )
+    if( nng_send( sock, const_cast<char*>( msg.c_str() ), msg.length(), 0 ) == 0 )
     {
-        if( nng_send( sock, const_cast<char*>( msg.c_str() ), msg.length(), 0 ) == 0 )
-        {
-            return;
-        }
-
-        std::this_thread::sleep_for( std::chrono::milliseconds( REC_SEND_TIMEOUT_MS ) );
+        return;
     }
 
     wxLogDebug( "MCP Client Failed to send message: %s", msg );
