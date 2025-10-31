@@ -56,7 +56,7 @@ WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
 
 
     _webview_chat_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
-                                      _immutable_settings->copilot_webview_settings.path.guide );
+                                      _immutable_settings->copilot_webview_settings.path.chat );
 
     _webview_image_viewer_path = fmt::format( "{}/#{}", _immutable_settings->copilot_webview_settings.url,
                                               _immutable_settings->copilot_webview_settings.path.image_viewer );
