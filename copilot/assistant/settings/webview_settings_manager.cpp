@@ -209,7 +209,6 @@ void WEBVIEW_SETTINGS_MANAGER::clear_token()
 }
 
 
-
 bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 {
 #ifdef DEBUG
