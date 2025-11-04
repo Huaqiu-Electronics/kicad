@@ -69,6 +69,9 @@ enum class AGENT_ACTION_TYPE
     // open the footprint editor and load the footprint content
     edit_footprint_content,
 
+    //open the project zip in the current kicad
+    open_project_zip_achieve_in_current,
+
 
 };
 
