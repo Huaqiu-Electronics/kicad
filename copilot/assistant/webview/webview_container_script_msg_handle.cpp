@@ -26,8 +26,8 @@
 #include "webview_container_impl.h"
 #include "internal/modal_dialog/end_modal.h"
 #include "internal/modal_dialog/show_modal.h"
+#include "internal/upload_current_project_and_open_url.h"
 
-#include <memory>
 #include <string>
 #include <webview/webview_container.h>
 #include <settings/webview_settings_manager.h>
@@ -303,26 +303,27 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::free_routing_cancel:
             {
-                auto get_job_id_function = *(_impl->_host_copilot_handles.freerouting_handle.get_job_id_handle);
-                std::string job_id = get_job_id_function();;
-                const auto js_call = fmt::format( "window.free_routing_cancel( \"{}\" );", job_id.c_str());
-                wxString out;
-                const auto js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}", js_call.c_str() );
+                auto get_job_id_function = *( _impl->_host_copilot_handles.freerouting_handle.get_job_id_handle );
+                std::string job_id = get_job_id_function();
+                const auto  js_call = fmt::format( "window.free_routing_cancel( \"{}\" );", job_id.c_str() );
+                wxString    out;
+                const auto  js_script = fmt::format( "try {{ {}; }} catch (e) {{console.error('JS exception:', e);}}",
+                                                     js_call.c_str() );
                 RunScriptAsync( std::move( js_script ) );
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::load_ses_data:
             {
                 const auto content = cmd.data->get<PCB_Spec_Job_Data>();
-                auto& base64_data = content.data;
-                auto&  job_id = content.job_id;
-                auto set_job_id_function = *(_impl->_host_copilot_handles.freerouting_handle.set_job_id_handle);
-                set_job_id_function(job_id);
+                auto&      base64_data = content.data;
+                auto&      job_id = content.job_id;
+                auto       set_job_id_function = *( _impl->_host_copilot_handles.freerouting_handle.set_job_id_handle );
+                set_job_id_function( job_id );
 
-                if(!base64_data.empty())
+                if( !base64_data.empty() )
                 {
-                    auto import_spec_function = *(_impl->_host_copilot_handles.freerouting_handle.spec_handle);
-                    import_spec_function(base64_data);
+                    auto import_spec_function = *( _impl->_host_copilot_handles.freerouting_handle.spec_handle );
+                    import_spec_function( base64_data );
                 }
 
                 break;
@@ -330,22 +331,29 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             case WEB_HOST_INTERNAL_CMD_TYPE::free_routing_start:
             {
                 std::string file_name, data;
-                int draw_time = 5;
+                int         draw_time = 5;
 
-                if(cmd.data.has_value())
+                if( cmd.data.has_value() )
                 {
-
-                    if(cmd.data->contains("drawtime"))
+                    if( cmd.data->contains( "drawtime" ) )
                     {
                         draw_time = cmd.data.value()["drawtime"];
                     }
-                    
                 }
 
-                auto dsn_function = *(_impl->_host_copilot_handles.freerouting_handle.dsn_handle);
-                dsn_function(file_name, data);
-                const auto js_call = fmt::format( "window.load_dsn_file( \"{}\",\"{}\",\"{}\" );" ,file_name.c_str(), data.c_str(), std::to_string(draw_time).c_str() );
+                auto dsn_function = *( _impl->_host_copilot_handles.freerouting_handle.dsn_handle );
+                dsn_function( file_name, data );
+                const auto js_call = fmt::format( "window.load_dsn_file( \"{}\",\"{}\",\"{}\" );", file_name.c_str(),
+                                                  data.c_str(), std::to_string( draw_time ).c_str() );
                 RunScriptAsync( std::move( js_call ) );
+                break;
+            }
+
+            case WEB_HOST_INTERNAL_CMD_TYPE::upload_current_project_and_open_url:
+            {
+                const auto content = cmd.data->get<UPLOAD_CURRENT_PROJECT_AND_OPEN_URL>();
+                const auto url = content.url;
+
                 break;
             }
             }
