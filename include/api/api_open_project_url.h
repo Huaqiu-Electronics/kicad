@@ -28,7 +28,12 @@
 
 #include <string>
 
+class KIWAY_PLAYER;
+
 void OpenProjectZipAchieveUrl( std::string const& aPrjZipUrl );
 
+void OpenProjectLaunchKiCad( const std::string& aPrjZipUrl );
+
+void OpenProjectInCurrentProcess(const std::string& aPrjZipUrl, KIWAY_PLAYER* kiway_player);
 
 #endif

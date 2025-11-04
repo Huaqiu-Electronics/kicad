@@ -235,7 +235,10 @@ public:
             }
             else if( "open_project_zip_achieve" == aAction.action )
             {
-                return OpenProjectZipAchieveUrl( context );
+                return OpenProjectLaunchKiCad(context);
+            }else if("open_project_zip_achieve_in_current" == aAction.action)
+            {
+                return OpenProjectInCurrentProcess(context, self());
             }
 
             wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
