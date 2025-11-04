@@ -39,6 +39,8 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     open_url_in_webview_dialog,
     upload_current_project_and_open_url,
 
+    close_current_window,
+
     // Adding design block is handled in the agent API in the schematic
     // add_design_block,
     finish_adding_design_block,

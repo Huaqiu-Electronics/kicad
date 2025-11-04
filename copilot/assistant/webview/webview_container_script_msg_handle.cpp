@@ -356,6 +356,11 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
                 break;
             }
+            case WEB_HOST_INTERNAL_CMD_TYPE::close_current_window:
+            {
+                Close();
+                break;
+            }
             }
             break;
         }
