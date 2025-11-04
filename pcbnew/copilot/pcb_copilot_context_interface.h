@@ -127,7 +127,7 @@ void PCB_COPILOT_PANEL_CONTAINER::GetDSNFileBase64Data(std::string& fileName, st
 
 
 template<>
-void PCB_COPILOT_PANEL_CONTAINER::ImportSpecctraBase64Data(const std::string& base64Data)
+void PCB_COPILOT_PANEL_CONTAINER::ImportSpectraBase64Data(const std::string& base64Data)
 {
     std::string data = base64::from_base64(base64Data);
     wxString boardFileName = self()->GetBoard()->GetFileName();

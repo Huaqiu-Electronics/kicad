@@ -313,7 +313,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::load_ses_data:
             {
-                const auto content = cmd.data->get<PCB_Specc_Job_Data>();
+                const auto content = cmd.data->get<PCB_Spec_Job_Data>();
                 auto& base64_data = content.data;
                 auto&  job_id = content.job_id;
                 auto set_job_id_function = *(_impl->_host_copilot_handles.freerouting_handle.set_job_id_handle);
@@ -321,8 +321,8 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
                 if(!base64_data.empty())
                 {
-                    auto import_specc_function = *(_impl->_host_copilot_handles.freerouting_handle.specc_handle);
-                    import_specc_function(base64_data);
+                    auto import_spec_function = *(_impl->_host_copilot_handles.freerouting_handle.spec_handle);
+                    import_spec_function(base64_data);
                 }
 
                 break;

@@ -30,11 +30,11 @@
 #include <settings/preferred_size.h>
 #include <settings/preferred_pos.h>
 
-struct PCB_Specc_Job_Data
+struct PCB_Spec_Job_Data
 {
     std::string   data;
     std::string   job_id;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PCB_Specc_Job_Data, data, job_id)
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PCB_Spec_Job_Data, data, job_id)
 };
 
 

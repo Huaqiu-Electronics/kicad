@@ -144,6 +144,7 @@
 #include "../scripting/python_scripting.h"
 
 #include <wx/filedlg.h>
+#include <copilot/pcb_copilot_panel_init.h>
 
 using namespace std::placeholders;
 
@@ -3213,7 +3214,6 @@ void PCB_EDIT_FRAME::onPluginAvailabilityChanged( wxCommandEvent& aEvt )
     aEvt.Skip();
 }
 #endif
-
 
 void PCB_EDIT_FRAME::SwitchLayer( PCB_LAYER_ID layer )
 {

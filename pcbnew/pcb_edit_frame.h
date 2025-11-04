@@ -920,6 +920,26 @@ public:
     friend PCB_COPILOT_PANEL_CONTAINER;
     friend FAB_INFO_GETTER_PCB;
     friend PCB_WEBVIEW_LIBRARY_PANEL_CONTAINER;
+
+
+    //freerouting
+private:
+    void CopilotPanelInit();
+
+    void SetJobId( const std::string& jobId ) { m_jobId = jobId; }
+
+    std::string GetJobId() { return m_jobId; }
+
+private:
+    
+    std::string                m_jobId;
+    COPILOT_DSN_OWNED_HDL      m_copilotDsnHdl;
+    COPILOT_SETJOBID_OWNER_HDL m_copilotSetJobIdHdl;
+    COPILOT_GETJOBID_OWNED_HDL m_copilotGetJobIdHdl;
+    COPILOT_SPEC_OWNER_HDL     m_copilotSpecHdl;
+    FREEROUTING_OWNED_HDL      m_copilotFreeroutingHdl;
+
+
 };
 
 #endif  // __PCB_EDIT_FRAME_H__

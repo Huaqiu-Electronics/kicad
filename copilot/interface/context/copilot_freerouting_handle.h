@@ -42,7 +42,7 @@ using COPILOT_SETJOBID_OWNER_HDL = std::shared_ptr<std::function<void(const std:
 using GETJOBID_HDL_T = std::function<std::string()>;
 using COPILOT_GETJOBID_OWNED_HDL = std::shared_ptr<std::function<std::string()>>;
 
-using SPECC_HDL_T = std::function<void(const std::string&)>;
-using COPILOT_SPECC_OWNER_HDL = std::shared_ptr<std::function<void(const std::string&)>>;
+using SPEC_HDL_T = std::function<void(const std::string&)>;
+using COPILOT_SPEC_OWNER_HDL = std::shared_ptr<std::function<void(const std::string&)>>;
 
 #endif
