@@ -1,5 +1,6 @@
 add_library(assistant SHARED
 
+    api/upload_project.cpp
     auth/dialog_login_base.cpp
     auth/dialog_login_webview.cpp
     auth/dialog_note.cpp
