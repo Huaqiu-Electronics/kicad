@@ -27,6 +27,7 @@
 
 
 #include "webview_library/webview_library_caption.h"
+#include "webview_library/webview_library_settings.h"
 #include <webview_library/webview_library_container.h>
 #include <tool/action_toolbar.h>
 #include <fmt/format.h>
@@ -66,6 +67,8 @@ public:
                 add_parameter_to_url( WEBVIEW_SETTINGS_MANAGER::get_instance().get_library_url(),
                                       self()->GetHostVersionInfo() ),
                 { {}, self()->GetCopilotAgentActionHandle() } );
+
+        m_webViewLibrarySettings = &self()->config()->m_WebViewLibrarySettings;
     }
 
     void InitWebViewLibraryAui()
@@ -116,26 +119,26 @@ public:
         {
             if( web_pane.IsFloating() )
             {
-                web_pane.FloatingSize( self()->config()->m_WebViewLibrarySettings.panel_float_width,
-                                       self()->config()->m_WebViewLibrarySettings.panel_float_height );
+                web_pane.FloatingSize( m_webViewLibrarySettings->panel_float_width,
+                                       m_webViewLibrarySettings->panel_float_height );
                 m_auiMgr.Update();
             }
-            else if( self()->config()->m_WebViewLibrarySettings.panel_docked_width > 0 )
+            else if( m_webViewLibrarySettings->panel_docked_width > 0 )
             {
                 // SetAuiPaneSize also updates m_auimgr
-                SetAuiPaneSize( m_auiMgr, web_pane, self()->config()->m_WebViewLibrarySettings.panel_docked_width, -1 );
+                SetAuiPaneSize( m_auiMgr, web_pane, m_webViewLibrarySettings->panel_docked_width, -1 );
             }
         }
         else
         {
             if( web_pane.IsFloating() )
             {
-                self()->config()->m_WebViewLibrarySettings.panel_float_width = web_pane.floating_size.x;
-                self()->config()->m_WebViewLibrarySettings.panel_float_height = web_pane.floating_size.y;
+                m_webViewLibrarySettings->panel_float_width = web_pane.floating_size.x;
+                m_webViewLibrarySettings->panel_float_height = web_pane.floating_size.y;
             }
             else
             {
-                self()->config()->m_WebViewLibrarySettings.panel_docked_width = m_webSymbolChooser->GetSize().x;
+                m_webViewLibrarySettings->panel_docked_width = m_webSymbolChooser->GetSize().x;
             }
 
             m_auiMgr.Update();
@@ -146,11 +149,13 @@ public:
     {
         if( m_webSymbolChooser )
         {
-            auto& webPane = m_auiMgr.GetPane( WebviewLibraryName() );
-            webPane.Show( self()->config()->m_WebViewLibrarySettings.panel_show );
-            if( self()->config()->m_WebViewLibrarySettings.panel_show )
+            auto&      webPane = m_auiMgr.GetPane( WebviewLibraryName() );
+            const auto show = m_webViewLibrarySettings->panel_show;
+            webPane.Show( show );
+
+            if( show )
             {
-                SetAuiPaneSize( m_auiMgr, webPane, self()->config()->m_WebViewLibrarySettings.panel_docked_width, -1 );
+                SetAuiPaneSize( m_auiMgr, webPane, m_webViewLibrarySettings->panel_docked_width, -1 );
             }
         }
     }
@@ -160,21 +165,24 @@ public:
     {
         if( m_webSymbolChooser )
         {
-            auto& webPane = m_auiMgr.GetPane( WebviewLibraryName() );
-            self()->config()->m_WebViewLibrarySettings.panel_show = webPane.IsShown();
+            auto&      webPane = m_auiMgr.GetPane( WebviewLibraryName() );
+            const auto show = webPane.IsShown();
+            m_webViewLibrarySettings->panel_show = show;
 
             if( webPane.IsDocked() )
-                self()->config()->m_WebViewLibrarySettings.panel_docked_width = m_webSymbolChooser->GetSize().x;
+                m_webViewLibrarySettings->panel_docked_width = m_webSymbolChooser->GetSize().x;
             else
             {
-                self()->config()->m_WebViewLibrarySettings.panel_float_height = webPane.floating_size.y;
-                self()->config()->m_WebViewLibrarySettings.panel_float_width = webPane.floating_size.x;
+                m_webViewLibrarySettings->panel_float_height = webPane.floating_size.y;
+                m_webViewLibrarySettings->panel_float_width = webPane.floating_size.x;
             }
         }
     }
 
 protected:
     WEBVIEW_LIBRARY_CONTAINER* m_webSymbolChooser;
+    // Shortcut to the app settings
+    WEBVIEW_LIBRARY_SETTINGS* m_webViewLibrarySettings;
 };
 
 #endif
