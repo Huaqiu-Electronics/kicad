@@ -36,7 +36,7 @@
 #include "webview_library_caption.h"
 inline auto WebviewLibraryName()
 {
-    return ( "Library" );
+    return ( "HQ_Online_Library" );
 }
 
 
