@@ -50,11 +50,12 @@
 #include <tool/tool_manager.h>
 #include <utils/random_substring.h>
 #include <utils/add_parameter_to_url.h>
+#include <context/copilot_project_holder.h>
 
 
 template <class Derived, class ContextT>
 
-class COPILOT_PANEL_CONTAINER
+class COPILOT_PANEL_CONTAINER : public COPILOT_PROJECT_HOLDER
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
@@ -106,7 +107,7 @@ public:
 
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
                 m_hostVersionInfo, self(), add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
-                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl} ); //m_copilotDsnHdl
+                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } ); //m_copilotDsnHdl
 
         m_copilotContextCache.host_version_info = m_hostVersionInfo;
     }
@@ -235,10 +236,11 @@ public:
             }
             else if( "open_project_zip_achieve" == aAction.action )
             {
-                return OpenProjectLaunchKiCad(context);
-            }else if("open_project_zip_achieve_in_current" == aAction.action)
+                return OpenProjectLaunchKiCad( context );
+            }
+            else if( "open_project_zip_achieve_in_current" == aAction.action )
             {
-                return OpenProjectInCurrentProcess(context, self());
+                return OpenProjectInCurrentProcess( context, self() );
             }
 
             wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
@@ -269,11 +271,17 @@ public:
 
     auto GetHostVersionInfo() const { return m_hostVersionInfo; }
 
+
+    wxString GetProjectPath() const override { return self()->Prj().GetProjectPath(); }
+
+    wxString GetProjectDirectory() const override { return self()->Prj().GetProjectPath(); }
+
+    wxString GetProjectName() const override { return self()->Prj().GetProjectPath(); }
+
     //freerouting
     void GetDSNFileBase64Data( std::string& filename, std::string& base64Data ) { return; }
 
     void ImportSpectraBase64Data( const std::string& base64Data ) { return; }
-
 
 
 protected:
@@ -287,8 +295,6 @@ protected:
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
     std::string                      m_chat_id = random_substring();
     HOST_VERSION_INFO                m_hostVersionInfo;
-
-
 };
 
 #endif

@@ -36,12 +36,14 @@
 class wxWebView;
 class DIALOG_WEBVIEW;
 class DIALOG_IMAGE_VIEWER;
+class COPILOT_PROJECT_HOLDER;
 
 struct WEBVIEW_CONTAINER_IMPL
 {
-    std::set<std::string> _consumed_global_ctx_keys{};
-    DIALOG_IMAGE_VIEWER*  _image_viewer{};
-    DIALOG_WEBVIEW*       _ecad_viewer{};
+    std::set<std::string>   _consumed_global_ctx_keys{};
+    DIALOG_IMAGE_VIEWER*    _image_viewer{};
+    DIALOG_WEBVIEW*         _ecad_viewer{};
+    COPILOT_PROJECT_HOLDER* _project_holder{};
 
     wxWebView*                             _browser;
     HOST_COPILOT_HANDLES                   _host_copilot_handles;
