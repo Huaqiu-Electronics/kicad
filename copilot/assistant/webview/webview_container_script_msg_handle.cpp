@@ -23,6 +23,8 @@
  */
 
 
+#include "internal/show_webview_window.h"
+#include "utils/add_parameter_to_url.h"
 #include "webview_container_impl.h"
 #include "internal/modal_dialog/end_modal.h"
 #include "internal/modal_dialog/show_modal.h"
@@ -55,10 +57,28 @@
 #include <webview_library/dialog_add_component.h>
 #include <webview/launch_webview_dialog_param.h>
 #include <assistant/webview/internal/pcb_specc_job_data.h>
-
+#include <api/upload_project.h>
+#include <context/copilot_project_holder.h>
+#include <utils/wstring_to_string.h>
 
 void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 {
+    auto show_webview_window = [&]( SHOW_WEBVIEW_WINDOW const& show_window )
+    {
+        if( auto win = _impl->webview_windows.find( show_window.key ); win != _impl->webview_windows.end() )
+        {
+            delete win->second;
+        }
+
+        const auto pos = show_window.pos ? wxPoint{ show_window.pos->x, show_window.pos->y } : wxDefaultPosition;
+        auto       webview_win = new DIALOG_WEBVIEW( _impl->host_version_info, GetParent(), show_window.title,
+                                                     show_window.key, { show_window.size.width, show_window.size.height },
+                                                     pos, wxID_ANY, _impl->_host_copilot_handles, this );
+
+        _impl->webview_windows[show_window.key] = webview_win;
+        webview_win->LoadUrl( show_window.url );
+        webview_win->Show();
+    };
     try
     {
         const auto act_container = nlohmann::json::parse( msg ).get<PASSIVE_ACTION_CONTAINER>();
@@ -282,23 +302,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
             case WEB_HOST_INTERNAL_CMD_TYPE::show_webview_window:
             {
-                const auto show_window = cmd.data->get<SHOW_WEBVIEW_WINDOW>();
-
-                if( auto win = _impl->webview_windows.find( show_window.key ); win != _impl->webview_windows.end() )
-                {
-                    delete win->second;
-                }
-
-                const auto pos =
-                        show_window.pos ? wxPoint{ show_window.pos->x, show_window.pos->y } : wxDefaultPosition;
-                auto webview_win =
-                        new DIALOG_WEBVIEW( _impl->host_version_info, GetParent(), show_window.title, show_window.key,
-                                            { show_window.size.width, show_window.size.height }, pos, wxID_ANY,
-                                            _impl->_host_copilot_handles, this );
-
-                _impl->webview_windows[show_window.key] = webview_win;
-                webview_win->LoadUrl( show_window.url );
-                webview_win->Show();
+                show_webview_window( cmd.data->get<SHOW_WEBVIEW_WINDOW>() );
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::free_routing_cancel:
@@ -351,8 +355,27 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 
             case WEB_HOST_INTERNAL_CMD_TYPE::upload_current_project_and_open_url:
             {
-                const auto content = cmd.data->get<UPLOAD_CURRENT_PROJECT_AND_OPEN_URL>();
+                auto       content = cmd.data->get<UPLOAD_CURRENT_PROJECT_AND_OPEN_URL>();
                 const auto url = content.url;
+
+                if( !_impl->_project_holder )
+                {
+                    wxLogError( "No project holder available" );
+                    return;
+                }
+
+                if( auto zip_url = upload_project( wxString2String( _impl->_project_holder->GetProjectDirectory() ) ) )
+                {
+                    auto final_url =
+                            add_parameter_to_url( url, std::map<std::string, std::string>{ { "zip_url", *zip_url } } );
+                    content.url = final_url;
+                    show_webview_window( content );
+                }
+                else
+                {
+                    wxLogError( "Upload project failed" );
+                    return;
+                }
 
                 break;
             }

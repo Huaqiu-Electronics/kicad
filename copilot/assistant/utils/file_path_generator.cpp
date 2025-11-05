@@ -59,9 +59,15 @@ auto FILE_PATH_GENERATOR::get() -> FILE_PATH_GENERATOR&
     return instance;
 }
 
-auto FILE_PATH_GENERATOR::gen_tmp_file() -> std::string
+auto FILE_PATH_GENERATOR::gen_tmp_file( std::optional<std::string> aSuffix ) -> std::string
 {
     auto tmp_fn = ( wxFileName::GetTempDir() + wxFileName::GetPathSeparator() + generate_uuid() ).ToStdString();
+
+    if( aSuffix.has_value() )
+    {
+        tmp_fn += aSuffix.value();
+    }
+
     record_for_cleanup( tmp_fn );
     return tmp_fn;
 }

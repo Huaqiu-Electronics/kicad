@@ -26,6 +26,7 @@
 #define FILE_PATH_GENERATOR_H
 
 #include <copilot_global.h>
+#include <optional>
 #include <string>
 #include <vector>
 #include <mutex>
@@ -45,7 +46,8 @@ public:
 
     auto record_for_cleanup( std::string const& aPath ) -> void;
 
-    auto gen_tmp_file() -> std::string;
+    // Generate a temporary file , with aSuffix if provided e.g. .zip
+    auto gen_tmp_file(std::optional<std::string> aSuffix = std::nullopt) -> std::string;
 
     auto gen_tmp_dir() -> std::string;
 };
