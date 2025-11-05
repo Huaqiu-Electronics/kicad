@@ -55,6 +55,7 @@
 #include <utils/send_data_buried_point.h>
 #include <utils/query_string_cache_busting.h>
 #include <settings/copilot_config_version.h>
+#include <context/copilot_project_holder.h>
 
 using json = nlohmann::json;
 
@@ -82,6 +83,29 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
     _impl->host_version_info = host_version_info;
+
+
+    _impl->_project_holder = ([=] () mutable -> COPILOT_PROJECT_HOLDER* {
+
+        COPILOT_PROJECT_HOLDER* holder {};
+
+        while (!holder){
+
+            holder = dynamic_cast<COPILOT_PROJECT_HOLDER*>(parent);
+
+            if( holder )
+                return holder;
+
+            if(parent)
+                parent = parent->GetParent();
+
+            if(!parent)
+                break;
+        }        
+
+        throw new std::runtime_error( "project holder not found" ) ;
+
+    })();
 
 
     auto top_sizer = new wxBoxSizer( wxVERTICAL );
