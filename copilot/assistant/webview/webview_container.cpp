@@ -101,9 +101,12 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
 
             if(!parent)
                 break;
-        }        
+        }
+#ifdef DEBUG
 
         throw new std::runtime_error( "project holder not found" ) ;
+        
+#endif // DEBUG
 
     })();
 
