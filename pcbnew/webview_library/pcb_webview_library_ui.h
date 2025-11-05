@@ -32,7 +32,7 @@ void PCB_WEBVIEW_LIBRARY_PANEL_CONTAINER::InitWebViewLibraryAui()
 {
     if( m_webSymbolChooser )
     {
-        m_auiMgr.AddPane( m_webSymbolChooser, DefaultWebviewLibraryPanelInfo( self() ).Layer( 5 ) );
+        m_auiMgr.AddPane( m_webSymbolChooser, DefaultWebviewLibraryPanelInfo( self() ).Layer( 6 ).Row( 1 ) );
     }
 }
 

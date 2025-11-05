@@ -33,7 +33,7 @@ void PCB_COPILOT_PANEL_CONTAINER::InitCopilotAui()
 {
     if( m_copilotPanel )
     {
-        m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ).Layer( 6 ) );
+        m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ).Layer( 6 ).Row( 0 ) );
         PCB_COPILOT_CURRENT_CHAT_ID::Get().SetChatId( GetChatId() );
     }
 }

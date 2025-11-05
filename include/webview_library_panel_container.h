@@ -91,7 +91,7 @@ public:
     {
         if( m_webSymbolChooser )
         {
-            wxAuiPaneInfo& web_panel_info = m_auiMgr.GetPane( m_webSymbolChooser );
+            wxAuiPaneInfo& web_panel_info = m_auiMgr.GetPane( WebviewLibraryName() );
             bool           is_shown = web_panel_info.IsShown();
             web_panel_info.Caption( GetWebviewLibraryCaption() );
             web_panel_info.Show( is_shown );
