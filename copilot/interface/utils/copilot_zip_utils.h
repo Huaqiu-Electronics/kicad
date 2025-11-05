@@ -34,7 +34,7 @@ public:
     COPILOT_ZIP_UTILS();
     ~COPILOT_ZIP_UTILS();
 
-    static bool zip( std::string const& zip_file_path, std::string const& directory_to_zip );
+    static bool zip( std::string const& output_zip, std::string const& input_directory );
 
 private:
 };

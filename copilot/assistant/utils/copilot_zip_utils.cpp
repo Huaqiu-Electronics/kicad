@@ -38,12 +38,12 @@ COPILOT_ZIP_UTILS::~COPILOT_ZIP_UTILS()
 }
 
 
-bool COPILOT_ZIP_UTILS::zip( std::string const& zip_file_path, std::string const& directory_to_zip )
+bool COPILOT_ZIP_UTILS::zip( std::string const& output_zip, std::string const& input_directory )
 {
-    zipFile zf = zipOpen( zip_file_path.c_str(), APPEND_STATUS_CREATE );
+    zipFile zf = zipOpen( output_zip.c_str(), APPEND_STATUS_CREATE );
     if( zf )
     {
-        for( const auto& entry : std::filesystem::directory_iterator( directory_to_zip ) )
+        for( const auto& entry : std::filesystem::directory_iterator( input_directory ) )
         {
             if( entry.is_regular_file() )
             {
