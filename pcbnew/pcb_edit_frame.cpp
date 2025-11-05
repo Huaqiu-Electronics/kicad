@@ -400,6 +400,9 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     // The selection filter doesn't need to grow in the vertical direction when docked
     m_auimgr.GetPane( "SelectionFilter" ).dock_proportion = 0;
 
+    LoadCopilotCnf();
+    LoadWebViewLibraryCnf();
+
     FinishAUIInitialization();
 
     if( aui_cfg.right_panel_width > 0 )
@@ -432,9 +435,6 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     }
 
     m_appearancePanel->SetTabIndex( aui_cfg.appearance_panel_tab );
-
-    LoadCopilotCnf();
-    LoadWebViewLibraryCnf();
 
     {
         m_layerPairSettings = std::make_unique<LAYER_PAIR_SETTINGS>();
