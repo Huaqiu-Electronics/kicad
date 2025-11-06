@@ -37,7 +37,7 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
     logout,
 
     open_url_in_webview_dialog,
-    upload_current_project_and_open_url,
+    upload_current_project_and_open_url_in_browser,
 
     close_current_window,
 
