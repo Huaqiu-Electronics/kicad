@@ -353,7 +353,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 break;
             }
 
-            case WEB_HOST_INTERNAL_CMD_TYPE::upload_current_project_and_open_url:
+            case WEB_HOST_INTERNAL_CMD_TYPE::upload_current_project_and_open_url_in_browser:
             {
                 auto       content = cmd.data->get<UPLOAD_CURRENT_PROJECT_AND_OPEN_URL>();
                 const auto url = content.url;
@@ -368,8 +368,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 {
                     auto final_url =
                             add_parameter_to_url( url, std::map<std::string, std::string>{ { "zip_url", *zip_url } } );
-                    content.url = final_url;
-                    show_webview_window( content );
+                    wxLaunchDefaultBrowser( final_url );
                 }
                 else
                 {
