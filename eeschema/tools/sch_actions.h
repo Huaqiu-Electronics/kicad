@@ -362,12 +362,5 @@ public:
     };
 
 
-    static TOOL_ACTION sdkPlaceNetlabel;
-
-    struct SDK_PLACE_NETLABEL_PARAMS
-    {
-        wxString net_name;
-        wxString designator;
-        int      pin_number{};
-    };
+    static TOOL_ACTION sdkPlaceNetlabels;
 };

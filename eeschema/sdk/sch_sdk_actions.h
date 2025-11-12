@@ -30,14 +30,15 @@
 #include <bitmaps.h>
 #include <sch_bitmap.h>
 #include <tool/tool_action.h>
+#include "sdk_place_netlabel_params.h"
 
 #undef _
 #define _( s ) s
 
-TOOL_ACTION SCH_ACTIONS::sdkPlaceNetlabel( TOOL_ACTION_ARGS()
-                                                   .Name( "eeschema.sdk.sdkPlaceNetlabel" )
-                                                   .Scope( AS_GLOBAL )
-                                                   .Flags( AF_ACTIVATE )
-                                                   .Parameter<SCH_ACTIONS::SDK_PLACE_NETLABEL_PARAMS>( {} ) );
+TOOL_ACTION SCH_ACTIONS::sdkPlaceNetlabels( TOOL_ACTION_ARGS()
+                                                    .Name( "eeschema.sdk.sdkPlaceNetlabels" )
+                                                    .Scope( AS_GLOBAL )
+                                                    .Flags( AF_ACTIVATE )
+                                                    .Parameter<SDK_PLACE_NETLABEL_PARAMS>( {} ) );
 
 #endif
