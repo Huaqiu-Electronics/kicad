@@ -45,7 +45,7 @@
 #include <chat/general_chat_cmd.h>
 #include <context/sch/details/sch_netlist.h>
 #include <fmt/format.h>
-#include <api/api_sch_placement_command.h>
+#include <api/api_sch_placement_cmd.h>
 #include <utils/wstring_to_string.h>
 #include <webview_library/dialog_add_design_block.h>
 #include <webview/launch_webview_dialog_param.h>
@@ -85,19 +85,19 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         }
         case AGENT_ACTION_TYPE::place_symbol_resource:
         {
-            self()->m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_RESOURCE_COMMAND>() );
+            self()->m_apiHandler->placeSymbol( aAction.context.get<PLACE_SYMBOL_RESOURCE_CMD>() );
             break;
         }
         case AGENT_ACTION_TYPE::place_symbol_content:
         {
-            const auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_COMMAND>();
+            const auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_CMD>();
             self()->m_apiHandler->placeSymbol( content.component, content.option );
             break;
         }
 
         case AGENT_ACTION_TYPE::place_base64_encoded_symbol:
         {
-            auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_COMMAND>();
+            auto content = aAction.context.get<PLACE_SYMBOL_CONTENT_CMD>();
             decode_base64_encoded_component( content.component );
             self()->m_apiHandler->placeSymbol( content.component, content.option );
             break;
@@ -105,7 +105,7 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::place_design_block_resource:
         {
-            self()->m_apiHandler->placeDesignBlock( aAction.context.get<PLACE_DESIGN_BLOCK_RESOURCE_COMMAND>() );
+            self()->m_apiHandler->placeDesignBlock( aAction.context.get<PLACE_DESIGN_BLOCK_RESOURCE_CMD>() );
             break;
         }
         case AGENT_ACTION_TYPE::place_design_block_content:
@@ -117,8 +117,8 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
 
         case AGENT_ACTION_TYPE::place_component_resource:
         {
-            self()->m_apiHandler->placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND{
-                    aAction.context.get<PLACE_COMPONENT_RESOURCE_COMMAND>().component } );
+            self()->m_apiHandler->placeSymbol(
+                    PLACE_SYMBOL_RESOURCE_CMD{ aAction.context.get<PLACE_COMPONENT_RESOURCE_COMMAND>().component } );
             break;
         }
         case AGENT_ACTION_TYPE::place_base64_encoded_component:
