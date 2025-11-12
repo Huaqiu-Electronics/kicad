@@ -31,6 +31,8 @@
 #include <sch_line_wire_bus_tool.h>
 #include <tool/tool_action.h>
 #include <copilot/sch_copilot_actions.h>
+#include <copilot/sch_copilot_actions.h>
+#include <sdk/sch_sdk_actions.h>
 
 // Actions, being statically-defined, require specialized I18N handling.  We continue to
 // use the _() macro so that string harvesting by the I18N framework doesn't have to be

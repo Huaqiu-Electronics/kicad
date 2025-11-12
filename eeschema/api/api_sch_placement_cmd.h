@@ -22,10 +22,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-// Intermediate interfaces decoupled from the protocol buffer.
-
-#ifndef API_SCH_PLACEMENT_COMMAND_H
-#define API_SCH_PLACEMENT_COMMAND_H
+#ifndef API_SCH_PLACEMENT_CMD_H
+#define API_SCH_PLACEMENT_CMD_H
 
 #include <api/api_design_resource.h>
 #include <api/api_design_content.h>
@@ -40,19 +38,19 @@ struct PLACE_SYMBOL_OPTION
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_OPTION, place_repeated_copies, place_all_units )
 };
 
-struct PLACE_SYMBOL_RESOURCE_COMMAND
+struct PLACE_SYMBOL_RESOURCE_CMD
 {
     COMPONENT_RESOURCE                 component;
     std::optional<PLACE_SYMBOL_OPTION> option;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_RESOURCE_COMMAND, component, option )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_RESOURCE_CMD, component, option )
 };
 
 
-struct PLACE_SYMBOL_CONTENT_COMMAND
+struct PLACE_SYMBOL_CONTENT_CMD
 {
     COMPONENT_CONTENT                  component;
     std::optional<PLACE_SYMBOL_OPTION> option;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_CONTENT_COMMAND, component, option )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_SYMBOL_CONTENT_CMD, component, option )
 };
 
 
@@ -64,12 +62,12 @@ struct PLACE_DESIGN_BLOCK_OPTION
 };
 
 
-struct PLACE_DESIGN_BLOCK_RESOURCE_COMMAND
+struct PLACE_DESIGN_BLOCK_RESOURCE_CMD
 {
     DESIGN_BLOCK_RESOURCE                    design_block;
     std::optional<PLACE_DESIGN_BLOCK_OPTION> option;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND, design_block, option )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PLACE_DESIGN_BLOCK_RESOURCE_CMD, design_block, option )
 };
 
 

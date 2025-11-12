@@ -338,4 +338,14 @@ public:
         bool     place_as_sheet = false;
         bool     keep_annotations = false;
     };
+
+
+    static TOOL_ACTION sdkPlaceNetlabel;
+
+    struct SDK_PLACE_NETLABEL_PARAMS
+    {
+        wxString net_name;
+        wxString designator;
+        int      pin_number{};
+    };
 };

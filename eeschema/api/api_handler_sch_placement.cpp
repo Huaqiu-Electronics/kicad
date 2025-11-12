@@ -24,7 +24,7 @@
 
 #include "api_sch_design_resource_mgr.h"
 #include <api/api_design_resource.h>
-#include "api_sch_placement_command.h"
+#include "api_sch_placement_cmd.h"
 #include <api/api_design_content.h>
 #include <optional>
 #include <sch_actions.h>
@@ -133,7 +133,7 @@ DESIGN_BLOCK_RESOURCE ConvertProtoToDesignBlockResource( const kiapi::common::ty
 } // namespace
 
 
-void API_HANDLER_SCH::placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND const& aCommand )
+void API_HANDLER_SCH::placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_CMD const& aCommand )
 {
     DESIGN_BLOCK_CONTENT design_block_content;
 
@@ -224,7 +224,7 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const&             
 }
 
 
-void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand )
+void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_CMD const& aCommand )
 {
     placeSymbol( API_DESIGN_RESOURCE_MGR::GetComponentConent( aCommand.component ), aCommand.option );
 }

@@ -43,11 +43,12 @@ class API_SCH_DESIGN_RESOURCE_MGR;
 
 struct COMPONENT_CONTENT;
 struct PLACE_SYMBOL_OPTION;
-struct PLACE_SYMBOL_RESOURCE_COMMAND;
+struct PLACE_SYMBOL_RESOURCE_CMD;
 
 struct DESIGN_BLOCK_CONTENT;
 struct PLACE_DESIGN_BLOCK_OPTION;
-struct PLACE_DESIGN_BLOCK_RESOURCE_COMMAND;
+struct PLACE_DESIGN_BLOCK_RESOURCE_CMD;
+struct API_SCH_PLACE_NETLABEL_CMD;
 
 class API_HANDLER_SCH : public API_HANDLER_EDITOR
 {
@@ -65,41 +66,40 @@ protected:
 
     bool validateDocumentInternal( const DocumentSpecifier& aDocument ) const override;
 
-    HANDLER_RESULT<std::unique_ptr<EDA_ITEM>> createItemForType( KICAD_T aType,
-                                                                 EDA_ITEM* aContainer );
+    HANDLER_RESULT<std::unique_ptr<EDA_ITEM>> createItemForType( KICAD_T aType, EDA_ITEM* aContainer );
 
-    HANDLER_RESULT<types::ItemRequestStatus> handleCreateUpdateItemsInternal( bool aCreate,
-            const std::string& aClientName,
-            const types::ItemHeader &aHeader,
-            const google::protobuf::RepeatedPtrField<google::protobuf::Any>& aItems,
-            std::function<void(commands::ItemStatus, google::protobuf::Any)> aItemHandler )
-            override;
+    HANDLER_RESULT<types::ItemRequestStatus> handleCreateUpdateItemsInternal(
+            bool aCreate, const std::string& aClientName, const types::ItemHeader& aHeader,
+            const google::protobuf::RepeatedPtrField<google::protobuf::Any>&   aItems,
+            std::function<void( commands::ItemStatus, google::protobuf::Any )> aItemHandler ) override;
 
     void deleteItemsInternal( std::map<KIID, ItemDeletionStatus>& aItemsToDelete,
-                              const std::string& aClientName ) override;
+                              const std::string&                  aClientName ) override;
 
-    std::optional<EDA_ITEM*> getItemFromDocument( const DocumentSpecifier& aDocument,
-                                                  const KIID& aId ) override;
+    std::optional<EDA_ITEM*> getItemFromDocument( const DocumentSpecifier& aDocument, const KIID& aId ) override;
 
 private:
-    HANDLER_RESULT<commands::GetOpenDocumentsResponse> handleGetOpenDocuments(
-            const HANDLER_CONTEXT<commands::GetOpenDocuments>& aCtx );
+    HANDLER_RESULT<commands::GetOpenDocumentsResponse>
+    handleGetOpenDocuments( const HANDLER_CONTEXT<commands::GetOpenDocuments>& aCtx );
 
     HANDLER_RESULT<Empty> handlePlaceDesignBlock( const HANDLER_CONTEXT<PlaceDesignBlock>& aCtx );
 
     HANDLER_RESULT<Empty> handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx );
 
-    SCH_EDIT_FRAME* m_frame;
+    SCH_EDIT_FRAME*                              m_frame;
     std::unique_ptr<API_SCH_DESIGN_RESOURCE_MGR> m_resourceMgr;
 
 public:
-    void placeSymbol( COMPONENT_CONTENT const& aComponent,  std::optional< PLACE_SYMBOL_OPTION> const& aOption );
+    void placeSymbol( COMPONENT_CONTENT const& aComponent, std::optional<PLACE_SYMBOL_OPTION> const& aOption );
 
-    void placeSymbol( PLACE_SYMBOL_RESOURCE_COMMAND const& aCommand );
+    void placeSymbol( PLACE_SYMBOL_RESOURCE_CMD const& aCommand );
 
-    void placeDesignBlock( DESIGN_BLOCK_CONTENT const& aDesignBlock ,std::optional<PLACE_DESIGN_BLOCK_OPTION> const& aOption );
+    void placeDesignBlock( DESIGN_BLOCK_CONTENT const&                     aDesignBlock,
+                           std::optional<PLACE_DESIGN_BLOCK_OPTION> const& aOption );
 
-    void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_COMMAND const& aCommand );
+    void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_CMD const& aCommand );
+
+    void placeNetlabel( API_SCH_PLACE_NETLABEL_CMD const& aCommand );
 };
 
 
