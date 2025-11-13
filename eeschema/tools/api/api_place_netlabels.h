@@ -26,10 +26,8 @@
 #define API_PLACE_NETLABELS_H
 
 #include "sch_sheet_path.h"
-#include <memory>
 
 #include <kiplatform/ui.h>
-#include <optional>
 #include <project_sch.h>
 #include <tools/sch_drawing_tools.h>
 #include <tools/sch_line_wire_bus_tool.h>
@@ -58,11 +56,73 @@
 #include <scoped_set_reset.h>
 #include <symbol_library.h>
 #include <eeschema_settings.h>
-
+#include <api/api_place_netlabel_params.h>
 #include <string_utils.h>
+#include <wx/string.h>
+
+static bool getPinConnectionPosition( SCH_SHEET_PATH& aSheet, const std::string& aDesignator, int aPinNum,
+                                      VECTOR2I* aPosition, SCH_SYMBOL** aSymbolOut )
+{
+    SCH_SCREEN* screen = aSheet.LastScreen();
+    for( SCH_ITEM* item : screen->Items().OfType( SCH_SYMBOL_T ) )
+    {
+        SCH_SYMBOL* sym = static_cast<SCH_SYMBOL*>( item );
+
+        if( sym->GetRef( &aSheet, true ).ToStdString() == aDesignator )
+        {
+            SCH_PIN* pin = sym->GetPin( wxString( wxString::Format( wxT( "%d" ), aPinNum ) ) );
+
+            if( pin )
+            {
+                *aPosition = pin->GetPosition();
+                if( aSymbolOut )
+                    *aSymbolOut = sym;
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 int SCH_DRAWING_TOOLS::apiPlaceNetlabels( const TOOL_EVENT& aEvent )
 {
+    const auto     params = aEvent.Parameter<API_PLACE_NETLABEL_PARAMS>();
+    SCH_SHEET_PATH current = m_frame->GetCurrentSheet();
+    SCH_SCREEN*    screen = current.LastScreen();
+
+    SCH_COMMIT commit( m_toolMgr );
+
+    int placed_count = 0;
+
+    for( const API_PLACE_NETLABEL_PIN& pin_data : params.pins )
+    {
+        VECTOR2I    pin_pos;
+        SCH_SYMBOL* symbol = nullptr;
+
+        if( !getPinConnectionPosition( current, pin_data.designator, pin_data.pin_num, &pin_pos, &symbol ) )
+        {
+            continue;
+        }
+
+        SCH_LABEL* newLabel = new SCH_LABEL();
+        newLabel->SetParent(symbol);
+
+        newLabel->SetText( params.net_name );
+        newLabel->SetPosition( pin_pos );
+        newLabel->SetHorizJustify( GR_TEXT_H_ALIGN_LEFT );
+        newLabel->SetVertJustify( GR_TEXT_V_ALIGN_CENTER );
+        newLabel->SetTextAngle( ANGLE_0 );
+        m_frame->AddToScreen( newLabel, screen );
+
+        commit.Added( newLabel, screen );
+        placed_count++;
+    }
+
+    if( placed_count > 0 )
+    {
+        commit.Push( wxString::Format( _( "Place %d Net Labels via API" ), placed_count ) );
+    }
+
     return 0;
 }
 

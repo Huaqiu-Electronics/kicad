@@ -3501,6 +3501,8 @@ void SCH_DRAWING_TOOLS::setTransitions()
     Go( &SCH_DRAWING_TOOLS::ImportGraphics,      SCH_ACTIONS::importGraphics.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::SyncSheetsPins,      SCH_ACTIONS::syncSheetPins.MakeEvent() );
     Go( &SCH_DRAWING_TOOLS::SyncAllSheetsPins,   SCH_ACTIONS::syncAllSheetsPins.MakeEvent() );
+    Go( &SCH_DRAWING_TOOLS::apiPlaceNetlabels,   SCH_ACTIONS::apiPlaceNetlabels.MakeEvent() );
+
     // clang-format on
 }
 
