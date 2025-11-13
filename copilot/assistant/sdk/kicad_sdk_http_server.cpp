@@ -32,6 +32,7 @@
 #include <filesystem>
 #include <nlohmann/json.hpp>
 #include <wx/log.h>
+#include <wx/panel.h>
 
 #if defined( _WIN32 )
 #include <windows.h>
@@ -121,9 +122,10 @@ void KICAD_SDK_HTTP_SERVER::Stop()
     remove_lock_file();
 }
 
-void KICAD_SDK_HTTP_SERVER::SetHandles( HOST_COPILOT_HANDLES const& aHandles )
+void KICAD_SDK_HTTP_SERVER::SetHandles( HOST_COPILOT_HANDLES const& aHandles, wxPanel* evtSink )
 {
     handles = aHandles;
+    _evtSink = evtSink;
 }
 
 KICAD_SDK_HTTP_SERVER::KICAD_SDK_HTTP_SERVER()
@@ -156,11 +158,16 @@ void KICAD_SDK_HTTP_SERVER::run_server()
                   try
                   {
                       auto params = json::parse( req.body );
-                      if( !handles.agent_action_handle.expired() )
-                      {
-                          auto context_function = handles.agent_action_handle.lock();
-                          ( *context_function )( params );
-                      }
+                      _evtSink->CallAfter(
+                              [=]
+                              {
+                                  if( !handles.agent_action_handle.expired() )
+                                  {
+                                      auto context_function = handles.agent_action_handle.lock();
+                                      ( *context_function )( params );
+                                  }
+                              } );
+
                       res.set_content( "{\"status\":\"ok\"}", "application/json" );
                   }
                   catch( std::exception& e )

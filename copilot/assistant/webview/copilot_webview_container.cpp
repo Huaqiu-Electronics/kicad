@@ -49,7 +49,7 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
 
     if( host_version_info.editor_name == magic_enum::enum_name( KICAD_COPILOT_EDITORS::schematic ) )
     {
-        KICAD_SDK_HTTP_SERVER::Instance().SetHandles( host_copilot_handles );
+        KICAD_SDK_HTTP_SERVER::Instance().SetHandles( host_copilot_handles, this );
         KICAD_SDK_HTTP_SERVER::Instance().Stop();
         KICAD_SDK_HTTP_SERVER::Instance().Start();
     }

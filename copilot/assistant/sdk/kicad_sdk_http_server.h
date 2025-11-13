@@ -31,7 +31,7 @@
 #include <memory>
 #include <host_copilot_handles.h>
 
-
+class wxPanel;
 struct KICAD_SDK_HTTP_SERVER_IMPL;
 class KICAD_SDK_HTTP_SERVER
 {
@@ -43,7 +43,7 @@ public:
     void Stop();
     bool IsRunning() const;
 
-    void SetHandles( HOST_COPILOT_HANDLES const& aHandles );
+    void SetHandles( HOST_COPILOT_HANDLES const& aHandles ,wxPanel* evtSink );
 
 private:
     KICAD_SDK_HTTP_SERVER();
@@ -55,6 +55,7 @@ private:
     std::thread          server_thread;
     HOST_COPILOT_HANDLES handles;
     std::unique_ptr<KICAD_SDK_HTTP_SERVER_IMPL> impl;
+    wxPanel* _evtSink;
 };
 
 #endif
