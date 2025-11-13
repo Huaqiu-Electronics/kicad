@@ -48,7 +48,7 @@ struct PLACE_SYMBOL_RESOURCE_CMD;
 struct DESIGN_BLOCK_CONTENT;
 struct PLACE_DESIGN_BLOCK_OPTION;
 struct PLACE_DESIGN_BLOCK_RESOURCE_CMD;
-struct API_SCH_PLACE_NETLABEL_CMD;
+struct API_PLACE_NETLABEL_PARAMS;
 
 class API_HANDLER_SCH : public API_HANDLER_EDITOR
 {
@@ -99,7 +99,7 @@ public:
 
     void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_CMD const& aCommand );
 
-    void placeNetlabel( API_SCH_PLACE_NETLABEL_CMD const& aCmd );
+    void placeNetlabels( API_PLACE_NETLABEL_PARAMS const& aParams );
 };
 
 
