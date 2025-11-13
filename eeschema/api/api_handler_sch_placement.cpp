@@ -42,6 +42,7 @@
 #include <api/api_design_resource.h>
 #include <wx/log.h>
 #include <fmt/format.h>
+#include "api_place_netlabel_params.h"
 
 
 using namespace kiapi::common::commands;
@@ -264,22 +265,7 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const&                  aCo
 }
 
 
-void API_HANDLER_SCH::placeNetlabel( API_SCH_PLACE_NETLABEL_CMD const& aCmd )
+void API_HANDLER_SCH::placeNetlabels( API_PLACE_NETLABEL_PARAMS const& aParams )
 {
-    // Trigger loading the lazy ininitialized project symbol library table.
-    // void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
-    // auto libSymbol = m_resourceMgr->SaveComponentToProject( aComponent );
-
-    // if( !libSymbol )
-    // {
-    //     wxLogError( "Failed to save component to project" );
-    //     return;
-    // }
-
-    // PICKED_SYMBOL pickedSymbol;
-    // pickedSymbol.LibId = libSymbol->GetLIB_ID();
-    // m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SYMBOL_PARAMS>(
-    //         SCH_ACTIONS::placeSymbol,
-    //         { new SCH_SYMBOL( *libSymbol, &m_frame->GetCurrentSheet(), pickedSymbol, {}, &m_frame->Schematic() ), true,
-    //           true } );
+    m_frame->GetToolManager()->RunAction( SCH_ACTIONS::apiPlaceNetlabels, aParams );
 }
