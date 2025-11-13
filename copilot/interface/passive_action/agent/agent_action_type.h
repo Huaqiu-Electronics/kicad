@@ -55,6 +55,8 @@ enum class AGENT_ACTION_TYPE
     place_design_block_content,
     add_design_block,
 
+    place_netlabels,
+
     PCB_EDITOR_BEGIN,
 
     launch_plugin,

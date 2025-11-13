@@ -52,6 +52,7 @@
 
 #include <api/decode_base64_encoded_component.h>
 #include <api/api_place_component_cmd.h>
+#include <api/api_place_netlabel_params.h>
 
 #include "sch_editor_control.h"
 #include "fmt_sch_selection_cmd.h"
@@ -156,6 +157,12 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
             DIALOG_ADD_DESIGN_BLOCK dialog( m_hostVersionInfo, self(), wxString2String( std::move( content ) ),
                                             { size.width, size.height } );
             dialog.ShowModal();
+            break;
+        }
+        case AGENT_ACTION_TYPE::place_netlabels:
+        {
+            auto cmd = aAction.context.get<API_PLACE_NETLABEL_PARAMS>();
+            self()->m_apiHandler->placeNetlabels( cmd );
             break;
         }
 
