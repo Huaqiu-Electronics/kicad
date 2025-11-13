@@ -76,6 +76,8 @@
 #include <wx/filedlg.h>
 #include <wx/msgdlg.h>
 
+#include "api/api_place_netlabels.h"
+
 SCH_DRAWING_TOOLS::SCH_DRAWING_TOOLS() :
         SCH_TOOL_BASE<SCH_EDIT_FRAME>( "eeschema.InteractiveDrawing" ),
         m_lastSheetPinType( LABEL_FLAG_SHAPE::L_INPUT ),

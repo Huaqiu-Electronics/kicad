@@ -22,23 +22,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SDK_PLACE_NETLABEL_PARAMS_H
-#define SDK_PLACE_NETLABEL_PARAMS_H
+#ifndef SCH_API_ACTIONS_H
+#define SCH_API_ACTIONS_H
 
-#include <nlohmann/json.hpp>
+#include <sch_actions.h>
 
-struct SDK_PLACE_NETLABEL_PIN
-{
-    std::string designator;
-    int         pin_num;
+#include <bitmaps.h>
+#include <sch_bitmap.h>
+#include <tool/tool_action.h>
+#include "api_place_netlabel_params.h"
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SDK_PLACE_NETLABEL_PIN, designator, pin_num )
-};
-struct SDK_PLACE_NETLABEL_PARAMS
-{
-    std::string                       net_name;
-    std::list<SDK_PLACE_NETLABEL_PIN> pins;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SDK_PLACE_NETLABEL_PARAMS, net_name, pins )
-};
+#undef _
+#define _( s ) s
+
+TOOL_ACTION SCH_ACTIONS::apiPlaceNetlabels( TOOL_ACTION_ARGS()
+                                                    .Name( "eeschema.api.apiPlaceNetlabels" )
+                                                    .Scope( AS_GLOBAL )
+                                                    .Flags( AF_ACTIVATE )
+                                                    .Parameter<API_PLACE_NETLABEL_PARAMS>( {} ) );
+
 
 #endif

@@ -99,7 +99,7 @@ public:
 
     void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_CMD const& aCommand );
 
-    void placeNetlabel( API_SCH_PLACE_NETLABEL_CMD const& aCommand );
+    void placeNetlabel( API_SCH_PLACE_NETLABEL_CMD const& aCmd );
 };
 
 

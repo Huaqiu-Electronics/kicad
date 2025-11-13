@@ -340,5 +340,5 @@ public:
     };
 
 
-    static TOOL_ACTION sdkPlaceNetlabels;
+    static TOOL_ACTION apiPlaceNetlabels;
 };

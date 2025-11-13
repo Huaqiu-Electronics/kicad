@@ -22,23 +22,48 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SCH_SDK_ACTIONS_H
-#define SCH_SDK_ACTIONS_H
+#ifndef API_PLACE_NETLABELS_H
+#define API_PLACE_NETLABELS_H
 
+#include "sch_sheet_path.h"
+#include <memory>
+
+#include <kiplatform/ui.h>
+#include <optional>
+#include <project_sch.h>
+#include <tools/sch_drawing_tools.h>
+#include <tools/sch_line_wire_bus_tool.h>
+#include <tools/sch_selection_tool.h>
+#include <tools/ee_grid_helper.h>
 #include <sch_actions.h>
+#include <sch_tool_utils.h>
+#include <sch_edit_frame.h>
+#include <pgm_base.h>
+#include <eeschema_id.h>
+#include <confirm.h>
+#include <view/view_controls.h>
+#include <view/view.h>
+#include <sch_symbol.h>
+#include <sch_no_connect.h>
+#include <sch_line.h>
+#include <sch_junction.h>
+#include <sch_bus_entry.h>
+#include <sch_rule_area.h>
+#include <sch_text.h>
+#include <sch_sheet.h>
+#include <sch_sheet_pin.h>
+#include <sch_label.h>
+#include <schematic.h>
+#include <sch_commit.h>
+#include <scoped_set_reset.h>
+#include <symbol_library.h>
+#include <eeschema_settings.h>
 
-#include <bitmaps.h>
-#include <sch_bitmap.h>
-#include <tool/tool_action.h>
-#include "sdk_place_netlabel_params.h"
+#include <string_utils.h>
 
-#undef _
-#define _( s ) s
-
-TOOL_ACTION SCH_ACTIONS::sdkPlaceNetlabels( TOOL_ACTION_ARGS()
-                                                    .Name( "eeschema.sdk.sdkPlaceNetlabels" )
-                                                    .Scope( AS_GLOBAL )
-                                                    .Flags( AF_ACTIVATE )
-                                                    .Parameter<SDK_PLACE_NETLABEL_PARAMS>( {} ) );
+int SCH_DRAWING_TOOLS::apiPlaceNetlabels( const TOOL_EVENT& aEvent )
+{
+    return 0;
+}
 
 #endif
