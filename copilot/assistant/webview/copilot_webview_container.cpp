@@ -24,6 +24,7 @@
 
 #include "webview/copilot_webview_container.h"
 #include "copilot_webview_container_impl.h"
+#include "host_version_info.h"
 
 #include <fmt/format.h>
 #include <magic_enum.hpp>
@@ -35,6 +36,8 @@
 #include <utils/httplib_wrapper.h>
 #include <webview/webview_functions.h>
 #include <wx/utils.h>
+#include <kicad_copilot_editors.h>
+#include <sdk/kicad_sdk_http_server.h>
 
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent,
                                                       std::string url, HOST_COPILOT_HANDLES host_copilot_handles ) :
@@ -43,6 +46,14 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
 {
     // TODO: Enable MCP client
 #if defined( IS_RC_BUILD )
+
+    if( host_version_info.editor_name == magic_enum::enum_name( KICAD_COPILOT_EDITORS::schematic ) )
+    {
+        KICAD_SDK_HTTP_SERVER::Instance().SetHandles( host_copilot_handles );
+        KICAD_SDK_HTTP_SERVER::Instance().Stop();
+        KICAD_SDK_HTTP_SERVER::Instance().Start();
+    }
+
 
     auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
     _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url );

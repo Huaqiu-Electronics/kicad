@@ -25,6 +25,8 @@ add_library(assistant SHARED
     quote/smt_quote.cpp
     quote/quote_controller.cpp
 
+    sdk/kicad_sdk_http_server.cpp
+
     settings/site_env_mgr.cpp
     settings/webview_settings_manager.cpp
 

@@ -56,7 +56,6 @@
 #include <utils/query_string_cache_busting.h>
 #include <settings/copilot_config_version.h>
 #include <context/copilot_project_holder.h>
-
 using json = nlohmann::json;
 
 
@@ -79,7 +78,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
         wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
-    _impl->_host_copilot_handles = std::move( host_copilot_handles );
+    _impl->_host_copilot_handles = host_copilot_handles;
     _impl->_primary_url = std::move( url );
     _impl->_browser = wxWebView::New();
     _impl->host_version_info = host_version_info;
@@ -105,7 +104,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
 #ifdef DEBUG
 
         throw new std::runtime_error( "project holder not found" ) ;
-        
+
 #endif // DEBUG
 
     })();
@@ -165,6 +164,7 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 #endif
 
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( this );
+
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
