@@ -262,3 +262,24 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const&                  aCo
             { new SCH_SYMBOL( *libSymbol, &m_frame->GetCurrentSheet(), pickedSymbol, {}, &m_frame->Schematic() ), true,
               true } );
 }
+
+
+void API_HANDLER_SCH::placeNetlabel( API_SCH_PLACE_NETLABEL_CMD const& aCmd )
+{
+    // Trigger loading the lazy ininitialized project symbol library table.
+    // void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
+    // auto libSymbol = m_resourceMgr->SaveComponentToProject( aComponent );
+
+    // if( !libSymbol )
+    // {
+    //     wxLogError( "Failed to save component to project" );
+    //     return;
+    // }
+
+    // PICKED_SYMBOL pickedSymbol;
+    // pickedSymbol.LibId = libSymbol->GetLIB_ID();
+    // m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SYMBOL_PARAMS>(
+    //         SCH_ACTIONS::placeSymbol,
+    //         { new SCH_SYMBOL( *libSymbol, &m_frame->GetCurrentSheet(), pickedSymbol, {}, &m_frame->Schematic() ), true,
+    //           true } );
+}

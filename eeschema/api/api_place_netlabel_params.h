@@ -22,11 +22,22 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef API_SCH_PLACE_NETLABEL_CMD_H
-#define API_SCH_PLACE_NETLABEL_CMD_H
+#ifndef API_PLACE_NETLABEL_PARAMS_H
+#define API_PLACE_NETLABEL_PARAMS_H
 
-struct API_SCH_PLACE_NETLABEL_CMD
+#include <nlohmann/json.hpp>
+
+struct API_PLACE_NETLABEL_PIN
 {
-};
+    std::string designator;
+    int         pin_num;
 
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( API_PLACE_NETLABEL_PIN, designator, pin_num )
+};
+struct API_PLACE_NETLABEL_PARAMS
+{
+    std::string                       net_name;
+    std::list<API_PLACE_NETLABEL_PIN> pins;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( API_PLACE_NETLABEL_PARAMS, net_name, pins )
+};
 #endif

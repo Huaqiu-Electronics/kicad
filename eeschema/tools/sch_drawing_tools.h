@@ -125,6 +125,10 @@ private:
     bool                                    m_inDrawingTool; // Re-entrancy guard
     std::unique_ptr<STATUS_TEXT_POPUP>      m_statusPopup;
     std::unique_ptr<DIALOG_SYNC_SHEET_PINS> m_dialogSyncSheetPin;
+
+
+public:
+    int apiPlaceNetlabels( const TOOL_EVENT& aEvent );
 };
 
 #endif /* SCH_DRAWING_TOOLS_H */
