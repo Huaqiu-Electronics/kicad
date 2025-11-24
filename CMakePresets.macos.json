@@ -1,0 +1,34 @@
+{
+    "version": 9,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "toolchainFile": "/Users/admin/code/kicad-mac-builder/toolchain/kicad-mac-builder.cmake",
+            "cacheVariables": {
+                "KICAD_BUILD_QA_TESTS": "OFF",
+                "KICAD_BUILD_I18N": "ON"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "description": "Sets debug build type",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "description": "Sets release build type",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        }
+    ]
+}
