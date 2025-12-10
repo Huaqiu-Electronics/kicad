@@ -39,9 +39,19 @@
 #include <kicad_copilot_editors.h>
 #include <sdk/kicad_sdk_http_server.h>
 
+#if defined( IS_PORTABLE )
+
+constexpr auto kDataBuriedPoint = "kicad_client_copilot_launch_portable";
+
+#else
+
+constexpr auto kDataBuriedPoint = "kicad_client_copilot_launch";
+
+#endif
+
 COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent,
                                                       std::string url, HOST_COPILOT_HANDLES host_copilot_handles ) :
-        WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, "kicad_client_copilot_launch" ),
+        WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, kDataBuriedPoint ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
     // TODO: Enable MCP client
