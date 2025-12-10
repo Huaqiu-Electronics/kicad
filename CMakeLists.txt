@@ -1271,9 +1271,16 @@ add_subdirectory( libs )
 add_subdirectory( scripting )
 add_subdirectory( common )
 
-# The pre-release build use a different online environment
+
+# The pre-release build use a different online environment and beta features
+option(IS_RC_BUILD, "Build a release candidate build" OFF)
 if(IS_RC_BUILD)
     add_compile_definitions(IS_RC_BUILD)
+endif()
+
+option(IS_PORTABLE "Should the release be deployed as a portable build?" OFF)
+if(IS_PORTABLE)
+    add_compile_definitions(IS_PORTABLE)
 endif()
 
 add_subdirectory( copilot )
