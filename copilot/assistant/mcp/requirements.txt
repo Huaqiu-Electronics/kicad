@@ -1,0 +1,8 @@
+numpy
+pillow
+six
+requests
+wheel
+mcp-agent
+pynng
+openai
