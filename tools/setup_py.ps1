@@ -36,4 +36,5 @@ if (!(Test-Path $REQUIREMENTS_TXT)) {
 
 # Ensure pip and install requirements
 & $PY_EXE -m ensurepip
+& $PY_EXE -m pip install --upgrade pip
 & $PY_EXE -m pip install -r $REQUIREMENTS_TXT
