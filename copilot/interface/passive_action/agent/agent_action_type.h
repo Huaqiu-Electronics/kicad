@@ -37,8 +37,12 @@ enum class AGENT_ACTION_TYPE
     COMMON_BEGIN,
 
     ask_selection,
+
     paste,
     open_project_zip_achieve,
+    //open the project zip in the current kicad
+    open_project_zip_achieve_in_current,
+    toggle_online_library,
 
     place_component_resource,
     place_base64_encoded_component,
@@ -70,9 +74,7 @@ enum class AGENT_ACTION_TYPE
     FOOTPRINT_EDITOR_BEGIN,
     // open the footprint editor and load the footprint content
     edit_footprint_content,
-
-    //open the project zip in the current kicad
-    open_project_zip_achieve_in_current,
+    
 
 
 };
