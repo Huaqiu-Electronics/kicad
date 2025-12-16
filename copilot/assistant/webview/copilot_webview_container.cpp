@@ -54,20 +54,20 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
         WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, kDataBuriedPoint ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
-#if defined( IS_RC_BUILD )
+    if( WEBVIEW_SETTINGS_MANAGER::get_instance().mcp_enabled() )
+    {
+        auto port = LaunchSDKHttpServer( host_copilot_handles );
+        auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
+        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( *this, _impl->mcpClientRequestQueue, pair_url );
+        _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url, port );
+        _impl->mcpClientWorkerThread = std::thread(
+                [this]()
+                {
+                    _impl->mcpClientWorker->Start();
+                } );
 
-    auto port = LaunchSDKHttpServer( host_copilot_handles );
-    auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
-    _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( *this, _impl->mcpClientRequestQueue, pair_url );
-    _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url, port );
-    _impl->mcpClientWorkerThread = std::thread(
-            [this]()
-            {
-                _impl->mcpClientWorker->Start();
-            } );
-
-    Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
-#endif
+        Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
+    }
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
