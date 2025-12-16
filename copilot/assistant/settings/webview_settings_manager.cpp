@@ -219,3 +219,14 @@ bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 
     return _immutable_settings->enable_webview_dev_tool;
 }
+
+
+bool WEBVIEW_SETTINGS_MANAGER::mcp_enabled() const
+{
+#ifdef DEBUG
+
+    return true;
+
+#endif
+    return _immutable_settings->enable_mcp;
+}

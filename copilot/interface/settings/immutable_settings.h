@@ -38,8 +38,9 @@ struct IMMUTABLE_SETTINGS
     COPILOT_WEBVIEW_SETTINGS   copilot_webview_settings;
     bool                       enable_webview_dev_tool{};
     std::string                version = kConfigVersion;
+    bool                       enable_mcp = false;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( IMMUTABLE_SETTINGS, data_buried_point_settings, copilot_webview_settings,
-                                    enable_webview_dev_tool, version )
+                                    enable_webview_dev_tool, version, enable_mcp )
 };
 
 
