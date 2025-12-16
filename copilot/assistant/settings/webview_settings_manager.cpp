@@ -28,6 +28,7 @@
 #include <chrono>
 #include <webview/webview_controller.h>
 #include <settings/site_env.h>
+#include <settings/copilot_dev_feature.h>
 
 #include "config_io_helper.h"
 #include "settings/copilot_config_version.h"
@@ -211,22 +212,11 @@ void WEBVIEW_SETTINGS_MANAGER::clear_token()
 
 bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 {
-#ifdef DEBUG
-
-    return true;
-
-#endif
-
-    return _immutable_settings->enable_webview_dev_tool;
+    return COPILOT_DEV_FEATURES_ENABLED || _immutable_settings->enable_webview_dev_tool;
 }
 
 
 bool WEBVIEW_SETTINGS_MANAGER::mcp_enabled() const
 {
-#ifdef DEBUG
-
-    return true;
-
-#endif
-    return _immutable_settings->enable_mcp;
+    return COPILOT_DEV_FEATURES_ENABLED || _immutable_settings->enable_mcp;
 }
