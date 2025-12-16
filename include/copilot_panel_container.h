@@ -25,6 +25,7 @@
 #ifndef COPILOT_PANEL_CONTAINER_H
 #define COPILOT_PANEL_CONTAINER_H
 
+#include <passive_action/agent/agent_action_type.h>
 #include <functional>
 #include <tool/action_toolbar.h>
 #include <fmt/format.h>
@@ -230,20 +231,37 @@ public:
 
         try
         {
-            if( "paste" == aAction.action )
+            auto t = magic_enum::enum_cast<AGENT_ACTION_TYPE>( aAction.action );
+
+            if( !t.has_value() )
+            {
+                wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
+                return;
+            }
+
+            switch( *t )
+            {
+            case AGENT_ACTION_TYPE::paste:
             {
                 return RunPasteAction( context );
             }
-            else if( "open_project_zip_achieve" == aAction.action )
+            case AGENT_ACTION_TYPE::open_project_zip_achieve:
             {
                 return OpenProjectLaunchKiCad( context );
             }
-            else if( "open_project_zip_achieve_in_current" == aAction.action )
+            case AGENT_ACTION_TYPE::open_project_zip_achieve_in_current:
             {
                 return OpenProjectInCurrentProcess( context, self() );
             }
-
-            wxLogWarning( "Unknown action received: %s", aAction.action.c_str() );
+            case AGENT_ACTION_TYPE::toggle_online_library:
+            {
+                return self()->GetToolManager()->RunAction( ACTIONS::toggleWebViewLibrary );
+            }
+            default:
+            {
+                wxLogWarning( "Unsupported action received: %s", aAction.action.c_str() );
+            }
+            }
         }
         catch( std::exception const& e )
         {
