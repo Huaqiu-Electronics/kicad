@@ -27,35 +27,34 @@
 
 
 #include <thread>
-#include <atomic>
 #include <memory>
 #include <host_copilot_handles.h>
 
 class wxPanel;
 struct KICAD_SDK_HTTP_SERVER_IMPL;
+
+namespace httplib
+{
+class Server;
+
+}
 class KICAD_SDK_HTTP_SERVER
 {
 public:
-    static KICAD_SDK_HTTP_SERVER& Instance();
+    KICAD_SDK_HTTP_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* aEvtSink, std::unique_ptr<httplib::Server> aServer );
     ~KICAD_SDK_HTTP_SERVER();
 
     void Start();
-    void Stop();
     bool IsRunning() const;
 
-    void SetHandles( HOST_COPILOT_HANDLES const& aHandles ,wxPanel* evtSink );
 
 private:
-    KICAD_SDK_HTTP_SERVER();
-    bool check_singleton_lock();
-    void create_lock_file();
-    void remove_lock_file();
     void run_server();
 
-    std::thread          server_thread;
-    HOST_COPILOT_HANDLES handles;
-    std::unique_ptr<KICAD_SDK_HTTP_SERVER_IMPL> impl;
-    wxPanel* _evtSink;
+    std::thread                      _server_thread;
+    HOST_COPILOT_HANDLES             _handles;
+    std::unique_ptr<httplib::Server> _server;
+    wxPanel*                         _evtSink;
 };
 
 #endif

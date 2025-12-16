@@ -28,156 +28,84 @@
 #include <passive_action/agent/agent_action.h>
 #include "kicad_sdk_http_server.h"
 #include <utils/httplib_wrapper.h>
-#include <iostream>
-#include <filesystem>
 #include <nlohmann/json.hpp>
+#include <utility>
 #include <wx/log.h>
 #include <wx/panel.h>
 
-#if defined( _WIN32 )
-#include <windows.h>
-#define LOCK_FILE_PATH std::filesystem::temp_directory_path().string() + "\\kicad_sdk_http_server.lock"
-#else
-#define LOCK_FILE_PATH "/tmp/kicad_sdk_http_server.lock"
-#endif
 
 using json = nlohmann::json;
 using namespace std;
 
 struct KICAD_SDK_HTTP_SERVER_IMPL
 {
-    httplib::Server svr;
+    httplib::Server _server;
 };
 
-KICAD_SDK_HTTP_SERVER& KICAD_SDK_HTTP_SERVER::Instance()
+KICAD_SDK_HTTP_SERVER::KICAD_SDK_HTTP_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* evtSink,
+                                              std::unique_ptr<httplib::Server> aServer ) :
+        _handles( std::move( aHandles ) ), _evtSink( evtSink ), _server( std::move( aServer ) )
 {
-    static KICAD_SDK_HTTP_SERVER instance;
-    return instance;
 }
+
 
 KICAD_SDK_HTTP_SERVER::~KICAD_SDK_HTTP_SERVER()
 {
-}
-
-bool KICAD_SDK_HTTP_SERVER::check_singleton_lock()
-{
-    ifstream file( LOCK_FILE_PATH );
-    if( !file.good() )
+    if( _server )
     {
-        return false;
+        _server->stop();
     }
-
-    int pid;
-    file >> pid;
-    if( pid <= 0 )
-    {
-        return false;
-    }
-
-#if defined( _WIN32 )
-    HANDLE hProcess = OpenProcess( SYNCHRONIZE, FALSE, pid );
-    bool   alive = ( hProcess != nullptr );
-    if( alive )
-        CloseHandle( hProcess );
-    return alive;
-#else
-    return ( kill( pid, 0 ) == 0 );
-#endif
 }
 
-void KICAD_SDK_HTTP_SERVER::create_lock_file()
-{
-    ofstream file( LOCK_FILE_PATH, ios::trunc );
-#if defined( _WIN32 )
-    file << GetCurrentProcessId();
-#else
-    file << getpid();
-#endif
-}
-
-void KICAD_SDK_HTTP_SERVER::remove_lock_file()
-{
-    std::error_code ec;
-    std::filesystem::remove( LOCK_FILE_PATH, ec );
-}
 
 void KICAD_SDK_HTTP_SERVER::Start()
 {
-    if( check_singleton_lock() )
-    {
-        std::cout << "[KiCad SDK] Existing HTTP server found, skipping startup." << std::endl;
-        return;
-    }
-    create_lock_file();
-    server_thread = std::thread( &KICAD_SDK_HTTP_SERVER::run_server, this );
-    server_thread.detach();
+    _server_thread = std::thread( &KICAD_SDK_HTTP_SERVER::run_server, this );
+    _server_thread.detach();
 }
 
-void KICAD_SDK_HTTP_SERVER::Stop()
-{
-    if( !impl )
-        return;
-
-    impl->svr.stop();
-    remove_lock_file();
-}
-
-void KICAD_SDK_HTTP_SERVER::SetHandles( HOST_COPILOT_HANDLES const& aHandles, wxPanel* evtSink )
-{
-    handles = aHandles;
-    _evtSink = evtSink;
-}
-
-KICAD_SDK_HTTP_SERVER::KICAD_SDK_HTTP_SERVER()
-{
-}
 
 void KICAD_SDK_HTTP_SERVER::run_server()
 {
-    impl = std::make_unique<KICAD_SDK_HTTP_SERVER_IMPL>();
-    auto& svr = impl->svr;
-
-    svr.Get( "/netlist",
-             [&]( const httplib::Request&, httplib::Response& res )
-             {
-                 if( handles.global_context_handle.expired() )
-                 {
-                     wxLogDebug( "Get design global context handle expired" );
-                     return;
-                 }
-
-                 auto  context_function = handles.global_context_handle.lock();
-                 auto& global_ctx = ( *context_function )();
-                 auto  global_ctx_value = global_ctx.dump();
-                 res.set_content( global_ctx_value, "application/json" );
-             } );
-
-    svr.Post( "/placeNetLabels",
-              [&]( const httplib::Request& req, httplib::Response& res )
-              {
-                  try
+    _server->Get( "/netlist",
+                  [&]( const httplib::Request&, httplib::Response& res )
                   {
-                      auto params = json::parse( req.body );
-                      _evtSink->CallAfter(
-                              [=]
-                              {
-                                  if( !handles.agent_action_handle.expired() )
-                                  {
-                                      auto context_function = handles.agent_action_handle.lock();
-                                      ( *context_function )( params );
-                                  }
-                              } );
+                      if( _handles.global_context_handle.expired() )
+                      {
+                          wxLogDebug( "Get design global context handle expired" );
+                          return;
+                      }
 
-                      res.set_content( "{\"status\":\"ok\"}", "application/json" );
-                  }
-                  catch( std::exception& e )
-                  {
-                      res.status = 400;
-                      res.set_content( "{\"error\":\"invalid json\"}", "application/json" );
-                  }
-              } );
+                      auto  context_function = _handles.global_context_handle.lock();
+                      auto& global_ctx = ( *context_function )();
+                      auto  global_ctx_value = global_ctx.dump();
+                      res.set_content( global_ctx_value, "application/json" );
+                  } );
 
-    std::cout << "[KiCad SDK] HTTP server running at http://127.0.0.1:9234" << std::endl;
-    svr.listen( "127.0.0.1", 9234 );
-    remove_lock_file();
+    _server->Post( "/placeNetLabels",
+                   [&]( const httplib::Request& req, httplib::Response& res )
+                   {
+                       try
+                       {
+                           auto params = json::parse( req.body );
+                           _evtSink->CallAfter(
+                                   [=]
+                                   {
+                                       if( !_handles.agent_action_handle.expired() )
+                                       {
+                                           auto context_function = _handles.agent_action_handle.lock();
+                                           ( *context_function )( params );
+                                       }
+                                   } );
+
+                           res.set_content( "{\"status\":\"ok\"}", "application/json" );
+                       }
+                       catch( std::exception& e )
+                       {
+                           res.status = 400;
+                           res.set_content( "{\"error\":\"invalid json\"}", "application/json" );
+                       }
+                   } );
+
+    _server->listen_after_bind();
 }

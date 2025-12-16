@@ -37,6 +37,7 @@ add_library(assistant SHARED
     webview/internal/webview_controller.cpp
     webview/internal/webview_evt_filter.cpp
 
+    webview/copilot_setup_service.cpp
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp
     webview/webview_container.cpp
