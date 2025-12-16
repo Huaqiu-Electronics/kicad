@@ -46,7 +46,7 @@ public:
 
     void Stop();
 
-    static long launch_mcp_py_client( std::string const& url );
+    static long launch_mcp_py_client( std::string const& url, int sdkServerPort );
 
     static std::string fmt_client_url();
 

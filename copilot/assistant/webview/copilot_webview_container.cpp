@@ -28,6 +28,7 @@
 
 #include <fmt/format.h>
 #include <magic_enum.hpp>
+#include <memory>
 #include <thread>
 #include <utils/wstring_to_string.h>
 #include <passive_action/passive_action_container.h>
@@ -37,7 +38,6 @@
 #include <webview/webview_functions.h>
 #include <wx/utils.h>
 #include <kicad_copilot_editors.h>
-#include <sdk/kicad_sdk_http_server.h>
 
 #if defined( IS_PORTABLE )
 
@@ -54,21 +54,12 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
         WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, kDataBuriedPoint ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
-    // TODO: Enable MCP client
 #if defined( IS_RC_BUILD )
 
-    if( host_version_info.editor_name == magic_enum::enum_name( KICAD_COPILOT_EDITORS::schematic ) )
-    {
-        KICAD_SDK_HTTP_SERVER::Instance().SetHandles( host_copilot_handles, this );
-        KICAD_SDK_HTTP_SERVER::Instance().Stop();
-        KICAD_SDK_HTTP_SERVER::Instance().Start();
-    }
-
-
+    auto port = LaunchSDKHttpServer( host_copilot_handles );
     auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
-    _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url );
-    _impl->mcpClientWorker = new MCP_CLIENT_WORKER( *this, _impl->mcpClientRequestQueue, pair_url );
-
+    _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( *this, _impl->mcpClientRequestQueue, pair_url );
+    _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url, port );
     _impl->mcpClientWorkerThread = std::thread(
             [this]()
             {
@@ -76,7 +67,6 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
             } );
 
     Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
-
 #endif
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()

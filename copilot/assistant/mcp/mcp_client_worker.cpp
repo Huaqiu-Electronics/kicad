@@ -27,6 +27,7 @@
 #include "proto/mcp_cmd_base.h"
 #include "mcp_client_event.h"
 #include "proto/mcp_apply_setting_cmd.h"
+#include <settings/copilot_webview_settings.h>
 
 #include <atomic>
 #include <memory>
@@ -62,7 +63,7 @@ inline auto get_py_exe_path()
     return py_exe_path;
 }
 
-long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
+long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, int sdkServerPort )
 {
     auto py_exe = get_py_exe_path();
 
@@ -74,9 +75,11 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url )
 
     wxString script_path = "C:/code/kicad-mcp-client";
 
+
 #endif
 
-    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\"", py_exe, script_path, url );
+    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" \"%s\"", py_exe, script_path, url,
+                                     std::to_string( sdkServerPort ) );
 
     long pid = wxExecute( cmd,
 
