@@ -243,23 +243,28 @@ public:
             {
             case AGENT_ACTION_TYPE::paste:
             {
-                return RunPasteAction( context );
+                RunPasteAction( context );
+                break;
             }
             case AGENT_ACTION_TYPE::open_project_zip_achieve:
             {
-                return OpenProjectLaunchKiCad( context );
+                OpenProjectLaunchKiCad( context );
+                break;
             }
             case AGENT_ACTION_TYPE::open_project_zip_achieve_in_current:
             {
-                return OpenProjectInCurrentProcess( context, self() );
+                OpenProjectInCurrentProcess( context, self() );
+                break;
             }
             case AGENT_ACTION_TYPE::toggle_online_library:
             {
-                return self()->GetToolManager()->RunAction( ACTIONS::toggleWebViewLibrary );
+                self()->GetToolManager()->RunAction( ACTIONS::toggleWebViewLibrary );
+                break;
             }
             default:
             {
                 wxLogWarning( "Unsupported action received: %s", aAction.action.c_str() );
+                break;
             }
             }
         }
