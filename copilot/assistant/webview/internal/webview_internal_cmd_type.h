@@ -30,6 +30,7 @@ enum class WEB_HOST_INTERNAL_CMD_TYPE
 {
     fetch_global_context_from_host,
     show_image,
+    launch_mcp_settings_dialog,
     show_ecad_viewer,
 
     update_access_token,
