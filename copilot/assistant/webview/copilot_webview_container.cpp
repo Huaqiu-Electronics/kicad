@@ -66,7 +66,7 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
                     _impl->mcpClientWorker->Start();
                 } );
 
-        Bind( EVT_MCP_COMPLETE_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage, this );
+        Bind( EVT_MCP_AGENT_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage, this );
     }
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
@@ -150,7 +150,7 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
     }
 }
 
-void COPILOT_WEBVIEW_CONTAINER::OnMcpCompleteMessage( MCP_CLIENT_EVENT& aMessage )
+void COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage( MCP_CLIENT_EVENT& aMessage )
 {
     RunScriptAsync( fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::on_mcp_msg ),
                                  wxString2String( aMessage.GetString() ) ) );

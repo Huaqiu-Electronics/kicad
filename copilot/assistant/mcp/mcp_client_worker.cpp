@@ -250,7 +250,7 @@ void MCP_CLIENT_WORKER::Start()
             return;
         }
 
-        auto event = new MCP_CLIENT_EVENT( EVT_MCP_COMPLETE_MSG );
+        auto event = new MCP_CLIENT_EVENT( EVT_MCP_AGENT_MSG );
         event->SetString( *res );
         m_eventSink.QueueEvent( event );
     };
