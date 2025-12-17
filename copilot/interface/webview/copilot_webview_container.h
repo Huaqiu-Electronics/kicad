@@ -47,7 +47,7 @@ protected:
 
     void HandleScriptMessage( std::string const& aMessage ) override;
 
-    void OnMcpCompleteMessage( MCP_CLIENT_EVENT& aMessage );
+    void OnMcpAgentMessage( MCP_CLIENT_EVENT& aMessage );
 
     int LaunchSDKHttpServer( HOST_COPILOT_HANDLES host_copilot_handles );
 
