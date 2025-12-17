@@ -60,6 +60,7 @@
 #include <api/upload_project.h>
 #include <context/copilot_project_holder.h>
 #include <utils/wstring_to_string.h>
+#include <wx/display.h>
 
 void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 {
@@ -142,6 +143,14 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 _impl->_image_viewer->reload();
                 _impl->_image_viewer->Show();
 
+                break;
+            }
+            case WEB_HOST_INTERNAL_CMD_TYPE::launch_mcp_settings_dialog:
+            {
+                DIALOG_WEBVIEW mcp_settings_dialog( _impl->host_version_info, m_parent, _( "MCP Settings" ),
+                                                    "mcp_settings_dialog" );
+                mcp_settings_dialog.LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_mcp_settings_path() );
+                mcp_settings_dialog.ShowModal();
                 break;
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::show_ecad_viewer:
@@ -273,20 +282,23 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             {
                 if( auto parent = dynamic_cast<DIALOG_WEBVIEW*>( GetParent() ) )
                 {
-                    const auto end_modal = cmd.data->get<END_MODAL>();
-
-                    if( end_modal.callback )
+                    if( cmd.data && !cmd.data->is_null() )
                     {
-                        if( auto parent_web = parent->GetParentWebView() )
+                        const auto end_modal = cmd.data->get<END_MODAL>();
+
+                        if( end_modal.callback )
                         {
-                            if( !end_modal.data )
+                            if( auto parent_web = parent->GetParentWebView() )
                             {
-                                parent_web->RunScriptAsync( fmt::format( "{}()", *end_modal.callback ) );
-                            }
-                            else
-                            {
-                                parent_web->RunScriptAsync(
-                                        fmt::format( "{}({})", *end_modal.callback, end_modal.data->dump() ) );
+                                if( !end_modal.data )
+                                {
+                                    parent_web->RunScriptAsync( fmt::format( "{}()", *end_modal.callback ) );
+                                }
+                                else
+                                {
+                                    parent_web->RunScriptAsync(
+                                            fmt::format( "{}({})", *end_modal.callback, end_modal.data->dump() ) );
+                                }
                             }
                         }
                     }
