@@ -78,8 +78,7 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, int sdkSer
 
 #endif
 
-    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" \"%s\"", py_exe, script_path, url,
-                                     std::to_string( sdkServerPort ) );
+    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" %d", py_exe, script_path, url, sdkServerPort );
 
     long pid = wxExecute( cmd,
 
