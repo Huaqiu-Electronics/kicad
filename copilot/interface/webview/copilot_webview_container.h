@@ -28,6 +28,7 @@
 #include "webview_container.h"
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL;
+struct MCP_APPLY_SETTING_CMD;
 class MCP_CLIENT_EVENT;
 class COPILOT_API COPILOT_WEBVIEW_CONTAINER : public WEBVIEW_CONTAINER
 {
@@ -37,6 +38,7 @@ public:
 
     ~COPILOT_WEBVIEW_CONTAINER() override;
 
+    void ApplyMCPSettings( MCP_APPLY_SETTING_CMD const& aSettings );
 
 protected:
     void OnDocumentLoaded( wxWebViewEvent& evt ) override;
