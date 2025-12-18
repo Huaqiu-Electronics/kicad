@@ -22,16 +22,16 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef MCP_COMPLETE_MSG_H
-#define MCP_COMPLETE_MSG_H
+#ifndef CLOSE_MCP_SETTINGS_DIALOG_H
+#define CLOSE_MCP_SETTINGS_DIALOG_H
 
-#include <nlohmann/json.hpp>
-
-
-struct MCP_COMPLETE_MSG
+class CLOSE_MCP_SETTINGS_DIALOG
 {
-    std::string msg;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_COMPLETE_MSG, msg )
+public:
+    CLOSE_MCP_SETTINGS_DIALOG();
+    ~CLOSE_MCP_SETTINGS_DIALOG();
+
+private:
 };
 
 #endif
