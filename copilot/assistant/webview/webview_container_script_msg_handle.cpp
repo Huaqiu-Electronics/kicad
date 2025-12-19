@@ -147,9 +147,10 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
             }
             case WEB_HOST_INTERNAL_CMD_TYPE::launch_mcp_settings_dialog:
             {
-                DIALOG_WEBVIEW mcp_settings_dialog( _impl->host_version_info, m_parent, _( "MCP Settings" ),
+                DIALOG_WEBVIEW mcp_settings_dialog( _impl->host_version_info, this, _( "MCP Settings" ),
                                                     "mcp_settings_dialog" );
                 mcp_settings_dialog.LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_webview_mcp_settings_path() );
+                mcp_settings_dialog.SetParentWebView( this );
                 mcp_settings_dialog.ShowModal();
                 break;
             }
@@ -408,7 +409,19 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
         }
         case PA_MCP:
         {
-            wxLogError( "MCP is not supported in base webview" );
+            // We are in the dialog launched from the webview container, forward the message to the parent webview container
+            if( auto dialog = dynamic_cast<DIALOG_WEBVIEW*>( GetParent() ) )
+            {
+                if( auto webview = dialog->GetParentWebView() )
+                {
+                    webview->HandleScriptMessage( msg );
+                }
+            }
+            else
+            {
+                wxLogError( "MCP is not supported in base webview" );
+            }
+
             break;
         }
         }

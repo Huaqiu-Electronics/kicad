@@ -36,8 +36,3 @@ int COPILOT_WEBVIEW_CONTAINER::LaunchSDKHttpServer( HOST_COPILOT_HANDLES host_co
     _impl->sdkHttpServer->Start();
     return port;
 }
-
-
-void COPILOT_WEBVIEW_CONTAINER::ApplyMCPSettings( MCP_APPLY_SETTING_CMD const& aSettings )
-{
-}

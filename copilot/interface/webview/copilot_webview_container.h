@@ -38,7 +38,6 @@ public:
 
     ~COPILOT_WEBVIEW_CONTAINER() override;
 
-    void ApplyMCPSettings( MCP_APPLY_SETTING_CMD const& aSettings );
 
 protected:
     void OnDocumentLoaded( wxWebViewEvent& evt ) override;

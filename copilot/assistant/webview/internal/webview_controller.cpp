@@ -22,8 +22,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include <mcp/fmt_mcp_msg_script.h>
 #include <webview/webview_controller.h>
 #include <webview/webview_container.h>
+#include <webview/copilot_webview_container.h>
 #include <fmt/format.h>
 #include <magic_enum.hpp>
 #include <nlohmann/json.hpp>
@@ -34,6 +36,7 @@
 #include <webview/webview_functions.h>
 #include <wx/debug.h>
 #include <utils/urls_equal.h>
+#include <utils/wstring_to_string.h>
 inline auto fmt_auth_state_change_script( AUTH_STATE state )
 {
     const auto content =
@@ -47,9 +50,7 @@ inline auto fmt_auth_state_change_script( AUTH_STATE state )
 }
 
 
-WEBVIEW_CONTROLLER::WEBVIEW_CONTROLLER()
-{
-}
+WEBVIEW_CONTROLLER::WEBVIEW_CONTROLLER() = default;
 
 WEBVIEW_CONTROLLER::~WEBVIEW_CONTROLLER()
 {
@@ -134,6 +135,17 @@ void WEBVIEW_CONTROLLER::RunScript( wxString const& aScript, std::string const& 
                     webview_container->RunScriptAsync( aScript );
                 }
             }
+        }
+    }
+}
+
+void WEBVIEW_CONTROLLER::OnMcpCnfChanged( wxString const& aCnf )
+{
+    for( auto& webview_container : _webview_container_set )
+    {
+        if( dynamic_cast<COPILOT_WEBVIEW_CONTAINER*>( webview_container ) )
+        {
+            webview_container->RunScriptAsync( fmt_mcp_msg_script( wxString2String( aCnf.ToStdString() ) ) );
         }
     }
 }
