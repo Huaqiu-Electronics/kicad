@@ -60,7 +60,8 @@ struct MCP_AGENT_COMPLETE : MCP_AGENT_MSG_BASE
 struct MCP_AGENT_CNF_CHANGED : MCP_AGENT_MSG_BASE
 {
     std::map<std::string, nlohmann::json> servers_assets;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_AGENT_CNF_CHANGED, type, servers_assets )
+    nlohmann::json                        mcp_settings;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_AGENT_CNF_CHANGED, type, servers_assets, mcp_settings )
 };
 
 #endif
