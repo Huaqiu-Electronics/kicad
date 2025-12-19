@@ -27,7 +27,9 @@
 #include "proto/mcp_cmd_base.h"
 #include "mcp_client_event.h"
 #include "proto/mcp_apply_setting_cmd.h"
+#include "proto/mcp_agent_msg.h"
 #include <settings/copilot_webview_settings.h>
+#include <webview/webview_controller.h>
 
 #include <atomic>
 #include <memory>
@@ -43,6 +45,7 @@
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 #include <wx/process.h>
+#include <wx/app.h>
 
 enum
 {
@@ -249,9 +252,33 @@ void MCP_CLIENT_WORKER::Start()
             return;
         }
 
-        auto event = new MCP_CLIENT_EVENT( EVT_MCP_AGENT_MSG );
-        event->SetString( *res );
-        m_eventSink.QueueEvent( event );
+
+        try
+        {
+            auto result = nlohmann::json::parse( *res ).get<MCP_AGENT_MSG_BASE>();
+
+            switch( result.type )
+            {
+            case cnf_changed:
+            {
+                m_eventSink.CallAfter(
+                        [=]
+                        {
+                            WEBVIEW_CONTROLLER::Get().OnMcpCnfChanged( *res );
+                        } );
+                break;
+            }
+            default:
+            {
+                m_eventSink.QueueEvent( new MCP_CLIENT_EVENT( EVT_MCP_AGENT_MSG, *res ) );
+                break;
+            }
+            }
+        }
+        catch( std::exception& e )
+        {
+            wxLogDebug( "MCP_CLIENT_WORKER fetch_response error: %s", e.what() );
+        }
     };
 
 

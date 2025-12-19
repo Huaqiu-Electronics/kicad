@@ -38,6 +38,7 @@
 #include <webview/webview_functions.h>
 #include <wx/utils.h>
 #include <kicad_copilot_editors.h>
+#include <mcp/fmt_mcp_msg_script.h>
 
 #if defined( IS_PORTABLE )
 
@@ -152,6 +153,5 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
 
 void COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage( MCP_CLIENT_EVENT& aMessage )
 {
-    RunScriptAsync( fmt::format( "{}( {} );", magic_enum::enum_name( WEBVIEW_FUNCTIONS::on_mcp_msg ),
-                                 wxString2String( aMessage.GetString() ) ) );
+    RunScriptAsync( fmt_mcp_msg_script( wxString2String( aMessage.GetString() ) ) );
 }

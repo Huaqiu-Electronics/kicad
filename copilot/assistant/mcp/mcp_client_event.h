@@ -32,7 +32,7 @@
 class MCP_CLIENT_EVENT : public wxThreadEvent
 {
 public:
-    MCP_CLIENT_EVENT( wxEventType eventType );
+    MCP_CLIENT_EVENT( wxEventType eventType, wxString const& aMsg );
 
     ~MCP_CLIENT_EVENT();
 };

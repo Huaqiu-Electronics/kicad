@@ -54,6 +54,8 @@ public:
     WEBVIEW_CONTAINER* GetWebviewContainer() const;
 
     WEBVIEW_CONTAINER* GetParentWebView() const { return _parent_webview; }
+
+    auto SetParentWebView( WEBVIEW_CONTAINER* parent ) { _parent_webview = parent; }
 };
 
 

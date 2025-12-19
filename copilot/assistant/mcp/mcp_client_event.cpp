@@ -30,8 +30,9 @@ MCP_CLIENT_EVENT::~MCP_CLIENT_EVENT()
 {
 }
 
-MCP_CLIENT_EVENT::MCP_CLIENT_EVENT( wxEventType eventType ) : wxThreadEvent( eventType )
+MCP_CLIENT_EVENT::MCP_CLIENT_EVENT( wxEventType eventType, wxString const& aMsg ) : wxThreadEvent( eventType )
 {
+    SetString( aMsg );
 }
 
 wxDEFINE_EVENT( EVT_MCP_AGENT_MSG, MCP_CLIENT_EVENT );
