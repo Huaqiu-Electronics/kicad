@@ -311,11 +311,6 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 }
                 break;
             }
-            case WEB_HOST_INTERNAL_CMD_TYPE::close_mcp_settings_dialog:
-            {
-                break;
-            }
-
             case WEB_HOST_INTERNAL_CMD_TYPE::show_webview_window:
             {
                 show_webview_window( cmd.data->get<SHOW_WEBVIEW_WINDOW>() );
