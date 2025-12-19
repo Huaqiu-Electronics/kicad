@@ -67,6 +67,11 @@ void KICAD_SDK_HTTP_SERVER::Start()
 
 void KICAD_SDK_HTTP_SERVER::run_server()
 {
+    _server->Get( "/",
+                  [&]( const httplib::Request&, httplib::Response& res )
+                  {
+                      res.set_content( "KiCad SDK HTTP Server is running", "text/plain" );
+                  } );
     _server->Get( "/netlist",
                   [&]( const httplib::Request&, httplib::Response& res )
                   {
