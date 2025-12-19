@@ -37,5 +37,7 @@ if (!(Test-Path $REQUIREMENTS_TXT)) {
 # Ensure pip and install requirements
 & $PY_EXE -m ensurepip
 & $PY_EXE -m pip install --upgrade pip
-# Sometimes site-packages get corrupted during manual builds ( Try:
 & $PY_EXE -m pip install --force-reinstall -r $REQUIREMENTS_TXT
+# Sometimes site-packages get corrupted during manual builds ( Try:
+# & $PY_EXE -m pip install --force-reinstall mcp-agent
+
