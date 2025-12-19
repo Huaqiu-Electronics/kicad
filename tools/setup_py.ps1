@@ -15,7 +15,7 @@ $BUILD_ROOT = "$PROJECT_ROOT/build"
 
 $BIN_DIR = "$BUILD_ROOT/out/bin/"
 $PY_EXE = "$BIN_DIR/python.exe"
-$REQUIREMENTS_TXT = "$PROJECT_ROOT/copilot/assistant/mcp/requirements.txt"
+$REQUIREMENTS_TXT = "$PROJECT_ROOT/copilot/assistant/mcp/mcprequirements.txt"
 
 # Ensure bin directory exists
 if (!(Test-Path $BIN_DIR)) {
@@ -37,4 +37,5 @@ if (!(Test-Path $REQUIREMENTS_TXT)) {
 # Ensure pip and install requirements
 & $PY_EXE -m ensurepip
 & $PY_EXE -m pip install --upgrade pip
-& $PY_EXE -m pip install -r $REQUIREMENTS_TXT
+# Sometimes site-packages get corrupted during manual builds ( Try:
+& $PY_EXE -m pip install --force-reinstall -r $REQUIREMENTS_TXT
