@@ -143,9 +143,6 @@ void WEBVIEW_CONTROLLER::OnMcpCnfChanged( wxString const& aCnf )
 {
     for( auto& webview_container : _webview_container_set )
     {
-        if( dynamic_cast<COPILOT_WEBVIEW_CONTAINER*>( webview_container ) )
-        {
-            webview_container->RunScriptAsync( fmt_mcp_msg_script( wxString2String( aCnf.ToStdString() ) ) );
-        }
+        webview_container->RunScriptAsync( fmt_mcp_msg_script( wxString2String( aCnf.ToStdString() ) ) );
     }
 }
