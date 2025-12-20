@@ -52,7 +52,7 @@ public:
 
     void RunScript( wxString const& aScript, std::string const& aUrlLoadedByWebview );
 
-    void OnMcpCnfChanged( wxString const& aCnf );
+    void OnMcpCnfChanged( WEBVIEW_CONTAINER* aSelf, wxString const& aCnf );
 
 private:
     WEBVIEW_CONTROLLER();
