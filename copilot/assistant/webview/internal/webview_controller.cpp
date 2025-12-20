@@ -141,12 +141,23 @@ void WEBVIEW_CONTROLLER::RunScript( wxString const& aScript, std::string const& 
 
 void WEBVIEW_CONTROLLER::OnMcpCnfChanged( WEBVIEW_CONTAINER* aSelf, wxString const& aCnf )
 {
-    for( auto& webview_container : _webview_container_set )
+    try
     {
-        if( webview_container == aSelf )
+        for( auto& webview_container : _webview_container_set )
         {
-            continue;
+            if( webview_container == aSelf )
+            {
+                auto cnf = nlohmann::json::parse( wxString2String( aCnf.ToStdString() ) );
+                cnf["is_self"] = true;
+                webview_container->RunScriptAsync( fmt_mcp_msg_script( cnf.dump() ) );
+                continue;
+            }
+
+            webview_container->RunScriptAsync( fmt_mcp_msg_script( wxString2String( aCnf.ToStdString() ) ) );
         }
-        webview_container->RunScriptAsync( fmt_mcp_msg_script( wxString2String( aCnf.ToStdString() ) ) );
+    }
+    catch( std::exception& e )
+    {
+        wxLogError( "Failed to parse MCP_AGENT_CNF_CHANGED message: %s", e.what() );
     }
 }
