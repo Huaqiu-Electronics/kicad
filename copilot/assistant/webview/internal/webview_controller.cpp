@@ -139,10 +139,14 @@ void WEBVIEW_CONTROLLER::RunScript( wxString const& aScript, std::string const& 
     }
 }
 
-void WEBVIEW_CONTROLLER::OnMcpCnfChanged( wxString const& aCnf )
+void WEBVIEW_CONTROLLER::OnMcpCnfChanged( WEBVIEW_CONTAINER* aSelf, wxString const& aCnf )
 {
     for( auto& webview_container : _webview_container_set )
     {
+        if( webview_container == aSelf )
+        {
+            continue;
+        }
         webview_container->RunScriptAsync( fmt_mcp_msg_script( wxString2String( aCnf.ToStdString() ) ) );
     }
 }
