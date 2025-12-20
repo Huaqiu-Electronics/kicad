@@ -61,6 +61,8 @@ struct MCP_AGENT_CNF_CHANGED : MCP_AGENT_MSG_BASE
 {
     std::map<std::string, nlohmann::json> servers_assets;
     nlohmann::json                        mcp_settings;
+    // is_self: true if this message is from self ,will not change the settings again ,just update the assets
+    // bool is_self;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( MCP_AGENT_CNF_CHANGED, type, servers_assets, mcp_settings )
 };
 
