@@ -28,6 +28,7 @@
 #include "mcp_client_event.h"
 #include "proto/mcp_apply_setting_cmd.h"
 #include "proto/mcp_agent_msg.h"
+#include <webview/webview_container.h>
 #include <settings/copilot_webview_settings.h>
 #include <webview/webview_controller.h>
 
@@ -130,7 +131,7 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
     wxLogDebug( "MCP Client Failed to send message: %s", msg );
 }
 
-MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( wxEvtHandler& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
+MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( WEBVIEW_CONTAINER& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
                                       std::string aUrl ) :
         m_eventSink( eventSink ), m_requestQueue( requestQueue ), m_url( std::move( aUrl ) )
 {
@@ -264,13 +265,13 @@ void MCP_CLIENT_WORKER::Start()
                 m_eventSink.CallAfter(
                         [=]
                         {
-                            WEBVIEW_CONTROLLER::Get().OnMcpCnfChanged( *res );
+                            WEBVIEW_CONTROLLER::Get().OnMcpCnfChanged( &m_eventSink, *res );
                         } );
                 break;
             }
             default:
             {
-                m_eventSink.QueueEvent( new MCP_CLIENT_EVENT( EVT_MCP_AGENT_MSG, *res ) );
+                static_cast<wxEvtHandler&>( m_eventSink ).QueueEvent( new MCP_CLIENT_EVENT( EVT_MCP_AGENT_MSG, *res ) );
                 break;
             }
             }
