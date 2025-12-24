@@ -226,5 +226,11 @@ bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 
 bool WEBVIEW_SETTINGS_MANAGER::mcp_enabled() const
 {
+#ifdef __OSX__
+
+    return false;
+
+#endif
+
     return COPILOT_DEV_FEATURES_ENABLED || _immutable_settings->enable_mcp;
 }
