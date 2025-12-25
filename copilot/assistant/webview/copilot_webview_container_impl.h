@@ -27,17 +27,15 @@
 
 #include <mcp/mcp_client_worker.h>
 #include <memory>
-#include <sdk/kicad_sdk_http_server.h>
-#include <thread>
+#include <sdk/kicad_sdk_server.h>
 
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL
 {
-    std::unique_ptr<MCP_CLIENT_WORKER>     mcpClientWorker;
-    std::thread                            mcpClientWorkerThread;
-    MCP_CLIENT_REQUEST_QUEUE               mcpClientRequestQueue;
-    long                                   pyMcpClientPid = 0;
-    std::unique_ptr<KICAD_SDK_HTTP_SERVER> sdkHttpServer;
+    std::unique_ptr<KICAD_SDK_SERVER> sdkServer;
+
+    std::unique_ptr<MCP_CLIENT_WORKER> mcpClientWorker;
+    MCP_CLIENT_REQUEST_QUEUE           mcpClientRequestQueue;
 };
 
 #endif

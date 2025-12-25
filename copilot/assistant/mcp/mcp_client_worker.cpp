@@ -31,6 +31,7 @@
 #include <webview/webview_container.h>
 #include <settings/copilot_webview_settings.h>
 #include <webview/webview_controller.h>
+#include <utils/gen_nng_addr.h>
 
 #include <atomic>
 #include <memory>
@@ -47,6 +48,7 @@
 #include <wx/filename.h>
 #include <wx/process.h>
 #include <wx/app.h>
+#include <wx/utils.h>
 
 enum
 {
@@ -67,7 +69,7 @@ inline auto get_py_exe_path()
     return py_exe_path;
 }
 
-long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, int sdkServerPort )
+long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress )
 {
     auto py_exe = get_py_exe_path();
 
@@ -82,7 +84,7 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, int sdkSer
 
 #endif
 
-    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" %d", py_exe, script_path, url, sdkServerPort );
+    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" \"%s\"", py_exe, script_path, url, sdkServerAddress );
 
     long pid = wxExecute( cmd,
 
@@ -132,16 +134,34 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
 }
 
 MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( WEBVIEW_CONTAINER& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
-                                      std::string aUrl ) :
-        m_eventSink( eventSink ), m_requestQueue( requestQueue ), m_url( std::move( aUrl ) )
+                                      std::string aSdkURL ) : m_eventSink( eventSink ), m_requestQueue( requestQueue )
 {
+    const auto pair_url = gen_nng_addr();
+    m_pyMcpClientPid = launch_mcp_py_client( pair_url, aSdkURL );
+    std::thread(
+            [this, pair_url]()
+            {
+                Run( pair_url );
+            } )
+            .detach();
 }
 
 MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
 {
+    m_shouldStop = true;
+
+    if( m_pyMcpClientPid )
+    {
+        wxKillError err{};
+
+        if( auto su = wxKill( m_pyMcpClientPid, wxSIGTERM, &err ); !su )
+        {
+            wxLogDebug( "Failed to kill mcp client: %d", err );
+        }
+    }
 }
 
-void MCP_CLIENT_WORKER::Start()
+void MCP_CLIENT_WORKER::Run( std::string const& aPairUrl )
 {
     nng_socket sock;
     bool       dial_succeeded = false;
@@ -182,7 +202,7 @@ void MCP_CLIENT_WORKER::Start()
 
     while( !m_shouldStop )
     {
-        if( nng_dial( sock, m_url.c_str(), NULL, 0 ) == 0 )
+        if( nng_dial( sock, aPairUrl.c_str(), NULL, 0 ) == 0 )
         {
             dial_succeeded = true;
             break;
@@ -253,7 +273,6 @@ void MCP_CLIENT_WORKER::Start()
             return;
         }
 
-
         try
         {
             auto result = nlohmann::json::parse( *res ).get<MCP_AGENT_MSG_BASE>();
@@ -263,7 +282,7 @@ void MCP_CLIENT_WORKER::Start()
             case cnf_changed:
             {
                 m_eventSink.CallAfter(
-                        [=]
+                        [=, this]
                         {
                             WEBVIEW_CONTROLLER::Get().OnMcpCnfChanged( &m_eventSink, *res );
                         } );
@@ -288,14 +307,4 @@ void MCP_CLIENT_WORKER::Start()
         pull_request();
         fetch_response();
     }
-}
-
-void MCP_CLIENT_WORKER::Stop()
-{
-    m_shouldStop = true;
-}
-
-std::string MCP_CLIENT_WORKER::fmt_client_url()
-{
-    return fmt::format( "ipc:///tmp/kicad_copilot_pair-{}.ipc", generate_uuid() );
 }

@@ -22,17 +22,33 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include <webview/copilot_webview_container.h>
-#include <utils/httplib_wrapper.h>
-#include <sdk/kicad_sdk_http_server.h>
+#ifndef KICAD_SDK_SERVER_H
+#define KICAD_SDK_SERVER_H
 
-#include "copilot_webview_container_impl.h"
 
-int COPILOT_WEBVIEW_CONTAINER::LaunchSDKHttpServer( HOST_COPILOT_HANDLES host_copilot_handles )
+#include <thread>
+#include <host_copilot_handles.h>
+#include <atomic>
+
+class wxPanel;
+struct KICAD_SDK_HTTP_SERVER_IMPL;
+
+
+class KICAD_SDK_SERVER
 {
-    auto ser = std::make_unique<httplib::Server>();
-    auto port = ser->bind_to_any_port( "0.0.0.0" );
-    _impl->sdkHttpServer = std::make_unique<KICAD_SDK_HTTP_SERVER>( host_copilot_handles, this, std::move( ser ) );
-    _impl->sdkHttpServer->Start();
-    return port;
-}
+public:
+    KICAD_SDK_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* aEvtSink, std::string aAddress );
+    ~KICAD_SDK_SERVER();
+
+
+private:
+    void run_server();
+
+    HOST_COPILOT_HANDLES _handles;
+    wxPanel*             _evtSink;
+    std::string          _address;
+    std::thread          _server_thread;
+    std::atomic_bool     m_shouldStop{ false };
+};
+
+#endif

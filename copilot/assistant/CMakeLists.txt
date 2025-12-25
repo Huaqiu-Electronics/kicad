@@ -26,7 +26,7 @@ add_library(assistant SHARED
     quote/smt_quote.cpp
     quote/quote_controller.cpp
 
-    sdk/kicad_sdk_http_server.cpp
+    sdk/kicad_sdk_server.cpp
 
     settings/site_env_mgr.cpp
     settings/webview_settings_manager.cpp
@@ -37,7 +37,6 @@ add_library(assistant SHARED
     webview/internal/webview_controller.cpp
     webview/internal/webview_evt_filter.cpp
 
-    webview/copilot_setup_service.cpp
     webview/copilot_webview_container.cpp
     webview/webview_container_script_msg_handle.cpp
     webview/webview_container.cpp

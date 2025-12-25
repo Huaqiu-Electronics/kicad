@@ -50,8 +50,6 @@ protected:
 
     void OnMcpAgentMessage( MCP_CLIENT_EVENT& aMessage );
 
-    int LaunchSDKHttpServer( HOST_COPILOT_HANDLES host_copilot_handles );
-
 
 private:
     std::unique_ptr<COPILOT_WEBVIEW_CONTAINER_IMPL> _impl;

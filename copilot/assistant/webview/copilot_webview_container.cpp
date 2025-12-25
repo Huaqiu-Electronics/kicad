@@ -29,7 +29,6 @@
 #include <fmt/format.h>
 #include <magic_enum.hpp>
 #include <memory>
-#include <thread>
 #include <utils/wstring_to_string.h>
 #include <passive_action/passive_action_container.h>
 #include <mcp/mcp_client_event.h>
@@ -39,6 +38,7 @@
 #include <wx/utils.h>
 #include <kicad_copilot_editors.h>
 #include <mcp/fmt_mcp_msg_script.h>
+#include <utils/gen_nng_addr.h>
 
 #if defined( IS_PORTABLE )
 
@@ -57,40 +57,15 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
 {
     if( WEBVIEW_SETTINGS_MANAGER::get_instance().mcp_enabled() )
     {
-        auto port = LaunchSDKHttpServer( host_copilot_handles );
-        auto pair_url = MCP_CLIENT_WORKER::fmt_client_url();
-        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( *this, _impl->mcpClientRequestQueue, pair_url );
-        _impl->pyMcpClientPid = MCP_CLIENT_WORKER::launch_mcp_py_client( pair_url, port );
-        _impl->mcpClientWorkerThread = std::thread(
-                [this]()
-                {
-                    _impl->mcpClientWorker->Start();
-                } );
-
+        auto sdk_listen_addr = gen_nng_addr();
+        _impl->sdkServer = std::make_unique<KICAD_SDK_SERVER>( host_copilot_handles, this, sdk_listen_addr );
+        _impl->mcpClientWorker =
+                std::make_unique<MCP_CLIENT_WORKER>( *this, _impl->mcpClientRequestQueue, sdk_listen_addr );
         Bind( EVT_MCP_AGENT_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage, this );
     }
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
-    if( _impl->mcpClientWorker )
-    {
-        _impl->mcpClientWorker->Stop();
-    }
-
-    if( _impl->mcpClientWorkerThread.joinable() )
-    {
-        _impl->mcpClientWorkerThread.join();
-    }
-
-    if( _impl->pyMcpClientPid )
-    {
-        wxKillError err{};
-
-        if( auto su = wxKill( _impl->pyMcpClientPid, wxSIGTERM, &err ); !su )
-        {
-            wxLogDebug( "Failed to kill mcp client: %d", err );
-        }
-    }
 }
 
 void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
