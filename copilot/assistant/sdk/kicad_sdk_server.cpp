@@ -32,7 +32,8 @@
 #include <nng/protocol/reqrep0/rep.h>
 #include <wx/panel.h>
 #include <utils/nng_request_server.h>
-
+#include "proto/sdk_cmd_base.h"
+#include "proto/sdk_agent_action.h"
 
 KICAD_SDK_SERVER::KICAD_SDK_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* aEvtSink, std::string aAddress ) :
         _handles( std::move( aHandles ) ), _evtSink( aEvtSink ), _address( std::move( aAddress ) )
@@ -60,76 +61,74 @@ void KICAD_SDK_SERVER::run_server()
                     auto        request = json::parse( *aMessage );
                     std::string response;
 
-                    if( request.contains( "cmd" ) )
+                    // Parse base command
+                    auto base_cmd = request.get<SDK_CMD_BASE>();
+                    const std::string& cmd_str = base_cmd.cmd;
+
+                    enum class SDK_CMD_TYPE
                     {
-                        const std::string& cmd_str = request["cmd"];
+                        invalid,
+                        netlist,
+                        placeNetLabels
+                    };
 
-                        enum class SDK_CMD_TYPE
-                        {
-                            invalid,
-                            netlist,
-                            placeNetLabels
-                        };
+                    const auto cmd =
+                            magic_enum::enum_cast<SDK_CMD_TYPE>( cmd_str ).value_or( SDK_CMD_TYPE::invalid );
 
-                        const auto cmd =
-                                magic_enum::enum_cast<SDK_CMD_TYPE>( cmd_str ).value_or( SDK_CMD_TYPE::invalid );
-
-                        if( cmd == SDK_CMD_TYPE::invalid )
-                        {
-                            wxLogDebug( "Invalid command type: %s", cmd_str.c_str() );
-                            response = json{ { "error", "Invalid command type" }, { "cmd", cmd_str } }.dump();
-                            request_server->Reply( response );
-                            return;
-                        }
-
-                        switch( cmd )
-                        {
-                        case SDK_CMD_TYPE::netlist:
-                        {
-                            if( _handles.global_context_handle.expired() )
-                            {
-                                wxLogDebug( "Get design global context handle expired" );
-                                response = json{ { "error", "Global context handle expired" } }.dump();
-                            }
-                            else
-                            {
-                                auto  context_function = _handles.global_context_handle.lock();
-                                auto& global_ctx = ( *context_function )();
-                                response = global_ctx.dump();
-                            }
-                            break;
-                        }
-                        case SDK_CMD_TYPE::placeNetLabels:
-                        {
-                            if( _evtSink && !_handles.agent_action_handle.expired() )
-                            {
-                                _evtSink->CallAfter(
-                                        [=]
-                                        {
-                                            auto context_function = _handles.agent_action_handle.lock();
-                                            if( context_function )
-                                            {
-                                                ( *context_function )( request["params"] );
-                                            }
-                                        } );
-                                response = json{ { "status", "ok" } }.dump();
-                            }
-                            else
-                            {
-                                response = json{ { "error", "Invalid event sink or agent handle" } }.dump();
-                            }
-                            break;
-                        }
-                        default:
-                        {
-                            response = json{ { "error", "Unknown command" }, { "cmd", cmd_str } }.dump();
-                            break;
-                        }
-                        }
+                    if( cmd == SDK_CMD_TYPE::invalid )
+                    {
+                        wxLogDebug( "Invalid command type: %s", cmd_str.c_str() );
+                        response = json{ { "error", "Invalid command type" }, { "cmd", cmd_str } }.dump();
+                        request_server->Reply( response );
+                        return;
                     }
-                    else
+
+                    switch( cmd )
                     {
-                        response = json{ { "error", "Missing cmd field" } }.dump();
+                    case SDK_CMD_TYPE::netlist:
+                    {
+                        if( _handles.global_context_handle.expired() )
+                        {
+                            wxLogDebug( "Get design global context handle expired" );
+                            response = json{ { "error", "Global context handle expired" } }.dump();
+                        }
+                        else
+                        {
+                            auto  context_function = _handles.global_context_handle.lock();
+                            auto& global_ctx = ( *context_function )();
+                            response = global_ctx.dump();
+                        }
+                        break;
+                    }
+                    case SDK_CMD_TYPE::placeNetLabels:
+                    {
+                        // Parse the full command with params
+                        auto place_cmd = request.get<SDK_AGENT_ACTION>();
+                        
+                        if( _evtSink && !_handles.agent_action_handle.expired() )
+                        {
+                            _evtSink->CallAfter(
+                                    [=]
+                                    {
+                                        auto context_function = _handles.agent_action_handle.lock();
+                                        if( context_function )
+                                        {
+                                            ( *context_function )( place_cmd.params );
+                                        }
+                                    } );
+                            response = json{ { "status", "ok" } }.dump();
+                        }
+                        else
+                        {
+                            response = json{ { "error", "Invalid event sink or agent handle" } }.dump();
+                        }
+                        break;
+                    }
+                    default:
+                    {
+                        response = json{ { "error", "Unknown command" }, { "cmd", cmd_str } }.dump();
+                        break;
+                    }
                     }
 
                     request_server->Reply( response );
