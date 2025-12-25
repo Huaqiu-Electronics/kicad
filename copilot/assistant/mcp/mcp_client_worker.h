@@ -38,25 +38,24 @@ class WEBVIEW_CONTAINER;
 class MCP_CLIENT_WORKER
 {
 public:
-    MCP_CLIENT_WORKER( WEBVIEW_CONTAINER& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string aUrl );
+    MCP_CLIENT_WORKER( WEBVIEW_CONTAINER& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string aSdkURL );
 
     ~MCP_CLIENT_WORKER();
 
-    void Start();
 
-    void Stop();
+    static long launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress );
 
-    static long launch_mcp_py_client( std::string const& url, int sdkServerPort );
+private:
+    void Run( std::string const& aPairUrl );
 
-    static std::string fmt_client_url();
 
 private:
     WEBVIEW_CONTAINER&        m_eventSink;
     MCP_CLIENT_REQUEST_QUEUE& m_requestQueue;
     std::atomic_bool          m_shouldStop{ false };
     nlohmann::json            m_mcp_settings{};
-    std::string               m_url;
     std::string               m_request;
+    long                      m_pyMcpClientPid{};
 };
 
 #endif

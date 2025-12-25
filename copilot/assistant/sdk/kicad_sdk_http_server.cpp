@@ -26,7 +26,6 @@
 
 #include "context/copilot_global_context.h"
 #include <passive_action/agent/agent_action.h>
-#include "kicad_sdk_http_server.h"
 #include <utils/httplib_wrapper.h>
 #include <nlohmann/json.hpp>
 #include <utility>
