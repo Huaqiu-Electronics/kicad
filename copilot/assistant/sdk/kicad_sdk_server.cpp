@@ -23,6 +23,15 @@
  */
 
 #include "kicad_sdk_server.h"
+#include <nlohmann/json.hpp>
+#include <context/copilot_global_context.h>
+#include <passive_action/agent/agent_action.h>
+#include <wx/log.h>
+#include <magic_enum.hpp>
+#include <nng/nng.h>
+#include <nng/protocol/reqrep0/rep.h>
+#include <wx/panel.h>
+#include <utils/nng_request_server.h>
 
 
 KICAD_SDK_SERVER::KICAD_SDK_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* aEvtSink, std::string aAddress ) :
@@ -40,5 +49,106 @@ KICAD_SDK_SERVER::~KICAD_SDK_SERVER()
 
 void KICAD_SDK_SERVER::run_server()
 {
-    // TODO: Implement
+    using json = nlohmann::json;
+    auto request_server = std::make_unique<NNG_REQUEST_SERVER>( _address );
+
+    request_server->SetCallback(
+            [this, &request_server]( std::string* aMessage )
+            {
+                try
+                {
+                    auto        request = json::parse( *aMessage );
+                    std::string response;
+
+                    if( request.contains( "cmd" ) )
+                    {
+                        const std::string& cmd_str = request["cmd"];
+
+                        enum class SDK_CMD_TYPE
+                        {
+                            invalid,
+                            netlist,
+                            placeNetLabels
+                        };
+
+                        const auto cmd =
+                                magic_enum::enum_cast<SDK_CMD_TYPE>( cmd_str ).value_or( SDK_CMD_TYPE::invalid );
+
+                        if( cmd == SDK_CMD_TYPE::invalid )
+                        {
+                            wxLogDebug( "Invalid command type: %s", cmd_str.c_str() );
+                            response = json{ { "error", "Invalid command type" }, { "cmd", cmd_str } }.dump();
+                            request_server->Reply( response );
+                            return;
+                        }
+
+                        switch( cmd )
+                        {
+                        case SDK_CMD_TYPE::netlist:
+                        {
+                            if( _handles.global_context_handle.expired() )
+                            {
+                                wxLogDebug( "Get design global context handle expired" );
+                                response = json{ { "error", "Global context handle expired" } }.dump();
+                            }
+                            else
+                            {
+                                auto  context_function = _handles.global_context_handle.lock();
+                                auto& global_ctx = ( *context_function )();
+                                response = global_ctx.dump();
+                            }
+                            break;
+                        }
+                        case SDK_CMD_TYPE::placeNetLabels:
+                        {
+                            if( _evtSink && !_handles.agent_action_handle.expired() )
+                            {
+                                _evtSink->CallAfter(
+                                        [=]
+                                        {
+                                            auto context_function = _handles.agent_action_handle.lock();
+                                            if( context_function )
+                                            {
+                                                ( *context_function )( request["params"] );
+                                            }
+                                        } );
+                                response = json{ { "status", "ok" } }.dump();
+                            }
+                            else
+                            {
+                                response = json{ { "error", "Invalid event sink or agent handle" } }.dump();
+                            }
+                            break;
+                        }
+                        default:
+                        {
+                            response = json{ { "error", "Unknown command" }, { "cmd", cmd_str } }.dump();
+                            break;
+                        }
+                        }
+                    }
+                    else
+                    {
+                        response = json{ { "error", "Missing cmd field" } }.dump();
+                    }
+
+                    request_server->Reply( response );
+                }
+                catch( std::exception& e )
+                {
+                    json error_response = { { "error", e.what() } };
+                    request_server->Reply( error_response.dump() );
+                }
+                catch( ... )
+                {
+                    json error_response = { { "error", "Unknown exception" } };
+                    request_server->Reply( error_response.dump() );
+                }
+            } );
+
+    // Keep the thread running until stopped
+    while( !m_shouldStop )
+    {
+        std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
+    }
 }

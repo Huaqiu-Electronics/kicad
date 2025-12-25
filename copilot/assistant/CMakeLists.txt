@@ -32,6 +32,8 @@ add_library(assistant SHARED
 
     utils/copilot_zip_utils.cpp
     utils/file_path_generator.cpp
+    utils/nng_request_server.cpp
+
 
     webview/internal/webview_controller.cpp
     webview/internal/webview_evt_filter.cpp
