@@ -33,11 +33,4 @@ struct SDK_CMD_BASE
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( SDK_CMD_BASE, cmd )
 };
 
-
-struct SDK_CMD_PLACE_NETLABELS : public SDK_CMD_BASE
-{
-    std::string params;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SDK_CMD_PLACE_NETLABELS, cmd, params )
-};
-
 #endif
