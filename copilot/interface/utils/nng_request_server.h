@@ -30,7 +30,7 @@
 #include <string>
 #include <thread>
 #include <atomic>
-
+#include <condition_variable>
 #include <copilot_global.h>
 
 class COPILOT_API NNG_REQUEST_SERVER
