@@ -32,8 +32,7 @@
 
 struct COPILOT_WEBVIEW_CONTAINER_IMPL
 {
-    std::unique_ptr<KICAD_SDK_SERVER> sdkServer;
-
+    std::unique_ptr<KICAD_SDK_SERVER>  sdkServer;
     std::unique_ptr<MCP_CLIENT_WORKER> mcpClientWorker;
     MCP_CLIENT_REQUEST_QUEUE           mcpClientRequestQueue;
 };

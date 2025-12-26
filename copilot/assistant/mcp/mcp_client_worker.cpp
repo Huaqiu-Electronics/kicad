@@ -105,6 +105,8 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::strin
 
     return pid;
 }
+
+
 inline auto recv_result( nng_socket& sock )
 {
     char*  buf = nullptr;
@@ -133,20 +135,18 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
     wxLogDebug( "MCP Client Failed to send message: %s", msg );
 }
 
-MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( WEBVIEW_CONTAINER& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue,
-                                      std::string aSdkURL ) : m_eventSink( eventSink ), m_requestQueue( requestQueue )
+MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( std::string const& aPairUrl, WEBVIEW_CONTAINER& eventSink,
+                                      MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string const& aSdkURL ) :
+        m_eventSink( eventSink ), m_requestQueue( requestQueue ),
+        m_pyMcpClientPid( launch_mcp_py_client( aPairUrl, aSdkURL ) ), m_thread(
+                                                                               [this, aPairUrl]
+                                                                               {
+                                                                                   Run( aPairUrl );
+                                                                               } )
 {
-    const auto pair_url = gen_nng_addr();
-    m_pyMcpClientPid = launch_mcp_py_client( pair_url, aSdkURL );
-    std::thread(
-            [this, pair_url]()
-            {
-                Run( pair_url );
-            } )
-            .detach();
 }
 
-MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
+void MCP_CLIENT_WORKER::Stop()
 {
     m_shouldStop = true;
 
@@ -158,7 +158,19 @@ MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
         {
             wxLogDebug( "Failed to kill mcp client: %d", err );
         }
+
+        m_pyMcpClientPid = 0;
     }
+
+    if( m_thread.joinable() )
+    {
+        m_thread.join();
+    }
+}
+
+MCP_CLIENT_WORKER::~MCP_CLIENT_WORKER()
+{
+    Stop();
 }
 
 void MCP_CLIENT_WORKER::Run( std::string const& aPairUrl )

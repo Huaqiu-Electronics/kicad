@@ -26,6 +26,8 @@
 #define MCP_CLIENT_WORKER_H
 
 #include <atomic>
+#include <string>
+#include <thread>
 #include <wx/event.h>
 #include <wx/msgqueue.h>
 #include <nlohmann/json.hpp>
@@ -38,24 +40,27 @@ class WEBVIEW_CONTAINER;
 class MCP_CLIENT_WORKER
 {
 public:
-    MCP_CLIENT_WORKER( WEBVIEW_CONTAINER& eventSink, MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string aSdkURL );
+    MCP_CLIENT_WORKER( std::string const& aPairUrl, WEBVIEW_CONTAINER& eventSink,
+                       MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string const& aSdkURL );
 
     ~MCP_CLIENT_WORKER();
 
-
     static long launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress );
+
+    void Stop();
 
 private:
     void Run( std::string const& aPairUrl );
 
 
 private:
+    std::string               m_request;
+    nlohmann::json            m_mcp_settings{};
     WEBVIEW_CONTAINER&        m_eventSink;
     MCP_CLIENT_REQUEST_QUEUE& m_requestQueue;
     std::atomic_bool          m_shouldStop{ false };
-    nlohmann::json            m_mcp_settings{};
-    std::string               m_request;
     long                      m_pyMcpClientPid{};
+    std::thread               m_thread;
 };
 
 #endif

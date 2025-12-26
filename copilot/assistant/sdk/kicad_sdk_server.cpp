@@ -36,19 +36,28 @@
 #include "proto/sdk_agent_action.h"
 
 KICAD_SDK_SERVER::KICAD_SDK_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* aEvtSink, std::string aAddress ) :
-        _handles( std::move( aHandles ) ), _evtSink( aEvtSink ), _address( std::move( aAddress ) )
+        _handles( std::move( aHandles ) ), _evtSink( aEvtSink ), _address( std::move( aAddress ) ),
+        _server_thread( &KICAD_SDK_SERVER::Run, this )
 {
-    _server_thread = std::thread( &KICAD_SDK_SERVER::run_server, this );
-    _server_thread.detach();
 }
 
 KICAD_SDK_SERVER::~KICAD_SDK_SERVER()
 {
+    Stop();
+}
+
+void KICAD_SDK_SERVER::Stop()
+{
     m_shouldStop = true;
+
+    if( _server_thread.joinable() )
+    {
+        _server_thread.join();
+    }
 }
 
 
-void KICAD_SDK_SERVER::run_server()
+void KICAD_SDK_SERVER::Run()
 {
     using json = nlohmann::json;
     auto request_server = std::make_unique<NNG_REQUEST_SERVER>( _address );
@@ -62,7 +71,7 @@ void KICAD_SDK_SERVER::run_server()
                     std::string response;
 
                     // Parse base command
-                    auto base_cmd = request.get<SDK_CMD_BASE>();
+                    auto               base_cmd = request.get<SDK_CMD_BASE>();
                     const std::string& cmd_str = base_cmd.cmd;
 
                     enum class SDK_CMD_TYPE
@@ -72,8 +81,7 @@ void KICAD_SDK_SERVER::run_server()
                         placeNetLabels
                     };
 
-                    const auto cmd =
-                            magic_enum::enum_cast<SDK_CMD_TYPE>( cmd_str ).value_or( SDK_CMD_TYPE::invalid );
+                    const auto cmd = magic_enum::enum_cast<SDK_CMD_TYPE>( cmd_str ).value_or( SDK_CMD_TYPE::invalid );
 
                     if( cmd == SDK_CMD_TYPE::invalid )
                     {
@@ -104,7 +112,7 @@ void KICAD_SDK_SERVER::run_server()
                     {
                         // Parse the full command with params
                         auto place_cmd = request.get<SDK_AGENT_ACTION>();
-                        
+
                         if( _evtSink && !_handles.agent_action_handle.expired() )
                         {
                             _evtSink->CallAfter(

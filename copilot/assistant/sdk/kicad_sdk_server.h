@@ -33,7 +33,6 @@
 class wxPanel;
 
 
-
 class KICAD_SDK_SERVER
 {
 public:
@@ -41,14 +40,16 @@ public:
     ~KICAD_SDK_SERVER();
 
 
-private:
-    void run_server();
+    void Stop();
 
-    HOST_COPILOT_HANDLES                                       _handles;
-    wxPanel*                                                   _evtSink;
-    std::string                                                _address;
-    std::thread                                                _server_thread;
-    std::atomic_bool                                           m_shouldStop{ false };
+private:
+    void Run();
+
+    HOST_COPILOT_HANDLES _handles;
+    wxPanel*             _evtSink;
+    std::string          _address;
+    std::thread          _server_thread;
+    std::atomic_bool     m_shouldStop{ false };
 };
 
 #endif

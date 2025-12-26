@@ -59,13 +59,18 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
     {
         auto sdk_listen_addr = gen_nng_addr();
         _impl->sdkServer = std::make_unique<KICAD_SDK_SERVER>( host_copilot_handles, this, sdk_listen_addr );
-        _impl->mcpClientWorker =
-                std::make_unique<MCP_CLIENT_WORKER>( *this, _impl->mcpClientRequestQueue, sdk_listen_addr );
+        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( gen_nng_addr(), *this,
+                                                                      _impl->mcpClientRequestQueue, sdk_listen_addr );
         Bind( EVT_MCP_AGENT_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage, this );
     }
 }
 COPILOT_WEBVIEW_CONTAINER::~COPILOT_WEBVIEW_CONTAINER()
 {
+    if( _impl->sdkServer )
+        _impl->sdkServer->Stop();
+
+    if( _impl->mcpClientWorker )
+        _impl->mcpClientWorker->Stop();
 }
 
 void COPILOT_WEBVIEW_CONTAINER::OnDocumentLoaded( wxWebViewEvent& evt )
