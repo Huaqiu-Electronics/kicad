@@ -55,10 +55,11 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
         WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, kDataBuriedPoint ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
+    auto sdk_listen_addr = gen_nng_addr();
+    _impl->sdkServer = std::make_unique<KICAD_SDK_SERVER>( host_copilot_handles, this, sdk_listen_addr );
+
     if( WEBVIEW_SETTINGS_MANAGER::get_instance().mcp_enabled() )
     {
-        auto sdk_listen_addr = gen_nng_addr();
-        _impl->sdkServer = std::make_unique<KICAD_SDK_SERVER>( host_copilot_handles, this, sdk_listen_addr );
         _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( gen_nng_addr(), *this,
                                                                       _impl->mcpClientRequestQueue, sdk_listen_addr );
         Bind( EVT_MCP_AGENT_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage, this );
