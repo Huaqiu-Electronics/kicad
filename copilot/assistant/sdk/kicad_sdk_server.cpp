@@ -34,6 +34,7 @@
 #include <utils/nng_request_server.h>
 #include "proto/sdk_cmd_base.h"
 #include "proto/sdk_agent_action.h"
+#include "sdk_cmd_type.h"
 
 KICAD_SDK_SERVER::KICAD_SDK_SERVER( HOST_COPILOT_HANDLES aHandles, wxPanel* aEvtSink, std::string aAddress ) :
         _handles( std::move( aHandles ) ), _evtSink( aEvtSink ), _address( std::move( aAddress ) ),
@@ -74,12 +75,6 @@ void KICAD_SDK_SERVER::Run()
                     auto               base_cmd = request.get<SDK_CMD_BASE>();
                     const std::string& cmd_str = base_cmd.cmd;
 
-                    enum class SDK_CMD_TYPE
-                    {
-                        invalid,
-                        netlist,
-                        placeNetLabels
-                    };
 
                     const auto cmd = magic_enum::enum_cast<SDK_CMD_TYPE>( cmd_str ).value_or( SDK_CMD_TYPE::invalid );
 
