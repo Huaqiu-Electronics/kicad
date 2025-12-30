@@ -6,6 +6,7 @@
 #include <pcb_track.h>
 #include <kiway.h>
 #include <cpp_sdk/api_primitives_drawer.h>
+#include <cpp_sdk/api_cpp_sdk_param.h>
 
 
 API_PRIMTIVES_PCB_DRAWER::API_PRIMTIVES_PCB_DRAWER( PCB_BASE_EDIT_FRAME* aFrame ):
@@ -304,7 +305,7 @@ void API_PRIMTIVES_PCB_DRAWER::GetPcbLayerNamesList( API_PCB_LAYER_NAME_LIST& aP
     for( int layer = F_Cu; layer < PCB_LAYER_ID_COUNT; ++layer )
     {
         wxString layer_name = board->GetLayerName( ToLAYER_ID( layer ) );
-        aParams.pcb_layer_name_list.push_back( API_PCB_LAYER_NAME( layer_name.ToStdString() ) );
+        aParams.pcb_layer_name_list.push_back( API_PCB_LAYER_NAME{layer_name.ToStdString() } );
     }
     return;
 }
@@ -326,7 +327,7 @@ void API_PRIMTIVES_PCB_DRAWER::GetAllPcbFootprintList( API_PCB_FOOTPRINT_PARAMS_
         VECTOR2I position;
         fp_operation.GetFootprintPosition( fp_uuid, position);
 
-        aParams.footprint_list.emplace_back( reference, fpid, PcbIUToMM( position ) );
+        aParams.footprint_list.emplace_back( API_PCB_FOOTPRINT_PARAMS{reference, fpid, PcbIUToMM( position ) });
     }
     return;
 }
@@ -346,7 +347,7 @@ void API_PRIMTIVES_PCB_DRAWER::GetPcbFootprintList( API_PCB_REFERENCE_LIST const
         VECTOR2I position;
         fp_operation.GetFootprintPosition( fp_uuid, position );
 
-        aOut.footprint_list.emplace_back( fp.reference, fpid, PcbIUToMM( position ) );
+        aOut.footprint_list.emplace_back( API_PCB_FOOTPRINT_PARAMS{fp.reference, fpid, PcbIUToMM( position ) });
     }
     return;
 }

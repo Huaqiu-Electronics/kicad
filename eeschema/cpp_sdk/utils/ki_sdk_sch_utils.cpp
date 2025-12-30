@@ -5,6 +5,8 @@
 #include <kiway.h>
 #include "ki_sdk_sch_utils.h"
 #include <pgm_base.h>
+#include <cpp_sdk/api_cpp_sdk_param.h>
+
 
 KI_SDK_EXEC_RESULT GetSymbolFrame( SYMBOL_EDIT_FRAME*& frame )
 {
@@ -95,7 +97,7 @@ VECTOR2I SchMMToIU( const API_POINT& pt )
 
 API_POINT SchIUToMM( const VECTOR2I& pt )
 {
-    return API_POINT( SchIUToMM( pt.x ), SchIUToMM( pt.y ) );
+    return API_POINT  {SchIUToMM( pt.x ), SchIUToMM( pt.y ) };
 }
 
 KI_SDK_EXEC_RESULT GetGlobalSymbolDir( std::string& symbol_dir)

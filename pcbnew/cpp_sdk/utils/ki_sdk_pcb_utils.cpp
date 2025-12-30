@@ -7,6 +7,7 @@
 #include <wx/window.h>
 #include <kiway_holder.h>
 #include <cpp_sdk/utils/ki_sdk_pcb_utils.h>
+#include <cpp_sdk/api_cpp_sdk_param.h>
 
 
 KI_SDK_EXEC_RESULT GetFootprintEditorFrame(FOOTPRINT_EDIT_FRAME*& frame)
@@ -115,5 +116,5 @@ VECTOR2I PcbMMToIU( const API_POINT& pt )
 
 API_POINT PcbIUToMM( const VECTOR2I& pt)
 {
-    return API_POINT( PcbIUToMM( pt.x ), PcbIUToMM( pt.y ) );
+    return API_POINT{PcbIUToMM( pt.x ), PcbIUToMM( pt.y ) };
 }

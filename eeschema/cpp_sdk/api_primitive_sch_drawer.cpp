@@ -6,6 +6,7 @@
 #include <sch_sheet_path.h>
 #include <gal/color4d.h>
 #include "api_primitive_sch_drawer.h"
+#include "netlist_exporter_base.h"
 #include <kiway.h>
 #include <eeschema_id.h>
 #include <tools/sch_actions.h>
@@ -242,7 +243,7 @@ void API_PRIMITIVE_SCH_DRAWER::GetSymbolLibrary( API_SYMBOL_LIBRARY_LIST& aLibra
     symbol_operation.GetAllSymbolLibLibrary( list );
     for( auto& name : list)
     {
-        aLibraryList.library_list.emplace_back( name );
+        aLibraryList.library_list.emplace_back( API_SYMBOL_LIBRARY{name} );
     }
 }
 
@@ -876,9 +877,9 @@ void API_PRIMITIVE_SCH_DRAWER::GetSymbolPinsInfo( API_QUERY_SYMBOL const& aParam
             symbol_operation.GetSymbolUnitPinNameByNumber( symbol_uuid, pin_number, pin_name );
 
 
-            aSymbolPins.pins_info.emplace_back(
+            aSymbolPins.pins_info.emplace_back(API_PIN_INFO{
                     pin_number, pin_name,
-                    SchIUToMM(position) ); //API_POINT{ (double) position.x, (double) position.y }
+                    SchIUToMM(position) }); //API_POINT{ (double) position.x, (double) position.y }
         }
     }
 }
