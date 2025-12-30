@@ -33,4 +33,5 @@
 #include <webview_library/pcb_webview_library_ui.h>
 #include <fab/fab_info_getter_pcb.h>
 
+#include <cpp_sdk/pcb_cpp_sdk_query_action_executor.h>
 #endif

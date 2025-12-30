@@ -29,7 +29,9 @@ enum class SDK_CMD_TYPE
 {
     invalid,
     netlist,
-    placeNetLabels
+    placeNetLabels,
+    cpp_sdk_action,
+    cpp_sdk_query,
 };
 
 

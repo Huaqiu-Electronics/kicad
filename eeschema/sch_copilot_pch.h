@@ -32,4 +32,6 @@
 #include <copilot/sch_copilot_cmd.h>
 #include <copilot/sch_agent_api.h>
 
+#include <cpp_sdk/sch_cpp_sdk_query_action_executor.h>
+
 #endif

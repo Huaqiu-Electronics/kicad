@@ -31,6 +31,8 @@
 #include <memory>
 #include <optional>
 
+#include <cpp_sdk/api_cpp_sdk_param.h>
+
 using namespace kiapi;
 using namespace kiapi::common;
 using namespace kiapi::schematic::commands;
@@ -100,6 +102,7 @@ public:
     void placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_CMD const& aCommand );
 
     void placeNetlabels( API_PLACE_NETLABEL_PARAMS const& aParams );
+
 };
 
 

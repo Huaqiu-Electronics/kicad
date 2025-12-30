@@ -82,6 +82,10 @@
 
 #include <fpedit_copilot_pch.h>
 
+
+#include <cpp_sdk/footprint_editor/footprint_agent_run_action.h>
+
+
 BEGIN_EVENT_TABLE( FOOTPRINT_EDIT_FRAME, PCB_BASE_FRAME )
     EVT_MENU( wxID_CLOSE, FOOTPRINT_EDIT_FRAME::CloseFootprintEditor )
     EVT_MENU( wxID_EXIT, FOOTPRINT_EDIT_FRAME::OnExitKiCad )

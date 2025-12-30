@@ -91,6 +91,8 @@
 #include <symbol_copilot_pch.h>
 
 
+#include <cpp_sdk/symbol_editor/symbol_agent_run_action.h>
+
 bool SYMBOL_EDIT_FRAME::m_showDeMorgan = false;
 
 

@@ -32,6 +32,7 @@
 #include <memory>
 #include <properties/property_mgr.h>
 
+
 using namespace kiapi;
 using namespace kiapi::common;
 using namespace kiapi::board::commands;
@@ -47,6 +48,7 @@ class PCB_EDIT_FRAME;
 class PCB_TRACK;
 class PROPERTY_BASE;
 class API_PCB_DESIGN_RESOURCE_MGR;
+struct CPP_SDK_API_PARAM;
 
 
 class API_HANDLER_PCB : public API_HANDLER_EDITOR

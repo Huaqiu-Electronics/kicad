@@ -76,6 +76,8 @@ enum class AGENT_ACTION_TYPE
     edit_footprint_content,
     
 
+    cpp_sdk_api,
+
 
 };
 

@@ -41,6 +41,27 @@ include_directories(
     ./widgets
     )
 
+set( EESCHEMA_CPP_SDK_SRCS
+        cpp_sdk/primitives/sch_primitives_line.cpp
+        cpp_sdk/primitives/sch_primitives_item.cpp
+        cpp_sdk/primitives/sch_primitives_circle.cpp
+        cpp_sdk/primitives/sch_primitives_arc.cpp
+        cpp_sdk/primitives/sch_primitives_bezier.cpp
+        cpp_sdk/primitives/sch_primitives_textbox.cpp
+        cpp_sdk/primitives/sch_primitives_table.cpp
+        cpp_sdk/primitives/sch_primitives_rectangle.cpp
+        cpp_sdk/primitives/sch_primitives_schematic_text.cpp
+        cpp_sdk/primitives/sch_primitives_schematic_text.cpp
+        cpp_sdk/primitives/sch_primitives_sheet.cpp
+        cpp_sdk/primitives/sch_primitives_label.cpp
+        cpp_sdk/primitives/sch_primitives_symbol.cpp
+        cpp_sdk/primitives/sch_primitives_lib_symbol.cpp
+        cpp_sdk/primitives/sch_primitives_marker.cpp
+
+        cpp_sdk/utils/ki_sdk_sch_utils.cpp
+        cpp_sdk/api_primitive_sch_drawer.cpp
+)
+
 set( EESCHEMA_SCH_IO
     sch_io/sch_io_lib_cache.cpp
 
@@ -363,6 +384,9 @@ set( EESCHEMA_SRCS
     ${EESCHEMA_WIDGETS}
     ${EESCHEMA_IMPORT_GFX}
     ${SYNC_SHEET_PIN_SRCS}
+
+    ${EESCHEMA_CPP_SDK_SRCS}
+
     annotate.cpp
     autoplace_fields.cpp
     bom_plugins.cpp

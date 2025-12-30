@@ -52,7 +52,7 @@
 #include <utils/random_substring.h>
 #include <utils/add_parameter_to_url.h>
 #include <context/copilot_project_holder.h>
-
+#include <context/copilot_cpp_sdk_handle.h>
 
 template <class Derived, class ContextT>
 
@@ -76,6 +76,11 @@ public:
                     [this]()
                     {
                         return GetJsonifySelection();
+                    } ) ),
+            m_copilotCppSdkAgentHdl( std::make_shared<CPP_SDK_AGENT_ACTION_HANDLE_T>(
+                    [&]( AGENT_ACTION const& act, std::string& response )
+                    {
+                        ExecuteSdkQuerAgentAction( act, response );
                     } ) )
     {
     }
@@ -108,7 +113,11 @@ public:
 
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
                 m_hostVersionInfo, self(), add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
-                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl } ); //m_copilotDsnHdl
+                { m_copilotGlobalContextHdl,
+                  m_copilotAgentActionHdl,
+                  m_copilotSelectionHdl,
+                  {},
+                  m_copilotCppSdkAgentHdl } ); //m_copilotDsnHdl
 
         m_copilotContextCache.host_version_info = m_hostVersionInfo;
     }
@@ -306,6 +315,8 @@ public:
 
     void ImportSpectraBase64Data( const std::string& base64Data ) { return; }
 
+    //CPP SDK
+    void ExecuteSdkQuerAgentAction( AGENT_ACTION const& aAction, std::string& agentResult ) { return ; }
 
 protected:
     ContextT                   m_copilotContextCache;
@@ -318,6 +329,8 @@ protected:
     COPILOT_SELECTION_OWNED_HDL      m_copilotSelectionHdl;
     std::string                      m_chat_id = random_substring();
     HOST_VERSION_INFO                m_hostVersionInfo;
+
+    CPP_SDK_AGENT_ACTION_OWNED_HANDLE m_copilotCppSdkAgentHdl;
 };
 
 #endif

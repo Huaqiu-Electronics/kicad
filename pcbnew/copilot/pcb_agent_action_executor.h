@@ -42,6 +42,9 @@
 #include <api/api_place_component_cmd.h>
 #include <api/decode_base64_encoded_component.h>
 
+#include <cpp_sdk/api_cpp_sdk_param.h>
+#include <cpp_sdk/api_handler_pcb_run_sdk_api.h>
+
 template <>
 void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
 {
@@ -94,6 +97,15 @@ void PCB_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
             }
 
             self()->m_apiHandler->placeFootprint( cmd.component );
+            break;
+        }
+        case AGENT_ACTION_TYPE::cpp_sdk_api:
+        {
+            auto        content = aAction.context.get<CPP_SDK_API_PARAM>();
+            std::string output;
+            API_CPP_SDK_RUN_ACTION_PCB pcb_action;
+            pcb_action.runSdkApi( self(), content, output );
+
             break;
         }
         default: return BaseExecuteAgentAction( aAction );

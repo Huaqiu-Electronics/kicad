@@ -44,7 +44,6 @@
 #include <fmt/format.h>
 #include "api_place_netlabel_params.h"
 
-
 using namespace kiapi::common::commands;
 using kiapi::common::types::CommandStatus;
 using kiapi::common::types::DocumentType;

@@ -127,6 +127,47 @@ void KICAD_SDK_SERVER::Run()
                         }
                         break;
                     }
+                    case SDK_CMD_TYPE::cpp_sdk_action:
+                    {
+                        auto cpp_sdk_action = request.get<SDK_AGENT_ACTION>();
+
+                        if( _evtSink && !_handles.agent_action_handle.expired() )
+                        {
+                            _evtSink->CallAfter(
+                                    [=]
+                                    {
+                                        auto context_function = _handles.agent_action_handle.lock();
+                                        if( context_function )
+                                        {
+                                            ( *context_function )( cpp_sdk_action.params );
+                                        }
+                                    } );
+                            response = json{ { "status", "ok" } }.dump();
+                        }
+                        else
+                        {
+                            response = json{ { "error", "Invalid event sink or agent handle" } }.dump();
+                        }
+                        break;
+                    }
+                    case SDK_CMD_TYPE::cpp_sdk_query:
+                    {
+                        auto        query_cmd = request.get<SDK_AGENT_ACTION>();
+                        std::string output;
+                        if( _handles.cpp_sdk_agent_action_handle.expired() )
+                        {
+                            wxLogDebug( "Get design global context handle expired" );
+                            return;
+                        }
+                        auto context_function = _handles.cpp_sdk_agent_action_handle.lock();
+                        ( *context_function )( query_cmd.params, output );
+
+                        json js_response;
+                        js_response["status"] = "ok";
+                        js_response["msg"] = output;
+                        response = js_response.dump();
+                        break;
+                    }
                     default:
                     {
                         response = json{ { "error", "Unknown command" }, { "cmd", cmd_str } }.dump();

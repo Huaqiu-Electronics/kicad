@@ -56,6 +56,8 @@
 
 #include "sch_editor_control.h"
 #include "fmt_sch_selection_cmd.h"
+#include <cpp_sdk/api_cpp_sdk_param.h>
+#include <cpp_sdk/api_handler_sch_run_sdk_api.h>
 
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAction )
@@ -163,6 +165,16 @@ void SCH_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aActio
         {
             auto cmd = aAction.context.get<API_PLACE_NETLABEL_PARAMS>();
             self()->m_apiHandler->placeNetlabels( cmd );
+            break;
+        }
+        case AGENT_ACTION_TYPE::cpp_sdk_api:
+        {
+            auto content = aAction.context.get<CPP_SDK_API_PARAM>();
+            std::string output;
+            // self()->m_apiHandler->runSdkApi( content, output );
+            // runSdkApi( self(), content, output );
+            API_CPP_SDK_RUN_ACTION_SCH sch_action;
+            sch_action.runSdkApi( self(), content, output );
             break;
         }
 

@@ -59,9 +59,9 @@ void PCB_EDIT_FRAME::CopilotPanelInit()
     //freerouting handles
     m_copilotFreeroutingHdl = { m_copilotDsnHdl, m_copilotSetJobIdHdl, m_copilotGetJobIdHdl, m_copilotSpecHdl };
     m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
-                m_hostVersionInfo, this, add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
-                { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl,
-                  m_copilotFreeroutingHdl } ); //m_copilotDsnHdl
+            m_hostVersionInfo, this, add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
+            { m_copilotGlobalContextHdl, m_copilotAgentActionHdl, m_copilotSelectionHdl, m_copilotFreeroutingHdl,
+              m_copilotCppSdkAgentHdl } ); //m_copilotDsnHdl
 
     m_copilotContextCache.host_version_info = m_hostVersionInfo;
 }

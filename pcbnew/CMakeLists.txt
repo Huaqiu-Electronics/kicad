@@ -30,6 +30,27 @@ include_directories(
     ${INC_AFTER}
     )
 
+set ( PCBNEW_CPP_SDK_SRCS
+        cpp_sdk/primitives/pcb_primitives_footprint.cpp
+        cpp_sdk/primitives/pcb_primitives_track.cpp
+        cpp_sdk/primitives/pcb_primitives_via.cpp
+        cpp_sdk/primitives/pcb_primitives_net.cpp
+        cpp_sdk/primitives/pcb_primitives_pad.cpp
+        cpp_sdk/primitives/pcb_primitives_line.cpp
+        cpp_sdk/primitives/pcb_primitives_table.cpp
+        cpp_sdk/primitives/pcb_primitives_textbox.cpp
+        cpp_sdk/primitives/pcb_primitives_circle.cpp
+        cpp_sdk/primitives/pcb_primitives_rectangle.cpp
+        cpp_sdk/primitives/pcb_primitives_arc.cpp
+        cpp_sdk/primitives/pcb_primitives_export.cpp
+        cpp_sdk/primitives/pcb_primitives_item.cpp
+        cpp_sdk/primitives/pcb_primitives_bezier.cpp
+        cpp_sdk/utils/ki_sdk_pcb_utils.cpp
+        cpp_sdk/api_primtives_pcb_drawer.cpp
+        
+)
+
+
 set( PCBNEW_DIALOGS
     dialogs/dialog_filter_selection.cpp
     dialogs/dialog_filter_selection_base.cpp
@@ -511,6 +532,7 @@ set( PCBNEW_SRCS
     ${PCBNEW_CLASS_SRCS}
     ${PCBNEW_DIALOGS}
     ${PCBNEW_GIT_SRCS}
+    ${PCBNEW_CPP_SDK_SRCS}
     )
 
 #extra sources from common

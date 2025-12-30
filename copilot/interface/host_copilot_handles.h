@@ -29,7 +29,7 @@
 #include <context/copilot_global_context_handle.h>
 #include <webview/webview_msg_handle.h>
 #include <freerouting_owned_handles.h>
-
+#include <context/copilot_cpp_sdk_handle.h>
 
 
 struct HOST_COPILOT_HANDLES
@@ -40,6 +40,9 @@ struct HOST_COPILOT_HANDLES
 
     //freerouting
     FREEROUTING_OWNED_HDL      freerouting_handle;
+
+    //CPP_SDK
+    CPP_SDK_AGENT_ACTION_HANDLE cpp_sdk_agent_action_handle;
 };
 
 #endif
