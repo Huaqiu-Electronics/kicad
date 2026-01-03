@@ -12,6 +12,7 @@
       "baseline": "84ffcd1f1fd0d40470ddd85fabb44472ddca6b04",
       "packages": [
         "glew",
+        "glew",
         "python3",
         "opencascade",
         "wxpython-33",
@@ -21,3 +22,4 @@
     }
   ]
 }
+
