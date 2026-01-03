@@ -30,5 +30,15 @@
                 "CMAKE_BUILD_TYPE": "RelWithDebInfo"
             }
         }
+    ],
+    "buildPresets": [
+        {
+            "name": "kicad",
+            "configurePreset": "debug",
+            "configuration": "Debug",
+            "targets": [
+                "install"
+            ]
+        }
     ]
 }
