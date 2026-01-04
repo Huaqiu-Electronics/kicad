@@ -1333,7 +1333,7 @@ if( KICAD_BUILD_I18N )
 endif()
 
 if( APPLE )
-    set( KICAD_OSX_CODESIGN OFF
+    set( KICAD_OSX_CODESIGN ON
             CACHE BOOL "Sign KiCad.app on macOS" FORCE )
     set( KICAD_OSX_SIGNING_ID "-"
             CACHE STRING "macOS Signing ID, defaults to ad-hoc" FORCE )
