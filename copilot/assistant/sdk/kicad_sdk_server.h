@@ -49,7 +49,7 @@ private:
     wxPanel*             _evtSink;
     std::string          _address;
     std::thread          _server_thread;
-    std::atomic_bool     m_shouldStop{ false };
+    std::atomic_bool     _shouldStop{ false };
 };
 
 #endif

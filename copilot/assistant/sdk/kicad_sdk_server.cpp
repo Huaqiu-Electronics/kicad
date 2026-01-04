@@ -49,7 +49,7 @@ KICAD_SDK_SERVER::~KICAD_SDK_SERVER()
 
 void KICAD_SDK_SERVER::Stop()
 {
-    m_shouldStop = true;
+    _shouldStop = true;
 
     if( _server_thread.joinable() )
     {
@@ -190,7 +190,7 @@ void KICAD_SDK_SERVER::Run()
             } );
 
     // Keep the thread running until stopped
-    while( !m_shouldStop )
+    while( !_shouldStop )
     {
         std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
     }
