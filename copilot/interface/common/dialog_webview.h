@@ -40,10 +40,14 @@ class COPILOT_API DIALOG_WEBVIEW : public COPILOT_DIALOG
     WEBVIEW_CONTAINER* _webview_container{};
     WEBVIEW_CONTAINER* _parent_webview{};
 
+
 public:
     DIALOG_WEBVIEW( struct HOST_VERSION_INFO const& host_version_info, wxWindow* aParent, const wxString& title,
-                    const wxString& settingKey, const wxSize& size = { 800, 600 }, const wxPoint& pt = wxDefaultPosition, wxWindowID id = wxID_ANY,
-                    HOST_COPILOT_HANDLES host_copilot_handles = {}, WEBVIEW_CONTAINER* parent_webview = nullptr );
+                    const wxString& settingKey, const wxSize& size = { 800, 600 },
+                    const wxPoint& pt = wxDefaultPosition, wxWindowID id = wxID_ANY,
+                    HOST_COPILOT_HANDLES host_copilot_handles = {}, WEBVIEW_CONTAINER* parent_webview = nullptr,
+                    bool aDeleteOnClose = false );
+                    
     ~DIALOG_WEBVIEW();
 
 

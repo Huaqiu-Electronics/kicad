@@ -48,6 +48,7 @@
 #include <context/copilot_global_context.h>
 #include <fmt/format.h>
 #include <magic_enum.hpp>
+#include <wx/event.h>
 #include <wx/gdicmn.h>
 #include <wx/timer.h>
 #include <utils/httplib_wrapper.h>
@@ -66,17 +67,11 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
 {
     auto show_webview_window = [&]( SHOW_WEBVIEW_WINDOW const& show_window )
     {
-        if( auto win = _impl->webview_windows.find( show_window.key ); win != _impl->webview_windows.end() )
-        {
-            delete win->second;
-        }
-
         const auto pos = show_window.pos ? wxPoint{ show_window.pos->x, show_window.pos->y } : wxDefaultPosition;
         auto       webview_win = new DIALOG_WEBVIEW( _impl->host_version_info, GetParent(), show_window.title,
                                                      show_window.key, { show_window.size.width, show_window.size.height },
-                                                     pos, wxID_ANY, _impl->_host_copilot_handles, this );
+                                                     pos, wxID_ANY, _impl->_host_copilot_handles, this, true );
 
-        _impl->webview_windows[show_window.key] = webview_win;
         webview_win->LoadUrl( show_window.url );
         webview_win->Show();
     };

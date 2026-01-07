@@ -49,7 +49,6 @@ struct WEBVIEW_CONTAINER_IMPL
     HOST_COPILOT_HANDLES                   _host_copilot_handles;
     std::optional<std::string>             _primary_url;
     HOST_VERSION_INFO                      host_version_info;
-    std::map<std::string, DIALOG_WEBVIEW*> webview_windows;
 };
 
 #endif

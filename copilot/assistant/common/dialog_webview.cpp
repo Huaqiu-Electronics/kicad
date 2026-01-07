@@ -34,12 +34,23 @@
 
 DIALOG_WEBVIEW::DIALOG_WEBVIEW( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent, const wxString& title,
                                 const wxString& settingKey, const wxSize& size, const wxPoint& pt, wxWindowID id,
-                                HOST_COPILOT_HANDLES host_copilot_handles, WEBVIEW_CONTAINER* parent_webview ) :
+                                HOST_COPILOT_HANDLES host_copilot_handles, WEBVIEW_CONTAINER* parent_webview,
+                                bool aDeleteOnClose ) :
         COPILOT_DIALOG( aParent, title, settingKey, size, pt, id ),
         _webview_container( new WEBVIEW_CONTAINER( host_version_info, this, {}, std::move( host_copilot_handles ) ) ),
         _parent_webview( parent_webview )
 {
     Init( _webview_container );
+
+    if( aDeleteOnClose )
+    {
+        Bind( wxEVT_CLOSE_WINDOW,
+              [=, this]( wxCloseEvent& evt )
+              {
+                  evt.Veto();
+                  delete this;
+              } );
+    }
 }
 
 DIALOG_WEBVIEW::~DIALOG_WEBVIEW()
@@ -59,4 +70,8 @@ void DIALOG_WEBVIEW::RunScriptAsync( wxString const& aScript )
 WEBVIEW_CONTAINER* DIALOG_WEBVIEW::GetWebviewContainer() const
 {
     return _webview_container;
+}
+
+void DIALOG_WEBVIEW::DeleteOnClose()
+{
 }

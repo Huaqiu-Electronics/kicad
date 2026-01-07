@@ -164,7 +164,6 @@ WEBVIEW_CONTAINER::~WEBVIEW_CONTAINER()
 #endif
 
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( this );
-
 }
 
 void WEBVIEW_CONTAINER::ExecuteCommand( const char* cmd )
