@@ -71,7 +71,3 @@ WEBVIEW_CONTAINER* DIALOG_WEBVIEW::GetWebviewContainer() const
 {
     return _webview_container;
 }
-
-void DIALOG_WEBVIEW::DeleteOnClose()
-{
-}
