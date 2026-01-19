@@ -25,6 +25,7 @@
 
 #include "internal/show_webview_window.h"
 #include "utils/add_parameter_to_url.h"
+#include "utils/validate_huaqiu_token.h"
 #include "webview_container_impl.h"
 #include "internal/modal_dialog/end_modal.h"
 #include "internal/modal_dialog/show_modal.h"
@@ -197,7 +198,7 @@ void WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& msg )
                 DIALOG_LOGIN dialog( _impl->host_version_info, GetParent() );
                 dialog.ShowModal();
 
-                if( !dialog.Success() )
+                if( !validate_huaqiu_token() )
                 {
                     WEBVIEW_CONTROLLER::Get().OnLoginFailed( this );
                     return;

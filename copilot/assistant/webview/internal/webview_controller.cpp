@@ -75,7 +75,7 @@ void WEBVIEW_CONTROLLER::RemoveWebviewContainer( WEBVIEW_CONTAINER* aWebviewCont
 
 void WEBVIEW_CONTROLLER::OnWebViewNavigationComplete( WEBVIEW_CONTAINER* aWebviewContainer )
 {
-    if( WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
+    if( WEBVIEW_SETTINGS_MANAGER::get_instance().has_local_token() )
     {
         UpdateToken( aWebviewContainer );
     }

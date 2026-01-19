@@ -37,7 +37,7 @@
 #include <settings/webview_settings_manager.h>
 #include <auth/dialog_login.h>
 #include <wx/utils.h>
-
+#include <utils/validate_huaqiu_token.h>
 
 enum
 {
@@ -50,13 +50,13 @@ enum
 void PCB_EDIT_FRAME::PlaceOrder( ORDER_TYPE aOrderType )
 {
     // Ensure user is logged in before placing order
-    if( !WEBVIEW_SETTINGS_MANAGER::get_instance().is_token_valid() )
+    if( !validate_huaqiu_token() )
     {
         DIALOG_LOGIN login_dialog( m_hostVersionInfo, this );
 
         login_dialog.ShowModal();
 
-        if( !login_dialog.Success() )
+        if( !validate_huaqiu_token() )
         {
             wxMessageBox( _( "Please login to place order" ), _( "Place Order" ), wxOK | wxICON_ERROR );
             return;

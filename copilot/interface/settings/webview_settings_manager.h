@@ -72,7 +72,7 @@ public:
 
     void set_access_token( nlohmann::json const& token );
 
-    bool is_token_valid() const;
+    bool has_local_token() const;
 
     void save_token();
 

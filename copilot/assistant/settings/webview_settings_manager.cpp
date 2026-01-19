@@ -166,7 +166,7 @@ void WEBVIEW_SETTINGS_MANAGER::set_dialog_viewer_geometry( std::string const& aK
 
 ACCESS_TOKEN WEBVIEW_SETTINGS_MANAGER::get_access_token() const
 {
-    if( !is_token_valid() )
+    if( !has_local_token() )
     {
         static ACCESS_TOKEN invalid_token;
         return invalid_token;
@@ -182,7 +182,7 @@ void WEBVIEW_SETTINGS_MANAGER::set_access_token( nlohmann::json const& token )
     save_token();
 }
 
-bool WEBVIEW_SETTINGS_MANAGER::is_token_valid() const
+bool WEBVIEW_SETTINGS_MANAGER::has_local_token() const
 {
     if( !_access_token || !_access_token->contains( "expires_at" ) )
     {

@@ -36,8 +36,6 @@ public:
     };
 
     virtual ~DIALOG_LOGIN_BASE() = default;
-
-    bool Success() const;
 };
 
 
