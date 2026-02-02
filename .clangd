@@ -1,3 +1,0 @@
-CompileFlags:
-  Add:
-    - "-external:IC:/code/kicad-hq-dev/thirdparty/nlohmann_json"

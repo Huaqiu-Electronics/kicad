@@ -67,7 +67,10 @@ struct COMPONENT_CONTENT
 struct PCB_CONTENT
 {
     NAMED_CONTENT pcb;
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_CONTENT, pcb )
+    // footprints used in the PCB , in case we are placing only the PCB
+    std::list<FOOTPRINT_CONENT> footprints;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_CONTENT, pcb, footprints )
 };
 
 
