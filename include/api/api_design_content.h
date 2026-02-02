@@ -44,7 +44,7 @@ struct FOOTPRINT_CONENT
     // The 3d models
     std::list<NAMED_CONTENT> models;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(  FOOTPRINT_CONENT, footprint, models )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( FOOTPRINT_CONENT, footprint, models )
 };
 
 
@@ -58,7 +58,7 @@ struct COMPONENT_CONTENT
     };
 
     NAMED_CONTENT               symbol;
-    std::list<Attribute>       attributes;
+    std::list<Attribute>        attributes;
     std::list<FOOTPRINT_CONENT> footprints;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE( COMPONENT_CONTENT, symbol, attributes, footprints )
 };
@@ -67,10 +67,10 @@ struct COMPONENT_CONTENT
 struct PCB_CONTENT
 {
     NAMED_CONTENT pcb;
-    // footprints used in the PCB , in case we are placing only the PCB
-    std::list<FOOTPRINT_CONENT> footprints;
+    // NOTE:  NOT needed anymore ,just for documentation
+    // std::list<FOOTPRINT_CONENT> footprints;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_CONTENT, pcb, footprints )
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( PCB_CONTENT, pcb )
 };
 
 
