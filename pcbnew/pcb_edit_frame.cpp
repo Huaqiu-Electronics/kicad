@@ -129,6 +129,7 @@
 #include <footprint_chooser_frame.h>
 #include <toolbars_pcb_editor.h>
 #include <wx/log.h>
+#include <drc/rule_editor/dialog_drc_rule_editor.h>
 
 #include "pcb_hq_dist_pch.h"
 
@@ -736,10 +737,15 @@ PCB_EDIT_FRAME::~PCB_EDIT_FRAME()
     }
 
     // Close modeless dialogs
-    wxWindow* open_dlg = wxWindow::FindWindowByName( DIALOG_DRC_WINDOW_NAME );
+    wxWindow* drcDlg = wxWindow::FindWindowByName( DIALOG_DRC_WINDOW_NAME );                                              
+                  
+    if( drcDlg )                                                                                                          
+        drcDlg->Close( true );
 
-    if( open_dlg )
-        open_dlg->Close( true );
+    wxWindow* ruleEditorDlg = wxWindow::FindWindowByName( DIALOG_DRC_RULE_EDITOR_WINDOW_NAME );
+
+    if( ruleEditorDlg )
+        ruleEditorDlg->Close( true );
 
     // Shutdown all running tools
     if( m_toolManager )
@@ -1429,10 +1435,16 @@ void PCB_EDIT_FRAME::doCloseWindow()
     Unbind( EDA_EVT_CLOSE_DIALOG_BOOK_REPORTER, &PCB_EDIT_FRAME::onCloseModelessBookReporterDialogs,
             this );
 
-    wxWindow* open_dlg = wxWindow::FindWindowByName( DIALOG_DRC_WINDOW_NAME );
+    wxWindow* drcDlg = wxWindow::FindWindowByName( DIALOG_DRC_WINDOW_NAME );                                              
+                  
+    if( drcDlg )                                                                                                          
+        drcDlg->Close( true );
 
-    if( open_dlg )
-        open_dlg->Close( true );
+    wxWindow* ruleEditorDlg = wxWindow::FindWindowByName( DIALOG_DRC_RULE_EDITOR_WINDOW_NAME );
+
+    if( ruleEditorDlg )
+        ruleEditorDlg->Close( true );
+
 
     if( m_findDialog )
     {
