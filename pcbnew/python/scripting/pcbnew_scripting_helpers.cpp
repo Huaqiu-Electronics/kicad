@@ -61,6 +61,8 @@
 #include <wx/app.h>
 #include <wx/crt.h>
 #include <wx/image.h>
+#include <properties/property.h>
+#include <properties/property_mgr.h>
 
 #include <copilot/pcb_copilot_current_chat_id.h>
 #include <copilot/pcb_agent_py_plugin_arg.h>
