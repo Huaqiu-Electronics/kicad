@@ -1330,7 +1330,7 @@ void SCH_EDIT_FRAME::OnModify()
     if( GetCanvas() )
         GetCanvas()->Refresh();
 
-    if( !GetTitle().StartsWith( wxS( "*" ) ) )
+    if( GetScreen() && !GetTitle().StartsWith( wxS( "*" ) ) )
         updateTitle();
 }
 
