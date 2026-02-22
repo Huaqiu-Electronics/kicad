@@ -68,6 +68,7 @@
 #include <wx/combobox.h>
 #include <toolbars_pcb_editor.h>
 #include <settings/settings_manager.h>
+#include <eda_text.h>
 
 #include <tool/ui/copilot/copilot_toolbar_conf.h>
 #include <tool/ui/webview_library/webview_library_toolbar_cnf.h>
