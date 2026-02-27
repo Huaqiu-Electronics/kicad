@@ -287,6 +287,8 @@ public:
     static TOOL_ACTION showPythonConsole;
     static TOOL_ACTION previousUnit;
     static TOOL_ACTION nextUnit;
+    static TOOL_ACTION previousSymbol;
+    static TOOL_ACTION nextSymbol;
 
     // Line modes
     static TOOL_ACTION lineModeFree;
