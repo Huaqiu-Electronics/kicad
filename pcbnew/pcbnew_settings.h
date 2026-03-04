@@ -156,7 +156,6 @@ public:
         bool  show_properties;
         bool  show_search;
         bool  show_net_inspector;
-
         bool  design_blocks_show;
         int   design_blocks_panel_docked_width;
         int   design_blocks_panel_float_width;
@@ -273,10 +272,8 @@ public:
 
     ACTION_PLUGIN_SETTINGS_LIST m_VisibleActionPlugins;
 
-protected:
-    virtual std::string getLegacyFrameName() const override { return "PcbFrame"; }
 
 private:
-    void initCopilotSettings();
+    void initCopilotSettings();    
 };
 
