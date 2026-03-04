@@ -2,6 +2,7 @@ add_library(assistant SHARED
 
     api/upload_project.cpp
     auth/dialog_login_webview.cpp
+    auth/dialog_note.cpp
 
     common/copilot_dialog.cpp
     common/dialog_image_viewer.cpp
