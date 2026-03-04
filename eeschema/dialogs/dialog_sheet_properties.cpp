@@ -52,7 +52,7 @@
 DIALOG_SHEET_PROPERTIES::DIALOG_SHEET_PROPERTIES( SCH_EDIT_FRAME* aParent, SCH_SHEET* aSheet,
                                                   bool* aIsUndoable, bool* aClearAnnotationNewItems,
                                                   bool* aUpdateHierarchyNavigator,
-                                                  wxString* aSourceSheetFilename ) :
+                                                  wxString* aSourceSheetFilename, bool aCalledByApi ) :
         DIALOG_SHEET_PROPERTIES_BASE( aParent ),
         m_frame( aParent ),
         m_isUndoable( aIsUndoable ),

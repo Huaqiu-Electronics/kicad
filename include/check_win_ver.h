@@ -10,6 +10,7 @@
 // 1.2.0: Removed the Windows 11 build number check to set major version to 11.
 
 #include <Windows.h>
+#include <bcrypt.h>
 #pragma once
 
 #pragma comment( lib, "ntdll" )

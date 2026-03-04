@@ -133,20 +133,7 @@ TOOL_ACTION SCH_ACTIONS::showRemoteSymbolPanel( TOOL_ACTION_ARGS()
         .FriendlyName( _( "Remote Symbols" ) )
         .Tooltip( _( "Show/hide the remote symbol panel" ) )
         .Icon( BITMAPS::library_browser ) );
-
-TOOL_ACTION EE_ACTIONS::toggleCopilotPanel( TOOL_ACTION_ARGS()
-        .Name( "eeschema.SchDesignBlockControl.toggleCopilotPanel" )
-        .Scope( AS_GLOBAL )
-        .FriendlyName( _( "Show/hide copilot" ) )
-        .Tooltip( _( "Show/hide copilot panel" ) )
-        .Icon( BITMAPS::copilot ) );
-
-TOOL_ACTION EE_ACTIONS::showCopilotPanel( TOOL_ACTION_ARGS()
-        .Name( "eeschema.SchDesignBlockControl.showCopilotPanel" )
-        .Scope( AS_GLOBAL )
-        .FriendlyName( _( "Show copilot" ) )
-        .Tooltip( _( "Show copilot panel" ) )
-        .Icon( BITMAPS::copilot ) );        
+     
 
 TOOL_ACTION SCH_ACTIONS::saveSheetAsDesignBlock( TOOL_ACTION_ARGS()
         .Name( "eeschema.SchDesignBlockControl.saveSheetAsDesignBlock" )
@@ -1807,11 +1794,3 @@ TOOL_ACTION SCH_ACTIONS::removeVariant( TOOL_ACTION_ARGS()
         .Tooltip( _( "Remove an existing design variant from the schematic." ) ) );
 
 // clang-format on
-
-
-TOOL_ACTION SCH_ACTIONS::toggleWebViewLibrary(
-        TOOL_ACTION_ARGS()
-                .Name( "eeschema.AUI.toggleWebViewLibrary" )
-                .Scope( AS_GLOBAL )
-                .FriendlyName( _( "Toggle Online Library" ) )
-                .Icon( BITMAPS::hq_add_symbol_to_schematic ) );

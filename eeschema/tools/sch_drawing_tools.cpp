@@ -729,7 +729,6 @@ int SCH_DRAWING_TOOLS::ImportSheet( const TOOL_EVENT& aEvent )
     std::unique_ptr<DESIGN_BLOCK> designBlock;
     wxString                      sheetFileName = wxEmptyString;
     int                           suffix = 1;
-    EESCHEMA_SETTINGS* cfg = m_frame->eeconfig();
     bool               place_as_sheet = cfg->m_DesignBlockChooserPanel.place_as_sheet;
     bool               keepAnnotations = cfg->m_DesignBlockChooserPanel.keep_annotations;
 

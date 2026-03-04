@@ -54,7 +54,6 @@
 #include <schematic.h>
 #include <sch_commit.h>
 #include <scoped_set_reset.h>
-#include <symbol_library.h>
 #include <eeschema_settings.h>
 #include <api/api_place_netlabel_params.h>
 #include <string_utils.h>

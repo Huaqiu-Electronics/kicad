@@ -382,21 +382,6 @@ void SCH_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
             cfg->m_AuiPanels.remote_symbol_panel_float_width = remoteSymbolPane.floating_size.x;
         }
 
-        wxAuiPaneInfo& remoteSymbolPane = m_auimgr.GetPane( RemoteSymbolPaneName() );
-        cfg->m_AuiPanels.remote_symbol_show = remoteSymbolPane.IsShown();
-
-        if( remoteSymbolPane.IsDocked() )
-        {
-            cfg->m_AuiPanels.remote_symbol_panel_docked_width = m_remoteSymbolPane->GetSize().x;
-        }
-        else
-        {
-            cfg->m_AuiPanels.remote_symbol_panel_float_height = remoteSymbolPane.floating_size.y;
-            cfg->m_AuiPanels.remote_symbol_panel_float_width = remoteSymbolPane.floating_size.x;
-        }
-
-        SaveCopilotCnf();        
-        SaveWebViewLibraryCnf();
     }
 }
 

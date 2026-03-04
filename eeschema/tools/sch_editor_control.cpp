@@ -3117,12 +3117,6 @@ int SCH_EDITOR_CONTROL::ToggleRemoteSymbolPanel( const TOOL_EVENT& aEvent )
 }
 
 
-int SCH_EDITOR_CONTROL::ToggleRemoteSymbolPanel( const TOOL_EVENT& aEvent )
-{
-    getEditFrame<SCH_EDIT_FRAME>()->ToggleRemoteSymbolPanel();
-    return 0;
-}
-
 int SCH_EDITOR_CONTROL::ToggleHiddenPins( const TOOL_EVENT& aEvent )
 {
     EESCHEMA_SETTINGS* cfg = m_frame->eeconfig();
@@ -3645,9 +3639,6 @@ void SCH_EDITOR_CONTROL::setTransitions()
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,       SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,       SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleRemoteSymbolPanel, SCH_ACTIONS::showRemoteSymbolPanel.MakeEvent() );
-
-    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     EE_ACTIONS::toggleCopilotPanel.MakeEvent() );
-    Go( &SCH_EDITOR_CONTROL::ShowCopilot,     EE_ACTIONS::showCopilotPanel.MakeEvent() );
 
     Go( &SCH_EDITOR_CONTROL::CurrentComponent,     SCH_ACTIONS::copilotCurrentSymbol.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::SimilarComponents,     SCH_ACTIONS::copilotSimilarComponents.MakeEvent() );

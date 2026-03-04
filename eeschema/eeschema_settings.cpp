@@ -302,18 +302,6 @@ EESCHEMA_SETTINGS::EESCHEMA_SETTINGS() :
     m_params.emplace_back( new PARAM<int>( "aui.remote_symbol_panel_float_height",
             &m_AuiPanels.remote_symbol_panel_float_height, -1 ) );
 
-    m_params.emplace_back( new PARAM<bool>( "aui.copilot_panel_show",
-            &m_AuiPanels.copilot_panel_show, true ) );
-
-    m_params.emplace_back( new PARAM<int>( "aui.copilot_panel_docked_width",
-            &m_AuiPanels.copilot_panel_docked_width, -1 ) );
-
-    m_params.emplace_back( new PARAM<int>( "aui.copilot_panel_float_width",
-            &m_AuiPanels.copilot_panel_float_width, -1 ) );
-
-    m_params.emplace_back( new PARAM<int>( "aui.copilot_panel_float_height",
-            &m_AuiPanels.copilot_panel_float_height, -1 ) );
-
     m_params.emplace_back( new PARAM<bool>( "aui.schematic_hierarchy_float",
             &m_AuiPanels.schematic_hierarchy_float, false ) );
 
