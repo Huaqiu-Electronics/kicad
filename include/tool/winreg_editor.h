@@ -39,6 +39,7 @@
 #include <wx/filename.h>
 #include <wx/stdpaths.h>
 #include <windows.h>
+#include <shellapi.h>
 
 using std::pair;
 using std::vector;
