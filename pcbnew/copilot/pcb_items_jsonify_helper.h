@@ -247,9 +247,10 @@ inline auto jsonify_pcb_items( const PCB_SELECTION& aSelection ) -> copilot::BOA
                     switch( type )
                     {
                     case VIATYPE::THROUGH: return "THROUGH";
-                    case VIATYPE::BLIND_BURIED: return "BLIND_BURIED";
+                    case VIATYPE::BURIED: return "BLIND_BURIED";
                     case VIATYPE::MICROVIA: return "MICRO_VIA";
                     case VIATYPE::NOT_DEFINED: return "NOT_DEFINED";
+                    case VIATYPE::BLIND: return "BLIND";
                     }
                     return "UNKNOWN";
                 };
