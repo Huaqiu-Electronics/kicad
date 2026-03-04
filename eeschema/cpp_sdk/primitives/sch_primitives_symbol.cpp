@@ -4,7 +4,6 @@
 #include <io/io_mgr.h>
 #include <sch_io/sch_io.h>
 #include <math/box2.h>
-#include <symbol_lib_table.h>
 #include "sch_primitives_line.h"
 #include "sch_primitives_label.h"
 #include <project_sch.h>
@@ -16,7 +15,6 @@
 #include "sch_primitives_marker.h"
 #include <sch_line.h>
 #include <sch_marker.h>
-#include <symbol_lib_table.h>
 
 
 KI_SDK_EXEC_RESULT FindSymbolByKIID( const std::string& aKID, SCH_SYMBOL*& aSymbol )
@@ -194,18 +192,18 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetSymbolKIIDByReference( const std::s
     wxString           w_reference = wxString::FromUTF8( reference );
     SCH_REFERENCE_LIST references;
     frame->Schematic().Hierarchy().GetSymbols( references );
-    for( size_t i = 0; i < references.GetCount(); i++ )
-    {
-        SCH_SYMBOL* item = references[i].GetSymbol();
-        if (item->GetField( REFERENCE_FIELD )->GetText().CmpNoCase( w_reference ) == 0)
-        {
-            aKIDList.push_back( item->m_Uuid.AsStdString() );
-        }
-        // if( item->GetField( REFERENCE_FIELD )->GetText().ToStdString() == reference )
-        // {
-        //     aKIDList.push_back( item->m_Uuid.AsStdString() );
-        // }
-    }
+    // for( size_t i = 0; i < references.GetCount(); i++ )
+    // {
+    //     SCH_SYMBOL* item = references[i].GetSymbol();
+    //     if (item->GetField( REFERENCE_FIELD )->GetText().CmpNoCase( w_reference ) == 0)
+    //     {
+    //         aKIDList.push_back( item->m_Uuid.AsStdString() );
+    //     }
+    //     // if( item->GetField( REFERENCE_FIELD )->GetText().ToStdString() == reference )
+    //     // {
+    //     //     aKIDList.push_back( item->m_Uuid.AsStdString() );
+    //     // }
+    // }
     // ;
     // for( auto& elem : frame->GetScreen()->Items().OfType( SCH_SYMBOL_T ) )
     // {
@@ -231,7 +229,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetSymbolValueByKIID( const std::strin
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    aValue = symbol->GetField( VALUE_FIELD )->GetText().ToStdString();
+    // aValue = symbol->GetField( VALUE_FIELD )->GetText().ToStdString();
 
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
@@ -246,7 +244,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetSymbolFpByKIID( const std::string& 
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    aFootprint = symbol->GetField( FOOTPRINT_FIELD )->GetText().ToStdString();
+    // aFootprint = symbol->GetField( FOOTPRINT_FIELD )->GetText().ToStdString();
 
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
@@ -261,7 +259,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetSymbolDataSheetByKIID( const std::s
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    aDataSet = symbol->GetField( DATASHEET_FIELD )->GetText().ToStdString();
+    // aDataSet = symbol->GetField( DATASHEET_FIELD )->GetText().ToStdString();
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -276,7 +274,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetSymbolDescriptionByKIID( const std:
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    aDescription = symbol->GetField( DESCRIPTION_FIELD )->GetText().ToStdString();
+    // aDescription = symbol->GetField( DESCRIPTION_FIELD )->GetText().ToStdString();
 
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
@@ -321,7 +319,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::SetSymbolValueByKIID( const std::strin
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    symbol->GetField( VALUE_FIELD )->SetText( aValue );
+    // symbol->GetField( VALUE_FIELD )->SetText( aValue );
 
     frame->UpdateItem( symbol, false, true );
 
@@ -339,7 +337,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::SetSymbolFpByKIID( const std::string& 
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    symbol->GetField( FOOTPRINT_FIELD )->SetText( aFootprint );
+    // symbol->GetField( FOOTPRINT_FIELD )->SetText( aFootprint );
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -355,7 +353,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::SetSymbolDataSheetByKIID( const std::s
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    symbol->GetField( DATASHEET_FIELD )->SetText( aDataSheet );
+    // symbol->GetField( DATASHEET_FIELD )->SetText( aDataSheet );
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -370,7 +368,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::SetSymbolDescriptionByKIID( const std:
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    symbol->GetField( DESCRIPTION_FIELD )->SetText( aDescription );
+    // symbol->GetField( DESCRIPTION_FIELD )->SetText( aDescription );
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -425,12 +423,12 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::AddSymbolField( const std::string& aKI
         return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
     }
 
-    SCH_FIELD* field = new SCH_FIELD( symbol->GetPosition(), LAYER_FIELDS, symbol, aName );
-    field->SetText( aText );
-    field->SetVisible( aVisible );
-    symbol->AddField( *field );
+    // SCH_FIELD* field = new SCH_FIELD( symbol->GetPosition(), LAYER_FIELDS, symbol, aName );
+    // field->SetText( aText );
+    // field->SetVisible( aVisible );
+    // symbol->AddField( *field );
 
-    frame->UpdateItem( symbol );
+    // frame->UpdateItem( symbol );
 
 
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
@@ -888,17 +886,17 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetAllSymbolLibLibrary( std::vector<st
     if( nullptr == frame )
         return KI_SDK_EXEC_RESULT::KI_SDK_FRAME_ERROR;
 
-    SYMBOL_LIB_TABLE* libs = PROJECT_SCH::SchSymbolLibTable( &(frame->Schematic().Prj()) );
-    for( int i = 0; i < libs->GetCount(); i++)
-    {
-        auto& row = libs->At( i );
-        aLibraryName.push_back(row.GetNickName().ToStdString());
-    }
-    SYMBOL_LIB_TABLE* glibs = &SYMBOL_LIB_TABLE::GetGlobalLibTable();
-    for( int i = 0; i < glibs->GetCount(); i++)
-    {
-        auto& row = glibs->At( i );
-        aLibraryName.push_back( row.GetNickName().ToStdString() );
-    }
+    // SYMBOL_LIB_TABLE* libs = PROJECT_SCH::SchSymbolLibTable( &(frame->Schematic().Prj()) );
+    // for( int i = 0; i < libs->GetCount(); i++)
+    // {
+    //     auto& row = libs->At( i );
+    //     aLibraryName.push_back(row.GetNickName().ToStdString());
+    // }
+    // SYMBOL_LIB_TABLE* glibs = &SYMBOL_LIB_TABLE::GetGlobalLibTable();
+    // for( int i = 0; i < glibs->GetCount(); i++)
+    // {
+    //     auto& row = glibs->At( i );
+    //     aLibraryName.push_back( row.GetNickName().ToStdString() );
+    // }
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }

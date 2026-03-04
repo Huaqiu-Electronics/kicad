@@ -13,7 +13,6 @@
 #include <string>
 #include <project_pcb.h>
 #include <view/view_controls.h>
-#include <fp_lib_table.h>
 
 #include "pcb_primitives_footprint.h"
 #include <cpp_sdk/utils/ki_sdk_pcb_utils.h>
@@ -221,7 +220,8 @@ KI_SDK_EXEC_RESULT PCB_PRIMITIVES_FOOTPRINT::GetFootprintFieldText( const std::s
     {
         return KI_SDK_EXEC_RESULT::KI_SDK_INVALID_INPUT;
     }
-    text = footprint->GetFieldText(aFieldName);
+    // FIXME
+    // text = footprint->GetFieldText(aFieldName);
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -347,9 +347,10 @@ KI_SDK_EXEC_RESULT PCB_PRIMITIVES_FOOTPRINT::AddFootprintField( const std::strin
     {
         return KI_SDK_EXEC_RESULT::KI_SDK_INVALID_INPUT;
     }
-    PCB_FIELD field = PCB_FIELD(footprint, footprint->GetNextFieldId(), aName);
-    field.SetText(text);
-    footprint->AddField( field );
+    // FIXME
+    // PCB_FIELD field = PCB_FIELD(footprint, footprint->GetNextFieldId(), aName);
+    // field.SetText(text);
+    // footprint->AddField( field );
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -368,12 +369,13 @@ KI_SDK_EXEC_RESULT PCB_PRIMITIVES_FOOTPRINT::SetFootprintFieldText( const std::s
     {
         return KI_SDK_EXEC_RESULT::KI_SDK_INVALID_INPUT;
     }
-    PCB_FIELD* field = footprint->GetFieldByName(aFieldName);
-    if(!field)
-    {
-        return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
-    }
-    field->SetText(text);
+    // FIXME
+    // PCB_FIELD* field = footprint->GetFieldByName(aFieldName);
+    // if(!field)
+    // {
+    //     return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
+    // }
+    // field->SetText(text);
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -512,33 +514,34 @@ KI_SDK_EXEC_RESULT PCB_PRIMITIVES_FOOTPRINT::CreateNewFootprintInProject( const 
 
     // tryToSaveFootprintInLibrary( *newFootprint, selected );
 
-    if( !aLibraryName.empty())
-    {
-        FP_LIB_TABLE& libTable = *PROJECT_PCB::PcbFootprintLibs( &frame->Prj() );
+    // FIXME
+    // if( !aLibraryName.empty())
+    // {
+    //     FP_LIB_TABLE& libTable = *PROJECT_PCB::PcbFootprintLibs( &frame->Prj() );
 
-        if( !libTable.IsFootprintLibWritable( library_name ) )
-        {
-            // If the library is not writeable, we'll give the user a
-            // footprint not in a library. But add a warning to let them know
-            // they didn't quite get what they wanted.
-            frame->ShowInfoBarWarning(
-                    wxString::Format( _( "The footprint could not be added to the selected library ('%s'). "
-                                         "This library is read-only." ),
-                                      library_name ),
-                    false );
-            // And the footprint will need to be saved manually
-        }
-        else
-        {
-            // Go ahead and save it to the library
-            LIB_ID fpid = newFootprint->GetFPID();
-            fpid.SetLibNickname( aLibraryName );
-            newFootprint->SetFPID( fpid );
-            frame->SaveFootprint( newFootprint );
-            frame->ClearModify();
-        }
-        //
-    }
+    //     if( !libTable.IsFootprintLibWritable( library_name ) )
+    //     {
+    //         // If the library is not writeable, we'll give the user a
+    //         // footprint not in a library. But add a warning to let them know
+    //         // they didn't quite get what they wanted.
+    //         frame->ShowInfoBarWarning(
+    //                 wxString::Format( _( "The footprint could not be added to the selected library ('%s'). "
+    //                                      "This library is read-only." ),
+    //                                   library_name ),
+    //                 false );
+    //         // And the footprint will need to be saved manually
+    //     }
+    //     else
+    //     {
+    //         // Go ahead and save it to the library
+    //         LIB_ID fpid = newFootprint->GetFPID();
+    //         fpid.SetLibNickname( aLibraryName );
+    //         newFootprint->SetFPID( fpid );
+    //         frame->SaveFootprint( newFootprint );
+    //         frame->ClearModify();
+    //     }
+    //     //
+    // }
    
 
     frame->UpdateView();
@@ -581,9 +584,10 @@ KI_SDK_EXEC_RESULT PCB_PRIMITIVES_FOOTPRINT::CreateFootprintLibraryInProject( co
         library_path.MakeAbsolute( initial_path );
     }
 
-    auto fp_table = PROJECT_PCB::PcbFootprintLibs( &frame->Prj() );
-    frame->CreateNewLibrary( library_path.GetFullPath() );
-    frame->AddLibrary( library_path.GetFullPath(), fp_table );
+    // FIXME
+    // auto fp_table = PROJECT_PCB::PcbFootprintLibs( &frame->Prj() );
+    // frame->CreateNewLibrary( library_path.GetFullPath() );
+    // frame->AddLibrary( library_path.GetFullPath(), fp_table );
 
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
@@ -600,20 +604,21 @@ KI_SDK_EXEC_RESULT PCB_PRIMITIVES_FOOTPRINT::IsFootprintLibraryExists( const std
     }
 
     FP_LIB_TABLE* libTable = nullptr;
-    if( isGlobal )
-    {
-        libTable = &GFootprintTable;
-    }else
-    {
-        libTable = PROJECT_PCB::PcbFootprintLibs( &frame->Prj() );
+    // FIXME
+    // if( isGlobal )
+    // {
+    //     libTable = &GFootprintTable;
+    // }else
+    // {
+    //     libTable = PROJECT_PCB::PcbFootprintLibs( &frame->Prj() );
         
-    }
+    // }
     
-    if(libTable != nullptr)
-    {
-        isExists = libTable->HasLibrary( aLibraryName );
-        return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
-    }
+    // if(libTable != nullptr)
+    // {
+    //     isExists = libTable->HasLibrary( aLibraryName );
+    //     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
+    // }
 
     return KI_SDK_EXEC_RESULT::KI_SDK_FAILURE;
 }

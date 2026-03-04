@@ -235,7 +235,7 @@ KI_SDK_EXEC_RESULT   PCB_PRIMITIVES_VIA::DeleteViaByKIID(const std::string& aKID
         return status;
     }
 
-    if( PCB_GROUP* group = via->GetParentGroup() )
+    if( auto group = via->GetParentGroup() )
     {
         group->RemoveItem( via );
     }

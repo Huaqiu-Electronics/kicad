@@ -5,7 +5,7 @@
 #include <io/io_mgr.h>
 #include <sch_io/sch_io.h>
 #include <math/box2.h>
-#include <symbol_lib_table.h>
+// #include <symbol_lib_table.h>
 #include "sch_primitives_line.h"
 #include "sch_primitives_label.h"
 #include <project_sch.h>
@@ -56,27 +56,28 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::CreateLibSymbolLibrary( const std::
         return KI_SDK_EXEC_RESULT::KI_SDK_FRAME_ERROR;
     }
 
-    SYMBOL_LIB_TABLE* lib_table = PROJECT_SCH::SchSymbolLibTable( &frame->Prj() );
+    // FIXME
+    // SYMBOL_LIB_TABLE* lib_table = PROJECT_SCH::SchSymbolLibTable( &frame->Prj() );
 
-    // wxFileName fn = frame->GetLibManager().GetUniqueLibraryName();
+    // // wxFileName fn = frame->GetLibManager().GetUniqueLibraryName();
 
 
-    wxString lib_name = wxString::FromUTF8( aLibraryName );
+    // wxString lib_name = wxString::FromUTF8( aLibraryName );
 
-    if( frame->GetLibManager().LibraryExists( lib_name ) )
-    {
-        // DisplayError( this, wxString::Format( _( "Library '%s' already exists." ), libName ) );
-        return KI_SDK_EXEC_RESULT::KI_SDK_ALREADY_EXISTS;
-    }
+    // if( frame->GetLibManager().LibraryExists( lib_name ) )
+    // {
+    //     // DisplayError( this, wxString::Format( _( "Library '%s' already exists." ), libName ) );
+    //     return KI_SDK_EXEC_RESULT::KI_SDK_ALREADY_EXISTS;
+    // }
 
-    wxFileName lib_path( frame->Prj().GetProjectPath(), lib_name, FILEEXT::KiCadSymbolLibFileExtension );
+    // wxFileName lib_path( frame->Prj().GetProjectPath(), lib_name, FILEEXT::KiCadSymbolLibFileExtension );
 
-    frame->GetLibManager().CreateLibrary( lib_path.GetFullPath(), *lib_table );
+    // frame->GetLibManager().CreateLibrary( lib_path.GetFullPath(), *lib_table );
 
-    frame->SavePrjSymbolLibTables();
+    // frame->SavePrjSymbolLibTables();
 
-    std::string packet = lib_path.GetFullPath().ToStdString();
-    frame->Kiway().ExpressMail( FRAME_SCH_SYMBOL_EDITOR, MAIL_LIB_EDIT, packet );
+    // std::string packet = lib_path.GetFullPath().ToStdString();
+    // frame->Kiway().ExpressMail( FRAME_SCH_SYMBOL_EDITOR, MAIL_LIB_EDIT, packet );
 
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
@@ -115,7 +116,8 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::CreateEmptyLibSymbol( const std::st
     wxString ref_text = wxString::FromUTF8( aReference );
     new_symbol.GetReferenceField().SetText( ref_text );
 
-    new_symbol.SetUnitCount( 1 );
+    // FIXME
+    // new_symbol.SetUnitCount( 1 );
     new_symbol.SetPinNameOffset( 0 );
 
     //POWRER or normal
@@ -768,7 +770,8 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::SetLibSymbolUnitCount( const int& a
         return KI_SDK_EXEC_RESULT::KI_SDK_FAILURE;
     }
 
-    lib_symbol->SetUnitCount( aUnitCount );
+    // FIXME
+    // lib_symbol->SetUnitCount( aUnitCount );
 
     wxString old_name = lib_symbol->GetName();
     UpdateLibSymbol( &old_name );
@@ -820,7 +823,8 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::SetLibSymbolUnitName( const int& aU
     }
 
     wxString unit_name = wxString::FromUTF8( aUnitName );
-    lib_symbol->SetUnitDisplayName( aUnit, unit_name );
+    // FIXME
+    // lib_symbol->SetUnitDisplayName( aUnit, unit_name );
 
     wxString old_name = lib_symbol->GetName();
     UpdateLibSymbol( &old_name );
@@ -879,14 +883,15 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::ShowLibSymbolFieldByName( const std
     }
 
     wxString field_name = wxString::FromUTF8( aFieldName );
-    if( SCH_FIELD* sch_field = lib_symbol->FindField( field_name ) )
-    {
-        sch_field->SetShowInChooser( isShow );
-        sch_field->SetNameShown( isShowName );
+    // FIXME
+    // if( SCH_FIELD* sch_field = lib_symbol->FindField( field_name ) )
+    // {
+    //     sch_field->SetShowInChooser( isShow );
+    //     sch_field->SetNameShown( isShowName );
 
-        UpdateLibSymbol();
-        return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
-    }
+    //     UpdateLibSymbol();
+    //     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
+    // }
 
     return KI_SDK_EXEC_RESULT::KI_SDK_FAILURE;
 }
@@ -914,18 +919,19 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::AddLibSymbolField( const std::strin
 
     wxString field_name = wxString::FromUTF8( aFieldName );
     wxString field_text = wxString::FromUTF8( aFieldText );
-    SCH_FIELD* field = lib_symbol->FindField( field_name );
+    // FIXME
+    // SCH_FIELD* field = lib_symbol->FindField( field_name );
 
-    if( nullptr == field )
-    {
-        field = new SCH_FIELD( lib_symbol->GetPosition(), LAYER_FIELDS, lib_symbol, field_name );
-        field->SetText( field_text );
-        field->SetVisible( false );
-        lib_symbol->AddField( *field );
-    }else
-    {
-        field->SetText( field_text );
-    }
+    // if( nullptr == field )
+    // {
+    //     field = new SCH_FIELD( lib_symbol->GetPosition(), LAYER_FIELDS, lib_symbol, field_name );
+    //     field->SetText( field_text );
+    //     field->SetVisible( false );
+    //     lib_symbol->AddField( *field );
+    // }else
+    // {
+    //     field->SetText( field_text );
+    // }
 
     UpdateLibSymbol();
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
@@ -969,13 +975,14 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::SetLibSymbolPower( const bool& aPow
         return KI_SDK_EXEC_RESULT::KI_SDK_FAILURE;
     }
 
-    if( aPower )
-    {
-        lib_symbol->SetPower();
-    }else
-    {
-        lib_symbol->SetNormal();
-    }
+    // FIXME
+    // if( aPower )
+    // {
+    //     lib_symbol->SetPower();
+    // }else
+    // {
+    //     lib_symbol->SetNormal();
+    // }
     
 
     UpdateLibSymbol();
@@ -1330,7 +1337,8 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::GetLibSymbolAlternateBodyStyle( boo
         return KI_SDK_EXEC_RESULT::KI_SDK_FAILURE;
     }
 
-    aStyle = lib_symbol->HasAlternateBodyStyle();
+    // FIXME
+    // aStyle = lib_symbol->HasAlternateBodyStyle();
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }
 
@@ -1351,7 +1359,8 @@ KI_SDK_EXEC_RESULT SCH_PRIMTIVES_LIB_SYMBOL::SetLibSymbolAlternateBodyStyle( con
         return KI_SDK_EXEC_RESULT::KI_SDK_FAILURE;
     }
 
-    lib_symbol->SetHasAlternateBodyStyle( aStyle );
+    // FIXME
+    // lib_symbol->SetHasAlternateBodyStyle( aStyle );
     UpdateLibSymbol();
     return KI_SDK_EXEC_RESULT::KI_SDK_SUCCESS;
 }

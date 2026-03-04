@@ -22,8 +22,8 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SHEET::CreateHierSheet(const VECTOR2I& positio
 
     SCH_SHEET* sheet = new SCH_SHEET( frame->GetCurrentSheet().Last(), position, VECTOR2I(width, height));
     sheet->SetScreen(nullptr);
-    sheet->GetFields()[SHEETNAME].SetText( file_name);
-    sheet->GetFields()[SHEETFILENAME].SetText(full_name);
+    // sheet->GetFields()[SHEETNAME].SetText( file_name);
+    // sheet->GetFields()[SHEETFILENAME].SetText(full_name);
 
     sheet->SetBorderWidth( schIUScale.MilsToIU( frame->eeconfig()->m_Drawing.default_line_thickness ) );
     sheet->SetBorderColor( frame->eeconfig()->m_Drawing.default_sheet_border_color );
