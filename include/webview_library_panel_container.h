@@ -82,9 +82,9 @@ public:
     void RecreateWebViewLibraryToolBar( bool aAddSeparator = true )
     {
         if( aAddSeparator )
-            self()->m_mainToolBar->AddScaledSeparator( self() );
+            self()->m_tbTopMain->AddScaledSeparator( self() );
 
-        self()->m_mainToolBar->Add( ACTIONS::toggleWebViewLibrary );
+        self()->m_tbTopMain->Add( ACTIONS::toggleWebViewLibrary );
     }
 
     void WebViewLibraryShowChangedLanguage()

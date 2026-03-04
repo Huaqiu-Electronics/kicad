@@ -199,16 +199,16 @@ std::optional<TOOLBAR_CONFIGURATION> SCH_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
               .AppendAction( ACTIONS::showSymbolBrowser )
               .AppendAction( ACTIONS::showFootprintEditor );
 
-    m_mainToolBar->AddScaledSeparator( this );
-    m_mainToolBar->Add( SCH_ACTIONS::annotate );
-    m_mainToolBar->Add( SCH_ACTIONS::runERC );
-    m_mainToolBar->Add( SCH_ACTIONS::showSimulator );
-    m_mainToolBar->Add( SCH_ACTIONS::assignFootprints );
-    m_mainToolBar->Add( SCH_ACTIONS::editSymbolFields );
-    m_mainToolBar->Add( SCH_ACTIONS::generateBOM );
+    m_tbTopMain->AddScaledSeparator( this );
+    m_tbTopMain->Add( SCH_ACTIONS::annotate );
+    m_tbTopMain->Add( SCH_ACTIONS::runERC );
+    m_tbTopMain->Add( SCH_ACTIONS::showSimulator );
+    m_tbTopMain->Add( SCH_ACTIONS::assignFootprints );
+    m_tbTopMain->Add( SCH_ACTIONS::editSymbolFields );
+    m_tbTopMain->Add( SCH_ACTIONS::generateBOM );
 
-    m_mainToolBar->AddScaledSeparator( this );
-    m_mainToolBar->Add( SCH_ACTIONS::showPcbNew );
+    m_tbTopMain->AddScaledSeparator( this );
+    m_tbTopMain->Add( SCH_ACTIONS::showPcbNew );
 
     RecreateWebViewLibraryToolBar();
     RecreateCopilotToolBar();

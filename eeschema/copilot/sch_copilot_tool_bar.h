@@ -30,7 +30,7 @@
 template <>
 void SCH_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
 {
-    self()->m_mainToolBar->Add( ACTIONS::toggleCopilotPanel );
+    self()->m_tbTopMain->Add( ACTIONS::toggleCopilotPanel );
 }
 
 

@@ -95,7 +95,7 @@ public:
 
     void RecreateFabToolBar( TOOL_INTERACTIVE* tool )
     {
-        auto aToolBar = self()->m_mainToolBar;
+        auto aToolBar = self()->m_tbTopMain;
         aToolBar->AddScaledSeparator( self() );
         aToolBar->Add( ACTIONS::placeOrderMenu );
         auto placeOrderMenu = std::make_unique<ACTION_MENU>( false, tool );
@@ -106,7 +106,7 @@ public:
 
     void TriggerPlaceOrderMenu() override
     {
-        ACTION_TOOLBAR*   aToolBar = self()->m_mainToolBar;
+        ACTION_TOOLBAR*   aToolBar = self()->m_tbTopMain;
         wxAuiToolBarEvent evt;
         evt.SetEventType( wxEVT_AUITOOLBAR_RIGHT_CLICK );
         evt.SetToolId( ACTIONS::placeOrderMenu.GetUIId() );

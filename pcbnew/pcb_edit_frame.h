@@ -32,6 +32,8 @@
 #include <fab_info_getter.h>
 #include <copilot_panel_container.h>
 #include <webview_library_panel_container.h>
+#include <fab_frame_note.h>
+
 namespace copilot
 {
 struct BOARD_SELECTIONS;

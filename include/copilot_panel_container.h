@@ -132,7 +132,7 @@ public:
     {
         if( m_copilotPanel )
         {
-            auto aToolBar = self()->m_mainToolBar;
+            auto aToolBar = self()->m_tbTopMain;
             aToolBar->AddScaledSeparator( self() );
             aToolBar->Add( ACTIONS::toggleCopilotPanel );
         }

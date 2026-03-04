@@ -343,8 +343,8 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
 
         config.AppendAction( PCB_ACTIONS::runDRC );
 
-    m_mainToolBar->AddScaledSeparator( this );
-    m_mainToolBar->Add( PCB_ACTIONS::showEeschema );
+    m_tbTopMain->AddScaledSeparator( this );
+    m_tbTopMain->Add( PCB_ACTIONS::showEeschema );
 
     RecreateFabToolBar( m_toolManager->GetTool<PCB_SELECTION_TOOL>() );
     RecreateWebViewLibraryToolBar( false );

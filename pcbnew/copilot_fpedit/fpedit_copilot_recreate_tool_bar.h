@@ -32,8 +32,8 @@
 template <>
 void FOOTPRINT_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
 {
-    self()->m_mainToolBar->AddScaledSeparator( self() );
-    self()->m_mainToolBar->AddTool( ID_TOGGLE_COPILOT, wxEmptyString,
+    self()->m_tbTopMain->AddScaledSeparator( self() );
+    self()->m_tbTopMain->AddTool( ID_TOGGLE_COPILOT, wxEmptyString,
                                     KiScaledBitmap( BITMAPS::copilot, self() ),
                                     _( "Show/hide copilot panel" ) );
 }

@@ -32,7 +32,7 @@ void PCB_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
 {
     if( m_copilotPanel )
     {
-        self()->m_mainToolBar->Add( ACTIONS::toggleCopilotPanel );
+        self()->m_tbTopMain->Add( ACTIONS::toggleCopilotPanel );
     }
 }
 
