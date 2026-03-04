@@ -72,7 +72,7 @@ void PCB_EDIT_FRAME::PlaceOrder( ORDER_TYPE aOrderType )
 
 
     thread_pool& tp = GetKiCadThreadPool();
-    auto         ret = tp.submit(
+    auto         ret = tp.submit_task(
             [=, this]() -> std::optional<std::string>
             {
                 std::optional<std::string> order_link;

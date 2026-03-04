@@ -91,7 +91,7 @@ template <>
 std::vector<FP_POSITION> FAB_INFO_GETTER_PCB::GetComponentPosition()
 {
     ReportProgress( _( "Generating component positions" ) );
-    PLACE_FILE_EXPORTER exporter( self()->GetBoard(), true, false, false, true, true, true, true, true, false );
+    PLACE_FILE_EXPORTER exporter( self()->GetBoard(), true, false, false, true, true, true, true, true, true, false );
     auto                data = exporter.GenPositionData();
 
     return parse_csv( data );
