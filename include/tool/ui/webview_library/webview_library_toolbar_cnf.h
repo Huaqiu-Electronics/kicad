@@ -1,8 +1,8 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2025 Ethan Chien <liangtie.qian@gmail.com>
- * Copyright (C) 2025 KiCad Developers, see AUTHORS.txt for contributors.
+ * Copyright (C) 2026 Ethan Chien <liangtie.qian@gmail.com>
+ * Copyright (C) 2026 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,15 +22,18 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef SCH_COPILOT_TOOL_BAR_H
-#define SCH_COPILOT_TOOL_BAR_H
+#ifndef WEBVIEW_LIBRARY_TOOLBAR_CNF_H
+#define WEBVIEW_LIBRARY_TOOLBAR_CNF_H
 
-#include <sch_edit_frame.h>
+#include <tool/ui/toolbar_configuration.h>
+#include <tool/actions.h>
 
-template <>
-void SCH_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
+inline auto GetWebViewLibraryToolbarConf( TOOLBAR_CONFIGURATION& aConfig, bool aAddSeparator = true )
 {
-    self()->m_tbTopMain->Add( ACTIONS::toggleCopilotPanel );
+    if( aAddSeparator )
+        aConfig.AppendSeparator();
+
+    aConfig.AppendAction( ACTIONS::toggleWebViewLibrary );
 }
 
 

@@ -249,18 +249,8 @@ SYMBOL_EDIT_FRAME::SYMBOL_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     propertiesPaneInfo.Show( m_settings->m_AuiPanels.show_properties );
     updateSelectionFilterVisbility();
 
-    m_auimgr.AddPane( m_optionsToolBar, EDA_PANE().VToolbar().Name( "OptToolbar" )
-                      .Left().Layer( 2 ) );
-
-    m_auimgr.AddPane( m_drawToolBar, EDA_PANE().VToolbar().Name( "ToolsToolbar" )
-                      .Right().Layer( 2 ) );
-
     InitCopilotAui();
     LoadCopilotCnf();
-
-    // Center
-    m_auimgr.AddPane( GetCanvas(), wxAuiPaneInfo().Name( "DrawFrame" )
-                      .CentrePane() );
 
     FinishAUIInitialization();
 

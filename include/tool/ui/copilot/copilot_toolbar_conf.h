@@ -1,8 +1,8 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2025 Ethan Chien <liangtie.qian@gmail.com>
- * Copyright (C) 2025 KiCad Developers, see AUTHORS.txt for contributors.
+ * Copyright (C) 2026 Ethan Chien <liangtie.qian@gmail.com>
+ * Copyright (C) 2026 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,20 +22,22 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef FPEDIT_COPILOT_RECREATE_TOOL_BAR_H
-#define FPEDIT_COPILOT_RECREATE_TOOL_BAR_H
+#ifndef COPILOT_TOOLBAR_CONF_H
+#define COPILOT_TOOLBAR_CONF_H
 
 
-#include <footprint_edit_frame.h>
-#include "fpedit_copilot_toggle_copilot.h"
+#include <kicad_copilot_editors.h>
+#include <tool/ui/toolbar_configuration.h>
+#include <tool/actions.h>
 
-template <>
-void FOOTPRINT_COPILOT_PANEL_CONTAINER::RecreateCopilotToolBar()
+inline auto GetCopilotToolbarConf( TOOLBAR_CONFIGURATION& aConfig, KICAD_COPILOT_EDITORS aEditor )
 {
-    self()->m_tbTopMain->AddScaledSeparator( self() );
-    self()->m_tbTopMain->AddTool( ID_TOGGLE_COPILOT, wxEmptyString,
-                                    KiScaledBitmap( BITMAPS::copilot, self() ),
-                                    _( "Show/hide copilot panel" ) );
+    switch( aEditor )
+    {
+    case KICAD_COPILOT_EDITORS::schematic:
+    case KICAD_COPILOT_EDITORS::pcb: aConfig.AppendAction( ACTIONS::toggleCopilotPanel ); break;
+    default: aConfig.AppendSeparator().AppendAction( ACTIONS::toggleCopilotPanel ); break;
+    }
 }
 
 

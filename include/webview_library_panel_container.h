@@ -43,7 +43,6 @@
 #include <tool/tool_manager.h>
 #include <settings/webview_settings_manager.h>
 #include <webview_library/webview_library_aui_settings.h>
-#include <tool/actions.h>
 #include <utils/add_parameter_to_url.h>
 
 
@@ -55,7 +54,10 @@ class WEBVIEW_LIBRARY_PANEL_CONTAINER
     wxAuiManager& m_auiMgr;
 
 public:
-    WEBVIEW_LIBRARY_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) : m_auiMgr( aAuiMgr ) {}
+    WEBVIEW_LIBRARY_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
+            m_auiMgr( aAuiMgr )
+    {
+    }
 
     auto self() { return static_cast<Derived*>( this ); }
     auto self() const { return static_cast<const Derived*>( this ); }
@@ -77,14 +79,6 @@ public:
         {
             m_auiMgr.AddPane( m_webSymbolChooser, DefaultWebviewLibraryPanelInfo( self() ) );
         }
-    }
-
-    void RecreateWebViewLibraryToolBar( bool aAddSeparator = true )
-    {
-        if( aAddSeparator )
-            self()->m_tbTopMain->AddScaledSeparator( self() );
-
-        self()->m_tbTopMain->Add( ACTIONS::toggleWebViewLibrary );
     }
 
     void WebViewLibraryShowChangedLanguage()

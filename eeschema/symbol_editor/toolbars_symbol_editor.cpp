@@ -41,6 +41,8 @@
 #include <widgets/wx_aui_utils.h>
 #include <wx/combobox.h>
 
+#include <tool/ui/copilot/copilot_toolbar_conf.h>
+
 #ifdef __UNIX__
 #define LISTBOX_WIDTH 140
 #else
@@ -159,6 +161,8 @@ std::optional<TOOLBAR_CONFIGURATION> SYMBOL_EDIT_TOOLBAR_SETTINGS::DefaultToolba
 
         config.AppendSeparator()
               .AppendAction( SCH_ACTIONS::addSymbolToSchematic );
+
+        GetCopilotToolbarConf(config, KICAD_COPILOT_EDITORS::symbol );
         break;
     }
 
@@ -201,7 +205,6 @@ void SYMBOL_EDIT_FRAME::configureToolbars()
 
     RegisterCustomToolbarControlFactory( ACTION_TOOLBAR_CONTROLS::unitSelector, unitDisplayFactory );
     RegisterCustomToolbarControlFactory( ACTION_TOOLBAR_CONTROLS::bodyStyleSelector, bodyDisplayFactory );
-    RecreateCopilotToolBar();    
 }
 
 

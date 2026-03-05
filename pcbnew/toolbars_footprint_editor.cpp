@@ -35,7 +35,8 @@
 #include <wx/choice.h>
 #include <wx/wupdlock.h>
 #include <advanced_config.h>
-#include <copilot_fpedit/fpedit_copilot_recreate_tool_bar.h>
+
+#include <tool/ui/copilot/copilot_toolbar_conf.h>
 
 #include <toolbars_footprint_editor.h>
 
@@ -176,6 +177,8 @@ std::optional<TOOLBAR_CONFIGURATION> FOOTPRINT_EDIT_TOOLBAR_SETTINGS::DefaultToo
               .AppendAction( PCB_ACTIONS::loadFpFromBoard )
               .AppendAction( PCB_ACTIONS::saveFpToBoard );
 
+        GetCopilotToolbarConf(config, KICAD_COPILOT_EDITORS::footprint );              
+
         config.AppendSeparator()
               .AppendControl( ACTION_TOOLBAR_CONTROLS::gridSelect );
 
@@ -187,7 +190,6 @@ std::optional<TOOLBAR_CONFIGURATION> FOOTPRINT_EDIT_TOOLBAR_SETTINGS::DefaultToo
         break;
     }
 
-    RecreateCopilotToolBar();
     // clang-format on
     return config;
 }
@@ -204,6 +206,7 @@ void FOOTPRINT_EDIT_FRAME::ReCreateLayerBox( bool aForceResizeToolbar )
     if( aForceResizeToolbar )
         UpdateToolbarControlSizes();
 }
+
 void FOOTPRINT_EDIT_FRAME::FpToggleCopilot( wxCommandEvent& aEvent )
 {
     ToggleCopilot();

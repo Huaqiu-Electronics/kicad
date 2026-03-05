@@ -64,6 +64,8 @@ using SCH_COPILOT_PANEL_CONTAINER =
         COPILOT_PANEL_CONTAINER<SCH_EDIT_FRAME, SCH_COPILOT_GLOBAL_CONTEXT>;
 
 using SCH_WEBVIEW_LIBRARY_CONTAINER = WEBVIEW_LIBRARY_PANEL_CONTAINER<SCH_EDIT_FRAME>;
+using FAB_FRAME_NOTE_SCH = FAB_FRAME_NOTE<SCH_EDIT_FRAME>;
+
 class SCH_ITEM;
 class EDA_ITEM;
 class SCH_LINE;
@@ -875,60 +877,7 @@ public:
     void ToggleLibraryTree() override;
 
     void ToggleRemoteSymbolPanel();
-
-    void ToggleRemoteSymbolPanel();
     
-    /**
-     * Copilot UI interfaces
-     */
-    void InitCopilotPanel();
-
-    void InitCopilotAui();
-
-    void RecreateCopilotToolBar();
-
-    void CopilotPanelShowChangedLanguage();
-
-    void ToggleCopilot();
-
-    void ShowCopilot( bool show = true );
-
-    void SaveCopilotCnf();
-
-    void LoadCopilotCnf();
-
-    /**
-     * Copilot context interfaces
-     */
-     
-    wxString GetBomList() ;
-
-    wxString GetNetList() ;
-
-    SYMBOL_CMD_CONTEXT const& GetSelectedSymbolContext() ;
-
-    COPILOT_GLOBAL_CONTEXT const& GetGlobalContext() ;
-
-    wxString GetSymbolNetList(wxString const& aDesignator) ;
-
-    void UpdateCopilotContextCache();
-
-    const char* GetCopilotContextCache();
-     
-    /**
-     * Copilot Commands
-     */
-    
-    void FireCopilotCommand(std::string const& aCmdType) ;
-
-    void DesignIntention();
-    void CoreComponents();
-    void CurrentComponent();
-    void SimilarComponents();
-    void CheckSymbolConnections();
-    void ComponentPinsDetails();
-    void SymbolUnconnectedPins();
-
 
     DIALOG_BOOK_REPORTER* GetSymbolDiffDialog();
 
@@ -1181,10 +1130,6 @@ private:
 
     wxChoice*                   m_currentVariantCtrl;
 
-    wxPanel* m_copilotPanel {};
-
-    std::unique_ptr<SCH_COPILOT_GLOBAL_CONTEXT> m_copilotContextCache;
-    std::unique_ptr<SYMBOL_CMD_CONTEXT>        m_symbolCmdContext;
 
 #ifdef KICAD_IPC_API
     std::unique_ptr<API_HANDLER_SCH> m_apiHandler;

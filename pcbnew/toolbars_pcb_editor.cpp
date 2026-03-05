@@ -63,7 +63,9 @@
 #include <wx/combobox.h>
 #include <toolbars_pcb_editor.h>
 #include <settings/settings_manager.h>
-#include "copilot/pcb_copilot_tool_bar.h"
+
+#include <tool/ui/copilot/copilot_toolbar_conf.h>
+#include <tool/ui/webview_library/webview_library_toolbar_cnf.h>
 
 #include "../scripting/python_scripting.h"
 
@@ -343,12 +345,43 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
 
         config.AppendAction( PCB_ACTIONS::runDRC );
 
-    m_tbTopMain->AddScaledSeparator( this );
-    m_tbTopMain->Add( PCB_ACTIONS::showEeschema );
+        config.AppendSeparator();
+        config.AppendAction( PCB_ACTIONS::showEeschema );
 
-    RecreateFabToolBar( m_toolManager->GetTool<PCB_SELECTION_TOOL>() );
-    RecreateWebViewLibraryToolBar( false );
-    RecreateCopilotToolBar();
+
+
+        GetWebViewLibraryToolbarConf(config, false);
+        GetCopilotToolbarConf(config, KICAD_COPILOT_EDITORS::pcb );
+
+
+        config.AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::currentVariant );
+        config.AppendControl( ACTION_TOOLBAR_CONTROLS::ipcScripting );
+
+        break;
+
+    case TOOLBAR_LOC::TOP_AUX:
+        config.AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::trackWidth )
+              .AppendAction( PCB_ACTIONS::autoTrackWidth );
+
+        config.AppendSeparator()
+              .AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::viaDiameter );
+
+        config.AppendSeparator()
+              .AppendControl( ACTION_TOOLBAR_CONTROLS::layerSelector )
+              .AppendAction( PCB_ACTIONS::selectLayerPair );
+
+        config.AppendSeparator()
+              .AppendControl( ACTION_TOOLBAR_CONTROLS::gridSelect );
+
+        config.AppendSeparator()
+              .AppendControl( ACTION_TOOLBAR_CONTROLS::zoomSelect );
+
+        config.AppendSeparator()
+              .AppendControl( ACTION_TOOLBAR_CONTROLS::overrideLocks );
+
+        break;
+    }
+
     // clang-format on
     return config;
 }

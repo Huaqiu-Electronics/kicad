@@ -179,7 +179,6 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_designBlocksPane( nullptr ),
     m_symbolCmdContext(new SYMBOL_CMD_CONTEXT)
 {
-    InitCopilotContext();
     m_maximizeByDefault = true;
     m_schematic = new SCHEMATIC( &Prj() );
     m_schematic->SetSchematicHolder( this );
@@ -212,13 +211,6 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     SetIcons( icon_bundle );
 
     LoadSettings( eeconfig() );
-
-    // NB: also links the schematic to the loaded project
-    CreateScreens();
-
-    SCH_SHEET_PATH root;
-    root.push_back( &Schematic().Root() );
-    SetCurrentSheet( root );
 
     setupTools();
 
@@ -256,8 +248,6 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
     m_selectionFilterPanel = new PANEL_SCH_SELECTION_FILTER( this );
     m_designBlocksPane = new SCH_DESIGN_BLOCK_PANE( this, nullptr, m_designBlockHistoryList );
-
-    InitCopilotPanel();
 
     m_auimgr.SetManagedWindow( this );
 
@@ -297,11 +287,6 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
 
     InitWebViewLibraryAui();
     InitCopilotAui();    
-
-    if( m_copilotPanel )
-        m_auimgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( this ) );
-
-    
 
     m_auimgr.AddPane( createHighlightedNetNavigator(), defaultNetNavigatorPaneInfo() );
 

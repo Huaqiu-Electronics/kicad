@@ -158,11 +158,9 @@ using namespace std::placeholders;
 BEGIN_EVENT_TABLE( PCB_EDIT_FRAME, PCB_BASE_FRAME )
     EVT_SOCKET( ID_EDA_SOCKET_EVENT_SERV, PCB_EDIT_FRAME::OnSockRequestServer )
     EVT_SOCKET( ID_EDA_SOCKET_EVENT, PCB_EDIT_FRAME::OnSockRequest )
-    EVT_SOCKET( ID_EDA_SOCKET_EVENT_SERV, PCB_EDIT_FRAME::OnSockRequestServer )
-    EVT_SOCKET( ID_EDA_SOCKET_EVENT, PCB_EDIT_FRAME::OnSockRequest )
 
-EVT_CHOICE( ID_ON_ZOOM_SELECT, PCB_EDIT_FRAME::OnSelectZoom )
-EVT_CHOICE( ID_ON_GRID_SELECT, PCB_EDIT_FRAME::OnSelectGrid )
+    EVT_CHOICE( ID_ON_ZOOM_SELECT, PCB_EDIT_FRAME::OnSelectZoom )
+    EVT_CHOICE( ID_ON_GRID_SELECT, PCB_EDIT_FRAME::OnSelectGrid )
 
     EVT_SIZE( PCB_EDIT_FRAME::OnSize )
 
@@ -275,7 +273,14 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     setupTools();
     setupUIConditions();
 
-    CopilotPanelInit();    
+    CopilotPanelInit();
+    WebViewLibraryInit();    
+
+    m_toolbarSettings = GetToolbarSettings<PCB_EDIT_TOOLBAR_SETTINGS>( "pcbnew-toolbars" );
+    configureToolbars();
+    RecreateToolbars();
+    PrepareLayerIndicator( true );
+
     ReCreateMenuBar();
 
 #ifdef KICAD_IPC_API
@@ -479,24 +484,13 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
           [this]( wxIdleEvent& aEvent )
           {
               BOX2D viewport = GetCanvas()->GetView()->GetViewport();
-          [this]( wxIdleEvent& aEvent )
-          {
-              BOX2D viewport = GetCanvas()->GetView()->GetViewport();
 
               if( viewport != m_lastNetnamesViewport )
               {
                   redrawNetnames();
                   m_lastNetnamesViewport = viewport;
               }
-              if( viewport != m_lastNetnamesViewport )
-              {
-                  redrawNetnames();
-                  m_lastNetnamesViewport = viewport;
-              }
 
-              // Do not forget to pass the Idle event to other clients:
-              aEvent.Skip();
-          } );
               // Do not forget to pass the Idle event to other clients:
               aEvent.Skip();
           } );
@@ -954,8 +948,6 @@ void PCB_EDIT_FRAME::setupUIConditions()
                 if( routerTool && routerTool->RoutingInProgress() )
                     return true;
 
-                return GetUndoCommandCount() > 0;
-            };
                 return GetUndoCommandCount() > 0;
             };
 

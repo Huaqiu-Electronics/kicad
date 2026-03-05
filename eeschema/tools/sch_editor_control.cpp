@@ -3640,6 +3640,9 @@ void SCH_EDITOR_CONTROL::setTransitions()
     Go( &SCH_EDITOR_CONTROL::ToggleLibraryTree,       SCH_ACTIONS::showDesignBlockPanel.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleRemoteSymbolPanel, SCH_ACTIONS::showRemoteSymbolPanel.MakeEvent() );
 
+    Go( &SCH_EDITOR_CONTROL::ToggleCopilot,     SCH_ACTIONS::toggleCopilotPanel.MakeEvent() );
+    Go( &SCH_EDITOR_CONTROL::ShowCopilot,     SCH_ACTIONS::showCopilotPanel.MakeEvent() );    
+
     Go( &SCH_EDITOR_CONTROL::CurrentComponent,     SCH_ACTIONS::copilotCurrentSymbol.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::SimilarComponents,     SCH_ACTIONS::copilotSimilarComponents.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::CheckSymbolConnections,     SCH_ACTIONS::copilotCheckSymbolConnections.MakeEvent() );
@@ -3647,7 +3650,6 @@ void SCH_EDITOR_CONTROL::setTransitions()
     Go( &SCH_EDITOR_CONTROL::SymbolUnconnectedPins,     SCH_ACTIONS::copilotSymbolUnconnectedPins.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::DesignIntention,     SCH_ACTIONS::copilotDesignIntention.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::CoreComponents,     SCH_ACTIONS::copilotCoreComponents.MakeEvent() );
-
 
     Go( &SCH_EDITOR_CONTROL::ToggleHiddenPins,        SCH_ACTIONS::toggleHiddenPins.MakeEvent() );
     Go( &SCH_EDITOR_CONTROL::ToggleHiddenFields,      SCH_ACTIONS::toggleHiddenFields.MakeEvent() );
