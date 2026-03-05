@@ -44,7 +44,7 @@ void SYMBOL_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& aAc
 
 
 template <>
-void SYMBOL_COPILOT_PANEL_CONTAINER::ExecuteSdkQuerAgentAction( AGENT_ACTION const& aAction, std::string& agentResult )
+void SYMBOL_COPILOT_PANEL_CONTAINER::ExecuteSdkQueryAgentAction( AGENT_ACTION const& aAction, std::string& agentResult )
 {
     try
     {

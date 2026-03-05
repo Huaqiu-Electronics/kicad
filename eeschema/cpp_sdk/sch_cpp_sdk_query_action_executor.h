@@ -10,7 +10,7 @@
 #include <cpp_sdk/api_handler_sch_run_sdk_api.h>
 
 template<>
-void SCH_COPILOT_PANEL_CONTAINER::ExecuteSdkQuerAgentAction( AGENT_ACTION const& aAction , std::string& agentResult )
+void SCH_COPILOT_PANEL_CONTAINER::ExecuteSdkQueryAgentAction( AGENT_ACTION const& aAction , std::string& agentResult )
 {
     try
     {

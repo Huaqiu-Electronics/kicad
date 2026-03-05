@@ -80,7 +80,7 @@ public:
             m_copilotCppSdkAgentHdl( std::make_shared<CPP_SDK_AGENT_ACTION_HANDLE_T>(
                     [&]( AGENT_ACTION const& act, std::string& response )
                     {
-                        ExecuteSdkQuerAgentAction( act, response );
+                        ExecuteSdkQueryAgentAction( act, response );
                     } ) )
     {
     }
@@ -107,10 +107,6 @@ public:
         m_hostVersionInfo = get_copilot_host_version( editor_type() );
         m_hostVersionInfo.chat_id = m_chat_id;
         m_hostVersionInfo.session_id = GetSessionId();
-
-        //freerouting handles
-        //m_copilotFreeroutingHdl = { m_copilotDsnHdl, m_copilotSetJobIdHdl, m_copilotGetJobIdHdl, m_copilotSpeccHdl };
-
         m_copilotPanel = new COPILOT_WEBVIEW_CONTAINER(
                 m_hostVersionInfo, self(), add_parameter_to_url( get_webview_chat_path(), m_hostVersionInfo ),
                 { m_copilotGlobalContextHdl,
@@ -118,7 +114,6 @@ public:
                   m_copilotSelectionHdl,
                   {},
                   m_copilotCppSdkAgentHdl } ); //m_copilotDsnHdl
-
         m_copilotContextCache.host_version_info = m_hostVersionInfo;
     }
 
@@ -127,17 +122,6 @@ public:
         if( m_copilotPanel )
             m_containerAuiMgr.AddPane( m_copilotPanel, defaultCopilotPaneInfo( self() ) );
     }
-
-    void RecreateCopilotToolBar()
-    {
-        if( m_copilotPanel )
-        {
-            auto aToolBar = self()->m_tbTopMain;
-            aToolBar->AddScaledSeparator( self() );
-            aToolBar->Add( ACTIONS::toggleCopilotPanel );
-        }
-    }
-
     void CopilotPanelShowChangedLanguage()
     {
         if( m_copilotPanel )
@@ -316,7 +300,7 @@ public:
     void ImportSpectraBase64Data( const std::string& base64Data ) { return; }
 
     //CPP SDK
-    void ExecuteSdkQuerAgentAction( AGENT_ACTION const& aAction, std::string& agentResult ) { return ; }
+    void ExecuteSdkQueryAgentAction( AGENT_ACTION const& aAction, std::string& agentResult ) { return; }
 
 protected:
     ContextT                   m_copilotContextCache;

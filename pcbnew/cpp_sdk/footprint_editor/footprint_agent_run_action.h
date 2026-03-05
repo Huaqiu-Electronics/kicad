@@ -50,7 +50,7 @@ void FOOTPRINT_COPILOT_PANEL_CONTAINER::ExecuteAgentAction( AGENT_ACTION const& 
 
 
 template <>
-void FOOTPRINT_COPILOT_PANEL_CONTAINER::ExecuteSdkQuerAgentAction( AGENT_ACTION const& aAction, std::string& agentResult )
+void FOOTPRINT_COPILOT_PANEL_CONTAINER::ExecuteSdkQueryAgentAction( AGENT_ACTION const& aAction, std::string& agentResult )
 {
     try
     {
