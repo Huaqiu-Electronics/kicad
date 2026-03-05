@@ -62,7 +62,7 @@ static bool UpdateFpModelPath( wxString const& fpFilePath, wxString const& model
         }
 
         std::string prettyData = pi.GetStringOutput( false );
-        KICAD_FORMAT::Prettify( prettyData, true );
+        KICAD_FORMAT::Prettify( prettyData, KICAD_FORMAT::FORMAT_MODE::COMPACT_TEXT_PROPERTIES );
 
         fprintf( fp, "%s", prettyData.c_str() );
         fclose( fp );
