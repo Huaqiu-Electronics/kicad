@@ -9,6 +9,7 @@ add_library(assistant SHARED
     common/dialog_webview.cpp
     common/main_stack_holder.cpp
 
+    context/copilot_editor.cpp
     context/copilot_project_holder.cpp
 
     webview_library/dialog_add_component.cpp

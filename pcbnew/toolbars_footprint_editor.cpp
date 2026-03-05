@@ -36,7 +36,7 @@
 #include <wx/wupdlock.h>
 #include <advanced_config.h>
 
-#include <tool/ui/copilot/copilot_toolbar_conf.h>
+#include <copilot_fpedit/fpedit_copilot_recreate_tool_bar.h>
 
 #include <toolbars_footprint_editor.h>
 
@@ -177,7 +177,10 @@ std::optional<TOOLBAR_CONFIGURATION> FOOTPRINT_EDIT_TOOLBAR_SETTINGS::DefaultToo
               .AppendAction( PCB_ACTIONS::loadFpFromBoard )
               .AppendAction( PCB_ACTIONS::saveFpToBoard );
 
-        GetCopilotToolbarConf(config, KICAD_COPILOT_EDITORS::footprint );              
+      // FIXME - this is a workaround while AppendAction not working
+        config.AppendFunctor([](ACTION_TOOLBAR* aBar){
+            RecreateCopilotToolBar(aBar);
+        });
 
         config.AppendSeparator()
               .AppendControl( ACTION_TOOLBAR_CONTROLS::gridSelect );

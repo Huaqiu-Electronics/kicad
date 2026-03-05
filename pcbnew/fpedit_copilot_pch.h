@@ -28,5 +28,6 @@
 #include <copilot_fpedit/fpedit_copilot_ui.h>
 #include <copilot_fpedit/fpedit_agent_action_executor.h>
 #include <copilot_fpedit/fpedit_agent_api.h>
+#include <copilot_fpedit/fpedit_copilot_toggle_copilot.h>
 
 #endif

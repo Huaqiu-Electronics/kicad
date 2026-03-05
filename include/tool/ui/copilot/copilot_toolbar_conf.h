@@ -35,8 +35,21 @@ inline auto GetCopilotToolbarConf( TOOLBAR_CONFIGURATION& aConfig, KICAD_COPILOT
     switch( aEditor )
     {
     case KICAD_COPILOT_EDITORS::schematic:
-    case KICAD_COPILOT_EDITORS::pcb: aConfig.AppendAction( ACTIONS::toggleCopilotPanel ); break;
-    default: aConfig.AppendSeparator().AppendAction( ACTIONS::toggleCopilotPanel ); break;
+    case KICAD_COPILOT_EDITORS::pcb:
+    {
+        aConfig.AppendAction( ACTIONS::toggleCopilotPanel );
+        break;
+    }
+    case KICAD_COPILOT_EDITORS::footprint:
+    {
+        // There is a bug that the usual pattern doesn't work for footprint editor , so handle it separately for now @RecreateCopilotToolBar
+        break;
+    }
+    default:
+    {
+        aConfig.AppendSeparator().AppendAction( ACTIONS::toggleCopilotPanel );
+        break;
+    }
     }
 }
 

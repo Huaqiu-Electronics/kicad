@@ -66,6 +66,7 @@
 
 #include <tool/ui/copilot/copilot_toolbar_conf.h>
 #include <tool/ui/webview_library/webview_library_toolbar_cnf.h>
+#include <fab/fab_toolbar_cnf.h>
 
 #include "../scripting/python_scripting.h"
 
@@ -348,11 +349,9 @@ std::optional<TOOLBAR_CONFIGURATION> PCB_EDIT_TOOLBAR_SETTINGS::DefaultToolbarCo
         config.AppendSeparator();
         config.AppendAction( PCB_ACTIONS::showEeschema );
 
-
-
+        GetFabToolbarConf(config);
         GetWebViewLibraryToolbarConf(config, false);
         GetCopilotToolbarConf(config, KICAD_COPILOT_EDITORS::pcb );
-
 
         config.AppendControl( PCB_ACTION_TOOLBAR_CONTROLS::currentVariant );
         config.AppendControl( ACTION_TOOLBAR_CONTROLS::ipcScripting );

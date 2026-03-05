@@ -40,7 +40,10 @@ enum class TOOLBAR_ITEM_TYPE
     TB_GROUP,
     SPACER,
     CONTROL,
-    SEPARATOR
+    SEPARATOR,
+
+
+    FUNCTOR,
 };
 
 class KICOMMON_API TOOLBAR_ITEM
@@ -88,6 +91,9 @@ public:
     // Group properties
     wxString                  m_GroupName;
     std::vector<TOOLBAR_ITEM> m_GroupItems;
+
+
+    std::function<void( ACTION_TOOLBAR* )> m_Functor;
 };
 
 // Forward declaration for use in TOOLBAR_ITEM_REF
@@ -253,6 +259,14 @@ public:
     void Clear()
     {
         m_toolbarItems.clear();
+    }
+
+    TOOLBAR_CONFIGURATION& AppendFunctor( std::function<void( ACTION_TOOLBAR* )> aFunctor )
+    {
+        TOOLBAR_ITEM item( TOOLBAR_ITEM_TYPE::FUNCTOR );
+        item.m_Functor = std::move( aFunctor );
+        m_toolbarItems.push_back( item );
+        return *this;
     }
 
 public:

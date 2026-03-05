@@ -53,10 +53,11 @@
 #include <utils/add_parameter_to_url.h>
 #include <context/copilot_project_holder.h>
 #include <context/copilot_cpp_sdk_handle.h>
+#include <context/copilot_editor.h>
 
-template <class Derived, class ContextT>
+template <class Derived, class ContextT, auto EditorTypeV>
 
-class COPILOT_PANEL_CONTAINER : public COPILOT_PROJECT_HOLDER
+class COPILOT_PANEL_CONTAINER : public COPILOT_PROJECT_HOLDER, public COPILOT_EDITOR
 {
 public:
     COPILOT_PANEL_CONTAINER( wxAuiManager& aAuiMgr ) :
@@ -89,7 +90,7 @@ public:
     auto self() { return static_cast<Derived*>( this ); }
     auto self() const { return static_cast<const Derived*>( this ); }
 
-    KICAD_COPILOT_EDITORS editor_type() const { return KICAD_COPILOT_EDITORS::unknown; }
+    KICAD_COPILOT_EDITORS editor_type() const override { return EditorTypeV; }
 
     // Used by the webview container to index the chat history
     std::string GetSessionId() const

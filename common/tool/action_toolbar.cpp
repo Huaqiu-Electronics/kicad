@@ -409,6 +409,12 @@ void ACTION_TOOLBAR::ApplyConfiguration( const TOOLBAR_CONFIGURATION& aConfig )
 
             break;
         }
+
+        case TOOLBAR_ITEM_TYPE::FUNCTOR:
+        {
+            if( item.m_Functor )
+                item.m_Functor( this );
+        }
         }
     }
 

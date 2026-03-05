@@ -57,13 +57,6 @@ void SCH_COPILOT_PANEL_CONTAINER::InitCopilotAui()
                                    defaultCopilotPaneInfo( self() ).Position( 0 ).Layer( 5 ) );
 }
 
-
-template <>
-KICAD_COPILOT_EDITORS SCH_COPILOT_PANEL_CONTAINER::editor_type() const
-{
-    return KICAD_COPILOT_EDITORS::schematic;
-}
-
 template <>
 std::string SCH_COPILOT_PANEL_CONTAINER::GetJsonifySelection() const
 {
