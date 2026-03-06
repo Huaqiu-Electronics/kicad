@@ -14,7 +14,7 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2022, 2023, 2024, 2025, 2026.
 # Ivan Chuba <xtrvweb@gmail.com>, 2022.
 # magical-obama <maschwaerzler@a1.net>, 2022.
-# Luc <some_physics@live.com>, 2023, 2024.
+# Luc <some_physics@live.com>, 2023, 2024, 2026.
 # Ken Ovo <Elektroniker@aon.at>, 2023.
 # Karl SCHUH <k.schuh@schuh-tv.at>, 2023, 2024, 2025.
 # Julian Daube <julian@daube.xyz>, 2023.
@@ -33,7 +33,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:16+0000\n"
-"Last-Translator: Frank Sonnenberg <frasoberg@web.de>\n"
+"Last-Translator: Luc <some_physics@live.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
