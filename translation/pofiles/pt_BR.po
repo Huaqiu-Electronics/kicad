@@ -4,7 +4,7 @@
 # http://www.gnu.org/licenses/fdl-1.3.html
 # Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020.
 # ssantos <ssantos@web.de>, 2020, 2021.
-# Augusto Fraga Giachero <afg@augustofg.net>, 2021.
+# Augusto Fraga Giachero <afg@augustofg.net>, 2021, 2026.
 # Wellington Terumi Uemura <wellingtonuemura@gmail.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # pedrolinharesmoreira <pedrolinhares@unifei.edu.br>, 2024.
 # Pedro Moreira <pedroltmoreira@gmail.com>, 2024, 2025.
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:51+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Augusto Fraga Giachero <afg@augustofg.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
