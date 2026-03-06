@@ -22,13 +22,14 @@
 # Hynek Štětina <hynek.stetina@gmail.com>, 2026.
 # dsa-t <dudesuchamazing@gmail.com>, 2026.
 # EdizonTN <edizontn@gmail.com>, 2026.
+# Roman Ondráček <mail@romanondracek.cz>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:35+0000\n"
-"Last-Translator: EdizonTN <edizontn@gmail.com>\n"
+"Last-Translator: Roman Ondráček <mail@romanondracek.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kicad/master-"
 "source/cs/>\n"
 "Language: cs\n"
