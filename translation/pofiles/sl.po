@@ -2,7 +2,7 @@
 # radix <neutrino@gmx.co.uk>, 2021.
 # Dejan Smole <dejko1@hotmail.com>, 2022.
 # Vitan Košpenda <kospendavitan@gmail.com>, 2022, 2026.
-# Sašo Domadenik <saso.doma@gmail.com>, 2022.
+# Sašo Domadenik <saso.doma@gmail.com>, 2022, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Mitja Nemec <mitja.nemec@fe.uni-lj.si>, 2026.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:27+0000\n"
-"Last-Translator: Mitja Nemec <mitja.nemec@fe.uni-lj.si>\n"
+"Last-Translator: Sašo Domadenik <saso.doma@gmail.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sl/>\n"
 "Language: sl\n"
