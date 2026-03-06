@@ -29,13 +29,14 @@
 # Niyazi <tanyildizn@gmail.com>, 2025.
 # Tevfik Bagcivan <tevfik.bagcivan@gmail.com>, 2025.
 # metin kiruc <metinkiruc@gmail.com>, 2025.
+# Oğuz Ersen <oguz@ersen.moe>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:32+0000\n"
-"Last-Translator: VEDAT YAMAN <weddat@gmail.com>\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
