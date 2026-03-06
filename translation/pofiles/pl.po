@@ -3,7 +3,7 @@
 # Pomian <kontakt@rapiddev.pl>, 2021.
 # Krzysztof Kawa <christophorus72@gmail.com>, 2022, 2025.
 # Ivan Chuba <xtrvweb@gmail.com>, 2022, 2023.
-# Grzegorz Szymaszek <gszymaszek@short.pl>, 2022, 2024.
+# Grzegorz Szymaszek <gszymaszek@short.pl>, 2022, 2024, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023, 2026.
 # Jan Sobków <sobkow.jan@gmail.com>, 2023.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:25+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: Grzegorz Szymaszek <gszymaszek@short.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
