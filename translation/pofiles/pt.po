@@ -2,7 +2,7 @@
 # mentioned in every translation file „Language-Team” sections.
 # This file is distributed under GNU Free Documentation License.
 # http://www.gnu.org/licenses/fdl-1.3.html
-# Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020, 2025.
+# Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020, 2025, 2026.
 # ssantos <ssantos@web.de>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021.
 # Rafael Silva <perigoso@riseup.net>, 2021, 2022, 2026.
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:58+0000\n"
-"Last-Translator: Rafael Silva <perigoso@riseup.net>\n"
+"Last-Translator: Hildo Guillardi Júnior <hildogjr@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
 "Language: pt\n"
@@ -8141,8 +8141,7 @@ msgstr "O ficheiro selecionado é inválido ou pode estar corrompido!"
 #: common/io/cadstar/cadstar_archive_parser.cpp:2680
 #, c-format
 msgid "Unexpected number of points in '%s'. Found %d but expected %d."
-msgstr ""
-"Esperado certo número de pontos em '%s': encontrado %d mas esperado %d."
+msgstr "Esperado certo número de pontos em '%s': encontrado %d mas esperado %d."
 
 #: common/io/cadstar/cadstar_archive_parser.h:43
 #, c-format
