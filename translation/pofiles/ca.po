@@ -4,13 +4,14 @@
 # Marc de Miguel <marc.demiguel.c@gmail.com>, 2025, 2026.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2025, 2026.
 # "rsr.private" <rsr.private@gmail.com>, 2025, 2026.
+# Rafael Serrano <rsr.openware@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:51+0000\n"
-"Last-Translator: \"rsr.private\" <rsr.private@gmail.com>\n"
+"Last-Translator: Rafael Serrano <rsr.openware@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kicad/master-"
 "source/ca/>\n"
 "Language: ca\n"
