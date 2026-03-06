@@ -11,7 +11,7 @@
 # Filip Piękoś <filipalcatel@gmail.com>, 2023.
 # dsa-t <dudesuchamazing@gmail.com>, 2024, 2025, 2026.
 # "j.Kolod" <jmkolod05@gmail.com>, 2024.
-# Marek <fotelpl@gmail.com>, 2024.
+# Marek <fotelpl@gmail.com>, 2024, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Czam Ciał <lamaforge@proton.me>, 2025, 2026.
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:25+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"Last-Translator: Marek <fotelpl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
@@ -50716,8 +50716,7 @@ msgstr "(właściwość 'mechaniczne' jest używana tylko dla pól PTH)"
 
 #: pcbnew/pad.cpp:2864
 msgid "(connector pads normally have no solder paste; use a SMD pad instead)"
-msgstr ""
-"(pla lutownicze złącza nie posiadają warstw pasty; należy użyć pól SMD)"
+msgstr "(pla lutownicze złącza nie posiadają warstw pasty; należy użyć pól SMD)"
 
 #: pcbnew/pad.cpp:2872
 msgid "(SMD pad has a hole)"
