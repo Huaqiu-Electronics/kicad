@@ -5,7 +5,7 @@
 # Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020.
 # ssantos <ssantos@web.de>, 2020, 2021.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021.
-# Wellington Terumi Uemura <wellingtonuemura@gmail.com>, 2021, 2022, 2023, 2024, 2025.
+# Wellington Terumi Uemura <wellingtonuemura@gmail.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # pedrolinharesmoreira <pedrolinhares@unifei.edu.br>, 2024.
 # Pedro Moreira <pedroltmoreira@gmail.com>, 2024, 2025.
 # John Beard <john.j.beard@gmail.com>, 2025.
@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-06 20:34+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-07 16:50+0000\n"
+"Last-Translator: Wellington Terumi Uemura <wellingtonuemura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -2275,8 +2275,7 @@ msgstr "A pasta da biblioteca '%s' tem arquivos inesperados."
 #: common/design_block_io.cpp:241
 #, c-format
 msgid "Unexpected folder '%s' found in library path '%s'."
-msgstr ""
-"Uma pasta inesperada '%s' foi encontrada no caminho da biblioteca '%s'."
+msgstr "Uma pasta inesperada '%s' foi encontrada no caminho da biblioteca '%s'."
 
 #: common/design_block_io.cpp:257
 #, c-format
@@ -2334,8 +2333,7 @@ msgstr ""
 #: common/design_block_io.cpp:484
 #, c-format
 msgid "Design block metadata file '%s' could not be saved."
-msgstr ""
-"Não foi possível salvar o arquivo de metadados do bloco de design '%s'."
+msgstr "Não foi possível salvar o arquivo de metadados do bloco de design '%s'."
 
 #: common/design_block_io.cpp:504
 #, c-format
@@ -4512,8 +4510,7 @@ msgstr ""
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:521
 #, c-format
 msgid "Save '%s' as current KiCad format and replace entry in table?"
-msgstr ""
-"Salvar '%s' no formato atual do KiCad e substituir a entrada na tabela?"
+msgstr "Salvar '%s' no formato atual do KiCad e substituir a entrada na tabela?"
 
 #: common/dialogs/panel_design_block_lib_table.cpp:611
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:526
@@ -9917,8 +9914,7 @@ msgstr "Agrupar os itens"
 
 #: common/tool/actions.cpp:203
 msgid "Group the selected items so that they are treated as a single item"
-msgstr ""
-"Agrupa os itens selecionados para que sejam tratados como um único item"
+msgstr "Agrupa os itens selecionados para que sejam tratados como um único item"
 
 #: common/tool/actions.cpp:209 common/tool/group_tool.cpp:185
 msgid "Ungroup Items"
@@ -10847,8 +10843,7 @@ msgstr "Liste as teclas de atalho..."
 
 #: common/tool/actions.cpp:1414
 msgid "Displays current hotkeys table and corresponding commands"
-msgstr ""
-"Exiba a tabela das teclas de atalho atual e os comandos correspondentes"
+msgstr "Exiba a tabela das teclas de atalho atual e os comandos correspondentes"
 
 #: common/tool/actions.cpp:1420
 msgid "Get Involved"
@@ -11383,8 +11378,7 @@ msgstr "Defina a tecla de atalho"
 #: common/widgets/widget_hotkey_list.cpp:383
 #, c-format
 msgid "'%s' is a reserved hotkey in KiCad and cannot be assigned."
-msgstr ""
-"'%s' é uma tecla de atalho reservada no KiCad e não pode ser atribuída."
+msgstr "'%s' é uma tecla de atalho reservada no KiCad e não pode ser atribuída."
 
 #: common/widgets/widget_hotkey_list.cpp:447
 msgid "Edit..."
@@ -15834,8 +15828,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_tablecell_properties.cpp:88
 #: eeschema/dialogs/dialog_text_properties.cpp:73
 msgid "Note: individual item colors overridden in Preferences."
-msgstr ""
-"Nota: as cores individuais dos itens são substituídas nas preferências."
+msgstr "Nota: as cores individuais dos itens são substituídas nas preferências."
 
 #: eeschema/dialogs/dialog_shape_properties.cpp:376
 #: eeschema/dialogs/dialog_wire_bus_properties.cpp:234
@@ -17149,8 +17142,7 @@ msgstr "O mapeamento da tabela de símbolos da biblioteca foi concluído!"
 #: eeschema/dialogs/dialog_symbol_remap.cpp:353
 #, c-format
 msgid "Cannot create project remap back up folder '%s'."
-msgstr ""
-"Não é possível criar a pasta de backup do remapeamento do projeto '%s'."
+msgstr "Não é possível criar a pasta de backup do remapeamento do projeto '%s'."
 
 #: eeschema/dialogs/dialog_symbol_remap.cpp:356
 #: eeschema/dialogs/dialog_symbol_remap.cpp:529
@@ -17743,8 +17735,7 @@ msgstr "O arrasto do mouse executa a operação Drag (G)"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:57
 msgid "If unchecked, mouse drag will perform move (M) operation"
-msgstr ""
-"Se desmarcado, o arrasto do mouse executará a operação de movimento (M)"
+msgstr "Se desmarcado, o arrasto do mouse executará a operação de movimento (M)"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:61
 msgid "Automatically start wires on unconnected pins"
@@ -18427,8 +18418,7 @@ msgstr "Modelos de nome global do campo"
 #: eeschema/dialogs/panel_template_fieldnames.cpp:214
 #, c-format
 msgid "The field name '%s' contains trailing and/or leading white space."
-msgstr ""
-"O nome do campo '%s' contém espaço em branco à esquerda e/ou à direita."
+msgstr "O nome do campo '%s' contém espaço em branco à esquerda e/ou à direita."
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:219
 msgid ""
@@ -19692,8 +19682,7 @@ msgstr "Esquema não KiCad..."
 #: eeschema/menubar.cpp:105
 msgid ""
 "Replace current schematic sheet with one imported from another application"
-msgstr ""
-"Substitua a folha do esquema atual por uma importada de outra aplicação"
+msgstr "Substitua a folha do esquema atual por uma importada de outra aplicação"
 
 #: eeschema/menubar.cpp:109
 msgid "Footprint Assignments..."
@@ -20538,8 +20527,7 @@ msgstr "Arquivos do esquemático do Altium"
 
 #: eeschema/sch_io/altium/sch_io_altium.h:88
 msgid "Altium Schematic Library or Integrated Library"
-msgstr ""
-"Arquivos da biblioteca esquemática do Altium ou da biblioteca integrada"
+msgstr "Arquivos da biblioteca esquemática do Altium ou da biblioteca integrada"
 
 #: eeschema/sch_io/cadstar/cadstar_sch_archive_loader.cpp:89
 msgid "File does not appear to be a CADSTAR parts Library file"
@@ -20620,8 +20608,8 @@ msgid ""
 msgstr ""
 "O design é muito grande e não pode ser importado para o KiCad. \n"
 "Reduza o tamanho máximo do projeto no CADSTAR navegando para:\n"
-"Aba Design -> Propriedades -> Opções do desenho -> Tamanho máximo do "
-"design. \n"
+"Aba Design -> Propriedades -> Opções do desenho -> Tamanho máximo do design. "
+"\n"
 "O tamanho do projeto atual:%.2f, %.2f milímetros. \n"
 "O tamanho máximo permitido do projeto:%.2f, %.2f milímetros.\n"
 
@@ -25757,8 +25745,7 @@ msgstr "Posicionar a próxima unidade do símbolo"
 #: eeschema/tools/sch_actions.cpp:472
 msgid ""
 "Place the next unit of the current symbol that is missing from the schematic"
-msgstr ""
-"Coloque a próxima unidade do símbolo atual que está faltando no esquema"
+msgstr "Coloque a próxima unidade do símbolo atual que está faltando no esquema"
 
 #: eeschema/tools/sch_actions.cpp:482
 msgid "Place Power Symbols"
@@ -26491,8 +26478,7 @@ msgstr "Desenhe e arraste em qualquer ângulo"
 
 #: eeschema/tools/sch_actions.cpp:1341 pcbnew/tools/pcb_actions.cpp:1471
 msgid "Constrain drawing and dragging to horizontal or vertical motions"
-msgstr ""
-"Restrinja o desenho e o arraste nos movimentos horizontais ou verticais"
+msgstr "Restrinja o desenho e o arraste nos movimentos horizontais ou verticais"
 
 #: eeschema/tools/sch_actions.cpp:1350 pcbnew/tools/pcb_actions.cpp:1480
 msgid ""
@@ -26840,8 +26826,7 @@ msgstr "Sinais definidos pelo usuário..."
 
 #: eeschema/tools/sch_actions.cpp:1756
 msgid "Add, edit or delete user-defined simulation signals"
-msgstr ""
-"Adicione, edite ou exclua os sinais da simulação definidos pelo usuário"
+msgstr "Adicione, edite ou exclua os sinais da simulação definidos pelo usuário"
 
 #: eeschema/tools/sch_actions.cpp:1762
 msgid "Show SPICE Netlist"
@@ -27332,8 +27317,7 @@ msgstr "Avisos do símbolo"
 
 #: eeschema/tools/sch_inspection_tool.cpp:332
 msgid "Select a symbol to diff against its library equivalent."
-msgstr ""
-"Selecione um símbolo para comparar com o seu equivalente na biblioteca."
+msgstr "Selecione um símbolo para comparar com o seu equivalente na biblioteca."
 
 #: eeschema/tools/sch_inspection_tool.cpp:354
 #, c-format
@@ -29559,8 +29543,7 @@ msgstr "Footprint específico para exportar dentro da biblioteca"
 
 #: kicad/cli/command_fp_export_svg.cpp:92
 msgid "Footprint library does not exist or is not accessible\n"
-msgstr ""
-"O caminho da biblioteca do footprint não existe ou não está acessível\n"
+msgstr "O caminho da biblioteca do footprint não existe ou não está acessível\n"
 
 #: kicad/cli/command_fp_upgrade.cpp:36
 msgid "Upgrades the footprint library to the current kicad version format"
@@ -29697,8 +29680,7 @@ msgstr ""
 
 #: kicad/cli/command_pcb_export_3d.cpp:93
 msgid "Exclude 3D models for components with 'Do not populate' attribute"
-msgstr ""
-"Exclui os modelos 3D para os componentes com o atributo 'Não preencher'"
+msgstr "Exclui os modelos 3D para os componentes com o atributo 'Não preencher'"
 
 #: kicad/cli/command_pcb_export_3d.cpp:103
 msgid "Use Grid Origin for output origin"
@@ -38725,8 +38707,7 @@ msgstr "Apenas o selecionado"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:110
 msgid "Export only the component models that are selected in the PCB editor"
-msgstr ""
-"Exportar apenas os modelos de componentes selecionados no editor de PCI"
+msgstr "Exportar apenas os modelos de componentes selecionados no editor de PCI"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:114
 msgid "Components matching filter:"
@@ -39808,8 +39789,7 @@ msgstr "Arquivo de saída:"
 
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:65
 msgid "Enter a filename if you do not want to use default file names"
-msgstr ""
-"Digite um nome de arquivo se não quiser usar os nomes de arquivo padrão"
+msgstr "Digite um nome de arquivo se não quiser usar os nomes de arquivo padrão"
 
 #: pcbnew/dialogs/dialog_gendrill.cpp:338
 #, c-format
@@ -42957,8 +42937,7 @@ msgstr "Largura máxima da trilha:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:682
 msgid "Tracks which are similar in size to the via do not need teardrops."
-msgstr ""
-"Trilhas com tamanho semelhante à via não precisam um reforço de junção."
+msgstr "Trilhas com tamanho semelhante à via não precisam um reforço de junção."
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:696
 msgid "(as a percentage of pad/via/track size)"
@@ -43315,8 +43294,7 @@ msgstr "Destaque os footprints correspondentes aos símbolos selecionados"
 
 #: pcbnew/dialogs/panel_display_options_base.cpp:176
 msgid "Ensures that cross-probed footprints are visible in the current view"
-msgstr ""
-"Garante que as footprints cruzadas sejam visíveis na visualização atual"
+msgstr "Garante que as footprints cruzadas sejam visíveis na visualização atual"
 
 #: pcbnew/dialogs/panel_display_options_base.cpp:186
 msgid "Highlight nets when they are highlighted in the schematic editor"
@@ -44089,8 +44067,7 @@ msgstr "Na placa, sem cobre"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:189
 msgid "If you want a solder paste layer for front side of the board"
-msgstr ""
-"Caso queira uma camada de pasta de solta para o lado da frente da placa"
+msgstr "Caso queira uma camada de pasta de solta para o lado da frente da placa"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:207
 msgid "If you want a silk screen layer for the front side of the board"
@@ -45780,8 +45757,7 @@ msgstr "Propriedades padrão para formas arredondadas"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:171
 msgid "Allow teardrop to span two track segments"
-msgstr ""
-"Permite que o reforço da junção se estenda por dois segmentos da trilha"
+msgstr "Permite que o reforço da junção se estenda por dois segmentos da trilha"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:189
 msgid "Default Properties for Rectangular Shapes"
@@ -45790,8 +45766,7 @@ msgstr "Propriedades padrão para formas retangulares"
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:341
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:506
 msgid "Allow teardrop to span track segments"
-msgstr ""
-"Permite que um reforço da junção se espalhe pelos segmentos das trilhas"
+msgstr "Permite que um reforço da junção se espalhe pelos segmentos das trilhas"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:359
 msgid "Properties for Track-to-Track Teardrops"
@@ -46795,8 +46770,7 @@ msgstr "Fita de cobre"
 
 #: pcbnew/drc/drc_item.cpp:241
 msgid "Solder mask aperture bridges items with different nets"
-msgstr ""
-"A abertura da máscara de solda conecta os itens com as diferentes redes"
+msgstr "A abertura da máscara de solda conecta os itens com as diferentes redes"
 
 #: pcbnew/drc/drc_item.cpp:245
 msgid "Silkscreen clipped by solder mask"
@@ -49137,8 +49111,7 @@ msgstr "Use Gerencie as bibliotecas de footprint para editar a configuração."
 
 #: pcbnew/footprint_editor_utils.cpp:351
 msgid "Library not found in footprint library table."
-msgstr ""
-"A biblioteca não foi encontrada na tabela das bibliotecas do footprint."
+msgstr "A biblioteca não foi encontrada na tabela das bibliotecas do footprint."
 
 #: pcbnew/footprint_editor_utils.cpp:360
 #, c-format
@@ -49163,8 +49136,8 @@ msgstr ""
 "Não é permitido escrever/modificar as bibliotecas legadas (arquivos .mod)\n"
 "Salve a biblioteca atual no novo formato .pretty\n"
 "e atualize a sua tabela de footprint das bibliotecas\n"
-"para salvar o seu footprint (um arquivo .kicad_mod) na pasta da "
-"biblioteca .pretty"
+"para salvar o seu footprint (um arquivo .kicad_mod) na pasta da biblioteca "
+".pretty"
 
 #: pcbnew/footprint_libraries_utils.cpp:75
 msgid ""
@@ -50067,8 +50040,7 @@ msgstr ""
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:873
 #, c-format
 msgid "Add %s 'duplicate pad numbers are jumpers' attribute."
-msgstr ""
-"Adicionar o atributo %s 'a quantidade de ilhas duplicadas são jumpers'."
+msgstr "Adicionar o atributo %s 'a quantidade de ilhas duplicadas são jumpers'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:878
 #, c-format
@@ -52083,14 +52055,12 @@ msgstr "Ignorando um texto porque a camada '%s' do Eagle (%d) não foi mapeada"
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2238
 #, c-format
 msgid "Ignoring a rectangle since Eagle layer '%s' (%d) was not mapped"
-msgstr ""
-"Ignorando um retângulo pois a camada '%s' do Eagle (%d) não foi mapeada"
+msgstr "Ignorando um retângulo pois a camada '%s' do Eagle (%d) não foi mapeada"
 
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2429
 #, c-format
 msgid "Ignoring a circle since Eagle layer '%s' (%d) was not mapped"
-msgstr ""
-"Ignorando um círculo porque a camada '%s' do Eagle (%d) não foi mapeada"
+msgstr "Ignorando um círculo porque a camada '%s' do Eagle (%d) não foi mapeada"
 
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.h:137
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.h:72
@@ -52501,8 +52471,7 @@ msgstr "Faltando '$EndMODULE' para o MÓDULO '%s'."
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:1425
 #, c-format
 msgid "Unknown padshape '%c=0x%02x' on line: %d of footprint: '%s'."
-msgstr ""
-"Forma desconhecida da ilha '%c=0x%02x' na linha: %d do footprint: '%s'."
+msgstr "Forma desconhecida da ilha '%c=0x%02x' na linha: %d do footprint: '%s'."
 
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:1616
 #, c-format
@@ -52954,8 +52923,7 @@ msgstr ""
 #: pcbnew/pcb_io/pcb_io.cpp:196
 msgid ""
 "Enter the python module which implements the PCB_IO::Footprint*() functions."
-msgstr ""
-"Inserir o módulo python que implemente as funções PCB_IO::Footprint*()."
+msgstr "Inserir o módulo python que implemente as funções PCB_IO::Footprint*()."
 
 #: pcbnew/pcb_layer_box_selector.cpp:74
 msgid "(not activated)"
@@ -53986,8 +53954,8 @@ msgstr "Argumento de nome de NetClass ausente para hasExactNetclass()"
 #: pcbnew/pcbexpr_functions.cpp:1464
 msgid "Missing component class name argument to hasComponentClass()"
 msgstr ""
-"O argumento do nome da classe do componente está ausente em "
-"hasComponentClass()"
+"O argumento do nome da classe do componente está ausente em hasComponentClass"
+"()"
 
 #: pcbnew/pcbnew.cpp:790 pcbnew/pcbnew.cpp:803
 msgid "Loading Footprint Libraries"
@@ -54070,8 +54038,7 @@ msgstr "Gravou dados de posição em '%s'.\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2073
 msgid "Footprint library path does not exist or is not accessible\n"
-msgstr ""
-"O caminho da biblioteca do footprint não existe ou não está acessível\n"
+msgstr "O caminho da biblioteca do footprint não existe ou não está acessível\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2113
 msgid "Unable to save library\n"
@@ -55432,8 +55399,7 @@ msgstr "Resolução das exclusões para:"
 #: pcbnew/tools/board_inspection_tool.cpp:1770
 #: pcbnew/tools/board_inspection_tool.cpp:1794
 msgid "Report may be incomplete: some footprint courtyards are malformed."
-msgstr ""
-"O relatório pode estar incompleto: alguns footprints estão malformados."
+msgstr "O relatório pode estar incompleto: alguns footprints estão malformados."
 
 #: pcbnew/tools/board_inspection_tool.cpp:1772
 #: pcbnew/tools/board_inspection_tool.cpp:1796
@@ -55910,8 +55876,7 @@ msgstr "Extender as linhas para que se encontrem"
 
 #: pcbnew/tools/item_modification_routine.cpp:470
 msgid "Unable to extend the selected lines to meet."
-msgstr ""
-"Não foi possível estender as linhas selecionadas para que se encontrem."
+msgstr "Não foi possível estender as linhas selecionadas para que se encontrem."
 
 #: pcbnew/tools/item_modification_routine.cpp:472
 msgid "Some of the lines could not be extended to meet."
@@ -56167,8 +56132,7 @@ msgstr "Adiciona as características da placa"
 
 #: pcbnew/tools/pcb_actions.cpp:178
 msgid "Add a board characteristics table on a graphic layer"
-msgstr ""
-"Adicione uma tabela com as características da placa numa camada gráfica"
+msgstr "Adicione uma tabela com as características da placa numa camada gráfica"
 
 #: pcbnew/tools/pcb_actions.cpp:186
 msgid "Add Stackup Table"
@@ -56276,8 +56240,7 @@ msgstr "Adiciona uma zona similar"
 
 #: pcbnew/tools/pcb_actions.cpp:370
 msgid "Add a zone with the same settings as an existing zone"
-msgstr ""
-"Adiciona uma zona com as mesmas configurações que uma zona já existente"
+msgstr "Adiciona uma zona com as mesmas configurações que uma zona já existente"
 
 #: pcbnew/tools/pcb_actions.cpp:390
 msgid "Place the Footprint Anchor"
@@ -57160,8 +57123,7 @@ msgstr "Alterna destaque da rede"
 
 #: pcbnew/tools/pcb_actions.cpp:1548
 msgid "Highlight all copper items on the selected net(s)"
-msgstr ""
-"Destaca todos os itens com cobre na(s) rede(s) que foram selecionada(s)"
+msgstr "Destaca todos os itens com cobre na(s) rede(s) que foram selecionada(s)"
 
 #: pcbnew/tools/pcb_actions.cpp:1559
 msgid "Hide Net in Ratsnest"
