@@ -1,5 +1,5 @@
 # hu/kicad.po file updated by the 'update-po-files.sh' script from kicad-source-mirror @ commit cb83f8acdfdfc1f7659e7e87d2e0696520150bc9
-# Miklós Márton <martonmiklosqdev@gmail.com>, 2022, 2023, 2025.
+# Miklós Márton <martonmiklosqdev@gmail.com>, 2022, 2023, 2025, 2026.
 # István Farkas <sakrafi1963@gmail.com>, 2023, 2026.
 # Hajdu Norbert <norbert.hajdu.biz@gmail.com>, 2024, 2026.
 # Balázs Meskó <meskobalazs@mailbox.org>, 2024, 2026.
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:00+0000\n"
-"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
+"Last-Translator: Miklós Márton <martonmiklosqdev@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hu/>\n"
 "Language: hu\n"
