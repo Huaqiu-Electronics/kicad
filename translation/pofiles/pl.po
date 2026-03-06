@@ -14,13 +14,14 @@
 # Marek <fotelpl@gmail.com>, 2024, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Czam Ciał <lamaforge@proton.me>, 2025, 2026.
+# maksz42 <maksz@op.pl>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:25+0000\n"
-"Last-Translator: Marek <fotelpl@gmail.com>\n"
+"Last-Translator: maksz42 <maksz@op.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
