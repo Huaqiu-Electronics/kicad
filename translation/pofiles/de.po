@@ -9,7 +9,7 @@
 # Dominik Wernberger <dominik.wernberger@gmx.de>, 2021.
 # Flo082002 <flos6323@gmail.com>, 2021.
 # Benedikt Freisen <b.freisen@gmx.net>, 2021, 2022.
-# Mark Hämmerling <dev@markh.de>, 2021, 2022, 2023, 2024, 2025.
+# Mark Hämmerling <dev@markh.de>, 2021, 2022, 2023, 2024, 2025, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2022, 2023, 2024, 2025.
 # Ettore Atalan <atalanttore@googlemail.com>, 2022, 2023, 2024, 2025, 2026.
 # Ivan Chuba <xtrvweb@gmail.com>, 2022.
@@ -32,8 +32,8 @@ msgstr ""
 "Project-Id-Version: KiCad i18n Deutsch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:15+0000\n"
-"Last-Translator: Jonathan Haas <haasjona@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 17:16+0000\n"
+"Last-Translator: Mark Hämmerling <dev@markh.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
@@ -9749,8 +9749,7 @@ msgstr "Aktualisierungen && Datenschutz"
 
 #: common/startwizard/startwizard_provider_settings.cpp:73
 msgid "Import settings from a previous version (none found)"
-msgstr ""
-"Einstellungen importieren aus einer vorherigen Version (keine gefunden)"
+msgstr "Einstellungen importieren aus einer vorherigen Version (keine gefunden)"
 
 #: common/startwizard/startwizard_provider_settings.cpp:143
 msgid "Select Settings Path"
@@ -46651,8 +46650,7 @@ msgstr "Bedingungslose Regel angewandt."
 
 #: pcbnew/drc/drc_engine.cpp:1697
 msgid "Unconditional rule applied; overrides previous constraints."
-msgstr ""
-"Bedingungslose Regel angewandt; überschreibt vorherige Einschränkungen."
+msgstr "Bedingungslose Regel angewandt; überschreibt vorherige Einschränkungen."
 
 #: pcbnew/drc/drc_engine.cpp:1711 pcbnew/drc/drc_engine.cpp:2124
 #, c-format
@@ -54647,8 +54645,8 @@ msgstr "Leiterbahnecken-Modus Umschaltung"
 #: pcbnew/router/router_tool.cpp:231
 msgid "Switches between sharp/rounded and 45°/90° corners when routing tracks."
 msgstr ""
-"Wechselt beim Verlegen von Leiterbahnen zwischen scharfen/abgerundeten und "
-"45°/90°-Ecken."
+"Wechselt beim Verlegen von Leiterbahnen zwischen scharfen/abgerundeten und 45"
+"°/90°-Ecken."
 
 #: pcbnew/router/router_tool.cpp:239
 msgid "Track Corner Mode 45"
@@ -55121,8 +55119,7 @@ msgstr "Zonen haben unzureichende Überlappung für Vereinigung."
 
 #: pcbnew/tools/board_editor_control.cpp:1547
 msgid "Some zone netcodes did not match and were not merged."
-msgstr ""
-"Einige Zonen-Netzcodes stimmten nicht überein und wurden nicht vereint."
+msgstr "Einige Zonen-Netzcodes stimmten nicht überein und wurden nicht vereint."
 
 #: pcbnew/tools/board_editor_control.cpp:1553
 msgid "Some zones were rule areas and were not merged."
@@ -59997,11 +59994,11 @@ msgid ""
 "featuring thousands of symbols, footprints, and 3D models. KiCad has minimal "
 "system requirements and runs on Linux, Windows, and macOS."
 msgstr ""
-"KiCad ist eine freie und quelloffene EDA-Suite (Electronic Design "
-"Automation). Es bietet Schaltplanerfassung, Simulation integrierter "
-"Schaltungen, Leiterplatten-Layout, 3D-Rendering und Plotting/Datenexport in "
-"zahlreiche Formate. KiCad enthält auch eine hochwertige Bauteilbibliothek "
-"mit Tausenden von Symbolen, Footprints und 3D-Modellen. KiCad hat minimale "
+"KiCad ist eine freie und quelloffene EDA-Suite (Electronic Design Automation)"
+". Es bietet Schaltplanerfassung, Simulation integrierter Schaltungen, "
+"Leiterplatten-Layout, 3D-Rendering und Plotting/Datenexport in zahlreiche "
+"Formate. KiCad enthält auch eine hochwertige Bauteilbibliothek mit Tausenden "
+"von Symbolen, Footprints und 3D-Modellen. KiCad hat minimale "
 "Systemanforderungen und läuft unter Linux, Windows und macOS."
 
 #: resources/linux/metainfo/org.kicad.kicad.metainfo.xml.in:62
