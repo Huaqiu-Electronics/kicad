@@ -3,7 +3,7 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021, 2022, 2023, 2024, 2026.
 # Petter Reinholdtsen <pere-weblate@hungry.com>, 2022.
 # Håvard Syslak <haavard.syslak@gmail.com>, 2022, 2025.
-# Henrik Kauhanen <henrik@kauhanen.se>, 2023.
+# Henrik Kauhanen <henrik@kauhanen.se>, 2023, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Stian Kristensen <stiank@gmail.com>, 2025, 2026.
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:33+0000\n"
-"Last-Translator: Stian Kristensen <stiank@gmail.com>\n"
+"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kicad/"
 "master-source/nb_NO/>\n"
 "Language: no\n"
