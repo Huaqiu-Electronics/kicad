@@ -33,7 +33,7 @@
 # dsa-t <dudesuchamazing@gmail.com>, 2024, 2025, 2026.
 # zly20129 <zly20129@icloud.com>, 2024.
 # Wang <wang@plasma.ac.cn>, 2024.
-# HalfSweet <HalfSweet@halfsweet.cn>, 2024.
+# HalfSweet <HalfSweet@halfsweet.cn>, 2024, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # KK0571 <190506420@qq.com>, 2025.
 # yanzhen zhu <acme.zhuyanzhen@gmail.com>, 2025, 2026.
@@ -47,7 +47,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: HalfSweet <HalfSweet@halfsweet.cn>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
