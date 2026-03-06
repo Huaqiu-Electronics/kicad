@@ -4,7 +4,7 @@
 # Marcel Hecko <maco@blava.net>, 2022, 2023.
 # Milan Šalka <salka.milan@googlemail.com>, 2023.
 # Andrej Valek <andy@skyrain.eu>, 2024, 2026.
-# Marcel Hecko <marcel.hecko@moirelabs.com>, 2024.
+# Marcel Hecko <marcel.hecko@moirelabs.com>, 2024, 2026.
 # David Chorváth <dadulo33@gmail.com>, 2024.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # EdizonTN <EdizonTN@users.noreply.hosted.weblate.org>, 2025.
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:50+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Marcel Hecko <marcel.hecko@moirelabs.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
 "source/sk/>\n"
 "Language: sk\n"
