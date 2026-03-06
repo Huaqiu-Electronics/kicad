@@ -19,7 +19,7 @@
 # yangyangdaji <1504305527@qq.com>, 2022, 2023.
 # Huanyin Liu <13316560709@189.cn>, 2022.
 # Eric <hamburger1024@duck.com>, 2022.
-# Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025, 2026.
 # wh201906 <wh201906@yandex.com>, 2023.
 # Hubert Hu <qinghan.hu@gmail.com>, 2023, 2024, 2025, 2026.
 # Li Yidong <alenks@foxmail.com>, 2023, 2024.
@@ -47,7 +47,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: 向阳阳 <hinata.hoshino@foxmail.com>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
