@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2025-01-23 15:38+0000\n"
-"Last-Translator: John Beard <john.j.beard@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 16:22+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kicad/master-"
 "source/da/>\n"
 "Language: da\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: 3d-viewer/3d_cache/3d_plugin_manager.cpp:58
 #: common/dialogs/panel_embedded_files.cpp:396
@@ -13053,8 +13053,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_bom.cpp:296
 #, fuzzy
 msgid "Generating BOM requires a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: eeschema/dialogs/dialog_bom.cpp:301
 #, fuzzy
@@ -14022,8 +14021,7 @@ msgstr "%s Eksport"
 #: eeschema/netlist_exporters/netlist_generator.cpp:56
 #, fuzzy
 msgid "Exporting netlist requires a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:645
 #: eeschema/dialogs/dialog_export_netlist.cpp:684
@@ -21279,8 +21277,7 @@ msgstr "Åbn skematisk"
 #: eeschema/sch_edit_frame.cpp:1540
 #, fuzzy
 msgid "Assigning footprints requires a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: eeschema/sch_edit_frame.cpp:1567
 msgid "Could not open CvPcb"
@@ -24855,8 +24852,7 @@ msgstr "Der var fejl under netlisteksporten, afbrudt."
 #: eeschema/sim/simulator_frame.cpp:379
 #, fuzzy
 msgid "Simulator requires a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: eeschema/sim/simulator_frame.cpp:423
 msgid ""
@@ -26034,8 +26030,7 @@ msgstr ""
 #: eeschema/tools/backannotate.cpp:348
 #, fuzzy
 msgid "Re-linking footprints requires a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: eeschema/tools/backannotate.cpp:351
 #, fuzzy
@@ -34348,8 +34343,8 @@ msgstr ""
 "* __a__ dæmpning i dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (tabet)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> ind </sub> \\ * Z <sub> ud </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> ind </sub> \\ * Z <sub> ud </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> i </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> ud </sub> \\ * A - R2___\n"
 
@@ -34396,8 +34391,8 @@ msgstr ""
 "* __a__ dæmpning i dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (tabet)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> ind </sub> \\ * Z <sub> ud </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> ind </sub> \\ * Z <sub> ud </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> i </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> ud </sub> \\ * A - R2___\n"
 
@@ -43556,8 +43551,7 @@ msgstr ""
 msgid ""
 "Most board manufacturers expect 0 and use their own constraints for solder "
 "mask minimum width."
-msgstr ""
-"forvent 0 og brug deres begrænsninger, især til lodde maske min bredde."
+msgstr "forvent 0 og brug deres begrænsninger, især til lodde maske min bredde."
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:208
 msgid "Board setup"
@@ -52487,8 +52481,7 @@ msgstr "Skift til PCB Editor"
 #: pcbnew/pcb_edit_frame.cpp:239
 #, fuzzy
 msgid "Export netlist used to update schematics"
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: pcbnew/pcb_edit_frame.cpp:526
 msgid "New PCB file is unsaved"
@@ -55314,8 +55307,7 @@ msgstr "Fejl ved udpakning af fil!\n"
 #: pcbnew/pcbnew_jobs_handler.cpp:2336 pcbnew/tools/drc_tool.cpp:170
 #, fuzzy
 msgid "Schematic parity tests require a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2357 pcbnew/pcbnew_jobs_handler.cpp:2390
 #, fuzzy
@@ -56162,8 +56154,7 @@ msgstr "Ingen bestyrelsesproblemer fundet."
 #: pcbnew/tools/board_editor_control.cpp:694
 #, fuzzy
 msgid "Updating PCB requires a fully annotated schematic."
-msgstr ""
-"Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
+msgstr "Eksport af netlisten kræver en fuldstændig kommenteret skematisk skema."
 
 #: pcbnew/tools/board_editor_control.cpp:708
 msgid ""
