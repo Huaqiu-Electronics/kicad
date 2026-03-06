@@ -4,7 +4,7 @@
 # taotieren <admin@taotieren.com>,2019-2020, 2021, 2022, 2023, 2024, 2026.
 # Rigo Ligo <rigoligo03@gmail.com>, 2020, 2021, 2022, 2023, 2025, 2026.
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
-# Liu Guang <l.g110@163.com>, 2021.
+# Liu Guang <l.g110@163.com>, 2021, 2026.
 # CloverGit <w991593239@163.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # Deleted User <noreply+33206@weblate.org>, 2021.
 # David Chen <d0123456789g@yahoo.com.tw>, 2021.
@@ -47,7 +47,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: CharlieYu <charlieyu4994@outlook.com>\n"
+"Last-Translator: Liu Guang <l.g110@163.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
