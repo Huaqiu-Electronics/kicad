@@ -159,6 +159,12 @@ void API_HANDLER_SCH::placeDesignBlock( PLACE_DESIGN_BLOCK_RESOURCE_CMD const& a
         design_block_content.schematics.push_back( std::move( schematic ) );
     }
 
+    if( design_block_content.schematics.empty() )
+    {
+        wxLogWarning( "No valid schematics to place" );
+        return;
+    }
+
     placeDesignBlock( design_block_content, aCommand.option );
 }
 

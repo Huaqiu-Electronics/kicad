@@ -34,7 +34,10 @@
 
 void API_HANDLER_PCB::placeFootprint( COMPONENT_RESOURCE const& aComponent )
 {
-    return placeFootprint( API_DESIGN_RESOURCE_MGR::GetComponentConent( aComponent ) );
+    if( auto downloaded = API_DESIGN_RESOURCE_MGR::GetComponentConent( aComponent ) )
+    {
+        return placeFootprint( *downloaded );
+    }
 }
 
 void API_HANDLER_PCB::placeFootprint( COMPONENT_CONTENT const& aComponent )
