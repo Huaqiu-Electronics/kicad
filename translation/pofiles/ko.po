@@ -16,7 +16,7 @@
 # 이기형 <oddlight0@gmail.com>, 2022, 2026.
 # kmn4555 <kmn4555@naver.com>, 2022, 2026.
 # ky107601 <qldkr1@naver.com>, 2022.
-# 김용재 <tpdlqj965@gmail.com>, 2022.
+# 김용재 <tpdlqj965@gmail.com>, 2022, 2026.
 # 김낙환 <ktkr1964@naver.com>, 2022, 2026.
 # minsu kim (0xGabriel) <rlaalstn9601@gmail.com>, 2022.
 # 김세영 <tpdud2980@naver.com>, 2022, 2026.
@@ -41,7 +41,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:04+0000\n"
-"Last-Translator: 이윤성 <yunslee@student.42seoul.kr>\n"
+"Last-Translator: 김용재 <tpdlqj965@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
