@@ -1,4 +1,4 @@
-# Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2025.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2025, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021.
 # Arend-Jan van Hilten <a.j.vanhilten@student.tudelft.nl>, 2021, 2023.
 # pimjansen98 <pimjansen1998@gmail.com>, 2021.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:06+0000\n"
-"Last-Translator: CJ van der Hoeven <KeesEnJoa@gmail.com>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kicad/master-"
 "source/nl/>\n"
 "Language: nl\n"
@@ -52062,8 +52062,7 @@ msgstr "Kan component '%s' niet vinden in de bibliotheek (Symdef ID: '%s')"
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1853
 #, c-format
 msgid "Unable to find documentation symbol in the library (Symdef ID: '%s')"
-msgstr ""
-"Kan documentatiesymbool niet vinden in de bibliotheek (Symdef-ID: '%s')"
+msgstr "Kan documentatiesymbool niet vinden in de bibliotheek (Symdef-ID: '%s')"
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1920
 #, c-format
@@ -52320,8 +52319,7 @@ msgstr ""
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:1918
 #, c-format
 msgid "Ignoring a wire since Eagle layer '%s' (%d) was not mapped"
-msgstr ""
-"Een draad negeren omdat Eagle-laag '%s' (%d) niet in kaart was gebracht"
+msgstr "Een draad negeren omdat Eagle-laag '%s' (%d) niet in kaart was gebracht"
 
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2086
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2088
@@ -52339,8 +52337,7 @@ msgstr ""
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2100
 #, c-format
 msgid "Ignoring a text since Eagle layer '%s' (%d) was not mapped"
-msgstr ""
-"Een tekst negeren omdat Eagle-laag '%s' (%d) niet in kaart was gebracht"
+msgstr "Een tekst negeren omdat Eagle-laag '%s' (%d) niet in kaart was gebracht"
 
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2238
 #, c-format
