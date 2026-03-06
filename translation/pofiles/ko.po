@@ -33,13 +33,14 @@
 # Seth Hillbrand <seth@kipro-pcb.com>, 2025, 2026.
 # DevAny KR <devany.kr@gmail.com>, 2025, 2026.
 # Jason Son <weblate.sash858@passmail.net>, 2025, 2026.
+# 김호진 <ghwls1221@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:04+0000\n"
-"Last-Translator: Jason Son <weblate.sash858@passmail.net>\n"
+"Last-Translator: 김호진 <ghwls1221@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
