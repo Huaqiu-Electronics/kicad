@@ -18,7 +18,7 @@
 # Ken Ovo <Elektroniker@aon.at>, 2023.
 # Karl SCHUH <k.schuh@schuh-tv.at>, 2023, 2024, 2025.
 # Julian Daube <julian@daube.xyz>, 2023.
-# Johannes Maibaum <jmaibaum@gmail.com>, 2024.
+# Johannes Maibaum <jmaibaum@gmail.com>, 2024, 2026.
 # "Pferd O." <frank.0228@ich-war-hier.de>, 2024, 2025, 2026.
 # tct123 <tct1234@protonmail.com>, 2024.
 # Lauritz Tieste <lauritz6000000@gmail.com>, 2024.
@@ -33,7 +33,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:16+0000\n"
-"Last-Translator: Benedikt Freisen <b.freisen@gmx.net>\n"
+"Last-Translator: Johannes Maibaum <jmaibaum@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
