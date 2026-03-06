@@ -1,4 +1,4 @@
-# Arnau Llovet Vidal <arnaullv@gmail.com>, 2021, 2022, 2023, 2024, 2025.
+# Arnau Llovet Vidal <arnaullv@gmail.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Marc de Miguel <marc.demiguel.c@gmail.com>, 2025.
@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:50+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 17:51+0000\n"
+"Last-Translator: Arnau Llovet Vidal <arnaullv@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kicad/master-"
 "source/ca/>\n"
 "Language: ca\n"
@@ -5238,8 +5238,8 @@ msgid ""
 "This scale results in an image which is very large (%.1f mm or %.2f in). Are "
 "you sure?"
 msgstr ""
-"Aquesta escala proporciona una mida d'imatge molt grossa (%.1f mm o %.2f "
-"mil). N'estàs segur?"
+"Aquesta escala proporciona una mida d'imatge molt grossa (%.1f mm o %.2f mil)"
+". N'estàs segur?"
 
 #: common/dialogs/panel_image_editor_base.cpp:33
 #, fuzzy
@@ -7525,8 +7525,7 @@ msgstr "El camí base de les biblioteques d'empremtes instal·lades localment."
 
 #: common/env_vars.cpp:120
 msgid "A directory containing project templates installed with KiCad."
-msgstr ""
-"La carpeta que conté les plantilles de projecte instal·lades per KiCad."
+msgstr "La carpeta que conté les plantilles de projecte instal·lades per KiCad."
 
 #: common/env_vars.cpp:123
 msgid ""
@@ -12427,8 +12426,7 @@ msgstr "Fitxer de projecte: '%s'"
 #: gerbview/tools/gerbview_inspection_tool.cpp:183
 #: kicad/project_tree_pane.cpp:1104
 msgid "No text editor selected in KiCad.  Please choose one."
-msgstr ""
-"No hi ha cap editor de text seleccionat a KiCad. Si us plau, tria'n un."
+msgstr "No hi ha cap editor de text seleccionat a KiCad. Si us plau, tria'n un."
 
 #: cvpcb/dialogs/dialog_config_equfiles.cpp:215
 msgid "Footprint Association File"
@@ -22652,8 +22650,7 @@ msgstr "Recorrent al cau per definir el símbol '%s:%s' enllaç '%s'."
 #: eeschema/sch_screen.cpp:848
 #, c-format
 msgid "No library symbol found for schematic symbol '%s %s'."
-msgstr ""
-"No s'ha trobat el símbol de biblioteca pel símbol d'esquemàtic '%s %s'."
+msgstr "No s'ha trobat el símbol de biblioteca pel símbol d'esquemàtic '%s %s'."
 
 #: eeschema/sch_shape.cpp:388
 #, c-format
@@ -48244,8 +48241,7 @@ msgstr "S'estan verificant els marges dels coures a la vora de la placa..."
 
 #: pcbnew/drc/drc_test_provider_edge_clearance.cpp:246
 msgid "Checking silk to board edge clearances..."
-msgstr ""
-"S'estan verificant els marges de la serigrafia a la vora de la placa..."
+msgstr "S'estan verificant els marges de la serigrafia a la vora de la placa..."
 
 #: pcbnew/drc/drc_test_provider_hole_size.cpp:64
 msgid "Checking pad holes..."
