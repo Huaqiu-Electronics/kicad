@@ -176,7 +176,8 @@ void SCH_EDIT_FRAME::InitSheet( SCH_SHEET* aSheet, const wxString& aNewFilename 
 
 bool SCH_EDIT_FRAME::ChangeSheetFile( SCH_SHEET* aSheet, const wxString& aNewFilename,
                                       bool* aClearAnnotationNewItems, bool* aIsUndoable,
-                                      const wxString* aSourceSheetFilename )
+                                      const wxString* aSourceSheetFilename ,
+                                      bool aCalledByApi )
 {
     wxString    msg;
     wxFileName  sheetFileName( aNewFilename );
@@ -234,7 +235,7 @@ bool SCH_EDIT_FRAME::ChangeSheetFile( SCH_SHEET* aSheet, const wxString& aNewFil
         {
             clearAnnotation = true;
 
-            if( !IsOK( this, wxString::Format( _( "'%s' already exists." ),
+            if(!aCalledByApi && !IsOK( this, wxString::Format( _( "'%s' already exists." ),
                                                sheetFileName.GetFullName() )
                              + wxT( "\n\n" )
                              + wxString::Format( _( "Link '%s' to this file?" ),

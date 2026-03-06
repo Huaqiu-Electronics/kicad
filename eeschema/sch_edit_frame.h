@@ -613,7 +613,9 @@ public:
     bool ChangeSheetFile( SCH_SHEET* aSheet, const wxString& aNewFilename,
                           bool* aClearAnnotationNewItems = nullptr,
                           bool* aIsUndoable = nullptr,
-                          const wxString* aSourceSheetFilename = nullptr );
+                          const wxString* aSourceSheetFilename = nullptr,
+                          bool aCalledByApi = false                        
+                        );
 
     /**
      * Load a the KiCad schematic file \a aFileName into the sheet \a aSheet.

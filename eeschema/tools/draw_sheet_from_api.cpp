@@ -36,7 +36,6 @@
 #include <tools/ee_grid_helper.h>
 #include <tools/rule_area_create_helper.h>
 #include <gal/graphics_abstraction_layer.h>
-#include <design_block_lib_table.h>
 #include <sch_actions.h>
 #include <sch_tool_utils.h>
 #include <sch_edit_frame.h>
@@ -63,7 +62,6 @@
 #include <schematic.h>
 #include <sch_commit.h>
 #include <scoped_set_reset.h>
-#include <symbol_library.h>
 #include <eeschema_settings.h>
 #include <string_utils.h>
 #include <wildcards_and_files_ext.h>
@@ -136,8 +134,9 @@ inline auto GetSheetFilledWithPins( const VECTOR2I& aPos, SCH_EDIT_FRAME* aFrame
         IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( schFileType ) );
 
 
-        tmpSheet->GetFields()[SHEETNAME].SetText( fn.GetName() );
-        tmpSheet->GetFields()[SHEETFILENAME].SetText( fn.GetName() + wxT( "." ) + FILEEXT::KiCadSchematicFileExtension );
+        tmpSheet->GetField( FIELD_T::SHEET_NAME )->SetText( fn.GetName() );
+        tmpSheet->GetField( FIELD_T::SHEET_FILENAME )
+                ->SetText( fn.GetName() + wxT( "." ) + FILEEXT::KiCadSchematicFileExtension );
 
         pi->LoadSchematicFile( full_fp, schematic, tmpSheet.get() );
         return tmpSheet->GetScreen();
@@ -232,7 +231,7 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
     EE_GRID_HELPER        grid( m_toolMgr );
     VECTOR2I              cursorPos;
 
-    m_toolMgr->RunAction( SCH_ACTIONS::clearSelection );
+    m_toolMgr->RunAction( SCH_ACTIONS::selectionClear );
 
     m_frame->PushTool( aEvent );
 
@@ -243,7 +242,7 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
 
     auto cleanup = [&]()
     {
-        m_toolMgr->RunAction( SCH_ACTIONS::clearSelection );
+        m_toolMgr->RunAction( SCH_ACTIONS::selectionClear );
         m_view->ClearPreview();
         delete sheet;
         sheet = nullptr;
@@ -276,9 +275,9 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
 
             wxFileName fn( filename );
 
-            sheet->GetFields()[SHEETNAME].SetText( fn.GetName() );
-            sheet->GetFields()[SHEETFILENAME].SetText( fn.GetName() + wxT( "." )
-                                                       + FILEEXT::KiCadSchematicFileExtension );
+            sheet->GetField( FIELD_T::SHEET_NAME )->SetText( fn.GetName() );
+            sheet->GetField( FIELD_T::SHEET_FILENAME )
+                    ->SetText( fn.GetName() + wxT( "." ) + FILEEXT::KiCadSchematicFileExtension );
 
             sheet->SetFlags( IS_NEW | IS_MOVING );
             sheet->SetBorderWidth( schIUScale.MilsToIU( cfg->m_Drawing.default_line_thickness ) );
@@ -372,9 +371,12 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
             m_selectionTool->AddItemToSel( sheet );
 
             NULL_REPORTER reporter;
-            m_frame->AnnotateSymbols( &c, ANNOTATE_SELECTION, ANNOTATE_ORDER_T::SORT_BY_X_POSITION,
-                                      ANNOTATE_ALGO_T::INCREMENTAL_BY_REF, true /* recursive */,
-                                      schSettings.m_AnnotateStartNum, true, false, reporter );
+            m_frame->AnnotateSymbols( &c, ANNOTATE_SELECTION, (ANNOTATE_ORDER_T) schSettings.m_AnnotateSortOrder,
+                                      (ANNOTATE_ALGO_T) schSettings.m_AnnotateMethod, true, /* recursive */
+                                      schSettings.m_AnnotateStartNum, true,                 /* reset */
+                                      false,                                                /* regroup */
+                                      false,                                                /* repair */
+                                      reporter );
             c.Push( "API Place Sheet" );
 
             m_selectionTool->AddItemToSel( sheet );

@@ -459,7 +459,8 @@ bool DIALOG_SHEET_PROPERTIES::TransferDataFromWindow()
 bool DIALOG_SHEET_PROPERTIES::onSheetFilenameChanged( const wxString& aNewFilename )
 {
     return m_frame->ChangeSheetFile( m_sheet, aNewFilename, m_clearAnnotationNewItems,
-                                     m_isUndoable, m_sourceSheetFilename );
+                                     m_isUndoable, m_sourceSheetFilename,
+                                    m_calledByApi);
 }
 
 
