@@ -10,7 +10,7 @@
 # Flo082002 <flos6323@gmail.com>, 2021.
 # Benedikt Freisen <b.freisen@gmx.net>, 2021, 2022, 2026.
 # Mark Hämmerling <dev@markh.de>, 2021, 2022, 2023, 2024, 2025, 2026.
-# Henrik Kauhanen <henrik@kauhanen.se>, 2022, 2023, 2024, 2025.
+# Henrik Kauhanen <henrik@kauhanen.se>, 2022, 2023, 2024, 2025, 2026.
 # Ettore Atalan <atalanttore@googlemail.com>, 2022, 2023, 2024, 2025, 2026.
 # Ivan Chuba <xtrvweb@gmail.com>, 2022.
 # magical-obama <maschwaerzler@a1.net>, 2022.
@@ -33,7 +33,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:16+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
