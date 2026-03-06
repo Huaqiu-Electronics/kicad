@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 16:50+0000\n"
-"Last-Translator: Wellington Terumi Uemura <wellingtonuemura@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 16:51+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -34900,8 +34900,8 @@ msgstr ""
 "sob certas condições.<br>\n"
 "O ânodo de um par eletroquímico é oxidado e corroído, enquanto o cátodo "
 "recebe metais dissolvidos, mas permanece protegido.<br>\n"
-"Um número positivo indica que a linha é anódica (-) e a coluna é catódica "
-"(+), cores frias e quentes também indicam o potencial das linhas.<br>\n"
+"Um número positivo indica que a linha é anódica (-) e a coluna é catódica (+)"
+", cores frias e quentes também indicam o potencial das linhas.<br>\n"
 "O EN 50310 sugere uma diferença de tensão abaixo de 300mV. As práticas "
 "conhecidas fazem uso de um terceiro metal da interface entre o par principal "
 "(ou seja, o acabamento da superfície ENIG).<br>\n"
@@ -35098,8 +35098,8 @@ msgstr ""
 "(10 mm)\n"
 "\n"
 "A fórmula, do IPC 2221, é\n"
-"<center>___I = K &middot; &Delta;T<sup>0.44</sup> &middot; (W &middot; "
-"H)<sup>0.725</sup>___</center>\n"
+"<center>___I = K &middot; &Delta;T<sup>0.44</sup> &middot; (W &middot; H)"
+"<sup>0.725</sup>___</center>\n"
 "Onde:<br>\n"
 "___I___ É a corrente máxima em A<br>\n"
 "___&Delta;T___ é o aumento da temperatura acima do ambiente em &deg;C<br>\n"
@@ -37614,8 +37614,7 @@ msgstr "Rotacionar os items"
 msgid ""
 "Rotate the item as well as move it - multi-selections will be rotated "
 "together"
-msgstr ""
-"Gire o item, bem como mova-o - multi-seleções serão rotacionadas juntas"
+msgstr "Gire o item, bem como mova-o - multi-seleções serão rotacionadas juntas"
 
 #: pcbnew/dialogs/dialog_create_array_base.cpp:434
 msgid "Numbering Options"
@@ -50005,8 +50004,7 @@ msgstr "Foi removido %s atributo(s), 'Não colocar' da fabricação."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:815
 #, c-format
 msgid "Add %s 'exclude from position files' fabrication attribute."
-msgstr ""
-"Adiciona %s 'exclui dos arquivos de posição' do atributo de fabricação."
+msgstr "Adiciona %s 'exclui dos arquivos de posição' do atributo de fabricação."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:820
 #, c-format
@@ -50016,8 +50014,7 @@ msgstr "Remove %s 'exclui dos arquivos de posição' do atributo de fabricação
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:831
 #, c-format
 msgid "Added %s 'exclude from position files' fabrication attribute."
-msgstr ""
-"Adiciona %s 'exclui dos arquivos de posição' do atributo de fabricação."
+msgstr "Adiciona %s 'exclui dos arquivos de posição' do atributo de fabricação."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:837
 #, c-format
