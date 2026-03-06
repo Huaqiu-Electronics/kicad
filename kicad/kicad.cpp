@@ -54,11 +54,9 @@
 
 #ifdef _WIN32
     #include <check_win_ver.h>
+    #include <settings/common_settings.h>
 #endif
 
-#ifdef _WIN32
-    #include <check_win_ver.h>
-#endif
 
 #include <git/git_backend.h>
 #include <git/libgit_backend.h>

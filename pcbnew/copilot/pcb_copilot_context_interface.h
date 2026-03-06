@@ -42,7 +42,7 @@
 #include <footprint.h>
 #include <utils/base64.hpp>
 #include <filesystem>
-
+#include <fstream>
 
 template <>
 void PCB_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
