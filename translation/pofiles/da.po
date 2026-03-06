@@ -1,4 +1,4 @@
-# Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2024.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2024, 2026.
 # Jarl Gjessing <jarlgjessing@gmail.com>, 2020.
 # ZbeeGin <zbeegin@op.pl>, 2020.
 # nickoe <oe.nick@gmail.com>, 2021.
@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 16:22+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 16:23+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kicad/master-"
 "source/da/>\n"
 "Language: da\n"
@@ -1646,8 +1646,7 @@ msgstr "8x"
 
 #: 3d-viewer/dialogs/panel_3D_opengl_options_base.cpp:52
 msgid "3D-Viewer must be closed and re-opened to apply this setting"
-msgstr ""
-"3D-Viewer skal være lukket og genåbnet for at anvende denne indstilling"
+msgstr "3D-Viewer skal være lukket og genåbnet for at anvende denne indstilling"
 
 #: 3d-viewer/dialogs/panel_3D_opengl_options_base.cpp:56
 #, fuzzy
@@ -7596,8 +7595,8 @@ msgid ""
 "The base path of locally installed system footprint libraries (.pretty "
 "folders)."
 msgstr ""
-"Basisstien til lokalt installerede systemfodsporbiblioteker (.pretty "
-"folders)."
+"Basisstien til lokalt installerede systemfodsporbiblioteker (.pretty folders)"
+"."
 
 #: common/env_vars.cpp:114
 msgid "The base path of system footprint 3D shapes (.3Dshapes folders)."
@@ -12870,8 +12869,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Net %s is graphically connected to bus %s but is not a member of that bus"
-msgstr ""
-"Net %s er grafisk forbundet med bus %s, men er ikke medlem af denne bus"
+msgstr "Net %s er grafisk forbundet med bus %s, men er ikke medlem af denne bus"
 
 #: eeschema/connection_graph.cpp:4032 eeschema/erc/erc_item.cpp:241
 #, fuzzy
@@ -39436,8 +39434,7 @@ msgstr "Bliv tilpasset dimensionen"
 
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:364
 msgid "Automatically set the text orientation to match the dimension lines"
-msgstr ""
-"Indstil automatisk tekstretningen, så den svarer til dimensionslinjerne"
+msgstr "Indstil automatisk tekstretningen, så den svarer til dimensionslinjerne"
 
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:378
 msgid "Dimension Line"
@@ -43002,8 +42999,7 @@ msgstr "Affasningshjørner:"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:289
 msgid ""
 "Chamfered corners. The position is relative to a pad orientation 0 degree."
-msgstr ""
-"Fasede hjørner. Positionen er i forhold til en padorientering 0 grader."
+msgstr "Fasede hjørner. Positionen er i forhold til en padorientering 0 grader."
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:240
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:296
@@ -43683,8 +43679,8 @@ msgstr ""
 "Indstil global breddekorrektion for nøjagtig bredde PostScript-output.\n"
 "Denne bredde korrektion er beregnet til at kompensere spor bredde og også "
 "fejl på pads og vias størrelse.\n"
-"Den rimelige breddekorrektionsværdi skal være i området [- "
-"(MinTrackWidth-1), + (MinClearanceValue-1)]."
+"Den rimelige breddekorrektionsværdi skal være i området [- (MinTrackWidth-1)"
+", + (MinClearanceValue-1)]."
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:324
 msgid "Force A4 output"
