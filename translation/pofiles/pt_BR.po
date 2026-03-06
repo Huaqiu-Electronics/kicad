@@ -2,7 +2,7 @@
 # mentioned in every translation file „Language-Team” sections.
 # This file is distributed under GNU Free Documentation License.
 # http://www.gnu.org/licenses/fdl-1.3.html
-# Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020.
+# Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020, 2026.
 # ssantos <ssantos@web.de>, 2020, 2021.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021, 2026.
 # Wellington Terumi Uemura <wellingtonuemura@gmail.com>, 2021, 2022, 2023, 2024, 2025, 2026.
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:52+0000\n"
-"Last-Translator: John Beard <john.j.beard@gmail.com>\n"
+"Last-Translator: Hildo Guillardi Júnior <hildogjr@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
