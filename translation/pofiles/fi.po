@@ -10,7 +10,7 @@
 # Simo Mattila <simo.mattila@kapsi.fi>, 2021, 2026.
 # Vesa Solonen <vesa.solonen@vli.fi>, 2021.
 # Petri Niemelä <petrinm@gmail.com>, 2022, 2023.
-# Henrik Kauhanen <henrik@kauhanen.se>, 2022, 2023, 2024, 2025.
+# Henrik Kauhanen <henrik@kauhanen.se>, 2022, 2023, 2024, 2025, 2026.
 # Toni Laiho <apelegeos@gmail.com>, 2022, 2023, 2024, 2025, 2026.
 # dsa-t <dudesuchamazing@gmail.com>, 2024, 2025.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2024, 2025.
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:59+0000\n"
-"Last-Translator: Kliment <kliment@0xfb.com>\n"
+"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kicad/master-"
 "source/fi/>\n"
 "Language: fi\n"
@@ -33270,8 +33270,8 @@ msgid ""
 "is a standard 1.2/50µs wave"
 msgstr ""
 "Nimellisjännitetteen ja ylijänniteluokan mukaan, laitteen tulisi kestää tän "
-"jännitearvon eristyksen rikkoutumatta. Tämä impulssijännite on standardi "
-"1,2/50 µs aalto"
+"jännitearvon eristyksen rikkoutumatta. Tämä impulssijännite on standardi 1,2/"
+"50 µs aalto"
 
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:95
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:145
