@@ -6,7 +6,7 @@
 # ssantos <ssantos@web.de>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021.
 # Rafael Silva <perigoso@riseup.net>, 2021, 2022, 2026.
-# leonardokr <leo@ziondev.us>, 2022.
+# leonardokr <leo@ziondev.us>, 2022, 2026.
 # Julio Dias <jcesardias@gmail.com>, 2024, 2025, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2025, 2026.
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:58+0000\n"
-"Last-Translator: Manuela Silva <mmsrs@sky.com>\n"
+"Last-Translator: leonardokr <leo@ziondev.us>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
 "Language: pt\n"
@@ -8541,8 +8541,7 @@ msgstr "Pergunta"
 #: common/kiway.cpp:251
 #, c-format
 msgid "Failed to verify kiface library '%s' signature."
-msgstr ""
-"Houve uma falha na verificação da assinatura '%s' da biblioteca kiface."
+msgstr "Houve uma falha na verificação da assinatura '%s' da biblioteca kiface."
 
 #: common/kiway.cpp:283
 #, c-format
