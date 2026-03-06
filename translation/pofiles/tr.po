@@ -13,7 +13,7 @@
 # Marine Biologist <fatihvolkanster@gmail.com>, 2023.
 # Mert Gülsoy <mgulsoy@gmail.com>, 2023.
 # Erkan <erkankarakas@outlook.com>, 2023, 2025.
-# Mert Kalkancı <mertkalkanci79@gmail.com>, 2024.
+# Mert Kalkancı <mertkalkanci79@gmail.com>, 2024, 2026.
 # YÜKSEL AÇIKGÖZ <yukselacikgoz@gmail.com>, 2024, 2025, 2026.
 # Mahsum Aslan <mahsumaslan@yandex.com>, 2024.
 # Bahtiyar Bayram <bahtiyar.bayramov@gmail.com>, 2024, 2026.
@@ -36,7 +36,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:32+0000\n"
-"Last-Translator: Murat Ursavaş <murat.ursavas@gmail.com>\n"
+"Last-Translator: Mert Kalkancı <mertkalkanci79@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
