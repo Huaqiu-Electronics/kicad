@@ -1,5 +1,5 @@
 # lê văn lập <levanlap2502@gmail.com>, 2020, 2021, 2022, 2023, 2026.
-# Trần Phi Hải <tranphihai-focus@outlook.com>, 2021, 2022, 2024.
+# Trần Phi Hải <tranphihai-focus@outlook.com>, 2021, 2022, 2024, 2026.
 # Bế Trọng Nghĩa <benghia1st@gmail.com>, 2022.
 # Nguyễn Ngọc Khánh <ngockhanhnguyen985@gmail.com>, 2023, 2024, 2025, 2026.
 # Phạm Minh Tấn <masterminhtan@gmail.com>, 2023.
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:47+0000\n"
-"Last-Translator: Nguyễn Ngọc Khánh <ngockhanhnguyen985@gmail.com>\n"
+"Last-Translator: Trần Phi Hải <tranphihai-focus@outlook.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/kicad/master-"
 "source/vi/>\n"
 "Language: vi\n"
@@ -1623,8 +1623,7 @@ msgstr "Khử răng cưa"
 #: 3d-viewer/dialogs/panel_3D_raytracing_options_base.cpp:42
 msgid ""
 "Screen space ambient occlusions and global illumination reflections (slow)"
-msgstr ""
-"Phản xạ ảnh chiếu không gian nền xung quanh và ánh sáng bao khỏa (chậm)"
+msgstr "Phản xạ ảnh chiếu không gian nền xung quanh và ánh sáng bao khỏa (chậm)"
 
 #: 3d-viewer/dialogs/panel_3D_raytracing_options_base.cpp:57
 msgid "Number of Samples"
