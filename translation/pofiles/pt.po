@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 15:56+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
+"PO-Revision-Date: 2026-03-07 15:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
 "Language: pt\n"
@@ -9908,8 +9908,7 @@ msgstr "Agrupar os itens"
 
 #: common/tool/actions.cpp:203
 msgid "Group the selected items so that they are treated as a single item"
-msgstr ""
-"Agrupa os itens selecionados para que sejam tratados como um único item"
+msgstr "Agrupa os itens selecionados para que sejam tratados como um único item"
 
 #: common/tool/actions.cpp:209 common/tool/group_tool.cpp:185
 msgid "Ungroup Items"
@@ -11372,8 +11371,7 @@ msgstr "Definir Tecla de Atalho"
 #: common/widgets/widget_hotkey_list.cpp:383
 #, c-format
 msgid "'%s' is a reserved hotkey in KiCad and cannot be assigned."
-msgstr ""
-"'%s' é uma tecla de atalho reservada no KiCad e não pode ser atribuída."
+msgstr "'%s' é uma tecla de atalho reservada no KiCad e não pode ser atribuída."
 
 #: common/widgets/widget_hotkey_list.cpp:447
 msgid "Edit..."
@@ -11990,8 +11988,7 @@ msgstr ""
 
 #: cvpcb/readwrite_dlgs.cpp:167
 msgid "First check your footprint library table entries."
-msgstr ""
-"Primeiro verifique suas entradas na tabela de bibliotecas de footprint."
+msgstr "Primeiro verifique suas entradas na tabela de bibliotecas de footprint."
 
 #: cvpcb/readwrite_dlgs.cpp:169
 msgid "Problematic Footprint Library Tables"
@@ -17133,8 +17130,7 @@ msgstr "Mapeamento da tabela de bibliotecas de símbolo completado!"
 #: eeschema/dialogs/dialog_symbol_remap.cpp:353
 #, c-format
 msgid "Cannot create project remap back up folder '%s'."
-msgstr ""
-"Não é possível criar a pasta de backup do remapeamento do projeto '%s'."
+msgstr "Não é possível criar a pasta de backup do remapeamento do projeto '%s'."
 
 #: eeschema/dialogs/dialog_symbol_remap.cpp:356
 #: eeschema/dialogs/dialog_symbol_remap.cpp:529
@@ -18982,8 +18978,7 @@ msgstr ""
 
 #: eeschema/erc/erc_item.cpp:141
 msgid "Conflict between bus alias definitions across schematic sheets"
-msgstr ""
-"Conflito de definições de alias de barramento entre folhas esquemáticas"
+msgstr "Conflito de definições de alias de barramento entre folhas esquemáticas"
 
 #: eeschema/erc/erc_item.cpp:145
 msgid "More than one name given to this bus or net"
@@ -19427,8 +19422,7 @@ msgstr "Não há um plugin para tratar este tipo de ficheiro."
 #: pcbnew/import_gfx/dialog_import_graphics_base.cpp:27
 #: pcbnew/import_gfx/dialog_import_graphics_base.cpp:32
 msgid "Only vectors will be imported.  Bitmaps and fonts will be ignored."
-msgstr ""
-"Somente os vetores serão importados.  Bitmaps e fontes serão ignorados."
+msgstr "Somente os vetores serão importados.  Bitmaps e fontes serão ignorados."
 
 #: eeschema/import_gfx/dialog_import_gfx_sch_base.cpp:43
 #: pcbnew/dialogs/dialog_rule_area_properties.cpp:133 pcbnew/zone.cpp:2011
@@ -34707,8 +34701,7 @@ msgstr "Degradação do tempo de subida:"
 
 #: pcb_calculator/calculator_panels/panel_via_size_base.cpp:306
 msgid "Rise time degradation for given Z0 and calculated capacitance"
-msgstr ""
-"Degradação do tempo de subida para o dado Z0 e a capacitância calculada"
+msgstr "Degradação do tempo de subida para o dado Z0 e a capacitância calculada"
 
 #: pcb_calculator/calculator_panels/panel_via_size_base.cpp:314
 #: pcb_calculator/widgets/unit_selector.cpp:317
@@ -34883,8 +34876,8 @@ msgstr ""
 "sob certas condições.<br>\n"
 "O ânodo de um par eletroquímico é oxidado e corroído, enquanto o cátodo "
 "recebe metais dissolvidos, mas permanece protegido.<br>\n"
-"Um número positivo indica que a linha é anódica (-) e a coluna é catódica "
-"(+), cores frias e quentes também indicam o potencial das linhas.<br>\n"
+"Um número positivo indica que a linha é anódica (-) e a coluna é catódica (+)"
+", cores frias e quentes também indicam o potencial das linhas.<br>\n"
 "O EN 50310 sugere uma diferença de tensão abaixo de 300mV. As práticas "
 "conhecidas fazem uso de um terceiro metal da interface entre o par principal "
 "(ou seja, o acabamento da superfície ENIG).<br>\n"
@@ -37593,8 +37586,7 @@ msgstr "Rotacionar os elementos"
 msgid ""
 "Rotate the item as well as move it - multi-selections will be rotated "
 "together"
-msgstr ""
-"Gire o item, bem como mova-o - multi-seleções serão rotacionadas juntas"
+msgstr "Gire o item, bem como mova-o - multi-seleções serão rotacionadas juntas"
 
 #: pcbnew/dialogs/dialog_create_array_base.cpp:434
 msgid "Numbering Options"
@@ -44048,8 +44040,7 @@ msgstr "Na placa, sem cobre"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:189
 msgid "If you want a solder paste layer for front side of the board"
-msgstr ""
-"Caso queira uma camada de pasta de solta para o lado da frente da placa"
+msgstr "Caso queira uma camada de pasta de solta para o lado da frente da placa"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:207
 msgid "If you want a silk screen layer for the front side of the board"
@@ -50015,8 +50006,7 @@ msgstr "Remove %s 'exclui dos ficheiros de posição' do atributo de fabricaçã
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:831
 #, c-format
 msgid "Added %s 'exclude from position files' fabrication attribute."
-msgstr ""
-"Adiciona %s 'exclui dos ficheiro de posição' do atributo de fabricação."
+msgstr "Adiciona %s 'exclui dos ficheiro de posição' do atributo de fabricação."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:837
 #, c-format
@@ -52470,8 +52460,7 @@ msgstr "Faltando '$EndMODULE' para o MÓDULO '%s'."
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:1425
 #, c-format
 msgid "Unknown padshape '%c=0x%02x' on line: %d of footprint: '%s'."
-msgstr ""
-"Forma desconhecida da ilha '%c=0x%02x' na linha: %d do footprint: '%s'."
+msgstr "Forma desconhecida da ilha '%c=0x%02x' na linha: %d do footprint: '%s'."
 
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:1616
 #, c-format
@@ -57117,8 +57106,7 @@ msgstr "Alternar Destaque de Rede"
 
 #: pcbnew/tools/pcb_actions.cpp:1548
 msgid "Highlight all copper items on the selected net(s)"
-msgstr ""
-"Destaca todos os itens com cobre na(s) rede(s) que foram selecionada(s)"
+msgstr "Destaca todos os itens com cobre na(s) rede(s) que foram selecionada(s)"
 
 #: pcbnew/tools/pcb_actions.cpp:1559
 msgid "Hide Net in Ratsnest"
