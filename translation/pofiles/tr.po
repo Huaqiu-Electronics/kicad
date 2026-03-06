@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021.
 # Dozimas <ozangunaydin@gmail.com>, 2021.
-# Murat Ursavaş <murat.ursavas@gmail.com>, 2021.
+# Murat Ursavaş <murat.ursavas@gmail.com>, 2021, 2026.
 # Sadıkhan Doğdu <sadikhandogdu@gmail.com>, 2021.
 # VEDAT YAMAN <weddat@gmail.com>, 2021, 2026.
 # Gökhan Koçmarlı <gokhankocmarli@gmail.com>, 2022, 2026.
@@ -36,7 +36,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:32+0000\n"
-"Last-Translator: Argeolog <argelojik@gmail.com>\n"
+"Last-Translator: Murat Ursavaş <murat.ursavas@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
