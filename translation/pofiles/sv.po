@@ -2,7 +2,7 @@
 # ZbeeGin <zbeegin@op.pl>, 2021, 2026.
 # Axel Henriksson <axe.henriksson@gmail.com>, 2021, 2022, 2026.
 # Allan Nordhøy <epost@anotheragency.no>, 2021.
-# Richard Jonsson <richard_jonsson@hotmail.com>, 2021.
+# Richard Jonsson <richard_jonsson@hotmail.com>, 2021, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2022, 2023, 2024, 2025, 2026.
 # Hanna Breisand <weblate.org@breisand.se>, 2022, 2024, 2025.
 # Elias Sjögreen <eliassjogreen1@gmail.com>, 2023.
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:12+0000\n"
-"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
+"Last-Translator: Richard Jonsson <richard_jonsson@hotmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kicad/master-"
 "source/sv/>\n"
 "Language: sv\n"
@@ -2099,8 +2099,7 @@ msgstr "Det går inte att skapa utmatningskatalogen '%s'."
 
 #: common/common.cpp:788
 msgid "This operating system is not supported by KiCad and its dependencies."
-msgstr ""
-"Det här operativsystemet stöds inte längre av KiCad och dess beroenden."
+msgstr "Det här operativsystemet stöds inte längre av KiCad och dess beroenden."
 
 #: common/common.cpp:790
 msgid "Unsupported Operating System"
