@@ -2553,6 +2553,45 @@ void ZONE_FILLER::connect_nearby_polys( SHAPE_POLY_SET& aPolys, double aDistance
 }
 
 
+void ZONE_FILLER::postKnockoutMinWidthPrune( const ZONE* aZone, SHAPE_POLY_SET& aFillPolys )
+{
+    int half_min_width = aZone->GetMinThickness() / 2;
+    int epsilon = pcbIUScale.mmToIU( 0.001 );
+
+    if( half_min_width - epsilon <= epsilon )
+        return;
+
+    SHAPE_POLY_SET preDeflate = aFillPolys.CloneDropTriangulation();
+
+    aFillPolys.Deflate( half_min_width - epsilon, CORNER_STRATEGY::CHAMFER_ALL_CORNERS,
+                        m_maxError );
+
+    aFillPolys.Fracture();
+    connect_nearby_polys( aFillPolys, aZone->GetMinThickness() );
+
+    for( int ii = aFillPolys.OutlineCount() - 1; ii >= 0; ii-- )
+    {
+        std::vector<SHAPE_LINE_CHAIN>& island = aFillPolys.Polygon( ii );
+        BOX2I                          islandExtents;
+
+        for( const VECTOR2I& pt : island.front().CPoints() )
+        {
+            islandExtents.Merge( pt );
+
+            if( islandExtents.GetSizeMax() > aZone->GetMinThickness() )
+                break;
+        }
+
+        if( islandExtents.GetSizeMax() < aZone->GetMinThickness() )
+            aFillPolys.DeletePolygon( ii );
+    }
+
+    aFillPolys.Inflate( half_min_width - epsilon, CORNER_STRATEGY::ROUND_ALL_CORNERS, m_maxError,
+                        true );
+    aFillPolys.BooleanIntersection( preDeflate );
+}
+
+
 #define DUMP_POLYS_TO_COPPER_LAYER( a, b, c ) \
     { if( m_debugZoneFiller && aDebugLayer == b ) \
         { \
@@ -2838,6 +2877,8 @@ bool ZONE_FILLER::fillCopperZone( const ZONE* aZone, PCB_LAYER_ID aLayer, PCB_LA
     // Cache the pre-knockout fill for iterative refill optimization (issue 21746).
     // The cache stores the fill BEFORE zone-to-zone knockouts so the iterative refill can
     // reclaim space when higher-priority zones have islands removed.
+    bool knockoutsApplied = false;
+
     if( iterativeRefill )
     {
         {
@@ -2859,15 +2900,28 @@ bool ZONE_FILLER::fillCopperZone( const ZONE* aZone, PCB_LAYER_ID aLayer, PCB_LA
         buildDifferentNetZoneClearances( aZone, aLayer, zoneClearances );
 
         if( zoneClearances.OutlineCount() > 0 )
+        {
             aFillPolys.BooleanSubtract( zoneClearances );
+            knockoutsApplied = true;
+        }
     }
 
     /* -------------------------------------------------------------------------------------
      * Lastly give any same-net but higher-priority zones control over their own area.
      */
 
+    double preSubtractArea = aFillPolys.Area();
     subtractHigherPriorityZones( aZone, aLayer, aFillPolys );
+
+    if( aFillPolys.Area() < preSubtractArea )
+        knockoutsApplied = true;
+
     DUMP_POLYS_TO_COPPER_LAYER( aFillPolys, In18_Cu, wxT( "minus-higher-priority-zones" ) );
+
+    if( knockoutsApplied )
+        postKnockoutMinWidthPrune( aZone, aFillPolys );
+
+    DUMP_POLYS_TO_COPPER_LAYER( aFillPolys, In19_Cu, wxT( "after-post-knockout-min-width" ) );
 
     aFillPolys.Fracture();
     return true;
@@ -3888,6 +3942,8 @@ bool ZONE_FILLER::refillZoneFromCache( ZONE* aZone, PCB_LAYER_ID aLayer, SHAPE_P
         for( ZONE* keepout : footprint->Zones() )
             subtractKeepout( keepout );
     }
+
+    postKnockoutMinWidthPrune( aZone, aFillPolys );
 
     aFillPolys.Fracture();
 
