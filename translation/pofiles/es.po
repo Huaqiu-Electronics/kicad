@@ -19,13 +19,14 @@
 # Francisco Jose Rey <fcojreyg@gmail.com>, 2025.
 # Gaston Schelotto <gschelotto@puredsp.com>, 2025.
 # dsa-t <dudesuchamazing@gmail.com>, 2025.
+# Deleted User <noreply+48943@weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:29+0000\n"
-"Last-Translator: Ulices <hasecilu@tuta.io>\n"
+"Last-Translator: Deleted User <noreply+48943@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
