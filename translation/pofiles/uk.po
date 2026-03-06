@@ -1,6 +1,6 @@
 # Kuzemko Alexsandr <alexandrkuzemko@gmail.com>, 2022, 2026.
 # Ivan Chuba <xtrvweb@gmail.com>, 2022, 2023, 2024, 2025, 2026.
-# Artem <artem@molotov.work>, 2022.
+# Artem <artem@molotov.work>, 2022, 2026.
 # Andrii Shelestov <streamx3@gmail.com>, 2022, 2026.
 # Stanislav Kaliuk <staskalyuk.096@gmail.com>, 2022, 2024, 2026.
 # dsa-t <dudesuchamazing@gmail.com>, 2025, 2026.
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:37+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: Artem <artem@molotov.work>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kicad/master-"
 "source/uk/>\n"
 "Language: uk\n"
