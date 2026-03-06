@@ -1,7 +1,7 @@
 # Arnau Llovet Vidal <arnaullv@gmail.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
-# Marc de Miguel <marc.demiguel.c@gmail.com>, 2025.
+# Marc de Miguel <marc.demiguel.c@gmail.com>, 2025, 2026.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2025, 2026.
 # "rsr.private" <rsr.private@gmail.com>, 2025.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:51+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Marc de Miguel <marc.demiguel.c@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kicad/master-"
 "source/ca/>\n"
 "Language: ca\n"
@@ -3519,8 +3519,8 @@ msgid ""
 "Select an <b>Option Choice</b> in the listbox above, and then click the "
 "<b>Append Selected Option</b> button."
 msgstr ""
-"Seleccioni una <b>Opció</b> de la llista superior, i cliqui el botó de "
-"<b>Afegir Opció Seleccionada</b>."
+"Seleccioni una <b>Opció</b> de la llista superior, i cliqui el botó de <b>"
+"Afegir Opció Seleccionada</b>."
 
 #: common/dialogs/dialog_plugin_options.cpp:53
 #, fuzzy, c-format
