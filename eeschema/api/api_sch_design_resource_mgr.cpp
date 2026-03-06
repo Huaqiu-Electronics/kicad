@@ -23,6 +23,7 @@
  */
 
 
+#include <memory>
 #include <sch_base_frame.h>
 #include <sch_io/sch_io.h>
 #include <template_fieldnames.h>
@@ -72,8 +73,10 @@ public:
 
 
 API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) :
-        API_DESIGN_RESOURCE_MGR( aFrame )
+        API_DESIGN_RESOURCE_MGR( aFrame ),
+        m_schIo( std::unique_ptr<SCH_IO>( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) ) )
 {
+    assert( m_schIo );
 }
 
 API_SCH_DESIGN_RESOURCE_MGR::~API_SCH_DESIGN_RESOURCE_MGR()
@@ -290,9 +293,8 @@ std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::strin
 
     try
     {
-        IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) );
-        pi->DeleteSymbol( fn.GetFullPath(), old_symName );
-        pi->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ) );
+        m_schIo->DeleteSymbol( fn.GetFullPath(), old_symName );
+        m_schIo->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ) );
     }
     catch( const IO_ERROR& ioe )
     {

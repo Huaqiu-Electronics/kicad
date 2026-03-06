@@ -25,17 +25,20 @@
 #ifndef API_SCH_DESIGN_RESOURCE_MGR_H
 #define API_SCH_DESIGN_RESOURCE_MGR_H
 
-#include "lib_id.h"
+#include <lib_id.h>
 #include <api/api_design_resource_mgr.h>
 #include <optional>
+#include <memory>
+
 
 class LIB_SYMBOL;
+class SCH_IO;
 class API_SCH_DESIGN_RESOURCE_MGR : public API_DESIGN_RESOURCE_MGR
 {
 public:
     API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame );
 
-    ~API_SCH_DESIGN_RESOURCE_MGR();
+    ~API_SCH_DESIGN_RESOURCE_MGR() override;
 
     // Save a component to project, return the new/updated libsymbol if successful
     LIB_SYMBOL* SaveComponentToProject( COMPONENT_CONTENT const& aComponent );
@@ -45,6 +48,11 @@ public:
     //  Write symbol fields ,return the updated symbol if successful
     std::optional<LIB_ID> WriteSymbolFields( std::string const& aFileName, std::string const& aNickName,
                                              auto const& aFields, auto const& aFootprintName );
+
+
+private:
+    // NOTE : Using a scoped io will lead to crash on opening symbol chooser due to using after free.
+    std::unique_ptr<SCH_IO> m_schIo;
 };
 
 #endif
