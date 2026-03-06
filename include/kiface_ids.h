@@ -38,11 +38,11 @@ enum KIFACE_ADDR_ID : int
     /// Output JSON: ["lib:footprint1", "lib:footprint2", ...]
     KIFACE_FILTER_FOOTPRINTS,
 
+
     /**
-     * Return a function ptr for insert row in the FP_LIB_TABLE corresponding to the given
-.    * KIFACE_NEW_FOOTPRINT_TABLE
+     * Return a function ptr for reloading a footprint library. The function takes the nickname of the library as input and returns a boolean indicating success or failure.
      */
-    KIFACE_INSERT_ROW_FOOTPRINT_TABLE,
+    KIFACE_RELOAD_FP_LIB,
 
     /**
      * Return a function ptr for updating the 3D model path of a footprint

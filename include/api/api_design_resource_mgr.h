@@ -28,6 +28,7 @@
 #include <string>
 #include <optional>
 #include <wx/string.h>
+#include <libraries/library_table.h>
 
 
 #include "api_design_content.h"
@@ -51,15 +52,6 @@ public:
 
         END
     };
-
-
-    enum API_LIB_TABLE_T
-    {
-        API_LIB_SYMBOL_TABLE,
-        API_LIB_FP_TABLE,
-        API_LIB_DESIGN_BLOCK_TABLE
-    };
-
 
     API_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame );
 
@@ -104,7 +96,7 @@ public:
 
     bool WriteProjectResource( wxString const& aPath, std::string const& aContent );
 
-    virtual bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
+    bool UpdateLibTable( LIBRARY_TABLE_TYPE aLibT, const wxString& aNickName, const wxString& aURI );
 
     bool SaveSymbolContentToProject( NAMED_CONTENT const& aContent );
 
@@ -113,6 +105,7 @@ public:
     // Save the 3d model to project and link it to the footprint if aFootprintPath is provided.
     bool Save3dModelToProject( NAMED_CONTENT const& aContent, std::optional<wxString> const& aFootprintPath );
 
+    bool ReloadFootprintLib( const wxString& aNickName );
 
 private:
     wxString GetProjectResourceDirInternal( ProjectResourceDir aType ) const;

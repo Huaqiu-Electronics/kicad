@@ -22,22 +22,25 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#include "api_sch_design_resource_mgr.h"
-#include "api/api_design_resource_mgr.h"
-#include "sch_base_frame.h"
 
-#include "template_fieldnames.h"
-
+#include <sch_base_frame.h>
+#include <sch_io/sch_io.h>
+#include <template_fieldnames.h>
+#include <libraries/symbol_library_adapter.h>
 #include <api/api_fmt_fp_model_path.h>
 #include <api/component_field_name.h>
 #include <lib_symbol.h>
 #include <sch_field.h>
 #include <api/api_design_content.h>
 #include <string>
-#include <symbol_lib_table.h>
 #include <eda_base_frame.h>
 #include <project_sch.h>
 #include <wx/log.h>
+
+#include "api_sch_design_resource_mgr.h"
+#include "api/api_design_resource_mgr.h"
+#include "symbol_library_manager.h"
+
 
 class FIELD_WRITER
 {
@@ -45,7 +48,11 @@ class FIELD_WRITER
     std::vector<SCH_FIELD>& m_fields;
 
 public:
-    FIELD_WRITER( LIB_SYMBOL* aLibSym, std::vector<SCH_FIELD>& aFields ) : m_lib( aLibSym ), m_fields( aFields ) {}
+    FIELD_WRITER( LIB_SYMBOL* aLibSym, std::vector<SCH_FIELD>& aFields ) :
+            m_lib( aLibSym ),
+            m_fields( aFields )
+    {
+    }
 
     auto add_field( SCH_FIELD&& field, const wxString& aText )
     {
@@ -64,7 +71,8 @@ public:
 };
 
 
-API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) : API_DESIGN_RESOURCE_MGR( aFrame )
+API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) :
+        API_DESIGN_RESOURCE_MGR( aFrame )
 {
 }
 
@@ -99,25 +107,28 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
 
 
     const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
+    const auto symbol_uri = FormatAPISymbolURI( symbol_file_name );
 
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, FormatAPISymbolURI( symbol_file_name ) ) )
+    if( !UpdateLibTable( LIBRARY_TABLE_TYPE::SYMBOL, symbol_nick_name, symbol_uri ) )
     {
         wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
         return {};
     }
 
-    auto lib_id = WriteSymbolFields( symbol_file_name, aComponent.attributes,
+
+    auto lib_id = WriteSymbolFields( symbol_file_name, symbol_nick_name, aComponent.attributes,
                                      RemoveFileExt( aComponent.footprints.size()
                                                             ? aComponent.footprints.front().footprint.filename
                                                             : aComponent.symbol.filename ) );
 
-    if( !UpdateLibTable( API_LIB_SYMBOL_TABLE, symbol_nick_name, FormatAPISymbolURI( symbol_file_name ) ) )
+    if( !lib_id )
     {
-        wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
+        wxLogError( "Failed to write symbol fields for %s", symbol_nick_name );
         return {};
     }
 
-    auto lib_sym = SchGetLibSymbol( lib_id, PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() ), nullptr, &m_frame );
+
+    auto lib_sym = SchGetLibSymbol( *lib_id, PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() ), nullptr, &m_frame );
 
     if( !lib_sym )
     {
@@ -126,11 +137,16 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
     }
 
 
-    if( !UpdateLibTable( API_LIB_FP_TABLE, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
+    if( !UpdateLibTable( LIBRARY_TABLE_TYPE::FOOTPRINT, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
     {
-        wxLogError( "Failed to update fp library table for %s", symbol_nick_name );
-        return {};
+        wxLogWarning( "Failed to update fp library table for %s", symbol_nick_name );
     }
+
+    if( !ReloadFootprintLib( GetAPIFootprintPrettyName() ) )
+    {
+        wxLogWarning( "Failed to reload fp library for %s", symbol_nick_name );
+    }
+
 
     return lib_sym;
 }
@@ -163,66 +179,25 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT
     return true;
 }
 
-
-bool API_SCH_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName,
-                                                  const wxString& aURI )
+std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName,
+                                                                      std::string const& aNickName, auto const& aFields,
+                                                                      auto const& aFootprintName )
 {
-    switch( aLibT )
-    {
-    case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_SYMBOL_TABLE:
-    {
-        const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
+    LIB_SYMBOL* lib_sym{};
 
-        if( !symbolTb )
-        {
-            wxLogError( "Failed to get symbol library table." );
-            return false;
-        }
-
-        const auto row = new SYMBOL_LIB_TABLE_ROW( aNickName, aURI, GetKiCadLibType(), GetIPClibDesc() );
-
-        if( !symbolTb->InsertRow( row, true ) )
-        {
-            wxLogError( "Failed to add symbol library row: %s", aNickName );
-            return false;
-        }
-
-        symbolTb->Save( m_frame.Prj().SymbolLibTableName() );
-        static_cast<SCH_BASE_FRAME&>( m_frame ).SavePrjSymbolLibTables();
-        return true;
-    }
-
-    case API_SCH_DESIGN_RESOURCE_MGR::API_LIB_DESIGN_BLOCK_TABLE:
-    {
-        // TODO
-        break;
-    }
-    default: return API_DESIGN_RESOURCE_MGR::UpdateLibTable( aLibT, aNickName, aURI );
-    }
-
-    return {};
-}
-
-LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName, auto const& aFields,
-                                                       auto const& aFootprintName )
-{
-    const auto symbolTb = PROJECT_SCH::SchSymbolLibTable( &m_frame.Prj() );
-
-    if( !symbolTb )
-    {
-        wxLogError( "Failed to get symbol library table." );
-        return {};
-    }
-
-    LIB_SYMBOL* lib_sym = nullptr;
-
-    const auto aNickName = RemoveFileExt( aFileName );
+    auto adapter = PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() );
 
     try
     {
-        std::vector<LIB_SYMBOL*> symbols;
-        symbolTb->LoadSymbolLib( symbols, aNickName, false );
+        auto res = adapter->LoadOne( aNickName );
 
+        if( !res || res->load_status == LOAD_STATUS::INVALID )
+        {
+            wxLogError( _( "Failed to load symbol library '%s'." ), aNickName );
+            return {};
+        }
+
+        auto symbols = adapter->GetSymbols( aNickName, SYMBOL_LIBRARY_ADAPTER::SYMBOL_TYPE::ALL_SYMBOLS );
         if( symbols.empty() )
         {
             wxLogError( "Symbol '%s' not found in library table.", aNickName );
@@ -248,19 +223,18 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
     }
 
     std::vector<SCH_FIELD> fields;
-    int                    field_id = 5;
 
     // FIXME : Deleting the new SCH_FIELD will crash the program
     if( attrs.find( kMPN ) != attrs.end() )
     {
-        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, kMPN );
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, FIELD_T::USER, kMPN );
         field->SetText( attrs[kMPN] );
         fields.push_back( *field );
     }
 
     if( attrs.find( kMANUFACTURER ) != attrs.end() )
     {
-        SCH_FIELD* field = new SCH_FIELD( lib_sym, field_id++, kMANUFACTURER );
+        SCH_FIELD* field = new SCH_FIELD( lib_sym, FIELD_T::USER, kMANUFACTURER );
         field->SetText( attrs[kMANUFACTURER] );
         fields.push_back( *field );
     }
@@ -287,7 +261,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
         }
         else if( name != kMANUFACTURER && name != kMPN )
         {
-            field = new SCH_FIELD( lib_sym, field_id++, name );
+            field = new SCH_FIELD( lib_sym, FIELD_T::USER, name );
         }
         if( name != kMANUFACTURER && name != kMPN )
         {
@@ -303,7 +277,7 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
 
     for( auto& field : fields )
     {
-        const auto is_value_ref = field.GetId() == REFERENCE_FIELD || field.GetId() == VALUE_FIELD;
+        const auto is_value_ref = field.GetId() == FIELD_T::REFERENCE || field.GetId() == FIELD_T::VALUE;
         field.SetVisible( is_value_ref );
         field.SetShowInChooser( is_value_ref );
     }
@@ -326,5 +300,16 @@ LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileN
         return {};
     }
 
-    return lib_sym->GetLibId();
+    // NOTE : The lib sym will be invalidate after reloading
+    const auto lib_id_cp = lib_sym->GetLibId();
+
+    Pgm().GetLibraryManager().ReloadLibraryEntry( LIBRARY_TABLE_TYPE::SYMBOL, aNickName, LIBRARY_TABLE_SCOPE::PROJECT );
+
+    if( auto status = adapter->LoadOne( aNickName ); !status || status->load_status != LOAD_STATUS::LOADED )
+    {
+        wxLogError( _( "Failed to reload symbol library '%s' after saving." ), aNickName );
+        return {};
+    }
+
+    return lib_id_cp;
 }

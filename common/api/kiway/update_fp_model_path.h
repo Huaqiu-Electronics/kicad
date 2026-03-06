@@ -1,8 +1,8 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2025 Ethan Chien <liangtie.qian@gmail.com>
- * Copyright (C) 2025 KiCad Developers, see AUTHORS.txt for contributors.
+ * Copyright (C) 2026 Ethan Chien <liangtie.qian@gmail.com>
+ * Copyright (C) 2026 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,26 +22,36 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef INSERT_FP_LIB_TABLE_ROW_H
-#define INSERT_FP_LIB_TABLE_ROW_H
+#ifndef UPDATE_FP_MODEL_PATH_H
+#define UPDATE_FP_MODEL_PATH_H
 
 
-#include <fp_lib_table.h>
+#include <kiway.h>
+#include <kiface_ids.h>
+#include <wx/log.h>
 
+using UPDATE_HANDLE_T = bool ( * )( const wxString& aFootprintPath, const wxString& aModelPath );
 
-static bool InsertFpLibTableRow( FP_LIB_TABLE* fpT, const wxString& aNick, const wxString& aURI, const wxString& aType,
-                                 const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
-                                 const wxString& aDescr = wxEmptyString )
+inline auto UpdateFpModelPath( KIWAY& aKiway, const wxString& aFootprintPath, const wxString& aModelPath )
 {
-    if( fpT->HasLibraryWithPath( aURI ) )
-        return true;
+    KIFACE* kiface = aKiway.KiFACE( KIWAY::FACE_PCB );
 
-    if( fpT->InsertRow( new FP_LIB_TABLE_ROW( aNick, aURI, aType, aOptions, aDescr ) ) )
+    if( !kiface )
     {
-        fpT->Save( fpTablePath );
-        return true;
+        wxLogError( " KIWAY::FACE_PCB not found" );
+        return false;
     }
-    return false;
+
+    const auto addr = kiface->IfaceOrAddress( KIFACE_ADDR_ID::KIFACE_UPDATE_FOOTPRINT_MODEL_PATH );
+
+    if( !addr )
+    {
+        wxLogError( "KIFACE_UPDATE_FOOTPRINT_MODEL_PATH not found" );
+        return false;
+    }
+
+    return reinterpret_cast<UPDATE_HANDLE_T>( addr )( aFootprintPath, aModelPath );
 }
+
 
 #endif

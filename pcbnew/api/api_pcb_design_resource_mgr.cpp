@@ -34,7 +34,6 @@
 #include <eda_base_frame.h>
 #include <project_pcb.h>
 #include <wx/log.h>
-#include <fp_lib_table.h>
 
 #include <pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.h>
 #include <pcb_io/pcb_io_mgr.h>
@@ -51,10 +50,8 @@ static FOOTPRINT* UpdateFpAttributes( wxString const& fpFilePath, std::optional<
     PCB_IO_KICAD_SEXPR pi;
 
 
-    static const std::map<std ::string, MANDATORY_FIELD_T> name_field_t_mapping = {
-        { kDATASHEET, MANDATORY_FIELD_T::DATASHEET_FIELD },
-        { kDESCRIPTION, MANDATORY_FIELD_T::DESCRIPTION_FIELD },
-        { kVALUE, MANDATORY_FIELD_T::VALUE_FIELD }
+    static const std::map<std ::string, FIELD_T> name_field_t_mapping = {
+        { kDATASHEET, FIELD_T::DATASHEET }, { kDESCRIPTION, FIELD_T::DESCRIPTION }, { kVALUE, FIELD_T::VALUE }
 
     };
 
@@ -76,32 +73,30 @@ static FOOTPRINT* UpdateFpAttributes( wxString const& fpFilePath, std::optional<
             footprint->Add3DModel( model );
         }
 
-        int usr_filed = MANDATORY_FIELD_T::MANDATORY_FIELD_COUNT;
+        std::map<FIELD_T, PCB_FIELD*> existing_fields;
+
+        for( const auto& it : footprint->GetFields() )
+        {
+            existing_fields[it->GetId()] = it;
+        }
 
         for( const auto& [name, value] : attributes )
         {
             if( auto f_t = name_field_t_mapping.find( name ); f_t != name_field_t_mapping.end() )
             {
-                const auto f_num = f_t->second;
-                if( auto old_field = footprint->GetFieldById( f_num ) )
+                if( auto existing_field = existing_fields.find( f_t->second ); existing_field != existing_fields.end() )
                 {
-                    old_field->SetText( value );
+                    existing_field->second->SetText( value );
+                    continue;
                 }
-                else
-                {
-                    PCB_FIELD field( footprint, f_num, name );
-                    field.SetText( value );
-                    footprint->AddField( field );
-                }
-
-                continue;
             }
 
-            PCB_FIELD field( footprint, ++usr_filed, name );
-            field.SetLayer( PCB_LAYER_ID::F_Fab );
-            field.SetText( value );
-            field.SetVisible( false );
-            footprint->AddField( field );
+
+            auto field = new PCB_FIELD( footprint, FIELD_T::USER, name );
+            field->SetLayer( PCB_LAYER_ID::F_Fab );
+            field->SetText( value );
+            field->SetVisible( false );
+            footprint->GetFields().emplace_back( field );
         }
 
 
@@ -116,7 +111,7 @@ static FOOTPRINT* UpdateFpAttributes( wxString const& fpFilePath, std::optional<
         }
 
         std::string prettyData = pi.GetStringOutput( false );
-        KICAD_FORMAT::Prettify( prettyData, true );
+        KICAD_FORMAT::Prettify( prettyData, KICAD_FORMAT::FORMAT_MODE::COMPACT_TEXT_PROPERTIES );
 
         fprintf( fp, "%s", prettyData.c_str() );
         fclose( fp );
@@ -128,7 +123,8 @@ static FOOTPRINT* UpdateFpAttributes( wxString const& fpFilePath, std::optional<
 }
 
 
-API_PCB_DESIGN_RESOURCE_MGR::API_PCB_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) : API_DESIGN_RESOURCE_MGR( aFrame )
+API_PCB_DESIGN_RESOURCE_MGR::API_PCB_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) :
+        API_DESIGN_RESOURCE_MGR( aFrame )
 {
 }
 
@@ -144,14 +140,6 @@ FOOTPRINT* API_PCB_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTEN
     }
 
     std::optional<FOOTPRINT*> fp_loaded;
-
-    auto libTable = PROJECT_PCB::PcbFootprintLibs( &m_frame.Prj() );
-
-    if( !libTable )
-    {
-        wxLogError( "Failed to get footprint library table" );
-        return {};
-    }
 
 
     for( const auto& fpc : aComponent.footprints )
@@ -190,8 +178,8 @@ FOOTPRINT* API_PCB_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTEN
         }
     }
 
-    UpdateLibTable( API_LIB_FP_TABLE, GetAPIFootprintPrettyName(), GetProjectApiFpUri() );
-
+    UpdateLibTable( LIBRARY_TABLE_TYPE::FOOTPRINT, GetAPIFootprintPrettyName(), GetProjectApiFpUri() );
+    ReloadFootprintLib( GetAPIFootprintPrettyName() );
 
     if( !fp_loaded )
     {

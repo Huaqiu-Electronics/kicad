@@ -27,6 +27,7 @@
 
 #include "lib_id.h"
 #include <api/api_design_resource_mgr.h>
+#include <optional>
 
 class LIB_SYMBOL;
 class API_SCH_DESIGN_RESOURCE_MGR : public API_DESIGN_RESOURCE_MGR
@@ -41,10 +42,9 @@ public:
 
     bool SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aComponent );
 
-    bool UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI );
-
     //  Write symbol fields ,return the updated symbol if successful
-    LIB_ID WriteSymbolFields( std::string const& aFileName, auto const& aFields, auto const& aFootprintName );
+    std::optional<LIB_ID> WriteSymbolFields( std::string const& aFileName, std::string const& aNickName,
+                                             auto const& aFields, auto const& aFootprintName );
 };
 
 #endif

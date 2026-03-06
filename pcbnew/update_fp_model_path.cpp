@@ -1,8 +1,8 @@
 /*
  * This program source code file is part of KiCad, a free EDA CAD application.
  *
- * Copyright (C) 2025 Ethan Chien <liangtie.qian@gmail.com>
- * Copyright (C) 2025 KiCad Developers, see AUTHORS.txt for contributors.
+ * Copyright (C) 2026 Ethan Chien <liangtie.qian@gmail.com>
+ * Copyright (C) 2026 KiCad Developers, see AUTHORS.txt for contributors.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,10 +21,6 @@
  * or you may write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-
-#ifndef UPDATE_FP_MODEL_PATH_H
-#define UPDATE_FP_MODEL_PATH_H
-
 
 #include <pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.h>
 #include <pcb_io/pcb_io_mgr.h>
@@ -73,5 +69,3 @@ static bool UpdateFpModelPath( wxString const& fpFilePath, wxString const& model
 
     return {};
 }
-
-#endif

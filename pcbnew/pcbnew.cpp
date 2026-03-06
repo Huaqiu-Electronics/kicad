@@ -82,32 +82,15 @@
 #include <3d_viewer/toolbars_3d.h>
 #include <toolbars_footprint_editor.h>
 #include <toolbars_pcb_editor.h>
-#include "insert_fp_lib_table_row.h"
-#include "update_fp_model_path.h"
+
+#include "update_fp_model_path.cpp"
+#include "reload_fp_lib.cpp"
 
 #include <wx/crt.h>
 
 /* init functions defined by swig */
 
 extern "C" PyObject* PyInit__pcbnew( void );
-
-static bool InsertFpLibTableRow( FP_LIB_TABLE* fpT, const wxString& aNick, const wxString& aURI, const wxString& aType,
-                                 const wxString& fpTablePath, const wxString& aOptions = wxEmptyString,
-                                 const wxString& aDescr = wxEmptyString )
-{
-    if( fpT->HasLibraryWithPath( aURI ) )
-        return true;
-
-    if( fpT->InsertRow( new FP_LIB_TABLE_ROW( aNick, aURI, aType, aOptions, aDescr ) ) )
-    {
-        fpT->Save( fpTablePath );
-        return true;
-    }
-    return false;
-}
-
-
-
 
 
 /**
@@ -563,10 +546,13 @@ static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
             // Signature: wxString (*)(const wxString& aFilterJson)
             return reinterpret_cast<void*>( &filterFootprints );
         }
-        case KIFACE_INSERT_ROW_FOOTPRINT_TABLE: return reinterpret_cast<void*>( InsertFpLibTableRow );
 
         case KIFACE_SCRIPTING_LEGACY:
             return reinterpret_cast<void*>( PyInit__pcbnew );
+
+        case KIFACE_UPDATE_FOOTPRINT_MODEL_PATH: return reinterpret_cast<void*>( &UpdateFpModelPath );
+
+        case KIFACE_RELOAD_FP_LIB: return reinterpret_cast<void*>( &ReloadFootprintLib );
 
         default:
             return nullptr;

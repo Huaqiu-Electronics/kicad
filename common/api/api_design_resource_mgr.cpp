@@ -40,13 +40,20 @@
 #include "api_open_project_url_impl.h"
 #include "api_open_project_url_current_proc_impl.h"
 
+#include "kiway/reload_fp_lib.h"
+#include "kiway/update_fp_model_path.h"
+
+#include "libraries/library_manager.h"
+#include "pgm_base.h"
+
 constexpr auto kProjectResourceDirName = "kicad_api_libs";
 constexpr auto kProjectPrettyName = "kicad_api_lib";
 constexpr auto kProject3DModelName = "3d_models";
 constexpr auto kTraceResourceIO = "API_RESOURCE_IO";
 
 
-API_DESIGN_RESOURCE_MGR::API_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) : m_frame( aFrame )
+API_DESIGN_RESOURCE_MGR::API_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) :
+        m_frame( aFrame )
 {
 }
 
@@ -303,22 +310,57 @@ wxString API_DESIGN_RESOURCE_MGR::GetIPClibDesc()
 }
 
 
-bool API_DESIGN_RESOURCE_MGR::UpdateLibTable( API_LIB_TABLE_T aLibT, const wxString& aNickName, const wxString& aURI )
+bool API_DESIGN_RESOURCE_MGR::UpdateLibTable( LIBRARY_TABLE_TYPE aLibT, const wxString& aNickname,
+                                              const wxString& aURI )
 {
-    switch( aLibT )
+    LIBRARY_MANAGER&              manager = Pgm().GetLibraryManager();
+    std::optional<LIBRARY_TABLE*> tableOpt = manager.Table( aLibT, LIBRARY_TABLE_SCOPE::PROJECT );
+
+    if( !tableOpt )
     {
-    case API_LIB_TABLE_T::API_LIB_FP_TABLE:
-    {
-        return m_frame.Prj().InsertFpLibTableRow( m_frame.Kiway(), aNickName, aURI, GetKiCadLibType(),
-                                                  m_frame.Prj().FootprintLibTblName(), GetIPClibDesc() );
-    }
-    default:
-    {
-        wxLogWarning( "Unsupported library table type" );
-    }
+        wxLogError( "Unable to access the library table." );
+        return false;
     }
 
-    return {};
+    LIBRARY_TABLE* table = *tableOpt;
+
+    if( table->HasRow( aNickname ) )
+    {
+        if( std::optional<LIBRARY_TABLE_ROW*> rowOpt = table->Row( aNickname ); rowOpt )
+        {
+            LIBRARY_TABLE_ROW* row = *rowOpt;
+
+            if( row->URI() != aURI )
+            {
+                row->SetURI( aURI );
+
+                if( !table->Save() )
+                {
+                    wxLogError( "Failed to save the library table." );
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    LIBRARY_TABLE_ROW& row = table->InsertRow();
+    row.SetNickname( aNickname );
+    row.SetURI( aURI );
+    row.SetType( GetKiCadLibType() );
+    row.SetOptions( wxString() );
+    row.SetDescription( GetIPClibDesc() );
+    row.SetOk( true );
+
+    if( !table->Save() )
+    {
+        wxLogError( "Failed to save the library table." );
+        return false;
+    }
+
+    Pgm().GetLibraryManager().LoadProjectTables( { aLibT } );
+    return true;
 }
 
 bool API_DESIGN_RESOURCE_MGR::SaveSymbolContentToProject( NAMED_CONTENT const& aContent )
@@ -355,9 +397,10 @@ bool API_DESIGN_RESOURCE_MGR::Save3dModelToProject( NAMED_CONTENT const&        
     }
 
     if( aFootprintPath )
+    {
+        UpdateFpModelPath( m_frame.Kiway(), *aFootprintPath, FormatFootprintModelPath( model_name ) );
+    }
 
-        m_frame.Prj().UpdateFootprintModelPath( m_frame.Kiway(), *aFootprintPath,
-                                                FormatFootprintModelPath( model_name ) );
     return true;
 }
 
@@ -432,4 +475,9 @@ COMPONENT_CONTENT API_DESIGN_RESOURCE_MGR::GetComponentConent( COMPONENT_RESOURC
     }
 
     return component_content;
+}
+
+bool API_DESIGN_RESOURCE_MGR::ReloadFootprintLib( const wxString& aNickName )
+{
+    return ::ReloadFootprintLib( m_frame.Kiway(), &m_frame.Prj(), aNickName );
 }
