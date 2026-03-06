@@ -6,7 +6,7 @@
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021, 2025, 2026.
 # Iñigo <ifs@elektroquark.com>, 2021, 2026.
 # VicSanRoPe <vicsanrope@protonmail.com>, 2021, 2022, 2024, 2026.
-# ZbeeGin <zbeegin@op.pl>, 2021.
+# ZbeeGin <zbeegin@op.pl>, 2021, 2026.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021.
 # ferdymercury <fernando.hueso@uv.es>, 2021.
 # Jose Perez <mirror.k2@gmail.com>, 2022.
@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:29+0000\n"
-"Last-Translator: Gaston Schelotto <gschelotto@puredsp.com>\n"
+"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
@@ -24593,8 +24593,7 @@ msgstr ""
 #: eeschema/symbol_checker.cpp:391
 #, c-format
 msgid "<b>Off grid pin %s</b> %s at location <b>(%s, %s)</b>."
-msgstr ""
-"<b>Pin %s fuera de la cuadrícula</b> %s en la posición <b>(%s, %s)</b>."
+msgstr "<b>Pin %s fuera de la cuadrícula</b> %s en la posición <b>(%s, %s)</b>."
 
 #: eeschema/symbol_checker.cpp:399
 #, c-format
