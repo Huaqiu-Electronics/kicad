@@ -2,7 +2,7 @@
 # kai chiao chuang <joechuang01.tw@gmail.com>, 2021.
 # David Chen <d0123456789g@yahoo.com.tw>, 2021.
 # ZbeeGin <zbeegin@op.pl>, 2021.
-# pondahai <dahai.pon@gmail.com>, 2022, 2024.
+# pondahai <dahai.pon@gmail.com>, 2022, 2024, 2026.
 # willliam <traderwilliam@gmail.com>, 2022.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025.
 # 撒景賢 <james.sa.2013@gmail.com>, 2024.
@@ -23,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:55+0000\n"
-"Last-Translator: reimu105 <peter112548@gmail.com>\n"
+"Last-Translator: pondahai <dahai.pon@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hant/>\n"
 "Language: zh_TW\n"
