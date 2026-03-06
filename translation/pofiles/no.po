@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: 5.99\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2025-05-01 03:03+0000\n"
-"Last-Translator: Stian Kristensen <stiank@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 17:32+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kicad/"
 "master-source/nb_NO/>\n"
 "Language: no\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: 3d-viewer/3d_cache/3d_plugin_manager.cpp:58
 #: common/dialogs/panel_embedded_files.cpp:396
@@ -23987,8 +23987,7 @@ msgstr "Ingen skjemaer er åpne for øyeblikket."
 #: eeschema/sim/kibis/ibis_parser.cpp:801
 #, fuzzy
 msgid "Triggered mode dynamic clamp submodels are not yet supported."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:813
 #, fuzzy
@@ -34185,8 +34184,7 @@ msgstr "Legg til eksisterende sideoppsettfil ..."
 #: pagelayout_editor/tools/pl_actions.cpp:94
 #, fuzzy
 msgid "Append an existing drawing sheet file to the current file"
-msgstr ""
-"Legg til en eksisterende utformingsfil for sidelayout til gjeldende fil"
+msgstr "Legg til en eksisterende utformingsfil for sidelayout til gjeldende fil"
 
 #: pagelayout_editor/tools/pl_actions.cpp:105
 msgid "Show Design Inspector"
@@ -34273,8 +34271,8 @@ msgstr ""
 "* __a__ demping i dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (tapet)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> inn </sub> \\ * Z <sub> ut </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> inn </sub> \\ * Z <sub> ut </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> i </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> ut </sub> \\ * A - R2___\n"
 
@@ -34320,8 +34318,8 @@ msgstr ""
 "* __a__ demping i dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (tapet)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> inn </sub> \\ * Z <sub> ut </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> inn </sub> \\ * Z <sub> ut </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> i </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> ut </sub> \\ * A - R2___\n"
 
@@ -36355,9 +36353,9 @@ msgstr ""
 "\n"
 "Den kontrollerende verdien vises med fet skrift.\n"
 "\n"
-"Beregningene gjelder for strømmer opp til 35A (ekstern) eller 17,5A "
-"(intern), temperaturen stiger opp til 100 grader C, og bredder på opptil "
-"400mil (10mm).\n"
+"Beregningene gjelder for strømmer opp til 35A (ekstern) eller 17,5A (intern)"
+", temperaturen stiger opp til 100 grader C, og bredder på opptil 400mil "
+"(10mm).\n"
 "\n"
 "Formelen, fra IPC 2221, er\n"
 "<center> __ I = K * dT <sup> 0,44 </sup> * (W * H) <sup> 0,725 </sup> __ </"
@@ -43209,8 +43207,7 @@ msgstr ""
 msgid ""
 "Negative clearance means area smaller than the pad (usual for paste "
 "clearance)."
-msgstr ""
-"Negativ klaring betyr areal mindre enn puten (vanlig for limklarering)."
+msgstr "Negativ klaring betyr areal mindre enn puten (vanlig for limklarering)."
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:999
 msgid ""
@@ -52705,38 +52702,32 @@ msgstr "Laster..."
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2174
 #, fuzzy
 msgid "Ignored Angular dimension (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2187
 #, fuzzy
 msgid "Ignored Datum dimension (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2195
 #, fuzzy
 msgid "Ignored Baseline dimension (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2205
 #, fuzzy
 msgid "Ignored Linear dimension (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2212
 #, fuzzy
 msgid "Ignored Radial dimension (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2220
 #, fuzzy, c-format
 msgid "Ignored dimension of kind %d (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2268
 #, fuzzy, c-format
@@ -52781,8 +52772,7 @@ msgstr ""
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2769
 #, fuzzy, c-format
 msgid "Ignored polygon shape of kind %d (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2846
 #, fuzzy, c-format
@@ -52808,14 +52798,12 @@ msgstr ""
 msgid ""
 "Error loading library '%s':\n"
 "Footprint %s contains polygon shape of kind %d (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2916
 #, fuzzy, c-format
 msgid "Footprint %s contains polygon shape of kind %d (not yet supported)."
-msgstr ""
-"Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
+msgstr "Ignorer strekkode på Altium-laget %d fordi det ikke støttes akkurat nå."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3071
 #, fuzzy
@@ -53910,8 +53898,7 @@ msgstr "Ukjent padshape '%c = 0x %02x' på linje: %d av fotavtrykk: \"%s\""
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:1616
 #, fuzzy, c-format
 msgid "Unknown PCB_SHAPE type:'%c=0x%02x' on line %d of footprint '%s'."
-msgstr ""
-"Ukjent FP_SHAPE-type: '%c = 0x %02x' på linje: %d av fotavtrykk: \"%s\""
+msgstr "Ukjent FP_SHAPE-type: '%c = 0x %02x' på linje: %d av fotavtrykk: \"%s\""
 
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:2434
 #, fuzzy, c-format
