@@ -6,7 +6,7 @@
 # Murat Ursavaş <murat.ursavas@gmail.com>, 2021.
 # Sadıkhan Doğdu <sadikhandogdu@gmail.com>, 2021.
 # VEDAT YAMAN <weddat@gmail.com>, 2021, 2026.
-# Gökhan Koçmarlı <gokhankocmarli@gmail.com>, 2022.
+# Gökhan Koçmarlı <gokhankocmarli@gmail.com>, 2022, 2026.
 # prometheus <181903185@ogrenci.ibu.edu.tr>, 2022.
 # Mustafa Selçuk ÇAVDAR <mselcuk@gmail.com>, 2022, 2023, 2025, 2026.
 # turkce <turkceceviri@protonmail.com>, 2023, 2026.
@@ -36,7 +36,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:32+0000\n"
-"Last-Translator: Bahtiyar Bayram <bahtiyar.bayramov@gmail.com>\n"
+"Last-Translator: Gökhan Koçmarlı <gokhankocmarli@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
