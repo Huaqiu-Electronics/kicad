@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 16:57+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 16:59+0000\n"
+"Last-Translator: Sárkány Lőrinc <lsarkany@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hu/>\n"
 "Language: hu\n"
@@ -2531,8 +2531,7 @@ msgstr "Licensz"
 
 #: common/dialog_about/dialog_about.cpp:258
 msgid "Could not open clipboard to write version information."
-msgstr ""
-"Nem sikerült megnyitni a vágólapot a verzióinformációk beillesztéséhez."
+msgstr "Nem sikerült megnyitni a vágólapot a verzióinformációk beillesztéséhez."
 
 #: common/dialog_about/dialog_about.cpp:259
 msgid "Clipboard Error"
@@ -12106,8 +12105,7 @@ msgstr "Könyvtár helye: %s"
 #: cvpcb/cvpcb_mainframe.cpp:905
 msgid ""
 "No PCB footprint libraries are listed in the current footprint library table."
-msgstr ""
-"Nincsenek alkatrészrajzolat könyvtárak az aktuális könyvtártáblázatban."
+msgstr "Nincsenek alkatrészrajzolat könyvtárak az aktuális könyvtártáblázatban."
 
 #: cvpcb/cvpcb_mainframe.cpp:906
 msgid "Configuration Error"
@@ -12905,9 +12903,9 @@ msgstr ""
 "python <szkript fájlnév> <bemeneti fájlnév> <kimeneti fájlnév>\n"
 "```\n"
 "\n"
-"Windows alatt, ha a kívánt CSV generátor szkript `C:"
-"\\Users\\felhasználónév\\kicad\\saját_python_szkriptem.py`, a parancssorból "
-"való meghívása:\n"
+"Windows alatt, ha a kívánt CSV generátor szkript `C:\\Users\\f"
+"elhasználónév\\kicad\\saját_python_szkriptem.py`, a parancssorból való "
+"meghívása:\n"
 "\n"
 "```\n"
 "python.exe C:\\Users\\felhasználónév\\kicad\\saját_python_szkriptem.py "
@@ -21290,8 +21288,8 @@ msgstr ""
 #, c-format
 msgid "Could not load database library: could not connect to database %s (%s)"
 msgstr ""
-"Nem sikerült betölteni az adatbázis könyvtárat: nem sikerült csatlakozni "
-"a(z) %s adatbázishoz (%s)"
+"Nem sikerült betölteni az adatbázis könyvtárat: nem sikerült csatlakozni a"
+"(z) %s adatbázishoz (%s)"
 
 #: eeschema/sch_io/database/sch_io_database.h:52
 msgid "KiCad database library files"
@@ -21359,8 +21357,7 @@ msgstr "Nem találtunk érvényes kapcsolási rajz fájlt \"%s\"-ban"
 #: eeschema/sch_io/easyeda/sch_io_easyeda.cpp:501
 #, c-format
 msgid "Error loading symbol '%s' from library '%s': %s"
-msgstr ""
-"Hiba a(z) \"%s\" rajzjel \"%s\" könyvtárból történő betöltése során: %s"
+msgstr "Hiba a(z) \"%s\" rajzjel \"%s\" könyvtárból történő betöltése során: %s"
 
 #: eeschema/sch_io/easyeda/sch_io_easyeda.cpp:422
 #: eeschema/sch_io/easyeda/sch_io_easyeda.cpp:427
@@ -21456,8 +21453,8 @@ msgid ""
 "HTTP library settings file %s uses API version %s, but KiCad requires "
 "version %s."
 msgstr ""
-"A(z) %s HTTP könyvtár beállítási fájl %s verziójú API-t használ, a KiCad "
-"a(z) %s verziót igényli."
+"A(z) %s HTTP könyvtár beállítási fájl %s verziójú API-t használ, a KiCad a"
+"(z) %s verziót igényli."
 
 #: eeschema/sch_io/http_lib/sch_io_http_lib.cpp:233
 #, c-format
@@ -27568,8 +27565,7 @@ msgstr "Nincs vezeték kiválasztva."
 #: eeschema/tools/sch_editor_control.cpp:2090 pcbnew/tools/pcb_control.cpp:1187
 msgid ""
 "Pasting a long text text string may be very slow.  Do you want to continue?"
-msgstr ""
-"Egy hosszú szöveg beillesztése nagyon lassú lehet.  Szeretné folytatni?"
+msgstr "Egy hosszú szöveg beillesztése nagyon lassú lehet.  Szeretné folytatni?"
 
 #: eeschema/tools/sch_editor_control.cpp:2145 pcbnew/tools/pcb_control.cpp:1152
 msgid "Paste Cells"
@@ -35556,8 +35552,8 @@ msgstr ""
 "- A kívánt érték 0.0025 és 4000 kΩ közötti lehet.\n"
 "- Legfeljebb 4 alkatrészből álló megoldásokat közöl.\n"
 "\n"
-"A kért ellenállás érték nem fog szerepelni a megoldásban alkatrészként. "
-"<br>\n"
+"A kért ellenállás érték nem fog szerepelni a megoldásban alkatrészként. <br>"
+"\n"
 "Ezen kívül két további értéket is kizárhatunk, beszerezhetőségi problémák "
 "esetén.\n"
 "\n"
@@ -52074,8 +52070,7 @@ msgstr ""
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2769
 #, c-format
 msgid "Ignored polygon shape of kind %d (not yet supported)."
-msgstr ""
-"%d. típusú sokszög alakzat figyelmen kívül hagyva (még nem támogatott)."
+msgstr "%d. típusú sokszög alakzat figyelmen kívül hagyva (még nem támogatott)."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2846
 #, c-format
@@ -58795,8 +58790,7 @@ msgstr "Vonszolás (tetszőleges szög)"
 #: pcbnew/tools/pcb_actions.cpp:2701
 msgid ""
 "Drags the nearest joint in the track without restricting the track angle."
-msgstr ""
-"Vezetősáv legközelebbi töréspontjának vonszolása (tetszőleges szögben)."
+msgstr "Vezetősáv legközelebbi töréspontjának vonszolása (tetszőleges szögben)."
 
 #: pcbnew/tools/pcb_actions.cpp:2711
 msgid "Update All Tuning Patterns"
