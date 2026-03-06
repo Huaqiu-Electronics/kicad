@@ -18,13 +18,14 @@
 # Дмитрий Михирев <bizdelnick@gmail.com>, 2025, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # xXx <xxx_xxx_xxxxxxxxx@mail.ru>, 2026.
+# sergio <sergio@outerface.net>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:31+0000\n"
-"Last-Translator: xXx <xxx_xxx_xxxxxxxxx@mail.ru>\n"
+"Last-Translator: sergio <sergio@outerface.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ru/>\n"
 "Language: ru\n"
