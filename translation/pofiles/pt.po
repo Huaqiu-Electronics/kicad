@@ -5,7 +5,7 @@
 # Hildo Guillardi Júnior <hildogjr@gmail.com>, 2020, 2025.
 # ssantos <ssantos@web.de>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021.
-# Rafael Silva <perigoso@riseup.net>, 2021, 2022.
+# Rafael Silva <perigoso@riseup.net>, 2021, 2022, 2026.
 # leonardokr <leo@ziondev.us>, 2022.
 # Julio Dias <jcesardias@gmail.com>, 2024, 2025.
 # John Beard <john.j.beard@gmail.com>, 2025.
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:58+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Rafael Silva <perigoso@riseup.net>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
 "Language: pt\n"
