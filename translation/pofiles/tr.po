@@ -30,13 +30,14 @@
 # Tevfik Bagcivan <tevfik.bagcivan@gmail.com>, 2025, 2026.
 # metin kiruc <metinkiruc@gmail.com>, 2025, 2026.
 # Oğuz Ersen <oguz@ersen.moe>, 2026.
+# Deleted User <noreply+108163@weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:33+0000\n"
-"Last-Translator: Mert Gülsoy <mgulsoy@gmail.com>\n"
+"Last-Translator: Deleted User <noreply+108163@weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
