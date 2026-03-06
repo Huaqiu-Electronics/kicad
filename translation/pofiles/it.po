@@ -8,7 +8,7 @@
 # Seth Hillbrand <seth@kipro-pcb.com>, 2024, 2025, 2026.
 # boromyr <davideromeo.g@gmail.com>, 2024.
 # John Beard <john.j.beard@gmail.com>, 2025.
-# Luca Mattii <luca@glgprograms.it>, 2025.
+# Luca Mattii <luca@glgprograms.it>, 2025, 2026.
 #
 # db: Usare le maiuscole con moderazione: vanno usate per i nomi propri e all'inizio
 # db: di una frase: negli altri casi può risultare molto inelegante
@@ -117,7 +117,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:39+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Luca Mattii <luca@glgprograms.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kicad/master-"
 "source/it/>\n"
 "Language: it\n"
