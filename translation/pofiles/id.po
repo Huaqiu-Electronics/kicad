@@ -3,13 +3,14 @@
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021.
 # whenwesober <naomi16i_1298q@cikuh.com>, 2021.
 # Neko Nekowazarashi <kodra@nekoweb.my.id>, 2022.
+# "Triyan W. Nugroho" <triyan.wn@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-06 22:44+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-06 22:45+0000\n"
+"Last-Translator: \"Triyan W. Nugroho\" <triyan.wn@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kicad/master-"
 "source/id/>\n"
 "Language: id\n"
@@ -29899,8 +29900,8 @@ msgstr "Berkas tidak ditemukan:"
 #, c-format
 msgid "<b>A gerber job file cannot be loaded as a plot file</b> <i>%s</i>"
 msgstr ""
-"<b>Berkas job gerber tidak dapat dimuat sebagai sebuah berkas plot</b> "
-"<i>%s</i>"
+"<b>Berkas job gerber tidak dapat dimuat sebagai sebuah berkas plot</b> <i>"
+"%s</i>"
 
 #: gerbview/files.cpp:318
 #, fuzzy
