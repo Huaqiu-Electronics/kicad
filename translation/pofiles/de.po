@@ -1,7 +1,7 @@
 # Christian Schlüter <chschlue@gmail.com>, 2020.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # J. Lavoie <j.lavoie@net-c.ca>, 2020.
-# Kliment <kliment@0xfb.com>, 2020, 2025.
+# Kliment <kliment@0xfb.com>, 2020, 2025, 2026.
 # jonathan haas <jonathan.haas@live.de>, 2020.
 # Jonathan Haas <haasjona@gmail.com>, 2020, 2021, 2022, 2023, 2024, 2026.
 # Mathias Neumann <alfrede@opferindustries.de>, 2020, 2021.
@@ -33,7 +33,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:16+0000\n"
-"Last-Translator: Dominik Wernberger <dominik.wernberger@gmx.de>\n"
+"Last-Translator: Kliment <kliment@0xfb.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
