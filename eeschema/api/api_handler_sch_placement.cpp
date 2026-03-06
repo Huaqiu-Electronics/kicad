@@ -245,8 +245,6 @@ HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<
 void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const&                  aComponent,
                                    std::optional<PLACE_SYMBOL_OPTION> const& aOption )
 {
-    // Trigger loading the lazy ininitialized project symbol library table.
-    void( PROJECT_SCH::SchSymbolLibTable( &m_frame->Prj() ) );
     auto libSymbol = m_resourceMgr->SaveComponentToProject( aComponent );
 
     if( !libSymbol )
