@@ -1,14 +1,14 @@
 # ___davidpr <david.pribic95@gmail.com>, 2021, 2022, 2023, 2024, 2025.
 # Zoran <zastos@gmail.com>, 2022.
 # Daniel Petrovich <danielthe@cyberdude.com>, 2024.
-# Luka Borkovic <borkovic@gmail.com>, 2025.
+# Luka Borkovic <borkovic@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 16:55+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 16:56+0000\n"
+"Last-Translator: Luka Borkovic <borkovic@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sr/>\n"
 "Language: sr\n"
@@ -8647,8 +8647,7 @@ msgstr "Грешка у учитавању kiface библиотеке '%s'."
 #: common/kiway.cpp:291
 #, c-format
 msgid "Could not read instance name and version from kiface library '%s'."
-msgstr ""
-"Не могу да прочитам име инстанце и верзију из kiface библиотеке \"%s\"."
+msgstr "Не могу да прочитам име инстанце и верзију из kiface библиотеке \"%s\"."
 
 #: common/kiway.cpp:452
 msgid "Error loading editor."
