@@ -1,6 +1,6 @@
 # Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2025, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021.
-# Arend-Jan van Hilten <a.j.vanhilten@student.tudelft.nl>, 2021, 2023.
+# Arend-Jan van Hilten <a.j.vanhilten@student.tudelft.nl>, 2021, 2023, 2026.
 # pimjansen98 <pimjansen1998@gmail.com>, 2021, 2026.
 # CJ van der Hoeven <KeesEnJoa@gmail.com>, 2021, 2024, 2026.
 # Bas Wijnen <wijnen@debian.org>, 2022, 2023, 2026.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:07+0000\n"
-"Last-Translator: Robin Janssens <robin@robinjanssens.net>\n"
+"Last-Translator: Arend-Jan van Hilten <a.j.vanhilten@student.tudelft.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kicad/master-"
 "source/nl/>\n"
 "Language: nl\n"
