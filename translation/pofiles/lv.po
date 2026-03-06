@@ -1,5 +1,5 @@
 # Latvian translation of kicad.po
-# Rihards Skuja <rhssk@posteo.eu>, 2021.
+# Rihards Skuja <rhssk@posteo.eu>, 2021, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
 # "ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝)" <coool@mail.lv>, 2025.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2026.
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:28+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Rihards Skuja <rhssk@posteo.eu>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/kicad/master-"
 "source/lv/>\n"
 "Language: lv\n"
