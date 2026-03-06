@@ -12,7 +12,7 @@
 # Dmitry Mikhirev <mikhirev@gmail.com>, 2024, 2026.
 # alevtina-karashokova <karashokovaaa@basealt.ru>, 2024, 2026.
 # Alex Life <life.alex.v@gmail.com>, 2024.
-# Free_squire <danil_pyankov_2004@mail.ru>, 2024.
+# Free_squire <danil_pyankov_2004@mail.ru>, 2024, 2026.
 # sergio <sergio+it@outerface.net>, 2024.
 # gfbdrgng <hnaofegnp@hldrive.com>, 2024, 2026.
 # Дмитрий Михирев <bizdelnick@gmail.com>, 2025, 2026.
@@ -23,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:31+0000\n"
-"Last-Translator: Dmitry Mikhirev <mikhirev@gmail.com>\n"
+"Last-Translator: Free_squire <danil_pyankov_2004@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ru/>\n"
 "Language: ru\n"
