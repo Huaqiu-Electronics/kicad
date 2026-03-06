@@ -20,13 +20,14 @@
 # Michal Kundrát <DreitTheDragon@gmail.com>, 2025.
 # Tomas0015 <tom.bezanyi@gmail.com>, 2026.
 # Hynek Štětina <hynek.stetina@gmail.com>, 2026.
+# dsa-t <dudesuchamazing@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:35+0000\n"
-"Last-Translator: Andrej Valek <andy@skyrain.eu>\n"
+"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kicad/master-"
 "source/cs/>\n"
 "Language: cs\n"
