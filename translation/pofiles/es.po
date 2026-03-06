@@ -1,7 +1,7 @@
 # uLe <uestrada@mafu-robotics.de>, 2020, 2026.
 # Roberto Fernandez Bautista <roberto.fer.bau@gmail.com>, 2020, 2021, 2026.
 # Iñigo Figuero Sanz <news@imagedworld.com>, 2020, 2021, 2026.
-# Echedey <echedeyla@hotmail.com>, 2020, 2021.
+# Echedey <echedeyla@hotmail.com>, 2020, 2021, 2026.
 # Tomás Mora <tom.mora96@gmail.com>, 2021, 2026.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021, 2025, 2026.
 # Iñigo <ifs@elektroquark.com>, 2021, 2026.
@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:29+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: Echedey <echedeyla@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
