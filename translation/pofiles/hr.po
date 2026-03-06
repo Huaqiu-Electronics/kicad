@@ -1,10 +1,11 @@
+# Seth Hillbrand <seth@kipro-pcb.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:37+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hr/>\n"
 "Language: hr\n"
