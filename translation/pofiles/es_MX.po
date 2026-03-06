@@ -14,13 +14,14 @@
 # dsa-t <dudesuchamazing@gmail.com>, 2024.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # lylythechosenone <Lysander.mealy@gmail.com>, 2025.
+# Deleted User <noreply+109179@weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:20+0000\n"
-"Last-Translator: uLe <uestrada@mafu-robotics.de>\n"
+"Last-Translator: Deleted User <noreply+109179@weblate.org>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/kicad/"
 "master-source/es_MX/>\n"
 "Language: es_MX\n"
