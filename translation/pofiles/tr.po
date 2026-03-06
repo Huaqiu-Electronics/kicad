@@ -37,8 +37,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-06 22:33+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 16:43+0000\n"
+"Last-Translator: YÜKSEL AÇIKGÖZ <yukselacikgoz@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
@@ -8439,15 +8439,15 @@ msgstr "Baskı Devre: Oluştur"
 
 #: common/jobs/job_sch_erc.cpp:33
 msgid "Perform ERC"
-msgstr "ERC (Elektriksel Kural Kontrolü) Uygula"
+msgstr "Elektriksel Kural Kontrolü Uygula"
 
 #: common/jobs/job_sch_erc.cpp:39
 msgid "Schematic ERC Job Settings"
-msgstr "Şematik ERC (Elektriksel Kural Kontrolü) İş Ayarları"
+msgstr "Şematik Elektriksel Kural Kontrolü İş Ayarları"
 
 #: common/jobs/job_sch_erc.cpp:43
 msgid "Schematic: Perform ERC"
-msgstr "Şematik: ERC (Elektriksel Kural Kontrolü) Uygula"
+msgstr "Şematik: Elektriksel Kural Kontrolü Uygula"
 
 #: common/jobs/job_special_copyfiles.cpp:46
 msgid "Special: Copy Files"
@@ -8660,15 +8660,15 @@ msgstr "Simülasyondan hariç tutulan işaretler"
 
 #: common/layer_id.cpp:102
 msgid "ERC warnings"
-msgstr "ERC (Elektriksel Kural Kontrolü) uyarıları"
+msgstr "Elektriksel Kural Kontrolü uyarıları"
 
 #: common/layer_id.cpp:103
 msgid "ERC errors"
-msgstr "ERC (Elektriksel Kural Kontrolü) hataları"
+msgstr "Elektriksel Kural Kontrolü hataları"
 
 #: common/layer_id.cpp:104
 msgid "ERC exclusions"
-msgstr "ERC (Elektriksel Kural Kontrolü) hariç tutulanlar"
+msgstr "Elektriksel Kural Kontrolü hariç tutulanlar"
 
 #: common/layer_id.cpp:105 common/layer_id.cpp:145
 #: pcbnew/widgets/appearance_controls.cpp:351
@@ -12929,7 +12929,7 @@ msgstr "Sembol Kütüphane Referansları"
 
 #: eeschema/dialogs/dialog_erc.cpp:124
 msgid "Run ERC"
-msgstr "ERC (Elektriksel Kural Kontrolü) çalıştır"
+msgstr "Elektriksel Kural Kontrolü çalıştır"
 
 #: eeschema/dialogs/dialog_erc.cpp:182
 msgid "Show Annotation dialog"
@@ -12938,7 +12938,7 @@ msgstr "Numaralandırma iletişim kutusunu göster"
 #: eeschema/dialogs/dialog_erc.cpp:194
 msgid "Schematic is not fully annotated. ERC results will be incomplete."
 msgstr ""
-"Şematik tam olarak numaralandırılmış değil. ERC (Elektriksel Kural Kontrolü) "
+"Şematik tam olarak numaralandırılmış değil. Elektriksel Kural Kontrolü "
 "sonuçları eksik olacaktır."
 
 #: eeschema/dialogs/dialog_erc.cpp:230 pcbnew/dialogs/dialog_drc.cpp:287
@@ -13195,7 +13195,7 @@ msgstr "Elektrik Kuralları Denetleyicisi"
 
 #: eeschema/dialogs/dialog_erc_job_config.cpp:23
 msgid "ERC Job Settings"
-msgstr "ERC (Elektriksel Kural Kontrolü) İş Ayarları"
+msgstr "Elektriksel Kural Kontrolü İş Ayarları"
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:272
 msgid "Export netlist in KiCad format"
@@ -15099,7 +15099,7 @@ msgstr "Elektriksel tipi:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:99
 msgid "Used by the ERC."
-msgstr "ERC (Elektriksel Kural Kontrolü) tarafından kullanılır."
+msgstr "Elektriksel Kural Kontrolü tarafından kullanılır."
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:106
 msgid "Graphic style:"
@@ -17504,15 +17504,15 @@ msgstr "Yönerge etiketlerini göster"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:120
 msgid "Show ERC errors"
-msgstr "ERC (Elektriksel Kural Kontrolü) hatalarını göster"
+msgstr "Elektriksel Kural Kontrolü hatalarını göster"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:124
 msgid "Show ERC warnings"
-msgstr "ERC (Elektriksel Kural Kontrolü) uyarılarını göster"
+msgstr "Elektriksel Kural Kontrolü uyarılarını göster"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:128
 msgid "Show ERC exclusions"
-msgstr "ERC (Elektriksel Kural Kontrolü) hariç tutulanlarını göster"
+msgstr "Elektriksel Kural Kontrolü hariç tutulanlarını göster"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:131
 msgid "Mark items which are excluded from simulation"
@@ -18458,12 +18458,12 @@ msgstr "%d ihlal bulundu\n"
 #: eeschema/eeschema_jobs_handler.cpp:1337
 #, c-format
 msgid "Unable to save ERC report to %s\n"
-msgstr "ERC (Elektriksel Kural Kontrolü) raporu %s'ye kaydedilemiyor\n"
+msgstr "Elektriksel Kural Kontrolü raporu %s'ye kaydedilemiyor\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1342
 #, c-format
 msgid "Saved ERC Report to %s\n"
-msgstr "ERC (Elektriksel Kural Kontrolü) Raporu %s'ye kaydedildi\n"
+msgstr "Elektriksel Kural Kontrolü Raporu %s'ye kaydedildi\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1374
 msgid "Schematic file was not updated\n"
@@ -21465,7 +21465,7 @@ msgstr "Hariç tutulan"
 
 #: eeschema/sch_marker.h:97
 msgid "ERC Marker"
-msgstr "ERC (Elektriksel Kural Kontrolü) İşaretleyici"
+msgstr "Elektriksel Kural Kontrolü İşaretleyici"
 
 #: eeschema/sch_no_connect.h:96 eeschema/tools/sch_edit_tool.cpp:266
 msgid "No Connect"
@@ -26181,7 +26181,7 @@ msgstr "Yönerge Etiketlerini Göster"
 
 #: eeschema/tools/sch_actions.cpp:1282
 msgid "Show ERC Warnings"
-msgstr "ERC (Elektriksel Kural Kontrolü) Uyarılarını Göster"
+msgstr "Elektriksel Kural Kontrolü Uyarılarını Göster"
 
 #: eeschema/tools/sch_actions.cpp:1283
 msgid "Show markers for electrical rules checker warnings"
@@ -26189,7 +26189,7 @@ msgstr "Elektriksel kurallar denetleyicisi uyarıları için işaretleri göster
 
 #: eeschema/tools/sch_actions.cpp:1289
 msgid "Show ERC Errors"
-msgstr "ERC (Elektriksel Kural Kontrolü) Hatalarını Göster"
+msgstr "Elektriksel Kural Kontrolü Hatalarını Göster"
 
 #: eeschema/tools/sch_actions.cpp:1290
 msgid "Show markers for electrical rules checker errors"
@@ -26197,7 +26197,7 @@ msgstr "Elektriksel kural denetleyicisi hataları için işaretleyicileri göste
 
 #: eeschema/tools/sch_actions.cpp:1296
 msgid "Show ERC Exclusions"
-msgstr "ERC (Elektriksel Kural Kontrolü) Hariç Tutulanlarını Göster"
+msgstr "Elektriksel Kural Kontrolü Hariç Tutulanlarını Göster"
 
 #: eeschema/tools/sch_actions.cpp:1297
 msgid "Show markers for excluded electrical rules checker violations"
@@ -30205,15 +30205,14 @@ msgstr "Şematikler"
 msgid ""
 "Runs the Electrical Rules Check (ERC) on the schematic and creates a report"
 msgstr ""
-"Şematik üzerinde ERC (Elektriksel Kural Kontrolü) çalıştırır ve bir rapor "
-"oluştur"
+"Şematik üzerinde Elektriksel Kural Kontrolü çalıştırır ve bir rapor oluştur"
 
 #: kicad/cli/command_sch_erc.cpp:58
 msgid ""
 "Report all ERC violations, this is equivalent to including all the other "
 "severity arguments"
 msgstr ""
-"Tüm ERC (Elektriksel Kural Kontrolü) ihlallerini bildir, bu diğer tüm önem "
+"Tüm Elektriksel Kural Kontrolü ihlallerini bildir, bu diğer tüm önem "
 "derecesi argümanlarını dahil etmeye eşdeğerdir"
 
 #: kicad/cli/command_sch_erc.cpp:63
@@ -30221,30 +30220,30 @@ msgid ""
 "Report all ERC error level violations, this can be combined with the other "
 "severity arguments"
 msgstr ""
-"Tüm ERC (Elektriksel Kural Kontrolü) hata seviyesi ihlallerini bildir, bu "
-"diğer önem derecesi argümanları ile birleştirilebilir"
+"Tüm Elektriksel Kural Kontrolü hata seviyesi ihlallerini bildir, bu diğer "
+"önem derecesi argümanları ile birleştirilebilir"
 
 #: kicad/cli/command_sch_erc.cpp:68
 msgid ""
 "Report all ERC warning level violations, this can be combined with the other "
 "severity arguments"
 msgstr ""
-"Tüm ERC (Elektriksel Kural Kontrolü) uyarı seviyesi ihlallerini bildir, bu "
-"diğer önem derecesi argümanları ile birleştirilebilir"
+"Tüm Elektriksel Kural Kontrolü uyarı seviyesi ihlallerini bildir, bu diğer "
+"önem derecesi argümanları ile birleştirilebilir"
 
 #: kicad/cli/command_sch_erc.cpp:73
 msgid ""
 "Report all excluded ERC violations, this can be combined with the other "
 "severity arguments"
 msgstr ""
-"Hariç tutulan tüm ERC (Elektriksel Kural Kontrolü) ihlallerini raporla, bu "
-"diğer önem derecesi argümanlarıyla birleştirilebilir"
+"Hariç tutulan tüm Elektriksel Kural Kontrolü ihlallerini raporla, bu diğer "
+"önem derecesi argümanlarıyla birleştirilebilir"
 
 #: kicad/cli/command_sch_erc.cpp:78
 msgid "Return a nonzero exit code if ERC violations exist"
 msgstr ""
-"ERC (Elektriksel Kural Kontrolü) ihlalleri varsa sıfır olmayan bir çıkış "
-"kodu döndür"
+"Elektriksel Kural Kontrolü ihlalleri varsa sıfır olmayan bir çıkış kodu "
+"döndür"
 
 #: kicad/cli/command_sch_export.h:33
 msgid "Export utilities (netlist, pdf, bom, etc)"
