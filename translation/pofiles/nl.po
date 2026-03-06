@@ -1,7 +1,7 @@
 # Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2025, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021.
 # Arend-Jan van Hilten <a.j.vanhilten@student.tudelft.nl>, 2021, 2023.
-# pimjansen98 <pimjansen1998@gmail.com>, 2021.
+# pimjansen98 <pimjansen1998@gmail.com>, 2021, 2026.
 # CJ van der Hoeven <KeesEnJoa@gmail.com>, 2021, 2024, 2026.
 # Bas Wijnen <wijnen@debian.org>, 2022, 2023, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:07+0000\n"
-"Last-Translator: Stefan De Raedemaeker <stefandr.dev@gmail.com>\n"
+"Last-Translator: pimjansen98 <pimjansen1998@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kicad/master-"
 "source/nl/>\n"
 "Language: nl\n"
@@ -13509,8 +13509,7 @@ msgstr "%s exporteren"
 #: eeschema/dialogs/dialog_export_netlist.cpp:585
 #: eeschema/netlist_exporters/netlist_generator.cpp:56
 msgid "Exporting netlist requires a fully annotated schematic."
-msgstr ""
-"Het exporteren van de netlijst vereist een volledig geannoteerd schema."
+msgstr "Het exporteren van de netlijst vereist een volledig geannoteerd schema."
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:645
 #: eeschema/dialogs/dialog_export_netlist.cpp:684
