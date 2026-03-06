@@ -5,7 +5,7 @@
 # CJ van der Hoeven <KeesEnJoa@gmail.com>, 2021, 2024, 2026.
 # Bas Wijnen <wijnen@debian.org>, 2022, 2023, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
-# Christiaan Nieuwlaat <krizzje@gmail.com>, 2023.
+# Christiaan Nieuwlaat <krizzje@gmail.com>, 2023, 2026.
 # Tom Niesse <tomniesse@gmail.com>, 2023.
 # johanneswilkens <wilkensjohannes@gmail.com>, 2023, 2026.
 # Ranforingus <ranforingus@hotmail.com>, 2023, 2024, 2026.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:07+0000\n"
-"Last-Translator: johanneswilkens <wilkensjohannes@gmail.com>\n"
+"Last-Translator: Christiaan Nieuwlaat <krizzje@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kicad/master-"
 "source/nl/>\n"
 "Language: nl\n"
