@@ -26,7 +26,7 @@
 # İclal Gör <iclallgor@gmail.com>, 2025, 2026.
 # NAXSISFLYBY <naxsis61@gmail.com>, 2025.
 # Ertuğrul Reisoğlu <reisoglusoftware@gmail.com>, 2025.
-# Niyazi <tanyildizn@gmail.com>, 2025.
+# Niyazi <tanyildizn@gmail.com>, 2025, 2026.
 # Tevfik Bagcivan <tevfik.bagcivan@gmail.com>, 2025.
 # metin kiruc <metinkiruc@gmail.com>, 2025.
 # Oğuz Ersen <oguz@ersen.moe>, 2026.
@@ -36,7 +36,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:32+0000\n"
-"Last-Translator: Gökhan Koçmarlı <gokhankocmarli@gmail.com>\n"
+"Last-Translator: Niyazi <tanyildizn@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
