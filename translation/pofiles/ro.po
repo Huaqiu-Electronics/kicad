@@ -1,5 +1,5 @@
 # Alex Gellen <alex.n.gellen@gmail.com>, 2021, 2022, 2024, 2026.
-# Adrian Scripcă <benishor@gmail.com>, 2021.
+# Adrian Scripcă <benishor@gmail.com>, 2021, 2026.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023, 2026.
 # Nicoara Alex <alex.nicoara@yahoo.com>, 2024.
 # Peter B <sleepyghostshark@users.noreply.hosted.weblate.org>, 2024, 2025, 2026.
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:46+0000\n"
-"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
+"Last-Translator: Adrian Scripcă <benishor@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ro/>\n"
 "Language: ro\n"
