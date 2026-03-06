@@ -9,7 +9,7 @@
 # 2tama3 <2tama3@gmail.com>, 2023, 2024, 2025, 2026.
 # SubaruArai <subaruletian.arai@minebea.com>, 2024.
 # dsa-t <dudesuchamazing@gmail.com>, 2024, 2025.
-# Yutaro Urata2 <yutarourata03@gmail.com>, 2024.
+# Yutaro Urata2 <yutarourata03@gmail.com>, 2024, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
 msgid ""
 msgstr ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:54+0000\n"
-"Last-Translator: Ji Yoon Choi <chichoon.choi@gmail.com>\n"
+"Last-Translator: Yutaro Urata2 <yutarourata03@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kicad/master-"
 "source/ja/>\n"
 "Language: ja\n"
@@ -15261,8 +15261,7 @@ msgstr "AUTHORとSUBJECTの変数からメタデータを生成する"
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:149
 #: pcbnew/dialogs/dialog_plot_base.cpp:431
 msgid "Generate PDF document properties from AUTHOR and SUBJECT text variables"
-msgstr ""
-"AUTHOR と SUBJECTのテキスト変数からPDFドキュメントのプロパティを生成する"
+msgstr "AUTHOR と SUBJECTのテキスト変数からPDFドキュメントのプロパティを生成する"
 
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:156
 #: pcbnew/dialogs/dialog_plot_base.cpp:330
