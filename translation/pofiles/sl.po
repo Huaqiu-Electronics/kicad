@@ -1,7 +1,7 @@
 # Seth Hillbrand <seth@kipro-pcb.com>, 2021.
 # radix <neutrino@gmx.co.uk>, 2021.
 # Dejan Smole <dejko1@hotmail.com>, 2022.
-# Vitan Košpenda <kospendavitan@gmail.com>, 2022.
+# Vitan Košpenda <kospendavitan@gmail.com>, 2022, 2026.
 # Sašo Domadenik <saso.doma@gmail.com>, 2022.
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Mitja Nemec <mitja.nemec@fe.uni-lj.si>, 2026.
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 16:25+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 16:27+0000\n"
+"Last-Translator: Vitan Košpenda <kospendavitan@gmail.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sl/>\n"
 "Language: sl\n"
@@ -10344,8 +10344,7 @@ msgstr "Imena zatiča ni mogoče razčleniti v odseku s simboli net na seznamu."
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:196
 #, fuzzy
 msgid "Cannot parse net name in symbol net section of netlist."
-msgstr ""
-"Imena omrežja ni mogoče razčleniti v odseku s simboli mreže na seznamu."
+msgstr "Imena omrežja ni mogoče razčleniti v odseku s simboli mreže na seznamu."
 
 #: common/netlist_reader/legacy_netlist_reader.cpp:243
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:244
@@ -16957,8 +16956,7 @@ msgstr "Način za sinhronizirano urejanje nožic"
 #: eeschema/dialogs/dialog_pin_properties.cpp:433
 #, fuzzy
 msgid "Synchronized Pins Mode.  New pin will be added to all units."
-msgstr ""
-"Način sinhroniziranih priključkov. Nov priključek bo dodan vsem enotam."
+msgstr "Način sinhroniziranih priključkov. Nov priključek bo dodan vsem enotam."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:435
 #, fuzzy
@@ -21553,8 +21551,7 @@ msgstr ""
 #: eeschema/files-io.cpp:510
 #, fuzzy
 msgid "Illegal entry found in project file symbol library list."
-msgstr ""
-"Na seznamu knjižnice simbolov projektne datoteke najden nezakonit vnos."
+msgstr "Na seznamu knjižnice simbolov projektne datoteke najden nezakonit vnos."
 
 #: eeschema/files-io.cpp:511
 #, fuzzy
@@ -41101,8 +41098,7 @@ msgstr "Izbrišite skladbe v celoti iz blazinic"
 #: pcbnew/dialogs/dialog_cleanup_tracks_and_vias_base.cpp:63
 #, fuzzy
 msgid "Delete tracks that have both start and end positions inside of a pad"
-msgstr ""
-"Izbrišite skladbe, ki imajo začetni in končni položaj znotraj blazinice"
+msgstr "Izbrišite skladbe, ki imajo začetni in končni položaj znotraj blazinice"
 
 #: pcbnew/dialogs/dialog_cleanup_tracks_and_vias_base.cpp:83
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:58
