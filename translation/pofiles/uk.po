@@ -1,4 +1,4 @@
-# Kuzemko Alexsandr <alexandrkuzemko@gmail.com>, 2022.
+# Kuzemko Alexsandr <alexandrkuzemko@gmail.com>, 2022, 2026.
 # Ivan Chuba <xtrvweb@gmail.com>, 2022, 2023, 2024, 2025, 2026.
 # Artem <artem@molotov.work>, 2022.
 # Andrii Shelestov <streamx3@gmail.com>, 2022.
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:36+0000\n"
-"Last-Translator: Ivan Chuba <xtrvweb@gmail.com>\n"
+"Last-Translator: Kuzemko Alexsandr <alexandrkuzemko@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kicad/master-"
 "source/uk/>\n"
 "Language: uk\n"
@@ -8490,8 +8490,7 @@ msgstr "Не вдалося завантажити бібліотеку kiface '
 #: common/kiway.cpp:291
 #, c-format
 msgid "Could not read instance name and version from kiface library '%s'."
-msgstr ""
-"Не вдалося прочитати ім'я екземпляра і версію з бібліотеки kiface '%s'."
+msgstr "Не вдалося прочитати ім'я екземпляра і версію з бібліотеки kiface '%s'."
 
 #: common/kiway.cpp:452
 msgid "Error loading editor."
@@ -11761,8 +11760,7 @@ msgstr "Розташування бібліотеки: %s"
 #: cvpcb/cvpcb_mainframe.cpp:905
 msgid ""
 "No PCB footprint libraries are listed in the current footprint library table."
-msgstr ""
-"У поточній таблиці бібліотек посадкових місць не має жодної бібліотеки."
+msgstr "У поточній таблиці бібліотек посадкових місць не має жодної бібліотеки."
 
 #: cvpcb/cvpcb_mainframe.cpp:906
 msgid "Configuration Error"
@@ -49734,8 +49732,7 @@ msgstr ""
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:744
 #, c-format
 msgid "Remove %s 'exclude from BOM' fabrication attribute."
-msgstr ""
-"Виділення виробничого атрибута 'виключено з переліку елементів' для %s."
+msgstr "Виділення виробничого атрибута 'виключено з переліку елементів' для %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:753
 #, c-format
