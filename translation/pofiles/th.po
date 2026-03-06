@@ -2,13 +2,14 @@
 # "boonchai k." <kicadthai@gmail.com>, 2023, 2024, 2026.
 # dsa-t <dudesuchamazing@gmail.com>, 2024.
 # John Beard <john.j.beard@gmail.com>, 2025.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:15+0000\n"
-"Last-Translator: \"boonchai k.\" <kicadthai@gmail.com>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/kicad/master-source/"
 "th/>\n"
 "Language: th\n"
