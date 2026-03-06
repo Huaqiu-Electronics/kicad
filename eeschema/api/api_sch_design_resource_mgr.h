@@ -45,12 +45,13 @@ public:
 
     bool SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT const& aComponent );
 
-    //  Write symbol fields ,return the updated symbol if successful
-    std::optional<LIB_ID> WriteSymbolFields( std::string const& aFileName, std::string const& aNickName,
-                                             auto const& aFields, auto const& aFootprintName );
-
 
 private:
+    //  Write symbol fields ,return the updated symbol if successful
+    LIB_SYMBOL* WriteSymbolFields( std::string const& aFileName, std::string const& aNickName, auto const& aFields,
+                                   auto const& aFootprintName );
+
+
     // NOTE : Using a scoped io will lead to crash on opening symbol chooser due to using after free.
     std::unique_ptr<SCH_IO> m_schIo;
 };

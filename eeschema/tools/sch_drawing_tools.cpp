@@ -342,8 +342,15 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
                 || isSyntheticClick
                 || evt->IsAction( &ACTIONS::cursorClick ) || evt->IsAction( &ACTIONS::cursorDblClick ) )
         {
-            if( !symbol )
+            if( !symbol  )
             {
+
+                if(toolParams.isFromAPI)
+                {
+                    m_frame->PopTool( aEvent );
+                    break;
+                }
+
                 m_toolMgr->RunAction( ACTIONS::selectionClear );
 
                 SYMBOL_LIBRARY_ADAPTER* libs = PROJECT_SCH::SymbolLibAdapter( &m_frame->Prj() );
@@ -518,6 +525,13 @@ int SCH_DRAWING_TOOLS::PlaceSymbol( const TOOL_EVENT& aEvent )
                 }
 
                 symbol = nextSymbol;
+
+
+                if(!symbol && toolParams.isFromAPI) 
+                {
+                    m_frame->PopTool( aEvent );
+                    break;
+                }
             }
         }
         else if( evt->IsClick( BUT_RIGHT ) )

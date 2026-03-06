@@ -267,7 +267,7 @@ void API_HANDLER_SCH::placeSymbol( COMPONENT_CONTENT const&                  aCo
     m_frame->GetToolManager()->RunAction<SCH_ACTIONS::PLACE_SYMBOL_PARAMS>(
             SCH_ACTIONS::placeSymbol,
             { new SCH_SYMBOL( *libSymbol, &m_frame->GetCurrentSheet(), pickedSymbol, {}, &m_frame->Schematic() ), true,
-              true } );
+              true, true } );
 }
 
 

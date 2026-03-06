@@ -344,7 +344,8 @@ public:
         bool m_Reannotate = true;
         ///< Whether the caller expects to place all units
         bool forcePlaceAllUnits = false;
-
+        ///< Whether the callee is from API
+        bool isFromAPI = false;
     };
 
     struct PLACE_SYMBOL_UNIT_PARAMS

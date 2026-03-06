@@ -36,6 +36,7 @@
 #include <string>
 #include <eda_base_frame.h>
 #include <project_sch.h>
+#include <vector>
 #include <wx/log.h>
 
 #include "api_sch_design_resource_mgr.h"
@@ -89,8 +90,9 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
     const auto symbol_file_name = aComponent.symbol.filename;
 
     if( !SaveSymbolContentToProject( aComponent.symbol ) )
+    {
         return {};
-
+    }
 
     for( const auto& fpc : aComponent.footprints )
     {
@@ -110,28 +112,11 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
 
 
     const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
-    const auto symbol_uri = FormatAPISymbolURI( symbol_file_name );
-
-    if( !UpdateLibTable( LIBRARY_TABLE_TYPE::SYMBOL, symbol_nick_name, symbol_uri ) )
-    {
-        wxLogError( "Failed to update symbol library table for %s", symbol_nick_name );
-        return {};
-    }
-
-
-    auto lib_id = WriteSymbolFields( symbol_file_name, symbol_nick_name, aComponent.attributes,
-                                     RemoveFileExt( aComponent.footprints.size()
-                                                            ? aComponent.footprints.front().footprint.filename
-                                                            : aComponent.symbol.filename ) );
-
-    if( !lib_id )
-    {
-        wxLogError( "Failed to write symbol fields for %s", symbol_nick_name );
-        return {};
-    }
-
-
-    auto lib_sym = SchGetLibSymbol( *lib_id, PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() ), nullptr, &m_frame );
+    // NOTE : Do not write symbol lib table, it will crash the symbol chooser
+    auto lib_sym = WriteSymbolFields( symbol_file_name, symbol_nick_name, aComponent.attributes,
+                                      RemoveFileExt( aComponent.footprints.size()
+                                                             ? aComponent.footprints.front().footprint.filename
+                                                             : aComponent.symbol.filename ) );
 
     if( !lib_sym )
     {
@@ -149,7 +134,6 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
     {
         wxLogWarning( "Failed to reload fp library for %s", symbol_nick_name );
     }
-
 
     return lib_sym;
 }
@@ -182,25 +166,19 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT
     return true;
 }
 
-std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName,
-                                                                      std::string const& aNickName, auto const& aFields,
-                                                                      auto const& aFootprintName )
+LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName, std::string const& aNickName,
+                                                            auto const& aFields, auto const& aFootprintName )
 {
     LIB_SYMBOL* lib_sym{};
 
-    auto adapter = PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() );
+    auto full_fp = ( wxFileName( *GetProjectResourceSavePath( SYMBOL_DIR, aFileName ) ) ).GetFullPath();
+
 
     try
     {
-        auto res = adapter->LoadOne( aNickName );
+        std::vector<LIB_SYMBOL*> symbols;
+        m_schIo->EnumerateSymbolLib( symbols, full_fp );
 
-        if( !res || res->load_status == LOAD_STATUS::INVALID )
-        {
-            wxLogError( _( "Failed to load symbol library '%s'." ), aNickName );
-            return {};
-        }
-
-        auto symbols = adapter->GetSymbols( aNickName, SYMBOL_LIBRARY_ADAPTER::SYMBOL_TYPE::ALL_SYMBOLS );
         if( symbols.empty() )
         {
             wxLogError( "Symbol '%s' not found in library table.", aNickName );
@@ -215,8 +193,10 @@ std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::strin
         return {};
     }
 
-    wxString old_symName = lib_sym->GetName();
-    lib_sym->SetName( aNickName );
+    LIB_ID id;
+    id.SetLibNickname( aNickName );
+    id.SetLibItemName( lib_sym->GetName() );
+    lib_sym->SetLibId( id );
 
     std::map<std::string, std::string> attrs;
 
@@ -287,31 +267,5 @@ std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::strin
 
 
     lib_sym->SetHqPartsFields( fields );
-
-    const auto fp = *GetProjectResourceSavePath( SYMBOL_DIR, aFileName );
-    wxFileName fn( fp );
-
-    try
-    {
-        m_schIo->DeleteSymbol( fn.GetFullPath(), old_symName );
-        m_schIo->SaveSymbol( fn.GetFullPath(), new LIB_SYMBOL( *lib_sym ) );
-    }
-    catch( const IO_ERROR& ioe )
-    {
-        wxLogError( _( "Failed to save library %s. %s" ), fn.GetFullPath(), ioe.What() );
-        return {};
-    }
-
-    // NOTE : The lib sym will be invalidate after reloading
-    const auto lib_id_cp = lib_sym->GetLibId();
-
-    Pgm().GetLibraryManager().ReloadLibraryEntry( LIBRARY_TABLE_TYPE::SYMBOL, aNickName, LIBRARY_TABLE_SCOPE::PROJECT );
-
-    if( auto status = adapter->LoadOne( aNickName ); !status || status->load_status != LOAD_STATUS::LOADED )
-    {
-        wxLogError( _( "Failed to reload symbol library '%s' after saving." ), aNickName );
-        return {};
-    }
-
-    return lib_id_cp;
+    return lib_sym;
 }
