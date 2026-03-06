@@ -5,14 +5,14 @@
 # Håvard Syslak <haavard.syslak@gmail.com>, 2022, 2025.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
 # John Beard <john.j.beard@gmail.com>, 2025.
-# Stian Kristensen <stiank@gmail.com>, 2025.
+# Stian Kristensen <stiank@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: 5.99\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:33+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Last-Translator: Stian Kristensen <stiank@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kicad/"
 "master-source/nb_NO/>\n"
 "Language: no\n"
