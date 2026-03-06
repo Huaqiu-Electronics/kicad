@@ -5,7 +5,7 @@
 # Ivan Chuba <xtrvweb@gmail.com>, 2022, 2023.
 # Grzegorz Szymaszek <gszymaszek@short.pl>, 2022, 2024.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025, 2026.
-# Henrik Kauhanen <henrik@kauhanen.se>, 2023.
+# Henrik Kauhanen <henrik@kauhanen.se>, 2023, 2026.
 # Jan Sobków <sobkow.jan@gmail.com>, 2023.
 # Eryk Michalak <gnu.ewm@protonmail.com>, 2023.
 # Filip Piękoś <filipalcatel@gmail.com>, 2023.
@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:24+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-07 17:25+0000\n"
+"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
