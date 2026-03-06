@@ -4,13 +4,14 @@
 # Nicoara Alex <alex.nicoara@yahoo.com>, 2024.
 # Peter B <sleepyghostshark@users.noreply.hosted.weblate.org>, 2024, 2025, 2026.
 # Tatu Bogdan <bogdan.tatu@proton.me>, 2025, 2026.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 15:46+0000\n"
-"Last-Translator: Tatu Bogdan <bogdan.tatu@proton.me>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ro/>\n"
 "Language: ro\n"
