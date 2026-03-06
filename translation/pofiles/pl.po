@@ -1,4 +1,4 @@
-# Mark Roszko <mark.roszko@gmail.com>, 2020, 2023.
+# Mark Roszko <mark.roszko@gmail.com>, 2020, 2023, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Pomian <kontakt@rapiddev.pl>, 2021.
 # Krzysztof Kawa <christophorus72@gmail.com>, 2022, 2025.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:24+0000\n"
-"Last-Translator: Czam Ciał <lamaforge@proton.me>\n"
+"Last-Translator: Mark Roszko <mark.roszko@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
