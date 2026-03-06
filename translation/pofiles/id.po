@@ -1,7 +1,7 @@
 # Triyan W. Nugroho <triyan.wn@gmail.com>, 2021.
 # Jacque Fresco <aidter@use.startmail.com>, 2021, 2026.
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021, 2026.
-# whenwesober <naomi16i_1298q@cikuh.com>, 2021.
+# whenwesober <naomi16i_1298q@cikuh.com>, 2021, 2026.
 # Neko Nekowazarashi <kodra@nekoweb.my.id>, 2022, 2026.
 # "Triyan W. Nugroho" <triyan.wn@gmail.com>, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2026.
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:45+0000\n"
-"Last-Translator: Jacque Fresco <aidter@use.startmail.com>\n"
+"Last-Translator: whenwesober <naomi16i_1298q@cikuh.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kicad/master-"
 "source/id/>\n"
 "Language: id\n"
