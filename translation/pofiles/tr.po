@@ -12,7 +12,7 @@
 # turkce <turkceceviri@protonmail.com>, 2023, 2026.
 # Marine Biologist <fatihvolkanster@gmail.com>, 2023.
 # Mert Gülsoy <mgulsoy@gmail.com>, 2023.
-# Erkan <erkankarakas@outlook.com>, 2023, 2025.
+# Erkan <erkankarakas@outlook.com>, 2023, 2025, 2026.
 # Mert Kalkancı <mertkalkanci79@gmail.com>, 2024, 2026.
 # YÜKSEL AÇIKGÖZ <yukselacikgoz@gmail.com>, 2024, 2025, 2026.
 # Mahsum Aslan <mahsumaslan@yandex.com>, 2024.
@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-06 22:32+0000\n"
-"Last-Translator: metin kiruc <metinkiruc@gmail.com>\n"
+"PO-Revision-Date: 2026-03-06 22:33+0000\n"
+"Last-Translator: Erkan <erkankarakas@outlook.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
