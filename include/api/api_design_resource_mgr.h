@@ -80,7 +80,7 @@ public:
 
     static wxString GetIPClibDesc();
 
-    static COMPONENT_CONTENT GetComponentConent( COMPONENT_RESOURCE const& aResource );
+    static std::optional<COMPONENT_CONTENT> GetComponentConent( COMPONENT_RESOURCE const& aResource );
 
     wxString GetProjectApiFpUri() const;
 

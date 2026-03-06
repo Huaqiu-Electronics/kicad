@@ -404,7 +404,7 @@ bool API_DESIGN_RESOURCE_MGR::Save3dModelToProject( NAMED_CONTENT const&        
     return true;
 }
 
-COMPONENT_CONTENT API_DESIGN_RESOURCE_MGR::GetComponentConent( COMPONENT_RESOURCE const& aResource )
+std::optional<COMPONENT_CONTENT> API_DESIGN_RESOURCE_MGR::GetComponentConent( COMPONENT_RESOURCE const& aResource )
 {
     const auto& symbol_uri = aResource.symbol_resource.uri;
     const auto  symbol_content = API_DESIGN_RESOURCE_MGR::DownloadURL( symbol_uri );
@@ -412,6 +412,7 @@ COMPONENT_CONTENT API_DESIGN_RESOURCE_MGR::GetComponentConent( COMPONENT_RESOURC
     if( !symbol_content )
     {
         wxLogWarning( "Failed to download symbol from %s", symbol_uri );
+        return {};
     }
 
 

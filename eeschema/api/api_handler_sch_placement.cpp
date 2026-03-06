@@ -226,7 +226,10 @@ void API_HANDLER_SCH::placeDesignBlock( DESIGN_BLOCK_CONTENT const&             
 
 void API_HANDLER_SCH::placeSymbol( PLACE_SYMBOL_RESOURCE_CMD const& aCommand )
 {
-    placeSymbol( API_DESIGN_RESOURCE_MGR::GetComponentConent( aCommand.component ), aCommand.option );
+    if( auto component = API_DESIGN_RESOURCE_MGR::GetComponentConent( aCommand.component ); component.has_value() )
+    {
+        placeSymbol( *component, aCommand.option );
+    }
 }
 
 HANDLER_RESULT<Empty> API_HANDLER_SCH::handlePlaceSymbol( const HANDLER_CONTEXT<PlaceSymbol>& aCtx )
