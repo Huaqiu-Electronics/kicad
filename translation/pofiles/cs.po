@@ -10,7 +10,7 @@
 # Jan Straka <bach@email.cz>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2026.
 # Radek Kuznik <radek.kzn@gmail.com>, 2021, 2022, 2023, 2026.
-# Ondřej Čertík <ondrej@certik.us>, 2022.
+# Ondřej Čertík <ondrej@certik.us>, 2022, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2022.
 # René Široký <siroky.rene@wideservis.cz>, 2023, 2026.
 # Andrej Valek <andy@skyrain.eu>, 2024, 2026.
@@ -27,7 +27,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:35+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: Ondřej Čertík <ondrej@certik.us>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kicad/master-"
 "source/cs/>\n"
 "Language: cs\n"
