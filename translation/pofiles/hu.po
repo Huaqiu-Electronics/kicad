@@ -7,7 +7,7 @@
 # Gergo Kamaras <kamaras.gergo@gmail.com>, 2025.
 # Sárkány Lőrinc <lsarkany@gmail.com>, 2025, 2026.
 # iamPeter <lopert.peter.otto@gmail.com>, 2025.
-# Elek Zoltán <moncsa58@gmail.com>, 2025.
+# Elek Zoltán <moncsa58@gmail.com>, 2025, 2026.
 # Viktor Döme <domevik@gmail.com>, 2025.
 # KB <kvellbalazs@gmail.com>, 2025, 2026.
 # dsa-t <dudesuchamazing@gmail.com>, 2025, 2026.
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:00+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: Elek Zoltán <moncsa58@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hu/>\n"
 "Language: hu\n"
