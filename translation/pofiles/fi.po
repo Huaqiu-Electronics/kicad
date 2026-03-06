@@ -15,13 +15,14 @@
 # dsa-t <dudesuchamazing@gmail.com>, 2024, 2025, 2026.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2024, 2025, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
+# "J. Lavoie" <j.lavoie@net-c.ca>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:59+0000\n"
-"Last-Translator: Riku Viitanen <riku.viitanen@protonmail.com>\n"
+"Last-Translator: \"J. Lavoie\" <j.lavoie@net-c.ca>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kicad/master-"
 "source/fi/>\n"
 "Language: fi\n"
