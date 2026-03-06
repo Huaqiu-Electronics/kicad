@@ -1,4 +1,4 @@
-# Seth Hillbrand <seth@kipro-pcb.com>, 2021.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2021, 2026.
 # radix <neutrino@gmx.co.uk>, 2021.
 # Dejan Smole <dejko1@hotmail.com>, 2022.
 # Vitan Košpenda <kospendavitan@gmail.com>, 2022, 2026.
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:27+0000\n"
-"Last-Translator: Vitan Košpenda <kospendavitan@gmail.com>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sl/>\n"
 "Language: sl\n"
