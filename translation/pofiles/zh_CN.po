@@ -30,7 +30,7 @@
 # 向阳阳 <hinata.hoshino@foxmail.com>, 2024, 2026.
 # Lao·Zhu <2208213223@qq.com>, 2024.
 # CloverGit <CloverGit@users.noreply.hosted.weblate.org>, 2024.
-# dsa-t <dudesuchamazing@gmail.com>, 2024, 2025.
+# dsa-t <dudesuchamazing@gmail.com>, 2024, 2025, 2026.
 # zly20129 <zly20129@icloud.com>, 2024.
 # Wang <wang@plasma.ac.cn>, 2024.
 # HalfSweet <HalfSweet@halfsweet.cn>, 2024.
@@ -47,7 +47,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: Rigo Ligo <rigoligo03@gmail.com>\n"
+"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
