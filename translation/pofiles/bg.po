@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2025-09-30 19:57+0000\n"
+"PO-Revision-Date: 2026-03-06 22:40+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/bg/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-Basepath: C:\\kicad\\trunk\n"
 "X-Poedit-Language: Bulgarian\n"
@@ -37126,8 +37126,7 @@ msgstr "Фактор на диелектрични загуби"
 msgid ""
 "Electrical resistivity or specific electrical resistance of conductor "
 "(ohm*meter)"
-msgstr ""
-"Резустивност, или специфично ел.съпротивление на проводника (Ohm*meter)"
+msgstr "Резустивност, или специфично ел.съпротивление на проводника (Ohm*meter)"
 
 #: pcb_calculator/transline_ident.cpp:113
 msgid "Frequency of the input signal"
@@ -41533,8 +41532,7 @@ msgstr "Изтр. на размер"
 msgid ""
 "Text thickness is too large for the text size.\n"
 "It will be clamped at %s."
-msgstr ""
-"Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
+msgstr "Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
 
 #: pcbnew/dialogs/dialog_footprint_properties.cpp:729
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor.cpp:909
@@ -41812,8 +41810,7 @@ msgstr " Vout трябва да е по-голямо от vref"
 msgid ""
 "The text thickness is too large for the text size.\n"
 "It will be clamped."
-msgstr ""
-"Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
+msgstr "Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor.cpp:690
 #, c-format
@@ -46330,8 +46327,7 @@ msgstr " Vout трябва да е по-голямо от vref"
 msgid ""
 "%s: Text thickness is too large.\n"
 "It will be truncated to %s"
-msgstr ""
-"Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
+msgstr "Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
 
 #: pcbnew/dialogs/panel_fp_editor_graphics_defaults.cpp:257
 #: pcbnew/dialogs/panel_setup_text_and_graphics.cpp:256
@@ -46339,8 +46335,7 @@ msgstr ""
 msgid ""
 "%s: Text thickness is too small.\n"
 "It will be truncated to %s"
-msgstr ""
-"Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
+msgstr "Дебелината на шрифта е прекалено голяма за размера. Ще бъде ограничена."
 
 #: pcbnew/dialogs/panel_fp_editor_graphics_defaults.cpp:283
 #: pcbnew/dialogs/panel_setup_text_and_graphics.cpp:282
