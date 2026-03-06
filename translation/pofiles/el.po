@@ -1,6 +1,6 @@
 # aris-kimi <aris_kimi@hotmail.com>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # fresh <fresh190@protonmail.com>, 2021.
-# Michalis <michalisntovas@yahoo.gr>, 2021.
+# Michalis <michalisntovas@yahoo.gr>, 2021, 2026.
 # Michael Misirlis <MMISIRLIS@gmail.com>, 2021, 2022, 2023, 2026.
 # Axel Henriksson <axe.henriksson@gmail.com>, 2021.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025.
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:02+0000\n"
-"Last-Translator: Michael Misirlis <MMISIRLIS@gmail.com>\n"
+"Last-Translator: Michalis <michalisntovas@yahoo.gr>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/kicad/master-"
 "source/el/>\n"
 "Language: el\n"
