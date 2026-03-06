@@ -1,5 +1,5 @@
 # Lithuanian translation of kicad.po
-# Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2026.
 # WhiteChairFromIkea <dainius.mazuika@gmail.com>, 2020, 2021.
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: KiCad 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 16:42+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 16:43+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/lt/>\n"
 "Language: lt\n"
@@ -5507,8 +5507,7 @@ msgstr "Nubrėžkite stačiakampį"
 
 #: common/dialogs/panel_mouse_settings_base.cpp:126
 msgid "Drag selected objects; otherwise draw selection rectangle"
-msgstr ""
-"Vilkite pasirinktus objektus; kitaip nubrėžkite pasirinkimo stačiakampį"
+msgstr "Vilkite pasirinktus objektus; kitaip nubrėžkite pasirinkimo stačiakampį"
 
 #: common/dialogs/panel_mouse_settings_base.cpp:126
 #, fuzzy
@@ -11500,8 +11499,7 @@ msgstr "Atnaujinti papildinius"
 
 #: common/tool/actions.cpp:1447
 msgid "Reload all python plugins and refresh plugin menus"
-msgstr ""
-"Perkraukite visus „Python“ papildinius ir atnaujinkite papildinių meniu"
+msgstr "Perkraukite visus „Python“ papildinius ir atnaujinkite papildinių meniu"
 
 #: common/tool/actions.cpp:1455
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:85
@@ -12709,8 +12707,8 @@ msgid ""
 "correctly the next time you import the netlist in Pcbnew."
 msgstr ""
 "\n"
-"Jei norėsite, kad jie būtų tinkamai atnaujinti, kai kitą kartą importuosite "
-"„netclist“ į „Pcbnew“, turėsite juos priskirti rankiniu būdu."
+"Jei norėsite, kad jie būtų tinkamai atnaujinti, kai kitą kartą importuosite „"
+"netclist“ į „Pcbnew“, turėsite juos priskirti rankiniu būdu."
 
 #: cvpcb/readwrite_dlgs.cpp:306
 msgid "Schematic saved"
@@ -18290,8 +18288,7 @@ msgstr ""
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:67
 msgid "Update symbols values that have been replaced in the PCB editor."
-msgstr ""
-"Atnaujinkite simbolių reikšmes, kurios buvo pakeistos PCB redaktoriuje."
+msgstr "Atnaujinkite simbolių reikšmes, kurios buvo pakeistos PCB redaktoriuje."
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:71
 msgid "Net names"
@@ -19996,8 +19993,7 @@ msgstr "Kitame simbolio vienete priskiriamas skirtingas pėdsakas"
 
 #: eeschema/erc/erc_item.cpp:137
 msgid "Different net assigned to a shared pin in another unit of the symbol"
-msgstr ""
-"Skirtingas tinklas, priskirtas bendram kaiščiui kitame simbolio vienete"
+msgstr "Skirtingas tinklas, priskirtas bendram kaiščiui kitame simbolio vienete"
 
 #: eeschema/erc/erc_item.cpp:141
 msgid "Conflict between bus alias definitions across schematic sheets"
@@ -43800,8 +43796,8 @@ msgstr "Y mastelio koeficientas:"
 #: pcbnew/dialogs/dialog_plot_base.cpp:301
 msgid "Set global Y scale adjust for exact scale PostScript output."
 msgstr ""
-"Nustatykite visuotinį „Y“ mastelio koregavimą, kad gautumėte tikslią "
-"„PostScript“ išvestį."
+"Nustatykite visuotinį „Y“ mastelio koregavimą, kad gautumėte tikslią „"
+"PostScript“ išvestį."
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:308
 msgid "Track width correction:"
@@ -53427,8 +53423,7 @@ msgstr "Nepavyko rasti komponento „%s“ bibliotekoje („Symdef ID“: „%s�
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1853
 #, c-format
 msgid "Unable to find documentation symbol in the library (Symdef ID: '%s')"
-msgstr ""
-"Nepavyko rasti dokumentacijos simbolio bibliotekoje („Symdef ID“: '%s')"
+msgstr "Nepavyko rasti dokumentacijos simbolio bibliotekoje („Symdef ID“: '%s')"
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1920
 #, c-format
@@ -53464,8 +53459,8 @@ msgid ""
 "Width' setting. There is no KiCad equivalent for this, so this setting was "
 "ignored."
 msgstr ""
-"„CADSTAR“ šablone „%s“ nustatyta vertė, lygi nuliui, apibrėžta nustatymui "
-"„Sliver Width“. Tam nėra „KiCad“ atitikmens, todėl šis parametras buvo "
+"„CADSTAR“ šablone „%s“ nustatyta vertė, lygi nuliui, apibrėžta nustatymui „"
+"Sliver Width“. Tam nėra „KiCad“ atitikmens, todėl šis parametras buvo "
 "ignoruojamas."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1958
@@ -53559,9 +53554,9 @@ msgid ""
 "only supports circular vias so this via type has been changed to be a via "
 "with circular shape of %.2f mm diameter."
 msgstr ""
-"CADSTAR kodas naudojant kodą „%s“ skiriasi nuo apibrėžto apskritimo formos. "
-"„KiCad“ palaiko tik apskritas vijas, todėl šis „via“ tipas pakeistas į "
-"„via“, kurio apskritimo forma yra %.2f mm skersmens."
+"CADSTAR kodas naudojant kodą „%s“ skiriasi nuo apibrėžto apskritimo formos. „"
+"KiCad“ palaiko tik apskritas vijas, todėl šis „via“ tipas pakeistas į „via“, "
+"kurio apskritimo forma yra %.2f mm skersmens."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:3521
 #, c-format
@@ -53604,9 +53599,9 @@ msgid ""
 "hatching has two hatches 90 degrees apart, oriented %.1f degrees from "
 "horizontal."
 msgstr ""
-"„CADSTAR“ perinimo kodo „%s“ liukų kampų skirtumas yra %.1f laipsnių. "
-"„KiCad“ palaiko tik perėjimą 90 laipsnių kampu. Importuotame perintuve yra "
-"du liukai, esantys 90 laipsnių atstumu, nukreipti %.1f laipsnių kampu nuo "
+"„CADSTAR“ perinimo kodo „%s“ liukų kampų skirtumas yra %.1f laipsnių. „KiCad"
+"“ palaiko tik perėjimą 90 laipsnių kampu. Importuotame perintuve yra du "
+"liukai, esantys 90 laipsnių atstumu, nukreipti %.1f laipsnių kampu nuo "
 "horizontalios."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:3626
@@ -57597,8 +57592,7 @@ msgstr "Redaguoti aikštelę"
 #: pcbnew/tools/pad_tool.cpp:790
 #, c-format
 msgid "Pad Edit Mode.  Press %s again to exit."
-msgstr ""
-"Trinkelių redagavimo režimas. Dar kartą paspauskite %s, kad išeitumėte."
+msgstr "Trinkelių redagavimo režimas. Dar kartą paspauskite %s, kad išeitumėte."
 
 #: pcbnew/tools/pad_tool.cpp:795
 #, c-format
@@ -59657,8 +59651,7 @@ msgstr "Vilkite (45 laipsnių režimas)"
 
 #: pcbnew/tools/pcb_actions.cpp:2692
 msgid "Drags the track segment while keeping connected tracks at 45 degrees."
-msgstr ""
-"Vilkite takelio atkarpą laikydami sujungtus takelius 45 laipsnių kampu."
+msgstr "Vilkite takelio atkarpą laikydami sujungtus takelius 45 laipsnių kampu."
 
 #: pcbnew/tools/pcb_actions.cpp:2700
 #, fuzzy
