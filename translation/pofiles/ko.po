@@ -25,7 +25,7 @@
 # KwonHyeokbeom <gurqja3810@naver.com>, 2022, 2026.
 # "minsu kim (0xGabriel)" <rlaalstn9601@gmail.com>, 2023, 2026.
 # pedrolinharesmoreira <pedrolinhares@unifei.edu.br>, 2023, 2024.
-# Pedro Moreira <pedroltmoreira@gmail.com>, 2024, 2025.
+# Pedro Moreira <pedroltmoreira@gmail.com>, 2024, 2025, 2026.
 # simmon <simmon@nplob.com>, 2024.
 # jeong-sangwon <drone5023@gmail.com>, 2024, 2026.
 # John Beard <john.j.beard@gmail.com>, 2025.
@@ -40,7 +40,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:04+0000\n"
-"Last-Translator: 김호진 <ghwls1221@gmail.com>\n"
+"Last-Translator: Pedro Moreira <pedroltmoreira@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
