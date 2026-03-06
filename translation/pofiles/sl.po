@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-03 19:09+0000\n"
-"Last-Translator: Mitja Nemec <mitja.nemec@fe.uni-lj.si>\n"
+"PO-Revision-Date: 2026-03-07 16:25+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sl/>\n"
 "Language: sl\n"
@@ -16907,8 +16907,7 @@ msgstr "Nadomestno ime priključka"
 msgid ""
 "Alternate pin assignments are not available for symbols with multiple body "
 "styles."
-msgstr ""
-"Nadomestne dodelitve priključkov niso na voljo za De Morganove simbole."
+msgstr "Nadomestne dodelitve priključkov niso na voljo za De Morganove simbole."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:304
 #, fuzzy
@@ -26387,8 +26386,7 @@ msgstr "AC faza:"
 #, fuzzy
 msgid ""
 "Simulation provided no plots. Please refer to console window for results."
-msgstr ""
-"Ta simulacija ne daje nobenih izrisov. Za rezultate glejte okno konzole"
+msgstr "Ta simulacija ne daje nobenih izrisov. Za rezultate glejte okno konzole"
 
 #: eeschema/sim/simulator_frame.cpp:340
 #, fuzzy
@@ -27750,8 +27748,7 @@ msgstr "Spremeni %s priključek %s oznako vozlišča z '%s' na '%s'."
 #: eeschema/tools/backannotate.cpp:1414
 #, fuzzy, c-format
 msgid "Net %s cannot be changed to %s because it is driven by a power pin."
-msgstr ""
-"Omrežja %s ni mogoče spremeniti v '%s', ker ga poganja napajalni zatič."
+msgstr "Omrežja %s ni mogoče spremeniti v '%s', ker ga poganja napajalni zatič."
 
 #: eeschema/tools/backannotate.cpp:1423
 #, fuzzy, c-format
@@ -36307,8 +36304,7 @@ msgstr "Dodaj obstoječo datoteko postavitve strani ..."
 #: pagelayout_editor/tools/pl_actions.cpp:94
 #, fuzzy
 msgid "Append an existing drawing sheet file to the current file"
-msgstr ""
-"Obstoječi datoteki dodajte obstoječo datoteko zasnove postavitve strani"
+msgstr "Obstoječi datoteki dodajte obstoječo datoteko zasnove postavitve strani"
 
 #: pagelayout_editor/tools/pl_actions.cpp:105
 #, fuzzy
@@ -36399,8 +36395,8 @@ msgstr ""
 "* __a__ dušenje v dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (izguba)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> v </sub> \\ * Z <sub> ven </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> v </sub> \\ * Z <sub> ven </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> v </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> ven </sub> \\ * A - R2___\n"
 
@@ -36447,8 +36443,8 @@ msgstr ""
 "* __a__ dušenje v dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (izguba)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> v </sub> \\ * Z <sub> ven </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> v </sub> \\ * Z <sub> ven </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> v </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> ven </sub> \\ * A - R2___\n"
 
@@ -43271,8 +43267,8 @@ msgid ""
 "selection filter."
 msgstr ""
 "Odtis je zaklenjen: ni ga mogoče prosto premikati ali samodejno postaviti in "
-"ga lahko izberete le, če je v izbirnem filtru omogočeno potrditveno polje "
-"»Zaklenjeni elementi«."
+"ga lahko izberete le, če je v izbirnem filtru omogočeno potrditveno polje »"
+"Zaklenjeni elementi«."
 
 #: pcbnew/dialogs/dialog_footprint_properties.cpp:331
 #, fuzzy
@@ -43546,8 +43542,8 @@ msgid ""
 "The library ID and footprint ID currently assigned.  Use \"Change "
 "Footprint...\" to assign a different footprint."
 msgstr ""
-"Trenutno dodeljena ID knjižnice in ID odtisa. Uporabite “Change "
-"Footprint ...”, če želite dodeliti drug odtis."
+"Trenutno dodeljena ID knjižnice in ID odtisa. Uporabite “Change Footprint "
+"...”, če želite dodeliti drug odtis."
 
 #: pcbnew/dialogs/dialog_footprint_properties_base.h:120
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.h:133
@@ -47038,8 +47034,8 @@ msgid ""
 "filter."
 msgstr ""
 "Odtis je zaklenjen: ni ga mogoče prosto premikati ali samodejno postaviti in "
-"ga lahko izberete le, če je v izbirnem filtru omogočeno potrditveno polje "
-"»Zaklenjeni elementi«."
+"ga lahko izberete le, če je v izbirnem filtru omogočeno potrditveno polje »"
+"Zaklenjeni elementi«."
 
 #: pcbnew/dialogs/dialog_reference_image_properties_base.cpp:74
 #, fuzzy
@@ -55039,8 +55035,7 @@ msgstr "Za simbol \"%s\" ni določen odtis.\n"
 #: pcbnew/netlist_reader/netlist.cpp:231
 #, fuzzy, c-format
 msgid "Footprint of %s changed: board footprint '%s', netlist footprint '%s'."
-msgstr ""
-"Odtis strani %s je spremenjen: odtis plošče \"%s\", odtis mreže \"%s\"."
+msgstr "Odtis strani %s je spremenjen: odtis plošče \"%s\", odtis mreže \"%s\"."
 
 #: pcbnew/netlist_reader/netlist.cpp:254
 #, fuzzy, c-format
@@ -55210,8 +55205,7 @@ msgstr ""
 #: pcbnew/pad.cpp:2836
 #, fuzzy
 msgid "('castellated' pads are normally PTH)"
-msgstr ""
-"Opozorilo: Kastelirano lastnost lahko nastavite samo na blazinicah PTH."
+msgstr "Opozorilo: Kastelirano lastnost lahko nastavite samo na blazinicah PTH."
 
 #: pcbnew/pad.cpp:2839
 #, fuzzy
@@ -55221,14 +55215,12 @@ msgstr "Opozorilo: Lastnost BGA lahko nastavite samo na blazinice SMD."
 #: pcbnew/pad.cpp:2842
 #, fuzzy
 msgid "('mechanical' pads are normally PTH)"
-msgstr ""
-"Opozorilo: Kastelirano lastnost lahko nastavite samo na blazinicah PTH."
+msgstr "Opozorilo: Kastelirano lastnost lahko nastavite samo na blazinicah PTH."
 
 #: pcbnew/pad.cpp:2847
 #, fuzzy
 msgid "('press-fit' pads are normally PTH with round holes)"
-msgstr ""
-"Opozorilo: Kastelirano lastnost lahko nastavite samo na blazinicah PTH."
+msgstr "Opozorilo: Kastelirano lastnost lahko nastavite samo na blazinicah PTH."
 
 #: pcbnew/pad.cpp:2864
 #, fuzzy
@@ -62042,8 +62034,7 @@ msgstr "Vrtanje / postavitev izvora datoteke"
 #: pcbnew/tools/pcb_actions.cpp:1433
 #, fuzzy
 msgid "Place origin point for drill files and component placement files"
-msgstr ""
-"Postavite izvorno točko za vrtalne datoteke in datoteke položaja odtisa"
+msgstr "Postavite izvorno točko za vrtalne datoteke in datoteke položaja odtisa"
 
 #: pcbnew/tools/pcb_actions.cpp:1441
 #, fuzzy
