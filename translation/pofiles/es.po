@@ -5,7 +5,7 @@
 # Tomás Mora <tom.mora96@gmail.com>, 2021.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021, 2025, 2026.
 # Iñigo <ifs@elektroquark.com>, 2021.
-# VicSanRoPe <vicsanrope@protonmail.com>, 2021, 2022, 2024.
+# VicSanRoPe <vicsanrope@protonmail.com>, 2021, 2022, 2024, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2021.
 # Augusto Fraga Giachero <afg@augustofg.net>, 2021.
 # ferdymercury <fernando.hueso@uv.es>, 2021.
@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:27+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 17:28+0000\n"
+"Last-Translator: VicSanRoPe <vicsanrope@protonmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
@@ -15801,8 +15801,7 @@ msgstr "Datos del esquema"
 #: eeschema/dialogs/dialog_schematic_setup.cpp:154
 #: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:98
 msgid "Project is missing or read-only. Settings will not be editable."
-msgstr ""
-"Falta el proyecto o es de solo lectura. Los ajustes no serán editables."
+msgstr "Falta el proyecto o es de solo lectura. Los ajustes no serán editables."
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:191
 #, c-format
@@ -15819,8 +15818,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_tablecell_properties.cpp:88
 #: eeschema/dialogs/dialog_text_properties.cpp:73
 msgid "Note: individual item colors overridden in Preferences."
-msgstr ""
-"Nota: colores de elementos individuales ignorados por las preferencias."
+msgstr "Nota: colores de elementos individuales ignorados por las preferencias."
 
 #: eeschema/dialogs/dialog_shape_properties.cpp:376
 #: eeschema/dialogs/dialog_wire_bus_properties.cpp:234
@@ -20427,8 +20425,8 @@ msgstr ""
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr ""
-"El archivo de almacenamiento no fue completamente analizado (quedan %d "
-"bytes)."
+"El archivo de almacenamiento no fue completamente analizado (quedan %d bytes)"
+"."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1219
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1314
@@ -24607,8 +24605,7 @@ msgstr ""
 #: eeschema/symbol_checker.cpp:441
 #, c-format
 msgid "<b>Graphic circle has radius = 0</b> at location <b>(%s, %s)</b>."
-msgstr ""
-"<b>Círculo gráfico tiene radio cero</b> en la posición <b>(%s, %s)</b>."
+msgstr "<b>Círculo gráfico tiene radio cero</b> en la posición <b>(%s, %s)</b>."
 
 #: eeschema/symbol_checker.cpp:453
 #, c-format
@@ -26473,8 +26470,7 @@ msgstr "Mostrar corrientes de punto de operación"
 
 #: eeschema/tools/sch_actions.cpp:1318
 msgid "Show operating point current data from simulation"
-msgstr ""
-"Mostrar datos de corriente de punto de operación desde de la simulación"
+msgstr "Mostrar datos de corriente de punto de operación desde de la simulación"
 
 #: eeschema/tools/sch_actions.cpp:1324
 msgid "Show Pin Alternate Icons"
@@ -26548,8 +26544,7 @@ msgstr "Entrar en la hoja"
 
 #: eeschema/tools/sch_actions.cpp:1402
 msgid "Display the selected sheet's contents in the schematic editor"
-msgstr ""
-"Muestra los contenidos de la hoja seleccionada en el editor de esquemas"
+msgstr "Muestra los contenidos de la hoja seleccionada en el editor de esquemas"
 
 #: eeschema/tools/sch_actions.cpp:1410
 msgid "Leave Sheet"
@@ -38014,8 +38009,7 @@ msgstr "Desfase de línea de extensión:"
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:414
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:419
 msgid "Gap between the measured points and the start of the extension lines"
-msgstr ""
-"Espacio entre los puntos medidos y el inicio de las líneas de extensión"
+msgstr "Espacio entre los puntos medidos y el inicio de las líneas de extensión"
 
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:427
 msgid "Extension line overshoot:"
@@ -42032,8 +42026,8 @@ msgstr ""
 "PostScript.\n"
 "Esta corrección del ancho tiene como objeto compensar la anchura de pistas y "
 "errores en el tamaño de pads y vías.\n"
-"El valor de corrección razonable debe estar en el rango de [-"
-"(MinTrackWidth-1), +(MinClearanceValue-1)]."
+"El valor de corrección razonable debe estar en el rango de [-(MinTrackWidth-"
+"1), +(MinClearanceValue-1)]."
 
 # ¿Tamaño A4?
 #: pcbnew/dialogs/dialog_plot_base.cpp:324
@@ -48904,8 +48898,7 @@ msgstr "Placa de circuito impreso"
 #: pcbnew/files.cpp:337
 #, c-format
 msgid "Current board will be closed, save changes to '%s' before continuing?"
-msgstr ""
-"Se cerrará la placa actual, ¿guardar cambios a '%s' antes de continuar?"
+msgstr "Se cerrará la placa actual, ¿guardar cambios a '%s' antes de continuar?"
 
 #: pcbnew/files.cpp:351
 msgid "Current Board will be closed. Continue?"
@@ -49081,8 +49074,7 @@ msgstr "('SMD' esperado; real '%s')"
 #: pcbnew/footprint.cpp:4063
 #, c-format
 msgid "(net-tie pad group contains unknown pad number %s)"
-msgstr ""
-"(grupo de pads de unión de redes contiene número de pad desconocido %s)"
+msgstr "(grupo de pads de unión de redes contiene número de pad desconocido %s)"
 
 #: pcbnew/footprint.cpp:4068
 #, c-format
@@ -50090,8 +50082,7 @@ msgstr ""
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:753
 #, c-format
 msgid "Added %s 'exclude from BOM' fabrication attribute."
-msgstr ""
-"Atributo de fabricación 'excluir de la lista de materiales' %s añadido."
+msgstr "Atributo de fabricación 'excluir de la lista de materiales' %s añadido."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:758
 #, c-format
@@ -51270,8 +51261,7 @@ msgstr "Tipo de información de primitivo extendido desconocido: '%s'."
 #: pcbnew/pcb_io/altium/altium_parser_pcb.cpp:1057
 #, c-format
 msgid "Pads6 stream has unexpected length for subrecord 6: %d."
-msgstr ""
-"El flujo Pads6 tiene una longitud inesperada para el subregistro 6: %d."
+msgstr "El flujo Pads6 tiene una longitud inesperada para el subregistro 6: %d."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:483
 #, c-format
@@ -51596,8 +51586,7 @@ msgstr ""
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3964
 #, c-format
 msgid "Non-copper pad %s has a hole, which is not supported."
-msgstr ""
-"Un pad que no es de cobre %s tiene un orificio, esto no está soportado."
+msgstr "Un pad que no es de cobre %s tiene un orificio, esto no está soportado."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3974
 #, c-format
@@ -52311,8 +52300,7 @@ msgstr ""
 #: pcbnew/pcb_io/fabmaster/import_fabmaster.cpp:642
 #, c-format
 msgid "Unknown pad shape name '%s' on layer '%s' in row %zu."
-msgstr ""
-"Nombre de forma de pad desconocido '%s' en la capa '%s' en la fila %zu."
+msgstr "Nombre de forma de pad desconocido '%s' en la capa '%s' en la fila %zu."
 
 #: pcbnew/pcb_io/fabmaster/import_fabmaster.cpp:780
 #, c-format
@@ -54827,8 +54815,7 @@ msgstr "Imposible exportar, por favor, corrija e inténtelo de nuevo"
 #: pcbnew/specctra_import_export/specctra_export.cpp:1083
 #, c-format
 msgid "Footprint with value of '%s' has an empty reference designator."
-msgstr ""
-"La huella con el valor '%s' tiene un identificador de referencia vacío."
+msgstr "La huella con el valor '%s' tiene un identificador de referencia vacío."
 
 #: pcbnew/specctra_import_export/specctra_export.cpp:1093
 #, c-format
@@ -55385,8 +55372,7 @@ msgstr "Remplazado por un margen físico mayor desde %s; margen: %s."
 #: pcbnew/tools/board_inspection_tool.cpp:1135
 #, c-format
 msgid "Overridden by larger physical hole clearance from %s; clearance: %s."
-msgstr ""
-"Remplazado por un margen de orificio físico mayor desde %s; margen: %s."
+msgstr "Remplazado por un margen de orificio físico mayor desde %s; margen: %s."
 
 #: pcbnew/tools/board_inspection_tool.cpp:1177
 msgid "Items belong to the same net. Min clearance is 0."
@@ -57244,8 +57230,7 @@ msgstr ""
 
 #: pcbnew/tools/pcb_actions.cpp:1508
 msgid "Allow items to be moved and/or resized on the canvas"
-msgstr ""
-"Permite que los elementos sean movidos y/o redimensionados en el lienzo"
+msgstr "Permite que los elementos sean movidos y/o redimensionados en el lienzo"
 
 #: pcbnew/tools/pcb_actions.cpp:1525
 msgid "Toggle Last Net Highlight"
@@ -57306,8 +57291,8 @@ msgstr "Líneas aéreas locales"
 #: pcbnew/tools/pcb_actions.cpp:1593
 msgid "Toggle ratsnest display of selected item(s)"
 msgstr ""
-"Alterna la visualización de líneas aéreas para los elemento(s) "
-"seleccionado(s)"
+"Alterna la visualización de líneas aéreas para los elemento(s) seleccionado"
+"(s)"
 
 #: pcbnew/tools/pcb_actions.cpp:1610
 msgid "Scripting Console"
