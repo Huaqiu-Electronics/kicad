@@ -23,7 +23,7 @@
 # dsa-t <dudesuchamazing@gmail.com>, 2025.
 # Ahmet Saygın ÖĞÜLMÜŞ <ogulmus.ahmetsaygin@gmail.com>, 2025.
 # dogukansahil <dogukansahil@gmail.com>, 2025.
-# İclal Gör <iclallgor@gmail.com>, 2025.
+# İclal Gör <iclallgor@gmail.com>, 2025, 2026.
 # NAXSISFLYBY <naxsis61@gmail.com>, 2025.
 # Ertuğrul Reisoğlu <reisoglusoftware@gmail.com>, 2025.
 # Niyazi <tanyildizn@gmail.com>, 2025.
@@ -35,7 +35,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:29+0000\n"
-"Last-Translator: turkce <turkceceviri@protonmail.com>\n"
+"Last-Translator: İclal Gör <iclallgor@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
@@ -21567,8 +21567,7 @@ msgstr "Şematik kural alanı"
 #: eeschema/sch_screen.cpp:743 eeschema/sch_screen.cpp:835
 #, c-format
 msgid "Setting schematic symbol '%s %s' library identifier to '%s'."
-msgstr ""
-"Şematik sembol '%s %s' kütüphane tanımlayıcısı '%s' olarak ayarlanıyor."
+msgstr "Şematik sembol '%s %s' kütüphane tanımlayıcısı '%s' olarak ayarlanıyor."
 
 #: eeschema/sch_screen.cpp:759
 #, c-format
@@ -51370,8 +51369,7 @@ msgstr "Grup tanımlarında grup kimliği %s bulunamadı."
 #, c-format
 msgid ""
 "Unable to find sub group %s in the group map (parent group ID=%s, Name=%s)."
-msgstr ""
-"Grup haritasında %s alt grubu bulunamadı (üst grup kimliği=%s, Adı=%s)."
+msgstr "Grup haritasında %s alt grubu bulunamadı (üst grup kimliği=%s, Adı=%s)."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1456
 #, c-format
