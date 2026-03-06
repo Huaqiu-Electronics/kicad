@@ -40,13 +40,15 @@
 # Li Yi <yilibj@gmail.com>, 2025.
 # CharlieYu <charlieyu4994@outlook.com>, 2025, 2026.
 # aisuneko icecat <iceneko@protonmail.ch>, 2025.
+# Deleted User <hamburger1024@users.noreply.hosted.weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad_zh_CN_Master_v0.0.32\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:45+0000\n"
-"Last-Translator: Hubert Hu <qinghan.hu@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 17:46+0000\n"
+"Last-Translator: Deleted User "
+"<hamburger1024@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
