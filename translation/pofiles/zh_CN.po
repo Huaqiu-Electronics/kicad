@@ -26,7 +26,7 @@
 # 欠陥電気 <Misaka13514@gmail.com>, 2023, 2026.
 # Pinpang Liao <pinpang@aliyun.com>, 2023.
 # JasonTan <tfx2001@outlook.com>, 2023.
-# Zhen Sun <igoal@163.com>, 2023.
+# Zhen Sun <igoal@163.com>, 2023, 2026.
 # 向阳阳 <hinata.hoshino@foxmail.com>, 2024, 2026.
 # Lao·Zhu <2208213223@qq.com>, 2024.
 # CloverGit <CloverGit@users.noreply.hosted.weblate.org>, 2024.
@@ -47,7 +47,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: HalfSweet <HalfSweet@halfsweet.cn>\n"
+"Last-Translator: Zhen Sun <igoal@163.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
