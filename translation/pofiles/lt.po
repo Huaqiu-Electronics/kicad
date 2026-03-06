@@ -2,7 +2,7 @@
 # Seth Hillbrand <seth@kipro-pcb.com>, 2020, 2021, 2026.
 # WhiteChairFromIkea <dainius.mazuika@gmail.com>, 2020, 2021, 2026.
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021.
-# Henrik Kauhanen <henrik@kauhanen.se>, 2023.
+# Henrik Kauhanen <henrik@kauhanen.se>, 2023, 2026.
 # Ignas Brašiškis <ignas.brasiskis@gmail.com>, 2024.
 # John Beard <john.j.beard@gmail.com>, 2025.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:43+0000\n"
-"Last-Translator: WhiteChairFromIkea <dainius.mazuika@gmail.com>\n"
+"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/lt/>\n"
 "Language: lt\n"
