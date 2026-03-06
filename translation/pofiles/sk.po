@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 15:49+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-07 15:50+0000\n"
+"Last-Translator: EdizonTN <edizontn@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
 "source/sk/>\n"
 "Language: sk\n"
@@ -9065,8 +9065,8 @@ msgid ""
 "files that are not present in the restored commit."
 msgstr ""
 "Výberom možnosti „Zachovať všetky súbory“ sa obnoví vybraný commit, ale "
-"zachovajú sa všetky existujúce súbory v adresári projektu. Výberom možnosti "
-"„Pokračovať“ sa vymažú súbory, ktoré sa v obnovenom commite nenachádzajú."
+"zachovajú sa všetky existujúce súbory v adresári projektu. Výberom možnosti „"
+"Pokračovať“ sa vymažú súbory, ktoré sa v obnovenom commite nenachádzajú."
 
 #: common/local_history.cpp:1749
 msgid "Cannot restore - the following files are open by another user:"
@@ -11209,8 +11209,7 @@ msgstr "Nastaviť klávesovú skratku"
 #: common/widgets/widget_hotkey_list.cpp:383
 #, c-format
 msgid "'%s' is a reserved hotkey in KiCad and cannot be assigned."
-msgstr ""
-"'%s' je v KiCad-e rezervovaná klávesová skratka a nemôže byť priradená."
+msgstr "'%s' je v KiCad-e rezervovaná klávesová skratka a nemôže byť priradená."
 
 #: common/widgets/widget_hotkey_list.cpp:447
 msgid "Edit..."
@@ -11894,8 +11893,7 @@ msgstr "Uložiť do schémy"
 
 #: cvpcb/tools/cvpcb_actions.cpp:66
 msgid "Save footprint assignments in 'footprint' fields of schematic symbols"
-msgstr ""
-"Uložiť priradenia puzdier do polí 'footprint' v schematických symboloch"
+msgstr "Uložiť priradenia puzdier do polí 'footprint' v schematických symboloch"
 
 #: cvpcb/tools/cvpcb_actions.cpp:74
 msgid "Save to Schematic and File"
@@ -12450,8 +12448,8 @@ msgstr ""
 "Formát príkazového riadka pre skript Python je v tvare:\n"
 "\n"
 "```\n"
-"python <názov súboru skriptu> <vstupný názov súboru> <výstupný názov "
-"súboru>\n"
+"python <názov súboru skriptu> <vstupný názov súboru> <výstupný názov súboru>"
+"\n"
 "```\n"
 "\n"
 "Ak je v systéme Windows požadovaný skript generátora pre zoznam materiálu "
@@ -16903,8 +16901,7 @@ msgstr "Mapovanie tabuľky knižnice symbolov je dokončené!"
 #: eeschema/dialogs/dialog_symbol_remap.cpp:353
 #, c-format
 msgid "Cannot create project remap back up folder '%s'."
-msgstr ""
-"Nie je možné vytvoriť záložný priečinok '%s' pre premapovanie projektu."
+msgstr "Nie je možné vytvoriť záložný priečinok '%s' pre premapovanie projektu."
 
 #: eeschema/dialogs/dialog_symbol_remap.cpp:356
 #: eeschema/dialogs/dialog_symbol_remap.cpp:529
@@ -17727,7 +17724,7 @@ msgid "(source)"
 msgstr "Zdroj"
 
 #: eeschema/dialogs/panel_setup_buses_base.cpp:94
-#, fuzzy, c-format
+#, c-format, fuzzy
 msgid "Members of '%s'"
 msgstr "potrebujete číslo pre '%s'"
 
@@ -18216,19 +18213,17 @@ msgid "Reset Libraries"
 msgstr "Vybrať knižnicu"
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:46
-#, fuzzy
 msgid "Project Field Name Templates"
-msgstr "Šablóny názvov polí projektu:"
+msgstr "Šablóny názvov polí projektu"
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:52
-#, fuzzy
 msgid "Global Field Name Templates"
-msgstr "Globálne šablóny názvov polí:"
+msgstr "Globálne šablóny názvov polí"
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:214
-#, fuzzy, c-format
+#, c-format
 msgid "The field name '%s' contains trailing and/or leading white space."
-msgstr "Záznam obsahuje koncové biele miesto."
+msgstr "Názov poľa '%s' obsahuje koncové a/alebo úvodné medzery."
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:219
 msgid ""
@@ -18241,9 +18236,8 @@ msgstr ""
 "znakov medzier nebude mať žiadny vplyv na existujúce názvy polí symbolu."
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:225
-#, fuzzy
 msgid "Remove White Space"
-msgstr "Odstrániť 3D tvar"
+msgstr "Odstrániť medzery"
 
 #: eeschema/dialogs/panel_template_fieldnames.cpp:226
 msgid "Keep White Space"
@@ -18274,9 +18268,8 @@ msgstr ""
 "Vykresľovanie do HPGL formátu už nie je podporované od KiCad verzie 10.0."
 
 #: eeschema/eeschema_jobs_handler.cpp:210
-#, fuzzy
 msgid "Failed to load schematic\n"
-msgstr "Nepodarilo sa načítať schému '%s'\n"
+msgstr "Nepodarilo sa načítať schému\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:275
 #: kicad/cli/command_pcb_export_hpgl.cpp:36
@@ -18297,9 +18290,8 @@ msgstr ""
 #: pcbnew/pcbnew_jobs_handler.cpp:1710 pcbnew/pcbnew_jobs_handler.cpp:1877
 #: pcbnew/pcbnew_jobs_handler.cpp:2168 pcbnew/pcbnew_jobs_handler.cpp:2308
 #: pcbnew/pcbnew_jobs_handler.cpp:2527 pcbnew/pcbnew_jobs_handler.cpp:2639
-#, fuzzy
 msgid "Failed to create output directory\n"
-msgstr "Nie je možné vytvoriť adresár '%s'\n"
+msgstr "Nepodarilo sa vytvoriť výstupný adresár\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:444
 #: eeschema/eeschema_jobs_handler.cpp:576
@@ -18314,24 +18306,22 @@ msgstr ""
 #: eeschema/eeschema_jobs_handler.cpp:454
 #: eeschema/eeschema_jobs_handler.cpp:586
 #: eeschema/eeschema_jobs_handler.cpp:941
-#, fuzzy
 msgid "Warning: duplicate sheet names.\n"
-msgstr "Varovanie: Duplicitné prezývky\n"
+msgstr "Upozornenie: duplicitné názvy listu.\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:505
-#, fuzzy
 msgid "Unknown netlist format.\n"
-msgstr "Neznámy formát súboru <%s>\n"
+msgstr "Neznámy formát netlistu.\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:672
-#, fuzzy, c-format
+#, c-format
 msgid "BOM preset '%s' not found"
-msgstr "Súbor '%s' sa nenašiel."
+msgstr "Predvoľba BOM '%s' nebola nájdená"
 
 #: eeschema/eeschema_jobs_handler.cpp:810
-#, fuzzy, c-format
+#, c-format
 msgid "BOM format preset '%s' not found"
-msgstr "Stopa '%s' sa nenašla."
+msgstr "Predvoľba formátu BOM '%s' nebola nájdená"
 
 #: eeschema/eeschema_jobs_handler.cpp:885
 #: eeschema/eeschema_jobs_handler.cpp:1053
@@ -18341,9 +18331,9 @@ msgstr "Nepodarilo sa otvoriť cieľ '%s'"
 
 #: eeschema/eeschema_jobs_handler.cpp:896
 #: eeschema/eeschema_jobs_handler.cpp:968
-#, fuzzy, c-format
+#, c-format
 msgid "Wrote bill of materials to '%s'."
-msgstr "Generovať rozpis &materiálu"
+msgstr "Zapísaný zoznam materiálu do '%s'."
 
 #: eeschema/eeschema_jobs_handler.cpp:1025
 #, c-format
@@ -18368,9 +18358,9 @@ msgstr "Nepodarilo sa vytvoriť výstupný adresár '%s'."
 
 #: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1407
 #: pcbnew/pcbnew_jobs_handler.cpp:2179
-#, fuzzy, c-format
+#, c-format
 msgid "Exporting %s"
-msgstr "Importovať nastavenia"
+msgstr "Exportovanie %s"
 
 #: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2056
 msgid "Output path must not conflict with existing path\n"
@@ -18384,19 +18374,17 @@ msgstr ""
 "mimo KiCad\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1227
-#, fuzzy
 msgid "Saving symbol library in updated format\n"
-msgstr "Neplatný identifikátor knižnice symbolov\n"
+msgstr "Ukladanie knižnice symbolov v aktualizovanom formáte\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1245
-#, fuzzy
 msgid "Symbol library was not updated\n"
-msgstr "Knižnica symbolov nie je povolená.\n"
+msgstr "Knižnica symbolov nebola aktualizovaná\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2439
-#, fuzzy, c-format
+#, c-format
 msgid "Found %d violations\n"
-msgstr "Povoliť porušenie KDR\n"
+msgstr "Nájdených %d porušení\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1337
 #, c-format
@@ -18409,13 +18397,12 @@ msgid "Saved ERC Report to %s\n"
 msgstr "ERC protokol uložený do %s\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1374
-#, fuzzy
 msgid "Schematic file was not updated\n"
-msgstr "Schematický súbor '%s' sa nenašiel."
+msgstr "Schematický súbor nebol aktualizovaný\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1392 eeschema/files-io.cpp:989
 #: eeschema/files-io.cpp:1038
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error saving schematic file '%s'.\n"
 "%s"
@@ -18428,9 +18415,8 @@ msgid "Successfully saved schematic file using the latest format\n"
 msgstr ""
 
 #: eeschema/eeschema_settings.cpp:72 eeschema/tools/sch_actions.cpp:1064
-#, fuzzy
 msgid "Net Navigator"
-msgstr "Navigátor hierarchie"
+msgstr "Navigátor spojov"
 
 #: eeschema/eeschema_settings.cpp:116 eeschema/sch_edit_frame.cpp:2037
 #: pcbnew/footprint_edit_frame.cpp:251 pcbnew/footprint_edit_frame.cpp:1044
@@ -18447,9 +18433,8 @@ msgstr "Návrhové bloky"
 
 #: eeschema/eeschema_settings.cpp:159 eeschema/menubar.cpp:191
 #: eeschema/sch_edit_frame.cpp:2040 eeschema/tools/sch_actions.cpp:130
-#, fuzzy
 msgid "Remote Symbols"
-msgstr "Premapovať symboly"
+msgstr "Vzdialené symboly"
 
 #: eeschema/erc/erc.cpp:81 eeschema/erc/erc.cpp:98
 msgid "Input Pin"
@@ -18472,9 +18457,8 @@ msgid "Passive Pin"
 msgstr "Pasívny vývod"
 
 #: eeschema/erc/erc.cpp:86 eeschema/erc/erc.cpp:103
-#, fuzzy
 msgid "Free Pin"
-msgstr "Vytvoriť súbor"
+msgstr "Voľný vývod"
 
 #: eeschema/erc/erc.cpp:87 eeschema/erc/erc.cpp:104
 msgid "Unspecified Pin"
@@ -18498,7 +18482,7 @@ msgstr "Otvorený emitor"
 
 #: eeschema/erc/erc.cpp:92 eeschema/erc/erc.cpp:109
 msgid "No Connection"
-msgstr "Nespojený"
+msgstr "Bez pripojenia"
 
 #: eeschema/erc/erc.cpp:212 eeschema/erc/erc.cpp:231
 #: pcbnew/drc/drc_test_provider_misc.cpp:409
@@ -18511,9 +18495,9 @@ msgid "Unresolved text variable in drawing sheet"
 msgstr "Nevyriešená textová premenná v liste výkresu"
 
 #: eeschema/erc/erc.cpp:467 eeschema/erc/erc.cpp:495
-#, fuzzy, c-format
+#, c-format
 msgid "Field name has leading or trailing whitespace: '%s'"
-msgstr "Záznam obsahuje koncové biele miesto."
+msgstr "Názov poľa obsahuje úvodné alebo koncové medzery: '%s'"
 
 #: eeschema/erc/erc.cpp:552
 #, c-format
@@ -18521,29 +18505,29 @@ msgid "Different footprints assigned to %s and %s"
 msgstr "Rôzne stopy priradené k %s a %s"
 
 #: eeschema/erc/erc.cpp:640
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol %s has unplaced units %s"
-msgstr "Symbol '%s' už v '%s' existuje."
+msgstr "Symbol %s má neumiestnené jednotky %s"
 
 #: eeschema/erc/erc.cpp:684
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol %s has input power pins in units %s that are not placed"
-msgstr "Symbol zmien stopy nie je uložený"
+msgstr "Symbol %s má neumiestnené vstupné napájacie vývody, v jednotkách %s"
 
 #: eeschema/erc/erc.cpp:690
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol %s has input pins in units %s that are not placed"
-msgstr "Symbol zmien stopy nie je uložený"
+msgstr "Symbol %s má neumiestnené vstupné vývody, v jednotkách %s"
 
 #: eeschema/erc/erc.cpp:696
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol %s has bidirectional pins in units %s that are not placed"
-msgstr "Symbol zmien stopy nie je uložený"
+msgstr "Symbol %s má neumiestnené obojsmerné napájacie vývody, v jednotkách %s"
 
 #: eeschema/erc/erc.cpp:719
-#, fuzzy, c-format
+#, c-format
 msgid "Netclass %s is not defined"
-msgstr "Nástroj %d nie je definovaný"
+msgstr "Trieda spojov  %s nie je definovaná"
 
 #: eeschema/erc/erc.cpp:796
 #, c-format
@@ -18551,14 +18535,13 @@ msgid "Label connects more than one wire at %d, %d"
 msgstr "Označenie prepája viac ako jeden spoj na %d, %d"
 
 #: eeschema/erc/erc.cpp:876
-#, fuzzy, c-format
+#, c-format
 msgid "Four items connected at %d, %d"
-msgstr "Nie je možné pripojiť sa k '%s' "
+msgstr "Štyri položky spojené v %d, %d"
 
 #: eeschema/erc/erc.cpp:970
-#, fuzzy
 msgid "Pin with 'no connection' type is connected"
-msgstr "Piny typu 'bez pripojenia' sú spojené"
+msgstr "Vývod typu „bez pripojenia“ je pripojený"
 
 #: eeschema/erc/erc.cpp:1190
 #, c-format
@@ -18674,7 +18657,7 @@ msgstr "Kontroluje sa plnenie zón..."
 
 #: eeschema/erc/erc.cpp:2174
 msgid "Checking no connect pins for connections..."
-msgstr "Kontrola, či nie sú pripojené piny \"žiadne pripojenie (NC)\"..."
+msgstr "Kontrola vývodov \"bez pripojenia\" na pripojenie..."
 
 #: eeschema/erc/erc.cpp:2183
 msgid "Checking for library symbol issues..."
@@ -18761,11 +18744,11 @@ msgstr "Označenie prepája viac ako jeden spoj"
 
 #: eeschema/erc/erc_item.cpp:97
 msgid "A pin with a \"no connection\" flag is connected"
-msgstr "Je pripojený špendlík s príznakom \"žiadne pripojenie\""
+msgstr "Je pripojený vývod s príznakom \"bez pripojenia\""
 
 #: eeschema/erc/erc_item.cpp:101
 msgid "Unconnected \"no connection\" flag"
-msgstr "Vlajka nepripojeného \"žiadne pripojenie\""
+msgstr "Nepripojený príznak \"bez pripojenia\""
 
 #: eeschema/erc/erc_item.cpp:105
 msgid "Label not connected"
@@ -31360,8 +31343,8 @@ msgid ""
 msgstr ""
 "Toto sa môže stať, ak sa vaša predchádzajúca relácia neočakávane skončila.\n"
 "\n"
-"Vyberte možnosť „Obnoviť“, ak chcete obnoviť tieto zmeny, alebo možnosť "
-"„Zahodiť“, ak chcete zachovať aktuálne uložené súbory."
+"Vyberte možnosť „Obnoviť“, ak chcete obnoviť tieto zmeny, alebo možnosť „"
+"Zahodiť“, ak chcete zachovať aktuálne uložené súbory."
 
 #: kicad/kicad_manager_frame.cpp:1144
 #, fuzzy
@@ -44104,8 +44087,7 @@ msgstr "Knižnica stopy nie je povolená."
 #, c-format
 msgid ""
 "Folder '%s' already exists. Do you want overwrite any existing footprints?"
-msgstr ""
-"Priečinok '%s' už existuje. Chcete prepísať niektoré existujúce puzdrá?"
+msgstr "Priečinok '%s' už existuje. Chcete prepísať niektoré existujúce puzdrá?"
 
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:578
 #, fuzzy, c-format
@@ -54283,8 +54265,7 @@ msgstr "Vložiť slepú/vnorenú prechodku"
 
 #: pcbnew/router/router_tool.cpp:160
 msgid "Adds a blind or buried via at the end of currently routed track."
-msgstr ""
-"Na konci aktuálne routovaného spoja pridá slepý alebo pochovaný prekov."
+msgstr "Na konci aktuálne routovaného spoja pridá slepý alebo pochovaný prekov."
 
 #: pcbnew/router/router_tool.cpp:170
 msgid "Place Microvia"
