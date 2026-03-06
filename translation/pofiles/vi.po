@@ -1,7 +1,7 @@
 # lê văn lập <levanlap2502@gmail.com>, 2020, 2021, 2022, 2023, 2026.
 # Trần Phi Hải <tranphihai-focus@outlook.com>, 2021, 2022, 2024.
 # Bế Trọng Nghĩa <benghia1st@gmail.com>, 2022.
-# Nguyễn Ngọc Khánh <ngockhanhnguyen985@gmail.com>, 2023, 2024, 2025.
+# Nguyễn Ngọc Khánh <ngockhanhnguyen985@gmail.com>, 2023, 2024, 2025, 2026.
 # Phạm Minh Tấn <masterminhtan@gmail.com>, 2023.
 # Nguyen Van Dien <nvdien@tuta.io>, 2024.
 # John Beard <john.j.beard@gmail.com>, 2025.
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:47+0000\n"
-"Last-Translator: lê văn lập <levanlap2502@gmail.com>\n"
+"Last-Translator: Nguyễn Ngọc Khánh <ngockhanhnguyen985@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/kicad/master-"
 "source/vi/>\n"
 "Language: vi\n"
@@ -21312,8 +21312,7 @@ msgstr ""
 #: eeschema/sch_io/altium/sch_io_altium.cpp:5016
 #, fuzzy, c-format
 msgid "Unknown or unexpected record id %d found in %s."
-msgstr ""
-"Đã tìm thấy id bản ghi không xác định hoặc không mong muốn %d trong %s."
+msgstr "Đã tìm thấy id bản ghi không xác định hoặc không mong muốn %d trong %s."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1654
 #, c-format
