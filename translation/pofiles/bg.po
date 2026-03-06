@@ -1,14 +1,14 @@
 # Michał Radziejewicz <radziejewiczmichal@gmail.com>, 2023.
 # 109247019824 <stoyan@gmx.com>, 2024, 2025.
 # 109247019824 <109247019824@users.noreply.hosted.weblate.org>, 2025, 2026.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:40+0000\n"
-"Last-Translator: 109247019824 <109247019824@users.noreply.hosted.weblate.org>"
-"\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/bg/>\n"
 "Language: bg\n"
