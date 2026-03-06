@@ -16,7 +16,7 @@
 # Ian McInerney <ian.s.mcinerney@ieee.org>, 2022, 2026.
 # Eric <hamburger1024@firemail.cc>, 2022.
 # Eric <hamburger1024@mailbox.org>, 2022.
-# yangyangdaji <1504305527@qq.com>, 2022, 2023.
+# yangyangdaji <1504305527@qq.com>, 2022, 2023, 2026.
 # Huanyin Liu <13316560709@189.cn>, 2022.
 # Eric <hamburger1024@duck.com>, 2022.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2023, 2025, 2026.
@@ -46,8 +46,8 @@ msgstr ""
 "Project-Id-Version: KiCad_zh_CN_Master_v0.0.32\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: Pinpang Liao <pinpang@aliyun.com>\n"
+"PO-Revision-Date: 2026-03-07 17:47+0000\n"
+"Last-Translator: yangyangdaji <1504305527@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
