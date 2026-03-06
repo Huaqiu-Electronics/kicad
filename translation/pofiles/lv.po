@@ -2,13 +2,14 @@
 # Rihards Skuja <rhssk@posteo.eu>, 2021.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
 # "ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝)" <coool@mail.lv>, 2025.
+# Seth Hillbrand <seth@kipro-pcb.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad 6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-06 22:28+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/kicad/master-"
 "source/lv/>\n"
 "Language: lv\n"
