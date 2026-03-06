@@ -23,7 +23,7 @@
 # 남우근 <rolru7686@gmail.com>, 2022.
 # 이윤성 <yunslee@student.42seoul.kr>, 2022.
 # KwonHyeokbeom <gurqja3810@naver.com>, 2022, 2026.
-# "minsu kim (0xGabriel)" <rlaalstn9601@gmail.com>, 2023.
+# "minsu kim (0xGabriel)" <rlaalstn9601@gmail.com>, 2023, 2026.
 # pedrolinharesmoreira <pedrolinhares@unifei.edu.br>, 2023, 2024.
 # Pedro Moreira <pedroltmoreira@gmail.com>, 2024, 2025.
 # simmon <simmon@nplob.com>, 2024.
@@ -39,7 +39,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:04+0000\n"
-"Last-Translator: YunJiSang <js_7744@naver.com>\n"
+"Last-Translator: \"minsu kim (0xGabriel)\" <rlaalstn9601@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
@@ -31382,8 +31382,8 @@ msgid ""
 "Package with identifier %s is already installed. Would you like to update it "
 "to the version from selected file?"
 msgstr ""
-"식별자 %s에 해당하는 패키지는 이미 설치되었습니다.선택한 파일의 버전으로 업데"
-"이트 하시겠습니까?"
+"식별자 %s에 해당하는 패키지는 이미 설치되었습니다.선택한 파일의 버전으로 "
+"업데이트 하시겠습니까?"
 
 #: kicad/pcm/pcm_task_manager.cpp:408
 msgid "Update package"
