@@ -1,4 +1,4 @@
-# lê văn lập <levanlap2502@gmail.com>, 2020, 2021, 2022, 2023.
+# lê văn lập <levanlap2502@gmail.com>, 2020, 2021, 2022, 2023, 2026.
 # Trần Phi Hải <tranphihai-focus@outlook.com>, 2021, 2022, 2024.
 # Bế Trọng Nghĩa <benghia1st@gmail.com>, 2022.
 # Nguyễn Ngọc Khánh <ngockhanhnguyen985@gmail.com>, 2023, 2024, 2025.
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:47+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: lê văn lập <levanlap2502@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/kicad/master-"
 "source/vi/>\n"
 "Language: vi\n"
@@ -13570,8 +13570,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_erc.cpp:781 pcbnew/dialogs/dialog_drc.cpp:793
 #, c-format
 msgid "Change severity to Warning for all '%s' violations"
-msgstr ""
-"Thay đổi mức độ nghiêm trọng thành Cảnh báo cho tất cả các vi phạm '%s'"
+msgstr "Thay đổi mức độ nghiêm trọng thành Cảnh báo cho tất cả các vi phạm '%s'"
 
 #: eeschema/dialogs/dialog_erc.cpp:788 pcbnew/dialogs/dialog_drc.cpp:799
 #, c-format
