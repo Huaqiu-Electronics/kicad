@@ -2,7 +2,7 @@
 # ZbeeGin <zbeegin@op.pl>, 2020, 2021.
 # Arend-Jan van Hilten <a.j.vanhilten@student.tudelft.nl>, 2021, 2023.
 # pimjansen98 <pimjansen1998@gmail.com>, 2021.
-# CJ van der Hoeven <KeesEnJoa@gmail.com>, 2021, 2024.
+# CJ van der Hoeven <KeesEnJoa@gmail.com>, 2021, 2024, 2026.
 # Bas Wijnen <wijnen@debian.org>, 2022, 2023.
 # Henrik Kauhanen <henrik@kauhanen.se>, 2023.
 # Christiaan Nieuwlaat <krizzje@gmail.com>, 2023.
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 16:06+0000\n"
-"Last-Translator: Laurens Holst <laurens@grauw.nl>\n"
+"Last-Translator: CJ van der Hoeven <KeesEnJoa@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kicad/master-"
 "source/nl/>\n"
 "Language: nl\n"
@@ -18152,8 +18152,7 @@ msgstr "Globaal-labelmarge:"
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:72
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:77
 msgid "Percentage of the text size to use as space around a global label"
-msgstr ""
-"Percentage van de tekstgrootte als tussenruimte rond een algemeen label"
+msgstr "Percentage van de tekstgrootte als tussenruimte rond een algemeen label"
 
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:100
 #: eeschema/import_gfx/dialog_import_gfx_sch_base.cpp:158
@@ -32517,8 +32516,7 @@ msgstr ""
 
 #: kicad/tools/kicad_manager_control.cpp:763
 msgid "Create (or open) a project to edit a schematic."
-msgstr ""
-"Maak een nieuw project (of open een project) om het schema te bewerken."
+msgstr "Maak een nieuw project (of open een project) om het schema te bewerken."
 
 #: kicad/tools/kicad_manager_control.cpp:768
 msgid "Create (or open) a project to edit a pcb."
