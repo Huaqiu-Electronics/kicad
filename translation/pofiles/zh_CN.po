@@ -9,7 +9,7 @@
 # Deleted User <noreply+33206@weblate.org>, 2021.
 # David Chen <d0123456789g@yahoo.com.tw>, 2021.
 # ZbeeGin <zbeegin@op.pl>, 2021.
-# Dingzhong Chen <wsxy162@gmail.com>, 2021.
+# Dingzhong Chen <wsxy162@gmail.com>, 2021, 2026.
 # Tian Yunhao <t123yh@outlook.com>, 2021, 2022, 2026.
 # obit <szpttboy@163.com>, 2021, 2022.
 # Eric <alchemillatruth@purelymail.com>, 2022.
@@ -47,7 +47,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:46+0000\n"
-"Last-Translator: Zhen Sun <igoal@163.com>\n"
+"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
