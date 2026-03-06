@@ -6,7 +6,7 @@
 # Ola Rinta-Koski <weblate@rinta-koski.net>, 2021, 2026.
 # Alex Gellen <alex.n.gellen@gmail.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
-# PurkkaKoodari <purkka@purkka.codes>, 2021.
+# PurkkaKoodari <purkka@purkka.codes>, 2021, 2026.
 # Simo Mattila <simo.mattila@kapsi.fi>, 2021, 2026.
 # Vesa Solonen <vesa.solonen@vli.fi>, 2021.
 # Petri Niemelä <petrinm@gmail.com>, 2022, 2023.
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
 "PO-Revision-Date: 2026-03-07 17:59+0000\n"
-"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
+"Last-Translator: PurkkaKoodari <purkka@purkka.codes>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kicad/master-"
 "source/fi/>\n"
 "Language: fi\n"
