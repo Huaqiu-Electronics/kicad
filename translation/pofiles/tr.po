@@ -8,7 +8,7 @@
 # VEDAT YAMAN <weddat@gmail.com>, 2021.
 # Gökhan Koçmarlı <gokhankocmarli@gmail.com>, 2022.
 # prometheus <181903185@ogrenci.ibu.edu.tr>, 2022.
-# Mustafa Selçuk ÇAVDAR <mselcuk@gmail.com>, 2022, 2023, 2025.
+# Mustafa Selçuk ÇAVDAR <mselcuk@gmail.com>, 2022, 2023, 2025, 2026.
 # turkce <turkceceviri@protonmail.com>, 2023, 2026.
 # Marine Biologist <fatihvolkanster@gmail.com>, 2023.
 # Mert Gülsoy <mgulsoy@gmail.com>, 2023.
@@ -34,8 +34,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-06 22:30+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-06 22:31+0000\n"
+"Last-Translator: Mustafa Selçuk ÇAVDAR <mselcuk@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
@@ -10595,8 +10595,7 @@ msgstr "Etkin Olmayan Katman Görünümü Modu (3 durumlu)"
 
 #: common/tool/actions.cpp:1217
 msgid "Cycle inactive layers between normal, dimmed, and hidden"
-msgstr ""
-"Normal, soluk ve gizli arasında etkin olmayan katmanları döngüye ekleme"
+msgstr "Normal, soluk ve gizli arasında etkin olmayan katmanları döngüye ekleme"
 
 #: common/tool/actions.cpp:1223
 msgid "Draw Bounding Boxes"
@@ -11271,8 +11270,7 @@ msgstr "%s, %s'den küçük olmalıdır."
 
 #: common/widgets/widget_hotkey_list.cpp:104
 msgid "Press a new hotkey, or press Esc to cancel..."
-msgstr ""
-"Yeni bir kısayol tuşuna basın veya iptal etmek için Esc tuşuna basın..."
+msgstr "Yeni bir kısayol tuşuna basın veya iptal etmek için Esc tuşuna basın..."
 
 #: common/widgets/widget_hotkey_list.cpp:115
 #: kicad/dialogs/dialog_executecommand_job_settings_base.cpp:28
