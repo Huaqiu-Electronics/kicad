@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:25+0000\n"
-"Last-Translator: \"j.Kolod\" <jmkolod05@gmail.com>\n"
+"PO-Revision-Date: 2026-03-08 02:17+0000\n"
+"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
@@ -21346,9 +21346,8 @@ msgid "Empty sheet pin name"
 msgstr "Pusta nazwa arkusza pinów"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:2932
-#, fuzzy
 msgid "Schematic polyline has too few points"
-msgstr "Kształt nie posiada punktów."
+msgstr "Linia łamana na schemacie nie posiada kilku punktów"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3021
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3034
@@ -21365,19 +21364,16 @@ msgid "Invalid symbol library ID"
 msgstr "Niepoprawny identyfikator symbolu w bibliotece"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3956
-#, fuzzy
 msgid "Missing sheet name property"
-msgstr "Brakujący argument z nazwą arkusza dla %s."
+msgstr "Brakująca właściwość z nazwą arkusza"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3962
-#, fuzzy
 msgid "Missing sheet file property"
-msgstr "Brakujący argument z nazwą arkusza dla %s."
+msgstr "Brakująca właściwość z plikiem arkusza"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
-#, fuzzy
 msgid "Invalid table: no cells defined"
-msgstr "Określono nieprawidłowy format mapy wierceń\n"
+msgstr "Nieprawidłowa tabela: nie zdefiniowano komórek"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
@@ -30042,6 +30038,8 @@ msgid ""
 "Warning: Report path supplied without --generate-report, no report will be "
 "generated\n"
 msgstr ""
+"Uwaga: Ścieżka raportu przekazana z pominięciem parametru --generate-report, "
+"raport nie zostanie utworzony\n"
 
 #: kicad/cli/command_pcb_export_dxf.cpp:39
 msgid "Generate a DXF from a list of layers"
@@ -30401,14 +30399,16 @@ msgid ""
 "Input format hint: auto, pads, altium, eagle, cadstar, fabmaster, pcad, "
 "solidworks (default: auto)"
 msgstr ""
+"Wskazówka formatu wejściowego: auto, pads, altium, eagle, cadstar, "
+"fabmaster, pcad, solidworks (wartość domyślna: auto)"
 
 #: kicad/cli/command_pcb_import.cpp:50
 msgid "Import report format: none, json, text (default: none)"
-msgstr ""
+msgstr "Formaty importowanych raportów: none, json, text (domyślnie: none)"
 
 #: kicad/cli/command_pcb_import.cpp:55
 msgid "File path for import report (default: stdout)"
-msgstr ""
+msgstr "Ścieżka do importowanego pliku raportu (domyślnie: stdout)"
 
 #: kicad/cli/command_pcb_import.cpp:103
 #, c-format
@@ -30699,7 +30699,7 @@ msgstr ""
 
 #: kicad/cli/command_sch_upgrade.cpp:31
 msgid "Upgrade the schematic file's format to the latest one"
-msgstr ""
+msgstr "Uaktualnij plik schematu do najnowszego formatu"
 
 #: kicad/cli/command_sch_upgrade.cpp:34
 #, fuzzy
@@ -30807,11 +30807,11 @@ msgstr "Przeładuj konfigurację"
 
 #: kicad/dialogs/dialog_edit_cfg.cpp:173
 msgid "Key"
-msgstr ""
+msgstr "Klawisz"
 
 #: kicad/dialogs/dialog_edit_cfg.cpp:175
 msgid "Extant"
-msgstr ""
+msgstr "Pozostałe"
 
 #: kicad/dialogs/dialog_edit_cfg.cpp:311
 #, fuzzy
@@ -30845,7 +30845,7 @@ msgstr "Szablony użytkownika"
 
 #: kicad/dialogs/dialog_template_selector.cpp:296
 msgid "Open Template (Read-Only)"
-msgstr ""
+msgstr "Otwórz szablon (Tylko do odczytu)"
 
 #: kicad/dialogs/dialog_template_selector.cpp:297
 #, fuzzy
@@ -30908,7 +30908,7 @@ msgstr "Nie można otworzyć folderu źródłowego szablonów."
 #: kicad/dialogs/dialog_template_selector.cpp:474
 #, c-format
 msgid "Template duplicated successfully to '%s'."
-msgstr ""
+msgstr "Pomyślnie powielono szablon do '%s'."
 
 #: kicad/dialogs/dialog_template_selector.cpp:485
 #: kicad/dialogs/dialog_template_selector_base.h:68
@@ -31159,6 +31159,8 @@ msgstr "Wybierz plik"
 msgid ""
 "Templates provide pre-configured project structures to jumpstart your design."
 msgstr ""
+"Szablony dostarczają skonfigurowane struktury projektów by przyśpieszyć "
+"tworzenie projektu."
 
 #: kicad/dialogs/template_default_html.h:243
 #, fuzzy
@@ -31179,6 +31181,8 @@ msgid ""
 "Electrical and mechanical constraints configured for the intended "
 "application."
 msgstr ""
+"Ograniczenia elektryczne i mechaniczne skonfigurowane dla zamierzonego "
+"zastosowania."
 
 #: kicad/dialogs/template_default_html.h:257
 #, fuzzy
@@ -31188,12 +31192,16 @@ msgstr "Stos warstw płytki"
 #: kicad/dialogs/template_default_html.h:258
 msgid "Layer configurations optimized for common manufacturing processes."
 msgstr ""
+"Konfiguracje warstw zoptymalizowane pod względem typowych procesów "
+"produkcyjnych."
 
 #: kicad/dialogs/template_default_html.h:265
 msgid ""
 "Recently used templates appear at the top. Use the folder icon to browse "
 "custom template directories."
 msgstr ""
+"Ostatnio używane szablony są wyświetlane u góry. Użyj ikony folderu, aby "
+"przeglądać katalogi niestandardowych szablonów."
 
 #: kicad/dialogs/template_default_html.h:399
 #, fuzzy
@@ -31205,6 +31213,8 @@ msgid ""
 "This template does not include a description. You can still use it to create "
 "a new project."
 msgstr ""
+"Ten szablon nie zawiera opisu. Nadal można go użyć do utworzenia nowego "
+"projektu."
 
 #: kicad/dialogs/template_default_html.h:406
 #, fuzzy
@@ -31238,10 +31248,12 @@ msgstr "Ustawienia podglądu"
 #: kicad/dialogs/template_default_html.h:425
 msgid "Verify libraries, design rules, and board stackup match your needs."
 msgstr ""
+"Sprawdź, czy biblioteki, zasady projektowania i układ płytek odpowiadają "
+"Twoim potrzebom."
 
 #: kicad/dialogs/template_default_html.h:432
 msgid "Add a description by creating"
-msgstr ""
+msgstr "Dodaj opis tworząc"
 
 #: kicad/dialogs/template_default_html.h:433
 msgid "inside this template's directory."
@@ -31277,7 +31289,7 @@ msgstr "Szablony systemowe"
 
 #: kicad/dialogs/template_default_html.h:556
 msgid "Each template needs a 'meta' folder containing configuration files."
-msgstr ""
+msgstr "Każdy szablon wymaga folderu 'meta' zawierającego pliki konfiguracji."
 
 #: kicad/files-io.cpp:42
 msgid "KiCad project file"
@@ -31312,7 +31324,7 @@ msgstr "Nie można otworzyć/utworzyć ścieżki '%s'."
 
 #: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
 msgid "Locate gEDA / Lepton EDA Schematic"
-msgstr ""
+msgstr "Schemat Locate gEDA / Lepton EDA"
 
 #: kicad/import_proj.cpp:573
 #, fuzzy
@@ -31321,7 +31333,7 @@ msgstr "Pliki EasyEDA (JLCEDA) Pro"
 
 #: kicad/import_proj.cpp:576
 msgid "Locate gEDA / Lepton EDA PCB"
-msgstr ""
+msgstr "Locate gEDA / Lepton EDA PCB"
 
 #: kicad/import_project.cpp:73
 msgid "The selected file does not appear to be a PADS ASCII schematic or PCB."
@@ -31484,6 +31496,8 @@ msgid ""
 "KiCad found unsaved changes from your last session that are newer than the "
 "saved project files."
 msgstr ""
+"KiCad znalazł niezapisane zmiany z ostatniej sesji, które są nowsze niż "
+"zapisane pliki projektu."
 
 #: kicad/kicad_manager_frame.cpp:967
 #, fuzzy
@@ -31497,6 +31511,10 @@ msgid ""
 "Choose 'Restore' to recover those changes, or 'Discard' to keep the "
 "currently saved files."
 msgstr ""
+"Może się tak zdarzyć, jeśli poprzednia sesja nieoczekiwanie się zakończyła.\n"
+"\n"
+"Wybierz 'Przywróć', aby odzyskać zmiany, lub 'Odrzuć', aby zachować "
+"aktualnie zapisane pliki."
 
 #: kicad/kicad_manager_frame.cpp:1144
 msgid "Edit File in Text Editor"
@@ -31533,7 +31551,7 @@ msgstr "%d minut temu"
 #: kicad/local_history_pane.cpp:139
 #, c-format
 msgid "%d hours ago"
-msgstr ""
+msgstr "%d godzin temu"
 
 #: kicad/local_history_pane.cpp:248
 #, fuzzy
@@ -31614,7 +31632,7 @@ msgstr ""
 
 #: kicad/menubar.cpp:183
 msgid "Edit Advanced Config..."
-msgstr ""
+msgstr "Edycja zaawansowanych opcji..."
 
 #: kicad/menubar.cpp:184
 #, fuzzy
@@ -32342,7 +32360,7 @@ msgstr "Aktywuj śledzenie przez Git"
 
 #: kicad/project_tree_pane.cpp:1079
 msgid "Re-enable Git integration for this project"
-msgstr ""
+msgstr "Przywraca integrację z Git dla tego projektu"
 
 #: kicad/project_tree_pane.cpp:1083
 #, fuzzy
@@ -32351,7 +32369,7 @@ msgstr "Aktywuj śledzenie przez Git"
 
 #: kicad/project_tree_pane.cpp:1084
 msgid "Disable Git integration for this project"
-msgstr ""
+msgstr "Wyłącza integrację z Git dla tego projektu"
 
 #: kicad/project_tree_pane.cpp:1141
 #, c-format
@@ -36450,7 +36468,7 @@ msgstr "Pola z kastelacją: "
 
 #: pcbnew/board_tables/board_characteristics_table.cpp:117
 msgid "Press-fit pads: "
-msgstr ""
+msgstr "Pola dla montażu Press-fit "
 
 #: pcbnew/board_tables/board_characteristics_table.cpp:121
 msgid "Plated board edge: "
@@ -36481,7 +36499,7 @@ msgstr "Dielektryk"
 #: pcbnew/board_tables/board_stackup_table.cpp:118
 #, c-format
 msgid " %d (%d/%d)"
-msgstr ""
+msgstr " %d (%d/%d)"
 
 #: pcbnew/build_BOM_from_board.cpp:77
 msgid "Cannot export BOM: there are no footprints on the PCB."
@@ -36575,6 +36593,8 @@ msgid ""
 "Pad %s of %s connects to %lu pads, but candidate pad %s of %s connects to "
 "%lu."
 msgstr ""
+"Pole %s z %s łączy się z %lu polami, lecz pole kandydujące %s z %s łączy się "
+"z %lu."
 
 #: pcbnew/connectivity/topo_match.cpp:132
 #, c-format
@@ -36582,11 +36602,15 @@ msgid ""
 "Pad %s of %s cannot match candidate pad %s of %s due to differing "
 "connectivity."
 msgstr ""
+"Pole %s z %s nie może być dopasowane do kandydującego pola %s z %s z powodu "
+"różnic w połączeniach."
 
 #: pcbnew/connectivity/topo_match.cpp:171
 #, c-format
 msgid "Component %s expects %lu matching pads but candidate %s provides %lu."
 msgstr ""
+"Komponent %s spodziewa się %lu pasujących pól lecz kandydat %s dostarcza "
+"tylko %lu."
 
 #: pcbnew/connectivity/topo_match.cpp:220
 #: pcbnew/connectivity/topo_match.cpp:223
@@ -36598,11 +36622,13 @@ msgstr "węzeł sieci %d"
 #, c-format
 msgid "Pad %s of %s is on net %s but its match in candidate %s is on net %s."
 msgstr ""
+"Pole %s z %s ma przypisaną sieć %s lecz jego pasujący kandydat %s ma "
+"przypisaną sieć %s."
 
 #: pcbnew/connectivity/topo_match.cpp:247
 #, c-format
 msgid "Pad %s of %s has inconsistent net mapping in candidate %s."
-msgstr ""
+msgstr "Pole %s z %s ma niespójne mapowanie sieci w kandydacie %s."
 
 #: pcbnew/connectivity/topo_match.cpp:355
 msgid "No compatible component found in the target area."
@@ -36623,7 +36649,7 @@ msgstr "Liczba iteracji została przekroczona (ograniczenie czasowe)"
 #: pcbnew/connectivity/topo_match.cpp:1076
 #, c-format
 msgid "Component %s has %d pads but candidate %s has %d."
-msgstr ""
+msgstr "Komponent %s posiada %d pól lecz kandydat %s posiada %d."
 
 #: pcbnew/connectivity/topo_match.cpp:1089
 #, c-format
@@ -49048,7 +49074,7 @@ msgstr "Utwórz pliki ODB++"
 
 #: pcbnew/footprint.cpp:1685
 msgid "Other"
-msgstr "Pozostałe"
+msgstr "Inne"
 
 #: pcbnew/footprint.cpp:2124
 msgid "Footprint Name"
