@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: KiCad i18n Deutsch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:16+0000\n"
-"Last-Translator: John Beard <john.j.beard@gmail.com>\n"
+"PO-Revision-Date: 2026-03-08 02:16+0000\n"
+"Last-Translator: Frank Sonnenberg <frasoberg@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
@@ -25437,7 +25437,7 @@ msgstr "Regelbereich zeichnen"
 
 #: eeschema/tools/sch_actions.cpp:51
 msgid "Show the electrical rules checker window"
-msgstr "Design-Rule-Check (DRC)-Fenster anzeigen"
+msgstr "Electrical-Rule-Check (ERC)-Fenster anzeigen"
 
 #: eeschema/tools/sch_actions.cpp:57
 msgid "Symbol Checker"
@@ -43965,7 +43965,7 @@ msgstr "Mindestbohrdurchmesser:"
 msgid ""
 "The minimum drill size. If set, this can only be reduced by custom rules."
 msgstr ""
-"Der minimale Bohrdurchmesser. Falls gesetzt, kann diese nur durch "
+"Der minimale Bohrdurchmesser. Falls gesetzt, kann dieser nur durch "
 "benutzerdefinierte Regeln verringert werden."
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:230
