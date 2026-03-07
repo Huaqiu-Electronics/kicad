@@ -25,13 +25,14 @@
 #ifndef GENERATE_BOM_H
 #define GENERATE_BOM_H
 
+#include <string_utils.h>
 #include <board.h>
 #include <pcbnew_settings.h>
 #include <dialog_gen_footprint_position.h>
 #include <footprint.h>
 #include <pcb_track.h>
 #include <pcb_edit_frame.h>
-#include <exporters/gendrill_Excellon_writer.h>
+#include "exporters/gendrill_Excellon_writer.h"
 
 
 template <>
