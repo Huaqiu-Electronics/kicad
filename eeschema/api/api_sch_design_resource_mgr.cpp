@@ -116,7 +116,7 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
 
 
     const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
-    const auto do_addlibrary = [this]( wxString aLibFile, LIB_ID id ) -> LIB_SYMBOL*
+    const auto do_AddLibrary = [this]( wxString aLibFile, LIB_ID id ) -> LIB_SYMBOL*
     {
         wxFileName fn = wxFileName( aLibFile );
         wxString   libName = fn.GetName();
@@ -142,6 +142,7 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
         table->Save().map_error(
                 [&]( const LIBRARY_ERROR& aError )
                 {
+                    wxLogError(aError.message);
                     success = false;
                 } );
 
@@ -171,7 +172,12 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
                                                             ? aComponent.footprints.front().footprint.filename
                                                             : aComponent.symbol.filename ) );
 
-    auto lib_sym = do_addlibrary( full_symbol_file_path, lib_id );
+    if( !lib_id )
+    {
+        return {};
+    }
+
+    auto lib_sym = do_AddLibrary( full_symbol_file_path, *lib_id );
 
 
     if( !UpdateLibTable( LIBRARY_TABLE_TYPE::FOOTPRINT, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
@@ -215,9 +221,10 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT
     return true;
 }
 
-LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( wxString const& aFileName, wxString const& aFilePath,
-                                                       wxString const& aNickName, auto const& aFields,
-                                                       auto const& aFootprintName )
+std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( wxString const& aFileName,
+                                                                      wxString const& aFilePath,
+                                                                      wxString const& aNickName, auto const& aFields,
+                                                                      auto const& aFootprintName )
 {
     LIB_SYMBOL* lib_sym{};
 

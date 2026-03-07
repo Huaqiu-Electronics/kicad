@@ -51,8 +51,9 @@ public:
 
 private:
     //  Write symbol fields ,return the updated symbol if successful
-    LIB_ID WriteSymbolFields( wxString const& aFileName, wxString const& aFilePath, wxString const& aNickName,
-                              auto const& aFields, auto const& aFootprintName );
+    std::optional<LIB_ID> WriteSymbolFields( wxString const& aFileName, wxString const& aFilePath,
+                                             wxString const& aNickName, auto const& aFields,
+                                             auto const& aFootprintName );
 
 
     // NOTE : Using a scoped io will lead to crash on opening symbol chooser due to using after free.
