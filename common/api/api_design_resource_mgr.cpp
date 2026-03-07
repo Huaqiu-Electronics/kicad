@@ -313,6 +313,9 @@ wxString API_DESIGN_RESOURCE_MGR::GetIPClibDesc()
 bool API_DESIGN_RESOURCE_MGR::UpdateLibTable( LIBRARY_TABLE_TYPE aLibT, const wxString& aNickname,
                                               const wxString& aURI )
 {
+    // For symbol , shall call do_add_library instead
+    assert( aLibT != LIBRARY_TABLE_TYPE::SYMBOL  );
+
     LIBRARY_MANAGER&              manager = Pgm().GetLibraryManager();
     std::optional<LIBRARY_TABLE*> tableOpt = manager.Table( aLibT, LIBRARY_TABLE_SCOPE::PROJECT );
 

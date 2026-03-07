@@ -29,10 +29,13 @@
 #include <api/api_design_resource_mgr.h>
 #include <optional>
 #include <memory>
+#include <string>
+#include <wx/string.h>
 
 
 class LIB_SYMBOL;
 class SCH_IO;
+class SYMBOL_LIBRARY_MANAGER;
 class API_SCH_DESIGN_RESOURCE_MGR : public API_DESIGN_RESOURCE_MGR
 {
 public:
@@ -48,12 +51,13 @@ public:
 
 private:
     //  Write symbol fields ,return the updated symbol if successful
-    LIB_SYMBOL* WriteSymbolFields( std::string const& aFileName, std::string const& aNickName, auto const& aFields,
-                                   auto const& aFootprintName );
+    LIB_ID WriteSymbolFields( wxString const& aFileName, wxString const& aFilePath, wxString const& aNickName,
+                              auto const& aFields, auto const& aFootprintName );
 
 
     // NOTE : Using a scoped io will lead to crash on opening symbol chooser due to using after free.
     std::unique_ptr<SCH_IO> m_schIo;
+    SYMBOL_LIBRARY_MANAGER* m_libMgr;
 };
 
 #endif

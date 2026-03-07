@@ -38,9 +38,12 @@
 #include <project_sch.h>
 #include <vector>
 #include <wx/log.h>
-
+#include <symbol_library_manager.h>
 #include "api_sch_design_resource_mgr.h"
 #include "api/api_design_resource_mgr.h"
+#include "kiway.h"
+#include "lib_id.h"
+#include "mail_type.h"
 #include "symbol_library_manager.h"
 
 
@@ -75,7 +78,8 @@ public:
 
 API_SCH_DESIGN_RESOURCE_MGR::API_SCH_DESIGN_RESOURCE_MGR( EDA_BASE_FRAME& aFrame ) :
         API_DESIGN_RESOURCE_MGR( aFrame ),
-        m_schIo( std::unique_ptr<SCH_IO>( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) ) )
+        m_schIo( std::unique_ptr<SCH_IO>( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) ) ),
+        m_libMgr( new SYMBOL_LIBRARY_MANAGER( static_cast<SCH_BASE_FRAME&>( aFrame ) ) )
 {
     assert( m_schIo );
 }
@@ -112,17 +116,62 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
 
 
     const auto symbol_nick_name = RemoveFileExt( symbol_file_name );
-    // NOTE : Do not write symbol lib table, it will crash the symbol chooser
-    auto lib_sym = WriteSymbolFields( symbol_file_name, symbol_nick_name, aComponent.attributes,
-                                      RemoveFileExt( aComponent.footprints.size()
-                                                             ? aComponent.footprints.front().footprint.filename
-                                                             : aComponent.symbol.filename ) );
-
-    if( !lib_sym )
+    const auto do_addlibrary = [this]( wxString aLibFile, LIB_ID id ) -> LIB_SYMBOL*
     {
-        wxLogError( "Failed to load symbol for %s", symbol_nick_name );
-        return {};
-    }
+        wxFileName fn = wxFileName( aLibFile );
+        wxString   libName = fn.GetName();
+
+        if( libName.IsEmpty() )
+            return {};
+
+        LIBRARY_MANAGER&        manager = Pgm().GetLibraryManager();
+        SYMBOL_LIBRARY_ADAPTER* adapter = PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() );
+
+
+        if( !m_libMgr->AddLibrary( fn.GetFullPath(), LIBRARY_TABLE_SCOPE::PROJECT ) )
+        {
+            return {};
+        }
+
+        std::optional<LIBRARY_TABLE*> optTable =
+                manager.Table( LIBRARY_TABLE_TYPE::SYMBOL, LIBRARY_TABLE_SCOPE::PROJECT );
+        wxCHECK( optTable.has_value(), nullptr );
+        LIBRARY_TABLE* table = optTable.value();
+        bool           success = true;
+
+        table->Save().map_error(
+                [&]( const LIBRARY_ERROR& aError )
+                {
+                    success = false;
+                } );
+
+        if( !success )
+        {
+            return {};
+        }
+
+        // FIXME The newly loaded symbol will make the LIB_DATA of existing ones @LIBRARY_MANAGER_ADAPTER::m_libraries messy, so we reload all the project libraries
+        adapter->ProjectChanged();
+        adapter->AsyncLoad();
+        adapter->BlockUntilLoaded();
+
+        std::string payload = "";
+        auto        aKiway = &m_frame.Kiway();
+        aKiway->ExpressMail( FRAME_SCH, MAIL_RELOAD_LIB, payload, nullptr, true );
+        aKiway->ExpressMail( FRAME_SCH_SYMBOL_EDITOR, MAIL_RELOAD_LIB, payload, nullptr, true );
+        aKiway->ExpressMail( FRAME_SCH_VIEWER, MAIL_RELOAD_LIB, payload, nullptr, true );
+        return adapter->LoadSymbol( id );
+    };
+
+
+    const auto full_symbol_file_path = *GetProjectResourceSavePath( SYMBOL_DIR, symbol_file_name );
+    // NOTE : Do not write symbol lib table, it will crash the symbol chooser
+    auto lib_id = WriteSymbolFields( symbol_file_name, full_symbol_file_path, symbol_nick_name, aComponent.attributes,
+                                     RemoveFileExt( aComponent.footprints.size()
+                                                            ? aComponent.footprints.front().footprint.filename
+                                                            : aComponent.symbol.filename ) );
+
+    auto lib_sym = do_addlibrary( full_symbol_file_path, lib_id );
 
 
     if( !UpdateLibTable( LIBRARY_TABLE_TYPE::FOOTPRINT, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
@@ -166,8 +215,9 @@ bool API_SCH_DESIGN_RESOURCE_MGR::SaveDesignBlockToProject( DESIGN_BLOCK_CONTENT
     return true;
 }
 
-LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& aFileName, std::string const& aNickName,
-                                                            auto const& aFields, auto const& aFootprintName )
+LIB_ID API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( wxString const& aFileName, wxString const& aFilePath,
+                                                       wxString const& aNickName, auto const& aFields,
+                                                       auto const& aFootprintName )
 {
     LIB_SYMBOL* lib_sym{};
 
@@ -267,5 +317,17 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( std::string const& a
 
 
     lib_sym->SetHqPartsFields( fields );
-    return lib_sym;
+
+
+    try
+    {
+        m_schIo->SaveSymbol( aFilePath, lib_sym->Duplicate() );
+    }
+    catch( const IO_ERROR& ioe )
+    {
+        wxLogError( _( "Failed to save library %s. %s" ), aFilePath, ioe.What() );
+        return {};
+    }
+
+    return id;
 }
