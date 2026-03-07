@@ -142,7 +142,7 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
         table->Save().map_error(
                 [&]( const LIBRARY_ERROR& aError )
                 {
-                    wxLogError(aError.message);
+                    wxLogError( aError.message );
                     success = false;
                 } );
 
@@ -328,6 +328,7 @@ std::optional<LIB_ID> API_SCH_DESIGN_RESOURCE_MGR::WriteSymbolFields( wxString c
 
     try
     {
+        // FIXME: Need to call Duplicate here
         m_schIo->SaveSymbol( aFilePath, lib_sym->Duplicate() );
     }
     catch( const IO_ERROR& ioe )

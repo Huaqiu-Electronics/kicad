@@ -57,8 +57,8 @@ private:
 
 
     // NOTE : Using a scoped io will lead to crash on opening symbol chooser due to using after free.
-    std::unique_ptr<SCH_IO> m_schIo;
-    SYMBOL_LIBRARY_MANAGER* m_libMgr;
+    std::unique_ptr<SCH_IO>                 m_schIo;
+    std::unique_ptr<SYMBOL_LIBRARY_MANAGER> m_libMgr;
 };
 
 #endif
