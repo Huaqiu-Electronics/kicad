@@ -1223,19 +1223,20 @@ void EDA_BASE_FRAME::RestoreAuiLayout()
      * wx 3.2 or the first settings upgrade when wx 3.3 is used in KiCad (e.g., 9.0->10.0 for Windows and macOS).
      */
     if( !restored && !m_perspective.IsEmpty() )
-    {
         m_auimgr.LoadPerspective( m_perspective );
 
-        // Workaround for wx 3.2: LoadPerspective() hides all panes first, then shows only
-        // those in the saved string. If toolbar names changed or new toolbars were added,
-        // they'd stay hidden. Ensure all toolbars are visible after restore.
-        wxAuiPaneInfoArray& panes = m_auimgr.GetAllPanes();
+    // Workaround for two bugs:
+    // 1) wx 3.2: LoadPerspective() hides all panes first, then shows only
+    //    those in the saved string. If toolbar names changed or new toolbars were added,
+    //    they'd stay hidden. Ensure all toolbars are visible after restore.
+    // 2) We still saw this even after this fix, so just make the toolbars shown unconditionally
+    //    since we don't actually allow hiding them. The root cause of this part is not known.
+    wxAuiPaneInfoArray& panes = m_auimgr.GetAllPanes();
 
-        for( size_t i = 0; i < panes.GetCount(); ++i )
-        {
-            if( panes.Item( i ).IsToolbar() )
-                panes.Item( i ).Show( true );
-        }
+    for( size_t i = 0; i < panes.GetCount(); ++i )
+    {
+        if( panes.Item( i ).IsToolbar() )
+            panes.Item( i ).Show( true );
     }
 }
 
