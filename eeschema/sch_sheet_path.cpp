@@ -309,9 +309,14 @@ bool SCH_SHEET_PATH::GetExcludedFromSim( const wxString& aVariantName ) const
     if( aVariantName.IsEmpty() )
         return GetExcludedFromSim();
 
-    for( SCH_SHEET* sheet : m_sheets )
+    SCH_SHEET_PATH copy = *this;
+
+    while( !copy.empty() )
     {
-        if( sheet->GetExcludedFromSim( this, aVariantName ) )
+        SCH_SHEET* sheet = copy.Last();
+        copy.pop_back();
+
+        if( sheet->GetExcludedFromSim( &copy, aVariantName ) )
             return true;
     }
 
@@ -336,9 +341,14 @@ bool SCH_SHEET_PATH::GetExcludedFromBOM( const wxString& aVariantName ) const
     if( aVariantName.IsEmpty() )
         return GetExcludedFromBOM();
 
-    for( SCH_SHEET* sheet : m_sheets )
+    SCH_SHEET_PATH copy = *this;
+
+    while( !copy.empty() )
     {
-        if( sheet->GetExcludedFromBOM( this, aVariantName ) )
+        SCH_SHEET* sheet = copy.Last();
+        copy.pop_back();
+
+        if( sheet->GetExcludedFromBOM( &copy, aVariantName ) )
             return true;
     }
 
@@ -363,9 +373,14 @@ bool SCH_SHEET_PATH::GetExcludedFromBoard( const wxString& aVariantName ) const
     if( aVariantName.IsEmpty() )
         return GetExcludedFromBoard();
 
-    for( SCH_SHEET* sheet : m_sheets )
+    SCH_SHEET_PATH copy = *this;
+
+    while( !copy.empty() )
     {
-        if( sheet->GetExcludedFromBoard( this, aVariantName ) )
+        SCH_SHEET* sheet = copy.Last();
+        copy.pop_back();
+
+        if( sheet->GetExcludedFromBoard( &copy, aVariantName ) )
             return true;
     }
 
@@ -390,9 +405,14 @@ bool SCH_SHEET_PATH::GetDNP( const wxString& aVariantName ) const
     if( aVariantName.IsEmpty() )
         return GetDNP();
 
-    for( SCH_SHEET* sheet : m_sheets )
+    SCH_SHEET_PATH copy = *this;
+
+    while( !copy.empty() )
     {
-        if( sheet->GetDNP( this, aVariantName ) )
+        SCH_SHEET* sheet = copy.Last();
+        copy.pop_back();
+
+        if( sheet->GetDNP( &copy, aVariantName ) )
             return true;
     }
 
