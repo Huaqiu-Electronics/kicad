@@ -32,7 +32,7 @@
 #include <footprint.h>
 #include <pcb_track.h>
 #include <pcb_edit_frame.h>
-#include <gendrill_Excellon_writer.h>
+#include <exporters/gendrill_excellon_writer.h>
 
 
 template <>
