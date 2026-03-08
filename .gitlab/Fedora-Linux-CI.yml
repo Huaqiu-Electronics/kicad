@@ -9,15 +9,10 @@
   image: $DEFAULT_FEDORA_IMAGE
   extends: .only_code
   interruptible: false
-  cache:
-    key: "cache-fedora-linux"
-    paths:
-      - ccache/
+
   before_script:
-    # CCache Config
-    - mkdir -p ccache
-    - export CCACHE_BASEDIR=${PWD}
-    - export CCACHE_DIR=${PWD}/ccache
+    - echo "No ccache used"
+
   script:
     - mkdir -p build/linux
     - cd build/linux
