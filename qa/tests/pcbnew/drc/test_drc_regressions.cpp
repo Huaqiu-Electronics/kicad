@@ -176,6 +176,7 @@ BOOST_FIXTURE_TEST_CASE( DRCFalseNegativeRegressions, DRC_REGRESSION_TEST_FIXTUR
         bds.m_DRCSeverities[DRCE_COPPER_SLIVER] = SEVERITY::RPT_SEVERITY_IGNORE;
         bds.m_DRCSeverities[DRCE_LIB_FOOTPRINT_ISSUES] = SEVERITY::RPT_SEVERITY_IGNORE;
         bds.m_DRCSeverities[DRCE_LIB_FOOTPRINT_MISMATCH] = SEVERITY::RPT_SEVERITY_IGNORE;
+        bds.m_DRCSeverities[DRCE_TRACK_NOT_CENTERED_ON_VIA] = SEVERITY::RPT_SEVERITY_IGNORE;
 
         for(const auto [test, severity] : customSeverities)
             bds.m_DRCSeverities[test] = severity;
