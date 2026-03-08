@@ -115,6 +115,8 @@ enum PCB_DRC_CODE
 
     DRCE_TRACK_ON_POST_MACHINED_LAYER,  // Track connected to pad/via on post-machined/backdrilled layer
 
+    DRCE_TRACK_NOT_CENTERED_ON_VIA,     // Track endpoint within via pad but not at via center
+
     DRCE_SCHEMATIC_FIELDS_PARITY, // Mismatch with schematic fields
 
     DRCE_LAST = DRCE_SCHEMATIC_FIELDS_PARITY
@@ -253,6 +255,7 @@ private:
     static DRC_ITEM missingTuningProfile;
     static DRC_ITEM tuningProfileImplicitRules;
     static DRC_ITEM trackOnPostMachinedLayer;
+    static DRC_ITEM trackNotCenteredOnVia;
     static DRC_ITEM schematicFieldsParity;
 
 private:

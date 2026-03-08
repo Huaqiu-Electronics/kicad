@@ -179,6 +179,56 @@ bool DRC_TEST_PROVIDER_CONNECTIVITY::Run()
         }
     }
 
+    if( !m_drcEngine->IsErrorLimitExceeded( DRCE_TRACK_NOT_CENTERED_ON_VIA ) )
+    {
+        for( PCB_TRACK* track : board->Tracks() )
+        {
+            if( m_drcEngine->IsErrorLimitExceeded( DRCE_TRACK_NOT_CENTERED_ON_VIA ) )
+                break;
+
+            if( track->Type() != PCB_TRACE_T && track->Type() != PCB_ARC_T )
+                continue;
+
+            const std::list<CN_ITEM*>& items = connectivity->GetConnectivityAlgo()->ItemEntry( track ).GetItems();
+
+            if( items.empty() )
+                continue;
+
+            CN_ITEM* citem = items.front();
+
+            if( !citem->Valid() )
+                continue;
+
+            for( CN_ITEM* connected : citem->ConnectedItems() )
+            {
+                BOARD_CONNECTED_ITEM* item = connected->Parent();
+
+                if( item->GetFlags() & IS_DELETED )
+                    continue;
+
+                if( item->Type() != PCB_VIA_T )
+                    continue;
+
+                PCB_VIA* via = static_cast<PCB_VIA*>( item );
+                VECTOR2I viaPos = via->GetPosition();
+
+                bool startInVia = via->HitTest( track->GetStart() );
+                bool endInVia = via->HitTest( track->GetEnd() );
+
+                if( ( startInVia && track->GetStart() != viaPos ) || ( endInVia && track->GetEnd() != viaPos ) )
+                {
+                    bool     startViolation = startInVia && track->GetStart() != viaPos;
+                    VECTOR2I pos = startViolation ? track->GetStart() : track->GetEnd();
+
+                    std::shared_ptr<DRC_ITEM> drcItem = DRC_ITEM::Create( DRCE_TRACK_NOT_CENTERED_ON_VIA );
+                    drcItem->SetItems( track, via );
+                    reportViolation( drcItem, pos, track->GetLayer() );
+                    break;
+                }
+            }
+        }
+    }
+
     /* test starved zones */
     for( const auto& [ zone, zoneIslands ] : board->m_ZoneIsolatedIslandsMap )
     {
