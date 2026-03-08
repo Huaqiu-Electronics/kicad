@@ -30,7 +30,7 @@
 #include <board_design_settings.h>
 #include <pcb_edit_frame.h>
 
-#include <exporters/gendrill_Excellon_writer.h>
+#include <exporters/gendrill_excellon_writer.h>
 
 template <>
 bool FAB_INFO_GETTER_PCB::GenerateDrillFile( wxString const& aOutDir )

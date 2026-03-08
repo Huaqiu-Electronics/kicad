@@ -40,7 +40,7 @@
 #include <wx/msgdlg.h>
 #include <wx/string.h>
 #include <plotcontroller.h>
-#include <exporters/gendrill_Excellon_writer.h>
+#include <exporters/gendrill_excellon_writer.h>
 
 template <>
 bool FAB_INFO_GETTER_PCB::GenerateGerberFiles( wxString const& aOutDir )
