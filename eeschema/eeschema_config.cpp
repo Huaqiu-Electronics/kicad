@@ -387,6 +387,12 @@ void SCH_EDIT_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
             cfg->m_AuiPanels.remote_symbol_panel_float_width = remoteSymbolPane.floating_size.x;
         }
 
+        if( m_copilotPanel )
+            SaveCopilotCnf();
+
+        if( m_webSymbolChooser )
+            SaveWebViewLibraryCnf();        
+
     }
 }
 
