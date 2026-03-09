@@ -49,6 +49,7 @@
 #include <pcb_text.h>
 #include <pcb_shape.h>
 #include <pcb_track.h>
+#include <priority_thread_pool_task.h>
 #include <zone.h>
 #include <zone_utils.h>
 
@@ -3834,8 +3835,99 @@ static LSET getRuleAreaLayers( const LAYER_INFO& aLayerInfo, PCB_LAYER_ID aDefau
 }
 
 
+/**
+ * Filled zones have their own outline and the fill itself comes from
+ * a bunch of "related" spaces. To convert this to a KiCad-ish ZONE,
+ * we need to chop out only the bit of the wider filled zone that applies
+ * to the outline (i.e. intersection).
+ *
+ * Then that fill has to be fractured.
+ *
+ * This is all repeated for each layer's separated filled areas.
+ *
+ * This takes ages, so this class handles the information you need to collect to do that
+ * later on in a thread pool, and does that.
+ */
+class BOARD_BUILDER::ZONE_FILL_HANDLER
+{
+public:
+    /**
+     * This is all the info needed to do the fill of one layer of one zone.
+     */
+    struct FILL_INFO
+    {
+        ZONE*        m_Zone;
+        PCB_LAYER_ID m_Layer;
+        /// The wider filled area we will chop a piece out of for this layer of this zone
+        SHAPE_POLY_SET m_CombinedFill;
+    };
+
+    /**
+     * Priority task dispatcher for zone fills - we want to do the biggest ones first.
+     *
+     * On average, sorting the largest zones first is slightly faster (5-10%) on large boards.
+     *
+     * However, if you allow the large zones to be assigned at random, as they basically will be
+     * if they are handled later in the process, there's a chance the very biggest zones will end up
+     * consecutive in the same thread which could be a substantial penalty.
+     */
+    class COMPLEX_FIRST_FILL_TASK: public PRIORITY_THREAD_POOL_TASK<std::vector<FILL_INFO>>
+    {
+    public:
+        COMPLEX_FIRST_FILL_TASK( bool aSimplify ) : m_simplify( aSimplify ) {}
+
+    private:
+        int computePriorityKey( const FILL_INFO& a ) const override
+        {
+            return static_cast<int>( a.m_CombinedFill.TotalVertices() );
+        }
+
+        size_t task( FILL_INFO& fillInfo ) override
+        {
+            SHAPE_POLY_SET finalFillPolys = *fillInfo.m_Zone->Outline();
+
+            finalFillPolys.ClearArcs();
+            fillInfo.m_CombinedFill.ClearArcs();
+
+            // Intersect the zone outline with the combined fill that was assembled
+            // from all the related objects.
+            finalFillPolys.BooleanIntersection( fillInfo.m_CombinedFill );
+            finalFillPolys.Fracture( m_simplify );
+
+            // This is already mutex-ed, so this is safe
+            fillInfo.m_Zone->SetFilledPolysList( fillInfo.m_Layer, finalFillPolys );
+            return 1;
+        }
+
+        bool m_simplify;
+    };
+
+    /**
+     * Process the polygons in a thread pool for more fans, more faster
+     */
+    void ProcessPolygons( bool aSimplify )
+    {
+        PROF_TIMER timer( "Zone fill processing" );
+
+        COMPLEX_FIRST_FILL_TASK fillTask( aSimplify );
+        fillTask.Execute( m_FillInfos );
+
+        wxLogTrace( traceAllegroPerf, wxT( "   Intersected and fractured zone fills in %.3f ms" ), timer.msecs() ); // format:allow
+    }
+
+    void QueuePolygonForZone( ZONE& aZone, SHAPE_POLY_SET aFilledArea, PCB_LAYER_ID aLayer )
+    {
+        m_FillInfos.emplace_back( &aZone, aLayer, std::move( aFilledArea ) );
+    }
+
+private:
+    std::vector<FILL_INFO> m_FillInfos;
+};
+
+
 std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&                     aBoundaryBlock,
-                                                const std::vector<const BLOCK_BASE*>& aRelatedBlocks )
+                                                const std::vector<const BLOCK_BASE*>& aRelatedBlocks,
+                                                ZONE_FILL_HANDLER&                    aZoneFillHandler )
 {
     int              netCode = NETINFO_LIST::UNCONNECTED;
     const LAYER_INFO layerInfo = expectLayerFromBlock( aBoundaryBlock );
@@ -3927,7 +4019,7 @@ std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&               
         {
         case 0x1B:
         {
-            auto it = m_netCache.find( block->GetKey() );
+            const auto it = m_netCache.find( block->GetKey() );
 
             if( it != m_netCache.end() )
             {
@@ -3950,7 +4042,6 @@ std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&               
 
             SHAPE_POLY_SET fillPolySet = shapeToPolySet( shapeData );
             combinedFill.Append( fillPolySet );
-
             m_usedZoneFillShapes.emplace( block->GetKey() );
             break;
         }
@@ -3968,18 +4059,23 @@ std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&               
     // Add zone fills
     if( isCopperZone && !combinedFill.IsEmpty() )
     {
-        SHAPE_POLY_SET zoneOutline = *zone->Outline();
+        // We don't do this here, though it feels like we should. We collect the
+        // information for batch processing later on (which is conceptually
+        // easier to parallelise compared to this function).  But there is room
+        // for improvement by threading more of this work: shapeToPolySet
+        // accounts for about 40% of the remaining single-threaded time in the
+        // building process.
 
-        combinedFill.ClearArcs();
-        zoneOutline.ClearArcs();
-
-        combinedFill.BooleanIntersection( zoneOutline );
-        combinedFill.Fracture( true );
-
-        zone->SetFilledPolysList( layer, combinedFill );
+        // combinedFill.ClearArcs();
+        // zoneOutline.ClearArcs();
+        // combinedFill.BooleanIntersection( zoneOutline );
+        // zone->SetFilledPolysList( layer, combinedFill );
 
         zone->SetIsFilled( true );
         zone->SetNeedRefill( false );
+
+        // Poke these relevant context in here for batch processing later on
+        aZoneFillHandler.QueuePolygonForZone( *zone, std::move( combinedFill ), layer );
     }
 
     return zone;
@@ -4081,6 +4177,8 @@ void BOARD_BUILDER::createZones()
     std::vector<std::unique_ptr<ZONE>> boundaryZones;
     std::vector<std::unique_ptr<ZONE>> keepoutZones;
 
+    ZONE_FILL_HANDLER zoneFillHandler;
+
     // Walk m_LL_Shapes to find BOUNDARY shapes (zone outlines).
     // BOUNDARY shapes use class 0x15 with copper layer subclass indices.
     const LL_WALKER shapeWalker( m_brdDb.m_Header->m_LL_Shapes, m_brdDb );
@@ -4095,7 +4193,7 @@ void BOARD_BUILDER::createZones()
         if( shapeData.m_Layer.m_Class != LAYER_INFO::CLASS::BOUNDARY )
             continue;
 
-        std::unique_ptr<ZONE> zone = buildZone( *block, getShapeRelatedBlocks( shapeData ) );
+        std::unique_ptr<ZONE> zone = buildZone( *block, getShapeRelatedBlocks( shapeData ), zoneFillHandler );
 
         if( zone )
         {
@@ -4127,7 +4225,7 @@ void BOARD_BUILDER::createZones()
             wxLogTrace( traceAllegroBuilder, "  Processing %s rect %#010x", layerInfoDisplayName( rectData.m_Layer ),
                         rectData.m_Key );
 
-            zone = buildZone( *block, {} );
+            zone = buildZone( *block, {}, zoneFillHandler );
             break;
         }
         case 0x28:
@@ -4140,7 +4238,7 @@ void BOARD_BUILDER::createZones()
             wxLogTrace( traceAllegroBuilder, "  Processing %s shape %#010x", layerInfoDisplayName( shapeData.m_Layer ),
                         shapeData.m_Key );
 
-            zone = buildZone( *block, {} );
+            zone = buildZone( *block, {}, zoneFillHandler );
             break;
         }
         default:
@@ -4152,6 +4250,9 @@ void BOARD_BUILDER::createZones()
             keepoutZones.push_back( std::move( zone ) );
         }
     }
+
+    // Deal with all the collected zone fill polygons now, all at once
+    zoneFillHandler.ProcessPolygons( true );
 
     int keepoutCount = keepoutZones.size();
     int boundaryCount = boundaryZones.size();

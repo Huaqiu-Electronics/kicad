@@ -163,13 +163,17 @@ private:
     std::vector<std::unique_ptr<BOARD_ITEM>> buildTrack( const BLK_0x05_TRACK& aBlock, int aNetcode );
     std::unique_ptr<BOARD_ITEM>              buildVia( const BLK_0x33_VIA& aBlock, int aNetcode );
 
+    class ZONE_FILL_HANDLER;
+
     /**
      * Build a ZONE from an 0x0E, 0x24 or 0x28 block.
-     * 
+     *
      * @param aRelatedBlocks are blocks to get net (0x1B) and fill (0x28) info from
+     * @param aZoneFillHandler is a management object for efficiently dealing with filled zones
      */
     std::unique_ptr<ZONE> buildZone( const BLOCK_BASE&                     aBoundaryBlock,
-                                     const std::vector<const BLOCK_BASE*>& aRelatedBlocks );
+                                     const std::vector<const BLOCK_BASE*>& aRelatedBlocks,
+                                     ZONE_FILL_HANDLER&                    aZoneFillHandler );
 
     SHAPE_LINE_CHAIN buildOutline( const BLK_0x0E_RECT& aRect ) const;
     SHAPE_LINE_CHAIN buildOutline( const BLK_0x24_RECT& aRect ) const;
