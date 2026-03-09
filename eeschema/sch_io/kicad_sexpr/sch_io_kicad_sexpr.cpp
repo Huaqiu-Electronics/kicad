@@ -927,7 +927,7 @@ void SCH_IO_KICAD_SEXPR::saveSymbol( SCH_SYMBOL* aSymbol, const SCHEMATIC& aSche
                             KICAD_FORMAT::FormatBool( m_out, "exclude_from_sim", variant.m_ExcludedFromSim );
 
                         if( variant.m_ExcludedFromBOM != aSymbol->GetExcludedFromBOM() )
-                            KICAD_FORMAT::FormatBool( m_out, "in_bom", variant.m_ExcludedFromBOM );
+                            KICAD_FORMAT::FormatBool( m_out, "in_bom", !variant.m_ExcludedFromBOM );
 
                         if( variant.m_ExcludedFromBoard != aSymbol->GetExcludedFromBoard() )
                             KICAD_FORMAT::FormatBool( m_out, "on_board", !variant.m_ExcludedFromBoard );
@@ -1180,7 +1180,7 @@ void SCH_IO_KICAD_SEXPR::saveSheet( SCH_SHEET* aSheet, const SCH_SHEET_LIST& aSh
                         KICAD_FORMAT::FormatBool( m_out, "exclude_from_sim", variant.m_ExcludedFromSim );
 
                     if( variant.m_ExcludedFromBOM != aSheet->GetExcludedFromBOM() )
-                        KICAD_FORMAT::FormatBool( m_out, "in_bom", variant.m_ExcludedFromBOM );
+                        KICAD_FORMAT::FormatBool( m_out, "in_bom", !variant.m_ExcludedFromBOM );
 
                     for( const auto&[fname, fvalue] : variant.m_Fields )
                     {

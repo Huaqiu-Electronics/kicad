@@ -3408,7 +3408,7 @@ SCH_SYMBOL* SCH_IO_KICAD_SEXPR_PARSER::parseSchematicSymbol()
                                     break;
 
                                 case T_in_bom:
-                                    variant.m_ExcludedFromBOM = parseBool();
+                                    variant.m_ExcludedFromBOM = ( m_requiredVersion >= 20260306 ) ^ parseBool();
                                     NeedRIGHT();
                                     break;
 
@@ -3872,7 +3872,7 @@ SCH_SHEET* SCH_IO_KICAD_SEXPR_PARSER::parseSheet()
                                     break;
 
                                 case T_in_bom:
-                                    variant.m_ExcludedFromBOM = parseBool();
+                                    variant.m_ExcludedFromBOM = ( m_requiredVersion >= 20260306 ) ^ parseBool();
                                     NeedRIGHT();
                                     break;
 
