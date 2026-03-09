@@ -215,6 +215,42 @@ bool DRC_TEST_PROVIDER_CONNECTIVITY::Run()
                 bool startInVia = via->HitTest( track->GetStart() );
                 bool endInVia = via->HitTest( track->GetEnd() );
 
+                if( !startInVia && !endInVia )
+                    continue;
+
+                // Check if any track on the same layer connected to this VIA
+                // reaches its center. If so, this side is properly connected.
+                bool         layerHasCenteredTrack = false;
+                PCB_LAYER_ID trackLayer = track->GetLayer();
+
+                const std::list<CN_ITEM*>& viaEntries =
+                        connectivity->GetConnectivityAlgo()->ItemEntry( via ).GetItems();
+
+                if( !viaEntries.empty() )
+                {
+                    for( CN_ITEM* viaConnected : viaEntries.front()->ConnectedItems() )
+                    {
+                        BOARD_CONNECTED_ITEM* connItem = viaConnected->Parent();
+
+                        if( connItem->Type() != PCB_TRACE_T && connItem->Type() != PCB_ARC_T )
+                            continue;
+
+                        PCB_TRACK* connTrack = static_cast<PCB_TRACK*>( connItem );
+
+                        if( connTrack->GetLayer() != trackLayer )
+                            continue;
+
+                        if( connTrack->GetStart() == viaPos || connTrack->GetEnd() == viaPos )
+                        {
+                            layerHasCenteredTrack = true;
+                            break;
+                        }
+                    }
+                }
+
+                if( layerHasCenteredTrack )
+                    continue;
+
                 if( ( startInVia && track->GetStart() != viaPos ) || ( endInVia && track->GetEnd() != viaPos ) )
                 {
                     bool     startViolation = startInVia && track->GetStart() != viaPos;
