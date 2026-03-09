@@ -15,13 +15,14 @@
 # John Beard <john.j.beard@gmail.com>, 2025.
 # Czam Ciał <lamaforge@proton.me>, 2025, 2026.
 # maksz42 <maksz@op.pl>, 2026.
+# szumsky <beish97@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-08 02:17+0000\n"
-"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
+"PO-Revision-Date: 2026-03-09 13:10+0000\n"
+"Last-Translator: szumsky <beish97@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
@@ -42410,7 +42411,7 @@ msgstr ""
 
 #: pcbnew/dialogs/dialog_pns_settings_base.cpp:112
 msgid "Fix all segments on click"
-msgstr "Napraw wszystkie segmenty po kliknięciu"
+msgstr "Unieruchom wszystkie segmenty po kliknięciu"
 
 #: pcbnew/dialogs/dialog_pns_settings_base.cpp:113
 msgid ""
