@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-06 12:40-0800\n"
+"POT-Creation-Date: 2026-03-09 11:13-0700\n"
 "PO-Revision-Date: 2018-07-15 17:07+0200\n"
 "Last-Translator: Simon Richter <Simon.Richter@hogyros.de>\n"
 "Language-Team: Simon Richter <Simon.Richter@hogyros.de>\n"
@@ -32664,6 +32664,9 @@ msgstr "Tuning profile track geometries"
 
 msgid "Track connected to post-machined or backdrilled layer"
 msgstr "Track connected to post-machined or backdrilled layer"
+
+msgid "Track endpoint not centered on via"
+msgstr "Track endpoint not centered on via"
 
 #, c-format
 msgid "Rule: %s"
