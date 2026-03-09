@@ -2470,10 +2470,23 @@ void CREEPAGE_GRAPH::GeneratePaths( double aMaxWeight, PCB_LAYER_ID aLayer )
 
                 for( const PATH_CONNECTION& pc : GetPaths( shape1, shape2, aMaxWeight ) )
                 {
-                    std::vector<const BOARD_ITEM*> IgnoreForTest =
-                    {
-                        gn1->m_parent->GetParent(), gn2->m_parent->GetParent()
-                    };
+                    std::vector<const BOARD_ITEM*> IgnoreForTest;
+
+                    // Both segments_intersect and segmentIntersectsArc exclude
+                    // shared-endpoint intersections, so POINT and ARC shapes don't
+                    // need their parent skipped during board edge intersection
+                    // testing. Only CIRCLE shapes need parent suppression because
+                    // segmentIntersectsCircle has no endpoint exclusion.
+                    //
+                    // Previously both parents were always added, which caused paths
+                    // between corners of different Edge.Cuts rectangles to skip both
+                    // rectangles entirely, allowing invalid paths through slot
+                    // interiors.
+                    if( shape1->GetType() == CREEP_SHAPE::TYPE::CIRCLE )
+                        IgnoreForTest.push_back( shape1->GetParent() );
+
+                    if( shape2->GetType() == CREEP_SHAPE::TYPE::CIRCLE )
+                        IgnoreForTest.push_back( shape2->GetParent() );
 
                     bool valid = pc.isValid( m_board, aLayer, m_boardEdge, IgnoreForTest, m_boardOutline,
                                      { false, true }, m_minGrooveWidth, &trackIndex );
