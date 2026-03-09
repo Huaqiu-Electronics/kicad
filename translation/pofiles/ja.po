@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-09 11:13-0700\n"
-"PO-Revision-Date: 2026-03-07 15:54+0000\n"
-"Last-Translator: SubaruArai <subaruletian.arai@minebea.com>\n"
+"PO-Revision-Date: 2026-03-10 12:04+0000\n"
+"Last-Translator: 2tama3 <2tama3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kicad/master-"
 "source/ja/>\n"
 "Language: ja\n"
@@ -46389,9 +46389,8 @@ msgid "Track connected to post-machined or backdrilled layer"
 msgstr "後加工またはバックドリル層上のパッド/ビアに接続されたトラック"
 
 #: pcbnew/drc/drc_item.cpp:318
-#, fuzzy
 msgid "Track endpoint not centered on via"
-msgstr "配線がビアに近すぎます"
+msgstr "配線の端点がビアの中心にありません"
 
 #: pcbnew/drc/drc_item.cpp:522
 #, c-format
