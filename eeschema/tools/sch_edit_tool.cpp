@@ -296,12 +296,6 @@ bool SCH_EDIT_TOOL::Init()
 
     auto sheetSelection = S_C::Count( 1 ) && S_C::OnlyTypes( sheetTypes );
 
-    auto hasElements =
-            [this]( const SELECTION& aSel )
-            {
-                return !m_frame->GetScreen()->Items().empty();
-            };
-
     auto sheetHasUndefinedPins =
             []( const SELECTION& aSel )
             {

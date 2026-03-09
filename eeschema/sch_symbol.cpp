@@ -1896,10 +1896,10 @@ bool SCH_SYMBOL::ResolveTextVar( const SCH_SHEET_PATH* aPath, wxString* token,
             else if( !aVariantName.IsEmpty() )
             {
                 // Check for variant-specific field value
-                std::optional<SCH_SYMBOL_VARIANT> variant = GetVariant( *aPath, aVariantName );
+                std::optional<SCH_SYMBOL_VARIANT> symVariant = GetVariant( *aPath, aVariantName );
 
-                if( variant && variant->m_Fields.contains( fieldName ) )
-                    *token = variant->m_Fields.at( fieldName );
+                if( symVariant && symVariant->m_Fields.contains( fieldName ) )
+                    *token = symVariant->m_Fields.at( fieldName );
                 else
                     *token = field.GetShownText( aPath, false, aDepth + 1 );
             }
