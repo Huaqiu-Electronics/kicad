@@ -63,6 +63,13 @@ demos/**/fp-info-cache
 demos/**/~*.lck
 demos/**/.history
 
+# QA data aux files
+qa/data**/*-bak
+qa/data/**/_autosave-*
+qa/data/**/fp-info-cache
+qa/data/**/~*.lck
+qa/data/**/.history
+
 # MacOS package info created by CMake
 bitmap2component/Info.plist
 cvpcb/Info.plist
