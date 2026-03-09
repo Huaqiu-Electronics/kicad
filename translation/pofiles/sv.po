@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 12:40-0800\n"
-"PO-Revision-Date: 2026-03-07 17:12+0000\n"
-"Last-Translator: Johan Heikkilä <johan.heikkila@gmail.com>\n"
+"PO-Revision-Date: 2026-03-09 18:07+0000\n"
+"Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kicad/master-"
 "source/sv/>\n"
 "Language: sv\n"
@@ -7743,10 +7743,13 @@ msgid "Could not lookup commit '%s'"
 msgstr "Kunde inte slå upp överlämning '%s'"
 
 #: common/git/libgit_backend.cpp:1098
+#, fuzzy
 msgid ""
 "Cannot merge: you have unstaged changes. Please commit or stash them before "
 "pulling."
 msgstr ""
+"Sammanslagning kan inte utföras: Du har osparade ändringar. Vänligen "
+"överlämna eller göm undan dem före hämtning."
 
 #: common/git/libgit_backend.cpp:1106
 #, c-format
@@ -7754,10 +7757,13 @@ msgid "Merge failed: %s"
 msgstr "Sammanslagning misslyckades: %s"
 
 #: common/git/libgit_backend.cpp:1122
+#, fuzzy
 msgid ""
 "Cannot pull with rebase: you have unstaged changes. Please commit or stash "
 "them before pulling."
 msgstr ""
+"Kan inte hämta med grenflytt: Du har osparade ändringar. Vänligen överlämna "
+"eller göm undan dem före hämtning."
 
 #: common/git/libgit_backend.cpp:1135
 #, c-format
@@ -21180,9 +21186,8 @@ msgid "Empty sheet pin name"
 msgstr "Tomt namn på arkstift"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:2932
-#, fuzzy
 msgid "Schematic polyline has too few points"
-msgstr "Form har inga punkter."
+msgstr "Kretsschemats polylinje har för få punkter"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3021
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3034
@@ -21209,9 +21214,8 @@ msgid "Missing sheet file property"
 msgstr "Argumentet arknamn saknas för %s."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
-#, fuzzy
 msgid "Invalid table: no cells defined"
-msgstr "Ogiltigt kartformat specificerat\n"
+msgstr "Ogiltig tabell: inga celler definierade"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
@@ -37731,9 +37735,8 @@ msgid "Compress output into 'zip' file"
 msgstr "Komprimera utmatning i 'zip'-fil"
 
 #: pcbnew/dialogs/dialog_export_2581_base.cpp:94
-#, fuzzy
 msgid "BOM revision:"
-msgstr "Revision:"
+msgstr "Komponentlisterevision:"
 
 #: pcbnew/dialogs/dialog_export_2581_base.cpp:96
 #: pcbnew/dialogs/dialog_export_2581_base.cpp:101
@@ -37741,6 +37744,8 @@ msgid ""
 "Revision string for the BOM section. Auto-populated from schematic title "
 "block revision"
 msgstr ""
+"Revisionssträng för komponentlistesektion. Automatiskt ifylld från "
+"revisionsinformation i kretsschemats namnruta"
 
 #: pcbnew/dialogs/dialog_export_2581_base.cpp:119
 msgid "BOM Columns"
@@ -42475,39 +42480,32 @@ msgid "Error with conditions for component class assignment %s"
 msgstr "Fel i villkor för tilldelning av komponentklass %s"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:366
-#, fuzzy
 msgid "Add Reference Condition"
-msgstr "Referensposition"
+msgstr "Lägg till villkor för referensbeteckning"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:367
-#, fuzzy
 msgid "Add Footprint Condition"
-msgstr "Lägg till filter för fotavtryck"
+msgstr "Lägg till villkor för fotavtryck"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:368
-#, fuzzy
 msgid "Add Side Condition"
-msgstr "Lägg till ett centrummått"
+msgstr "Lägg till villkor för sida"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:369
-#, fuzzy
 msgid "Add Rotation Condition"
-msgstr "Lägg till ett centrummått"
+msgstr "Lägg till villkor för rotation"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:370
-#, fuzzy
 msgid "Add Footprint Field Value Condition"
-msgstr "Lägg till filter för fotavtryck"
+msgstr "Lägg till villkor för fältvärde i fotavtryck"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:371
-#, fuzzy
 msgid "Add Sheet Condition"
-msgstr "Lägg till arkstift"
+msgstr "Lägg till villkor för ark"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:372
-#, fuzzy
 msgid "Add Custom Expression Condition"
-msgstr "Lägg till användardefinierad tilldelning"
+msgstr "Lägg till användardefinierat villkor"
 
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:565
 #: pcbnew/dialogs/panel_assign_component_classes.cpp:618
@@ -42555,14 +42553,13 @@ msgid "Highlight matching footprints"
 msgstr "Framhäv matchande fotavtryck"
 
 #: pcbnew/dialogs/panel_assign_component_classes_base.cpp:116
-#, fuzzy
 msgid "Match all"
 msgstr "Matcha alla"
 
 #: pcbnew/dialogs/panel_assign_component_classes_base.cpp:120
 #, fuzzy
 msgid "Match any"
-msgstr "Matchade någon"
+msgstr "Matcha någon"
 
 #: pcbnew/dialogs/panel_assign_component_classes_base.cpp:167
 msgid "Import references"
@@ -42950,9 +42947,8 @@ msgid "7"
 msgstr "7"
 
 #: pcbnew/dialogs/panel_fp_user_layer_names_base.cpp:30
-#, fuzzy
 msgid "9"
-msgstr "90"
+msgstr "9"
 
 #: pcbnew/dialogs/panel_pcbnew_action_plugins.cpp:71
 msgid "Recreate Plugin Environment"
@@ -45417,9 +45413,8 @@ msgid "board setup constraints courtyard"
 msgstr "mönsterkortsinställningarnas begränsningar för gårdsplan"
 
 #: pcbnew/drc/drc_engine.cpp:240
-#, fuzzy
 msgid "board setup constraints micro-via"
-msgstr "mönsterkortsinställningarnas begränsningar"
+msgstr "mönsterkortsinställningarnas begränsningar för mikrovia"
 
 #: pcbnew/drc/drc_engine.cpp:255
 msgid "barcode visual separation default"
@@ -47173,18 +47168,16 @@ msgid "Optimum Length must be greater than 0"
 msgstr "Optimal längd måste vara större än noll"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:86
-#, fuzzy
 msgid "Tolerance must be greater than or equal to 0"
-msgstr "Maximal skevning måste vara större än eller lika med noll"
+msgstr "Tolerans måste vara större än eller lika med noll"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:91
 msgid "Tolerance is too large: resulting minimum length is not positive"
-msgstr ""
+msgstr "Toleransen är för stor: resulterande minimilängd är inte positiv"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:210
-#, fuzzy
 msgid "At least one constraint must be defined"
-msgstr "Minst en begränsning måste specificeras"
+msgstr "Minst en begränsning måste definieras"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:216
 msgid "Maximum Skew must be greater than or equal to 0"
@@ -47219,13 +47212,12 @@ msgid "Disallow"
 msgstr "Tillåt inte"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:49
-#, fuzzy
 msgid "Where conditions match:"
 msgstr "När villkor uppfylls:"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:50
 msgid "Where object matches:"
-msgstr ""
+msgstr "När objekt matchar:"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:56
 msgid "Add another condition"
@@ -47316,9 +47308,8 @@ msgid "Syntax OK"
 msgstr "Syntax OK"
 
 #: pcbnew/drc/rule_editor/drc_re_matched_length_diff_pair_overlay_panel.cpp:103
-#, fuzzy
 msgid "Within diff pairs"
-msgstr "Drar differentialpar: %s"
+msgstr "Inom differentialpar"
 
 #: pcbnew/drc/rule_editor/drc_re_min_txt_ht_th_constraint_data.h:78
 msgid "Minimum Text Height must be greater than 0"
@@ -47345,30 +47336,26 @@ msgid "At least one layer must be selected"
 msgstr "Minst ett lager måste väljas"
 
 #: pcbnew/drc/rule_editor/drc_re_routing_width_constraint_data.h:69
-#, fuzzy
 msgid "Optimum Width must be greater than 0"
-msgstr "Minsta bredd måste vara större än noll"
+msgstr "Optimal bredd måste vara större än noll"
 
 #: pcbnew/drc/rule_editor/drc_re_routing_width_constraint_data.h:72
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:85
-#, fuzzy
 msgid "Width Tolerance must be greater than or equal to 0"
-msgstr "Maximal skevning måste vara större än eller lika med noll"
+msgstr "Breddtolerans måste vara större än eller lika med noll"
 
 #: pcbnew/drc/rule_editor/drc_re_routing_width_constraint_data.h:75
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:88
-#, fuzzy
 msgid "Width Tolerance must be less than Optimum Width"
-msgstr "Minsta bredd kan inte vara större än största bredd"
+msgstr "Breddtolerans måste vara mindre än optmal bredd"
 
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:96
-#, fuzzy
 msgid "Gap Tolerance must be greater than or equal to 0"
-msgstr "Maximal skevning måste vara större än eller lika med noll"
+msgstr "Mellanrummets tolerans måste vara större än eller lika med noll"
 
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:99
 msgid "Gap Tolerance must be less than Optimum Gap"
-msgstr ""
+msgstr "Mellanrummets tolerans måste vara mindre än optimalt mellanrum"
 
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:103
 msgid "Maximum Uncoupled Length must be greater than or equal to 0"
@@ -47376,7 +47363,6 @@ msgstr "Maximal okopplad längd måste vara större än eller lika med noll"
 
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:106
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:113
-#, fuzzy
 msgid "At least one constraint must be specified"
 msgstr "Minst en begränsning måste specificeras"
 
@@ -47510,7 +47496,6 @@ msgid "inner"
 msgstr "inre"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor_base.cpp:52
-#, fuzzy
 msgid "Constraint"
 msgstr "Begränsning"
 
@@ -50366,9 +50351,9 @@ msgid "Unknown mapping of the Altium layer '%s'."
 msgstr "Okänd mappning för Altium-lagret '%s'."
 
 #: pcbnew/pcb_io/altium/altium_parser_pcb.cpp:239
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown mapping of the Altium layer kind '%s'."
-msgstr "Okänd mappning för Altium-lagret '%s'."
+msgstr "Okänd mappning för Altium-lagertyp '%s'."
 
 #: pcbnew/pcb_io/altium/altium_parser_pcb.cpp:284
 #, c-format
@@ -54829,9 +54814,8 @@ msgid "Some of the items could not be outset."
 msgstr "Kunde inte skapa kontur kring vissa av objekten."
 
 #: pcbnew/tools/multichannel_tool.cpp:85
-#, fuzzy
 msgid "(none)"
-msgstr "(ingen)"
+msgstr "(inget)"
 
 #: pcbnew/tools/multichannel_tool.cpp:135
 #: pcbnew/tools/multichannel_tool.cpp:1492
