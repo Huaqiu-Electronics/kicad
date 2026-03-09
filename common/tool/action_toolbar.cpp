@@ -527,7 +527,6 @@ void ACTION_TOOLBAR::AddGroup( std::unique_ptr<ACTION_GROUP> aGroup )
     for( const auto& act : aGroup->GetActions() )
         isToggleEntry |= act->CheckToolbarState( TOOLBAR_STATE::TOGGLE );
 
-
     m_toolKinds[ groupId ]    = isToggleEntry;
     m_toolActions[ groupId ]  = defaultAction;
     m_actionGroups[ groupId ] = std::move( aGroup );
@@ -749,12 +748,20 @@ void ACTION_TOOLBAR::onToolEvent( wxAuiToolBarEvent& aEvent )
             m_toolManager->CancelTool();
             handled = true;
         }
-        else if( groupIt != m_actionGroups.end() && m_toolKinds[id] )
+        else if( groupIt != m_actionGroups.end()
+                 && std::none_of( groupIt->second->GetActions().begin(),
+                                  groupIt->second->GetActions().end(),
+                                  []( const TOOL_ACTION* a )
+                                  {
+                                      return a->IsActivation();
+                                  } ) )
         {
-            // For toggle-type groups (units, crosshair, line modes), cycle to the next action
-            ACTION_GROUP*                       group   = groupIt->second.get();
+            // For non-tool toggle groups (units, crosshair, line modes), cycle to the next
+            // action on click. Tool groups (route track, etc.) fall through and just dispatch
+            // the currently displayed action.
+            ACTION_GROUP*                          group   = groupIt->second.get();
             const std::vector<const TOOL_ACTION*>& actions = group->GetActions();
-            const TOOL_ACTION*                  current = actionIt->second;
+            const TOOL_ACTION*                     current = actionIt->second;
 
             const TOOL_ACTION* next = actions[0];
 
@@ -1032,7 +1039,8 @@ void ACTION_TOOLBAR::popupPalette( wxAuiToolBarItem* aItem )
     }
 
     // Release the mouse to ensure the first click will be recognized in the palette
-    ReleaseMouse();
+    if( HasCapture() )
+        ReleaseMouse();
 
     m_palette->SetPosition( pos );
     m_palette->Popup();
