@@ -132,6 +132,8 @@ set( QA_EESCHEMA_SRCS
     test_stacked_pin_conversion.cpp
     test_pin_stacked_layout.cpp
     test_pin_text_overlap.cpp
+    test_remote_symbol_download_security.cpp
+    test_remote_symbol_import.cpp
     test_netlist_exporter_xml_stacked.cpp
     test_resolve_drivers.cpp
     test_saveas_copy_subsheets.cpp

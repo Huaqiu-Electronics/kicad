@@ -59,6 +59,22 @@ add_custom_target(
         -DBANNED_DIRS="${PROJECT_SOURCE_DIR}/common/io;${PROJECT_SOURCE_DIR}/pcbnew/pcb_io;${PROJECT_SOURCE_DIR}/eeschema/sch_io"
         -P ${KICAD_CMAKE_MODULE_PATH}/CheckBannedFunctions.cmake
 )
+
+if( NOT (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} ) )
+    file( GLOB REMOTE_PROVIDER_SCHEMA_FILES
+        ${CMAKE_SOURCE_DIR}/resources/schemas/kicad-remote-*.json
+    )
+
+    add_custom_target( remote_provider_schema_build_copy
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/schemas
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${REMOTE_PROVIDER_SCHEMA_FILES}
+            ${CMAKE_BINARY_DIR}/schemas
+        DEPENDS ${REMOTE_PROVIDER_SCHEMA_FILES}
+        COMMENT "Copying remote provider schema files into build directory"
+    )
+endif()
+
 # A shared library used by multiple *.kiface files and one or two program
 # launchers.  Object files can migrate into here over time, but only if they are
 # surely needed and certainly used from more than one place without recompilation.
@@ -258,8 +274,17 @@ set( KICOMMON_SRCS
     netclass.cpp
     notifications_manager.cpp
     page_info.cpp
+    oauth/oauth_loopback_server.cpp
+    oauth/oauth_pkce.cpp
+    oauth/oauth_session.cpp
+    oauth/secure_token_store.cpp
     paths.cpp
     project.cpp
+    remote_provider_client.cpp
+    remote_provider_metadata.cpp
+    remote_provider_models.cpp
+    remote_provider_settings.cpp
+    remote_provider_utils.cpp
     reporter.cpp
     richio.cpp
     scintilla_tricks.cpp
@@ -429,6 +454,10 @@ target_include_directories( kicommon
     )
 
 add_dependencies( kicommon pegtl version_header )
+
+if( TARGET remote_provider_schema_build_copy )
+    add_dependencies( kicommon remote_provider_schema_build_copy )
+endif()
 
 if( MSVC )
     target_sources( kicommon PRIVATE ${CMAKE_SOURCE_DIR}/resources/msw/kicommon-dll.rc )
@@ -738,7 +767,6 @@ set( COMMON_SRCS
     refdes_utils.cpp
     reference_image.cpp
     render_settings.cpp
-    remote_login_server.cpp
     status_popup.cpp
     stroke_params.cpp
     template_fieldnames.cpp
@@ -847,6 +875,10 @@ if( KICAD_USE_PCH )
 endif()
 
 add_dependencies( common version_header )
+
+if( TARGET remote_provider_schema_build_copy )
+    add_dependencies( common remote_provider_schema_build_copy )
+endif()
 add_dependencies( common compoundfilereader )  # used by altium_parser.cpp
 
 target_link_libraries( common

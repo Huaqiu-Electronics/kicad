@@ -193,7 +193,7 @@ void SCH_EDIT_FRAME::doReCreateMenuBar()
     if( m_remoteSymbolPane && !m_remoteSymbolPane->HasDataSources() )
     {
         remoteSymbolItem->Enable( false );
-        remoteSymbolItem->SetHelp( _( "Install a remote symbol server using the Plugin and Content Manager to enable" ) );
+        remoteSymbolItem->SetHelp( _( "Search signed-in remote symbol providers and download verified libraries." ) );
     }
 
     viewMenu->Add( showHidePanels );
@@ -364,4 +364,3 @@ void SCH_EDIT_FRAME::doReCreateMenuBar()
     SetMenuBar( menuBar );
     delete oldMenuBar;
 }
-

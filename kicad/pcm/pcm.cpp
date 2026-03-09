@@ -319,7 +319,7 @@ void PLUGIN_CONTENT_MANAGER::ValidateJson( const nlohmann::json&     aJson,
                                            const nlohmann::json_uri& aUri ) const
 {
     THROWING_ERROR_HANDLER error_handler;
-    m_schema_v1_validator->Validate( aJson, error_handler, aUri );
+    m_schema_v2_validator->Validate( aJson, error_handler, aUri );
 }
 
 

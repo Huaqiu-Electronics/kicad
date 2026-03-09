@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://go.kicad.org/schemas/kicad-rpc-v1-message-combined.json",
-  "title": "KiCad Remote Content Protocol Message (v1, combined)",
+  "title": "KiCad Remote Provider Panel RPC Message (v1, combined)",
+  "description": "Embedded provider panel RPC schema. Provider-owned web UI runs inside KiCad. Typed RPC messages request KiCad-owned auth, download, import, and place operations.",
   "type": "object",
   "additionalProperties": false,
 
@@ -45,13 +46,14 @@
         "GET_KICAD_VERSION",
         "LIST_SUPPORTED_VERSIONS",
         "CAPABILITIES",
-        "PING",
-        "PONG",
-        "LOGOUT",
+        "GET_SOURCE_INFO",
+        "REMOTE_LOGIN",
+        "DL_COMPONENT",
         "DL_FOOTPRINT",
         "DL_SYMBOL",
         "DL_SPICE",
-        "DL_3DMODEL"
+        "DL_3DMODEL",
+        "PLACE_COMPONENT"
       ]
     },
 
@@ -71,9 +73,14 @@
         "INVALID_PAYLOAD",
         "INTERNAL_ERROR",
         "TOO_LARGE",
+        "SESSION_MISMATCH",
         "UNAUTHORIZED_ORIGIN",
         "NOT_FOUND",
-        "CONFLICT"
+        "CONFLICT",
+        "NO_PROVIDER",
+        "LOGIN_FAILED",
+        "SIGN_OUT_FAILED",
+        "IMPORT_FAILED"
       ]
     },
 
@@ -191,34 +198,29 @@
         },
 
         {
-          "title": "PING message",
+          "title": "GET_SOURCE_INFO message",
           "properties": {
-            "command": { "const": "PING" },
+            "command": { "const": "GET_SOURCE_INFO" },
             "parameters": {
               "type": "object",
-              "properties": {
-                "nonce": {
-                  "type": ["string", "number"]
-                }
-              },
               "additionalProperties": true
             }
           }
         },
 
         {
-          "title": "PONG message",
+          "title": "REMOTE_LOGIN message",
+          "description": "Requests KiCad-managed authentication or sign-out. KiCad owns token storage and embedded session bootstrap.",
           "properties": {
-            "command": { "const": "PONG" },
+            "command": { "const": "REMOTE_LOGIN" },
             "parameters": {
               "type": "object",
               "properties": {
-                "nonce": {
-                  "type": ["string", "number"]
+                "interactive": {
+                  "type": "boolean"
                 },
-                "latency_ms": {
-                  "type": "number",
-                  "minimum": 0
+                "sign_out": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": true
@@ -227,11 +229,47 @@
         },
 
         {
-          "title": "LOGOUT message",
+          "title": "DL_COMPONENT message",
+          "description": "Imports a component bundle. The manifest form uses an assets array with download URLs. The inline form uses a base64 payload in the data field.",
           "properties": {
-            "command": { "const": "LOGOUT" },
+            "command": { "const": "DL_COMPONENT" },
             "parameters": {
               "type": "object",
+              "properties": {
+                "compression": {
+                  "type": "string",
+                  "enum": ["NONE", "ZSTD"]
+                },
+                "library": {
+                  "type": "string",
+                  "description": "Target library name applied to all entries in the bundle."
+                },
+                "part_id": {
+                  "type": "string"
+                },
+                "display_name": {
+                  "type": "string"
+                },
+                "summary": {
+                  "type": "string"
+                },
+                "license": {
+                  "type": "string"
+                },
+                "symbol_name": {
+                  "type": "string"
+                },
+                "library_name": {
+                  "type": "string"
+                },
+                "assets": {
+                  "type": "array",
+                  "description": "Manifest-style asset list. Each entry identifies a downloadable asset for one part of the component.",
+                  "items": {
+                    "$ref": "#/$defs/asset_entry"
+                  }
+                }
+              },
               "additionalProperties": true
             }
           }
@@ -343,6 +381,52 @@
         },
 
         {
+          "title": "PLACE_COMPONENT message",
+          "description": "Imports and places a provider-selected component. Parameters mirror DL_COMPONENT.",
+          "properties": {
+            "command": { "const": "PLACE_COMPONENT" },
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "compression": {
+                  "type": "string",
+                  "enum": ["NONE", "ZSTD"]
+                },
+                "library": {
+                  "type": "string"
+                },
+                "part_id": {
+                  "type": "string"
+                },
+                "display_name": {
+                  "type": "string"
+                },
+                "summary": {
+                  "type": "string"
+                },
+                "license": {
+                  "type": "string"
+                },
+                "symbol_name": {
+                  "type": "string"
+                },
+                "library_name": {
+                  "type": "string"
+                },
+                "assets": {
+                  "type": "array",
+                  "description": "Manifest-style asset list. Each entry identifies a downloadable asset for one part of the component.",
+                  "items": {
+                    "$ref": "#/$defs/asset_entry"
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+
+        {
           "title": "DL_3DMODEL message",
           "properties": {
             "command": { "const": "DL_3DMODEL" },
@@ -381,5 +465,54 @@
         }
       ]
     }
-  ]
+  ],
+
+  "$defs": {
+    "asset_entry": {
+      "type": "object",
+      "description": "A downloadable asset within a component manifest.",
+      "required": [
+        "asset_type",
+        "content_type",
+        "size_bytes",
+        "download_url"
+      ],
+      "properties": {
+        "asset_type": {
+          "type": "string",
+          "enum": ["symbol", "footprint", "3dmodel", "spice"]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_library": {
+          "type": "string"
+        },
+        "target_name": {
+          "type": "string"
+        },
+        "content_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "download_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
 }

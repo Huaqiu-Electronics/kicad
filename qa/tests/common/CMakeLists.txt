@@ -112,6 +112,12 @@ set( QA_COMMON_SRCS
 
     # Project file tests
     test_project_file.cpp
+    test_remote_provider_metadata.cpp
+    test_remote_provider_client.cpp
+    test_remote_provider_settings.cpp
+    test_oauth_loopback_server.cpp
+    test_oauth_pkce.cpp
+    test_secure_token_store.cpp
 
     # Job tests
     test_job_export_sch_plot.cpp
@@ -151,6 +157,10 @@ target_link_libraries( qa_common
     ${wxWidgets_LIBRARIES}
     ZLIB::ZLIB
     )
+
+if( TARGET api_schema_build_copy )
+    add_dependencies( qa_common api_schema_build_copy )
+endif()
 
 include_directories(
     ${CMAKE_SOURCE_DIR}
