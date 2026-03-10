@@ -75,33 +75,14 @@ KISTATUSBAR::KISTATUSBAR( int aNumberFields, wxWindow* parent, wxWindowID id, ST
 
     SetFieldsCount( aNumberFields + extraFields );
 
-    int* widths = new int[aNumberFields + extraFields];
-
-    for( int i = 0; i < aNumberFields; i++ )
-        widths[i] = -1;
-
-    if( std::optional<int> idx = fieldIndex( FIELD::BGJOB_LABEL ) )
-        widths[aNumberFields + *idx] = -1;  // background status text field (variable size)
-
-    if( std::optional<int> idx = fieldIndex( FIELD::BGJOB_GAUGE ) )
-        widths[aNumberFields + *idx] = 75;      // background progress button
-
-    if( std::optional<int> idx = fieldIndex( FIELD::BGJOB_CANCEL ) )
-        widths[aNumberFields + *idx] = 20;     // background stop button
-
-    if( std::optional<int> idx = fieldIndex( FIELD::WARNING ) )
-        widths[aNumberFields + *idx] = 20;  // warning button
-
-    if( std::optional<int> idx = fieldIndex( FIELD::NOTIFICATION ) )
-        widths[aNumberFields + *idx] = 20;  // notifications button
+    m_fieldWidths.assign( aNumberFields + extraFields, -1 );
 
 #ifdef __WXOSX__
     // offset from the right edge
-    widths[aNumberFields + extraFields - 1] = 10;
+    m_fieldWidths[aNumberFields + extraFields - 1] = 10;
 #endif
 
-    SetStatusWidths( aNumberFields + extraFields, widths );
-    delete[] widths;
+    SetStatusWidths( aNumberFields + extraFields, m_fieldWidths.data() );
 
     int* styles = new int[aNumberFields + extraFields];
 
@@ -111,7 +92,8 @@ KISTATUSBAR::KISTATUSBAR( int aNumberFields, wxWindow* parent, wxWindowID id, ST
     SetStatusStyles( aNumberFields + extraFields, styles );
     delete[] styles;
 
-    m_backgroundTxt = new wxStaticText( this, wxID_ANY, wxT( "" ) );
+    m_backgroundTxt = new wxStaticText( this, wxID_ANY, wxT( "" ), wxDefaultPosition,
+                                        wxDefaultSize, wxALIGN_RIGHT | wxST_NO_AUTORESIZE );
 
     m_backgroundProgressBar = new wxGauge( this, wxID_ANY, 100, wxDefaultPosition, wxDefaultSize,
                                            wxGA_HORIZONTAL | wxGA_SMOOTH );
@@ -204,6 +186,12 @@ void KISTATUSBAR::onBackgroundProgressClick( wxMouseEvent& aEvent )
 
 void KISTATUSBAR::onSize( wxSizeEvent& aEvent )
 {
+    layoutControls();
+}
+
+
+void KISTATUSBAR::layoutControls()
+{
     constexpr int padding = 5;
 
     wxRect r;
@@ -216,6 +204,8 @@ void KISTATUSBAR::onSize( wxSizeEvent& aEvent )
         y += ( r.GetHeight() - textHeight ) / 2;
 
     m_backgroundTxt->SetPosition( { x, y } );
+    m_backgroundTxt->SetSize( r.GetWidth(), textHeight );
+    updateBackgroundText();
 
     GetFieldRect( m_normalFieldsCount + *fieldIndex( FIELD::BGJOB_GAUGE ), r );
     x = r.GetLeft();
@@ -265,6 +255,8 @@ void KISTATUSBAR::ShowBackgroundProgressBar( bool aCancellable )
 
     if( m_backgroundStopButton )
         m_backgroundStopButton->Show( aCancellable );
+
+    updateAuxFieldWidths();
 }
 
 
@@ -274,6 +266,8 @@ void KISTATUSBAR::HideBackgroundProgressBar()
 
     if( m_backgroundStopButton )
         m_backgroundStopButton->Hide();
+
+    updateAuxFieldWidths();
 }
 
 
@@ -296,7 +290,8 @@ void KISTATUSBAR::SetBackgroundProgressMax( int aAmount )
 
 void KISTATUSBAR::SetBackgroundStatusText( const wxString& aTxt )
 {
-    m_backgroundTxt->SetLabel( aTxt );
+    m_backgroundRawText = aTxt;
+    updateBackgroundText();
 
     // When there are multiple normal fields, the last normal field (typically used for
     // file watcher status on Windows) can visually overlap with the background job label
@@ -317,6 +312,61 @@ void KISTATUSBAR::SetBackgroundStatusText( const wxString& aTxt )
             m_savedStatusText.clear();
         }
     }
+}
+
+
+void KISTATUSBAR::updateAuxFieldWidths()
+{
+    if( m_fieldWidths.empty() )
+        return;
+
+    if( std::optional<int> idx = fieldIndex( FIELD::BGJOB_LABEL ) )
+        m_fieldWidths[m_normalFieldsCount + *idx] = -2;
+
+    if( std::optional<int> idx = fieldIndex( FIELD::BGJOB_GAUGE ) )
+        m_fieldWidths[m_normalFieldsCount + *idx] = 75;
+
+    if( std::optional<int> idx = fieldIndex( FIELD::BGJOB_CANCEL ) )
+    {
+        m_fieldWidths[m_normalFieldsCount + *idx] =
+                m_backgroundStopButton && m_backgroundStopButton->IsShown() ? 20 : 0;
+    }
+
+    if( std::optional<int> idx = fieldIndex( FIELD::WARNING ) )
+    {
+        m_fieldWidths[m_normalFieldsCount + *idx] =
+                m_warningButton && m_warningButton->IsShown() ? 20 : 0;
+    }
+
+    if( std::optional<int> idx = fieldIndex( FIELD::NOTIFICATION ) )
+    {
+        m_fieldWidths[m_normalFieldsCount + *idx] =
+                m_notificationsButton && m_notificationsButton->IsShown() ? 20 : 0;
+    }
+
+    SetStatusWidths( static_cast<int>( m_fieldWidths.size() ), m_fieldWidths.data() );
+    layoutControls();
+    updateBackgroundText();
+}
+
+
+void KISTATUSBAR::updateBackgroundText()
+{
+    wxRect r;
+
+    if( !GetFieldRect( m_normalFieldsCount + *fieldIndex( FIELD::BGJOB_LABEL ), r ) )
+        return;
+
+    wxString text = m_backgroundRawText;
+
+    if( !text.empty() && r.GetWidth() > 4 )
+    {
+        wxClientDC dc( this );
+        int margin = KIUI::GetTextSize( wxT( "XX" ), this ).x;
+        text = wxControl::Ellipsize( text, dc, wxELLIPSIZE_END, std::max( 0, r.GetWidth() - margin ) );
+    }
+
+    m_backgroundTxt->SetLabel( text );
 }
 
 
@@ -404,6 +454,7 @@ void KISTATUSBAR::updateWarningUI()
                 messageCount, messageCount > 0 ? "true" : "false" );
 
     m_warningButton->Show( messageCount > 0 );
+    updateAuxFieldWidths();
 
     if( messageCount > 0 )
     {
@@ -437,6 +488,7 @@ void KISTATUSBAR::ClearLoadWarningMessages()
         m_warningButton->Hide();
         m_warningButton->SetShowBadge( false );
         m_warningButton->SetBadgeText( wxEmptyString );
+        updateAuxFieldWidths();
         Layout();
         Refresh();
     }

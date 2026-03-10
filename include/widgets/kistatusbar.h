@@ -135,6 +135,9 @@ private:
     void onNotificationsIconClick( wxCommandEvent& aEvent );
     void onLoadWarningsIconClick( wxCommandEvent& aEvent );
     void updateWarningUI();  ///< Update warning button visibility and badge (main thread only)
+    void updateAuxFieldWidths();
+    void updateBackgroundText();
+    void layoutControls();
 
     enum class FIELD
     {
@@ -158,6 +161,8 @@ private:
     int            m_normalFieldsCount;
     STYLE_FLAGS    m_styleFlags;
     wxString       m_savedStatusText;       ///< Saved text from adjacent field during background jobs
+    wxString       m_backgroundRawText;     ///< Unellipsized background status text
+    std::vector<int> m_fieldWidths;
 };
 
 #endif
