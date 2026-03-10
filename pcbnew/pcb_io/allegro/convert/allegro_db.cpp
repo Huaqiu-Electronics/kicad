@@ -1,5 +1,5 @@
 /*
-* This program source code file is part of KiCad, a free EDA CAD application.
+ * This program source code file is part of KiCad, a free EDA CAD application.
  *
  * Copyright Quilter
  * Copyright The KiCad Developers, see AUTHORS.txt for contributors.
@@ -1294,7 +1294,8 @@ bool UNKNOWN_0x20::ResolveRefs( const DB_OBJ_RESOLVER& aResolver )
 
 SHAPE::SHAPE( const BRD_DB& aBrd, const BLK_0x28_SHAPE& aBlk ):
     BRD_DB_OBJ( BRD_SHAPE, aBlk.m_Key, aBlk.m_Next ),
-    m_Segments( this, aBlk.m_FirstSegmentPtr, aBlk.m_Key, "m_Segments" )
+    m_Segments( this, aBlk.m_FirstSegmentPtr, aBlk.m_Key, "m_Segments" ),
+    m_TablePtr( this, aBlk.GetTablePtr(), "m_TablePtr" )
 {
     m_Segments.m_Tail = aBrd.m_Header->m_LL_Shapes.m_Tail;
     m_Segments.m_NextRefGetter = GetPrimaryNext;
@@ -1310,6 +1311,7 @@ bool SHAPE::ResolveRefs( const DB_OBJ_RESOLVER& aResolver )
     m_Next.Resolve( aResolver );
 
     ok &= m_Segments.Resolve( aResolver );
+    ok &= m_TablePtr.Resolve( aResolver );
 
     return ok;
 }

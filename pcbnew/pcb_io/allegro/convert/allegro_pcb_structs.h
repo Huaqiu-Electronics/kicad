@@ -1523,13 +1523,18 @@ struct BLK_0x28_SHAPE
     uint32_t m_Unknown4;
     uint32_t m_Unknown5;
 
-    COND_GE<FMT_VER::V_172, uint32_t> m_Ptr7;
+    COND_GE<FMT_VER::V_172, uint32_t> m_TablePtr;
 
     uint32_t m_Ptr6;
 
-    COND_LT<FMT_VER::V_172, uint32_t> m_Ptr7_16x;
+    COND_LT<FMT_VER::V_172, uint32_t> m_TablePtr_16x;
 
     std::array<int32_t, 4> m_Coords;
+
+    uint32_t GetTablePtr() const
+    {
+        return m_TablePtr.value_or( m_TablePtr_16x.value_or( 0 ) );
+    }
 };
 
 

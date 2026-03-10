@@ -4084,19 +4084,14 @@ std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&               
 
 std::vector<const BLOCK_BASE*> BOARD_BUILDER::getShapeRelatedBlocks( const BLK_0x28_SHAPE& aShape ) const
 {
-    // Follow pointer chain: BOUNDARY.Ptr7 -> 0x2C TABLE -> Ptr1 -> 0x37 -> m_Ptrs
+    // Follow pointer chain: BOUNDARY.TablePtr -> 0x2C TABLE -> Ptr1 -> 0x37 -> m_Ptrs
     std::vector<const BLOCK_BASE*> ret;
-    uint32_t                       ptr7Key = 0;
+    uint32_t                       tableKey = aShape.GetTablePtr();
 
-    if( aShape.m_Ptr7.has_value() )
-        ptr7Key = aShape.m_Ptr7.value();
-    else if( aShape.m_Ptr7_16x.has_value() )
-        ptr7Key = aShape.m_Ptr7_16x.value();
-
-    if( ptr7Key == 0 )
+    if( tableKey == 0 )
         return ret;
 
-    const BLK_0x2C_TABLE* tbl = expectBlockByKey<BLK_0x2C_TABLE>( ptr7Key, 0x2C );
+    const BLK_0x2C_TABLE* tbl = expectBlockByKey<BLK_0x2C_TABLE>( tableKey, 0x2C );
 
     if( !tbl )
         return ret;

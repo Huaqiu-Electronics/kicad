@@ -1411,11 +1411,11 @@ static std::unique_ptr<BLOCK_BASE> ParseBlock_0x28_SHAPE( FILE_STREAM& aStream, 
     data.m_Unknown4 = aStream.ReadU32();
     data.m_Unknown5 = aStream.ReadU32();
 
-    ReadCond( aStream, aVer, data.m_Ptr7 );
+    ReadCond( aStream, aVer, data.m_TablePtr );
 
     data.m_Ptr6 = aStream.ReadU32();
 
-    ReadCond( aStream, aVer, data.m_Ptr7_16x );
+    ReadCond( aStream, aVer, data.m_TablePtr_16x );
 
     for( size_t i = 0; i < data.m_Coords.size(); ++i )
     {

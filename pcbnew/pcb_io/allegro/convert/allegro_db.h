@@ -764,6 +764,7 @@ public:
     const char* TypeName() const override { return "SHAPE"; }
 
     DB_REF_CHAIN m_Segments;
+    DB_REF m_TablePtr;
 };
 
 
