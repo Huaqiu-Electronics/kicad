@@ -31,6 +31,7 @@
 #include <board.h>
 #include <board_design_settings.h>
 #include <pcb_track.h>
+#include <board_statistics_report.h>
 
 template <>
 FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
@@ -57,10 +58,13 @@ FAB_PCB_SPECIFICATIONS FAB_INFO_GETTER_PCB::GetPCBSpecifications()
     }
 
 
-    const auto board = self()->GetBoard();
-    const auto layers = board->GetCopperLayerCount();
-    const auto height = board->GetBoundingBox().GetHeight();
-    const auto width = board->GetBoundingBox().GetWidth();
+    auto                  board = self()->GetBoard();
+    const auto            layers = board->GetCopperLayerCount();
+    BOARD_STATISTICS_DATA brd_stat;
+    ComputeBoardStatistics( board, {}, brd_stat );
+
+    const auto height = brd_stat.boardHeight;
+    const auto width = brd_stat.boardWidth;
 
     std::optional<int> minTraceWidth{};
     auto               minHoleSize =
