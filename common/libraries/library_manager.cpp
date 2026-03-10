@@ -346,6 +346,17 @@ wxString LIBRARY_MANAGER::DefaultGlobalTablePath( LIBRARY_TABLE_TYPE aType )
 }
 
 
+wxString LIBRARY_MANAGER::StockTablePath( LIBRARY_TABLE_TYPE aType )
+{
+    wxString basePath = PATHS::GetStockTemplatesPath();
+
+    wxFileName fn( basePath, tableFileName( aType ) );
+    fn.Normalize( FN_NORMALIZE_FLAGS | wxPATH_NORM_ENV_VARS );
+
+    return fn.GetFullPath();
+}
+
+
 bool LIBRARY_MANAGER::IsTableValid( const wxString& aPath )
 {
     if( wxFileName fn( aPath ); fn.IsFileReadable() )
@@ -393,7 +404,7 @@ bool LIBRARY_MANAGER::CreateGlobalTable( LIBRARY_TABLE_TYPE aType, bool aPopulat
     table.SetType( aType );
     table.Rows().clear();
 
-    wxFileName defaultLib( PATHS::GetStockTemplatesPath(), tableFileName( aType ) );
+    wxFileName defaultLib( StockTablePath( aType ) );
 
     if( !defaultLib.IsFileReadable() )
     {
