@@ -162,18 +162,20 @@ BOARD* LoadBoard( const wxString& aFileName, PCB_IO_MGR::PCB_FILE_T aFormat, boo
     // By default only the BMP handler is available.
     wxInitAllImageHandlers();
 
-    PROJECT* project = GetSettingsManager()->GetProject( projectPath );
+    SETTINGS_MANAGER& settingsManager = PgmOrNull() ? Pgm().GetSettingsManager() : *GetSettingsManager();
+
+    PROJECT* project = settingsManager.GetProject( projectPath );
 
     if( !project )
     {
         if( wxFileExists( projectPath ) )
         {
             // cli
-            GetSettingsManager()->LoadProject( projectPath, aSetActive );
-            project = GetSettingsManager()->GetProject( projectPath );
+            settingsManager.LoadProject( projectPath, aSetActive );
+            project = settingsManager.GetProject( projectPath );
         }
     }
-    else if( s_PcbEditFrame && project == &GetSettingsManager()->Prj() )
+    else if( s_PcbEditFrame && project == &settingsManager.Prj() )
     {
         // Project is already loaded?  Then so is the board
         return s_PcbEditFrame->GetBoard();

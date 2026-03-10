@@ -59,6 +59,7 @@
 #include <jobs/job_pcb_import.h>
 #include <jobs/job_pcb_upgrade.h>
 #include <eda_units.h>
+#include <footprint_library_adapter.h>
 #include <lset.h>
 #include <cli/exit_codes.h>
 #include <exporters/place_file_exporter.h>
@@ -2287,6 +2288,11 @@ int PCBNEW_JOBS_HANDLER::JobExportDrc( JOB* aJob )
 
     if( !brd )
         return CLI::EXIT_CODES::ERR_INVALID_INPUT_FILE;
+
+    // Running DRC requires libraries be loaded, so make sure they have been
+    FOOTPRINT_LIBRARY_ADAPTER* adapter = PROJECT_PCB::FootprintLibAdapter( brd->GetProject() );
+    adapter->AsyncLoad();
+    adapter->BlockUntilLoaded();
 
     if( drcJob->GetConfiguredOutputPath().IsEmpty() )
     {

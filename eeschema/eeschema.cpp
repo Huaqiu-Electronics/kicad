@@ -95,12 +95,29 @@ static std::unique_ptr<SCHEMATIC> readSchematicFromFile( const std::string& aFil
 
     SETTINGS_MANAGER& manager = Pgm().GetSettingsManager();
 
-    // TODO: this must load the schematic's project, not a default project.  At the very minimum
-    // variable resolution won't work without the project, but there might also be issues with
-    // netclasses, etc.
-    manager.LoadProject( "" );
+    wxFileName pro( aFilename );
+    pro.SetExt( FILEEXT::ProjectFileExtension );
+    pro.MakeAbsolute();
+    wxString projectPath = pro.GetFullPath();
+
+    PROJECT* project = manager.GetProject( projectPath );
+
+    if( !project )
+    {
+        if( wxFileExists( projectPath ) )
+        {
+            // cli
+            manager.LoadProject( projectPath, true );
+            project = manager.GetProject( projectPath );
+        }
+        else
+        {
+            manager.LoadProject( "" );
+        }
+    }
+
     schematic->Reset();
-    schematic->SetProject( &manager.Prj() );
+    schematic->SetProject( project );
     SCH_SHEET* rootSheet = pi->LoadSchematicFile( aFilename, schematic.get() );
 
     if( !rootSheet )
