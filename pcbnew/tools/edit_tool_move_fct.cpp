@@ -1291,30 +1291,19 @@ bool EDIT_TOOL::doMoveSelection( const TOOL_EVENT& aEvent, BOARD_COMMIT* aCommit
                     }
                     else
                     {
-                        // Get the best drag origin (nearest item anchor to where the user clicked)
                         VECTOR2I dragOrigin = m_cursor;
 
-                        // Grid-align the reference point so that movement deltas between
-                        // grid-snapped cursor positions remain on-grid. Without this, dragging
-                        // from a non-grid-aligned anchor (e.g. a pad center that doesn't fall on
-                        // the current grid) produces fractional-nanometer position errors that
-                        // become visible when Display Origin is set to Grid Origin or Aux Origin.
-                        VECTOR2I snappedRef = grid.AlignGrid( dragOrigin,
-                                                              grid.GetSelectionGrid( selection ) );
-                        selection.SetReferencePoint( snappedRef );
+                        selection.SetReferencePoint( dragOrigin );
 
-                        // Set up construction/snap lines at the actual item position for visual
-                        // alignment, not the snapped position
                         if( angleSnapMode != LEADER_MODE::DIRECT )
                             grid.SetSnapLineOrigin( dragOrigin );
 
                         grid.SetAuxAxes( true, dragOrigin );
 
-                        // Initialize m_cursor to the grid-aligned reference so that the first
-                        // movement delta (m_cursor - prevPos) is grid-aligned. Without this,
-                        // prevPos would be an unsnapped position and the first move would put
-                        // items off-grid.
-                        m_cursor = snappedRef;
+                        if( !editFrame->GetMoveWarpsCursor() )
+                            m_cursor = originalCursorPos;
+                        else
+                            m_cursor = dragOrigin;
                     }
 
                     originalPos = selection.GetReferencePoint();
