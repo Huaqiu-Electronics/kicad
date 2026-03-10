@@ -12,13 +12,14 @@
 # dsa-t <dudesuchamazing@gmail.com>, 2025, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2025, 2026.
 # soldado-do-wolfenstein <luigi.rebelato1234@gmail.com>, 2025, 2026.
+# brunofaus <brunofaus01@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-09 11:13-0700\n"
-"PO-Revision-Date: 2026-03-08 02:17+0000\n"
-"Last-Translator: Hildo Guillardi Júnior <hildogjr@gmail.com>\n"
+"PO-Revision-Date: 2026-03-11 16:09+0000\n"
+"Last-Translator: brunofaus <brunofaus01@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -59121,7 +59122,7 @@ msgstr "Camada interna do cobre"
 
 #: pcbnew/widgets/appearance_controls.cpp:1915
 msgid "Show All Copper Layers"
-msgstr "Exibe codas as camadas com cobre"
+msgstr "Exibe todas as camadas com cobre"
 
 #: pcbnew/widgets/appearance_controls.cpp:1917
 msgid "Hide All Copper Layers"
