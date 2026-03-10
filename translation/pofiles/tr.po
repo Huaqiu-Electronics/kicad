@@ -37,7 +37,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-09 11:13-0700\n"
-"PO-Revision-Date: 2026-03-07 16:43+0000\n"
+"PO-Revision-Date: 2026-03-11 16:10+0000\n"
 "Last-Translator: YÜKSEL AÇIKGÖZ <yukselacikgoz@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
@@ -46560,7 +46560,7 @@ msgstr "Son işlenmiş veya arka delinmiş katmana bağlı iz"
 
 #: pcbnew/drc/drc_item.cpp:318
 msgid "Track endpoint not centered on via"
-msgstr ""
+msgstr "Yol uç noktası geçitte ortalanmamış"
 
 #: pcbnew/drc/drc_item.cpp:522
 #, c-format
