@@ -95,7 +95,7 @@ int SYMBOL_LIBRARY_MANAGER::GetLibraryHash( const wxString& aLibrary ) const
 
         wxLogNull silence;
 
-        fn.Normalize( wxPATH_NORM_ALL );
+        fn.Normalize( FN_NORMALIZE_FLAGS );
 
         if( fn.DirExists() )
             mtime = KIPLATFORM::IO::TimestampDir( fn.GetFullPath(),
