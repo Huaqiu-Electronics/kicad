@@ -174,6 +174,9 @@ protected:
     wxString                m_path;             ///< Root project path for loading child sheets.
     std::stack<wxString>    m_currentPath;      ///< Stack to maintain nested sheet paths
     SCH_SHEET*              m_rootSheet;        ///< The root sheet of the schematic being loaded.
+    std::vector<SCH_SHEET*> m_loadedRootSheets; ///< Root sheets from previous LoadSchematicFile()
+                                                ///< calls, enabling screen reuse across top-level
+                                                ///< sheets that share sub-sheet files.
     SCH_SHEET_PATH          m_currentSheetPath;
     SCHEMATIC*              m_schematic;
     OUTPUTFORMATTER*        m_out;              ///< The formatter for saving SCH_SCREEN objects.

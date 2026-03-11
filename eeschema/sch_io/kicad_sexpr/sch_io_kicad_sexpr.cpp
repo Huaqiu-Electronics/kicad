@@ -88,6 +88,9 @@ SCH_IO_KICAD_SEXPR::~SCH_IO_KICAD_SEXPR()
 void SCH_IO_KICAD_SEXPR::init( SCHEMATIC* aSchematic,
                                const std::map<std::string, UTF8>* aProperties )
 {
+    if( m_schematic != aSchematic )
+        m_loadedRootSheets.clear();
+
     m_version   = 0;
     m_appending = false;
     m_rootSheet = nullptr;
@@ -160,6 +163,7 @@ SCH_SHEET* SCH_IO_KICAD_SEXPR::LoadSchematicFile( const wxString& aFileName, SCH
         // If we got here, the schematic loaded successfully.
         sheet = newSheet.release();
         m_rootSheet = nullptr;         // Quiet Coverity warning.
+        m_loadedRootSheets.push_back( sheet );
     }
     else
     {
@@ -231,6 +235,17 @@ void SCH_IO_KICAD_SEXPR::loadHierarchy( const SCH_SHEET_PATH& aParentSheetPath, 
             // load path so we have to check both.
             if( !m_rootSheet->SearchHierarchy( fileName.GetFullPath(), &screen ) )
                 m_currentSheetPath.at( 0 )->SearchHierarchy( fileName.GetFullPath(), &screen );
+
+            // When loading multiple top-level sheets that reference the same sub-sheet file,
+            // the screen may have already been loaded by a previous top-level sheet.
+            if( !screen )
+            {
+                for( SCH_SHEET* prevRoot : m_loadedRootSheets )
+                {
+                    if( prevRoot->SearchHierarchy( fileName.GetFullPath(), &screen ) )
+                        break;
+                }
+            }
         }
 
         if( screen )

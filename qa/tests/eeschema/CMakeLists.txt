@@ -84,6 +84,7 @@ set( QA_EESCHEMA_SRCS
     test_issue22938_local_power.cpp
     test_issue23058_jumper_pin_groups.cpp
     test_issue23143_junction_midpoint.cpp
+    test_issue23403_shared_subsheet_screen.cpp
     test_issue22576_subsheet_standalone.cpp
     test_issue16915_bus_netclass.cpp
     test_nc_pin_connectivity.cpp
