@@ -691,9 +691,16 @@ int BOARD_EDITOR_CONTROL::RepairBoard( const TOOL_EVENT& aEvent )
 int BOARD_EDITOR_CONTROL::UpdatePCBFromSchematic( const TOOL_EVENT& aEvent )
 {
     NETLIST netlist;
+    bool    fetched = false;
 
-    if( m_frame->FetchNetlistFromSchematic( netlist, _( "Updating PCB requires a fully annotated "
-                                                        "schematic." ) ) )
+    RunMainStack(
+            [&]()
+            {
+                fetched = m_frame->FetchNetlistFromSchematic(
+                        netlist, _( "Updating PCB requires a fully annotated schematic." ) );
+            } );
+
+    if( fetched )
     {
         DIALOG_UPDATE_PCB updateDialog( m_frame, &netlist );
         updateDialog.ShowModal();
@@ -762,56 +769,60 @@ int BOARD_EDITOR_CONTROL::ShowEeschema( const TOOL_EVENT& aEvent )
     }
     else
     {
-        KIWAY_PLAYER* frame = m_frame->Kiway().Player( FRAME_SCH, false );
+        RunMainStack(
+                [&]()
+                {
+                    KIWAY_PLAYER* frame = m_frame->Kiway().Player( FRAME_SCH, false );
 
-        // Please: note: DIALOG_EDIT_LIBENTRY_FIELDS_IN_LIB::initBuffers() calls
-        // Kiway.Player( FRAME_SCH, true )
-        // therefore, the schematic editor is sometimes running, but the schematic project
-        // is not loaded, if the library editor was called, and the dialog field editor was used.
-        // On Linux, it happens the first time the schematic editor is launched, if
-        // library editor was running, and the dialog field editor was open
-        // On Windows, it happens always after the library editor was called,
-        // and the dialog field editor was used
-        if( !frame )
-        {
-            try
-            {
-                frame = boardFrame->Kiway().Player( FRAME_SCH, true );
-            }
-            catch( const IO_ERROR& err )
-            {
+                    // Please: note: DIALOG_EDIT_LIBENTRY_FIELDS_IN_LIB::initBuffers() calls
+                    // Kiway.Player( FRAME_SCH, true )
+                    // therefore, the schematic editor is sometimes running, but the schematic project
+                    // is not loaded, if the library editor was called, and the dialog field editor was used.
+                    // On Linux, it happens the first time the schematic editor is launched, if
+                    // library editor was running, and the dialog field editor was open
+                    // On Windows, it happens always after the library editor was called,
+                    // and the dialog field editor was used
+                    if( !frame )
+                    {
+                        try
+                        {
+                            frame = boardFrame->Kiway().Player( FRAME_SCH, true );
+                        }
+                        catch( const IO_ERROR& err )
+                        {
+                            DisplayErrorMessage( boardFrame,
+                                                 _( "Eeschema failed to load." ) + wxS( "\n" ) + err.What() );
+                            return;
+                        }
+                    }
 
-                DisplayErrorMessage( boardFrame, _( "Eeschema failed to load." ) + wxS( "\n" ) + err.What() );
-                return 0;
-            }
-        }
+                    wxEventBlocker blocker( boardFrame );
 
-        wxEventBlocker blocker( boardFrame );
+                    // If Kiway() cannot create the eeschema frame, it shows a error message, and
+                    // frame is null
+                    if( !frame )
+                        return;
 
-        // If Kiway() cannot create the eeschema frame, it shows a error message, and
-        // frame is null
-        if( !frame )
-            return 0;
+                    if( !frame->IsShownOnScreen() ) // the frame exists, (created by the dialog field editor)
+                                                    // but no project loaded.
+                    {
+                        frame->OpenProjectFiles( std::vector<wxString>( 1, schematic.GetFullPath() ) );
+                        frame->Show( true );
+                    }
 
-        if( !frame->IsShownOnScreen() ) // the frame exists, (created by the dialog field editor)
-                                        // but no project loaded.
-        {
-            frame->OpenProjectFiles( std::vector<wxString>( 1, schematic.GetFullPath() ) );
-            frame->Show( true );
-        }
+                    // On Windows, Raise() does not bring the window on screen, when iconized or not shown
+                    // On Linux, Raise() brings the window on screen, but this code works fine
+                    if( frame->IsIconized() )
+                    {
+                        frame->Iconize( false );
 
-        // On Windows, Raise() does not bring the window on screen, when iconized or not shown
-        // On Linux, Raise() brings the window on screen, but this code works fine
-        if( frame->IsIconized() )
-        {
-            frame->Iconize( false );
+                        // If an iconized frame was created by Pcbnew, Iconize( false ) is not enough
+                        // to show the frame at its normal size: Maximize should be called.
+                        frame->Maximize( false );
+                    }
 
-            // If an iconized frame was created by Pcbnew, Iconize( false ) is not enough
-            // to show the frame at its normal size: Maximize should be called.
-            frame->Maximize( false );
-        }
-
-        frame->Raise();
+                    frame->Raise();
+                } );
     }
 
     return 0;
