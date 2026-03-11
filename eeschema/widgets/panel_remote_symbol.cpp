@@ -120,6 +120,21 @@ bool PANEL_REMOTE_SYMBOL::decompressIfNeeded( const std::string& aCompression,
     if( expectedSize == ZSTD_CONTENTSIZE_ERROR || expectedSize == ZSTD_CONTENTSIZE_UNKNOWN )
         expectedSize = static_cast<unsigned long long>( aInput.size() ) * 4;
 
+    static constexpr unsigned long long FALLBACK_MAX = 64ULL * 1024 * 1024;
+
+    unsigned long long maxBytes = ( m_hasSelectedProviderMetadata
+                                    && m_selectedProviderMetadata.max_download_bytes > 0 )
+                                          ? static_cast<unsigned long long>(
+                                                    m_selectedProviderMetadata.max_download_bytes )
+                                          : FALLBACK_MAX;
+
+    if( expectedSize > maxBytes )
+    {
+        aError = wxString::Format( _( "Decompressed size %llu exceeds limit %llu." ),
+                                   expectedSize, maxBytes );
+        return false;
+    }
+
     aOutput.resize( expectedSize );
 
     size_t decompressed = ZSTD_decompress( aOutput.data(), expectedSize, aInput.data(), aInput.size() );
