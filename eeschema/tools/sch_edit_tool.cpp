@@ -291,7 +291,7 @@ bool SCH_EDIT_TOOL::Init()
 
     wxASSERT_MSG( drawingTools, "eeshema.InteractiveDrawing tool is not available" );
 
-    static const std::vector<KICAD_T> attribTypes = { SCH_SYMBOL_T, SCH_SHEET_T };
+    static const std::vector<KICAD_T> attribTypes = { SCH_SYMBOL_T, SCH_SHEET_T, SCH_RULE_AREA_T };
     static const std::vector<KICAD_T> sheetTypes = { SCH_SHEET_T };
 
     auto sheetSelection = S_C::Count( 1 ) && S_C::OnlyTypes( sheetTypes );
@@ -327,6 +327,14 @@ bool SCH_EDIT_TOOL::Init()
 
                     case SCH_SHEET_T:
                         if( static_cast<const SCH_SHEET*>( item )->GetDNP( sheet, variant ) )
+                            checked++;
+                        else
+                            unchecked++;
+
+                        break;
+
+                    case SCH_RULE_AREA_T:
+                        if( static_cast<const SCH_RULE_AREA*>( item )->GetDNP() )
                             checked++;
                         else
                             unchecked++;
@@ -369,6 +377,14 @@ bool SCH_EDIT_TOOL::Init()
 
                         break;
 
+                    case SCH_RULE_AREA_T:
+                        if( static_cast<const SCH_RULE_AREA*>( item )->GetExcludedFromSim() )
+                            checked++;
+                        else
+                            unchecked++;
+
+                        break;
+
                     default:
                         break;
                     }
@@ -399,6 +415,14 @@ bool SCH_EDIT_TOOL::Init()
 
                     case SCH_SHEET_T:
                         if( static_cast<const SCH_SHEET*>( item )->GetExcludedFromBOM( sheet, variant ) )
+                            checked++;
+                        else
+                            unchecked++;
+
+                        break;
+
+                    case SCH_RULE_AREA_T:
+                        if( static_cast<const SCH_RULE_AREA*>( item )->GetExcludedFromBOM() )
                             checked++;
                         else
                             unchecked++;
@@ -436,6 +460,14 @@ bool SCH_EDIT_TOOL::Init()
 
                     case SCH_SHEET_T:
                         if( static_cast<const SCH_SHEET*>( item )->GetExcludedFromBoard( sheet, variant ) )
+                            checked++;
+                        else
+                            unchecked++;
+
+                        break;
+
+                    case SCH_RULE_AREA_T:
+                        if( static_cast<const SCH_RULE_AREA*>( item )->GetExcludedFromBoard() )
                             checked++;
                         else
                             unchecked++;
@@ -3481,7 +3513,7 @@ int SCH_EDIT_TOOL::DdAddImage( const TOOL_EVENT& aEvent )
 
 int SCH_EDIT_TOOL::SetAttribute( const TOOL_EVENT& aEvent )
 {
-    SCH_SELECTION& selection = m_selectionTool->RequestSelection( { SCH_SYMBOL_T, SCH_SHEET_T } );
+    SCH_SELECTION& selection = m_selectionTool->RequestSelection( { SCH_SYMBOL_T, SCH_SHEET_T, SCH_RULE_AREA_T } );
     std::set<std::pair<SCH_ITEM*, SCH_SCREEN*>> collectedItems;
 
     for( EDA_ITEM* item : selection )
@@ -3513,6 +3545,10 @@ int SCH_EDIT_TOOL::SetAttribute( const TOOL_EVENT& aEvent )
         else if( SCH_SHEET* sheet = dynamic_cast<SCH_SHEET*>( item ) )
         {
             collectedItems.insert( { sheet, m_frame->GetScreen() } );
+        }
+        else if( SCH_RULE_AREA* ruleArea = dynamic_cast<SCH_RULE_AREA*>( item ) )
+        {
+            collectedItems.insert( { ruleArea, m_frame->GetScreen() } );
         }
     }
 
