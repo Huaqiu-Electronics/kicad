@@ -66,7 +66,8 @@ private:
     int testCreepage();
     int testCreepage( CREEPAGE_GRAPH& aGraph, int aNetCodeA, int aNetCodeB, PCB_LAYER_ID aLayer );
 
-    void CollectBoardEdges( std::vector<BOARD_ITEM*>& aVector );
+    void CollectBoardEdges( std::vector<BOARD_ITEM*>& aVector,
+                            std::vector<std::unique_ptr<PCB_SHAPE>>& aOwned );
     void CollectNetCodes( std::vector<int>& aVector );
 
     std::set<std::pair<const BOARD_ITEM*, const BOARD_ITEM*>> m_reportedPairs;
@@ -241,7 +242,8 @@ void DRC_TEST_PROVIDER_CREEPAGE::CollectNetCodes( std::vector<int>& aVector )
 }
 
 
-void DRC_TEST_PROVIDER_CREEPAGE::CollectBoardEdges( std::vector<BOARD_ITEM*>& aVector )
+void DRC_TEST_PROVIDER_CREEPAGE::CollectBoardEdges( std::vector<BOARD_ITEM*>& aVector,
+                                                    std::vector<std::unique_ptr<PCB_SHAPE>>& aOwned )
 {
     if( !m_board )
         return;
@@ -278,10 +280,11 @@ void DRC_TEST_PROVIDER_CREEPAGE::CollectBoardEdges( std::vector<BOARD_ITEM*>& aV
         if( p->GetAttribute() != PAD_ATTRIB::NPTH )
             continue;
 
-        PCB_SHAPE* s = new PCB_SHAPE( NULL, SHAPE_T::CIRCLE );
+        auto s = std::make_unique<PCB_SHAPE>( nullptr, SHAPE_T::CIRCLE );
         s->SetRadius( p->GetDrillSize().x / 2 );
         s->SetPosition( p->GetPosition() );
-        aVector.push_back( s );
+        aVector.push_back( s.get() );
+        aOwned.push_back( std::move( s ) );
     }
 }
 
@@ -314,7 +317,7 @@ int DRC_TEST_PROVIDER_CREEPAGE::testCreepage()
 
     graph.m_boardOutline = &outline;
 
-    this->CollectBoardEdges( graph.m_boardEdge );
+    this->CollectBoardEdges( graph.m_boardEdge, graph.m_ownedBoardEdges );
     graph.TransformEdgeToCreepShapes();
     graph.RemoveDuplicatedShapes();
     graph.TransformCreepShapesToNodes( graph.m_shapeCollection );

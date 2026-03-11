@@ -23,6 +23,7 @@
 
 #pragma once
 
+#include <memory>
 #include <unordered_set>
 
 #include <common.h>
@@ -854,6 +855,7 @@ public:
 public:
     BOARD&                                         m_board;
     std::vector<BOARD_ITEM*>                       m_boardEdge;
+    std::vector<std::unique_ptr<PCB_SHAPE>>        m_ownedBoardEdges;
     SHAPE_POLY_SET*                                m_boardOutline;
     std::vector<std::shared_ptr<GRAPH_NODE>>       m_nodes;
     std::vector<std::shared_ptr<GRAPH_CONNECTION>> m_connections;
