@@ -355,6 +355,18 @@ int DRC_TEST_PROVIDER_CREEPAGE::testCreepage()
 
                                     vectorSize = graph.m_nodes.size();
                                     graph.m_nodes.resize( beNodeSize, nullptr );
+
+                                    // Rebuild m_nodeset to match the surviving board-edge
+                                    // prefix.  Without this, stale per-net nodes from the
+                                    // previous iteration remain in the set and corrupt
+                                    // subsequent FindNode/AddNode lookups.
+                                    graph.m_nodeset.clear();
+
+                                    for( int i = 0; i < beNodeSize; ++i )
+                                    {
+                                        if( graph.m_nodes[i] )
+                                            graph.m_nodeset.insert( graph.m_nodes[i] );
+                                    }
                                 }
 
                                 prevTestChangedGraph = testCreepage( graph, aNet1, aNet2, layer );
