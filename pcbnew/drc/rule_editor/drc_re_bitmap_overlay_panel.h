@@ -183,7 +183,7 @@ DRC_RE_OVERLAY_FIELD* DRC_RE_BITMAP_OVERLAY_PANEL::AddField( const wxString& aId
 
     // Position the field
     wxPoint pos( aPosition.xStart, aPosition.yTop );
-    int width = aPosition.xEnd - aPosition.xStart;
+    int width = aPosition.xEnd - aPosition.xStart + DRC_RE_OVERLAY_WE;
     wxSize size( width, control->GetBestSize().GetHeight() );
     control->SetPosition( pos );
     control->SetSize( size );

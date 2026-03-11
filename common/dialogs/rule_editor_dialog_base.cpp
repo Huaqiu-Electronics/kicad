@@ -379,6 +379,8 @@ void RULE_EDITOR_DIALOG_BASE::InitRuleTreeItems( const std::vector<RULE_TREE_NOD
 
 void RULE_EDITOR_DIALOG_BASE::SetContentPanel( wxPanel* aContentPanel )
 {
+    m_scrolledContentWin->Freeze();
+
     if( m_contentPanel )
     {
         unregisterUnitBinders( m_contentPanel );
@@ -392,12 +394,13 @@ void RULE_EDITOR_DIALOG_BASE::SetContentPanel( wxPanel* aContentPanel )
     resetUndoRedoForNewContent( m_contentPanel->GetChildren() );
 
     Layout();
+    m_scrolledContentWin->Thaw();
+
     CallAfter(
             [this]()
             {
                 RefreshContentScrollArea();
             } );
-    Refresh();
 }
 
 
