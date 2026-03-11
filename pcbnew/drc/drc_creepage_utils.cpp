@@ -35,35 +35,36 @@ bool segmentIntersectsArc( const VECTOR2I& p1, const VECTOR2I& p2, const VECTOR2
     VECTOR2I  startPoint( radius * cos( startAngle.AsRadians() ), radius * sin( startAngle.AsRadians() ) );
     SHAPE_ARC arc( center, startPoint + center, endAngle - startAngle );
 
-    // Exclude intersections where a segment endpoint coincides with an arc endpoint,
-    // matching the endpoint exclusion in segments_intersect.
     VECTOR2I arcStart = arc.GetP0();
     VECTOR2I arcEnd = arc.GetP1();
-
-    if( p1 == arcStart || p1 == arcEnd || p2 == arcStart || p2 == arcEnd )
-        return false;
 
     INTERSECTABLE_GEOM geom1 = segment;
     INTERSECTABLE_GEOM geom2 = arc;
 
+    std::vector<VECTOR2I> rawPoints;
+    INTERSECTION_VISITOR  visitor( geom2, rawPoints );
+    std::visit( visitor, geom1 );
+
+    // Filter out intersections where a segment endpoint coincides with an
+    // arc endpoint, matching the endpoint exclusion in segments_intersect.
+    std::vector<VECTOR2I> filtered;
+
+    for( const VECTOR2I& ip : rawPoints )
+    {
+        bool atSharedEndpoint = ( ip == arcStart || ip == arcEnd )
+                                && ( ip == p1 || ip == p2 );
+
+        if( !atSharedEndpoint )
+            filtered.push_back( ip );
+    }
+
     if( aIntersectionPoints )
     {
-        size_t startCount = aIntersectionPoints->size();
-
-        INTERSECTION_VISITOR visitor( geom2, *aIntersectionPoints );
-        std::visit( visitor, geom1 );
-
-        return aIntersectionPoints->size() > startCount;
+        for( const VECTOR2I& ip : filtered )
+            aIntersectionPoints->push_back( ip );
     }
-    else
-    {
-        std::vector<VECTOR2I> intersectionPoints;
 
-        INTERSECTION_VISITOR visitor( geom2, intersectionPoints );
-        std::visit( visitor, geom1 );
-
-        return intersectionPoints.size() > 0;
-    }
+    return !filtered.empty();
 }
 
 
