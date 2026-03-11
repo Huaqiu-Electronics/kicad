@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 11:13-0700\n"
+"POT-Creation-Date: 2026-03-11 13:57-0700\n"
 "PO-Revision-Date: 2026-03-06 22:45+0000\n"
 "Last-Translator: whenwesober <naomi16i_1298q@cikuh.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kicad/master-"
@@ -169,7 +169,7 @@ msgstr "Waktu muat ulang %.3f s"
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:363
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:571
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:285
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:306
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:321
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:347
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:155
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.cpp:117
@@ -211,7 +211,7 @@ msgstr ""
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:54
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:627
 #: common/eda_base_frame.cpp:1509 common/hotkey_store.cpp:80
-#: common/tool/actions.cpp:1270 pcbnew/footprint_chooser_frame.cpp:364
+#: common/tool/actions.cpp:1264 pcbnew/footprint_chooser_frame.cpp:364
 #: pcbnew/footprint_viewer_frame.cpp:968 pcbnew/pcb_base_frame.cpp:668
 msgid "3D Viewer"
 msgstr "Penampil 3D"
@@ -307,7 +307,7 @@ msgstr "Setelan Penyaring"
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:567
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:753
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:940
-#: pcbnew/pcbnew_jobs_handler.cpp:814
+#: pcbnew/pcbnew_jobs_handler.cpp:815
 #, fuzzy
 msgid "legacy colors"
 msgstr "Gunakan warna:"
@@ -2696,11 +2696,11 @@ msgstr "Salin info versi KiCad ke papan klip"
 msgid "&Report Bug"
 msgstr "Lapo&rkan Kutu"
 
-#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1434
+#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1428
 msgid "Report a problem with KiCad"
 msgstr "Laporkan permasalahan pada KiCad"
 
-#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1427
+#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1421
 msgid "Donate"
 msgstr "Donasi"
 
@@ -3309,7 +3309,7 @@ msgstr "Item terkunci."
 #: common/dialogs/dialog_page_settings.cpp:465
 #: eeschema/eeschema_jobs_handler.cpp:249 pagelayout_editor/files.cpp:254
 #: pagelayout_editor/pl_editor_frame.cpp:369
-#: pcbnew/pcbnew_jobs_handler.cpp:2818
+#: pcbnew/pcbnew_jobs_handler.cpp:2824
 #, fuzzy, c-format
 msgid "Error loading drawing sheet '%s'."
 msgstr "Impor berkas gambar 2D"
@@ -3573,8 +3573,8 @@ msgstr "Tinjauan Cetak"
 
 #: common/dialogs/dialog_print_generic.cpp:98
 #: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:466
-#: common/dialogs/rule_editor_dialog_base.cpp:506 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:469
+#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3925,7 +3925,7 @@ msgstr "Oke"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:458 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -5068,7 +5068,7 @@ msgstr "Urung"
 msgid "Cursor"
 msgstr "Kursor"
 
-#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1182
+#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1179
 #: common/widgets/gal_options_panel_base.cpp:102
 #, fuzzy
 msgid "Small crosshairs"
@@ -6295,35 +6295,35 @@ msgstr "Perbarui Footprint"
 msgid "Save"
 msgstr "Save"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:462
-#: common/dialogs/rule_editor_dialog_base.cpp:480
+#: common/dialogs/rule_editor_dialog_base.cpp:465
+#: common/dialogs/rule_editor_dialog_base.cpp:483
 #: kicad/kicad_manager_frame.cpp:973
 #, fuzzy
 msgid "Discard"
 msgstr "Opsi Tampilan"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:556
+#: common/dialogs/rule_editor_dialog_base.cpp:559
 #, fuzzy
 msgid "New Rule"
 msgstr "Item Baru"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:562
 #, fuzzy
 msgid "Copy Rule"
 msgstr "Kaidah Kustom"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:565
 #, fuzzy
 msgid "Delete Rule"
 msgstr "Hapus"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 #, fuzzy
 msgid "Move Up"
 msgstr "Pindah"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 #, fuzzy
 msgid "Move Down"
@@ -6347,7 +6347,7 @@ msgid "Error switching GAL backend"
 msgstr ""
 
 #: common/drawing_sheet/drawing_sheet_parser.cpp:559
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3643
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3650
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3662
 #, fuzzy
 msgid "Failed to read image data."
@@ -6593,6 +6593,7 @@ msgid "Do you want to remove it from list of recently opened files?"
 msgstr "Apakah Anda yakin ingin menimpa berkas yang sudah ada?"
 
 #: common/eda_base_frame.cpp:1323
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:79
 #, fuzzy
 msgid "Remove"
 msgstr "Ganti Nama Berkas..."
@@ -6629,7 +6630,7 @@ msgstr "Pintasan"
 msgid "Version Control"
 msgstr "Warna pilihan:"
 
-#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1285
+#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1279
 #: common/tool/common_tools.cpp:617 eeschema/symbol_editor/symbol_editor.cpp:84
 #: kicad/tools/kicad_manager_actions.cpp:116
 msgid "Symbol Editor"
@@ -6688,7 +6689,7 @@ msgstr "(sumber)"
 msgid "Simulator"
 msgstr "Simulator..."
 
-#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1302
+#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1296
 #: common/tool/common_tools.cpp:619 kicad/tools/kicad_manager_actions.cpp:138
 #: pcbnew/dialogs/panel_display_options_base.cpp:97
 #: pcbnew/footprint_edit_frame.cpp:1126 pcbnew/menubar_footprint_editor.cpp:92
@@ -6794,7 +6795,7 @@ msgstr "Berkas dokumentasi \"%s\" tidak ditemukan."
 msgid "Unknown MIME type for documentation file '%s'"
 msgstr "Tipe MIME tidak diketahui untuk berkas doc \"%s\""
 
-#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1214
+#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1222
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:55
 #, fuzzy
 msgid "Override locks"
@@ -6880,7 +6881,7 @@ msgstr "Inci"
 msgid "Search"
 msgstr "Cari:"
 
-#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1320
+#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1314
 #: eeschema/eeschema_settings.cpp:94 eeschema/sch_edit_frame.cpp:2038
 #: pagelayout_editor/pl_editor_frame.cpp:201
 #: pcbnew/footprint_edit_frame.cpp:236 pcbnew/pcb_edit_frame.cpp:370
@@ -7715,7 +7716,7 @@ msgstr "Tidak dapat mencari pembaca PDF untuk '%s'."
 msgid "Problem while running the PDF viewer '%s'."
 msgstr "Galat ketika menjalankan pembaca PDF '%s'."
 
-#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:732
+#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:749
 #: gerbview/gerbview.cpp:262 kicad/project_template.cpp:364
 #: pcbnew/pcbnew.cpp:749
 #, c-format
@@ -8182,7 +8183,7 @@ msgid "Paste clipboard cells to matrix at current cell"
 msgstr ""
 
 #: common/grid_tricks.cpp:388 common/tool/actions.cpp:404
-#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2267
+#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2261
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
@@ -9571,12 +9572,12 @@ msgstr "Pustaka dengan nama '%s' telah ada."
 msgid "Added by Plugin and Content Manager"
 msgstr ""
 
-#: common/libraries/library_manager.cpp:409
+#: common/libraries/library_manager.cpp:420
 #, fuzzy
 msgid "KiCad Default Libraries"
 msgstr "Setel ke Bawaan"
 
-#: common/libraries/library_manager.cpp:1132
+#: common/libraries/library_manager.cpp:1143
 #, fuzzy
 msgid "Library not found in library table"
 msgstr ""
@@ -9584,12 +9585,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: common/libraries/library_manager.cpp:1152
+#: common/libraries/library_manager.cpp:1163
 #, fuzzy, c-format
 msgid "Library '%s': %s"
 msgstr "Pustaka"
 
-#: common/libraries/library_manager.cpp:1369
+#: common/libraries/library_manager.cpp:1380
 #, fuzzy, c-format
 msgid "Library %s not found"
 msgstr "Pustaka '%s' tidak ditemukan."
@@ -9792,6 +9793,30 @@ msgstr "Anotasi"
 
 #: common/notifications_manager.cpp:182
 msgid "There are no notifications available"
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:126
+msgid "Missing HTTP method in callback request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:134
+msgid "Missing callback URL in request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:145
+msgid "Unexpected callback path."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:153
+msgid "OAuth callback state did not match."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:163
+msgid "Authorization server returned an OAuth error."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:171
+msgid "Missing authorization code in callback."
 msgstr ""
 
 #: common/page_info.cpp:48
@@ -10035,6 +10060,143 @@ msgstr "Peringatan: "
 msgid "Error: "
 msgstr "Galat: "
 
+#: common/remote_provider_client.cpp:287
+msgid "Sign in required for this provider."
+msgstr ""
+
+#: common/remote_provider_client.cpp:329
+msgid "Provider metadata does not include a session bootstrap URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:352
+msgid "Bootstrap response did not include a nonce URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:371
+msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+msgstr ""
+
+#: common/remote_provider_client.cpp:407
+#, c-format
+msgid "Remote provider request failed with HTTP %d."
+msgstr ""
+
+#: common/remote_provider_client.cpp:432
+#, c-format
+msgid "Remote provider returned invalid JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:453
+#, c-format
+msgid "Remote provider returned invalid token JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:485
+#, c-format
+msgid "Remote provider token response was incomplete: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:53
+#, c-format
+msgid "Remote provider metadata schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:64
+#, c-format
+msgid "Remote provider metadata failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:124
+#, fuzzy, c-format
+msgid "Unsupported provider capability '%s'."
+msgstr "Berkas skematik Altium"
+
+#: common/remote_provider_metadata.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider metadata: %s"
+msgstr "Tidak dapat membuat berkas laporan '%s'"
+
+#: common/remote_provider_metadata.cpp:154
+msgid "Remote provider metadata must enable web_ui_v1."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:161
+msgid ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:168
+msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:173
+msgid "api_base_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:179
+msgid "panel_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:185
+msgid "session_bootstrap_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:193
+msgid "session_bootstrap_url must share the same origin as panel_url."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:199
+msgid "auth.metadata_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:44
+#, fuzzy, c-format
+msgid "Unable to parse OAuth metadata: %s"
+msgstr "Tidak dapat membuat berkas laporan '%s'"
+
+#: common/remote_provider_models.cpp:50
+msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
+msgstr ""
+
+#: common/remote_provider_models.cpp:55
+msgid "authorization_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:60
+msgid "token_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:66
+msgid "revocation_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:98
+#, c-format
+msgid "Remote provider manifest schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_models.cpp:109
+#, c-format
+msgid "Remote provider manifest failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_models.cpp:136
+msgid "assets[].download_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider manifest: %s"
+msgstr "Tidak dapat membuat berkas laporan '%s'"
+
+#: common/remote_provider_utils.cpp:94
+#, c-format
+msgid ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
+msgstr ""
+
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, fuzzy, c-format
 msgid "File '%s' does not exist."
@@ -10095,7 +10257,7 @@ msgstr "Simpan Berkas Asosiasi Footprint"
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:77
 #: eeschema/lib_symbol.cpp:2552 eeschema/menubar.cpp:166
 #: eeschema/sch_sheet.cpp:2154 eeschema/sch_symbol.cpp:3959
-#: eeschema/tools/sch_edit_tool.cpp:716 pcbnew/footprint.cpp:4847
+#: eeschema/tools/sch_edit_tool.cpp:710 pcbnew/footprint.cpp:4847
 msgid "Attributes"
 msgstr ""
 
@@ -10159,22 +10321,22 @@ msgid ""
 "for you."
 msgstr ""
 
-#: common/startwizard/startwizard_provider_libraries.cpp:109
+#: common/startwizard/startwizard_provider_libraries.cpp:112
 #, fuzzy
 msgid "Symbol library table"
 msgstr "Pustaka simbol tidak diaktifkan."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:113
+#: common/startwizard/startwizard_provider_libraries.cpp:116
 #, fuzzy
 msgid "Footprint library table"
 msgstr "Berkas '%s' tidak ditemukan."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:117
+#: common/startwizard/startwizard_provider_libraries.cpp:120
 #, fuzzy
 msgid "Design Block library table"
 msgstr "Pustaka"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:136
+#: common/startwizard/startwizard_provider_libraries.cpp:146
 #: eeschema/dialogs/dialog_database_lib_settings_base.cpp:99
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:220
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1530
@@ -10210,66 +10372,66 @@ msgstr "Tutup %s"
 msgid "Quit %s"
 msgstr "Keluar %s"
 
-#: common/tool/action_toolbar.cpp:1162
+#: common/tool/action_toolbar.cpp:1170
 #, fuzzy
 msgid "Grid selector"
 msgstr "Gaya"
 
-#: common/tool/action_toolbar.cpp:1163
+#: common/tool/action_toolbar.cpp:1171
 #, fuzzy
 msgid "Grid Selection box"
 msgstr "Buat Proyek Baru"
 
-#: common/tool/action_toolbar.cpp:1175
+#: common/tool/action_toolbar.cpp:1183
 #, fuzzy
 msgid "Zoom selector"
 msgstr "Buat Proyek Baru"
 
-#: common/tool/action_toolbar.cpp:1176
+#: common/tool/action_toolbar.cpp:1184
 #, fuzzy
 msgid "Zoom Selection box"
 msgstr "Buat Proyek Baru"
 
-#: common/tool/action_toolbar.cpp:1188
+#: common/tool/action_toolbar.cpp:1196
 #, fuzzy
 msgid "IPC/Scripting plugins"
 msgstr "Aksi"
 
-#: common/tool/action_toolbar.cpp:1189
+#: common/tool/action_toolbar.cpp:1197
 msgid "Region to hold the IPC/Scripting action buttons"
 msgstr ""
 
-#: common/tool/action_toolbar.cpp:1194
+#: common/tool/action_toolbar.cpp:1202
 #, fuzzy
 msgid "Layer selector"
 msgstr "tak ada berkas yang dipilih"
 
-#: common/tool/action_toolbar.cpp:1195
+#: common/tool/action_toolbar.cpp:1203
 #, fuzzy
 msgid "Control to select the layer"
 msgstr "Silakan pilih lapisan yang valid."
 
-#: common/tool/action_toolbar.cpp:1202
+#: common/tool/action_toolbar.cpp:1210
 #, fuzzy
 msgid "Symbol unit selector"
 msgstr "Anotasi"
 
-#: common/tool/action_toolbar.cpp:1203
+#: common/tool/action_toolbar.cpp:1211
 #, fuzzy
 msgid "Displays the current unit"
 msgstr "Tutup proyek saat ini"
 
-#: common/tool/action_toolbar.cpp:1208
+#: common/tool/action_toolbar.cpp:1216
 #, fuzzy
 msgid "Symbol body style selector"
 msgstr "Anotasi"
 
-#: common/tool/action_toolbar.cpp:1209
+#: common/tool/action_toolbar.cpp:1217
 #, fuzzy
 msgid "Displays the current body style"
 msgstr "Tutup proyek saat ini"
 
-#: common/tool/action_toolbar.cpp:1215
+#: common/tool/action_toolbar.cpp:1223
 #, fuzzy
 msgid "Allow moving of locked items with the mouse"
 msgstr "Izinkan pemilihan item yang terkunci"
@@ -10567,7 +10729,7 @@ msgstr "Hapus sel terpilih"
 msgid "Delete clicked items"
 msgstr "Hapus Beberapa Item"
 
-#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3340
+#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3334
 #: pcbnew/tools/edit_tool.cpp:2748
 msgid "Left Justify"
 msgstr ""
@@ -10576,7 +10738,7 @@ msgstr ""
 msgid "Left-justify fields and text items"
 msgstr ""
 
-#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3342
+#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3336
 #: pcbnew/tools/edit_tool.cpp:2750
 #, fuzzy
 msgid "Center Justify"
@@ -10586,7 +10748,7 @@ msgstr "Tengah"
 msgid "Center-justify fields and text items"
 msgstr ""
 
-#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3344
+#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3338
 #: pcbnew/tools/edit_tool.cpp:2752
 msgid "Right Justify"
 msgstr ""
@@ -11155,7 +11317,7 @@ msgstr "Berkas Drill"
 msgid "Set the grid origin point"
 msgstr ""
 
-#: common/tool/actions.cpp:1115
+#: common/tool/actions.cpp:1114
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:61
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:122
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:78
@@ -11166,7 +11328,7 @@ msgstr ""
 msgid "Mils"
 msgstr "Mils"
 
-#: common/tool/actions.cpp:1124
+#: common/tool/actions.cpp:1122
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:165
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:60
 #: pcbnew/dialogs/dialog_board_stats_job_base.cpp:47
@@ -11183,136 +11345,136 @@ msgstr "Mils"
 msgid "Millimeters"
 msgstr "Milimeter"
 
-#: common/tool/actions.cpp:1144
+#: common/tool/actions.cpp:1141
 #, fuzzy
 msgid "Select Columns..."
 msgstr "Pilih Semua"
 
-#: common/tool/actions.cpp:1151
+#: common/tool/actions.cpp:1148
 msgid "Switch units"
 msgstr "Ganti satuan"
 
-#: common/tool/actions.cpp:1152
+#: common/tool/actions.cpp:1149
 msgid "Switch between imperial and metric units"
 msgstr "Beralih antara satuan imperial dan metrik"
 
-#: common/tool/actions.cpp:1158
+#: common/tool/actions.cpp:1155
 #, fuzzy
 msgid "Polar Coordinates"
 msgstr "Koordinat"
 
-#: common/tool/actions.cpp:1159
+#: common/tool/actions.cpp:1156
 #, fuzzy
 msgid "Switch between polar and cartesian coordinate systems"
 msgstr "Beralih antara satuan imperial dan metrik"
 
-#: common/tool/actions.cpp:1168
+#: common/tool/actions.cpp:1165
 #, fuzzy
 msgid "Reset Local Coordinates"
 msgstr "Koordinat"
 
-#: common/tool/actions.cpp:1175
+#: common/tool/actions.cpp:1172
 msgid "Always Show Crosshairs"
 msgstr ""
 
-#: common/tool/actions.cpp:1176
+#: common/tool/actions.cpp:1173
 msgid "Display crosshairs even when not drawing objects"
 msgstr ""
 
-#: common/tool/actions.cpp:1183
+#: common/tool/actions.cpp:1180
 msgid "Use small crosshairs aligned at 0 and 90 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1190
+#: common/tool/actions.cpp:1186
 msgid "Full-Window Crosshairs"
 msgstr ""
 
-#: common/tool/actions.cpp:1191
+#: common/tool/actions.cpp:1187
 msgid "Display full-window crosshairs aligned at 0 and 90 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1198
+#: common/tool/actions.cpp:1193
 msgid "45 Degree Crosshairs"
 msgstr ""
 
-#: common/tool/actions.cpp:1199
+#: common/tool/actions.cpp:1194
 msgid "Display full-window crosshairs aligned at 45 and 135 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1207
+#: common/tool/actions.cpp:1201
 #, fuzzy
 msgid "Inactive Layer View Mode"
 msgstr "Buat lapisan"
 
-#: common/tool/actions.cpp:1208
+#: common/tool/actions.cpp:1202
 msgid "Toggle inactive layers between normal and dimmed"
 msgstr ""
 
-#: common/tool/actions.cpp:1216
+#: common/tool/actions.cpp:1210
 #, fuzzy
 msgid "Inactive Layer View Mode (3-state)"
 msgstr "Buat lapisan"
 
-#: common/tool/actions.cpp:1217
+#: common/tool/actions.cpp:1211
 msgid "Cycle inactive layers between normal, dimmed, and hidden"
 msgstr ""
 
-#: common/tool/actions.cpp:1223
+#: common/tool/actions.cpp:1217
 #, fuzzy
 msgid "Draw Bounding Boxes"
 msgstr "Mode Gambar"
 
-#: common/tool/actions.cpp:1230 pcbnew/dialogs/panel_edit_options_base.cpp:141
+#: common/tool/actions.cpp:1224 pcbnew/dialogs/panel_edit_options_base.cpp:141
 #: pcbnew/dialogs/panel_edit_options_base.cpp:215
 #, fuzzy
 msgid "Select item(s)"
 msgstr "Pilih Item..."
 
-#: common/tool/actions.cpp:1241
+#: common/tool/actions.cpp:1235
 msgid "Measure Tool"
 msgstr ""
 
-#: common/tool/actions.cpp:1242
+#: common/tool/actions.cpp:1236
 msgid "Interactively measure distance between points"
 msgstr ""
 
-#: common/tool/actions.cpp:1261
+#: common/tool/actions.cpp:1255
 #, fuzzy
 msgid "Switch to Project Manager"
 msgstr "Manajer Proyek"
 
-#: common/tool/actions.cpp:1262
+#: common/tool/actions.cpp:1256
 #, fuzzy
 msgid "Show project window"
 msgstr "Tampilkan ikon di menu"
 
-#: common/tool/actions.cpp:1271
+#: common/tool/actions.cpp:1265
 #, fuzzy
 msgid "Show 3D viewer window"
 msgstr "Tampilkan model virtual 3D"
 
-#: common/tool/actions.cpp:1277 eeschema/symbol_viewer_frame.cpp:107
+#: common/tool/actions.cpp:1271 eeschema/symbol_viewer_frame.cpp:107
 #: eeschema/symbol_viewer_frame.cpp:1055
 msgid "Symbol Library Browser"
 msgstr "Peramban Pustaka Simbol"
 
-#: common/tool/actions.cpp:1286 kicad/tools/kicad_manager_actions.cpp:117
+#: common/tool/actions.cpp:1280 kicad/tools/kicad_manager_actions.cpp:117
 #, fuzzy
 msgid "Create, delete and edit schematic symbols"
 msgstr "Buat, hapus dan sunting simbol"
 
-#: common/tool/actions.cpp:1294 pcbnew/footprint_viewer_frame.cpp:105
+#: common/tool/actions.cpp:1288 pcbnew/footprint_viewer_frame.cpp:105
 #: pcbnew/footprint_viewer_frame.cpp:996
 #, fuzzy
 msgid "Footprint Library Browser"
 msgstr "Memperbarui Pustaka Footprint"
 
-#: common/tool/actions.cpp:1303
+#: common/tool/actions.cpp:1297
 #, fuzzy
 msgid "Create, delete and edit board footprints"
 msgstr "Buat, hapus dan sunting simbol"
 
-#: common/tool/actions.cpp:1311 kicad/tools/kicad_manager_actions.cpp:168
+#: common/tool/actions.cpp:1305 kicad/tools/kicad_manager_actions.cpp:168
 #: pcb_calculator/pcb_calculator_frame.cpp:62
 #: pcb_calculator/pcb_calculator_frame.cpp:212
 #: pcb_calculator/pcb_calculator_frame.cpp:213
@@ -11320,102 +11482,102 @@ msgstr "Buat, hapus dan sunting simbol"
 msgid "Calculator Tools"
 msgstr "Alat Kalkulator"
 
-#: common/tool/actions.cpp:1312 kicad/tools/kicad_manager_actions.cpp:169
+#: common/tool/actions.cpp:1306 kicad/tools/kicad_manager_actions.cpp:169
 msgid "Run component calculations, track width calculations, etc."
 msgstr ""
 
-#: common/tool/actions.cpp:1321
+#: common/tool/actions.cpp:1315
 #, fuzzy
 msgid "Show/hide the properties manager"
 msgstr "Properti Simbol"
 
-#: common/tool/actions.cpp:1330
+#: common/tool/actions.cpp:1324
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:134
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:121
 #: eeschema/fields_grid_table.cpp:1203
 msgid "Show Datasheet"
 msgstr "Tampilkan Lembar Data"
 
-#: common/tool/actions.cpp:1331
+#: common/tool/actions.cpp:1325
 #, fuzzy
 msgid "Open the datasheet in a browser"
 msgstr "Buka lembar data di peramban"
 
-#: common/tool/actions.cpp:1339
+#: common/tool/actions.cpp:1333
 #, fuzzy
 msgid "Update PCB from Schematic..."
 msgstr "Perbarui Skematik"
 
-#: common/tool/actions.cpp:1340
+#: common/tool/actions.cpp:1334
 #, fuzzy
 msgid "Update PCB with changes made to schematic"
 msgstr "Perbarui skematik dengan perubahan yang dilakukan pada PCB"
 
-#: common/tool/actions.cpp:1346
+#: common/tool/actions.cpp:1340
 #, fuzzy
 msgid "Update Schematic from PCB..."
 msgstr "Perbarui Skematik dari PCB"
 
-#: common/tool/actions.cpp:1347
+#: common/tool/actions.cpp:1341
 msgid "Update schematic with changes made to PCB"
 msgstr "Perbarui skematik dengan perubahan yang dilakukan pada PCB"
 
-#: common/tool/actions.cpp:1354
+#: common/tool/actions.cpp:1348
 msgid "Preferences..."
 msgstr "Preferensi..."
 
-#: common/tool/actions.cpp:1355
+#: common/tool/actions.cpp:1349
 msgid "Show preferences for all open tools"
 msgstr "Tampilkan preferensi untuk semua alat terbuka"
 
-#: common/tool/actions.cpp:1362
+#: common/tool/actions.cpp:1356
 #: pcbnew/dialogs/panel_fp_properties_3d_model_base.cpp:78
 #, fuzzy
 msgid "Configure Paths..."
 msgstr "Konfigurasikan Path"
 
-#: common/tool/actions.cpp:1363
+#: common/tool/actions.cpp:1357
 msgid "Edit path configuration environment variables"
 msgstr ""
 
-#: common/tool/actions.cpp:1369
+#: common/tool/actions.cpp:1363
 msgid "Manage Symbol Libraries..."
 msgstr "Kelola Pustaka Simbol..."
 
-#: common/tool/actions.cpp:1370
+#: common/tool/actions.cpp:1364
 msgid "Edit the global and project symbol library lists"
 msgstr "Sunting daftar pustaka simbol global dan proyek"
 
-#: common/tool/actions.cpp:1376
+#: common/tool/actions.cpp:1370
 #, fuzzy
 msgid "Manage Footprint Libraries..."
 msgstr "Memperbarui Pustaka Footprint"
 
-#: common/tool/actions.cpp:1377
+#: common/tool/actions.cpp:1371
 #, fuzzy
 msgid "Edit the global and project footprint library lists"
 msgstr "Sunting daftar pustaka simbol global dan proyek"
 
-#: common/tool/actions.cpp:1383
+#: common/tool/actions.cpp:1377
 #, fuzzy
 msgid "Manage Design Block Libraries..."
 msgstr "Kelola Pustaka Simbol..."
 
-#: common/tool/actions.cpp:1384
+#: common/tool/actions.cpp:1378
 #, fuzzy
 msgid "Edit the global and project design block library lists"
 msgstr "Sunting daftar pustaka simbol global dan proyek"
 
-#: common/tool/actions.cpp:1390
+#: common/tool/actions.cpp:1384
 #, fuzzy
 msgid "Getting Started with KiCad"
 msgstr "Terlibat di KiCad"
 
-#: common/tool/actions.cpp:1391
+#: common/tool/actions.cpp:1385
 msgid "Open \"Getting Started in KiCad\" guide for beginners"
 msgstr ""
 
-#: common/tool/actions.cpp:1397
+#: common/tool/actions.cpp:1391
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:330
 #: pcb_calculator/calculator_panels/panel_fusing_current_base.cpp:136
 #: pcb_calculator/calculator_panels/panel_r_calculator_base.cpp:187
@@ -11423,53 +11585,53 @@ msgstr ""
 msgid "Help"
 msgstr "Bantuan"
 
-#: common/tool/actions.cpp:1398
+#: common/tool/actions.cpp:1392
 #, fuzzy
 msgid "Open product documentation in a web browser"
 msgstr "Buka direktori proyek di peramban berkas"
 
-#: common/tool/actions.cpp:1404
+#: common/tool/actions.cpp:1398
 #, fuzzy
 msgid "About KiCad"
 msgstr "Tent&ang KiCad"
 
-#: common/tool/actions.cpp:1413
+#: common/tool/actions.cpp:1407
 msgid "List Hotkeys..."
 msgstr "Senarai Pintasan..."
 
-#: common/tool/actions.cpp:1414
+#: common/tool/actions.cpp:1408
 msgid "Displays current hotkeys table and corresponding commands"
 msgstr "Tampilkan tabel pintasan dan perintah yang sesuai"
 
-#: common/tool/actions.cpp:1420
+#: common/tool/actions.cpp:1414
 msgid "Get Involved"
 msgstr "Ikut Terlibat"
 
-#: common/tool/actions.cpp:1421
+#: common/tool/actions.cpp:1415
 #, fuzzy
 msgid "Open \"Contribute to KiCad\" in a web browser"
 msgstr "Buka lembar data di peramban"
 
-#: common/tool/actions.cpp:1428
+#: common/tool/actions.cpp:1422
 #, fuzzy
 msgid "Open \"Donate to KiCad\" in a web browser"
 msgstr "Buka lembar data di peramban"
 
-#: common/tool/actions.cpp:1433
+#: common/tool/actions.cpp:1427
 #, fuzzy
 msgid "Report Bug"
 msgstr "Lapo&rkan Kutu"
 
-#: common/tool/actions.cpp:1446
+#: common/tool/actions.cpp:1440
 #, fuzzy
 msgid "Refresh Plugins"
 msgstr "Segarkan"
 
-#: common/tool/actions.cpp:1447
+#: common/tool/actions.cpp:1441
 msgid "Reload all python plugins and refresh plugin menus"
 msgstr ""
 
-#: common/tool/actions.cpp:1455
+#: common/tool/actions.cpp:1449
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:85
 #: eeschema/dialogs/dialog_schematic_setup.cpp:143
 #: eeschema/dialogs/dialog_symbol_properties.cpp:346
@@ -11480,27 +11642,27 @@ msgstr ""
 msgid "Embedded Files"
 msgstr "Berkas Gambar"
 
-#: common/tool/actions.cpp:1456
+#: common/tool/actions.cpp:1450
 #, fuzzy
 msgid "Manage embedded files"
 msgstr "Ganti nama berkas"
 
-#: common/tool/actions.cpp:1461
+#: common/tool/actions.cpp:1455
 #, fuzzy
 msgid "Remove File"
 msgstr "Ganti Nama Berkas"
 
-#: common/tool/actions.cpp:1462
+#: common/tool/actions.cpp:1456
 #, fuzzy
 msgid "Remove an embedded file"
 msgstr "Ganti semua kecocokan"
 
-#: common/tool/actions.cpp:1467
+#: common/tool/actions.cpp:1461
 #, fuzzy
 msgid "Extract File"
 msgstr "Ekspor ke Berkas"
 
-#: common/tool/actions.cpp:1468
+#: common/tool/actions.cpp:1462
 #, fuzzy
 msgid "Extract an embedded file"
 msgstr "Berkas dapat dieksekusi ("
@@ -11839,17 +12001,17 @@ msgstr "Pilih sebuah Berkas"
 msgid "Select Path"
 msgstr "Pilih semua"
 
-#: common/widgets/kistatusbar.cpp:146
+#: common/widgets/kistatusbar.cpp:128
 #, fuzzy
 msgid "View load messages"
 msgstr "Pesan Keluaran"
 
-#: common/widgets/kistatusbar.cpp:410
+#: common/widgets/kistatusbar.cpp:461
 #, c-format
 msgid "View %zu load message(s)"
 msgstr ""
 
-#: common/widgets/kistatusbar.cpp:458
+#: common/widgets/kistatusbar.cpp:510
 #, fuzzy
 msgid "Load Messages"
 msgstr "Pesan"
@@ -11908,7 +12070,7 @@ msgstr "Buat zona"
 
 #: common/widgets/paged_dialog.cpp:85 common/widgets/paged_dialog.cpp:347
 #: eeschema/dialogs/dialog_bom_base.cpp:114
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:106
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:367
 #: pcb_calculator/calculator_panels/panel_track_width_base.cpp:288
 #: pcb_calculator/calculator_panels/panel_transline_base.cpp:480
@@ -16279,92 +16441,156 @@ msgstr ""
 msgid "Plot Schematic"
 msgstr "Membuat Skematik"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:44
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
 #, fuzzy
 msgid "Remote Symbol Settings"
 msgstr "Impor Pengaturan"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:58
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
 msgid ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:65
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
+msgid "Providers"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#, fuzzy
+msgid "Add / Update"
+msgstr "Perbarui PCB"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
+#, fuzzy
+msgid "Refresh Metadata"
+msgstr "Metadata"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+msgid "Sign Out"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
+#, fuzzy
+msgid "Metadata URL:"
+msgstr "Metadata"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#, fuzzy
+msgid "Display name:"
+msgstr "Nama berkas:"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#, fuzzy
+msgid "Last account:"
+msgstr "Ulang Kira"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
+#, fuzzy
+msgid "Not signed in"
+msgstr "Pin Tak Ditentukan"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
+#, fuzzy
+msgid "Auth status:"
+msgstr "Status"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
+#, fuzzy
+msgid "Not configured"
+msgstr "Tidak dicerminkan"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 #, fuzzy
 msgid "Destination directory:"
 msgstr "Deskripsi"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:71
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:121
 msgid ""
 "Directory where downloaded symbol, footprint, and 3D model data will be "
 "written."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:74
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:124
 #, fuzzy
 msgid "Browse..."
 msgstr "Ramban..."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:128
 #, fuzzy
 msgid "Library prefix:"
 msgstr "Galat Nama Pustaka"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:131
 msgid "Prefix that will be applied to the generated libraries."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:89
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:139
 #, fuzzy
 msgid "Add libraries to:"
 msgstr "Memuat Pustaka Simbol"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:93
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:143
 #, fuzzy
 msgid "Project library table"
 msgstr "Pustaka simbol tidak diaktifkan."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:146
 #, fuzzy
 msgid "Adds the generated libraries to the project's library tables."
 msgstr "Tambah pustaka yang sudah ada ke tabel"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:98
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:149
 #, fuzzy
 msgid "Global library table"
 msgstr "Pustaka simbol tidak diaktifkan."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
 #, fuzzy
 msgid "Adds the generated libraries to the global library tables."
 msgstr "Tidak dapat membuat berkas \"%s\".\n"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:107
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:159
 msgid "Restore the default destination and prefix."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:208
 #, fuzzy
 msgid "Please choose a destination directory."
 msgstr "Silakan pilih berkas netlist yang valid."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:216
 #, fuzzy
 msgid "Please enter a library prefix."
 msgstr "Pilih sebuah berkas tabel pustaka simbol."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:191
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:252
 #, fuzzy
 msgid "Select Destination Directory"
 msgstr "Pilih preset:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:258
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
+msgid "Enter a provider metadata URL first."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
+msgid "Provider metadata refreshed."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
+#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
+#: pcbnew/zone.cpp:989
+msgid "Unknown"
+msgstr "Tidak diketahui"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:519
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:263
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:524
 #, c-format
 msgid "Will create libraries like %1$s_symbols, %1$s_fp, %1$s_3d, etc."
 msgstr ""
@@ -16635,7 +16861,7 @@ msgid "Project"
 msgstr "Proyek"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:119
-#: eeschema/tools/sch_edit_tool.cpp:3624
+#: eeschema/tools/sch_edit_tool.cpp:3618
 #: pcbnew/dialogs/dialog_board_setup.cpp:217
 #: pcbnew/widgets/appearance_controls.cpp:526
 #: pcbnew/widgets/appearance_controls.cpp:2507
@@ -19470,19 +19696,19 @@ msgstr "Buat lapisan"
 msgid "URL"
 msgstr "URL"
 
-#: eeschema/eeschema.cpp:496 eeschema/eeschema.cpp:508
+#: eeschema/eeschema.cpp:513 eeschema/eeschema.cpp:525
 #: eeschema/libraries/legacy_symbol_library.cpp:523
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1349
 msgid "Loading Symbol Libraries"
 msgstr "Memuat Pustaka Simbol"
 
-#: eeschema/eeschema.cpp:633
+#: eeschema/eeschema.cpp:650
 #, c-format
 msgid ""
 "Cannot copy file '%s' as it will be overwritten by the new root sheet file."
 msgstr ""
 
-#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:298
+#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:299
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0."
 msgstr ""
 
@@ -19493,7 +19719,7 @@ msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
 
 #: eeschema/eeschema_jobs_handler.cpp:275
 #: kicad/cli/command_pcb_export_hpgl.cpp:36
-#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:286
+#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:287
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0.\n"
 msgstr ""
 
@@ -19501,14 +19727,14 @@ msgstr ""
 #: eeschema/eeschema_jobs_handler.cpp:522
 #: eeschema/eeschema_jobs_handler.cpp:877
 #: eeschema/eeschema_jobs_handler.cpp:959
-#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:569
-#: pcbnew/pcbnew_jobs_handler.cpp:698 pcbnew/pcbnew_jobs_handler.cpp:962
-#: pcbnew/pcbnew_jobs_handler.cpp:1071 pcbnew/pcbnew_jobs_handler.cpp:1168
-#: pcbnew/pcbnew_jobs_handler.cpp:1254 pcbnew/pcbnew_jobs_handler.cpp:1309
-#: pcbnew/pcbnew_jobs_handler.cpp:1496 pcbnew/pcbnew_jobs_handler.cpp:1563
-#: pcbnew/pcbnew_jobs_handler.cpp:1710 pcbnew/pcbnew_jobs_handler.cpp:1877
-#: pcbnew/pcbnew_jobs_handler.cpp:2168 pcbnew/pcbnew_jobs_handler.cpp:2308
-#: pcbnew/pcbnew_jobs_handler.cpp:2527 pcbnew/pcbnew_jobs_handler.cpp:2639
+#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:570
+#: pcbnew/pcbnew_jobs_handler.cpp:699 pcbnew/pcbnew_jobs_handler.cpp:963
+#: pcbnew/pcbnew_jobs_handler.cpp:1072 pcbnew/pcbnew_jobs_handler.cpp:1169
+#: pcbnew/pcbnew_jobs_handler.cpp:1255 pcbnew/pcbnew_jobs_handler.cpp:1310
+#: pcbnew/pcbnew_jobs_handler.cpp:1497 pcbnew/pcbnew_jobs_handler.cpp:1564
+#: pcbnew/pcbnew_jobs_handler.cpp:1711 pcbnew/pcbnew_jobs_handler.cpp:1878
+#: pcbnew/pcbnew_jobs_handler.cpp:2169 pcbnew/pcbnew_jobs_handler.cpp:2314
+#: pcbnew/pcbnew_jobs_handler.cpp:2533 pcbnew/pcbnew_jobs_handler.cpp:2645
 #, fuzzy
 msgid "Failed to create output directory\n"
 msgstr "Gagal membuat berkas \"%s\""
@@ -19561,8 +19787,8 @@ msgid "Plotting symbol '%s' unit %d to '%s'\n"
 msgstr "Ubah simbol %s dari '%s' ke '%s'"
 
 #: eeschema/eeschema_jobs_handler.cpp:1106
-#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2087
-#: pcbnew/pcbnew_jobs_handler.cpp:2160
+#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2088
+#: pcbnew/pcbnew_jobs_handler.cpp:2161
 #, fuzzy
 msgid "Unable to load library\n"
 msgstr "Tak dapat memuat berkas %s"
@@ -19578,17 +19804,17 @@ msgstr "Tidak ada simbol yang dipilih"
 msgid "Unable to create output directory '%s'."
 msgstr "Tidak dapat membuat direktori keluaran '%s'."
 
-#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1407
-#: pcbnew/pcbnew_jobs_handler.cpp:2179
+#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1408
+#: pcbnew/pcbnew_jobs_handler.cpp:2180
 #, fuzzy, c-format
 msgid "Exporting %s"
 msgstr "Impor Pengaturan"
 
-#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2056
+#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2057
 msgid "Output path must not conflict with existing path\n"
 msgstr ""
 
-#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2063
+#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2064
 msgid ""
 "Output path must be specified to convert legacy and non-KiCad libraries\n"
 msgstr ""
@@ -19603,7 +19829,7 @@ msgstr "Pengenal pustaka simbol tidak valid"
 msgid "Symbol library was not updated\n"
 msgstr "Pustaka simbol tidak diaktifkan."
 
-#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2439
+#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2445
 #, fuzzy, c-format
 msgid "Found %d violations\n"
 msgstr "Kecualikan dari berkas posisi"
@@ -20456,11 +20682,6 @@ msgstr ""
 "\n"
 "%s"
 
-#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
-#: pcbnew/zone.cpp:989
-msgid "Unknown"
-msgstr "Tidak diketahui"
-
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:62
 #: pcbnew/import_gfx/dialog_import_graphics.cpp:49
 msgid "Centimeter"
@@ -20819,7 +21040,7 @@ msgstr ""
 
 #: eeschema/menubar.cpp:196
 msgid ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
 
 #: eeschema/menubar.cpp:330
@@ -20941,7 +21162,7 @@ msgid "Failed to create directory 'devices' ."
 msgstr "Gagal membuat berkas \"%s\""
 
 #: eeschema/netlist_exporters/netlist_exporter_allegro.cpp:408
-#: pcbnew/pcbnew_jobs_handler.cpp:1502 pcbnew/pcbnew_jobs_handler.cpp:1571
+#: pcbnew/pcbnew_jobs_handler.cpp:1503 pcbnew/pcbnew_jobs_handler.cpp:1572
 #, fuzzy, c-format
 msgid "Failed to create file '%s'.\n"
 msgstr "Gagal membuat berkas \"%s\""
@@ -21035,7 +21256,7 @@ msgstr "Unit:"
 msgid "Change Unit"
 msgstr "Lembar Gambar"
 
-#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2507
+#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2501
 #, fuzzy
 msgid "Change Body Style"
 msgstr "Ukuran sudut:"
@@ -21203,6 +21424,147 @@ msgstr ""
 "\n"
 "%s\n"
 "\n"
+
+#: eeschema/remote_symbol_download_manager.cpp:35
+msgid "Remote asset URL"
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:49
+msgid "Remote asset URL origin must match the selected provider."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:66
+#, fuzzy, c-format
+msgid "Unable to set download URL '%s'."
+msgstr "Tak dapat membuat \"%s\""
+
+#: eeschema/remote_symbol_download_manager.cpp:124
+msgid "Remote asset manifest declared an invalid size."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:130
+msgid "Remote asset manifest must declare sha256 for URL-based downloads."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:139
+msgid "Remote asset exceeds the provider download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:150
+#, c-format
+msgid "Remote download failed with HTTP %d."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:156
+msgid "Remote asset content type did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:162
+msgid "Remote asset size did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:168
+msgid "Remote asset exceeds the remaining download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:174
+msgid "Remote asset digest did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:44
+#, fuzzy
+msgid "Downloaded symbol payload was empty."
+msgstr "Berkas pustaka simbol \"%s\" kosong."
+
+#: eeschema/remote_symbol_import_job.cpp:52
+#, fuzzy
+msgid "Downloaded symbol payload was not a KiCad symbol library."
+msgstr ""
+"'%s' bukan tabel pustaka simbol yang valid.\n"
+"\n"
+"%s"
+
+#: eeschema/remote_symbol_import_job.cpp:62
+#, c-format
+msgid "Downloaded symbol payload did not include expected symbol '%s'."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:96
+#: eeschema/remote_symbol_import_utils.cpp:114
+#: eeschema/widgets/panel_remote_symbol.cpp:1072
+#: eeschema/widgets/panel_remote_symbol.cpp:1295
+#, fuzzy
+msgid "Unable to load schematic settings."
+msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
+
+#: eeschema/remote_symbol_import_job.cpp:234
+#, fuzzy
+msgid "No symbol asset was available to place."
+msgstr "Gunakan tema warna penyunting skematik"
+
+#: eeschema/remote_symbol_import_utils.cpp:76
+msgid "Payload was empty."
+msgstr ""
+
+#: eeschema/remote_symbol_import_utils.cpp:85
+#, fuzzy, c-format
+msgid "Unable to create '%s'."
+msgstr "Tak dapat membuat \"%s\""
+
+#: eeschema/remote_symbol_import_utils.cpp:93
+#, fuzzy, c-format
+msgid "Unable to open '%s' for writing."
+msgstr "Tidak dapat membuka nama berkas \"%s\" untuk dibaca"
+
+#: eeschema/remote_symbol_import_utils.cpp:99
+#, fuzzy, c-format
+msgid "Failed to write '%s'."
+msgstr "Gagal membuat berkas \"%s\""
+
+#: eeschema/remote_symbol_import_utils.cpp:128
+#, fuzzy
+msgid "Destination directory is not configured."
+msgstr "Berkas '%s' tidak ditemukan."
+
+#: eeschema/remote_symbol_import_utils.cpp:137
+#, fuzzy, c-format
+msgid "Unable to create directory '%s'."
+msgstr "Gagal membuat berkas \"%s\""
+
+#: eeschema/remote_symbol_import_utils.cpp:158
+#, fuzzy
+msgid "Unable to access the library table."
+msgstr "Gagal membuat berkas pustaka simbol \"%s\""
+
+#: eeschema/remote_symbol_import_utils.cpp:178
+#, fuzzy
+msgid "Failed to update the library table."
+msgstr "Gagal membuat berkas pustaka simbol \"%s\""
+
+#: eeschema/remote_symbol_import_utils.cpp:192
+#, fuzzy
+msgid "Remote download"
+msgstr "Ukuran:"
+
+#: eeschema/remote_symbol_import_utils.cpp:197
+#, fuzzy
+msgid "Failed to save the library table."
+msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:210
+#, fuzzy
+msgid "No schematic editor is available for placement."
+msgstr "Gunakan tema warna penyunting skematik"
+
+#: eeschema/remote_symbol_import_utils.cpp:222
+#, fuzzy
+msgid "Unable to load the downloaded symbol for placement."
+msgstr "Perbarui simbol yang dipilih"
+
+#: eeschema/remote_symbol_import_utils.cpp:237
+#, fuzzy
+msgid "Unable to access the schematic placement tools."
+msgstr "Perbarui simbol yang dipilih"
 
 #: eeschema/sch_base_frame.cpp:746
 #, fuzzy
@@ -22106,7 +22468,7 @@ msgstr "Berkas pustaka simbol KiCad"
 
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:118
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:288
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:309
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:324
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:108
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:221
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:504
@@ -22204,19 +22566,19 @@ msgstr "berkas pustaka dokumen simbol kosong"
 msgid "library %s does not contain a symbol named %s"
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:215
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:219
 #, c-format
 msgid ""
 "Could not load sheet '%s' because it already appears as a direct ancestor in "
 "the schematic hierarchy."
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:345
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:360
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:306
 msgid "Internal Group Data Error"
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:346
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:361
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:307
 #, c-format
 msgid ""
@@ -22225,28 +22587,28 @@ msgid ""
 "Save anyway?"
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:349
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:364
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:309
 #, fuzzy
 msgid "Save Anyway"
 msgstr "Simpan Saja"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1782
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1797
 #, fuzzy, c-format
 msgid "Symbol library file '%s' already exists."
 msgstr "Berkas %s sudah ada."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1787
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1802
 #, fuzzy, c-format
 msgid "Symbol library path '%s' already exists."
 msgstr "Berkas %s sudah ada."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1817
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1832
 #, fuzzy, c-format
 msgid "Symbol library file '%s' cannot be deleted."
 msgstr "Tidak ada simbol yang dipilih"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1827
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1842
 #, fuzzy, c-format
 msgid "Symbol library folder '%s' cannot be deleted."
 msgstr "Tidak ada simbol yang dipilih"
@@ -22457,28 +22819,28 @@ msgstr "Pengenal pustaka simbol tidak valid"
 msgid "Invalid symbol library ID"
 msgstr "Pengenal pustaka simbol tidak valid"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3956
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3970
 #, fuzzy
 msgid "Missing sheet name property"
 msgstr "Nama Berkas Gambar"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3962
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3976
 #, fuzzy
 msgid "Missing sheet file property"
 msgstr "Nama Berkas Gambar"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5070
 #, fuzzy
 msgid "Invalid table: no cells defined"
 msgstr "Nama berkas tidak valid: %s"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5195
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
 #, fuzzy, c-format
 msgid "Group library link %s contains invalid character '%c'"
 msgstr "Tidak dapat menemukan berkas pustaka %s"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5187
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5201
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6976
 #, fuzzy
 msgid "Invalid library ID"
@@ -22818,7 +23180,7 @@ msgstr "Nomor Pin"
 msgid "No sheets to plot."
 msgstr "Impor Pengaturan"
 
-#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1429
+#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1430
 #, fuzzy, c-format
 msgid "Plotted to '%s'.\n"
 msgstr "Berkas tidak ditemukan: '%s'"
@@ -26820,7 +27182,7 @@ msgstr "Distribusi secara Horizontal"
 msgid "Flips selected item(s) from left to right"
 msgstr "Rotasi item terpilih searah jarum jam"
 
-#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1699
+#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1693
 #: pcbnew/tools/edit_tool_move_fct.cpp:201 pcbnew/tools/pcb_actions.cpp:696
 msgid "Swap"
 msgstr ""
@@ -26830,7 +27192,7 @@ msgstr ""
 msgid "Swap positions of selected items"
 msgstr "Izinkan pemilihan item yang terkunci"
 
-#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1849
+#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1843
 #, fuzzy
 msgid "Swap Pins"
 msgstr "Tidak ada layer"
@@ -26840,7 +27202,7 @@ msgstr "Tidak ada layer"
 msgid "Swap the selected symbol pins' positions"
 msgstr "Rotasi item terpilih searah jarum jam"
 
-#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1952
+#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1946
 #, fuzzy
 msgid "Swap Pin Labels"
 msgstr "Tidak ada layer"
@@ -26850,7 +27212,7 @@ msgstr "Tidak ada layer"
 msgid "Swap the labels attached to selected pins"
 msgstr "Izinkan pemilihan item yang terkunci"
 
-#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2034
+#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2028
 #, fuzzy
 msgid "Swap Unit Labels"
 msgstr "Unit:"
@@ -26876,7 +27238,7 @@ msgstr "Sunting Berkas Lokal..."
 msgid "Edit Footprint..."
 msgstr "Simpan Berkas Asosiasi Footprint"
 
-#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2448
+#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2442
 msgid "Autoplace Fields"
 msgstr ""
 
@@ -27003,7 +27365,7 @@ msgstr "Ubah Simbol"
 msgid "Change existing item to a text box"
 msgstr "Ubah Simbol"
 
-#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3370
+#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3364
 #, fuzzy
 msgid "Cleanup Sheet Pins"
 msgstr "Bersihkan Berkas Baru-baru Ini"
@@ -27926,7 +28288,7 @@ msgid "Press <ESC> to cancel image creation."
 msgstr "Tekan <ESC> untuk membatalkan penggambaran."
 
 #: eeschema/tools/sch_drawing_tools.cpp:1237
-#: eeschema/tools/sch_edit_tool.cpp:3470
+#: eeschema/tools/sch_edit_tool.cpp:3464
 #: pagelayout_editor/pl_editor_frame.cpp:859
 #: pagelayout_editor/pl_editor_frame.cpp:867 pcbnew/tools/drawing_tool.cpp:796
 #, fuzzy, c-format
@@ -28101,135 +28463,135 @@ msgstr "Kecepatan animasi:"
 msgid "Pin Helpers"
 msgstr "Properti Teks"
 
-#: eeschema/tools/sch_edit_tool.cpp:702
+#: eeschema/tools/sch_edit_tool.cpp:696
 #, fuzzy
 msgid "Transform Selection"
 msgstr "Buat Proyek Baru"
 
-#: eeschema/tools/sch_edit_tool.cpp:730
+#: eeschema/tools/sch_edit_tool.cpp:724
 #, fuzzy
 msgid "Edit Main Fields"
 msgstr "Sunting Berkas"
 
-#: eeschema/tools/sch_edit_tool.cpp:743 eeschema/tools/sch_edit_tool.cpp:3252
+#: eeschema/tools/sch_edit_tool.cpp:737 eeschema/tools/sch_edit_tool.cpp:3246
 #, fuzzy
 msgid "Change To"
 msgstr "Ubah Simbol"
 
-#: eeschema/tools/sch_edit_tool.cpp:1238
+#: eeschema/tools/sch_edit_tool.cpp:1232
 #: eeschema/tools/symbol_editor_edit_tool.cpp:602
 #: pcbnew/tools/edit_tool.cpp:2530
 msgid "Rotate"
 msgstr "Rotasi"
 
-#: eeschema/tools/sch_edit_tool.cpp:1454 gerbview/gerber_draw_item.cpp:724
+#: eeschema/tools/sch_edit_tool.cpp:1448 gerbview/gerber_draw_item.cpp:724
 #: pcbnew/pcb_tablecell.cpp:209 pcbnew/pcb_text.cpp:308
 #: pcbnew/pcb_textbox.cpp:501 pcbnew/tools/edit_tool.cpp:2680
 #, fuzzy
 msgid "Mirror"
 msgstr "Cermin"
 
-#: eeschema/tools/sch_edit_tool.cpp:1761
+#: eeschema/tools/sch_edit_tool.cpp:1755
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects. Duplicate "
 "the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1767
+#: eeschema/tools/sch_edit_tool.cpp:1761
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1777
+#: eeschema/tools/sch_edit_tool.cpp:1771
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols used by multiple sheet instances (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1784
+#: eeschema/tools/sch_edit_tool.cpp:1778
 msgid ""
 "Pin swaps are disabled for shared symbols. Duplicate the sheet to edit pins "
 "independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1928
+#: eeschema/tools/sch_edit_tool.cpp:1922
 msgid ""
 "Each selected pin must have exactly one attached net label and no other pin "
 "connections."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1984
+#: eeschema/tools/sch_edit_tool.cpp:1978
 msgid ""
 "Each pin of selected units must have exactly one attached net label and no "
 "other pin connections."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:2077
+#: eeschema/tools/sch_edit_tool.cpp:2071
 #, fuzzy
 msgid "Label value cannot go below zero"
 msgstr "Nama berkas footprint \"%s\" tidak valid."
 
-#: eeschema/tools/sch_edit_tool.cpp:2157
+#: eeschema/tools/sch_edit_tool.cpp:2151
 #, fuzzy
 msgid "Repeat Item"
 msgstr "Item yang Dipilih"
 
-#: eeschema/tools/sch_edit_tool.cpp:2294
+#: eeschema/tools/sch_edit_tool.cpp:2288
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1009
 #, fuzzy, c-format
 msgid "Edit %s Field"
 msgstr "Sunting Berkas"
 
-#: eeschema/tools/sch_edit_tool.cpp:2298
+#: eeschema/tools/sch_edit_tool.cpp:2292
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1011
 #, fuzzy, c-format
 msgid "Edit '%s' Field"
 msgstr "Sunting Berkas"
 
-#: eeschema/tools/sch_edit_tool.cpp:2744
+#: eeschema/tools/sch_edit_tool.cpp:2738
 #, fuzzy
 msgid "Edit Sheet Properties"
 msgstr "Properti Teks"
 
-#: eeschema/tools/sch_edit_tool.cpp:2868
+#: eeschema/tools/sch_edit_tool.cpp:2862
 #: pcbnew/dialogs/dialog_rule_area_properties_base.h:64
 #, fuzzy
 msgid "Rule Area Properties"
 msgstr "Properti Teks"
 
-#: eeschema/tools/sch_edit_tool.cpp:2940 eeschema/tools/sch_edit_tool.cpp:3028
+#: eeschema/tools/sch_edit_tool.cpp:2934 eeschema/tools/sch_edit_tool.cpp:3022
 msgid "<empty>"
 msgstr "<kosong>"
 
-#: eeschema/tools/sch_edit_tool.cpp:3361
+#: eeschema/tools/sch_edit_tool.cpp:3355
 msgid "Do you wish to delete the unreferenced pins from this sheet?"
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:3422
+#: eeschema/tools/sch_edit_tool.cpp:3416
 #, c-format
 msgid "Enter page number for sheet path%s"
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:3425
+#: eeschema/tools/sch_edit_tool.cpp:3419
 #: eeschema/widgets/hierarchy_pane.cpp:631
 #, fuzzy
 msgid "Edit Sheet Page Number"
 msgstr "Nomor Pin"
 
-#: eeschema/tools/sch_edit_tool.cpp:3551
+#: eeschema/tools/sch_edit_tool.cpp:3545
 #, fuzzy
 msgid "Toggle Attribute"
 msgstr "Perbarui/setel ulang atribut simbol"
 
-#: eeschema/tools/sch_edit_tool.cpp:3566
+#: eeschema/tools/sch_edit_tool.cpp:3560
 #, fuzzy
 msgid "Edit Symbol Properties..."
 msgstr "Properti Simbol"
 
-#: eeschema/tools/sch_edit_tool.cpp:3583
+#: eeschema/tools/sch_edit_tool.cpp:3577
 #, fuzzy
 msgid "Edit Netclasses..."
 msgstr "Memuat..."
@@ -28774,126 +29136,108 @@ msgstr "Lembar Gambar"
 msgid "(page %s)"
 msgstr "(halaman %s)"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:85
+#: eeschema/widgets/panel_remote_symbol.cpp:76
 #, fuzzy
 msgid "Missing payload data."
 msgstr "Jalur telah ada:"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:93
+#: eeschema/widgets/panel_remote_symbol.cpp:84
 #, fuzzy
 msgid "Failed to decode base64 payload."
 msgstr "Berkas tidak ditemukan: '%s'"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:115
+#: eeschema/widgets/panel_remote_symbol.cpp:107
 #, fuzzy, c-format
 msgid "Unsupported compression '%s'."
 msgstr "Berkas skematik Altium"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:122
+#: eeschema/widgets/panel_remote_symbol.cpp:114
 msgid "Compressed payload was empty."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:139
+#: eeschema/widgets/panel_remote_symbol.cpp:133
+#, c-format
+msgid "Decompressed size %llu exceeds limit %llu."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:144
 #, fuzzy, c-format
 msgid "ZSTD decompression failed: %s"
 msgstr "Nama berkas footprint \"%s\" tidak valid."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:182
-msgid "Payload was empty."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:193
-#: eeschema/widgets/panel_remote_symbol.cpp:1249
-#: eeschema/widgets/panel_remote_symbol.cpp:1364
-#: eeschema/widgets/panel_remote_symbol.cpp:1388
-#: eeschema/widgets/panel_remote_symbol.cpp:1461
-#: eeschema/widgets/panel_remote_symbol.cpp:1525
-#, fuzzy, c-format
-msgid "Unable to create '%s'."
-msgstr "Tak dapat membuat \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:202
-#, fuzzy, c-format
-msgid "Unable to open '%s' for writing."
-msgstr "Tidak dapat membuka nama berkas \"%s\" untuk dibaca"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:208
-#, fuzzy, c-format
-msgid "Failed to write '%s'."
-msgstr "Gagal membuat berkas \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:223
+#: eeschema/widgets/panel_remote_symbol.cpp:169
 #, fuzzy
 msgid "Symbol payload was empty."
 msgstr "Berkas pustaka simbol \"%s\" kosong."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:231
-#: eeschema/widgets/panel_remote_symbol.cpp:241
+#: eeschema/widgets/panel_remote_symbol.cpp:177
+#: eeschema/widgets/panel_remote_symbol.cpp:186
 #, fuzzy
 msgid "Unable to create a temporary file for the symbol payload."
 msgstr "<b>Tidak dapat membuat berkas sementara \"%s\"</b>\n"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:248
+#: eeschema/widgets/panel_remote_symbol.cpp:193
 #, fuzzy
 msgid "Failed to write the temporary symbol payload."
 msgstr "Gagal membuat berkas sementara \"%s\""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:260
+#: eeschema/widgets/panel_remote_symbol.cpp:205
 #, fuzzy
 msgid "Unable to access the KiCad symbol plugin."
 msgstr "Perbarui simbol yang dipilih"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:280
+#: eeschema/widgets/panel_remote_symbol.cpp:219
 msgid "Symbol payload did not include the expected symbol."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:285
+#: eeschema/widgets/panel_remote_symbol.cpp:223
 #, fuzzy, c-format
 msgid "Unable to decode the symbol payload: %s"
 msgstr "Perbarui simbol yang dipilih"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:309
-msgid "Select which remote data source to query."
+#: eeschema/widgets/panel_remote_symbol.cpp:252
+msgid "Reload current provider page"
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:315
+#: eeschema/widgets/panel_remote_symbol.cpp:257
 #, fuzzy
-msgid "Configure remote data sources."
+msgid "Configure remote providers"
 msgstr "Konfigurasikan Path"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:391
-msgid "No remote data sources are currently installed."
+#: eeschema/widgets/panel_remote_symbol.cpp:379
+msgid "No remote providers configured."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:444
-#, fuzzy, c-format
-msgid "No configuration JSON found for '%s'."
-msgstr ""
-"Terjadi kesalahan saat memuat simbol %s dari pustaka %s.\n"
-"\n"
-"%s\n"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:455
-#, fuzzy, c-format
-msgid "Unable to open '%s'."
-msgstr "Gagal membuat berkas \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:465
-#, fuzzy, c-format
-msgid "Unable to read '%s'."
-msgstr "Tak dapat membuat \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:479
-#, fuzzy, c-format
-msgid "Unable to load remote data for '%s'."
+#: eeschema/widgets/panel_remote_symbol.cpp:451
+#, fuzzy
+msgid "Unable to load remote provider metadata."
 msgstr "Tidak dapat membaca berkas data \"%s\""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:809
+#: eeschema/widgets/panel_remote_symbol.cpp:696
+msgid "A remote provider sign-in flow is already in progress."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:728
+#, fuzzy
+msgid "Unable to start the local OAuth callback listener."
+msgstr "Perbarui simbol yang dipilih"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:738
+#, fuzzy
+msgid "Unable to open the system browser for sign-in."
+msgstr "Tidak dapat membuka nama berkas \"%s\" untuk dibaca"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:768
+#, fuzzy
+msgid "Failed to delete stored remote provider tokens."
+msgstr "Tidak dapat membuat berkas laporan '%s'"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:808
 #, fuzzy, c-format
 msgid "Unsupported RPC version %d."
 msgstr "Semua berkas yang didukung (%s)"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:818
+#: eeschema/widgets/panel_remote_symbol.cpp:817
 #, fuzzy
 msgid "Missing session identifier."
 msgstr ""
@@ -28902,138 +29246,101 @@ msgstr ""
 "baris: %d\n"
 "ofset: %d"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:902
-#, fuzzy
-msgid "Missing compression metadata."
-msgstr "Nama Berkas Gambar"
+#: eeschema/widgets/panel_remote_symbol.cpp:824
+msgid "Session identifier did not match the active provider session."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:941
-#: eeschema/widgets/panel_remote_symbol.cpp:955
+#: eeschema/widgets/panel_remote_symbol.cpp:912
+#, fuzzy
+msgid "No remote provider is currently selected."
+msgstr "Gerak bod kebawah"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1033
+#, fuzzy
+msgid "Unable to process provider payload."
+msgstr "Tak dapat memuat berkas %s"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, fuzzy, c-format
 msgid "Command '%s' is not supported."
 msgstr "Berkas \"%s\" tidak sepenuhnya terbaca"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:949
-#, fuzzy
-msgid "Unable to store payload."
-msgstr "Tak dapat memuat berkas %s"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:965
-#: eeschema/widgets/panel_remote_symbol.cpp:1233
-#: eeschema/widgets/panel_remote_symbol.cpp:1410
-#, fuzzy
-msgid "Unable to load schematic settings."
-msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:980
-#, fuzzy
-msgid "Destination directory is not configured."
-msgstr "Berkas '%s' tidak ditemukan."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:991
-#, fuzzy, c-format
-msgid "Unable to create directory '%s'."
-msgstr "Gagal membuat berkas \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1011
-#, fuzzy
-msgid "Unable to access the symbol library table."
-msgstr "Gagal membuat berkas pustaka simbol \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1030
-#, fuzzy
-msgid "Failed to update the symbol library table."
-msgstr "Gagal membuat berkas pustaka simbol \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1044
-#: eeschema/widgets/panel_remote_symbol.cpp:1100
-#, fuzzy
-msgid "Remote download"
-msgstr "Ukuran:"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1049
-#, fuzzy
-msgid "Failed to save the symbol library table."
-msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1067
-#, fuzzy
-msgid "Unable to access the footprint library table."
-msgstr "Tidak dapat membuat berkas laporan '%s'<br>"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1086
-#, fuzzy
-msgid "Failed to update the footprint library table."
-msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1105
-#, fuzzy
-msgid "Failed to save the footprint library table."
-msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1146
-#, fuzzy
-msgid "No schematic editor is available for placement."
-msgstr "Gunakan tema warna penyunting skematik"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1153
-msgid "Downloaded symbol metadata is incomplete."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1165
-#, fuzzy
-msgid "Unable to load the downloaded symbol for placement."
-msgstr "Perbarui simbol yang dipilih"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1187
-#, fuzzy
-msgid "Unable to access the schematic placement tools."
-msgstr "Perbarui simbol yang dipilih"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1211
-#: eeschema/widgets/panel_remote_symbol.cpp:1342
-#: eeschema/widgets/panel_remote_symbol.cpp:1438
-#: eeschema/widgets/panel_remote_symbol.cpp:1503
+#: eeschema/widgets/panel_remote_symbol.cpp:1052
 #, fuzzy, c-format
 msgid "Unsupported transfer mode '%s'."
 msgstr "Berkas skematik Altium"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1219
+#: eeschema/widgets/panel_remote_symbol.cpp:1058
 #, fuzzy
 msgid "Unsupported symbol payload type."
 msgstr "Tidak ada simbol yang dipilih"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1225
+#: eeschema/widgets/panel_remote_symbol.cpp:1064
 msgid "No schematic editor is available to store symbols."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1278
+#: eeschema/widgets/panel_remote_symbol.cpp:1109
 #, fuzzy
 msgid "Unable to access the symbol library manager."
 msgstr "Gagal membuat berkas pustaka simbol \"%s\""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1287
-#, fuzzy
-msgid "Unable to parse the downloaded symbol."
-msgstr "Tidak dapat membuat berkas job \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1302
+#: eeschema/widgets/panel_remote_symbol.cpp:1126
 #, fuzzy
 msgid "Unable to save the downloaded symbol."
 msgstr "Tidak dapat membuat berkas job \"%s\""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1350
+#: eeschema/widgets/panel_remote_symbol.cpp:1154
+#, fuzzy, c-format
+msgid "Failed to parse component list: %s"
+msgstr "Berkas tidak ditemukan: '%s'"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1160
+#, fuzzy
+msgid "Component list must be a non-empty array."
+msgstr "Berkas letak footprint"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1170
+#, fuzzy
+msgid "Component entries must be objects."
+msgstr "Nama berkas footprint \"%s\" tidak valid."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1178
+#, fuzzy
+msgid "Component entry was missing a type."
+msgstr "Berkas letak footprint"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1237
+#, fuzzy, c-format
+msgid "Unsupported component type '%s'."
+msgstr "Berkas skematik Altium"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1256
 #, fuzzy
 msgid "Unsupported footprint payload type."
 msgstr "Tidak ada footprint yang dimuat."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1447
-msgid "Unsupported 3D model payload type."
+#: eeschema/widgets/panel_remote_symbol.cpp:1371
+msgid "Remote provider metadata is not loaded."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1511
-msgid "Unsupported SPICE payload type."
+#: eeschema/widgets/panel_remote_symbol.cpp:1401
+msgid ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
 msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1437
+msgid "Remote provider sign-in was cancelled or failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1448
+msgid "Remote provider sign-in failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1464
+#, fuzzy
+msgid "Failed to store remote provider tokens securely."
+msgstr "Tidak dapat membuat berkas laporan '%s'"
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -39874,7 +40181,7 @@ msgid "Generate IPC-2581 File"
 msgstr "Buat berkas netlist IPC-D-356"
 
 #: pcbnew/dialogs/dialog_export_2581.cpp:289
-#: pcbnew/pcbnew_jobs_handler.cpp:2564
+#: pcbnew/pcbnew_jobs_handler.cpp:2570
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -48486,12 +48793,12 @@ msgstr "Memperbarui Pustaka Footprint"
 msgid "Checking footprints for overlapping courtyards..."
 msgstr "Memperbarui Pustaka Footprint"
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:89
+#: pcbnew/drc/drc_test_provider_creepage.cpp:90
 #, fuzzy
 msgid "Checking creepage..."
 msgstr "Memeriksa permasalahan simbol pustaka..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:166
+#: pcbnew/drc/drc_test_provider_creepage.cpp:167
 #, fuzzy, c-format
 msgid "(%s creepage %s; actual %s)"
 msgstr "Buat lapisan"
@@ -50295,7 +50602,7 @@ msgstr ""
 "%s"
 
 #: pcbnew/files.cpp:1094 pcbnew/files.cpp:1185
-#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2751
+#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2757
 #, fuzzy, c-format
 msgid ""
 "Error saving board file '%s'.\n"
@@ -52578,7 +52885,7 @@ msgid ""
 "project manager and create a project."
 msgstr ""
 
-#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2383
+#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2389
 #, fuzzy
 msgid "Eeschema netlist"
 msgstr "eeschema"
@@ -52663,22 +52970,22 @@ msgstr "Perbarui PCB"
 msgid "Generator Properties"
 msgstr "Properti Teks"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4435
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
 #, fuzzy
 msgid "Constructing caches"
 msgstr "Item terkunci"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4450
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
 #, fuzzy
 msgid "Creating nets"
 msgstr "Mode Gambar"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4459
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
 #, fuzzy
 msgid "Creating tracks"
 msgstr "Path wujud:"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4498
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
 #, fuzzy
 msgid "Converting footprints"
 msgstr "Tidak ada footprint baku"
@@ -55138,163 +55445,163 @@ msgstr "Nama Berkas Gambar"
 msgid "Loading Footprint Libraries"
 msgstr "Memperbarui Pustaka Footprint"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:452 pcbnew/pcbnew_jobs_handler.cpp:2932
+#: pcbnew/pcbnew_jobs_handler.cpp:453 pcbnew/pcbnew_jobs_handler.cpp:2938
 #, fuzzy
 msgid "Failed to load board\n"
 msgstr "Berkas tidak ditemukan: '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:518
+#: pcbnew/pcbnew_jobs_handler.cpp:519
 #, fuzzy, c-format
 msgid "Invalid layer name '%s'\n"
 msgstr "Nama berkas tidak valid: %s"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:558 pcbnew/pcbnew_jobs_handler.cpp:638
-#: pcbnew/pcbnew_jobs_handler.cpp:682
+#: pcbnew/pcbnew_jobs_handler.cpp:559 pcbnew/pcbnew_jobs_handler.cpp:639
+#: pcbnew/pcbnew_jobs_handler.cpp:683
 #, fuzzy
 msgid "Unknown export format"
 msgstr "Transformasikan Primitif"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:612
+#: pcbnew/pcbnew_jobs_handler.cpp:613
 #, c-format
 msgid "Successfully exported VRML to %s"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:618
+#: pcbnew/pcbnew_jobs_handler.cpp:619
 #, fuzzy
 msgid "Error exporting VRML"
 msgstr "Galat saat mengekstrak file!"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:664
+#: pcbnew/pcbnew_jobs_handler.cpp:665
 #, fuzzy
 msgid "Invalid image dimensions"
 msgstr "Nama berkas tidak valid: %s"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:919
+#: pcbnew/pcbnew_jobs_handler.cpp:920
 #, fuzzy
 msgid "Successfully created 3D render image"
 msgstr "Terjadi kesalahan saat mengekstrak berkas!\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:924
+#: pcbnew/pcbnew_jobs_handler.cpp:925
 #, fuzzy
 msgid "Error creating 3D render image"
 msgstr "Terjadi kesalahan saat mengekstrak berkas!\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:982 pcbnew/pcbnew_jobs_handler.cpp:1051
-#: pcbnew/pcbnew_jobs_handler.cpp:1144 pcbnew/pcbnew_jobs_handler.cpp:1232
-#: pcbnew/pcbnew_jobs_handler.cpp:1618
+#: pcbnew/pcbnew_jobs_handler.cpp:983 pcbnew/pcbnew_jobs_handler.cpp:1052
+#: pcbnew/pcbnew_jobs_handler.cpp:1145 pcbnew/pcbnew_jobs_handler.cpp:1233
+#: pcbnew/pcbnew_jobs_handler.cpp:1619
 #, fuzzy
 msgid "At least one layer must be specified\n"
 msgstr "Tidak ada pustaka yang ditentukan."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1437 pcbnew/pcbnew_jobs_handler.cpp:1680
+#: pcbnew/pcbnew_jobs_handler.cpp:1438 pcbnew/pcbnew_jobs_handler.cpp:1681
 #, fuzzy, c-format
 msgid "Failed to plot to '%s'.\n"
 msgstr "Berkas tidak ditemukan: '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1508
+#: pcbnew/pcbnew_jobs_handler.cpp:1509
 msgid "Successfully created genCAD file\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1578
+#: pcbnew/pcbnew_jobs_handler.cpp:1579
 #, fuzzy, c-format
 msgid "Error writing file '%s'.\n"
 msgstr "Terjadi kesalahan saat menulis ke berkas \"%s\""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1584
+#: pcbnew/pcbnew_jobs_handler.cpp:1585
 #, fuzzy, c-format
 msgid "Wrote board statistics to '%s'.\n"
 msgstr "Tidak dapat membuat direktori keluaran '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1924 pcbnew/pcbnew_jobs_handler.cpp:2002
+#: pcbnew/pcbnew_jobs_handler.cpp:1925 pcbnew/pcbnew_jobs_handler.cpp:2003
 #, fuzzy, c-format
 msgid "Wrote front position data to '%s'.\n"
 msgstr "Bukan sebuah berkas footprint"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1942 pcbnew/pcbnew_jobs_handler.cpp:2026
+#: pcbnew/pcbnew_jobs_handler.cpp:1943 pcbnew/pcbnew_jobs_handler.cpp:2027
 #, fuzzy, c-format
 msgid "Wrote back position data to '%s'.\n"
 msgstr "Tidak dapat membuat direktori keluaran '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1971
+#: pcbnew/pcbnew_jobs_handler.cpp:1972
 #, fuzzy, c-format
 msgid "Wrote position data to '%s'.\n"
 msgstr "Bukan sebuah berkas footprint"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2073
+#: pcbnew/pcbnew_jobs_handler.cpp:2074
 #, fuzzy
 msgid "Footprint library path does not exist or is not accessible\n"
 msgstr "Berkas '%s' tidak ditemukan."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2113
+#: pcbnew/pcbnew_jobs_handler.cpp:2114
 #, fuzzy
 msgid "Unable to save library\n"
 msgstr "Tidak dapat menemukan berkas pustaka %s"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2119
+#: pcbnew/pcbnew_jobs_handler.cpp:2120
 #, fuzzy
 msgid "Footprint library was not updated\n"
 msgstr "Berkas '%s' tidak ditemukan."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2200
+#: pcbnew/pcbnew_jobs_handler.cpp:2201
 #, fuzzy
 msgid "The given footprint could not be found to export."
 msgstr "Berkas ekuivalen '%s' tidak dapat ditemukan di path pencarian baku."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2242
+#: pcbnew/pcbnew_jobs_handler.cpp:2243
 #, fuzzy, c-format
 msgid "Plotting footprint '%s' to '%s'\n"
 msgstr "Ubah simbol %s dari '%s' ke '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2271
+#: pcbnew/pcbnew_jobs_handler.cpp:2272
 #, fuzzy
 msgid "Error creating svg file"
 msgstr "Terjadi kesalahan saat mengekstrak berkas!\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2336 pcbnew/tools/drc_tool.cpp:170
+#: pcbnew/pcbnew_jobs_handler.cpp:2342 pcbnew/tools/drc_tool.cpp:170
 msgid "Schematic parity tests require a fully annotated schematic."
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2357 pcbnew/pcbnew_jobs_handler.cpp:2390
+#: pcbnew/pcbnew_jobs_handler.cpp:2363 pcbnew/pcbnew_jobs_handler.cpp:2396
 #, fuzzy
 msgid "Failed to fetch schematic netlist for parity tests.\n"
 msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2421 pcbnew/tools/drc_tool.cpp:208
+#: pcbnew/pcbnew_jobs_handler.cpp:2427 pcbnew/tools/drc_tool.cpp:208
 #, fuzzy
 msgid "DRC"
 msgstr "DC:"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2442
+#: pcbnew/pcbnew_jobs_handler.cpp:2448
 #, fuzzy, c-format
 msgid "Found %d unconnected items\n"
 msgstr "Item yang Dipilih"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2448
+#: pcbnew/pcbnew_jobs_handler.cpp:2454
 #, c-format
 msgid "Found %d schematic parity issues\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2464
+#: pcbnew/pcbnew_jobs_handler.cpp:2470
 #, fuzzy, c-format
 msgid "Unable to save DRC report to %s\n"
 msgstr "Tidak dapat membuat berkas laporan '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2469
+#: pcbnew/pcbnew_jobs_handler.cpp:2475
 #, fuzzy, c-format
 msgid "Saved DRC Report to %s\n"
 msgstr "Simpan Laporan ke Berkas"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2476
+#: pcbnew/pcbnew_jobs_handler.cpp:2482
 #, fuzzy
 msgid "Saved board\n"
 msgstr "Memuat berkas Gerber..."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2480
+#: pcbnew/pcbnew_jobs_handler.cpp:2486
 #, fuzzy
 msgid "Failed to save board.\n"
 msgstr "Berkas tidak ditemukan: '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2603
+#: pcbnew/pcbnew_jobs_handler.cpp:2609
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -55303,51 +55610,51 @@ msgstr ""
 "Terjadi kesalahan saat menyimpan berkas papan sirkuit \"%s\".\n"
 "Gagal mengganti nama berkas sementara \"%s\""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2649
+#: pcbnew/pcbnew_jobs_handler.cpp:2655
 #, fuzzy
 msgid "Successfully created IPC-D-356 file\n"
 msgstr "Terjadi kesalahan saat mengekstrak berkas!\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2654
+#: pcbnew/pcbnew_jobs_handler.cpp:2660
 #, fuzzy
 msgid "Failed to create IPC-D-356 file\n"
 msgstr "Gagal membuat berkas \"%s\""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2741
+#: pcbnew/pcbnew_jobs_handler.cpp:2747
 msgid "Successfully saved board file using the latest format\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2745
+#: pcbnew/pcbnew_jobs_handler.cpp:2751
 #, fuzzy
 msgid "Board file was not updated\n"
 msgstr "Pustaka simbol tidak diaktifkan."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2883
+#: pcbnew/pcbnew_jobs_handler.cpp:2889
 #, fuzzy, c-format
 msgid "Unable to determine file format for '%s'\n"
 msgstr "Tidak dapat membaca berkas \"%s\""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2892
+#: pcbnew/pcbnew_jobs_handler.cpp:2898
 #, fuzzy, c-format
 msgid "Input file not found: '%s'\n"
 msgstr "Berkas tidak ditemukan: '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2918
+#: pcbnew/pcbnew_jobs_handler.cpp:2924
 #, fuzzy, c-format
 msgid "No plugin found for file type '%s'\n"
 msgstr "Bukan sebuah berkas footprint"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2924
+#: pcbnew/pcbnew_jobs_handler.cpp:2930
 #, c-format
 msgid "Importing '%s' using %s format...\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2940
+#: pcbnew/pcbnew_jobs_handler.cpp:2946
 #, c-format
 msgid "Successfully saved imported board to '%s'\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:3062
+#: pcbnew/pcbnew_jobs_handler.cpp:3068
 #, fuzzy, c-format
 msgid "Error during import: %s\n"
 msgstr ""
@@ -55432,7 +55739,7 @@ msgstr "Terapkan skrip tindakan"
 msgid "Exception on python footprint wizard code"
 msgstr ""
 
-#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:214
+#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:216
 #, fuzzy, c-format
 msgid "Error loading drawing sheet '%s': %s"
 msgstr "Impor berkas gambar 2D"
@@ -56078,86 +56385,86 @@ msgstr ""
 msgid "No board problems found."
 msgstr "Tidak ada footprint yang dimuat."
 
-#: pcbnew/tools/board_editor_control.cpp:694
+#: pcbnew/tools/board_editor_control.cpp:699
 msgid "Updating PCB requires a fully annotated schematic."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:708
+#: pcbnew/tools/board_editor_control.cpp:715
 msgid ""
 "Cannot update schematic because Pcbnew is opened in stand-alone mode. In "
 "order to create or update PCBs from schematics, you must launch the KiCad "
 "project manager and create a project."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:752
+#: pcbnew/tools/board_editor_control.cpp:759
 #, fuzzy, c-format
 msgid "Schematic file '%s' not found."
 msgstr "Berkas skematik \"%s\" tidak ditemukan."
 
-#: pcbnew/tools/board_editor_control.cpp:783
+#: pcbnew/tools/board_editor_control.cpp:793
 #, fuzzy
 msgid "Eeschema failed to load."
 msgstr "Aplikasi gagal dimuat."
 
-#: pcbnew/tools/board_editor_control.cpp:896
+#: pcbnew/tools/board_editor_control.cpp:907
 #, fuzzy
 msgid "Increase Track Width"
 msgstr "Tam"
 
-#: pcbnew/tools/board_editor_control.cpp:978
+#: pcbnew/tools/board_editor_control.cpp:989
 #, fuzzy
 msgid "Decrease Track Width"
 msgstr "Tam"
 
-#: pcbnew/tools/board_editor_control.cpp:1063 pcbnew/tools/pcb_actions.cpp:1375
+#: pcbnew/tools/board_editor_control.cpp:1074 pcbnew/tools/pcb_actions.cpp:1375
 #, fuzzy
 msgid "Increase Via Size"
 msgstr "Tam"
 
-#: pcbnew/tools/board_editor_control.cpp:1333
+#: pcbnew/tools/board_editor_control.cpp:1344
 #, fuzzy
 msgid "Place Footprint"
 msgstr "Tidak ada footprint yang dimuat."
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1500
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1500
 msgid "Lock"
 msgstr "Kunci"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1507
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1507
 msgid "Unlock"
 msgstr "Buka Kunci"
 
-#: pcbnew/tools/board_editor_control.cpp:1492
+#: pcbnew/tools/board_editor_control.cpp:1503
 msgid "Zones have insufficient overlap for merging."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1547
+#: pcbnew/tools/board_editor_control.cpp:1558
 msgid "Some zone netcodes did not match and were not merged."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1553
+#: pcbnew/tools/board_editor_control.cpp:1564
 msgid "Some zones were rule areas and were not merged."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1559
+#: pcbnew/tools/board_editor_control.cpp:1570
 msgid "Some zone layer sets did not match and were not merged."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1576
+#: pcbnew/tools/board_editor_control.cpp:1587
 msgid "Some zones did not intersect and were not merged."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1589 pcbnew/tools/pcb_actions.cpp:1410
+#: pcbnew/tools/board_editor_control.cpp:1600 pcbnew/tools/pcb_actions.cpp:1410
 #, fuzzy
 msgid "Merge Zones"
 msgstr "Zona Tembaga"
 
-#: pcbnew/tools/board_editor_control.cpp:1643
+#: pcbnew/tools/board_editor_control.cpp:1654
 #, fuzzy
 msgid "Duplicate Zone"
 msgstr "Duplikat:"
 
-#: pcbnew/tools/board_editor_control.cpp:1716
+#: pcbnew/tools/board_editor_control.cpp:1727
 msgid "Selection contains no items with labeled nets."
 msgstr ""
 
@@ -61574,6 +61881,47 @@ msgstr "Simbol Skematik"
 msgid "KiCad Drawing Sheet"
 msgstr "Buka Penyunting Teks"
 
+#: scripting/python_manager.cpp:135
+#, fuzzy
+msgid "Process could not be created"
+msgstr "Berkas '%s' tidak dapat dibuat."
+
+#: scripting/python_scripting.cpp:367
+#, fuzzy, c-format
+msgid "Could not create user scripting path %s."
+msgstr "Tidak dapat membuat berkas \"%s\"."
+
+#, fuzzy, c-format
+#~ msgid "No configuration JSON found for '%s'."
+#~ msgstr ""
+#~ "Terjadi kesalahan saat memuat simbol %s dari pustaka %s.\n"
+#~ "\n"
+#~ "%s\n"
+
+#, fuzzy, c-format
+#~ msgid "Unable to open '%s'."
+#~ msgstr "Gagal membuat berkas \"%s\""
+
+#, fuzzy
+#~ msgid "Missing compression metadata."
+#~ msgstr "Nama Berkas Gambar"
+
+#, fuzzy
+#~ msgid "Unable to access the footprint library table."
+#~ msgstr "Tidak dapat membuat berkas laporan '%s'<br>"
+
+#, fuzzy
+#~ msgid "Failed to update the footprint library table."
+#~ msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
+
+#, fuzzy
+#~ msgid "Failed to save the footprint library table."
+#~ msgstr "Gagal menyimpan berkas pustaka simbol '%s'."
+
+#, fuzzy
+#~ msgid "Unable to parse the downloaded symbol."
+#~ msgstr "Tidak dapat membuat berkas job \"%s\""
+
 #, fuzzy
 #~ msgid "PCB: Import"
 #~ msgstr "Impor"
@@ -61880,28 +62228,8 @@ msgstr "Buka Penyunting Teks"
 #~ msgstr "Memperbarui Pustaka Footprint"
 
 #, fuzzy
-#~ msgid "Unable to start the local login listener."
-#~ msgstr "Perbarui simbol yang dipilih"
-
-#, fuzzy
 #~ msgid "Failed to allocate a callback port for login."
 #~ msgstr "Gagal mencadangkan berkas \"%s\".\n"
-
-#, fuzzy
-#~ msgid "Component list was empty."
-#~ msgstr "Berkas letak footprint"
-
-#, fuzzy
-#~ msgid "Component entries must be objects."
-#~ msgstr "Nama berkas footprint \"%s\" tidak valid."
-
-#, fuzzy
-#~ msgid "Component entry was missing a type."
-#~ msgstr "Berkas letak footprint"
-
-#, fuzzy, c-format
-#~ msgid "Unsupported component type '%s'."
-#~ msgstr "Berkas skematik Altium"
 
 #, fuzzy
 #~ msgid "Select Templates Directory"

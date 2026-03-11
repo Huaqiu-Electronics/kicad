@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 11:13-0700\n"
+"POT-Creation-Date: 2026-03-11 13:57-0700\n"
 "PO-Revision-Date: 2026-02-23 08:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: jp-charras\n"
@@ -175,7 +175,7 @@ msgstr "Temps de rechargement %.3fs"
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:363
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:571
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:285
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:306
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:321
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:347
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:155
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.cpp:117
@@ -217,7 +217,7 @@ msgstr "Rendu: shader de post traitement"
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:54
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:627
 #: common/eda_base_frame.cpp:1509 common/hotkey_store.cpp:80
-#: common/tool/actions.cpp:1270 pcbnew/footprint_chooser_frame.cpp:364
+#: common/tool/actions.cpp:1264 pcbnew/footprint_chooser_frame.cpp:364
 #: pcbnew/footprint_viewer_frame.cpp:968 pcbnew/pcb_base_frame.cpp:668
 msgid "3D Viewer"
 msgstr "Visu 3D"
@@ -309,7 +309,7 @@ msgstr "Suivre Paramètres de Tracé PCB"
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:567
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:753
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:940
-#: pcbnew/pcbnew_jobs_handler.cpp:814
+#: pcbnew/pcbnew_jobs_handler.cpp:815
 msgid "legacy colors"
 msgstr "couleurs héritées"
 
@@ -2566,11 +2566,11 @@ msgstr "Copier les infos de version de KiCad dans le presse-papier"
 msgid "&Report Bug"
 msgstr "Rapporter un Bug"
 
-#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1434
+#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1428
 msgid "Report a problem with KiCad"
 msgstr "Signaler un problème avec KiCad"
 
-#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1427
+#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1421
 msgid "Donate"
 msgstr "Faire un don"
 
@@ -3163,7 +3163,7 @@ msgstr "Bloc Titre"
 #: common/dialogs/dialog_page_settings.cpp:465
 #: eeschema/eeschema_jobs_handler.cpp:249 pagelayout_editor/files.cpp:254
 #: pagelayout_editor/pl_editor_frame.cpp:369
-#: pcbnew/pcbnew_jobs_handler.cpp:2818
+#: pcbnew/pcbnew_jobs_handler.cpp:2824
 #, c-format
 msgid "Error loading drawing sheet '%s'."
 msgstr "Erreur de chargement de la feuille de dessin '%s'."
@@ -3422,8 +3422,8 @@ msgstr "Prévisualisation"
 
 #: common/dialogs/dialog_print_generic.cpp:98
 #: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:466
-#: common/dialogs/rule_editor_dialog_base.cpp:506 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:469
+#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3759,7 +3759,7 @@ msgstr "OK"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:458 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4902,7 +4902,7 @@ msgstr "Jamais"
 msgid "Cursor"
 msgstr "Curseur"
 
-#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1182
+#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1179
 #: common/widgets/gal_options_panel_base.cpp:102
 msgid "Small crosshairs"
 msgstr "Petites croix"
@@ -6101,30 +6101,30 @@ msgstr "Insérer séparateur"
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:462
-#: common/dialogs/rule_editor_dialog_base.cpp:480
+#: common/dialogs/rule_editor_dialog_base.cpp:465
+#: common/dialogs/rule_editor_dialog_base.cpp:483
 #: kicad/kicad_manager_frame.cpp:973
 msgid "Discard"
 msgstr "Rejeter"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:556
+#: common/dialogs/rule_editor_dialog_base.cpp:559
 msgid "New Rule"
 msgstr "Nouvelle Règle"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:562
 msgid "Copy Rule"
 msgstr "Copie Règle"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:565
 msgid "Delete Rule"
 msgstr "Suppression Règle"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "Déplacer vers le Haut"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "Déplacer vers le Bas"
@@ -6146,7 +6146,7 @@ msgid "Error switching GAL backend"
 msgstr "Erreur en commutant au backend GAL"
 
 #: common/drawing_sheet/drawing_sheet_parser.cpp:559
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3643
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3650
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3662
 msgid "Failed to read image data."
 msgstr "Échec de la lecture des données de l'image."
@@ -6377,6 +6377,7 @@ msgid "Do you want to remove it from list of recently opened files?"
 msgstr "Voulez-vous le supprimer de la liste des fichiers récemment ouverts ?"
 
 #: common/eda_base_frame.cpp:1323
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:79
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -6409,7 +6410,7 @@ msgstr "Raccourcis"
 msgid "Version Control"
 msgstr "Contrôle de Version"
 
-#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1285
+#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1279
 #: common/tool/common_tools.cpp:617 eeschema/symbol_editor/symbol_editor.cpp:84
 #: kicad/tools/kicad_manager_actions.cpp:116
 msgid "Symbol Editor"
@@ -6463,7 +6464,7 @@ msgstr "Sources de Données"
 msgid "Simulator"
 msgstr "Simulateur"
 
-#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1302
+#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1296
 #: common/tool/common_tools.cpp:619 kicad/tools/kicad_manager_actions.cpp:138
 #: pcbnew/dialogs/panel_display_options_base.cpp:97
 #: pcbnew/footprint_edit_frame.cpp:1126 pcbnew/menubar_footprint_editor.cpp:92
@@ -6557,7 +6558,7 @@ msgstr "Fichier documentation '%s' non trouvé."
 msgid "Unknown MIME type for documentation file '%s'"
 msgstr "Type MIME inconnu pour le fichier de documentation '%s'"
 
-#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1214
+#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1222
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:55
 msgid "Override locks"
 msgstr "Passer outre les verrouillages"
@@ -6638,7 +6639,7 @@ msgstr "Pouces"
 msgid "Search"
 msgstr "Rechercher"
 
-#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1320
+#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1314
 #: eeschema/eeschema_settings.cpp:94 eeschema/sch_edit_frame.cpp:2038
 #: pagelayout_editor/pl_editor_frame.cpp:201
 #: pcbnew/footprint_edit_frame.cpp:236 pcbnew/pcb_edit_frame.cpp:370
@@ -7436,7 +7437,7 @@ msgstr "Impossible de trouver un visualisateur PDF pour '%s'."
 msgid "Problem while running the PDF viewer '%s'."
 msgstr "Problème en lançant le visualisateur PDF '%s'."
 
-#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:732
+#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:749
 #: gerbview/gerbview.cpp:262 kicad/project_template.cpp:364
 #: pcbnew/pcbnew.cpp:749
 #, c-format
@@ -7881,7 +7882,7 @@ msgstr ""
 "Copier les cellules sauvées dans le presse-papier dans  la cellule courante"
 
 #: common/grid_tricks.cpp:388 common/tool/actions.cpp:404
-#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2267
+#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2261
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
@@ -9124,20 +9125,20 @@ msgstr "Une référence à cette table de librairies existe déjà"
 msgid "Added by Plugin and Content Manager"
 msgstr "Ajouté par le Gestionnaire de Plugin et de Contenu"
 
-#: common/libraries/library_manager.cpp:409
+#: common/libraries/library_manager.cpp:420
 msgid "KiCad Default Libraries"
 msgstr "Librairies KiCad par Défaut"
 
-#: common/libraries/library_manager.cpp:1132
+#: common/libraries/library_manager.cpp:1143
 msgid "Library not found in library table"
 msgstr "Librairie introuvable dans la table des librairies"
 
-#: common/libraries/library_manager.cpp:1152
+#: common/libraries/library_manager.cpp:1163
 #, c-format
 msgid "Library '%s': %s"
 msgstr "Librairie '%s' : %s"
 
-#: common/libraries/library_manager.cpp:1369
+#: common/libraries/library_manager.cpp:1380
 #, c-format
 msgid "Library %s not found"
 msgstr "Librairie '%s' non trouvée."
@@ -9349,6 +9350,30 @@ msgstr "Notifications"
 #: common/notifications_manager.cpp:182
 msgid "There are no notifications available"
 msgstr "Il n'y a pas de notifications disponibles"
+
+#: common/oauth/oauth_loopback_server.cpp:126
+msgid "Missing HTTP method in callback request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:134
+msgid "Missing callback URL in request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:145
+msgid "Unexpected callback path."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:153
+msgid "OAuth callback state did not match."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:163
+msgid "Authorization server returned an OAuth error."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:171
+msgid "Missing authorization code in callback."
+msgstr ""
 
 #: common/page_info.cpp:48
 msgid "A5 148 x 210mm"
@@ -9585,6 +9610,149 @@ msgstr "Attention: "
 msgid "Error: "
 msgstr "Erreur: "
 
+#: common/remote_provider_client.cpp:287
+msgid "Sign in required for this provider."
+msgstr ""
+
+#: common/remote_provider_client.cpp:329
+msgid "Provider metadata does not include a session bootstrap URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:352
+msgid "Bootstrap response did not include a nonce URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:371
+msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+msgstr ""
+
+#: common/remote_provider_client.cpp:407
+#, c-format
+msgid "Remote provider request failed with HTTP %d."
+msgstr ""
+
+#: common/remote_provider_client.cpp:432
+#, c-format
+msgid "Remote provider returned invalid JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:453
+#, c-format
+msgid "Remote provider returned invalid token JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:485
+#, c-format
+msgid "Remote provider token response was incomplete: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:53
+#, c-format
+msgid "Remote provider metadata schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:64
+#, c-format
+msgid "Remote provider metadata failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:124
+#, fuzzy, c-format
+msgid "Unsupported provider capability '%s'."
+msgstr "Type de composant non pris en charge '%s'."
+
+#: common/remote_provider_metadata.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider metadata: %s"
+msgstr ""
+"Impossible d'analyser les métadonnées du paquet:\n"
+"\n"
+"%s"
+
+#: common/remote_provider_metadata.cpp:154
+msgid "Remote provider metadata must enable web_ui_v1."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:161
+msgid ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:168
+msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:173
+msgid "api_base_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:179
+msgid "panel_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:185
+msgid "session_bootstrap_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:193
+msgid "session_bootstrap_url must share the same origin as panel_url."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:199
+msgid "auth.metadata_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:44
+#, fuzzy, c-format
+msgid "Unable to parse OAuth metadata: %s"
+msgstr ""
+"Impossible d'analyser les métadonnées du paquet:\n"
+"\n"
+"%s"
+
+#: common/remote_provider_models.cpp:50
+msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
+msgstr ""
+
+#: common/remote_provider_models.cpp:55
+msgid "authorization_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:60
+msgid "token_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:66
+msgid "revocation_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:98
+#, c-format
+msgid "Remote provider manifest schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_models.cpp:109
+#, c-format
+msgid "Remote provider manifest failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_models.cpp:136
+msgid "assets[].download_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider manifest: %s"
+msgstr "Impossible d'analyser le dépôt : %s"
+
+#: common/remote_provider_utils.cpp:94
+#, c-format
+msgid ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
+msgstr ""
+
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, c-format
 msgid "File '%s' does not exist."
@@ -9642,7 +9810,7 @@ msgstr "Groupés par Valeur et Empreinte"
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:77
 #: eeschema/lib_symbol.cpp:2552 eeschema/menubar.cpp:166
 #: eeschema/sch_sheet.cpp:2154 eeschema/sch_symbol.cpp:3959
-#: eeschema/tools/sch_edit_tool.cpp:716 pcbnew/footprint.cpp:4847
+#: eeschema/tools/sch_edit_tool.cpp:710 pcbnew/footprint.cpp:4847
 msgid "Attributes"
 msgstr "Attributs"
 
@@ -9708,19 +9876,19 @@ msgstr ""
 "Êtes-vous sûr?  Si vous annulez le réglage de KiCad, les paramètres par "
 "défaut seront choisis pour vous."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:109
+#: common/startwizard/startwizard_provider_libraries.cpp:112
 msgid "Symbol library table"
 msgstr "Table de librairie de symboles"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:113
+#: common/startwizard/startwizard_provider_libraries.cpp:116
 msgid "Footprint library table"
 msgstr "Table de librairie d'empreintes"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:117
+#: common/startwizard/startwizard_provider_libraries.cpp:120
 msgid "Design Block library table"
 msgstr "Table de librairies de Blocs de Conception"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:136
+#: common/startwizard/startwizard_provider_libraries.cpp:146
 #: eeschema/dialogs/dialog_database_lib_settings_base.cpp:99
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:220
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1530
@@ -9754,55 +9922,55 @@ msgstr "Fermer %s"
 msgid "Quit %s"
 msgstr "Quitter %s"
 
-#: common/tool/action_toolbar.cpp:1162
+#: common/tool/action_toolbar.cpp:1170
 msgid "Grid selector"
 msgstr "Sélecteur de grille"
 
-#: common/tool/action_toolbar.cpp:1163
+#: common/tool/action_toolbar.cpp:1171
 msgid "Grid Selection box"
 msgstr "Boite de Sélection Grille"
 
-#: common/tool/action_toolbar.cpp:1175
+#: common/tool/action_toolbar.cpp:1183
 msgid "Zoom selector"
 msgstr "Sélecteur de zoom"
 
-#: common/tool/action_toolbar.cpp:1176
+#: common/tool/action_toolbar.cpp:1184
 msgid "Zoom Selection box"
 msgstr "Boite de Sélection Zoom"
 
-#: common/tool/action_toolbar.cpp:1188
+#: common/tool/action_toolbar.cpp:1196
 msgid "IPC/Scripting plugins"
 msgstr "Plugins IPC/Scripting"
 
-#: common/tool/action_toolbar.cpp:1189
+#: common/tool/action_toolbar.cpp:1197
 msgid "Region to hold the IPC/Scripting action buttons"
 msgstr "Région pour afficher les boutons d'action IPC/scripts"
 
-#: common/tool/action_toolbar.cpp:1194
+#: common/tool/action_toolbar.cpp:1202
 msgid "Layer selector"
 msgstr "Sélecteur de couche"
 
-#: common/tool/action_toolbar.cpp:1195
+#: common/tool/action_toolbar.cpp:1203
 msgid "Control to select the layer"
 msgstr "Contrôle pour sélection de couche"
 
-#: common/tool/action_toolbar.cpp:1202
+#: common/tool/action_toolbar.cpp:1210
 msgid "Symbol unit selector"
 msgstr "Sélecteur d'unité de symbole"
 
-#: common/tool/action_toolbar.cpp:1203
+#: common/tool/action_toolbar.cpp:1211
 msgid "Displays the current unit"
 msgstr "Affiche l'unité courante"
 
-#: common/tool/action_toolbar.cpp:1208
+#: common/tool/action_toolbar.cpp:1216
 msgid "Symbol body style selector"
 msgstr "Sélecteur de style de corps de symbole"
 
-#: common/tool/action_toolbar.cpp:1209
+#: common/tool/action_toolbar.cpp:1217
 msgid "Displays the current body style"
 msgstr "Affiche le style de corps actuel"
 
-#: common/tool/action_toolbar.cpp:1215
+#: common/tool/action_toolbar.cpp:1223
 msgid "Allow moving of locked items with the mouse"
 msgstr "Permett le déplacement d'éléments verrouillés avec la souris"
 
@@ -10061,7 +10229,7 @@ msgstr "Outil Interactif de Suppression"
 msgid "Delete clicked items"
 msgstr "Supprimer les éléments cliqués"
 
-#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3340
+#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3334
 #: pcbnew/tools/edit_tool.cpp:2748
 msgid "Left Justify"
 msgstr "Justification à Gauche"
@@ -10070,7 +10238,7 @@ msgstr "Justification à Gauche"
 msgid "Left-justify fields and text items"
 msgstr "Justifier à gauche les champs et les textes"
 
-#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3342
+#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3336
 #: pcbnew/tools/edit_tool.cpp:2750
 msgid "Center Justify"
 msgstr "Justification au Centre"
@@ -10079,7 +10247,7 @@ msgstr "Justification au Centre"
 msgid "Center-justify fields and text items"
 msgstr "Centrer les champs et les textes"
 
-#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3344
+#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3338
 #: pcbnew/tools/edit_tool.cpp:2752
 msgid "Right Justify"
 msgstr "Justification à Droite"
@@ -10606,7 +10774,7 @@ msgstr "Origine de Grille..."
 msgid "Set the grid origin point"
 msgstr "Ajuster origine grille"
 
-#: common/tool/actions.cpp:1115
+#: common/tool/actions.cpp:1114
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:61
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:122
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:78
@@ -10616,7 +10784,7 @@ msgstr "Ajuster origine grille"
 msgid "Mils"
 msgstr "Mils"
 
-#: common/tool/actions.cpp:1124
+#: common/tool/actions.cpp:1122
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:165
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:60
 #: pcbnew/dialogs/dialog_board_stats_job_base.cpp:47
@@ -10633,124 +10801,124 @@ msgstr "Mils"
 msgid "Millimeters"
 msgstr "Millimètres"
 
-#: common/tool/actions.cpp:1144
+#: common/tool/actions.cpp:1141
 msgid "Select Columns..."
 msgstr "Sélection Colonnes..."
 
-#: common/tool/actions.cpp:1151
+#: common/tool/actions.cpp:1148
 msgid "Switch units"
 msgstr "Commuter unités"
 
-#: common/tool/actions.cpp:1152
+#: common/tool/actions.cpp:1149
 msgid "Switch between imperial and metric units"
 msgstr "Basculer entre les pouces et les millimètres"
 
-#: common/tool/actions.cpp:1158
+#: common/tool/actions.cpp:1155
 msgid "Polar Coordinates"
 msgstr "Coordonnées Polaires"
 
-#: common/tool/actions.cpp:1159
+#: common/tool/actions.cpp:1156
 msgid "Switch between polar and cartesian coordinate systems"
 msgstr "Basculer entre les systèmes de coordonnées polaires et cartésiennes"
 
-#: common/tool/actions.cpp:1168
+#: common/tool/actions.cpp:1165
 msgid "Reset Local Coordinates"
 msgstr "RAZ Coordonnées Locales"
 
-#: common/tool/actions.cpp:1175
+#: common/tool/actions.cpp:1172
 msgid "Always Show Crosshairs"
 msgstr "Toujours Afficher les Curseurs"
 
-#: common/tool/actions.cpp:1176
+#: common/tool/actions.cpp:1173
 msgid "Display crosshairs even when not drawing objects"
 msgstr "Afficher le curseur même si l'on ne dessine pas d'objets"
 
-#: common/tool/actions.cpp:1183
+#: common/tool/actions.cpp:1180
 msgid "Use small crosshairs aligned at 0 and 90 degrees"
 msgstr "Utiliser un petit curseur aligné à 0 et 90 degrés"
 
-#: common/tool/actions.cpp:1190
+#: common/tool/actions.cpp:1186
 msgid "Full-Window Crosshairs"
 msgstr "Curseur Graphique Plein Ecran"
 
-#: common/tool/actions.cpp:1191
+#: common/tool/actions.cpp:1187
 msgid "Display full-window crosshairs aligned at 0 and 90 degrees"
 msgstr "Montrer un curseur pleine fenêtre aligné à 0 et 90 degrés"
 
-#: common/tool/actions.cpp:1198
+#: common/tool/actions.cpp:1193
 msgid "45 Degree Crosshairs"
 msgstr "Curseur à 45 Degrés"
 
-#: common/tool/actions.cpp:1199
+#: common/tool/actions.cpp:1194
 msgid "Display full-window crosshairs aligned at 45 and 135 degrees"
 msgstr "Affichage d'un curseur pleine fenêtre aligné à 45 et 135 degrés"
 
-#: common/tool/actions.cpp:1207
+#: common/tool/actions.cpp:1201
 msgid "Inactive Layer View Mode"
 msgstr "Mode d’Affichage Couche Inactive"
 
-#: common/tool/actions.cpp:1208
+#: common/tool/actions.cpp:1202
 msgid "Toggle inactive layers between normal and dimmed"
 msgstr "Basculer les couches inactives entre normal et estompé"
 
-#: common/tool/actions.cpp:1216
+#: common/tool/actions.cpp:1210
 msgid "Inactive Layer View Mode (3-state)"
 msgstr "Mode d’Affichage Couche Inactive (3 états)"
 
-#: common/tool/actions.cpp:1217
+#: common/tool/actions.cpp:1211
 msgid "Cycle inactive layers between normal, dimmed, and hidden"
 msgstr ""
 "Commuter les couches inactives entre les couches normales, estompées et "
 "cachées"
 
-#: common/tool/actions.cpp:1223
+#: common/tool/actions.cpp:1217
 msgid "Draw Bounding Boxes"
 msgstr "Dessiner Rectangle d'Encadrement"
 
-#: common/tool/actions.cpp:1230 pcbnew/dialogs/panel_edit_options_base.cpp:141
+#: common/tool/actions.cpp:1224 pcbnew/dialogs/panel_edit_options_base.cpp:141
 #: pcbnew/dialogs/panel_edit_options_base.cpp:215
 msgid "Select item(s)"
 msgstr "Sélection élément(s)"
 
-#: common/tool/actions.cpp:1241
+#: common/tool/actions.cpp:1235
 msgid "Measure Tool"
 msgstr "Outil de Mesure"
 
-#: common/tool/actions.cpp:1242
+#: common/tool/actions.cpp:1236
 msgid "Interactively measure distance between points"
 msgstr "Mesurer interactivement la distance entre points"
 
-#: common/tool/actions.cpp:1261
+#: common/tool/actions.cpp:1255
 msgid "Switch to Project Manager"
 msgstr "Commuter au Gestionnaire de Projet"
 
-#: common/tool/actions.cpp:1262
+#: common/tool/actions.cpp:1256
 msgid "Show project window"
 msgstr "Afficher la fenêtre de projet"
 
-#: common/tool/actions.cpp:1271
+#: common/tool/actions.cpp:1265
 msgid "Show 3D viewer window"
 msgstr "Afficher Visualisateur 3D"
 
-#: common/tool/actions.cpp:1277 eeschema/symbol_viewer_frame.cpp:107
+#: common/tool/actions.cpp:1271 eeschema/symbol_viewer_frame.cpp:107
 #: eeschema/symbol_viewer_frame.cpp:1055
 msgid "Symbol Library Browser"
 msgstr "Examinateur de Librairies de Symboles"
 
-#: common/tool/actions.cpp:1286 kicad/tools/kicad_manager_actions.cpp:117
+#: common/tool/actions.cpp:1280 kicad/tools/kicad_manager_actions.cpp:117
 msgid "Create, delete and edit schematic symbols"
 msgstr "Créer, supprimer et éditer les symboles schématiques"
 
-#: common/tool/actions.cpp:1294 pcbnew/footprint_viewer_frame.cpp:105
+#: common/tool/actions.cpp:1288 pcbnew/footprint_viewer_frame.cpp:105
 #: pcbnew/footprint_viewer_frame.cpp:996
 msgid "Footprint Library Browser"
 msgstr "Examinateur de Librairies d'Empreintes"
 
-#: common/tool/actions.cpp:1303
+#: common/tool/actions.cpp:1297
 msgid "Create, delete and edit board footprints"
 msgstr "Créer, supprimer et éditer les empreintes du PCB"
 
-#: common/tool/actions.cpp:1311 kicad/tools/kicad_manager_actions.cpp:168
+#: common/tool/actions.cpp:1305 kicad/tools/kicad_manager_actions.cpp:168
 #: pcb_calculator/pcb_calculator_frame.cpp:62
 #: pcb_calculator/pcb_calculator_frame.cpp:212
 #: pcb_calculator/pcb_calculator_frame.cpp:213
@@ -10758,143 +10926,143 @@ msgstr "Créer, supprimer et éditer les empreintes du PCB"
 msgid "Calculator Tools"
 msgstr "Outil de Calcul"
 
-#: common/tool/actions.cpp:1312 kicad/tools/kicad_manager_actions.cpp:169
+#: common/tool/actions.cpp:1306 kicad/tools/kicad_manager_actions.cpp:169
 msgid "Run component calculations, track width calculations, etc."
 msgstr ""
 "Exécuter des calculs de composants, des calculs de largeur de piste, etc."
 
-#: common/tool/actions.cpp:1321
+#: common/tool/actions.cpp:1315
 msgid "Show/hide the properties manager"
 msgstr "Afficher/masquer le gestionnaire de propriétés"
 
-#: common/tool/actions.cpp:1330
+#: common/tool/actions.cpp:1324
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:134
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:121
 #: eeschema/fields_grid_table.cpp:1203
 msgid "Show Datasheet"
 msgstr "Voir Documentation"
 
-#: common/tool/actions.cpp:1331
+#: common/tool/actions.cpp:1325
 msgid "Open the datasheet in a browser"
 msgstr "Afficher le document associé dans un visualisateur"
 
-#: common/tool/actions.cpp:1339
+#: common/tool/actions.cpp:1333
 msgid "Update PCB from Schematic..."
 msgstr "Mise à jour du PCB à partir du  Schéma..."
 
-#: common/tool/actions.cpp:1340
+#: common/tool/actions.cpp:1334
 msgid "Update PCB with changes made to schematic"
 msgstr "Mise à jour du PCB à partir des changements du schéma"
 
-#: common/tool/actions.cpp:1346
+#: common/tool/actions.cpp:1340
 msgid "Update Schematic from PCB..."
 msgstr "Mise à jour Schématique à partir du PCB..."
 
-#: common/tool/actions.cpp:1347
+#: common/tool/actions.cpp:1341
 msgid "Update schematic with changes made to PCB"
 msgstr "Mise à jour Schématique à partir du PCB"
 
-#: common/tool/actions.cpp:1354
+#: common/tool/actions.cpp:1348
 msgid "Preferences..."
 msgstr "Préférences..."
 
-#: common/tool/actions.cpp:1355
+#: common/tool/actions.cpp:1349
 msgid "Show preferences for all open tools"
 msgstr "Afficher les préférences pour tous les outils ouverts"
 
-#: common/tool/actions.cpp:1362
+#: common/tool/actions.cpp:1356
 #: pcbnew/dialogs/panel_fp_properties_3d_model_base.cpp:78
 msgid "Configure Paths..."
 msgstr "Configurer les Chemins..."
 
-#: common/tool/actions.cpp:1363
+#: common/tool/actions.cpp:1357
 msgid "Edit path configuration environment variables"
 msgstr "Éditer la configuration des variables d'environnement des chemins"
 
-#: common/tool/actions.cpp:1369
+#: common/tool/actions.cpp:1363
 msgid "Manage Symbol Libraries..."
 msgstr "Configurer les Librairies de Symboles..."
 
-#: common/tool/actions.cpp:1370
+#: common/tool/actions.cpp:1364
 msgid "Edit the global and project symbol library lists"
 msgstr "Éditer la liste globale et celle du projet des librairies de symboles"
 
-#: common/tool/actions.cpp:1376
+#: common/tool/actions.cpp:1370
 msgid "Manage Footprint Libraries..."
 msgstr "Configurer les Librairies d'Empreintes..."
 
-#: common/tool/actions.cpp:1377
+#: common/tool/actions.cpp:1371
 msgid "Edit the global and project footprint library lists"
 msgstr "Éditer la liste globale et celle du projet des librairies d'empreintes"
 
-#: common/tool/actions.cpp:1383
+#: common/tool/actions.cpp:1377
 msgid "Manage Design Block Libraries..."
 msgstr "Gérer les Librairie de Blocs de Conception..."
 
-#: common/tool/actions.cpp:1384
+#: common/tool/actions.cpp:1378
 msgid "Edit the global and project design block library lists"
 msgstr ""
 "Éditer la liste globale et celle du projet des librairies de blocs de "
 "conception"
 
-#: common/tool/actions.cpp:1390
+#: common/tool/actions.cpp:1384
 msgid "Getting Started with KiCad"
 msgstr "Démarrer avec KiCad"
 
-#: common/tool/actions.cpp:1391
+#: common/tool/actions.cpp:1385
 msgid "Open \"Getting Started in KiCad\" guide for beginners"
 msgstr "Ouvrir le guide pour les débutants \"Démarrer avec KiCad\""
 
-#: common/tool/actions.cpp:1397
+#: common/tool/actions.cpp:1391
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:330
 #: pcb_calculator/calculator_panels/panel_fusing_current_base.cpp:136
 #: pcb_calculator/calculator_panels/panel_r_calculator_base.cpp:187
 msgid "Help"
 msgstr "Aide"
 
-#: common/tool/actions.cpp:1398
+#: common/tool/actions.cpp:1392
 msgid "Open product documentation in a web browser"
 msgstr "Afficher le document associé dans le navigateur"
 
-#: common/tool/actions.cpp:1404
+#: common/tool/actions.cpp:1398
 msgid "About KiCad"
 msgstr "Au Sujet de KiCad"
 
-#: common/tool/actions.cpp:1413
+#: common/tool/actions.cpp:1407
 msgid "List Hotkeys..."
 msgstr "Liste Raccourcis..."
 
-#: common/tool/actions.cpp:1414
+#: common/tool/actions.cpp:1408
 msgid "Displays current hotkeys table and corresponding commands"
 msgstr ""
 "Affiche la liste des raccourcis clavier actifs et les commandes "
 "correspondantes"
 
-#: common/tool/actions.cpp:1420
+#: common/tool/actions.cpp:1414
 msgid "Get Involved"
 msgstr "Rester Impliqué"
 
-#: common/tool/actions.cpp:1421
+#: common/tool/actions.cpp:1415
 msgid "Open \"Contribute to KiCad\" in a web browser"
 msgstr "Ouvrir \"Contribuer à KiCad\" dans un navigateur Web"
 
-#: common/tool/actions.cpp:1428
+#: common/tool/actions.cpp:1422
 msgid "Open \"Donate to KiCad\" in a web browser"
 msgstr "Ouvrez \"Faire un don à KiCad\" dans un navigateur Web"
 
-#: common/tool/actions.cpp:1433
+#: common/tool/actions.cpp:1427
 msgid "Report Bug"
 msgstr "Rapporter un Bug"
 
-#: common/tool/actions.cpp:1446
+#: common/tool/actions.cpp:1440
 msgid "Refresh Plugins"
 msgstr "Rafraîchir Plugins"
 
-#: common/tool/actions.cpp:1447
+#: common/tool/actions.cpp:1441
 msgid "Reload all python plugins and refresh plugin menus"
 msgstr "Recharger tous les plugins python et rafraîchir les menus de plugins"
 
-#: common/tool/actions.cpp:1455
+#: common/tool/actions.cpp:1449
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:85
 #: eeschema/dialogs/dialog_schematic_setup.cpp:143
 #: eeschema/dialogs/dialog_symbol_properties.cpp:346
@@ -10904,23 +11072,23 @@ msgstr "Recharger tous les plugins python et rafraîchir les menus de plugins"
 msgid "Embedded Files"
 msgstr "Fichiers Intégrés"
 
-#: common/tool/actions.cpp:1456
+#: common/tool/actions.cpp:1450
 msgid "Manage embedded files"
 msgstr "Gérer les fichiers intégrés"
 
-#: common/tool/actions.cpp:1461
+#: common/tool/actions.cpp:1455
 msgid "Remove File"
 msgstr "Supprimer Fichier"
 
-#: common/tool/actions.cpp:1462
+#: common/tool/actions.cpp:1456
 msgid "Remove an embedded file"
 msgstr "Supprimer un fichier intégré"
 
-#: common/tool/actions.cpp:1467
+#: common/tool/actions.cpp:1461
 msgid "Extract File"
 msgstr "Extraction Fichier"
 
-#: common/tool/actions.cpp:1468
+#: common/tool/actions.cpp:1462
 msgid "Extract an embedded file"
 msgstr "Extraire un fichier intégré"
 
@@ -11235,16 +11403,16 @@ msgstr "Sélectionner un fichier"
 msgid "Select Path"
 msgstr "Sélection Chemin"
 
-#: common/widgets/kistatusbar.cpp:146
+#: common/widgets/kistatusbar.cpp:128
 msgid "View load messages"
 msgstr "Afficher les messages de chargement"
 
-#: common/widgets/kistatusbar.cpp:410
+#: common/widgets/kistatusbar.cpp:461
 #, c-format
 msgid "View %zu load message(s)"
 msgstr "Afficher %zu message(s) de chargement"
 
-#: common/widgets/kistatusbar.cpp:458
+#: common/widgets/kistatusbar.cpp:510
 msgid "Load Messages"
 msgstr "Charger Messages"
 
@@ -11297,7 +11465,7 @@ msgstr "<créer net>"
 
 #: common/widgets/paged_dialog.cpp:85 common/widgets/paged_dialog.cpp:347
 #: eeschema/dialogs/dialog_bom_base.cpp:114
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:106
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:367
 #: pcb_calculator/calculator_panels/panel_track_width_base.cpp:288
 #: pcb_calculator/calculator_panels/panel_transline_base.cpp:480
@@ -15495,23 +15663,74 @@ msgstr ""
 msgid "Plot Schematic"
 msgstr "Tracé Schématique"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:44
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
 msgid "Remote Symbol Settings"
 msgstr "Réglages Symbole Distant"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:58
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
+#, fuzzy
 msgid ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
 "Configurer l'emplacement de stockage des librairies distantes téléchargées "
 "et leur nom."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:65
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
+msgid "Providers"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#, fuzzy
+msgid "Add / Update"
+msgstr "Mise à jour"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
+#, fuzzy
+msgid "Refresh Metadata"
+msgstr "Recherche dans Métadonnées"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+msgid "Sign Out"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
+#, fuzzy
+msgid "Metadata URL:"
+msgstr "Metadonnées"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#, fuzzy
+msgid "Display name:"
+msgstr "Nom fichier:"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#, fuzzy
+msgid "Last account:"
+msgstr "Nombre de pads:"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
+#, fuzzy
+msgid "Not signed in"
+msgstr "Non spécifié"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
+#, fuzzy
+msgid "Auth status:"
+msgstr "Statut: "
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
+#, fuzzy
+msgid "Not configured"
+msgstr "Non couvert"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 msgid "Destination directory:"
 msgstr "Répertoire de destination :"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:71
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:121
 msgid ""
 "Directory where downloaded symbol, footprint, and 3D model data will be "
 "written."
@@ -15519,62 +15738,76 @@ msgstr ""
 "Répertoire dans lequel seront enregistrées les  symboles,empreintes et "
 "modèles 3D téléchargés ."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:74
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:124
 msgid "Browse..."
 msgstr "Examiner..."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:128
 msgid "Library prefix:"
 msgstr "Préfixe de librairie:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:131
 msgid "Prefix that will be applied to the generated libraries."
 msgstr "Préfixe qui sera appliqué aux librairies générées."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:89
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:139
 msgid "Add libraries to:"
 msgstr "Ajouter librairies à :"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:93
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:143
 msgid "Project library table"
 msgstr "Table de librairies du Projet"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:146
 msgid "Adds the generated libraries to the project's library tables."
 msgstr "Ajouter les librairies générées à la table de librairies du projet."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:98
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:149
 msgid "Global library table"
 msgstr "Table de librairie Globale"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
 msgid "Adds the generated libraries to the global library tables."
 msgstr "Ajouter les librairies générées à la table de librairies globale."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:107
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:159
 msgid "Restore the default destination and prefix."
 msgstr "Restaurer la destination et le préfixe par défaut."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:208
 msgid "Please choose a destination directory."
 msgstr "Veuillez choisir un répertoire de destination."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:216
 msgid "Please enter a library prefix."
 msgstr "Veuillez saisir un préfixe de librairie."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:191
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:252
 msgid "Select Destination Directory"
 msgstr "Sélection Répertoire de Destination"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:258
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
+msgid "Enter a provider metadata URL first."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
+msgid "Provider metadata refreshed."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
+#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
+#: pcbnew/zone.cpp:989
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:519
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
 msgstr ""
 "Les noms des librairies seront créés avec des suffixes tels que _symbols, "
 "_fp et _3d."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:263
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:524
 #, c-format
 msgid "Will create libraries like %1$s_symbols, %1$s_fp, %1$s_3d, etc."
 msgstr "Créera des librairies telles que %1$s_symbols, %1$s_fp, %1$s_3d, etc."
@@ -15829,7 +16062,7 @@ msgid "Project"
 msgstr "Projet"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:119
-#: eeschema/tools/sch_edit_tool.cpp:3624
+#: eeschema/tools/sch_edit_tool.cpp:3618
 #: pcbnew/dialogs/dialog_board_setup.cpp:217
 #: pcbnew/widgets/appearance_controls.cpp:526
 #: pcbnew/widgets/appearance_controls.cpp:2507
@@ -18517,13 +18750,13 @@ msgstr "Garder Espaces Blancs"
 msgid "URL"
 msgstr "URL"
 
-#: eeschema/eeschema.cpp:496 eeschema/eeschema.cpp:508
+#: eeschema/eeschema.cpp:513 eeschema/eeschema.cpp:525
 #: eeschema/libraries/legacy_symbol_library.cpp:523
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1349
 msgid "Loading Symbol Libraries"
 msgstr "Chargement des Librairies de Symboles"
 
-#: eeschema/eeschema.cpp:633
+#: eeschema/eeschema.cpp:650
 #, c-format
 msgid ""
 "Cannot copy file '%s' as it will be overwritten by the new root sheet file."
@@ -18531,7 +18764,7 @@ msgstr ""
 "Impossible de copier le fichier '%s' car il sera écrasé par le nouveau "
 "fichier de feuille racine."
 
-#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:298
+#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:299
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0."
 msgstr "Le traçage HPGL n'est plus supporté depuis KiCad 10.0."
 
@@ -18541,7 +18774,7 @@ msgstr "Échec du chargement de la schématique\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:275
 #: kicad/cli/command_pcb_export_hpgl.cpp:36
-#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:286
+#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:287
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0.\n"
 msgstr "Le traçage HPGL n'est plus supporté depuis KiCad 10.0.\n"
 
@@ -18549,14 +18782,14 @@ msgstr "Le traçage HPGL n'est plus supporté depuis KiCad 10.0.\n"
 #: eeschema/eeschema_jobs_handler.cpp:522
 #: eeschema/eeschema_jobs_handler.cpp:877
 #: eeschema/eeschema_jobs_handler.cpp:959
-#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:569
-#: pcbnew/pcbnew_jobs_handler.cpp:698 pcbnew/pcbnew_jobs_handler.cpp:962
-#: pcbnew/pcbnew_jobs_handler.cpp:1071 pcbnew/pcbnew_jobs_handler.cpp:1168
-#: pcbnew/pcbnew_jobs_handler.cpp:1254 pcbnew/pcbnew_jobs_handler.cpp:1309
-#: pcbnew/pcbnew_jobs_handler.cpp:1496 pcbnew/pcbnew_jobs_handler.cpp:1563
-#: pcbnew/pcbnew_jobs_handler.cpp:1710 pcbnew/pcbnew_jobs_handler.cpp:1877
-#: pcbnew/pcbnew_jobs_handler.cpp:2168 pcbnew/pcbnew_jobs_handler.cpp:2308
-#: pcbnew/pcbnew_jobs_handler.cpp:2527 pcbnew/pcbnew_jobs_handler.cpp:2639
+#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:570
+#: pcbnew/pcbnew_jobs_handler.cpp:699 pcbnew/pcbnew_jobs_handler.cpp:963
+#: pcbnew/pcbnew_jobs_handler.cpp:1072 pcbnew/pcbnew_jobs_handler.cpp:1169
+#: pcbnew/pcbnew_jobs_handler.cpp:1255 pcbnew/pcbnew_jobs_handler.cpp:1310
+#: pcbnew/pcbnew_jobs_handler.cpp:1497 pcbnew/pcbnew_jobs_handler.cpp:1564
+#: pcbnew/pcbnew_jobs_handler.cpp:1711 pcbnew/pcbnew_jobs_handler.cpp:1878
+#: pcbnew/pcbnew_jobs_handler.cpp:2169 pcbnew/pcbnew_jobs_handler.cpp:2314
+#: pcbnew/pcbnew_jobs_handler.cpp:2533 pcbnew/pcbnew_jobs_handler.cpp:2645
 msgid "Failed to create output directory\n"
 msgstr "Échec de la création du répertoire de sortie\n"
 
@@ -18608,8 +18841,8 @@ msgid "Plotting symbol '%s' unit %d to '%s'\n"
 msgstr "Tracé du symbole '%s' unité %d sur '%s'\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1106
-#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2087
-#: pcbnew/pcbnew_jobs_handler.cpp:2160
+#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2088
+#: pcbnew/pcbnew_jobs_handler.cpp:2161
 msgid "Unable to load library\n"
 msgstr "Impossible de charger la librairie\n"
 
@@ -18623,18 +18856,18 @@ msgstr "Pas de composant sélectionné à sauver."
 msgid "Unable to create output directory '%s'."
 msgstr "Impossible de créer le répertoire de sortie '%s'."
 
-#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1407
-#: pcbnew/pcbnew_jobs_handler.cpp:2179
+#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1408
+#: pcbnew/pcbnew_jobs_handler.cpp:2180
 #, c-format
 msgid "Exporting %s"
 msgstr "Exportation %s"
 
-#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2056
+#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2057
 msgid "Output path must not conflict with existing path\n"
 msgstr ""
 "Le chemin de sortie ne doit pas entrer en conflit avec un chemin existant\n"
 
-#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2063
+#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2064
 msgid ""
 "Output path must be specified to convert legacy and non-KiCad libraries\n"
 msgstr ""
@@ -18649,7 +18882,7 @@ msgstr "Sauvegarde de la librairie de symboles dans un format actualisé\n"
 msgid "Symbol library was not updated\n"
 msgstr "La librairie de symboles n'a pas été mise à jour\n"
 
-#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2439
+#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2445
 #, c-format
 msgid "Found %d violations\n"
 msgstr "Violations trouvées %d\n"
@@ -19464,11 +19697,6 @@ msgstr "Dérivé de"
 msgid "Error loading symbol %s from library '%s'."
 msgstr "Erreur lors du chargement du symbole %s de la librairie %s."
 
-#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
-#: pcbnew/zone.cpp:989
-msgid "Unknown"
-msgstr "Inconnu"
-
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:62
 #: pcbnew/import_gfx/dialog_import_graphics.cpp:49
 msgid "Centimeter"
@@ -19784,10 +20012,8 @@ msgstr "Panneaux"
 
 #: eeschema/menubar.cpp:196
 msgid ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
-"Installer un serveur de symboles distant à l'aide du Gestionnaire de Plugins "
-"et de Contenu pour activer"
 
 #: eeschema/menubar.cpp:330
 msgid "Variants"
@@ -19904,7 +20130,7 @@ msgid "Failed to create directory 'devices' ."
 msgstr "Échec de la création du répertoire 'devices' ."
 
 #: eeschema/netlist_exporters/netlist_exporter_allegro.cpp:408
-#: pcbnew/pcbnew_jobs_handler.cpp:1502 pcbnew/pcbnew_jobs_handler.cpp:1571
+#: pcbnew/pcbnew_jobs_handler.cpp:1503 pcbnew/pcbnew_jobs_handler.cpp:1572
 #, c-format
 msgid "Failed to create file '%s'.\n"
 msgstr "Échec de la création du fichier '%s'.\n"
@@ -19994,7 +20220,7 @@ msgstr "Commuter Unités"
 msgid "Change Unit"
 msgstr "Change Unité"
 
-#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2507
+#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2501
 msgid "Change Body Style"
 msgstr "Modifier Style de Corps"
 
@@ -20140,6 +20366,138 @@ msgstr "Non Trouvé"
 #: eeschema/project_sch.cpp:115
 msgid "The following libraries were not found:"
 msgstr "Les librairies suivantes n'ont pas pu être trouvées:"
+
+#: eeschema/remote_symbol_download_manager.cpp:35
+msgid "Remote asset URL"
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:49
+msgid "Remote asset URL origin must match the selected provider."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:66
+#, fuzzy, c-format
+msgid "Unable to set download URL '%s'."
+msgstr "Impossible de lire '%s'."
+
+#: eeschema/remote_symbol_download_manager.cpp:124
+msgid "Remote asset manifest declared an invalid size."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:130
+msgid "Remote asset manifest must declare sha256 for URL-based downloads."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:139
+msgid "Remote asset exceeds the provider download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:150
+#, c-format
+msgid "Remote download failed with HTTP %d."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:156
+msgid "Remote asset content type did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:162
+msgid "Remote asset size did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:168
+msgid "Remote asset exceeds the remaining download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:174
+msgid "Remote asset digest did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:44
+#, fuzzy
+msgid "Downloaded symbol payload was empty."
+msgstr "La \"payload\" du symbole était vide."
+
+#: eeschema/remote_symbol_import_job.cpp:52
+#, fuzzy
+msgid "Downloaded symbol payload was not a KiCad symbol library."
+msgstr "Aucun symbole '%s' trouvé dans la table des librairies de symboles."
+
+#: eeschema/remote_symbol_import_job.cpp:62
+#, fuzzy, c-format
+msgid "Downloaded symbol payload did not include expected symbol '%s'."
+msgstr "La \"payload\" du symbole ne comprenait pas le symbole attendu."
+
+#: eeschema/remote_symbol_import_job.cpp:96
+#: eeschema/remote_symbol_import_utils.cpp:114
+#: eeschema/widgets/panel_remote_symbol.cpp:1072
+#: eeschema/widgets/panel_remote_symbol.cpp:1295
+msgid "Unable to load schematic settings."
+msgstr "Impossible de charger les paramètres schématiques."
+
+#: eeschema/remote_symbol_import_job.cpp:234
+#, fuzzy
+msgid "No symbol asset was available to place."
+msgstr "Aucun éditeur schématique n'est disponible pour le placement."
+
+#: eeschema/remote_symbol_import_utils.cpp:76
+msgid "Payload was empty."
+msgstr "La \"payload\" était vide."
+
+#: eeschema/remote_symbol_import_utils.cpp:85
+#, c-format
+msgid "Unable to create '%s'."
+msgstr "Impossible de créer '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:93
+#, c-format
+msgid "Unable to open '%s' for writing."
+msgstr "Impossible d'ouvrir '%s' pour écriture."
+
+#: eeschema/remote_symbol_import_utils.cpp:99
+#, c-format
+msgid "Failed to write '%s'."
+msgstr "Impossible d'écrire  '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:128
+msgid "Destination directory is not configured."
+msgstr "Le répertoire de destination n'est pas configuré."
+
+#: eeschema/remote_symbol_import_utils.cpp:137
+#, c-format
+msgid "Unable to create directory '%s'."
+msgstr "Impossible de créer le répertoire '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:158
+#, fuzzy
+msgid "Unable to access the library table."
+msgstr "Impossible d'accéder à la table de librairies de symboles."
+
+#: eeschema/remote_symbol_import_utils.cpp:178
+#, fuzzy
+msgid "Failed to update the library table."
+msgstr "Échec de la mise à jour de la table de librairies de symbole."
+
+#: eeschema/remote_symbol_import_utils.cpp:192
+msgid "Remote download"
+msgstr "Téléchargement du distant"
+
+#: eeschema/remote_symbol_import_utils.cpp:197
+#, fuzzy
+msgid "Failed to save the library table."
+msgstr "Impossible de sauver la table de librairies de symboles."
+
+#: eeschema/remote_symbol_import_utils.cpp:210
+msgid "No schematic editor is available for placement."
+msgstr "Aucun éditeur schématique n'est disponible pour le placement."
+
+#: eeschema/remote_symbol_import_utils.cpp:222
+msgid "Unable to load the downloaded symbol for placement."
+msgstr "Impossible de charger le symbole téléchargé pour le placement."
+
+#: eeschema/remote_symbol_import_utils.cpp:237
+msgid "Unable to access the schematic placement tools."
+msgstr "Impossible d'accéder aux outils de placement schématique."
 
 #: eeschema/sch_base_frame.cpp:746
 msgid "Create New Library"
@@ -21090,7 +21448,7 @@ msgstr "Fichiers librairies HTTP"
 
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:118
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:288
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:309
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:324
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:108
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:221
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:504
@@ -21182,7 +21540,7 @@ msgstr "le fichier de documentation de librairie est vide"
 msgid "library %s does not contain a symbol named %s"
 msgstr "la librairie %s ne contient pas un alias %s"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:215
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:219
 #, c-format
 msgid ""
 "Could not load sheet '%s' because it already appears as a direct ancestor in "
@@ -21191,12 +21549,12 @@ msgstr ""
 "Impossible de charger la feuille '%s' car elle apparaît déjà comme un "
 "ancêtre direct dans la hiérarchie des schémas."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:345
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:360
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:306
 msgid "Internal Group Data Error"
 msgstr "Erreur en Données Interne de Groupe"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:346
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:361
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:307
 #, c-format
 msgid ""
@@ -21209,27 +21567,27 @@ msgstr ""
 "\n"
 "Enregistrer de toute façon?"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:349
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:364
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:309
 msgid "Save Anyway"
 msgstr "Sauver de Toute Façon"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1782
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1797
 #, c-format
 msgid "Symbol library file '%s' already exists."
 msgstr "Le fichier de librairies de symboles '%s' existe déjà."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1787
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1802
 #, c-format
 msgid "Symbol library path '%s' already exists."
 msgstr "Le chemin de la librairie de symboles '%s' existe déjà."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1817
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1832
 #, c-format
 msgid "Symbol library file '%s' cannot be deleted."
 msgstr "Le fichier librairie de symboles '%s' ne peut pas être supprimé."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1827
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1842
 #, c-format
 msgid "Symbol library folder '%s' cannot be deleted."
 msgstr "Le répertoire librairie de symboles '%s' ne peut pas être supprimé."
@@ -21427,29 +21785,29 @@ msgstr "Nom de librairie de symbole invalide"
 msgid "Invalid symbol library ID"
 msgstr "ID de librairie de symbole invalide"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3956
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3970
 #, fuzzy
 msgid "Missing sheet name property"
 msgstr "Argument nom de feuille manquant dans %s."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3962
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3976
 #, fuzzy
 msgid "Missing sheet file property"
 msgstr "Argument nom de feuille manquant dans %s."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5070
 #, fuzzy
 msgid "Invalid table: no cells defined"
 msgstr "Format de carte non valide spécifié\n"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5195
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
 #, c-format
 msgid "Group library link %s contains invalid character '%c'"
 msgstr ""
 "Le lien de librairie de groupe %s contient un caractère non valide '%c'"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5187
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5201
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6976
 msgid "Invalid library ID"
 msgstr "ID de librairie invalide"
@@ -21772,7 +22130,7 @@ msgstr "Nom Pin"
 msgid "No sheets to plot."
 msgstr "Pas de feuilles à tracer."
 
-#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1429
+#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1430
 #, c-format
 msgid "Plotted to '%s'.\n"
 msgstr "Tracé en '%s'\n"
@@ -26035,7 +26393,7 @@ msgstr "Miroir Horizontal"
 msgid "Flips selected item(s) from left to right"
 msgstr "Retourner les éléments sélectionnés de la gauche vers la droite"
 
-#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1699
+#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1693
 #: pcbnew/tools/edit_tool_move_fct.cpp:201 pcbnew/tools/pcb_actions.cpp:696
 msgid "Swap"
 msgstr "Permuter"
@@ -26044,7 +26402,7 @@ msgstr "Permuter"
 msgid "Swap positions of selected items"
 msgstr "Echanger positions des éléments sélectionnés"
 
-#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1849
+#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1843
 msgid "Swap Pins"
 msgstr "Echange Pins"
 
@@ -26052,7 +26410,7 @@ msgstr "Echange Pins"
 msgid "Swap the selected symbol pins' positions"
 msgstr "Echanger les positions des pins du symbole sélectionné"
 
-#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1952
+#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1946
 msgid "Swap Pin Labels"
 msgstr "Echange Labels de Pins"
 
@@ -26060,7 +26418,7 @@ msgstr "Echange Labels de Pins"
 msgid "Swap the labels attached to selected pins"
 msgstr "Echanger les labels attachés aux pins selectionnées"
 
-#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2034
+#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2028
 msgid "Swap Unit Labels"
 msgstr "Echange Labels d'Unités"
 
@@ -26081,7 +26439,7 @@ msgstr "Éditer Valeur..."
 msgid "Edit Footprint..."
 msgstr "Éditer Empreinte..."
 
-#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2448
+#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2442
 msgid "Autoplace Fields"
 msgstr "Autoplacement des champs"
 
@@ -26193,7 +26551,7 @@ msgstr "Changer en Boite de Texte"
 msgid "Change existing item to a text box"
 msgstr "Changer l'élément existant en boite de texte"
 
-#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3370
+#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3364
 msgid "Cleanup Sheet Pins"
 msgstr "Nettoyage des Pins de Hiérarchie"
 
@@ -27041,7 +27399,7 @@ msgid "Press <ESC> to cancel image creation."
 msgstr "Appuyez <ESC> sur pour annuler la création d’images."
 
 #: eeschema/tools/sch_drawing_tools.cpp:1237
-#: eeschema/tools/sch_edit_tool.cpp:3470
+#: eeschema/tools/sch_edit_tool.cpp:3464
 #: pagelayout_editor/pl_editor_frame.cpp:859
 #: pagelayout_editor/pl_editor_frame.cpp:867 pcbnew/tools/drawing_tool.cpp:796
 #, c-format
@@ -27199,31 +27557,31 @@ msgstr "Fonction de Pin"
 msgid "Pin Helpers"
 msgstr "Aides des Pins"
 
-#: eeschema/tools/sch_edit_tool.cpp:702
+#: eeschema/tools/sch_edit_tool.cpp:696
 msgid "Transform Selection"
 msgstr "Sélection Transformation"
 
-#: eeschema/tools/sch_edit_tool.cpp:730
+#: eeschema/tools/sch_edit_tool.cpp:724
 msgid "Edit Main Fields"
 msgstr "Édition Champs Principaux"
 
-#: eeschema/tools/sch_edit_tool.cpp:743 eeschema/tools/sch_edit_tool.cpp:3252
+#: eeschema/tools/sch_edit_tool.cpp:737 eeschema/tools/sch_edit_tool.cpp:3246
 msgid "Change To"
 msgstr "Changer Pour"
 
-#: eeschema/tools/sch_edit_tool.cpp:1238
+#: eeschema/tools/sch_edit_tool.cpp:1232
 #: eeschema/tools/symbol_editor_edit_tool.cpp:602
 #: pcbnew/tools/edit_tool.cpp:2530
 msgid "Rotate"
 msgstr "Rotation"
 
-#: eeschema/tools/sch_edit_tool.cpp:1454 gerbview/gerber_draw_item.cpp:724
+#: eeschema/tools/sch_edit_tool.cpp:1448 gerbview/gerber_draw_item.cpp:724
 #: pcbnew/pcb_tablecell.cpp:209 pcbnew/pcb_text.cpp:308
 #: pcbnew/pcb_textbox.cpp:501 pcbnew/tools/edit_tool.cpp:2680
 msgid "Mirror"
 msgstr "Miroir"
 
-#: eeschema/tools/sch_edit_tool.cpp:1761
+#: eeschema/tools/sch_edit_tool.cpp:1755
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects. Duplicate "
 "the sheet to edit pins independently."
@@ -27231,7 +27589,7 @@ msgstr ""
 "Les échanges de pins sont désactivés pour les symboles partagés dans "
 "d'autres projets. Dupliquez la feuille pour éditer les pins indépendamment."
 
-#: eeschema/tools/sch_edit_tool.cpp:1767
+#: eeschema/tools/sch_edit_tool.cpp:1761
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects (%s). "
@@ -27241,7 +27599,7 @@ msgstr ""
 "d'autres projets (%s). Dupliquer la feuille pour éditer les pins "
 "indépendamment."
 
-#: eeschema/tools/sch_edit_tool.cpp:1777
+#: eeschema/tools/sch_edit_tool.cpp:1771
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols used by multiple sheet instances (%s). "
@@ -27251,7 +27609,7 @@ msgstr ""
 "plusieurs instances de feuilles (%s). Dupliquer la feuille pour éditer les "
 "pins indépendamment."
 
-#: eeschema/tools/sch_edit_tool.cpp:1784
+#: eeschema/tools/sch_edit_tool.cpp:1778
 msgid ""
 "Pin swaps are disabled for shared symbols. Duplicate the sheet to edit pins "
 "independently."
@@ -27259,7 +27617,7 @@ msgstr ""
 "Les permutations de pins sont désactivées pour les symboles partagés. "
 "Dupliquer la feuille pour éditer les pins indépendamment."
 
-#: eeschema/tools/sch_edit_tool.cpp:1928
+#: eeschema/tools/sch_edit_tool.cpp:1922
 msgid ""
 "Each selected pin must have exactly one attached net label and no other pin "
 "connections."
@@ -27267,7 +27625,7 @@ msgstr ""
 "Chaque pin sélectionnée doit avoir exactement un label de net attaché et "
 "aucune autre connexion de pin."
 
-#: eeschema/tools/sch_edit_tool.cpp:1984
+#: eeschema/tools/sch_edit_tool.cpp:1978
 msgid ""
 "Each pin of selected units must have exactly one attached net label and no "
 "other pin connections."
@@ -27275,63 +27633,63 @@ msgstr ""
 "Chaque pin des unités sélectionnées doit avoir exactement un label de net "
 "attachée et aucune autre connexion de pin."
 
-#: eeschema/tools/sch_edit_tool.cpp:2077
+#: eeschema/tools/sch_edit_tool.cpp:2071
 msgid "Label value cannot go below zero"
 msgstr "La valeur du label ne peut pas descendre en dessous de zéro"
 
-#: eeschema/tools/sch_edit_tool.cpp:2157
+#: eeschema/tools/sch_edit_tool.cpp:2151
 msgid "Repeat Item"
 msgstr "Répéter Élément"
 
-#: eeschema/tools/sch_edit_tool.cpp:2294
+#: eeschema/tools/sch_edit_tool.cpp:2288
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1009
 #, c-format
 msgid "Edit %s Field"
 msgstr "Édition Champ %s"
 
-#: eeschema/tools/sch_edit_tool.cpp:2298
+#: eeschema/tools/sch_edit_tool.cpp:2292
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1011
 #, c-format
 msgid "Edit '%s' Field"
 msgstr "Édition Champ '%s'"
 
-#: eeschema/tools/sch_edit_tool.cpp:2744
+#: eeschema/tools/sch_edit_tool.cpp:2738
 msgid "Edit Sheet Properties"
 msgstr "Editer Propriétés Feuille de Hiérarchie"
 
-#: eeschema/tools/sch_edit_tool.cpp:2868
+#: eeschema/tools/sch_edit_tool.cpp:2862
 #: pcbnew/dialogs/dialog_rule_area_properties_base.h:64
 msgid "Rule Area Properties"
 msgstr "Propriétés de la Zone à Règles"
 
-#: eeschema/tools/sch_edit_tool.cpp:2940 eeschema/tools/sch_edit_tool.cpp:3028
+#: eeschema/tools/sch_edit_tool.cpp:2934 eeschema/tools/sch_edit_tool.cpp:3022
 msgid "<empty>"
 msgstr "<Vide>"
 
-#: eeschema/tools/sch_edit_tool.cpp:3361
+#: eeschema/tools/sch_edit_tool.cpp:3355
 msgid "Do you wish to delete the unreferenced pins from this sheet?"
 msgstr ""
 "Souhaitez-vous supprimer les pin de feuille non référencées de cette feuille?"
 
-#: eeschema/tools/sch_edit_tool.cpp:3422
+#: eeschema/tools/sch_edit_tool.cpp:3416
 #, c-format
 msgid "Enter page number for sheet path%s"
 msgstr "Entrez le numéro de page pour le chemin hiérarchique de la feuille %s"
 
-#: eeschema/tools/sch_edit_tool.cpp:3425
+#: eeschema/tools/sch_edit_tool.cpp:3419
 #: eeschema/widgets/hierarchy_pane.cpp:631
 msgid "Edit Sheet Page Number"
 msgstr "Editer Numéro de Page de la Feuille"
 
-#: eeschema/tools/sch_edit_tool.cpp:3551
+#: eeschema/tools/sch_edit_tool.cpp:3545
 msgid "Toggle Attribute"
 msgstr "Basculer Attribut"
 
-#: eeschema/tools/sch_edit_tool.cpp:3566
+#: eeschema/tools/sch_edit_tool.cpp:3560
 msgid "Edit Symbol Properties..."
 msgstr "Editer Propriétés du Symbole..."
 
-#: eeschema/tools/sch_edit_tool.cpp:3583
+#: eeschema/tools/sch_edit_tool.cpp:3577
 msgid "Edit Netclasses..."
 msgstr "Editer Netclasses..."
 
@@ -27822,233 +28180,196 @@ msgstr "Renommer une feuille"
 msgid "(page %s)"
 msgstr "(page %s)"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:85
+#: eeschema/widgets/panel_remote_symbol.cpp:76
 msgid "Missing payload data."
 msgstr "Données de \"payload\" manquantes."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:93
+#: eeschema/widgets/panel_remote_symbol.cpp:84
 msgid "Failed to decode base64 payload."
 msgstr "Échec du décodage de la \"payload\" base64."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:115
+#: eeschema/widgets/panel_remote_symbol.cpp:107
 #, c-format
 msgid "Unsupported compression '%s'."
 msgstr "Compression non prise en charge '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:122
+#: eeschema/widgets/panel_remote_symbol.cpp:114
 msgid "Compressed payload was empty."
 msgstr "La \"payload\" compressée était vide."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:139
+#: eeschema/widgets/panel_remote_symbol.cpp:133
+#, c-format
+msgid "Decompressed size %llu exceeds limit %llu."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:144
 #, c-format
 msgid "ZSTD decompression failed: %s"
 msgstr "Échec de la décompression ZSTD : %s"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:182
-msgid "Payload was empty."
-msgstr "La \"payload\" était vide."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:193
-#: eeschema/widgets/panel_remote_symbol.cpp:1249
-#: eeschema/widgets/panel_remote_symbol.cpp:1364
-#: eeschema/widgets/panel_remote_symbol.cpp:1388
-#: eeschema/widgets/panel_remote_symbol.cpp:1461
-#: eeschema/widgets/panel_remote_symbol.cpp:1525
-#, c-format
-msgid "Unable to create '%s'."
-msgstr "Impossible de créer '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:202
-#, c-format
-msgid "Unable to open '%s' for writing."
-msgstr "Impossible d'ouvrir '%s' pour écriture."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:208
-#, c-format
-msgid "Failed to write '%s'."
-msgstr "Impossible d'écrire  '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:223
+#: eeschema/widgets/panel_remote_symbol.cpp:169
 msgid "Symbol payload was empty."
 msgstr "La \"payload\" du symbole était vide."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:231
-#: eeschema/widgets/panel_remote_symbol.cpp:241
+#: eeschema/widgets/panel_remote_symbol.cpp:177
+#: eeschema/widgets/panel_remote_symbol.cpp:186
 msgid "Unable to create a temporary file for the symbol payload."
 msgstr ""
 "Impossible de créer un fichier temporaire pour la \"payload\" du symbole."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:248
+#: eeschema/widgets/panel_remote_symbol.cpp:193
 msgid "Failed to write the temporary symbol payload."
 msgstr "Échec de l'écriture de la \"payload\" du symbole temporaire."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:260
+#: eeschema/widgets/panel_remote_symbol.cpp:205
 msgid "Unable to access the KiCad symbol plugin."
 msgstr "Impossible d'accéder au plugin de symboles KiCad."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:280
+#: eeschema/widgets/panel_remote_symbol.cpp:219
 msgid "Symbol payload did not include the expected symbol."
 msgstr "La \"payload\" du symbole ne comprenait pas le symbole attendu."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:285
+#: eeschema/widgets/panel_remote_symbol.cpp:223
 #, c-format
 msgid "Unable to decode the symbol payload: %s"
 msgstr "Impossible de décoder la \"payload\" du symbole : %s"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:309
-msgid "Select which remote data source to query."
-msgstr "Sélection de la source de données distante à interroger."
+#: eeschema/widgets/panel_remote_symbol.cpp:252
+msgid "Reload current provider page"
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:315
-msgid "Configure remote data sources."
+#: eeschema/widgets/panel_remote_symbol.cpp:257
+#, fuzzy
+msgid "Configure remote providers"
 msgstr "Configurer les sources de données distantes."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:391
-msgid "No remote data sources are currently installed."
-msgstr "Aucune source de données distante n'est actuellement installée."
+#: eeschema/widgets/panel_remote_symbol.cpp:379
+#, fuzzy
+msgid "No remote providers configured."
+msgstr "Aucune branche d'amont n'est configurée."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:444
-#, c-format
-msgid "No configuration JSON found for '%s'."
-msgstr "Pas de configuration JSON trouvée pour '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:455
-#, c-format
-msgid "Unable to open '%s'."
-msgstr "Impossible d'ouvrir '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:465
-#, c-format
-msgid "Unable to read '%s'."
-msgstr "Impossible de lire '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:479
-#, c-format
-msgid "Unable to load remote data for '%s'."
+#: eeschema/widgets/panel_remote_symbol.cpp:451
+#, fuzzy
+msgid "Unable to load remote provider metadata."
 msgstr "Impossible de charger les données distantes pour '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:809
+#: eeschema/widgets/panel_remote_symbol.cpp:696
+msgid "A remote provider sign-in flow is already in progress."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:728
+#, fuzzy
+msgid "Unable to start the local OAuth callback listener."
+msgstr "Impossible de démarrer le programme d'écoute de connexion locale."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:738
+#, fuzzy
+msgid "Unable to open the system browser for sign-in."
+msgstr "Impossible d'ouvrir '%s' pour écriture."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:768
+#, fuzzy
+msgid "Failed to delete stored remote provider tokens."
+msgstr "Échec de l'analyse du fichier 'repository.json' stocké localement."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:808
 #, c-format
 msgid "Unsupported RPC version %d."
 msgstr "Version RPC non prise en charge %d."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:818
+#: eeschema/widgets/panel_remote_symbol.cpp:817
 msgid "Missing session identifier."
 msgstr "Identifieur de session manquant."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:902
-msgid "Missing compression metadata."
-msgstr "Métadonnées de compression manquantes."
+#: eeschema/widgets/panel_remote_symbol.cpp:824
+msgid "Session identifier did not match the active provider session."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:941
-#: eeschema/widgets/panel_remote_symbol.cpp:955
+#: eeschema/widgets/panel_remote_symbol.cpp:912
+#, fuzzy
+msgid "No remote provider is currently selected."
+msgstr "Zoom sur les éléments actuellement sélectionnés"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1033
+#, fuzzy
+msgid "Unable to process provider payload."
+msgstr "Impossible de stocker le \"payload\"."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, c-format
 msgid "Command '%s' is not supported."
 msgstr "La commande '%s' n'est pas prise en charge."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:949
-msgid "Unable to store payload."
-msgstr "Impossible de stocker le \"payload\"."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:965
-#: eeschema/widgets/panel_remote_symbol.cpp:1233
-#: eeschema/widgets/panel_remote_symbol.cpp:1410
-msgid "Unable to load schematic settings."
-msgstr "Impossible de charger les paramètres schématiques."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:980
-msgid "Destination directory is not configured."
-msgstr "Le répertoire de destination n'est pas configuré."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:991
-#, c-format
-msgid "Unable to create directory '%s'."
-msgstr "Impossible de créer le répertoire '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1011
-msgid "Unable to access the symbol library table."
-msgstr "Impossible d'accéder à la table de librairies de symboles."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1030
-msgid "Failed to update the symbol library table."
-msgstr "Échec de la mise à jour de la table de librairies de symbole."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1044
-#: eeschema/widgets/panel_remote_symbol.cpp:1100
-msgid "Remote download"
-msgstr "Téléchargement du distant"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1049
-msgid "Failed to save the symbol library table."
-msgstr "Impossible de sauver la table de librairies de symboles."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1067
-msgid "Unable to access the footprint library table."
-msgstr "Impossible d'accéder à la table de librairies d'empreintes."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1086
-msgid "Failed to update the footprint library table."
-msgstr "Impossible de mettre à jour la librairie d'empreintes."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1105
-msgid "Failed to save the footprint library table."
-msgstr "Impossible de sauver la librairie d'empreintes ."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1146
-msgid "No schematic editor is available for placement."
-msgstr "Aucun éditeur schématique n'est disponible pour le placement."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1153
-msgid "Downloaded symbol metadata is incomplete."
-msgstr "Les métadonnées du symbole téléchargé sont incomplètes."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1165
-msgid "Unable to load the downloaded symbol for placement."
-msgstr "Impossible de charger le symbole téléchargé pour le placement."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1187
-msgid "Unable to access the schematic placement tools."
-msgstr "Impossible d'accéder aux outils de placement schématique."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1211
-#: eeschema/widgets/panel_remote_symbol.cpp:1342
-#: eeschema/widgets/panel_remote_symbol.cpp:1438
-#: eeschema/widgets/panel_remote_symbol.cpp:1503
+#: eeschema/widgets/panel_remote_symbol.cpp:1052
 #, c-format
 msgid "Unsupported transfer mode '%s'."
 msgstr "Mode de transfert non pris en charge '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1219
+#: eeschema/widgets/panel_remote_symbol.cpp:1058
 msgid "Unsupported symbol payload type."
 msgstr "Type de \"payload\" de symbole non pris en charge."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1225
+#: eeschema/widgets/panel_remote_symbol.cpp:1064
 msgid "No schematic editor is available to store symbols."
 msgstr "Aucun éditeur schématique n'est disponible pour stocker les symboles."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1278
+#: eeschema/widgets/panel_remote_symbol.cpp:1109
 msgid "Unable to access the symbol library manager."
 msgstr "Impossible d'accéder au gestionnaire de librairies de symboles."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1287
-msgid "Unable to parse the downloaded symbol."
-msgstr "Impossible d'analyser le symbole téléchargé."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1302
+#: eeschema/widgets/panel_remote_symbol.cpp:1126
 msgid "Unable to save the downloaded symbol."
 msgstr "Impossible de sauver le symbole téléchargé."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1350
+#: eeschema/widgets/panel_remote_symbol.cpp:1154
+#, fuzzy, c-format
+msgid "Failed to parse component list: %s"
+msgstr "Échec de l'ajout des données du composant"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1160
+#, fuzzy
+msgid "Component list must be a non-empty array."
+msgstr "La liste des composants doit être un tableau."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1170
+msgid "Component entries must be objects."
+msgstr "Les entrées de composants doivent être des objets."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1178
+msgid "Component entry was missing a type."
+msgstr "L'entrée du composant a le type manquant."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1237
+#, c-format
+msgid "Unsupported component type '%s'."
+msgstr "Type de composant non pris en charge '%s'."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1256
 msgid "Unsupported footprint payload type."
 msgstr "Type de \"payload\" d'empreinte non pris en charge."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1447
-msgid "Unsupported 3D model payload type."
-msgstr "Type de \"payload\" de modèle 3D non pris en charge."
+#: eeschema/widgets/panel_remote_symbol.cpp:1371
+msgid "Remote provider metadata is not loaded."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1511
-msgid "Unsupported SPICE payload type."
-msgstr "Type de \"payload\" SPICE non pris en charge."
+#: eeschema/widgets/panel_remote_symbol.cpp:1401
+msgid ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1437
+msgid "Remote provider sign-in was cancelled or failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1448
+msgid "Remote provider sign-in failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1464
+#, fuzzy
+msgid "Failed to store remote provider tokens securely."
+msgstr "Échec du transfert des modifications vers le dépôt distant."
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -38480,7 +38801,7 @@ msgid "Generate IPC-2581 File"
 msgstr "Génére Fichier IPC-2581"
 
 #: pcbnew/dialogs/dialog_export_2581.cpp:289
-#: pcbnew/pcbnew_jobs_handler.cpp:2564
+#: pcbnew/pcbnew_jobs_handler.cpp:2570
 #, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -47363,11 +47684,11 @@ msgid "Checking footprints for overlapping courtyards..."
 msgstr ""
 "Vérification des empreintes pour le recouvrement des zones d'occupation.."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:89
+#: pcbnew/drc/drc_test_provider_creepage.cpp:90
 msgid "Checking creepage..."
 msgstr "Vérification de creepage..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:166
+#: pcbnew/drc/drc_test_provider_creepage.cpp:167
 #, c-format
 msgid "(%s creepage %s; actual %s)"
 msgstr "(%s creepage %s; réel %s)"
@@ -49132,7 +49453,7 @@ msgid "Error saving custom rules file '%s'."
 msgstr "Erreur en enregistrant le fichier des règles personnalisées '%s'."
 
 #: pcbnew/files.cpp:1094 pcbnew/files.cpp:1185
-#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2751
+#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2757
 #, c-format
 msgid ""
 "Error saving board file '%s'.\n"
@@ -51267,7 +51588,7 @@ msgstr ""
 "Afin de créer/mettre à jour le PCB à partir du schéma, vous devrez lancer "
 "Kicad manager et créer un projet."
 
-#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2383
+#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2389
 msgid "Eeschema netlist"
 msgstr "Netliste EEschema"
 
@@ -51345,19 +51666,19 @@ msgstr "Ordre de Mis à Jour"
 msgid "Generator Properties"
 msgstr "Propriétés du Générateur"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4435
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
 msgid "Constructing caches"
 msgstr "Construction des caches"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4450
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
 msgid "Creating nets"
 msgstr "Création des nets"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4459
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
 msgid "Creating tracks"
 msgstr "Création des pistes"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4498
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
 msgid "Converting footprints"
 msgstr "Conversion des empreintes"
 
@@ -54235,150 +54556,150 @@ msgstr ""
 msgid "Loading Footprint Libraries"
 msgstr "Chargement Librairies d'Empreintes"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:452 pcbnew/pcbnew_jobs_handler.cpp:2932
+#: pcbnew/pcbnew_jobs_handler.cpp:453 pcbnew/pcbnew_jobs_handler.cpp:2938
 msgid "Failed to load board\n"
 msgstr "Échec du chargement de la carte\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:518
+#: pcbnew/pcbnew_jobs_handler.cpp:519
 #, c-format
 msgid "Invalid layer name '%s'\n"
 msgstr "Nom de couche '%s' invalide\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:558 pcbnew/pcbnew_jobs_handler.cpp:638
-#: pcbnew/pcbnew_jobs_handler.cpp:682
+#: pcbnew/pcbnew_jobs_handler.cpp:559 pcbnew/pcbnew_jobs_handler.cpp:639
+#: pcbnew/pcbnew_jobs_handler.cpp:683
 msgid "Unknown export format"
 msgstr "Format d'exportation inconnu"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:612
+#: pcbnew/pcbnew_jobs_handler.cpp:613
 #, c-format
 msgid "Successfully exported VRML to %s"
 msgstr "Exportation réussie de VRML vers %s"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:618
+#: pcbnew/pcbnew_jobs_handler.cpp:619
 msgid "Error exporting VRML"
 msgstr "Erreur en exportation VRML"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:664
+#: pcbnew/pcbnew_jobs_handler.cpp:665
 msgid "Invalid image dimensions"
 msgstr "Dimensions d'image invalides"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:919
+#: pcbnew/pcbnew_jobs_handler.cpp:920
 msgid "Successfully created 3D render image"
 msgstr "Image de rendu 3D créée avec succès"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:924
+#: pcbnew/pcbnew_jobs_handler.cpp:925
 msgid "Error creating 3D render image"
 msgstr "Erreur lors de la création d'une image de rendu 3D"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:982 pcbnew/pcbnew_jobs_handler.cpp:1051
-#: pcbnew/pcbnew_jobs_handler.cpp:1144 pcbnew/pcbnew_jobs_handler.cpp:1232
-#: pcbnew/pcbnew_jobs_handler.cpp:1618
+#: pcbnew/pcbnew_jobs_handler.cpp:983 pcbnew/pcbnew_jobs_handler.cpp:1052
+#: pcbnew/pcbnew_jobs_handler.cpp:1145 pcbnew/pcbnew_jobs_handler.cpp:1233
+#: pcbnew/pcbnew_jobs_handler.cpp:1619
 msgid "At least one layer must be specified\n"
 msgstr "Au moins une couche doit être spécifiée\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1437 pcbnew/pcbnew_jobs_handler.cpp:1680
+#: pcbnew/pcbnew_jobs_handler.cpp:1438 pcbnew/pcbnew_jobs_handler.cpp:1681
 #, c-format
 msgid "Failed to plot to '%s'.\n"
 msgstr "Échec du traçage dans '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1508
+#: pcbnew/pcbnew_jobs_handler.cpp:1509
 msgid "Successfully created genCAD file\n"
 msgstr "Le fichier GenCAD a été créé avec succès\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1578
+#: pcbnew/pcbnew_jobs_handler.cpp:1579
 #, c-format
 msgid "Error writing file '%s'.\n"
 msgstr "Erreur lors de l'écriture du fichier '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1584
+#: pcbnew/pcbnew_jobs_handler.cpp:1585
 #, c-format
 msgid "Wrote board statistics to '%s'.\n"
 msgstr "Écriture des statistiques du PCBe dans '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1924 pcbnew/pcbnew_jobs_handler.cpp:2002
+#: pcbnew/pcbnew_jobs_handler.cpp:1925 pcbnew/pcbnew_jobs_handler.cpp:2003
 #, c-format
 msgid "Wrote front position data to '%s'.\n"
 msgstr "Génération données de position de dessus dans '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1942 pcbnew/pcbnew_jobs_handler.cpp:2026
+#: pcbnew/pcbnew_jobs_handler.cpp:1943 pcbnew/pcbnew_jobs_handler.cpp:2027
 #, c-format
 msgid "Wrote back position data to '%s'.\n"
 msgstr "Génération données de position de dessous dans '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1971
+#: pcbnew/pcbnew_jobs_handler.cpp:1972
 #, c-format
 msgid "Wrote position data to '%s'.\n"
 msgstr "Génération données de position dans '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2073
+#: pcbnew/pcbnew_jobs_handler.cpp:2074
 msgid "Footprint library path does not exist or is not accessible\n"
 msgstr "La librairie d'empreinte n'existe pas ou n'est pas accessible\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2113
+#: pcbnew/pcbnew_jobs_handler.cpp:2114
 msgid "Unable to save library\n"
 msgstr "Impossible de sauver la librairie\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2119
+#: pcbnew/pcbnew_jobs_handler.cpp:2120
 msgid "Footprint library was not updated\n"
 msgstr "La librairie d'empreintes n'a pas été mise à jour\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2200
+#: pcbnew/pcbnew_jobs_handler.cpp:2201
 msgid "The given footprint could not be found to export."
 msgstr "L'empreinte donnée n'a pas pu être trouvée pour être exportée."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2242
+#: pcbnew/pcbnew_jobs_handler.cpp:2243
 #, c-format
 msgid "Plotting footprint '%s' to '%s'\n"
 msgstr "Traçage de l'empreinte '%s' dans'%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2271
+#: pcbnew/pcbnew_jobs_handler.cpp:2272
 msgid "Error creating svg file"
 msgstr "Erreur de création du fichier svg"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2336 pcbnew/tools/drc_tool.cpp:170
+#: pcbnew/pcbnew_jobs_handler.cpp:2342 pcbnew/tools/drc_tool.cpp:170
 msgid "Schematic parity tests require a fully annotated schematic."
 msgstr ""
 "Les tests de parité schématique nécessitent un schéma complètement numéroté."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2357 pcbnew/pcbnew_jobs_handler.cpp:2390
+#: pcbnew/pcbnew_jobs_handler.cpp:2363 pcbnew/pcbnew_jobs_handler.cpp:2396
 msgid "Failed to fetch schematic netlist for parity tests.\n"
 msgstr ""
 "Échec de la récupération de la netliste de la schématique pour les tests de "
 "parité.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2421 pcbnew/tools/drc_tool.cpp:208
+#: pcbnew/pcbnew_jobs_handler.cpp:2427 pcbnew/tools/drc_tool.cpp:208
 msgid "DRC"
 msgstr "DRC"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2442
+#: pcbnew/pcbnew_jobs_handler.cpp:2448
 #, c-format
 msgid "Found %d unconnected items\n"
 msgstr "Trouvé %d éléments non connectés\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2448
+#: pcbnew/pcbnew_jobs_handler.cpp:2454
 #, c-format
 msgid "Found %d schematic parity issues\n"
 msgstr "Trouvé %d problèmes de parité de schématique\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2464
+#: pcbnew/pcbnew_jobs_handler.cpp:2470
 #, c-format
 msgid "Unable to save DRC report to %s\n"
 msgstr "Impossible de sauvegarder le rapport DRC en %s\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2469
+#: pcbnew/pcbnew_jobs_handler.cpp:2475
 #, c-format
 msgid "Saved DRC Report to %s\n"
 msgstr "Rapport DRC sauvegardé en %s\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2476
+#: pcbnew/pcbnew_jobs_handler.cpp:2482
 msgid "Saved board\n"
 msgstr "PCB sauvegardé\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2480
+#: pcbnew/pcbnew_jobs_handler.cpp:2486
 msgid "Failed to save board.\n"
 msgstr "Échec de l'enregistrement du PCB.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2603
+#: pcbnew/pcbnew_jobs_handler.cpp:2609
 #, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -54387,48 +54708,48 @@ msgstr ""
 "Erreur en génération du fichier IPC-2581 '%s'.\n"
 "Échec du renommage du fichier temporaire '%s."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2649
+#: pcbnew/pcbnew_jobs_handler.cpp:2655
 msgid "Successfully created IPC-D-356 file\n"
 msgstr "Le fichier IPC-D-356 a été créé avec succès\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2654
+#: pcbnew/pcbnew_jobs_handler.cpp:2660
 msgid "Failed to create IPC-D-356 file\n"
 msgstr "Impossible de créer le fichier IPC-D-356\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2741
+#: pcbnew/pcbnew_jobs_handler.cpp:2747
 msgid "Successfully saved board file using the latest format\n"
 msgstr "Sauvegarde réussie du fichierPCB au format le plus récent\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2745
+#: pcbnew/pcbnew_jobs_handler.cpp:2751
 msgid "Board file was not updated\n"
 msgstr "Le fichier PCB n'a pas été mis à jour\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2883
+#: pcbnew/pcbnew_jobs_handler.cpp:2889
 #, c-format
 msgid "Unable to determine file format for '%s'\n"
 msgstr "Impossible de déterminer le format du fichier pour '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2892
+#: pcbnew/pcbnew_jobs_handler.cpp:2898
 #, c-format
 msgid "Input file not found: '%s'\n"
 msgstr "Fichier d'entrée non trouvé: '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2918
+#: pcbnew/pcbnew_jobs_handler.cpp:2924
 #, c-format
 msgid "No plugin found for file type '%s'\n"
 msgstr "Aucun plugin trouvé pour le type de fichier '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2924
+#: pcbnew/pcbnew_jobs_handler.cpp:2930
 #, c-format
 msgid "Importing '%s' using %s format...\n"
 msgstr "Importation de '%s' format %s...\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2940
+#: pcbnew/pcbnew_jobs_handler.cpp:2946
 #, c-format
 msgid "Successfully saved imported board to '%s'\n"
 msgstr "La carte importée a été enregistrée avec succès dans '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:3062
+#: pcbnew/pcbnew_jobs_handler.cpp:3068
 #, c-format
 msgid "Error during import: %s\n"
 msgstr "Erreur lors de l'impotation: %s\n"
@@ -54508,7 +54829,7 @@ msgstr "Appliquer Script d’Action"
 msgid "Exception on python footprint wizard code"
 msgstr "Exception dans le code python de l'assistant d'empreinte"
 
-#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:214
+#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:216
 #, c-format
 msgid "Error loading drawing sheet '%s': %s"
 msgstr "Erreur de chargement de la feuille de dessin '%s': %s"
@@ -55147,11 +55468,11 @@ msgstr "%d problèmes potentiels réparés."
 msgid "No board problems found."
 msgstr "Aucun problème trouvé sur le PCB."
 
-#: pcbnew/tools/board_editor_control.cpp:694
+#: pcbnew/tools/board_editor_control.cpp:699
 msgid "Updating PCB requires a fully annotated schematic."
 msgstr "Une mise à jour du PCB nécessite un schéma entièrement numéroté."
 
-#: pcbnew/tools/board_editor_control.cpp:708
+#: pcbnew/tools/board_editor_control.cpp:715
 msgid ""
 "Cannot update schematic because Pcbnew is opened in stand-alone mode. In "
 "order to create or update PCBs from schematics, you must launch the KiCad "
@@ -55161,70 +55482,70 @@ msgstr ""
 "Afin de créer/mettre à jour le PCB à partir du schéma, vous devrez lancer "
 "Kicad manager et créez un projet."
 
-#: pcbnew/tools/board_editor_control.cpp:752
+#: pcbnew/tools/board_editor_control.cpp:759
 #, c-format
 msgid "Schematic file '%s' not found."
 msgstr "Fichier schématique '%s' non trouvé."
 
-#: pcbnew/tools/board_editor_control.cpp:783
+#: pcbnew/tools/board_editor_control.cpp:793
 msgid "Eeschema failed to load."
 msgstr "Eeschema a échoué chargement."
 
-#: pcbnew/tools/board_editor_control.cpp:896
+#: pcbnew/tools/board_editor_control.cpp:907
 msgid "Increase Track Width"
 msgstr "Augmente Largeur de Piste"
 
-#: pcbnew/tools/board_editor_control.cpp:978
+#: pcbnew/tools/board_editor_control.cpp:989
 msgid "Decrease Track Width"
 msgstr "Diminue Largeur de Piste"
 
-#: pcbnew/tools/board_editor_control.cpp:1063 pcbnew/tools/pcb_actions.cpp:1375
+#: pcbnew/tools/board_editor_control.cpp:1074 pcbnew/tools/pcb_actions.cpp:1375
 msgid "Increase Via Size"
 msgstr "Augmenter Taille de Via"
 
-#: pcbnew/tools/board_editor_control.cpp:1333
+#: pcbnew/tools/board_editor_control.cpp:1344
 msgid "Place Footprint"
 msgstr "Placer Empreinte"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1500
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1500
 msgid "Lock"
 msgstr "Verrouiller"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1507
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1507
 msgid "Unlock"
 msgstr "Déverrouiller"
 
-#: pcbnew/tools/board_editor_control.cpp:1492
+#: pcbnew/tools/board_editor_control.cpp:1503
 msgid "Zones have insufficient overlap for merging."
 msgstr "Les zones ne se chevauchent pas suffisamment pour fusionner."
 
-#: pcbnew/tools/board_editor_control.cpp:1547
+#: pcbnew/tools/board_editor_control.cpp:1558
 msgid "Some zone netcodes did not match and were not merged."
 msgstr "Certaines zones n'ont pas le même net pas et n’ont pas été fusionnées."
 
-#: pcbnew/tools/board_editor_control.cpp:1553
+#: pcbnew/tools/board_editor_control.cpp:1564
 msgid "Some zones were rule areas and were not merged."
 msgstr ""
 "Certaines zones étaient des zones de règles et n’ont pas été fusionnées."
 
-#: pcbnew/tools/board_editor_control.cpp:1559
+#: pcbnew/tools/board_editor_control.cpp:1570
 msgid "Some zone layer sets did not match and were not merged."
 msgstr ""
 "Certaines zones n'ont pas les même couches pas et n’ont pas été fusionnées."
 
-#: pcbnew/tools/board_editor_control.cpp:1576
+#: pcbnew/tools/board_editor_control.cpp:1587
 msgid "Some zones did not intersect and were not merged."
 msgstr "Certaines zones n'intersectent pas et n’ont pas été fusionnées."
 
-#: pcbnew/tools/board_editor_control.cpp:1589 pcbnew/tools/pcb_actions.cpp:1410
+#: pcbnew/tools/board_editor_control.cpp:1600 pcbnew/tools/pcb_actions.cpp:1410
 msgid "Merge Zones"
 msgstr "Fusionner les Zones"
 
-#: pcbnew/tools/board_editor_control.cpp:1643
+#: pcbnew/tools/board_editor_control.cpp:1654
 msgid "Duplicate Zone"
 msgstr "Dupliquer Zone"
 
-#: pcbnew/tools/board_editor_control.cpp:1716
+#: pcbnew/tools/board_editor_control.cpp:1727
 msgid "Selection contains no items with labeled nets."
 msgstr "La sélection ne contient pas d'élément avec des nets nommés."
 
@@ -60124,6 +60445,61 @@ msgstr "Symbole Schématique KiCad"
 msgid "KiCad Drawing Sheet"
 msgstr "Feuille de Dessin KiCad"
 
+#: scripting/python_manager.cpp:135
+#, fuzzy
+msgid "Process could not be created"
+msgstr "Le fichier '%s' n'a pas pu être créé."
+
+#: scripting/python_scripting.cpp:367
+#, fuzzy, c-format
+msgid "Could not create user scripting path %s."
+msgstr "Impossible d'ouvrir/créer le chemin '%s'."
+
+#~ msgid ""
+#~ "Install a remote symbol server using the Plugin and Content Manager to "
+#~ "enable"
+#~ msgstr ""
+#~ "Installer un serveur de symboles distant à l'aide du Gestionnaire de "
+#~ "Plugins et de Contenu pour activer"
+
+#~ msgid "Select which remote data source to query."
+#~ msgstr "Sélection de la source de données distante à interroger."
+
+#~ msgid "No remote data sources are currently installed."
+#~ msgstr "Aucune source de données distante n'est actuellement installée."
+
+#, c-format
+#~ msgid "No configuration JSON found for '%s'."
+#~ msgstr "Pas de configuration JSON trouvée pour '%s'."
+
+#, c-format
+#~ msgid "Unable to open '%s'."
+#~ msgstr "Impossible d'ouvrir '%s'."
+
+#~ msgid "Missing compression metadata."
+#~ msgstr "Métadonnées de compression manquantes."
+
+#~ msgid "Unable to access the footprint library table."
+#~ msgstr "Impossible d'accéder à la table de librairies d'empreintes."
+
+#~ msgid "Failed to update the footprint library table."
+#~ msgstr "Impossible de mettre à jour la librairie d'empreintes."
+
+#~ msgid "Failed to save the footprint library table."
+#~ msgstr "Impossible de sauver la librairie d'empreintes ."
+
+#~ msgid "Downloaded symbol metadata is incomplete."
+#~ msgstr "Les métadonnées du symbole téléchargé sont incomplètes."
+
+#~ msgid "Unable to parse the downloaded symbol."
+#~ msgstr "Impossible d'analyser le symbole téléchargé."
+
+#~ msgid "Unsupported 3D model payload type."
+#~ msgstr "Type de \"payload\" de modèle 3D non pris en charge."
+
+#~ msgid "Unsupported SPICE payload type."
+#~ msgstr "Type de \"payload\" SPICE non pris en charge."
+
 #~ msgid "PCB: Import"
 #~ msgstr "PCB : Importation"
 
@@ -60757,27 +61133,11 @@ msgstr "Feuille de Dessin KiCad"
 #~ msgid "Missing login URL for remote authentication."
 #~ msgstr "URL de connexion manquante pour l'authentification à distance."
 
-#~ msgid "Unable to start the local login listener."
-#~ msgstr "Impossible de démarrer le programme d'écoute de connexion locale."
-
 #~ msgid "Failed to allocate a callback port for login."
 #~ msgstr "Échec de l'attribution d'un port de rappel pour le login."
 
-#~ msgid "Component list must be an array."
-#~ msgstr "La liste des composants doit être un tableau."
-
 #~ msgid "Component list was empty."
 #~ msgstr "La liste des composants était vide."
-
-#~ msgid "Component entries must be objects."
-#~ msgstr "Les entrées de composants doivent être des objets."
-
-#~ msgid "Component entry was missing a type."
-#~ msgstr "L'entrée du composant a le type manquant."
-
-#, c-format
-#~ msgid "Unsupported component type '%s'."
-#~ msgstr "Type de composant non pris en charge '%s'."
 
 #, c-format
 #~ msgid "Symbol Library Tables (%s)|*"

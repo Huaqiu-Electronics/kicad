@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 11:13-0700\n"
+"POT-Creation-Date: 2026-03-11 13:57-0700\n"
 "PO-Revision-Date: 2026-03-07 16:27+0000\n"
 "Last-Translator: Sašo Domadenik <saso.doma@gmail.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
@@ -172,7 +172,7 @@ msgstr "Čas ponovnega nalaganja %.3f s"
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:363
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:571
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:285
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:306
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:321
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:347
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:155
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.cpp:117
@@ -214,7 +214,7 @@ msgstr "Rendriranje: naknadno senčenje"
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:54
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:627
 #: common/eda_base_frame.cpp:1509 common/hotkey_store.cpp:80
-#: common/tool/actions.cpp:1270 pcbnew/footprint_chooser_frame.cpp:364
+#: common/tool/actions.cpp:1264 pcbnew/footprint_chooser_frame.cpp:364
 #: pcbnew/footprint_viewer_frame.cpp:968 pcbnew/pcb_base_frame.cpp:668
 msgid "3D Viewer"
 msgstr "3D pogled"
@@ -306,7 +306,7 @@ msgstr "Prevzemi izvozne nastavitve"
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:567
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:753
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:940
-#: pcbnew/pcbnew_jobs_handler.cpp:814
+#: pcbnew/pcbnew_jobs_handler.cpp:815
 msgid "legacy colors"
 msgstr "Standardne barve"
 
@@ -2854,12 +2854,12 @@ msgstr "Kopirajte podatke o različici KiCad v odložišče"
 msgid "&Report Bug"
 msgstr "& Prijavi napako"
 
-#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1434
+#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1428
 #, fuzzy
 msgid "Report a problem with KiCad"
 msgstr "Prijavite težavo s KiCad"
 
-#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1427
+#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1421
 msgid "Donate"
 msgstr ""
 
@@ -3522,7 +3522,7 @@ msgstr "Naslov Block"
 #: common/dialogs/dialog_page_settings.cpp:465
 #: eeschema/eeschema_jobs_handler.cpp:249 pagelayout_editor/files.cpp:254
 #: pagelayout_editor/pl_editor_frame.cpp:369
-#: pcbnew/pcbnew_jobs_handler.cpp:2818
+#: pcbnew/pcbnew_jobs_handler.cpp:2824
 #, fuzzy, c-format
 msgid "Error loading drawing sheet '%s'."
 msgstr "Napaka pri nalaganju urejevalnika"
@@ -3815,8 +3815,8 @@ msgstr "Predogled tiskanja"
 
 #: common/dialogs/dialog_print_generic.cpp:98
 #: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:466
-#: common/dialogs/rule_editor_dialog_base.cpp:506 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:469
+#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -4190,7 +4190,7 @@ msgstr "Potrdi"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:458 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -5420,7 +5420,7 @@ msgstr "Nikoli"
 msgid "Cursor"
 msgstr "Kazalnik"
 
-#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1182
+#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1179
 #: common/widgets/gal_options_panel_base.cpp:102
 #, fuzzy
 msgid "Small crosshairs"
@@ -6718,35 +6718,35 @@ msgstr "Uvozi odtis"
 msgid "Save"
 msgstr "Shrani"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:462
-#: common/dialogs/rule_editor_dialog_base.cpp:480
+#: common/dialogs/rule_editor_dialog_base.cpp:465
+#: common/dialogs/rule_editor_dialog_base.cpp:483
 #: kicad/kicad_manager_frame.cpp:973
 #, fuzzy
 msgid "Discard"
 msgstr "Zavrzi spremembe"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:556
+#: common/dialogs/rule_editor_dialog_base.cpp:559
 #, fuzzy
 msgid "New Rule"
 msgstr "Nov modul"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:562
 #, fuzzy
 msgid "Copy Rule"
 msgstr "Nabor slojev po meri"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:565
 #, fuzzy
 msgid "Delete Rule"
 msgstr "Briši modul"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 #, fuzzy
 msgid "Move Up"
 msgstr "Pomakni se navzgor"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 #, fuzzy
 msgid "Move Down"
@@ -6774,7 +6774,7 @@ msgid "Error switching GAL backend"
 msgstr ""
 
 #: common/drawing_sheet/drawing_sheet_parser.cpp:559
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3643
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3650
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3662
 #, fuzzy
 msgid "Failed to read image data."
@@ -7035,6 +7035,7 @@ msgid "Do you want to remove it from list of recently opened files?"
 msgstr "Ali res želite izbrisati \"%s\"?"
 
 #: common/eda_base_frame.cpp:1323
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:79
 #, fuzzy
 msgid "Remove"
 msgstr "Odstrani"
@@ -7073,7 +7074,7 @@ msgstr "Bližnjice"
 msgid "Version Control"
 msgstr "& Samo izbira"
 
-#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1285
+#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1279
 #: common/tool/common_tools.cpp:617 eeschema/symbol_editor/symbol_editor.cpp:84
 #: kicad/tools/kicad_manager_actions.cpp:116
 #, fuzzy
@@ -7136,7 +7137,7 @@ msgstr "Vir"
 msgid "Simulator"
 msgstr "Simulator ..."
 
-#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1302
+#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1296
 #: common/tool/common_tools.cpp:619 kicad/tools/kicad_manager_actions.cpp:138
 #: pcbnew/dialogs/panel_display_options_base.cpp:97
 #: pcbnew/footprint_edit_frame.cpp:1126 pcbnew/menubar_footprint_editor.cpp:92
@@ -7246,7 +7247,7 @@ msgstr "Shematske datoteke \"%s\" ni mogoče najti."
 msgid "Unknown MIME type for documentation file '%s'"
 msgstr "Neznana vrsta MIME za datoteko z dokumenti \"%s\""
 
-#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1214
+#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1222
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:55
 #, fuzzy
 msgid "Override locks"
@@ -7335,7 +7336,7 @@ msgstr "Inči"
 msgid "Search"
 msgstr "Iskanje besedila"
 
-#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1320
+#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1314
 #: eeschema/eeschema_settings.cpp:94 eeschema/sch_edit_frame.cpp:2038
 #: pagelayout_editor/pl_editor_frame.cpp:201
 #: pcbnew/footprint_edit_frame.cpp:236 pcbnew/pcb_edit_frame.cpp:370
@@ -8237,7 +8238,7 @@ msgstr ""
 "Težava pri zagonu pregledovalnika PDF\n"
 "Ukaz je \"%s\""
 
-#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:732
+#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:749
 #: gerbview/gerbview.cpp:262 kicad/project_template.cpp:364
 #: pcbnew/pcbnew.cpp:749
 #, fuzzy, c-format
@@ -8709,7 +8710,7 @@ msgid "Paste clipboard cells to matrix at current cell"
 msgstr "Celice odložišča prilepite v matrico v trenutni celici"
 
 #: common/grid_tricks.cpp:388 common/tool/actions.cpp:404
-#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2267
+#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2261
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
@@ -10153,22 +10154,22 @@ msgstr "Knjižnica z vzdevkom '%s' že obstaja."
 msgid "Added by Plugin and Content Manager"
 msgstr "Upravitelj vtičnikov in vsebine"
 
-#: common/libraries/library_manager.cpp:409
+#: common/libraries/library_manager.cpp:420
 #, fuzzy
 msgid "KiCad Default Libraries"
 msgstr "Privzeto KiCad"
 
-#: common/libraries/library_manager.cpp:1132
+#: common/libraries/library_manager.cpp:1143
 #, fuzzy
 msgid "Library not found in library table"
 msgstr "Knjižnice ni mogoče najti v tabeli knjižnice simbolov."
 
-#: common/libraries/library_manager.cpp:1152
+#: common/libraries/library_manager.cpp:1163
 #, fuzzy, c-format
 msgid "Library '%s': %s"
 msgstr "Knjižnica:"
 
-#: common/libraries/library_manager.cpp:1369
+#: common/libraries/library_manager.cpp:1380
 #, fuzzy, c-format
 msgid "Library %s not found"
 msgstr "Knjižnice '%s' ni mogoče najti."
@@ -10381,6 +10382,30 @@ msgstr "Utemeljitev:"
 
 #: common/notifications_manager.cpp:182
 msgid "There are no notifications available"
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:126
+msgid "Missing HTTP method in callback request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:134
+msgid "Missing callback URL in request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:145
+msgid "Unexpected callback path."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:153
+msgid "OAuth callback state did not match."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:163
+msgid "Authorization server returned an OAuth error."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:171
+msgid "Missing authorization code in callback."
 msgstr ""
 
 #: common/page_info.cpp:48
@@ -10644,6 +10669,143 @@ msgstr "Opozorilo: "
 msgid "Error: "
 msgstr "Napaka: "
 
+#: common/remote_provider_client.cpp:287
+msgid "Sign in required for this provider."
+msgstr ""
+
+#: common/remote_provider_client.cpp:329
+msgid "Provider metadata does not include a session bootstrap URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:352
+msgid "Bootstrap response did not include a nonce URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:371
+msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+msgstr ""
+
+#: common/remote_provider_client.cpp:407
+#, c-format
+msgid "Remote provider request failed with HTTP %d."
+msgstr ""
+
+#: common/remote_provider_client.cpp:432
+#, c-format
+msgid "Remote provider returned invalid JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:453
+#, c-format
+msgid "Remote provider returned invalid token JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:485
+#, c-format
+msgid "Remote provider token response was incomplete: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:53
+#, c-format
+msgid "Remote provider metadata schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:64
+#, c-format
+msgid "Remote provider metadata failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:124
+#, fuzzy, c-format
+msgid "Unsupported provider capability '%s'."
+msgstr "Shematske datoteke Altium"
+
+#: common/remote_provider_metadata.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider metadata: %s"
+msgstr "Ne morem odpreti %s"
+
+#: common/remote_provider_metadata.cpp:154
+msgid "Remote provider metadata must enable web_ui_v1."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:161
+msgid ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:168
+msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:173
+msgid "api_base_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:179
+msgid "panel_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:185
+msgid "session_bootstrap_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:193
+msgid "session_bootstrap_url must share the same origin as panel_url."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:199
+msgid "auth.metadata_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:44
+#, fuzzy, c-format
+msgid "Unable to parse OAuth metadata: %s"
+msgstr "Ne morem odpreti %s"
+
+#: common/remote_provider_models.cpp:50
+msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
+msgstr ""
+
+#: common/remote_provider_models.cpp:55
+msgid "authorization_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:60
+msgid "token_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:66
+msgid "revocation_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:98
+#, c-format
+msgid "Remote provider manifest schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_models.cpp:109
+#, c-format
+msgid "Remote provider manifest failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_models.cpp:136
+msgid "assets[].download_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider manifest: %s"
+msgstr "Ne morem odpreti %s"
+
+#: common/remote_provider_utils.cpp:94
+#, c-format
+msgid ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
+msgstr ""
+
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, fuzzy, c-format
 msgid "File '%s' does not exist."
@@ -10707,7 +10869,7 @@ msgstr "Pridobite in premaknite odtis"
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:77
 #: eeschema/lib_symbol.cpp:2552 eeschema/menubar.cpp:166
 #: eeschema/sch_sheet.cpp:2154 eeschema/sch_symbol.cpp:3959
-#: eeschema/tools/sch_edit_tool.cpp:716 pcbnew/footprint.cpp:4847
+#: eeschema/tools/sch_edit_tool.cpp:710 pcbnew/footprint.cpp:4847
 #, fuzzy
 msgid "Attributes"
 msgstr "Atributi"
@@ -10773,24 +10935,24 @@ msgid ""
 "for you."
 msgstr ""
 
-#: common/startwizard/startwizard_provider_libraries.cpp:109
+#: common/startwizard/startwizard_provider_libraries.cpp:112
 #, fuzzy
 msgid "Symbol library table"
 msgstr "Knjižnica simbolov ni omogočena."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:113
+#: common/startwizard/startwizard_provider_libraries.cpp:116
 #, fuzzy
 msgid "Footprint library table"
 msgstr "Knjižnica odtisov ni omogočena."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:117
+#: common/startwizard/startwizard_provider_libraries.cpp:120
 #, fuzzy
 msgid "Design Block library table"
 msgstr ""
 "\n"
 "Pregledam vse knjižnice?"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:136
+#: common/startwizard/startwizard_provider_libraries.cpp:146
 #: eeschema/dialogs/dialog_database_lib_settings_base.cpp:99
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:220
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1530
@@ -10828,66 +10990,66 @@ msgstr "Zapri %s"
 msgid "Quit %s"
 msgstr "Zapri %s"
 
-#: common/tool/action_toolbar.cpp:1162
+#: common/tool/action_toolbar.cpp:1170
 #, fuzzy
 msgid "Grid selector"
 msgstr "Mrežni slog"
 
-#: common/tool/action_toolbar.cpp:1163
+#: common/tool/action_toolbar.cpp:1171
 #, fuzzy
 msgid "Grid Selection box"
 msgstr "Pojasnite izbor"
 
-#: common/tool/action_toolbar.cpp:1175
+#: common/tool/action_toolbar.cpp:1183
 #, fuzzy
 msgid "Zoom selector"
 msgstr "Povečaj na Izbira"
 
-#: common/tool/action_toolbar.cpp:1176
+#: common/tool/action_toolbar.cpp:1184
 #, fuzzy
 msgid "Zoom Selection box"
 msgstr "Povečaj na Izbira"
 
-#: common/tool/action_toolbar.cpp:1188
+#: common/tool/action_toolbar.cpp:1196
 #, fuzzy
 msgid "IPC/Scripting plugins"
 msgstr "Konzola za skriptiranje"
 
-#: common/tool/action_toolbar.cpp:1189
+#: common/tool/action_toolbar.cpp:1197
 msgid "Region to hold the IPC/Scripting action buttons"
 msgstr ""
 
-#: common/tool/action_toolbar.cpp:1194
+#: common/tool/action_toolbar.cpp:1202
 #, fuzzy
 msgid "Layer selector"
 msgstr "Izbira sloja:"
 
-#: common/tool/action_toolbar.cpp:1195
+#: common/tool/action_toolbar.cpp:1203
 #, fuzzy
 msgid "Control to select the layer"
 msgstr "Počistite izbrano grafično plast"
 
-#: common/tool/action_toolbar.cpp:1202
+#: common/tool/action_toolbar.cpp:1210
 #, fuzzy
 msgid "Symbol unit selector"
 msgstr "Zapis enote simbola:"
 
-#: common/tool/action_toolbar.cpp:1203
+#: common/tool/action_toolbar.cpp:1211
 #, fuzzy
 msgid "Displays the current unit"
 msgstr "Zaprite trenutni urejevalnik"
 
-#: common/tool/action_toolbar.cpp:1208
+#: common/tool/action_toolbar.cpp:1216
 #, fuzzy
 msgid "Symbol body style selector"
 msgstr "Zapis enote simbola:"
 
-#: common/tool/action_toolbar.cpp:1209
+#: common/tool/action_toolbar.cpp:1217
 #, fuzzy
 msgid "Displays the current body style"
 msgstr "Zaprite trenutni urejevalnik"
 
-#: common/tool/action_toolbar.cpp:1215
+#: common/tool/action_toolbar.cpp:1223
 #, fuzzy
 msgid "Allow moving of locked items with the mouse"
 msgstr "Dovoli izbiro zaklenjenih predmetov"
@@ -11202,7 +11364,7 @@ msgstr "Interaktivno orodje za brisanje"
 msgid "Delete clicked items"
 msgstr "Izbriši kliknjene elemente"
 
-#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3340
+#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3334
 #: pcbnew/tools/edit_tool.cpp:2748
 #, fuzzy
 msgid "Left Justify"
@@ -11212,7 +11374,7 @@ msgstr "Levo poravnaj"
 msgid "Left-justify fields and text items"
 msgstr ""
 
-#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3342
+#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3336
 #: pcbnew/tools/edit_tool.cpp:2750
 #, fuzzy
 msgid "Center Justify"
@@ -11222,7 +11384,7 @@ msgstr "Poravnaj navpično"
 msgid "Center-justify fields and text items"
 msgstr ""
 
-#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3344
+#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3338
 #: pcbnew/tools/edit_tool.cpp:2752
 #, fuzzy
 msgid "Right Justify"
@@ -11829,7 +11991,7 @@ msgstr "Izvor mreže"
 msgid "Set the grid origin point"
 msgstr "Nastavite izvorno točko mreže"
 
-#: common/tool/actions.cpp:1115
+#: common/tool/actions.cpp:1114
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:61
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:122
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:78
@@ -11840,7 +12002,7 @@ msgstr "Nastavite izvorno točko mreže"
 msgid "Mils"
 msgstr "Mils"
 
-#: common/tool/actions.cpp:1124
+#: common/tool/actions.cpp:1122
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:165
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:60
 #: pcbnew/dialogs/dialog_board_stats_job_base.cpp:47
@@ -11858,148 +12020,148 @@ msgstr "Mils"
 msgid "Millimeters"
 msgstr "Milimetri"
 
-#: common/tool/actions.cpp:1144
+#: common/tool/actions.cpp:1141
 #, fuzzy
 msgid "Select Columns..."
 msgstr "Izberi oblike besedila ..."
 
-#: common/tool/actions.cpp:1151
+#: common/tool/actions.cpp:1148
 #, fuzzy
 msgid "Switch units"
 msgstr "Stikalne enote"
 
-#: common/tool/actions.cpp:1152
+#: common/tool/actions.cpp:1149
 #, fuzzy
 msgid "Switch between imperial and metric units"
 msgstr "Preklopite med imperialno in metrično enoto"
 
-#: common/tool/actions.cpp:1158
+#: common/tool/actions.cpp:1155
 #, fuzzy
 msgid "Polar Coordinates"
 msgstr "Polarne koordinate"
 
-#: common/tool/actions.cpp:1159
+#: common/tool/actions.cpp:1156
 #, fuzzy
 msgid "Switch between polar and cartesian coordinate systems"
 msgstr "Preklop med polarnim in kartezijanskim koordinatnim sistemom"
 
-#: common/tool/actions.cpp:1168
+#: common/tool/actions.cpp:1165
 #, fuzzy
 msgid "Reset Local Coordinates"
 msgstr "Ponastavi lokalne koordinate"
 
-#: common/tool/actions.cpp:1175
+#: common/tool/actions.cpp:1172
 #, fuzzy
 msgid "Always Show Crosshairs"
 msgstr "Vedno pokaži križanec"
 
-#: common/tool/actions.cpp:1176
+#: common/tool/actions.cpp:1173
 #, fuzzy
 msgid "Display crosshairs even when not drawing objects"
 msgstr "Prikažite križa tudi v orodju za izbiro"
 
-#: common/tool/actions.cpp:1183
+#: common/tool/actions.cpp:1180
 msgid "Use small crosshairs aligned at 0 and 90 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1190
+#: common/tool/actions.cpp:1186
 #, fuzzy
 msgid "Full-Window Crosshairs"
 msgstr "Celotna okna"
 
-#: common/tool/actions.cpp:1191
+#: common/tool/actions.cpp:1187
 msgid "Display full-window crosshairs aligned at 0 and 90 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1198
+#: common/tool/actions.cpp:1193
 msgid "45 Degree Crosshairs"
 msgstr ""
 
-#: common/tool/actions.cpp:1199
+#: common/tool/actions.cpp:1194
 msgid "Display full-window crosshairs aligned at 45 and 135 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1207
+#: common/tool/actions.cpp:1201
 #, fuzzy
 msgid "Inactive Layer View Mode"
 msgstr "Način enoslojnega pogleda"
 
-#: common/tool/actions.cpp:1208
+#: common/tool/actions.cpp:1202
 #, fuzzy
 msgid "Toggle inactive layers between normal and dimmed"
 msgstr "Preklop med neaktivnimi plastmi med običajnimi in zatemnjenimi"
 
-#: common/tool/actions.cpp:1216
+#: common/tool/actions.cpp:1210
 #, fuzzy
 msgid "Inactive Layer View Mode (3-state)"
 msgstr "Enoslojni način pogleda (3 stanja)"
 
-#: common/tool/actions.cpp:1217
+#: common/tool/actions.cpp:1211
 #, fuzzy
 msgid "Cycle inactive layers between normal, dimmed, and hidden"
 msgstr ""
 "Preklapljanje med neaktivnimi plastmi med običajnimi, zatemnjenimi in "
 "skritimi"
 
-#: common/tool/actions.cpp:1223
+#: common/tool/actions.cpp:1217
 #, fuzzy
 msgid "Draw Bounding Boxes"
 msgstr "Očrtan okvir"
 
-#: common/tool/actions.cpp:1230 pcbnew/dialogs/panel_edit_options_base.cpp:141
+#: common/tool/actions.cpp:1224 pcbnew/dialogs/panel_edit_options_base.cpp:141
 #: pcbnew/dialogs/panel_edit_options_base.cpp:215
 #, fuzzy
 msgid "Select item(s)"
 msgstr "Izberite elemente"
 
-#: common/tool/actions.cpp:1241
+#: common/tool/actions.cpp:1235
 #, fuzzy
 msgid "Measure Tool"
 msgstr "Orodje za merjenje"
 
-#: common/tool/actions.cpp:1242
+#: common/tool/actions.cpp:1236
 #, fuzzy
 msgid "Interactively measure distance between points"
 msgstr "Interaktivno izmerite razdaljo med točkami"
 
-#: common/tool/actions.cpp:1261
+#: common/tool/actions.cpp:1255
 #, fuzzy
 msgid "Switch to Project Manager"
 msgstr "Upravljalnik Projekta"
 
-#: common/tool/actions.cpp:1262
+#: common/tool/actions.cpp:1256
 #, fuzzy
 msgid "Show project window"
 msgstr "Prikaži okno konzole"
 
-#: common/tool/actions.cpp:1271
+#: common/tool/actions.cpp:1265
 #, fuzzy
 msgid "Show 3D viewer window"
 msgstr "Pokaži okno pregledovalnika 3D"
 
-#: common/tool/actions.cpp:1277 eeschema/symbol_viewer_frame.cpp:107
+#: common/tool/actions.cpp:1271 eeschema/symbol_viewer_frame.cpp:107
 #: eeschema/symbol_viewer_frame.cpp:1055
 #, fuzzy
 msgid "Symbol Library Browser"
 msgstr "Brskalnik knjižnice simbolov"
 
-#: common/tool/actions.cpp:1286 kicad/tools/kicad_manager_actions.cpp:117
+#: common/tool/actions.cpp:1280 kicad/tools/kicad_manager_actions.cpp:117
 #, fuzzy
 msgid "Create, delete and edit schematic symbols"
 msgstr "Ustvarjanje, brisanje in urejanje simbolov"
 
-#: common/tool/actions.cpp:1294 pcbnew/footprint_viewer_frame.cpp:105
+#: common/tool/actions.cpp:1288 pcbnew/footprint_viewer_frame.cpp:105
 #: pcbnew/footprint_viewer_frame.cpp:996
 #, fuzzy
 msgid "Footprint Library Browser"
 msgstr "Footprint Browser"
 
-#: common/tool/actions.cpp:1303
+#: common/tool/actions.cpp:1297
 #, fuzzy
 msgid "Create, delete and edit board footprints"
 msgstr "Ustvarjanje, brisanje in urejanje odtisov"
 
-#: common/tool/actions.cpp:1311 kicad/tools/kicad_manager_actions.cpp:168
+#: common/tool/actions.cpp:1305 kicad/tools/kicad_manager_actions.cpp:168
 #: pcb_calculator/pcb_calculator_frame.cpp:62
 #: pcb_calculator/pcb_calculator_frame.cpp:212
 #: pcb_calculator/pcb_calculator_frame.cpp:213
@@ -12008,17 +12170,17 @@ msgstr "Ustvarjanje, brisanje in urejanje odtisov"
 msgid "Calculator Tools"
 msgstr "Orodja za kalkulator"
 
-#: common/tool/actions.cpp:1312 kicad/tools/kicad_manager_actions.cpp:169
+#: common/tool/actions.cpp:1306 kicad/tools/kicad_manager_actions.cpp:169
 #, fuzzy
 msgid "Run component calculations, track width calculations, etc."
 msgstr "Zaženite izračune komponent, izračune širine proge itd."
 
-#: common/tool/actions.cpp:1321
+#: common/tool/actions.cpp:1315
 #, fuzzy
 msgid "Show/hide the properties manager"
 msgstr "Pokaži / skrij upravitelja videza"
 
-#: common/tool/actions.cpp:1330
+#: common/tool/actions.cpp:1324
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:134
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:121
 #: eeschema/fields_grid_table.cpp:1203
@@ -12026,93 +12188,93 @@ msgstr "Pokaži / skrij upravitelja videza"
 msgid "Show Datasheet"
 msgstr "Pokaži podatkovni list"
 
-#: common/tool/actions.cpp:1331
+#: common/tool/actions.cpp:1325
 #, fuzzy
 msgid "Open the datasheet in a browser"
 msgstr "Odpre obrazec v brskalniku"
 
-#: common/tool/actions.cpp:1339
+#: common/tool/actions.cpp:1333
 #, fuzzy
 msgid "Update PCB from Schematic..."
 msgstr "Posodobi PCB iz sheme ..."
 
-#: common/tool/actions.cpp:1340
+#: common/tool/actions.cpp:1334
 #, fuzzy
 msgid "Update PCB with changes made to schematic"
 msgstr "Posodobite tiskano vezje s spremembami sheme"
 
-#: common/tool/actions.cpp:1346
+#: common/tool/actions.cpp:1340
 #, fuzzy
 msgid "Update Schematic from PCB..."
 msgstr "Posodobi shemo s PCB-ja ..."
 
-#: common/tool/actions.cpp:1347
+#: common/tool/actions.cpp:1341
 #, fuzzy
 msgid "Update schematic with changes made to PCB"
 msgstr "Posodobite shemo s spremembami na PCB"
 
-#: common/tool/actions.cpp:1354
+#: common/tool/actions.cpp:1348
 #, fuzzy
 msgid "Preferences..."
 msgstr "Nastavitve ..."
 
-#: common/tool/actions.cpp:1355
+#: common/tool/actions.cpp:1349
 #, fuzzy
 msgid "Show preferences for all open tools"
 msgstr "Pokaži nastavitve za vsa odprta orodja"
 
-#: common/tool/actions.cpp:1362
+#: common/tool/actions.cpp:1356
 #: pcbnew/dialogs/panel_fp_properties_3d_model_base.cpp:78
 #, fuzzy
 msgid "Configure Paths..."
 msgstr "Konfiguriranje poti ..."
 
-#: common/tool/actions.cpp:1363
+#: common/tool/actions.cpp:1357
 #, fuzzy
 msgid "Edit path configuration environment variables"
 msgstr "Urejanje spremenljivk okolja konfiguracije poti"
 
-#: common/tool/actions.cpp:1369
+#: common/tool/actions.cpp:1363
 #, fuzzy
 msgid "Manage Symbol Libraries..."
 msgstr "Upravljanje knjižnic simbolov ..."
 
-#: common/tool/actions.cpp:1370
+#: common/tool/actions.cpp:1364
 #, fuzzy
 msgid "Edit the global and project symbol library lists"
 msgstr "Uredite globalne sezname in sezname knjižnic projektov"
 
-#: common/tool/actions.cpp:1376
+#: common/tool/actions.cpp:1370
 #, fuzzy
 msgid "Manage Footprint Libraries..."
 msgstr "Upravljanje odtisnih knjižnic ..."
 
-#: common/tool/actions.cpp:1377
+#: common/tool/actions.cpp:1371
 #, fuzzy
 msgid "Edit the global and project footprint library lists"
 msgstr "Uredite sezname knjižnic globalnega in projektnega odtisa"
 
-#: common/tool/actions.cpp:1383
+#: common/tool/actions.cpp:1377
 #, fuzzy
 msgid "Manage Design Block Libraries..."
 msgstr "Upravljanje knjižnic simbolov ..."
 
-#: common/tool/actions.cpp:1384
+#: common/tool/actions.cpp:1378
 #, fuzzy
 msgid "Edit the global and project design block library lists"
 msgstr "Uredite globalne sezname in sezname knjižnic projektov"
 
-#: common/tool/actions.cpp:1390
+#: common/tool/actions.cpp:1384
 #, fuzzy
 msgid "Getting Started with KiCad"
 msgstr "Uvod v KiCad"
 
-#: common/tool/actions.cpp:1391
+#: common/tool/actions.cpp:1385
 #, fuzzy
 msgid "Open \"Getting Started in KiCad\" guide for beginners"
 msgstr "Odprite vodnik \"Začetek v KiCadu\" za začetnike"
 
-#: common/tool/actions.cpp:1397
+#: common/tool/actions.cpp:1391
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:330
 #: pcb_calculator/calculator_panels/panel_fusing_current_base.cpp:136
 #: pcb_calculator/calculator_panels/panel_r_calculator_base.cpp:187
@@ -12120,57 +12282,57 @@ msgstr "Odprite vodnik \"Začetek v KiCadu\" za začetnike"
 msgid "Help"
 msgstr "pomoč"
 
-#: common/tool/actions.cpp:1398
+#: common/tool/actions.cpp:1392
 #, fuzzy
 msgid "Open product documentation in a web browser"
 msgstr "Odprite dokumentacijo izdelka v spletnem brskalniku"
 
-#: common/tool/actions.cpp:1404
+#: common/tool/actions.cpp:1398
 #, fuzzy
 msgid "About KiCad"
 msgstr "& O KiCadu"
 
-#: common/tool/actions.cpp:1413
+#: common/tool/actions.cpp:1407
 #, fuzzy
 msgid "List Hotkeys..."
 msgstr "Seznam bližnjic ..."
 
-#: common/tool/actions.cpp:1414
+#: common/tool/actions.cpp:1408
 #, fuzzy
 msgid "Displays current hotkeys table and corresponding commands"
 msgstr "Prikaže tabelo trenutnih bližnjičnih tipk in ustrezne ukaze"
 
-#: common/tool/actions.cpp:1420
+#: common/tool/actions.cpp:1414
 #, fuzzy
 msgid "Get Involved"
 msgstr "Sodelujte"
 
-#: common/tool/actions.cpp:1421
+#: common/tool/actions.cpp:1415
 #, fuzzy
 msgid "Open \"Contribute to KiCad\" in a web browser"
 msgstr "V spletnem brskalniku odprite \"Prispevajte k KiCad\""
 
-#: common/tool/actions.cpp:1428
+#: common/tool/actions.cpp:1422
 #, fuzzy
 msgid "Open \"Donate to KiCad\" in a web browser"
 msgstr "V spletnem brskalniku odprite \"Prispevajte k KiCad\""
 
-#: common/tool/actions.cpp:1433
+#: common/tool/actions.cpp:1427
 #, fuzzy
 msgid "Report Bug"
 msgstr "Prijavi napako"
 
-#: common/tool/actions.cpp:1446
+#: common/tool/actions.cpp:1440
 #, fuzzy
 msgid "Refresh Plugins"
 msgstr "Osveži vtičnike"
 
-#: common/tool/actions.cpp:1447
+#: common/tool/actions.cpp:1441
 #, fuzzy
 msgid "Reload all python plugins and refresh plugin menus"
 msgstr "Znova naložite vse vtičnike python in osvežite menije vtičnikov"
 
-#: common/tool/actions.cpp:1455
+#: common/tool/actions.cpp:1449
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:85
 #: eeschema/dialogs/dialog_schematic_setup.cpp:143
 #: eeschema/dialogs/dialog_symbol_properties.cpp:346
@@ -12181,27 +12343,27 @@ msgstr "Znova naložite vse vtičnike python in osvežite menije vtičnikov"
 msgid "Embedded Files"
 msgstr "Datoteke slik"
 
-#: common/tool/actions.cpp:1456
+#: common/tool/actions.cpp:1450
 #, fuzzy
 msgid "Manage embedded files"
 msgstr "Preimenujte datoteke"
 
-#: common/tool/actions.cpp:1461
+#: common/tool/actions.cpp:1455
 #, fuzzy
 msgid "Remove File"
 msgstr "Preimenuj datoteko"
 
-#: common/tool/actions.cpp:1462
+#: common/tool/actions.cpp:1456
 #, fuzzy
 msgid "Remove an embedded file"
 msgstr "Odstranite vse ujemajoče se plasti."
 
-#: common/tool/actions.cpp:1467
+#: common/tool/actions.cpp:1461
 #, fuzzy
 msgid "Extract File"
 msgstr "Izvozi v datoteko"
 
-#: common/tool/actions.cpp:1468
+#: common/tool/actions.cpp:1462
 #, fuzzy
 msgid "Extract an embedded file"
 msgstr "Izvršljive datoteke ("
@@ -12550,17 +12712,17 @@ msgstr "Izberite datoteko"
 msgid "Select Path"
 msgstr "Izberi pot"
 
-#: common/widgets/kistatusbar.cpp:146
+#: common/widgets/kistatusbar.cpp:128
 #, fuzzy
 msgid "View load messages"
 msgstr "Info sporočila:"
 
-#: common/widgets/kistatusbar.cpp:410
+#: common/widgets/kistatusbar.cpp:461
 #, c-format
 msgid "View %zu load message(s)"
 msgstr ""
 
-#: common/widgets/kistatusbar.cpp:458
+#: common/widgets/kistatusbar.cpp:510
 #, fuzzy
 msgid "Load Messages"
 msgstr "Sporočila"
@@ -12624,7 +12786,7 @@ msgstr "<ustvari mrežo>"
 
 #: common/widgets/paged_dialog.cpp:85 common/widgets/paged_dialog.cpp:347
 #: eeschema/dialogs/dialog_bom_base.cpp:114
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:106
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:367
 #: pcb_calculator/calculator_panels/panel_track_width_base.cpp:288
 #: pcb_calculator/calculator_panels/panel_transline_base.cpp:480
@@ -17290,91 +17452,156 @@ msgstr ""
 msgid "Plot Schematic"
 msgstr "Natisni shemo"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:44
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
 #, fuzzy
 msgid "Remote Symbol Settings"
 msgstr "Uvozi nastavitve"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:58
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
 msgid ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:65
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
+msgid "Providers"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#, fuzzy
+msgid "Add / Update"
+msgstr "Posodobi"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
+#, fuzzy
+msgid "Refresh Metadata"
+msgstr "Metapodatki"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+msgid "Sign Out"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
+#, fuzzy
+msgid "Metadata URL:"
+msgstr "Metapodatki"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#, fuzzy
+msgid "Display name:"
+msgstr "Prikaz"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#, fuzzy
+msgid "Last account:"
+msgstr "Število padcev"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
+#, fuzzy
+msgid "Not signed in"
+msgstr "Ni navedeno"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
+#, fuzzy
+msgid "Auth status:"
+msgstr "Stanje: "
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
+#, fuzzy
+msgid "Not configured"
+msgstr "Ni zrcaljeno"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 #, fuzzy
 msgid "Destination directory:"
 msgstr "Uradna označba"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:71
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:121
 msgid ""
 "Directory where downloaded symbol, footprint, and 3D model data will be "
 "written."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:74
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:124
 msgid "Browse..."
 msgstr "Prebrskaj ..."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:128
 #, fuzzy
 msgid "Library prefix:"
 msgstr "Napaka knjižničnega vzdevka"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:131
 msgid "Prefix that will be applied to the generated libraries."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:89
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:139
 #, fuzzy
 msgid "Add libraries to:"
 msgstr "Nalaganje knjižnic simbolov"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:93
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:143
 #, fuzzy
 msgid "Project library table"
 msgstr "Knjižnica simbolov ni omogočena."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:146
 #, fuzzy
 msgid "Adds the generated libraries to the project's library tables."
 msgstr "Dodajte nov vnos tabele knjižnice projektov"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:98
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:149
 #, fuzzy
 msgid "Global library table"
 msgstr "Knjižnica simbolov ni omogočena."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
 #, fuzzy
 msgid "Adds the generated libraries to the global library tables."
 msgstr "Želite knjižnico dodati v tabelo globalne knjižnice?"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:107
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:159
 msgid "Restore the default destination and prefix."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:208
 #, fuzzy
 msgid "Please choose a destination directory."
 msgstr "Prosimo, izberite veljavno datoteko netlista."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:216
 #, fuzzy
 msgid "Please enter a library prefix."
 msgstr "Izberite datoteko tabele knjižnice simbolov."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:191
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:252
 #, fuzzy
 msgid "Select Destination Directory"
 msgstr "Izberite prednastavitev:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:258
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
+msgid "Enter a provider metadata URL first."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
+msgid "Provider metadata refreshed."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
+#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
+#: pcbnew/zone.cpp:989
+#, fuzzy
+msgid "Unknown"
+msgstr "Neznano"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:519
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:263
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:524
 #, c-format
 msgid "Will create libraries like %1$s_symbols, %1$s_fp, %1$s_3d, etc."
 msgstr ""
@@ -17676,7 +17903,7 @@ msgid "Project"
 msgstr "Projekt"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:119
-#: eeschema/tools/sch_edit_tool.cpp:3624
+#: eeschema/tools/sch_edit_tool.cpp:3618
 #: pcbnew/dialogs/dialog_board_setup.cpp:217
 #: pcbnew/widgets/appearance_controls.cpp:526
 #: pcbnew/widgets/appearance_controls.cpp:2507
@@ -20725,20 +20952,20 @@ msgstr "Pazite na blazinice"
 msgid "URL"
 msgstr "Spletni naslov"
 
-#: eeschema/eeschema.cpp:496 eeschema/eeschema.cpp:508
+#: eeschema/eeschema.cpp:513 eeschema/eeschema.cpp:525
 #: eeschema/libraries/legacy_symbol_library.cpp:523
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1349
 #, fuzzy
 msgid "Loading Symbol Libraries"
 msgstr "Nalaganje knjižnic simbolov"
 
-#: eeschema/eeschema.cpp:633
+#: eeschema/eeschema.cpp:650
 #, c-format
 msgid ""
 "Cannot copy file '%s' as it will be overwritten by the new root sheet file."
 msgstr ""
 
-#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:298
+#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:299
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0."
 msgstr ""
 
@@ -20749,7 +20976,7 @@ msgstr "Sheme \"%s\" ni bilo mogoče naložiti"
 
 #: eeschema/eeschema_jobs_handler.cpp:275
 #: kicad/cli/command_pcb_export_hpgl.cpp:36
-#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:286
+#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:287
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0.\n"
 msgstr ""
 
@@ -20757,14 +20984,14 @@ msgstr ""
 #: eeschema/eeschema_jobs_handler.cpp:522
 #: eeschema/eeschema_jobs_handler.cpp:877
 #: eeschema/eeschema_jobs_handler.cpp:959
-#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:569
-#: pcbnew/pcbnew_jobs_handler.cpp:698 pcbnew/pcbnew_jobs_handler.cpp:962
-#: pcbnew/pcbnew_jobs_handler.cpp:1071 pcbnew/pcbnew_jobs_handler.cpp:1168
-#: pcbnew/pcbnew_jobs_handler.cpp:1254 pcbnew/pcbnew_jobs_handler.cpp:1309
-#: pcbnew/pcbnew_jobs_handler.cpp:1496 pcbnew/pcbnew_jobs_handler.cpp:1563
-#: pcbnew/pcbnew_jobs_handler.cpp:1710 pcbnew/pcbnew_jobs_handler.cpp:1877
-#: pcbnew/pcbnew_jobs_handler.cpp:2168 pcbnew/pcbnew_jobs_handler.cpp:2308
-#: pcbnew/pcbnew_jobs_handler.cpp:2527 pcbnew/pcbnew_jobs_handler.cpp:2639
+#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:570
+#: pcbnew/pcbnew_jobs_handler.cpp:699 pcbnew/pcbnew_jobs_handler.cpp:963
+#: pcbnew/pcbnew_jobs_handler.cpp:1072 pcbnew/pcbnew_jobs_handler.cpp:1169
+#: pcbnew/pcbnew_jobs_handler.cpp:1255 pcbnew/pcbnew_jobs_handler.cpp:1310
+#: pcbnew/pcbnew_jobs_handler.cpp:1497 pcbnew/pcbnew_jobs_handler.cpp:1564
+#: pcbnew/pcbnew_jobs_handler.cpp:1711 pcbnew/pcbnew_jobs_handler.cpp:1878
+#: pcbnew/pcbnew_jobs_handler.cpp:2169 pcbnew/pcbnew_jobs_handler.cpp:2314
+#: pcbnew/pcbnew_jobs_handler.cpp:2533 pcbnew/pcbnew_jobs_handler.cpp:2645
 #, fuzzy
 msgid "Failed to create output directory\n"
 msgstr "Ne morem ustvariti imenika \"%s\""
@@ -20817,8 +21044,8 @@ msgid "Plotting symbol '%s' unit %d to '%s'\n"
 msgstr "Spremeni simbol %s iz '%s' v '%s'"
 
 #: eeschema/eeschema_jobs_handler.cpp:1106
-#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2087
-#: pcbnew/pcbnew_jobs_handler.cpp:2160
+#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2088
+#: pcbnew/pcbnew_jobs_handler.cpp:2161
 #, fuzzy
 msgid "Unable to load library\n"
 msgstr "Datoteke %s ni mogoče naložiti"
@@ -20834,17 +21061,17 @@ msgstr "Za shranjevanje ni izbranega nobenega simbola."
 msgid "Unable to create output directory '%s'."
 msgstr "Izhodnega imenika \"%s\" ni mogoče ustvariti.\n"
 
-#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1407
-#: pcbnew/pcbnew_jobs_handler.cpp:2179
+#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1408
+#: pcbnew/pcbnew_jobs_handler.cpp:2180
 #, fuzzy, c-format
 msgid "Exporting %s"
 msgstr "Uvozi nastavitve"
 
-#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2056
+#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2057
 msgid "Output path must not conflict with existing path\n"
 msgstr ""
 
-#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2063
+#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2064
 msgid ""
 "Output path must be specified to convert legacy and non-KiCad libraries\n"
 msgstr ""
@@ -20859,7 +21086,7 @@ msgstr "Neveljaven identifikator knjižnice simbolov"
 msgid "Symbol library was not updated\n"
 msgstr "Knjižnica simbolov ni omogočena."
 
-#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2439
+#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2445
 #, fuzzy, c-format
 msgid "Found %d violations\n"
 msgstr "Dovoli kršitve DRK"
@@ -21767,12 +21994,6 @@ msgstr "Izpelji iz simbola:"
 msgid "Error loading symbol %s from library '%s'."
 msgstr "Napaka pri nalaganju simbola '%s' iz knjižnice '%s'."
 
-#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
-#: pcbnew/zone.cpp:989
-#, fuzzy
-msgid "Unknown"
-msgstr "Neznano"
-
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:62
 #: pcbnew/import_gfx/dialog_import_graphics.cpp:49
 #, fuzzy
@@ -22143,7 +22364,7 @@ msgstr ""
 
 #: eeschema/menubar.cpp:196
 msgid ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
 
 #: eeschema/menubar.cpp:330
@@ -22269,7 +22490,7 @@ msgid "Failed to create directory 'devices' ."
 msgstr "Ne morem ustvariti imenika \"%s\""
 
 #: eeschema/netlist_exporters/netlist_exporter_allegro.cpp:408
-#: pcbnew/pcbnew_jobs_handler.cpp:1502 pcbnew/pcbnew_jobs_handler.cpp:1571
+#: pcbnew/pcbnew_jobs_handler.cpp:1503 pcbnew/pcbnew_jobs_handler.cpp:1572
 #, fuzzy, c-format
 msgid "Failed to create file '%s'.\n"
 msgstr "Ne morem ustvariti datoteke <%s>"
@@ -22366,7 +22587,7 @@ msgstr "Enote"
 msgid "Change Unit"
 msgstr "Spremeni mreže"
 
-#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2507
+#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2501
 #, fuzzy
 msgid "Change Body Style"
 msgstr "Mitre slog:"
@@ -22538,6 +22759,144 @@ msgstr "Ni najdeno"
 #, fuzzy
 msgid "The following libraries were not found:"
 msgstr "Naslednjih knjižnic ni bilo mogoče najti:"
+
+#: eeschema/remote_symbol_download_manager.cpp:35
+msgid "Remote asset URL"
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:49
+msgid "Remote asset URL origin must match the selected provider."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:66
+#, fuzzy, c-format
+msgid "Unable to set download URL '%s'."
+msgstr "Ni mogoče ustvariti %s"
+
+#: eeschema/remote_symbol_download_manager.cpp:124
+msgid "Remote asset manifest declared an invalid size."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:130
+msgid "Remote asset manifest must declare sha256 for URL-based downloads."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:139
+msgid "Remote asset exceeds the provider download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:150
+#, c-format
+msgid "Remote download failed with HTTP %d."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:156
+msgid "Remote asset content type did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:162
+msgid "Remote asset size did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:168
+msgid "Remote asset exceeds the remaining download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:174
+msgid "Remote asset digest did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:44
+#, fuzzy
+msgid "Downloaded symbol payload was empty."
+msgstr "Datoteka knjižnice simbolov \"%s\" je prazna."
+
+#: eeschema/remote_symbol_import_job.cpp:52
+#, fuzzy
+msgid "Downloaded symbol payload was not a KiCad symbol library."
+msgstr "V tabeli knjižnice simbolov ni najden simbol \"%s\"."
+
+#: eeschema/remote_symbol_import_job.cpp:62
+#, c-format
+msgid "Downloaded symbol payload did not include expected symbol '%s'."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:96
+#: eeschema/remote_symbol_import_utils.cpp:114
+#: eeschema/widgets/panel_remote_symbol.cpp:1072
+#: eeschema/widgets/panel_remote_symbol.cpp:1295
+#, fuzzy
+msgid "Unable to load schematic settings."
+msgstr "Sheme \"%s\" ni bilo mogoče naložiti"
+
+#: eeschema/remote_symbol_import_job.cpp:234
+#, fuzzy
+msgid "No symbol asset was available to place."
+msgstr "Uporabite barvno temo Eeschema"
+
+#: eeschema/remote_symbol_import_utils.cpp:76
+msgid "Payload was empty."
+msgstr ""
+
+#: eeschema/remote_symbol_import_utils.cpp:85
+#, fuzzy, c-format
+msgid "Unable to create '%s'."
+msgstr "Ni mogoče ustvariti %s"
+
+#: eeschema/remote_symbol_import_utils.cpp:93
+#, fuzzy, c-format
+msgid "Unable to open '%s' for writing."
+msgstr "Imena datoteke \"%s\" ni mogoče odpreti za branje"
+
+#: eeschema/remote_symbol_import_utils.cpp:99
+#, fuzzy, c-format
+msgid "Failed to write '%s'."
+msgstr "Ne morem ustvariti datoteke <%s>"
+
+#: eeschema/remote_symbol_import_utils.cpp:128
+#, fuzzy
+msgid "Destination directory is not configured."
+msgstr "3D konfiguracijski imenik ni znan"
+
+#: eeschema/remote_symbol_import_utils.cpp:137
+#, fuzzy, c-format
+msgid "Unable to create directory '%s'."
+msgstr "Ne morem ustvariti imenika \"%s\""
+
+#: eeschema/remote_symbol_import_utils.cpp:158
+#, fuzzy
+msgid "Unable to access the library table."
+msgstr "Datoteke knjižnice simbolov \"%s\" ni uspelo ustvariti"
+
+#: eeschema/remote_symbol_import_utils.cpp:178
+#, fuzzy
+msgid "Failed to update the library table."
+msgstr "Datoteke knjižnice simbolov \"%s\" ni uspelo ustvariti"
+
+#: eeschema/remote_symbol_import_utils.cpp:192
+#, fuzzy
+msgid "Remote download"
+msgstr "Pazite, da ne prelijete bakra"
+
+#: eeschema/remote_symbol_import_utils.cpp:197
+#, fuzzy
+msgid "Failed to save the library table."
+msgstr "Datoteke knjižnice simbolov '%s' ni bilo mogoče shraniti."
+
+#: eeschema/remote_symbol_import_utils.cpp:210
+#, fuzzy
+msgid "No schematic editor is available for placement."
+msgstr "Uporabite barvno temo Eeschema"
+
+#: eeschema/remote_symbol_import_utils.cpp:222
+#, fuzzy
+msgid "Unable to load the downloaded symbol for placement."
+msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
+
+#: eeschema/remote_symbol_import_utils.cpp:237
+#, fuzzy
+msgid "Unable to access the schematic placement tools."
+msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
 
 #: eeschema/sch_base_frame.cpp:746
 #, fuzzy
@@ -23512,7 +23871,7 @@ msgstr "Datoteke knjižnice simbolov KiCad"
 
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:118
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:288
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:309
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:324
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:108
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:221
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:504
@@ -23617,20 +23976,20 @@ msgstr "Datoteka knjižnice dokumentov simbolov je prazna"
 msgid "library %s does not contain a symbol named %s"
 msgstr "knjižnica %s ne vsebuje simbola z imenom %s"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:215
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:219
 #, c-format
 msgid ""
 "Could not load sheet '%s' because it already appears as a direct ancestor in "
 "the schematic hierarchy."
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:345
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:360
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:306
 #, fuzzy
 msgid "Internal Group Data Error"
 msgstr "Struktura podatkov notranje skupine je poškodovana"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:346
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:361
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:307
 #, fuzzy, c-format
 msgid ""
@@ -23642,28 +24001,28 @@ msgstr ""
 "\n"
 "Ali vseeno shranite?"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:349
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:364
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:309
 #, fuzzy
 msgid "Save Anyway"
 msgstr "Vseeno prihrani"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1782
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1797
 #, fuzzy, c-format
 msgid "Symbol library file '%s' already exists."
 msgstr "Knjižnica %s že obstaja."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1787
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1802
 #, fuzzy, c-format
 msgid "Symbol library path '%s' already exists."
 msgstr "Knjižnica %s že obstaja."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1817
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1832
 #, fuzzy, c-format
 msgid "Symbol library file '%s' cannot be deleted."
 msgstr "knjižnice \"%s\" ni mogoče izbrisati"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1827
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1842
 #, fuzzy, c-format
 msgid "Symbol library folder '%s' cannot be deleted."
 msgstr "knjižnice \"%s\" ni mogoče izbrisati"
@@ -23870,28 +24229,28 @@ msgstr "Neveljaven identifikator knjižnice simbolov"
 msgid "Invalid symbol library ID"
 msgstr "Neveljaven identifikator knjižnice simbolov"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3956
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3970
 #, fuzzy
 msgid "Missing sheet name property"
 msgstr "Manjkajoči argument za '%s'"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3962
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3976
 #, fuzzy
 msgid "Missing sheet file property"
 msgstr "Manjkajoči argument za '%s'"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5070
 #, fuzzy
 msgid "Invalid table: no cells defined"
 msgstr "Naveden je neveljaven odtis"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5195
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
 #, fuzzy, c-format
 msgid "Group library link %s contains invalid character '%c'"
 msgstr "Imena simbola \"%s\" ni mogoče najti v knjižnici \"%s\""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5187
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5201
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6976
 #, fuzzy
 msgid "Invalid library ID"
@@ -24235,7 +24594,7 @@ msgstr "Pripnite ime"
 msgid "No sheets to plot."
 msgstr "Uvozi hierarhični priključek"
 
-#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1429
+#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1430
 #, fuzzy, c-format
 msgid "Plotted to '%s'.\n"
 msgstr "Nalaganja \"%s\" ni uspelo"
@@ -28447,7 +28806,7 @@ msgstr "Porazdeli vodoravno"
 msgid "Flips selected item(s) from left to right"
 msgstr "Izbrane elemente obrne od leve proti desni"
 
-#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1699
+#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1693
 #: pcbnew/tools/edit_tool_move_fct.cpp:201 pcbnew/tools/pcb_actions.cpp:696
 msgid "Swap"
 msgstr ""
@@ -28457,7 +28816,7 @@ msgstr ""
 msgid "Swap positions of selected items"
 msgstr "Dovoli izbiro zaklenjenih predmetov"
 
-#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1849
+#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1843
 #, fuzzy
 msgid "Swap Pins"
 msgstr "Zamenjaj plasti"
@@ -28467,7 +28826,7 @@ msgstr "Zamenjaj plasti"
 msgid "Swap the selected symbol pins' positions"
 msgstr "Zavrti izbrane elemente v smeri urnega kazalca"
 
-#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1952
+#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1946
 #, fuzzy
 msgid "Swap Pin Labels"
 msgstr "Zamenjaj plasti"
@@ -28477,7 +28836,7 @@ msgstr "Zamenjaj plasti"
 msgid "Swap the labels attached to selected pins"
 msgstr "Pokažite najraje za izbrano mrežo"
 
-#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2034
+#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2028
 #, fuzzy
 msgid "Swap Unit Labels"
 msgstr "Enote"
@@ -28503,7 +28862,7 @@ msgstr "Uredi vrednost ..."
 msgid "Edit Footprint..."
 msgstr "Uredi odtis ..."
 
-#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2448
+#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2442
 #, fuzzy
 msgid "Autoplace Fields"
 msgstr "Samodejno namestitev polj"
@@ -28639,7 +28998,7 @@ msgstr "Spremeni besedilo"
 msgid "Change existing item to a text box"
 msgstr "Spremenite obstoječi element v besedilni komentar"
 
-#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3370
+#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3364
 #, fuzzy
 msgid "Cleanup Sheet Pins"
 msgstr "Počisti hierarhične priključke"
@@ -29600,7 +29959,7 @@ msgid "Press <ESC> to cancel image creation."
 msgstr ""
 
 #: eeschema/tools/sch_drawing_tools.cpp:1237
-#: eeschema/tools/sch_edit_tool.cpp:3470
+#: eeschema/tools/sch_edit_tool.cpp:3464
 #: pagelayout_editor/pl_editor_frame.cpp:859
 #: pagelayout_editor/pl_editor_frame.cpp:867 pcbnew/tools/drawing_tool.cpp:796
 #, fuzzy, c-format
@@ -29779,138 +30138,138 @@ msgstr "Spoj"
 msgid "Pin Helpers"
 msgstr "Lastnosti priključkov"
 
-#: eeschema/tools/sch_edit_tool.cpp:702
+#: eeschema/tools/sch_edit_tool.cpp:696
 #, fuzzy
 msgid "Transform Selection"
 msgstr "Odstrani iz izbora"
 
-#: eeschema/tools/sch_edit_tool.cpp:730
+#: eeschema/tools/sch_edit_tool.cpp:724
 #, fuzzy
 msgid "Edit Main Fields"
 msgstr "Uredi %s polje"
 
-#: eeschema/tools/sch_edit_tool.cpp:743 eeschema/tools/sch_edit_tool.cpp:3252
+#: eeschema/tools/sch_edit_tool.cpp:737 eeschema/tools/sch_edit_tool.cpp:3246
 #, fuzzy
 msgid "Change To"
 msgstr "Zamenjaj"
 
-#: eeschema/tools/sch_edit_tool.cpp:1238
+#: eeschema/tools/sch_edit_tool.cpp:1232
 #: eeschema/tools/symbol_editor_edit_tool.cpp:602
 #: pcbnew/tools/edit_tool.cpp:2530
 #, fuzzy
 msgid "Rotate"
 msgstr "Zavrti"
 
-#: eeschema/tools/sch_edit_tool.cpp:1454 gerbview/gerber_draw_item.cpp:724
+#: eeschema/tools/sch_edit_tool.cpp:1448 gerbview/gerber_draw_item.cpp:724
 #: pcbnew/pcb_tablecell.cpp:209 pcbnew/pcb_text.cpp:308
 #: pcbnew/pcb_textbox.cpp:501 pcbnew/tools/edit_tool.cpp:2680
 #, fuzzy
 msgid "Mirror"
 msgstr "Zrcali"
 
-#: eeschema/tools/sch_edit_tool.cpp:1761
+#: eeschema/tools/sch_edit_tool.cpp:1755
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects. Duplicate "
 "the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1767
+#: eeschema/tools/sch_edit_tool.cpp:1761
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1777
+#: eeschema/tools/sch_edit_tool.cpp:1771
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols used by multiple sheet instances (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1784
+#: eeschema/tools/sch_edit_tool.cpp:1778
 msgid ""
 "Pin swaps are disabled for shared symbols. Duplicate the sheet to edit pins "
 "independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1928
+#: eeschema/tools/sch_edit_tool.cpp:1922
 msgid ""
 "Each selected pin must have exactly one attached net label and no other pin "
 "connections."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1984
+#: eeschema/tools/sch_edit_tool.cpp:1978
 msgid ""
 "Each pin of selected units must have exactly one attached net label and no "
 "other pin connections."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:2077
+#: eeschema/tools/sch_edit_tool.cpp:2071
 #, fuzzy
 msgid "Label value cannot go below zero"
 msgstr "Vrednost oznake ne sme biti pod ničlo"
 
-#: eeschema/tools/sch_edit_tool.cpp:2157
+#: eeschema/tools/sch_edit_tool.cpp:2151
 #, fuzzy
 msgid "Repeat Item"
 msgstr "Ponavljajoči se predmeti"
 
-#: eeschema/tools/sch_edit_tool.cpp:2294
+#: eeschema/tools/sch_edit_tool.cpp:2288
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1009
 #, fuzzy, c-format
 msgid "Edit %s Field"
 msgstr "Uredi %s polje"
 
-#: eeschema/tools/sch_edit_tool.cpp:2298
+#: eeschema/tools/sch_edit_tool.cpp:2292
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1011
 #, fuzzy, c-format
 msgid "Edit '%s' Field"
 msgstr "Uredi %s polje"
 
-#: eeschema/tools/sch_edit_tool.cpp:2744
+#: eeschema/tools/sch_edit_tool.cpp:2738
 #, fuzzy
 msgid "Edit Sheet Properties"
 msgstr "Lastnosti hierarhičnega priključka"
 
-#: eeschema/tools/sch_edit_tool.cpp:2868
+#: eeschema/tools/sch_edit_tool.cpp:2862
 #: pcbnew/dialogs/dialog_rule_area_properties_base.h:64
 #, fuzzy
 msgid "Rule Area Properties"
 msgstr "Lastnosti območja pravila"
 
-#: eeschema/tools/sch_edit_tool.cpp:2940 eeschema/tools/sch_edit_tool.cpp:3028
+#: eeschema/tools/sch_edit_tool.cpp:2934 eeschema/tools/sch_edit_tool.cpp:3022
 #, fuzzy
 msgid "<empty>"
 msgstr "Izprazni"
 
-#: eeschema/tools/sch_edit_tool.cpp:3361
+#: eeschema/tools/sch_edit_tool.cpp:3355
 #, fuzzy
 msgid "Do you wish to delete the unreferenced pins from this sheet?"
 msgstr "Ali želite s tega lista izbrisati nereferencirane priključke?"
 
-#: eeschema/tools/sch_edit_tool.cpp:3422
+#: eeschema/tools/sch_edit_tool.cpp:3416
 #, fuzzy, c-format
 msgid "Enter page number for sheet path%s"
 msgstr "Vnesite številko strani za pot lista %s"
 
-#: eeschema/tools/sch_edit_tool.cpp:3425
+#: eeschema/tools/sch_edit_tool.cpp:3419
 #: eeschema/widgets/hierarchy_pane.cpp:631
 #, fuzzy
 msgid "Edit Sheet Page Number"
 msgstr "Uredi številko strani"
 
-#: eeschema/tools/sch_edit_tool.cpp:3551
+#: eeschema/tools/sch_edit_tool.cpp:3545
 #, fuzzy
 msgid "Toggle Attribute"
 msgstr "Atribut"
 
-#: eeschema/tools/sch_edit_tool.cpp:3566
+#: eeschema/tools/sch_edit_tool.cpp:3560
 #, fuzzy
 msgid "Edit Symbol Properties..."
 msgstr "Lastnosti simbola"
 
-#: eeschema/tools/sch_edit_tool.cpp:3583
+#: eeschema/tools/sch_edit_tool.cpp:3577
 #, fuzzy
 msgid "Edit Netclasses..."
 msgstr "Poteka nalaganje ..."
@@ -30461,262 +30820,208 @@ msgstr "Risbe"
 msgid "(page %s)"
 msgstr "(stran %s)"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:85
+#: eeschema/widgets/panel_remote_symbol.cpp:76
 #, fuzzy
 msgid "Missing payload data."
 msgstr "Ključne besede:"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:93
+#: eeschema/widgets/panel_remote_symbol.cpp:84
 #, fuzzy
 msgid "Failed to decode base64 payload."
 msgstr "Nalaganja \"%s\" ni uspelo"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:115
+#: eeschema/widgets/panel_remote_symbol.cpp:107
 #, fuzzy, c-format
 msgid "Unsupported compression '%s'."
 msgstr "Shematske datoteke Altium"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:122
+#: eeschema/widgets/panel_remote_symbol.cpp:114
 msgid "Compressed payload was empty."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:139
+#: eeschema/widgets/panel_remote_symbol.cpp:133
+#, c-format
+msgid "Decompressed size %llu exceeds limit %llu."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:144
 #, fuzzy, c-format
 msgid "ZSTD decompression failed: %s"
 msgstr "Preverjanje omrežnih povezav ..."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:182
-msgid "Payload was empty."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:193
-#: eeschema/widgets/panel_remote_symbol.cpp:1249
-#: eeschema/widgets/panel_remote_symbol.cpp:1364
-#: eeschema/widgets/panel_remote_symbol.cpp:1388
-#: eeschema/widgets/panel_remote_symbol.cpp:1461
-#: eeschema/widgets/panel_remote_symbol.cpp:1525
-#, fuzzy, c-format
-msgid "Unable to create '%s'."
-msgstr "Ni mogoče ustvariti %s"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:202
-#, fuzzy, c-format
-msgid "Unable to open '%s' for writing."
-msgstr "Imena datoteke \"%s\" ni mogoče odpreti za branje"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:208
-#, fuzzy, c-format
-msgid "Failed to write '%s'."
-msgstr "Ne morem ustvariti datoteke <%s>"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:223
+#: eeschema/widgets/panel_remote_symbol.cpp:169
 #, fuzzy
 msgid "Symbol payload was empty."
 msgstr "Datoteka knjižnice simbolov \"%s\" je prazna."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:231
-#: eeschema/widgets/panel_remote_symbol.cpp:241
+#: eeschema/widgets/panel_remote_symbol.cpp:177
+#: eeschema/widgets/panel_remote_symbol.cpp:186
 #, fuzzy
 msgid "Unable to create a temporary file for the symbol payload."
 msgstr "<b> Začasne datoteke »%s« </b> ni mogoče ustvariti\n"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:248
+#: eeschema/widgets/panel_remote_symbol.cpp:193
 #, fuzzy
 msgid "Failed to write the temporary symbol payload."
 msgstr "Ustvarjanje začasne datoteke »%s« ni uspelo"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:260
+#: eeschema/widgets/panel_remote_symbol.cpp:205
 #, fuzzy
 msgid "Unable to access the KiCad symbol plugin."
 msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:280
+#: eeschema/widgets/panel_remote_symbol.cpp:219
 msgid "Symbol payload did not include the expected symbol."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:285
+#: eeschema/widgets/panel_remote_symbol.cpp:223
 #, fuzzy, c-format
 msgid "Unable to decode the symbol payload: %s"
 msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:309
-msgid "Select which remote data source to query."
+#: eeschema/widgets/panel_remote_symbol.cpp:252
+msgid "Reload current provider page"
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:315
+#: eeschema/widgets/panel_remote_symbol.cpp:257
 #, fuzzy
-msgid "Configure remote data sources."
+msgid "Configure remote providers"
 msgstr "Konfigurirajte neto razrede"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:391
-msgid "No remote data sources are currently installed."
-msgstr ""
+#: eeschema/widgets/panel_remote_symbol.cpp:379
+#, fuzzy
+msgid "No remote providers configured."
+msgstr "Ni konfigurirane veljavne simulacije"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:444
-#, fuzzy, c-format
-msgid "No configuration JSON found for '%s'."
-msgstr ""
-"Napaka pri nalaganju knjižnice simbolov %s.\n"
-"\n"
-"%s"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:455
-#, fuzzy, c-format
-msgid "Unable to open '%s'."
-msgstr "Ne morem odpreti datoteke"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:465
-#, fuzzy, c-format
-msgid "Unable to read '%s'."
-msgstr "Ni mogoče ustvariti %s"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:479
-#, fuzzy, c-format
-msgid "Unable to load remote data for '%s'."
+#: eeschema/widgets/panel_remote_symbol.cpp:451
+#, fuzzy
+msgid "Unable to load remote provider metadata."
 msgstr "Ni mogoče prebrati podatkovne datoteke \"%s\""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:809
+#: eeschema/widgets/panel_remote_symbol.cpp:696
+msgid "A remote provider sign-in flow is already in progress."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:728
+#, fuzzy
+msgid "Unable to start the local OAuth callback listener."
+msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:738
+#, fuzzy
+msgid "Unable to open the system browser for sign-in."
+msgstr "Imena datoteke \"%s\" ni mogoče odpreti za branje"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:768
+#, fuzzy
+msgid "Failed to delete stored remote provider tokens."
+msgstr "Ne morem odpreti %s"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:808
 #, fuzzy, c-format
 msgid "Unsupported RPC version %d."
 msgstr "Nepodprto prek oblike: %s"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:818
+#: eeschema/widgets/panel_remote_symbol.cpp:817
 #, fuzzy
 msgid "Missing session identifier."
 msgstr "Manjka številka različice."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:902
-#, fuzzy
-msgid "Missing compression metadata."
-msgstr "Manjka izraz pogoja."
+#: eeschema/widgets/panel_remote_symbol.cpp:824
+msgid "Session identifier did not match the active provider session."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:941
-#: eeschema/widgets/panel_remote_symbol.cpp:955
+#: eeschema/widgets/panel_remote_symbol.cpp:912
+#, fuzzy
+msgid "No remote provider is currently selected."
+msgstr "Povezava ni izbrana"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1033
+#, fuzzy
+msgid "Unable to process provider payload."
+msgstr "Ne morem odpreti datoteke"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, fuzzy, c-format
 msgid "Command '%s' is not supported."
 msgstr "Datoteke plošče:"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:949
-#, fuzzy
-msgid "Unable to store payload."
-msgstr "Ne morem odpreti datoteke"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:965
-#: eeschema/widgets/panel_remote_symbol.cpp:1233
-#: eeschema/widgets/panel_remote_symbol.cpp:1410
-#, fuzzy
-msgid "Unable to load schematic settings."
-msgstr "Sheme \"%s\" ni bilo mogoče naložiti"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:980
-#, fuzzy
-msgid "Destination directory is not configured."
-msgstr "3D konfiguracijski imenik ni znan"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:991
-#, fuzzy, c-format
-msgid "Unable to create directory '%s'."
-msgstr "Ne morem ustvariti imenika \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1011
-#, fuzzy
-msgid "Unable to access the symbol library table."
-msgstr "Datoteke knjižnice simbolov \"%s\" ni uspelo ustvariti"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1030
-#, fuzzy
-msgid "Failed to update the symbol library table."
-msgstr "Datoteke knjižnice simbolov \"%s\" ni uspelo ustvariti"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1044
-#: eeschema/widgets/panel_remote_symbol.cpp:1100
-#, fuzzy
-msgid "Remote download"
-msgstr "Pazite, da ne prelijete bakra"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1049
-#, fuzzy
-msgid "Failed to save the symbol library table."
-msgstr "Datoteke knjižnice simbolov '%s' ni bilo mogoče shraniti."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1067
-#, fuzzy
-msgid "Unable to access the footprint library table."
-msgstr "Datoteke poročila '%s ni mogoče ustvariti'"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1086
-#, fuzzy
-msgid "Failed to update the footprint library table."
-msgstr "Datoteke knjižnice simbolov '%s' ni bilo mogoče shraniti."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1105
-#, fuzzy
-msgid "Failed to save the footprint library table."
-msgstr "Datoteke knjižnice simbolov '%s' ni bilo mogoče shraniti."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1146
-#, fuzzy
-msgid "No schematic editor is available for placement."
-msgstr "Uporabite barvno temo Eeschema"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1153
-msgid "Downloaded symbol metadata is incomplete."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1165
-#, fuzzy
-msgid "Unable to load the downloaded symbol for placement."
-msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1187
-#, fuzzy
-msgid "Unable to access the schematic placement tools."
-msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1211
-#: eeschema/widgets/panel_remote_symbol.cpp:1342
-#: eeschema/widgets/panel_remote_symbol.cpp:1438
-#: eeschema/widgets/panel_remote_symbol.cpp:1503
+#: eeschema/widgets/panel_remote_symbol.cpp:1052
 #, fuzzy, c-format
 msgid "Unsupported transfer mode '%s'."
 msgstr "Shematske datoteke Altium"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1219
+#: eeschema/widgets/panel_remote_symbol.cpp:1058
 #, fuzzy
 msgid "Unsupported symbol payload type."
 msgstr "noben simbol ni izbran"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1225
+#: eeschema/widgets/panel_remote_symbol.cpp:1064
 msgid "No schematic editor is available to store symbols."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1278
+#: eeschema/widgets/panel_remote_symbol.cpp:1109
 #, fuzzy
 msgid "Unable to access the symbol library manager."
 msgstr "Datoteke knjižnice simbolov \"%s\" ni uspelo ustvariti"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1287
-#, fuzzy
-msgid "Unable to parse the downloaded symbol."
-msgstr "Ne morem ustvariti imenika \"%s\""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1302
+#: eeschema/widgets/panel_remote_symbol.cpp:1126
 #, fuzzy
 msgid "Unable to save the downloaded symbol."
 msgstr "Ne morem ustvariti imenika \"%s\""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1350
+#: eeschema/widgets/panel_remote_symbol.cpp:1154
+#, fuzzy, c-format
+msgid "Failed to parse component list: %s"
+msgstr "Nalaganja \"%s\" ni uspelo"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1160
+#, fuzzy
+msgid "Component list must be a non-empty array."
+msgstr "Parametri komponente"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1170
+#, fuzzy
+msgid "Component entries must be objects."
+msgstr "Ime omrežja ne sme biti prazno."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1178
+#, fuzzy
+msgid "Component entry was missing a type."
+msgstr "Število komponent: %d."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1237
+#, fuzzy, c-format
+msgid "Unsupported component type '%s'."
+msgstr "Shematske datoteke Altium"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1256
 #, fuzzy
 msgid "Unsupported footprint payload type."
 msgstr "Nobeno podnožje ni naloženo."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1447
-msgid "Unsupported 3D model payload type."
+#: eeschema/widgets/panel_remote_symbol.cpp:1371
+msgid "Remote provider metadata is not loaded."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1511
-msgid "Unsupported SPICE payload type."
+#: eeschema/widgets/panel_remote_symbol.cpp:1401
+msgid ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
 msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1437
+msgid "Remote provider sign-in was cancelled or failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1448
+msgid "Remote provider sign-in failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1464
+#, fuzzy
+msgid "Failed to store remote provider tokens securely."
+msgstr "Ne morem odpreti %s"
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -42363,7 +42668,7 @@ msgid "Generate IPC-2581 File"
 msgstr "Ustvari datoteko s seznamom IPC-D-356"
 
 #: pcbnew/dialogs/dialog_export_2581.cpp:289
-#: pcbnew/pcbnew_jobs_handler.cpp:2564
+#: pcbnew/pcbnew_jobs_handler.cpp:2570
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -51553,12 +51858,12 @@ msgstr "Preverjanje definicij dvoriščnega odtisa ..."
 msgid "Checking footprints for overlapping courtyards..."
 msgstr "Preverjanje odtisov prekrivajočih se dvorišč ..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:89
+#: pcbnew/drc/drc_test_provider_creepage.cpp:90
 #, fuzzy
 msgid "Checking creepage..."
 msgstr "Preverjanje zatičev ..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:166
+#: pcbnew/drc/drc_test_provider_creepage.cpp:167
 #, fuzzy, c-format
 msgid "(%s creepage %s; actual %s)"
 msgstr "(%s zračnost %s; dejanska %s)"
@@ -53395,7 +53700,7 @@ msgstr ""
 "%s"
 
 #: pcbnew/files.cpp:1094 pcbnew/files.cpp:1185
-#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2751
+#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2757
 #, fuzzy, c-format
 msgid ""
 "Error saving board file '%s'.\n"
@@ -55764,7 +56069,7 @@ msgstr ""
 "želite iz shem ustvariti ali posodobiti PCB, morate zagnati vodjo projekta "
 "KiCad in ustvariti projekt."
 
-#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2383
+#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2389
 #, fuzzy
 msgid "Eeschema netlist"
 msgstr "Eeschema netlist"
@@ -55850,22 +56155,22 @@ msgstr "Posodobljeno"
 msgid "Generator Properties"
 msgstr "Lastnosti generatorja skript"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4435
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
 #, fuzzy
 msgid "Constructing caches"
 msgstr "Nasprotujoče si oznake"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4450
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
 #, fuzzy
 msgid "Creating nets"
 msgstr "Oblikovanje opomb"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4459
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
 #, fuzzy
 msgid "Creating tracks"
 msgstr "Pri ustvarjanju skladb"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4498
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
 #, fuzzy
 msgid "Converting footprints"
 msgstr "odtis starša"
@@ -58478,167 +58783,167 @@ msgstr "Manjkajoči argument za '%s'"
 msgid "Loading Footprint Libraries"
 msgstr "Nalaganje odtisnih knjižnic"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:452 pcbnew/pcbnew_jobs_handler.cpp:2932
+#: pcbnew/pcbnew_jobs_handler.cpp:453 pcbnew/pcbnew_jobs_handler.cpp:2938
 #, fuzzy
 msgid "Failed to load board\n"
 msgstr "Nalaganja \"%s\" ni uspelo"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:518
+#: pcbnew/pcbnew_jobs_handler.cpp:519
 #, fuzzy, c-format
 msgid "Invalid layer name '%s'\n"
 msgstr "Neveljavno ime signala"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:558 pcbnew/pcbnew_jobs_handler.cpp:638
-#: pcbnew/pcbnew_jobs_handler.cpp:682
+#: pcbnew/pcbnew_jobs_handler.cpp:559 pcbnew/pcbnew_jobs_handler.cpp:639
+#: pcbnew/pcbnew_jobs_handler.cpp:683
 #, fuzzy
 msgid "Unknown export format"
 msgstr "neznano po tipu %d"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:612
+#: pcbnew/pcbnew_jobs_handler.cpp:613
 #, fuzzy, c-format
 msgid "Successfully exported VRML to %s"
 msgstr "PCB in shema uspešno reannotirana"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:618
+#: pcbnew/pcbnew_jobs_handler.cpp:619
 #, fuzzy
 msgid "Error exporting VRML"
 msgstr "Napaka pri pridobivanju datoteke!\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:664
+#: pcbnew/pcbnew_jobs_handler.cpp:665
 #, fuzzy
 msgid "Invalid image dimensions"
 msgstr "Opredelitev oboda plošče"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:919
+#: pcbnew/pcbnew_jobs_handler.cpp:920
 #, fuzzy
 msgid "Successfully created 3D render image"
 msgstr "PCB in shema uspešno reannotirana"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:924
+#: pcbnew/pcbnew_jobs_handler.cpp:925
 #, fuzzy
 msgid "Error creating 3D render image"
 msgstr "Napaka pri branju datoteke."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:982 pcbnew/pcbnew_jobs_handler.cpp:1051
-#: pcbnew/pcbnew_jobs_handler.cpp:1144 pcbnew/pcbnew_jobs_handler.cpp:1232
-#: pcbnew/pcbnew_jobs_handler.cpp:1618
+#: pcbnew/pcbnew_jobs_handler.cpp:983 pcbnew/pcbnew_jobs_handler.cpp:1052
+#: pcbnew/pcbnew_jobs_handler.cpp:1145 pcbnew/pcbnew_jobs_handler.cpp:1233
+#: pcbnew/pcbnew_jobs_handler.cpp:1619
 #, fuzzy
 msgid "At least one layer must be specified\n"
 msgstr "Izbrati morata biti vsaj dva odseka ravnih tirov."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1437 pcbnew/pcbnew_jobs_handler.cpp:1680
+#: pcbnew/pcbnew_jobs_handler.cpp:1438 pcbnew/pcbnew_jobs_handler.cpp:1681
 #, fuzzy, c-format
 msgid "Failed to plot to '%s'.\n"
 msgstr "Nalaganja \"%s\" ni uspelo"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1508
+#: pcbnew/pcbnew_jobs_handler.cpp:1509
 #, fuzzy
 msgid "Successfully created genCAD file\n"
 msgstr "PCB in shema uspešno reannotirana"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1578
+#: pcbnew/pcbnew_jobs_handler.cpp:1579
 #, fuzzy, c-format
 msgid "Error writing file '%s'.\n"
 msgstr "Napaka pri zapisovanju v datoteko »%s«"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1584
+#: pcbnew/pcbnew_jobs_handler.cpp:1585
 #, fuzzy, c-format
 msgid "Wrote board statistics to '%s'.\n"
 msgstr "Izhodnega imenika \"%s\" ni mogoče ustvariti.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1924 pcbnew/pcbnew_jobs_handler.cpp:2002
+#: pcbnew/pcbnew_jobs_handler.cpp:1925 pcbnew/pcbnew_jobs_handler.cpp:2003
 #, fuzzy, c-format
 msgid "Wrote front position data to '%s'.\n"
 msgstr "Izvoz odtisa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1942 pcbnew/pcbnew_jobs_handler.cpp:2026
+#: pcbnew/pcbnew_jobs_handler.cpp:1943 pcbnew/pcbnew_jobs_handler.cpp:2027
 #, fuzzy, c-format
 msgid "Wrote back position data to '%s'.\n"
 msgstr "Izhodnega imenika \"%s\" ni mogoče ustvariti.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1971
+#: pcbnew/pcbnew_jobs_handler.cpp:1972
 #, fuzzy, c-format
 msgid "Wrote position data to '%s'.\n"
 msgstr "Izvoz odtisa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2073
+#: pcbnew/pcbnew_jobs_handler.cpp:2074
 #, fuzzy
 msgid "Footprint library path does not exist or is not accessible\n"
 msgstr "Pot knjižnice odtisa '%s' ne obstaja (ali ni imenik)."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2113
+#: pcbnew/pcbnew_jobs_handler.cpp:2114
 #, fuzzy
 msgid "Unable to save library\n"
 msgstr "Ni aktivne knjižnice"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2119
+#: pcbnew/pcbnew_jobs_handler.cpp:2120
 #, fuzzy
 msgid "Footprint library was not updated\n"
 msgstr "Knjižnica odtisov ni omogočena."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2200
+#: pcbnew/pcbnew_jobs_handler.cpp:2201
 #, fuzzy
 msgid "The given footprint could not be found to export."
 msgstr ""
 "Datoteke enakovrednosti \"%s\" ni bilo mogoče najti v privzetih poteh "
 "iskanja."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2242
+#: pcbnew/pcbnew_jobs_handler.cpp:2243
 #, fuzzy, c-format
 msgid "Plotting footprint '%s' to '%s'\n"
 msgstr "Spremeni odtis %s iz '%s' v '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2271
+#: pcbnew/pcbnew_jobs_handler.cpp:2272
 #, fuzzy
 msgid "Error creating svg file"
 msgstr "Napaka pri branju datoteke."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2336 pcbnew/tools/drc_tool.cpp:170
+#: pcbnew/pcbnew_jobs_handler.cpp:2342 pcbnew/tools/drc_tool.cpp:170
 #, fuzzy
 msgid "Schematic parity tests require a fully annotated schematic."
 msgstr "Izvoz netlista zahteva popolnoma označeno shemo."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2357 pcbnew/pcbnew_jobs_handler.cpp:2390
+#: pcbnew/pcbnew_jobs_handler.cpp:2363 pcbnew/pcbnew_jobs_handler.cpp:2396
 #, fuzzy
 msgid "Failed to fetch schematic netlist for parity tests.\n"
 msgstr "Sheme \"%s\" ni bilo mogoče naložiti"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2421 pcbnew/tools/drc_tool.cpp:208
+#: pcbnew/pcbnew_jobs_handler.cpp:2427 pcbnew/tools/drc_tool.cpp:208
 #, fuzzy
 msgid "DRC"
 msgstr "DRK"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2442
+#: pcbnew/pcbnew_jobs_handler.cpp:2448
 #, fuzzy, c-format
 msgid "Found %d unconnected items\n"
 msgstr "Nepovezani predmeti (%d)"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2448
+#: pcbnew/pcbnew_jobs_handler.cpp:2454
 #, c-format
 msgid "Found %d schematic parity issues\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2464
+#: pcbnew/pcbnew_jobs_handler.cpp:2470
 #, fuzzy, c-format
 msgid "Unable to save DRC report to %s\n"
 msgstr "Ne morem odpreti %s"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2469
+#: pcbnew/pcbnew_jobs_handler.cpp:2475
 #, fuzzy, c-format
 msgid "Saved DRC Report to %s\n"
 msgstr "Shrani datoteke &projekta ..."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2476
+#: pcbnew/pcbnew_jobs_handler.cpp:2482
 #, fuzzy
 msgid "Saved board\n"
 msgstr "Shrani na krovu"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2480
+#: pcbnew/pcbnew_jobs_handler.cpp:2486
 #, fuzzy
 msgid "Failed to save board.\n"
 msgstr "Nalaganja \"%s\" ni uspelo"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2603
+#: pcbnew/pcbnew_jobs_handler.cpp:2609
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -58647,51 +58952,51 @@ msgstr ""
 "Napaka pri shranjevanju datoteke plošče \"%s\".\n"
 "Začasne datoteke »%s« ni bilo mogoče preimenovati"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2649
+#: pcbnew/pcbnew_jobs_handler.cpp:2655
 #, fuzzy
 msgid "Successfully created IPC-D-356 file\n"
 msgstr "PCB in shema uspešno reannotirana"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2654
+#: pcbnew/pcbnew_jobs_handler.cpp:2660
 #, fuzzy
 msgid "Failed to create IPC-D-356 file\n"
 msgstr "Ne morem ustvariti datoteke <%s>"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2741
+#: pcbnew/pcbnew_jobs_handler.cpp:2747
 msgid "Successfully saved board file using the latest format\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2745
+#: pcbnew/pcbnew_jobs_handler.cpp:2751
 #, fuzzy
 msgid "Board file was not updated\n"
 msgstr "Knjižnica simbolov ni omogočena."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2883
+#: pcbnew/pcbnew_jobs_handler.cpp:2889
 #, fuzzy, c-format
 msgid "Unable to determine file format for '%s'\n"
 msgstr "Datoteke \"%s\" ni mogoče prebrati"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2892
+#: pcbnew/pcbnew_jobs_handler.cpp:2898
 #, fuzzy, c-format
 msgid "Input file not found: '%s'\n"
 msgstr "Datoteke ni mogoče najti: '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2918
+#: pcbnew/pcbnew_jobs_handler.cpp:2924
 #, fuzzy, c-format
 msgid "No plugin found for file type '%s'\n"
 msgstr "Izvoz odtisa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2924
+#: pcbnew/pcbnew_jobs_handler.cpp:2930
 #, c-format
 msgid "Importing '%s' using %s format...\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2940
+#: pcbnew/pcbnew_jobs_handler.cpp:2946
 #, fuzzy, c-format
 msgid "Successfully saved imported board to '%s'\n"
 msgstr "PCB in shema uspešno reannotirana"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:3062
+#: pcbnew/pcbnew_jobs_handler.cpp:3068
 #, fuzzy, c-format
 msgid "Error during import: %s\n"
 msgstr ""
@@ -58776,7 +59081,7 @@ msgstr "Programi za pomoč"
 msgid "Exception on python footprint wizard code"
 msgstr "Izjema pri kodi čarovnika za odtis pythona"
 
-#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:214
+#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:216
 #, fuzzy, c-format
 msgid "Error loading drawing sheet '%s': %s"
 msgstr "Napaka pri nalaganju urejevalnika"
@@ -59493,12 +59798,12 @@ msgstr "%d odpravljene morebitne težave."
 msgid "No board problems found."
 msgstr "Težav na plošči ni bilo mogoče najti."
 
-#: pcbnew/tools/board_editor_control.cpp:694
+#: pcbnew/tools/board_editor_control.cpp:699
 #, fuzzy
 msgid "Updating PCB requires a fully annotated schematic."
 msgstr "Izvoz netlista zahteva popolnoma označeno shemo."
 
-#: pcbnew/tools/board_editor_control.cpp:708
+#: pcbnew/tools/board_editor_control.cpp:715
 #, fuzzy
 msgid ""
 "Cannot update schematic because Pcbnew is opened in stand-alone mode. In "
@@ -59509,81 +59814,81 @@ msgstr ""
 "želite iz shem ustvariti ali posodobiti PCB, morate zagnati vodjo projekta "
 "KiCad in ustvariti projekt."
 
-#: pcbnew/tools/board_editor_control.cpp:752
+#: pcbnew/tools/board_editor_control.cpp:759
 #, fuzzy, c-format
 msgid "Schematic file '%s' not found."
 msgstr "Shematske datoteke \"%s\" ni mogoče najti."
 
-#: pcbnew/tools/board_editor_control.cpp:783
+#: pcbnew/tools/board_editor_control.cpp:793
 #, fuzzy
 msgid "Eeschema failed to load."
 msgstr "Eescheme ni uspelo naložiti:\n"
 
-#: pcbnew/tools/board_editor_control.cpp:896
+#: pcbnew/tools/board_editor_control.cpp:907
 #, fuzzy
 msgid "Increase Track Width"
 msgstr "Povečajte širino črte"
 
-#: pcbnew/tools/board_editor_control.cpp:978
+#: pcbnew/tools/board_editor_control.cpp:989
 #, fuzzy
 msgid "Decrease Track Width"
 msgstr "Zmanjšaj širino črte"
 
-#: pcbnew/tools/board_editor_control.cpp:1063 pcbnew/tools/pcb_actions.cpp:1375
+#: pcbnew/tools/board_editor_control.cpp:1074 pcbnew/tools/pcb_actions.cpp:1375
 #, fuzzy
 msgid "Increase Via Size"
 msgstr "Povečaj velikost"
 
-#: pcbnew/tools/board_editor_control.cpp:1333
+#: pcbnew/tools/board_editor_control.cpp:1344
 #, fuzzy
 msgid "Place Footprint"
 msgstr "Postavite odtis"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1500
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1500
 #, fuzzy
 msgid "Lock"
 msgstr "Zakleni"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1507
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1507
 #, fuzzy
 msgid "Unlock"
 msgstr "Odkleni"
 
-#: pcbnew/tools/board_editor_control.cpp:1492
+#: pcbnew/tools/board_editor_control.cpp:1503
 msgid "Zones have insufficient overlap for merging."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1547
+#: pcbnew/tools/board_editor_control.cpp:1558
 #, fuzzy
 msgid "Some zone netcodes did not match and were not merged."
 msgstr "Sloj pravila \"%s\" se ne ujema."
 
-#: pcbnew/tools/board_editor_control.cpp:1553
+#: pcbnew/tools/board_editor_control.cpp:1564
 #, fuzzy
 msgid "Some zones were rule areas and were not merged."
 msgstr "Sloj pravila \"%s\" se ne ujema."
 
-#: pcbnew/tools/board_editor_control.cpp:1559
+#: pcbnew/tools/board_editor_control.cpp:1570
 #, fuzzy
 msgid "Some zone layer sets did not match and were not merged."
 msgstr "Sloj pravila \"%s\" se ne ujema."
 
-#: pcbnew/tools/board_editor_control.cpp:1576
+#: pcbnew/tools/board_editor_control.cpp:1587
 #, fuzzy
 msgid "Some zones did not intersect and were not merged."
 msgstr "Sloj pravila \"%s\" se ne ujema."
 
-#: pcbnew/tools/board_editor_control.cpp:1589 pcbnew/tools/pcb_actions.cpp:1410
+#: pcbnew/tools/board_editor_control.cpp:1600 pcbnew/tools/pcb_actions.cpp:1410
 #, fuzzy
 msgid "Merge Zones"
 msgstr "Združi območja"
 
-#: pcbnew/tools/board_editor_control.cpp:1643
+#: pcbnew/tools/board_editor_control.cpp:1654
 #, fuzzy
 msgid "Duplicate Zone"
 msgstr "Podvojena cona"
 
-#: pcbnew/tools/board_editor_control.cpp:1716
+#: pcbnew/tools/board_editor_control.cpp:1727
 #, fuzzy
 msgid "Selection contains no items with labeled nets."
 msgstr "Izbor vsebuje %d zaklenjenih elementov."
@@ -65275,6 +65580,47 @@ msgstr "Uredi shematske simbole"
 msgid "KiCad Drawing Sheet"
 msgstr "Urejevalnik knjižnic"
 
+#: scripting/python_manager.cpp:135
+#, fuzzy
+msgid "Process could not be created"
+msgstr "Datoteke \"%s\" ni bilo mogoče ustvariti."
+
+#: scripting/python_scripting.cpp:367
+#, fuzzy, c-format
+msgid "Could not create user scripting path %s."
+msgstr "Datoteke \"%s\" ni bilo mogoče ustvariti."
+
+#, fuzzy, c-format
+#~ msgid "No configuration JSON found for '%s'."
+#~ msgstr ""
+#~ "Napaka pri nalaganju knjižnice simbolov %s.\n"
+#~ "\n"
+#~ "%s"
+
+#, fuzzy, c-format
+#~ msgid "Unable to open '%s'."
+#~ msgstr "Ne morem odpreti datoteke"
+
+#, fuzzy
+#~ msgid "Missing compression metadata."
+#~ msgstr "Manjka izraz pogoja."
+
+#, fuzzy
+#~ msgid "Unable to access the footprint library table."
+#~ msgstr "Datoteke poročila '%s ni mogoče ustvariti'"
+
+#, fuzzy
+#~ msgid "Failed to update the footprint library table."
+#~ msgstr "Datoteke knjižnice simbolov '%s' ni bilo mogoče shraniti."
+
+#, fuzzy
+#~ msgid "Failed to save the footprint library table."
+#~ msgstr "Datoteke knjižnice simbolov '%s' ni bilo mogoče shraniti."
+
+#, fuzzy
+#~ msgid "Unable to parse the downloaded symbol."
+#~ msgstr "Ne morem ustvariti imenika \"%s\""
+
 #, fuzzy
 #~ msgid "PCB: Import"
 #~ msgstr "Uvozi"
@@ -65612,28 +65958,8 @@ msgstr "Urejevalnik knjižnic"
 #~ msgstr "Manjka odtis"
 
 #, fuzzy
-#~ msgid "Unable to start the local login listener."
-#~ msgstr "Izbranih segmentov skladbe ni mogoče zapolniti."
-
-#, fuzzy
 #~ msgid "Failed to allocate a callback port for login."
 #~ msgstr "Mape za varnostno kopijo \"%s\" ni uspelo ustvariti\n"
-
-#, fuzzy
-#~ msgid "Component list was empty."
-#~ msgstr "Parametri komponente"
-
-#, fuzzy
-#~ msgid "Component entries must be objects."
-#~ msgstr "Ime omrežja ne sme biti prazno."
-
-#, fuzzy
-#~ msgid "Component entry was missing a type."
-#~ msgstr "Število komponent: %d."
-
-#, fuzzy, c-format
-#~ msgid "Unsupported component type '%s'."
-#~ msgstr "Shematske datoteke Altium"
 
 #, fuzzy
 #~ msgid "Select Templates Directory"
@@ -68487,10 +68813,6 @@ msgstr "Urejevalnik knjižnic"
 #, fuzzy
 #~ msgid "Export D-356 Test File"
 #~ msgstr "Izvozi testno datoteko D-356"
-
-#, fuzzy
-#~ msgid "Display"
-#~ msgstr "Prikaz"
 
 #, fuzzy
 #~ msgid "Add Net"
@@ -71645,10 +71967,6 @@ msgstr "Urejevalnik knjižnic"
 #, fuzzy
 #~ msgid "You need to select DC source"
 #~ msgstr "Izbrati morate vir enosmernega toka (pometanje 1)"
-
-#, fuzzy
-#~ msgid "No valid simulation is configured."
-#~ msgstr "Ni konfigurirane veljavne simulacije"
 
 #, fuzzy
 #~ msgid ""

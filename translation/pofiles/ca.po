@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 11:13-0700\n"
+"POT-Creation-Date: 2026-03-11 13:57-0700\n"
 "PO-Revision-Date: 2026-03-07 17:51+0000\n"
 "Last-Translator: Rafael Serrano <rsr.openware@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kicad/master-"
@@ -176,7 +176,7 @@ msgstr "Temps de la recàrrega %.3f s"
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:363
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:571
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:285
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:306
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:321
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:347
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:155
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.cpp:117
@@ -218,7 +218,7 @@ msgstr "S'està renderitzant: Postprocès d'ombrejat"
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:54
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:627
 #: common/eda_base_frame.cpp:1509 common/hotkey_store.cpp:80
-#: common/tool/actions.cpp:1270 pcbnew/footprint_chooser_frame.cpp:364
+#: common/tool/actions.cpp:1264 pcbnew/footprint_chooser_frame.cpp:364
 #: pcbnew/footprint_viewer_frame.cpp:968 pcbnew/pcb_base_frame.cpp:668
 msgid "3D Viewer"
 msgstr "Visualitzador 3D"
@@ -312,7 +312,7 @@ msgstr "Seguir configuració de traçat de la placa"
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:567
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:753
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:940
-#: pcbnew/pcbnew_jobs_handler.cpp:814
+#: pcbnew/pcbnew_jobs_handler.cpp:815
 msgid "legacy colors"
 msgstr "antics colors"
 
@@ -2697,11 +2697,11 @@ msgstr "Copia la versió de KiCad al porta-retalls"
 msgid "&Report Bug"
 msgstr "Info&rma d'un Error"
 
-#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1434
+#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1428
 msgid "Report a problem with KiCad"
 msgstr "Informa d'un problema amb KiCad"
 
-#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1427
+#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1421
 msgid "Donate"
 msgstr "Fes una donació"
 
@@ -3308,7 +3308,7 @@ msgstr "Bloc del títol"
 #: common/dialogs/dialog_page_settings.cpp:465
 #: eeschema/eeschema_jobs_handler.cpp:249 pagelayout_editor/files.cpp:254
 #: pagelayout_editor/pl_editor_frame.cpp:369
-#: pcbnew/pcbnew_jobs_handler.cpp:2818
+#: pcbnew/pcbnew_jobs_handler.cpp:2824
 #, c-format
 msgid "Error loading drawing sheet '%s'."
 msgstr "Error en carregar la fulla de dibuix '%s'."
@@ -3570,8 +3570,8 @@ msgstr "Vista prèvia de la impressió"
 
 #: common/dialogs/dialog_print_generic.cpp:98
 #: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:466
-#: common/dialogs/rule_editor_dialog_base.cpp:506 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:469
+#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3912,7 +3912,7 @@ msgstr "D'acord"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:458 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -5076,7 +5076,7 @@ msgstr "Mai"
 msgid "Cursor"
 msgstr "Cursor"
 
-#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1182
+#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1179
 #: common/widgets/gal_options_panel_base.cpp:102
 #, fuzzy
 msgid "Small crosshairs"
@@ -6285,34 +6285,34 @@ msgstr "Importa una empremta"
 msgid "Save"
 msgstr "Desa"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:462
-#: common/dialogs/rule_editor_dialog_base.cpp:480
+#: common/dialogs/rule_editor_dialog_base.cpp:465
+#: common/dialogs/rule_editor_dialog_base.cpp:483
 #: kicad/kicad_manager_frame.cpp:973
 #, fuzzy
 msgid "Discard"
 msgstr "Sense canvis"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:556
+#: common/dialogs/rule_editor_dialog_base.cpp:559
 #, fuzzy
 msgid "New Rule"
 msgstr "Ploteig nou"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:562
 #, fuzzy
 msgid "Copy Rule"
 msgstr "Normes personalitzades"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:565
 #, fuzzy
 msgid "Delete Rule"
 msgstr "Elimina el fitxer"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "Mou amunt"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "Mou avall"
@@ -6335,7 +6335,7 @@ msgid "Error switching GAL backend"
 msgstr ""
 
 #: common/drawing_sheet/drawing_sheet_parser.cpp:559
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3643
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3650
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3662
 msgid "Failed to read image data."
 msgstr "No s'han pogut llegir les dades de la imatge."
@@ -6572,6 +6572,7 @@ msgstr ""
 "Voleu substituir el full amb el contingut d'aquest fitxer?"
 
 #: common/eda_base_frame.cpp:1323
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:79
 msgid "Remove"
 msgstr "Suprimeix"
 
@@ -6605,7 +6606,7 @@ msgstr "Dreceres de teclat"
 msgid "Version Control"
 msgstr "Només la selecció"
 
-#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1285
+#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1279
 #: common/tool/common_tools.cpp:617 eeschema/symbol_editor/symbol_editor.cpp:84
 #: kicad/tools/kicad_manager_actions.cpp:116
 msgid "Symbol Editor"
@@ -6661,7 +6662,7 @@ msgstr "Nom de la font"
 msgid "Simulator"
 msgstr "Simulador"
 
-#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1302
+#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1296
 #: common/tool/common_tools.cpp:619 kicad/tools/kicad_manager_actions.cpp:138
 #: pcbnew/dialogs/panel_display_options_base.cpp:97
 #: pcbnew/footprint_edit_frame.cpp:1126 pcbnew/menubar_footprint_editor.cpp:92
@@ -6761,7 +6762,7 @@ msgstr "No s'ha trobat el fitxer de documentació «%s»."
 msgid "Unknown MIME type for documentation file '%s'"
 msgstr "Tipus MIME desconegut per al fitxer de documentació '%s'"
 
-#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1214
+#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1222
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:55
 #, fuzzy
 msgid "Override locks"
@@ -6845,7 +6846,7 @@ msgstr "Polzades"
 msgid "Search"
 msgstr "Cerca un text"
 
-#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1320
+#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1314
 #: eeschema/eeschema_settings.cpp:94 eeschema/sch_edit_frame.cpp:2038
 #: pagelayout_editor/pl_editor_frame.cpp:201
 #: pcbnew/footprint_edit_frame.cpp:236 pcbnew/pcb_edit_frame.cpp:370
@@ -7660,7 +7661,7 @@ msgstr "No es pot trobar un visualitzador PDF per '%s'."
 msgid "Problem while running the PDF viewer '%s'."
 msgstr "S'ha trobat un problema en executar el visor de PDFs '%s'."
 
-#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:732
+#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:749
 #: gerbview/gerbview.cpp:262 kicad/project_template.cpp:364
 #: pcbnew/pcbnew.cpp:749
 #, c-format
@@ -8141,7 +8142,7 @@ msgid "Paste clipboard cells to matrix at current cell"
 msgstr "Enganxa les cel·les del porta-retalls a la matriu en la cel·la actual"
 
 #: common/grid_tricks.cpp:388 common/tool/actions.cpp:404
-#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2267
+#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2261
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
@@ -9504,22 +9505,22 @@ msgstr "Ja existeix una biblioteca amb el sobrenom '%s'."
 msgid "Added by Plugin and Content Manager"
 msgstr ""
 
-#: common/libraries/library_manager.cpp:409
+#: common/libraries/library_manager.cpp:420
 #, fuzzy
 msgid "KiCad Default Libraries"
 msgstr "Per defecte de KiCad"
 
-#: common/libraries/library_manager.cpp:1132
+#: common/libraries/library_manager.cpp:1143
 #, fuzzy
 msgid "Library not found in library table"
 msgstr "Edita la taula de les biblioteques de símbols."
 
-#: common/libraries/library_manager.cpp:1152
+#: common/libraries/library_manager.cpp:1163
 #, fuzzy, c-format
 msgid "Library '%s': %s"
 msgstr "Biblioteca:"
 
-#: common/libraries/library_manager.cpp:1369
+#: common/libraries/library_manager.cpp:1380
 #, fuzzy, c-format
 msgid "Library %s not found"
 msgstr "No s'ha trobat la biblioteca «%s»."
@@ -9735,6 +9736,30 @@ msgstr "Justificació"
 
 #: common/notifications_manager.cpp:182
 msgid "There are no notifications available"
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:126
+msgid "Missing HTTP method in callback request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:134
+msgid "Missing callback URL in request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:145
+msgid "Unexpected callback path."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:153
+msgid "OAuth callback state did not match."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:163
+msgid "Authorization server returned an OAuth error."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:171
+msgid "Missing authorization code in callback."
 msgstr ""
 
 #: common/page_info.cpp:48
@@ -9982,6 +10007,153 @@ msgstr "Advertiment: "
 msgid "Error: "
 msgstr "Error: "
 
+#: common/remote_provider_client.cpp:287
+msgid "Sign in required for this provider."
+msgstr ""
+
+#: common/remote_provider_client.cpp:329
+msgid "Provider metadata does not include a session bootstrap URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:352
+msgid "Bootstrap response did not include a nonce URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:371
+msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+msgstr ""
+
+#: common/remote_provider_client.cpp:407
+#, c-format
+msgid "Remote provider request failed with HTTP %d."
+msgstr ""
+
+#: common/remote_provider_client.cpp:432
+#, c-format
+msgid "Remote provider returned invalid JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:453
+#, c-format
+msgid "Remote provider returned invalid token JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:485
+#, c-format
+msgid "Remote provider token response was incomplete: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:53
+#, c-format
+msgid "Remote provider metadata schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:64
+#, c-format
+msgid "Remote provider metadata failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:124
+#, fuzzy, c-format
+msgid "Unsupported provider capability '%s'."
+msgstr "Fitxers d'esquemàtics d'Altium"
+
+#: common/remote_provider_metadata.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider metadata: %s"
+msgstr ""
+"No s'han pogut interpretar les metadades del paquet:\n"
+"\n"
+"%s"
+
+#: common/remote_provider_metadata.cpp:154
+msgid "Remote provider metadata must enable web_ui_v1."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:161
+msgid ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:168
+msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:173
+msgid "api_base_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:179
+msgid "panel_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:185
+msgid "session_bootstrap_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:193
+msgid "session_bootstrap_url must share the same origin as panel_url."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:199
+msgid "auth.metadata_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:44
+#, fuzzy, c-format
+msgid "Unable to parse OAuth metadata: %s"
+msgstr ""
+"No s'han pogut interpretar les metadades del paquet:\n"
+"\n"
+"%s"
+
+#: common/remote_provider_models.cpp:50
+msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
+msgstr ""
+
+#: common/remote_provider_models.cpp:55
+msgid "authorization_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:60
+#, fuzzy
+msgid "token_endpoint"
+msgstr "(punt final)"
+
+#: common/remote_provider_models.cpp:66
+msgid "revocation_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:98
+#, c-format
+msgid "Remote provider manifest schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_models.cpp:109
+#, c-format
+msgid "Remote provider manifest failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_models.cpp:136
+msgid "assets[].download_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider manifest: %s"
+msgstr ""
+"No s'ha pogut analitzar el repositori:\n"
+"\n"
+"%s"
+
+#: common/remote_provider_utils.cpp:94
+#, c-format
+msgid ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
+msgstr ""
+
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, fuzzy, c-format
 msgid "File '%s' does not exist."
@@ -10042,7 +10214,7 @@ msgstr "Obtén i mou una empremta"
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:77
 #: eeschema/lib_symbol.cpp:2552 eeschema/menubar.cpp:166
 #: eeschema/sch_sheet.cpp:2154 eeschema/sch_symbol.cpp:3959
-#: eeschema/tools/sch_edit_tool.cpp:716 pcbnew/footprint.cpp:4847
+#: eeschema/tools/sch_edit_tool.cpp:710 pcbnew/footprint.cpp:4847
 msgid "Attributes"
 msgstr "Atributs"
 
@@ -10103,22 +10275,22 @@ msgid ""
 "for you."
 msgstr ""
 
-#: common/startwizard/startwizard_provider_libraries.cpp:109
+#: common/startwizard/startwizard_provider_libraries.cpp:112
 #, fuzzy
 msgid "Symbol library table"
 msgstr "Biblioteca de símbols no habilitada."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:113
+#: common/startwizard/startwizard_provider_libraries.cpp:116
 #, fuzzy
 msgid "Footprint library table"
 msgstr "Biblioteca d'empremtes no habilitada."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:117
+#: common/startwizard/startwizard_provider_libraries.cpp:120
 #, fuzzy
 msgid "Design Block library table"
 msgstr "Desa la biblioteca"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:136
+#: common/startwizard/startwizard_provider_libraries.cpp:146
 #: eeschema/dialogs/dialog_database_lib_settings_base.cpp:99
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:220
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1530
@@ -10153,66 +10325,66 @@ msgstr "Tanca %s"
 msgid "Quit %s"
 msgstr "Surt %s"
 
-#: common/tool/action_toolbar.cpp:1162
+#: common/tool/action_toolbar.cpp:1170
 #, fuzzy
 msgid "Grid selector"
 msgstr "Estil de quadrícula"
 
-#: common/tool/action_toolbar.cpp:1163
+#: common/tool/action_toolbar.cpp:1171
 #, fuzzy
 msgid "Grid Selection box"
 msgstr "Clarifica la selecció"
 
-#: common/tool/action_toolbar.cpp:1175
+#: common/tool/action_toolbar.cpp:1183
 #, fuzzy
 msgid "Zoom selector"
 msgstr "Selecció del zoom"
 
-#: common/tool/action_toolbar.cpp:1176
+#: common/tool/action_toolbar.cpp:1184
 #, fuzzy
 msgid "Zoom Selection box"
 msgstr "Amplia a la selecció"
 
-#: common/tool/action_toolbar.cpp:1188
+#: common/tool/action_toolbar.cpp:1196
 #, fuzzy
 msgid "IPC/Scripting plugins"
 msgstr "Con&sola de seqüències d'ordres"
 
-#: common/tool/action_toolbar.cpp:1189
+#: common/tool/action_toolbar.cpp:1197
 msgid "Region to hold the IPC/Scripting action buttons"
 msgstr ""
 
-#: common/tool/action_toolbar.cpp:1194
+#: common/tool/action_toolbar.cpp:1202
 #, fuzzy
 msgid "Layer selector"
 msgstr "Selecció de la capa:"
 
-#: common/tool/action_toolbar.cpp:1195
+#: common/tool/action_toolbar.cpp:1203
 #, fuzzy
 msgid "Control to select the layer"
 msgstr "Seleccioneu un fitxer netlist vàlid"
 
-#: common/tool/action_toolbar.cpp:1202
+#: common/tool/action_toolbar.cpp:1210
 #, fuzzy
 msgid "Symbol unit selector"
 msgstr "Notació de la unitat del símbol:"
 
-#: common/tool/action_toolbar.cpp:1203
+#: common/tool/action_toolbar.cpp:1211
 #, fuzzy
 msgid "Displays the current unit"
 msgstr "Tanca l'editor actual"
 
-#: common/tool/action_toolbar.cpp:1208
+#: common/tool/action_toolbar.cpp:1216
 #, fuzzy
 msgid "Symbol body style selector"
 msgstr "Notació de la unitat del símbol:"
 
-#: common/tool/action_toolbar.cpp:1209
+#: common/tool/action_toolbar.cpp:1217
 #, fuzzy
 msgid "Displays the current body style"
 msgstr "Tanca l'editor actual"
 
-#: common/tool/action_toolbar.cpp:1215
+#: common/tool/action_toolbar.cpp:1223
 #, fuzzy
 msgid "Allow moving of locked items with the mouse"
 msgstr "Elimina l'element seleccionat"
@@ -10493,7 +10665,7 @@ msgstr "Eina d'esborrat interactiu"
 msgid "Delete clicked items"
 msgstr "Esborra els elements clicats"
 
-#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3340
+#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3334
 #: pcbnew/tools/edit_tool.cpp:2748
 #, fuzzy
 msgid "Left Justify"
@@ -10503,7 +10675,7 @@ msgstr "Justificació vert."
 msgid "Left-justify fields and text items"
 msgstr ""
 
-#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3342
+#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3336
 #: pcbnew/tools/edit_tool.cpp:2750
 #, fuzzy
 msgid "Center Justify"
@@ -10513,7 +10685,7 @@ msgstr "Justificació vert."
 msgid "Center-justify fields and text items"
 msgstr ""
 
-#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3344
+#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3338
 #: pcbnew/tools/edit_tool.cpp:2752
 #, fuzzy
 msgid "Right Justify"
@@ -11077,7 +11249,7 @@ msgstr "Origen de la quadrícula"
 msgid "Set the grid origin point"
 msgstr "Estableix el punt d'origen de la quadrícula"
 
-#: common/tool/actions.cpp:1115
+#: common/tool/actions.cpp:1114
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:61
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:122
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:78
@@ -11087,7 +11259,7 @@ msgstr "Estableix el punt d'origen de la quadrícula"
 msgid "Mils"
 msgstr "Mil"
 
-#: common/tool/actions.cpp:1124
+#: common/tool/actions.cpp:1122
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:165
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:60
 #: pcbnew/dialogs/dialog_board_stats_job_base.cpp:47
@@ -11104,129 +11276,129 @@ msgstr "Mil"
 msgid "Millimeters"
 msgstr "Mil·límetres"
 
-#: common/tool/actions.cpp:1144
+#: common/tool/actions.cpp:1141
 #, fuzzy
 msgid "Select Columns..."
 msgstr "Desselecciona"
 
-#: common/tool/actions.cpp:1151
+#: common/tool/actions.cpp:1148
 msgid "Switch units"
 msgstr "Canvia les unitats"
 
-#: common/tool/actions.cpp:1152
+#: common/tool/actions.cpp:1149
 msgid "Switch between imperial and metric units"
 msgstr "Canvia entre unitats imperials i unitats mètriques"
 
-#: common/tool/actions.cpp:1158
+#: common/tool/actions.cpp:1155
 msgid "Polar Coordinates"
 msgstr "Coordenades polars"
 
-#: common/tool/actions.cpp:1159
+#: common/tool/actions.cpp:1156
 msgid "Switch between polar and cartesian coordinate systems"
 msgstr "Canvia entre el sistema de coordenades polars i cartesianes"
 
-#: common/tool/actions.cpp:1168
+#: common/tool/actions.cpp:1165
 msgid "Reset Local Coordinates"
 msgstr "Restableix les coordenades locals"
 
-#: common/tool/actions.cpp:1175
+#: common/tool/actions.cpp:1172
 #, fuzzy
 msgid "Always Show Crosshairs"
 msgstr "Mostra sempre la retícula"
 
-#: common/tool/actions.cpp:1176
+#: common/tool/actions.cpp:1173
 #, fuzzy
 msgid "Display crosshairs even when not drawing objects"
 msgstr "Mostra retícules fins hi tot a l'eina de selecció"
 
-#: common/tool/actions.cpp:1183
+#: common/tool/actions.cpp:1180
 msgid "Use small crosshairs aligned at 0 and 90 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1190
+#: common/tool/actions.cpp:1186
 msgid "Full-Window Crosshairs"
 msgstr "Retícules en finestra sencera"
 
-#: common/tool/actions.cpp:1191
+#: common/tool/actions.cpp:1187
 msgid "Display full-window crosshairs aligned at 0 and 90 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1198
+#: common/tool/actions.cpp:1193
 msgid "45 Degree Crosshairs"
 msgstr ""
 
-#: common/tool/actions.cpp:1199
+#: common/tool/actions.cpp:1194
 msgid "Display full-window crosshairs aligned at 45 and 135 degrees"
 msgstr ""
 
-#: common/tool/actions.cpp:1207
+#: common/tool/actions.cpp:1201
 msgid "Inactive Layer View Mode"
 msgstr "Mode de vista de capa inactiva"
 
-#: common/tool/actions.cpp:1208
+#: common/tool/actions.cpp:1202
 msgid "Toggle inactive layers between normal and dimmed"
 msgstr "Commuta les capes inactives entre normals i atenuades"
 
-#: common/tool/actions.cpp:1216
+#: common/tool/actions.cpp:1210
 msgid "Inactive Layer View Mode (3-state)"
 msgstr "Mode de vista de capa inactiva (3-estats)"
 
-#: common/tool/actions.cpp:1217
+#: common/tool/actions.cpp:1211
 msgid "Cycle inactive layers between normal, dimmed, and hidden"
 msgstr "Alterna les capes inactives entre normals, atenuades, i amagades"
 
-#: common/tool/actions.cpp:1223
+#: common/tool/actions.cpp:1217
 msgid "Draw Bounding Boxes"
 msgstr "Dibuixa capsa delimitadora"
 
-#: common/tool/actions.cpp:1230 pcbnew/dialogs/panel_edit_options_base.cpp:141
+#: common/tool/actions.cpp:1224 pcbnew/dialogs/panel_edit_options_base.cpp:141
 #: pcbnew/dialogs/panel_edit_options_base.cpp:215
 msgid "Select item(s)"
 msgstr "Selecciona element(s)"
 
-#: common/tool/actions.cpp:1241
+#: common/tool/actions.cpp:1235
 msgid "Measure Tool"
 msgstr "Eina de mesura"
 
-#: common/tool/actions.cpp:1242
+#: common/tool/actions.cpp:1236
 msgid "Interactively measure distance between points"
 msgstr "Mesura interactiva de la distància entre dos punts"
 
-#: common/tool/actions.cpp:1261
+#: common/tool/actions.cpp:1255
 #, fuzzy
 msgid "Switch to Project Manager"
 msgstr "Cap de Projecte"
 
-#: common/tool/actions.cpp:1262
+#: common/tool/actions.cpp:1256
 #, fuzzy
 msgid "Show project window"
 msgstr "Mostra la finestra de la consola"
 
-#: common/tool/actions.cpp:1271
+#: common/tool/actions.cpp:1265
 msgid "Show 3D viewer window"
 msgstr "Mostra la finestra del visor 3D"
 
-#: common/tool/actions.cpp:1277 eeschema/symbol_viewer_frame.cpp:107
+#: common/tool/actions.cpp:1271 eeschema/symbol_viewer_frame.cpp:107
 #: eeschema/symbol_viewer_frame.cpp:1055
 msgid "Symbol Library Browser"
 msgstr "Navegador de biblioteques de símbols"
 
-#: common/tool/actions.cpp:1286 kicad/tools/kicad_manager_actions.cpp:117
+#: common/tool/actions.cpp:1280 kicad/tools/kicad_manager_actions.cpp:117
 #, fuzzy
 msgid "Create, delete and edit schematic symbols"
 msgstr "Crea, esborra i edita símbols"
 
-#: common/tool/actions.cpp:1294 pcbnew/footprint_viewer_frame.cpp:105
+#: common/tool/actions.cpp:1288 pcbnew/footprint_viewer_frame.cpp:105
 #: pcbnew/footprint_viewer_frame.cpp:996
 msgid "Footprint Library Browser"
 msgstr "Navegador de biblioteques d'empremtes"
 
-#: common/tool/actions.cpp:1303
+#: common/tool/actions.cpp:1297
 #, fuzzy
 msgid "Create, delete and edit board footprints"
 msgstr "Crea, esborra i edita empremtes"
 
-#: common/tool/actions.cpp:1311 kicad/tools/kicad_manager_actions.cpp:168
+#: common/tool/actions.cpp:1305 kicad/tools/kicad_manager_actions.cpp:168
 #: pcb_calculator/pcb_calculator_frame.cpp:62
 #: pcb_calculator/pcb_calculator_frame.cpp:212
 #: pcb_calculator/pcb_calculator_frame.cpp:213
@@ -11234,147 +11406,147 @@ msgstr "Crea, esborra i edita empremtes"
 msgid "Calculator Tools"
 msgstr "Eines de càlcul"
 
-#: common/tool/actions.cpp:1312 kicad/tools/kicad_manager_actions.cpp:169
+#: common/tool/actions.cpp:1306 kicad/tools/kicad_manager_actions.cpp:169
 #, fuzzy
 msgid "Run component calculations, track width calculations, etc."
 msgstr ""
 "Calculadora Pcb - Calculadora per als components, l'amplada de les pistes, "
 "etc."
 
-#: common/tool/actions.cpp:1321
+#: common/tool/actions.cpp:1315
 #, fuzzy
 msgid "Show/hide the properties manager"
 msgstr "Mostra o oculta la barra d'eines del gestor de capes"
 
-#: common/tool/actions.cpp:1330
+#: common/tool/actions.cpp:1324
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:134
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:121
 #: eeschema/fields_grid_table.cpp:1203
 msgid "Show Datasheet"
 msgstr "Mostra la fulla de dades"
 
-#: common/tool/actions.cpp:1331
+#: common/tool/actions.cpp:1325
 #, fuzzy
 msgid "Open the datasheet in a browser"
 msgstr "Obre la fulla de dades en un navegador"
 
-#: common/tool/actions.cpp:1339
+#: common/tool/actions.cpp:1333
 msgid "Update PCB from Schematic..."
 msgstr "Actualitza PCB a partir de l'esquemàtic..."
 
-#: common/tool/actions.cpp:1340
+#: common/tool/actions.cpp:1334
 msgid "Update PCB with changes made to schematic"
 msgstr "Actualitza PCB amb els canvis fets a l'esquemàtic"
 
-#: common/tool/actions.cpp:1346
+#: common/tool/actions.cpp:1340
 msgid "Update Schematic from PCB..."
 msgstr "Actualitza PCB a partir de l'esquemàtic..."
 
-#: common/tool/actions.cpp:1347
+#: common/tool/actions.cpp:1341
 msgid "Update schematic with changes made to PCB"
 msgstr "Actualitza PCB amb els canvis fets a l'esquemàtic"
 
-#: common/tool/actions.cpp:1354
+#: common/tool/actions.cpp:1348
 msgid "Preferences..."
 msgstr "Preferències..."
 
-#: common/tool/actions.cpp:1355
+#: common/tool/actions.cpp:1349
 msgid "Show preferences for all open tools"
 msgstr "Mostra les preferències de totes les eines obertes"
 
-#: common/tool/actions.cpp:1362
+#: common/tool/actions.cpp:1356
 #: pcbnew/dialogs/panel_fp_properties_3d_model_base.cpp:78
 msgid "Configure Paths..."
 msgstr "Configura els camins..."
 
-#: common/tool/actions.cpp:1363
+#: common/tool/actions.cpp:1357
 msgid "Edit path configuration environment variables"
 msgstr "Edita les variables d'entorn de la configuració dels camins"
 
-#: common/tool/actions.cpp:1369
+#: common/tool/actions.cpp:1363
 msgid "Manage Symbol Libraries..."
 msgstr "Gestiona les biblioteques de símbols..."
 
-#: common/tool/actions.cpp:1370
+#: common/tool/actions.cpp:1364
 msgid "Edit the global and project symbol library lists"
 msgstr "Edita les llistes de biblioteques de símbols globals i de projecte"
 
-#: common/tool/actions.cpp:1376
+#: common/tool/actions.cpp:1370
 msgid "Manage Footprint Libraries..."
 msgstr "Gestiona les biblioteques d'empremtes..."
 
-#: common/tool/actions.cpp:1377
+#: common/tool/actions.cpp:1371
 msgid "Edit the global and project footprint library lists"
 msgstr "Edita les llistes biblioteques d'empremtes globals i de projecte"
 
-#: common/tool/actions.cpp:1383
+#: common/tool/actions.cpp:1377
 #, fuzzy
 msgid "Manage Design Block Libraries..."
 msgstr "Gestiona les biblioteques de símbols..."
 
-#: common/tool/actions.cpp:1384
+#: common/tool/actions.cpp:1378
 #, fuzzy
 msgid "Edit the global and project design block library lists"
 msgstr "Edita les llistes de biblioteques de símbols globals i de projecte"
 
-#: common/tool/actions.cpp:1390
+#: common/tool/actions.cpp:1384
 msgid "Getting Started with KiCad"
 msgstr "Començant amb KiCad"
 
-#: common/tool/actions.cpp:1391
+#: common/tool/actions.cpp:1385
 msgid "Open \"Getting Started in KiCad\" guide for beginners"
 msgstr "Obre \"Començant amb KiCad\", la guia per principiants"
 
-#: common/tool/actions.cpp:1397
+#: common/tool/actions.cpp:1391
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:330
 #: pcb_calculator/calculator_panels/panel_fusing_current_base.cpp:136
 #: pcb_calculator/calculator_panels/panel_r_calculator_base.cpp:187
 msgid "Help"
 msgstr "Ajuda"
 
-#: common/tool/actions.cpp:1398
+#: common/tool/actions.cpp:1392
 msgid "Open product documentation in a web browser"
 msgstr "Obre la documentació del producte al navegador web"
 
-#: common/tool/actions.cpp:1404
+#: common/tool/actions.cpp:1398
 #, fuzzy
 msgid "About KiCad"
 msgstr "Qu&ant a KiCad"
 
-#: common/tool/actions.cpp:1413
+#: common/tool/actions.cpp:1407
 msgid "List Hotkeys..."
 msgstr "Llista de les dreceres..."
 
-#: common/tool/actions.cpp:1414
+#: common/tool/actions.cpp:1408
 msgid "Displays current hotkeys table and corresponding commands"
 msgstr "Mostra la taula de dreceres actual i les ordres corresponents"
 
-#: common/tool/actions.cpp:1420
+#: common/tool/actions.cpp:1414
 msgid "Get Involved"
 msgstr "Involucrar-se"
 
-#: common/tool/actions.cpp:1421
+#: common/tool/actions.cpp:1415
 msgid "Open \"Contribute to KiCad\" in a web browser"
 msgstr "Obre \"Contribueix a KiCad\" al navegador web"
 
-#: common/tool/actions.cpp:1428
+#: common/tool/actions.cpp:1422
 msgid "Open \"Donate to KiCad\" in a web browser"
 msgstr "Obre \"Fes una donació a KiCad\" al navegador web"
 
-#: common/tool/actions.cpp:1433
+#: common/tool/actions.cpp:1427
 msgid "Report Bug"
 msgstr "Informa d'un error"
 
-#: common/tool/actions.cpp:1446
+#: common/tool/actions.cpp:1440
 #, fuzzy
 msgid "Refresh Plugins"
 msgstr "&Refresca els connectors"
 
-#: common/tool/actions.cpp:1447
+#: common/tool/actions.cpp:1441
 msgid "Reload all python plugins and refresh plugin menus"
 msgstr ""
 
-#: common/tool/actions.cpp:1455
+#: common/tool/actions.cpp:1449
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:85
 #: eeschema/dialogs/dialog_schematic_setup.cpp:143
 #: eeschema/dialogs/dialog_symbol_properties.cpp:346
@@ -11385,27 +11557,27 @@ msgstr ""
 msgid "Embedded Files"
 msgstr "Fitxers d'imatges"
 
-#: common/tool/actions.cpp:1456
+#: common/tool/actions.cpp:1450
 #, fuzzy
 msgid "Manage embedded files"
 msgstr "Reanomena fitxers"
 
-#: common/tool/actions.cpp:1461
+#: common/tool/actions.cpp:1455
 #, fuzzy
 msgid "Remove File"
 msgstr "Reanomena el fitxer"
 
-#: common/tool/actions.cpp:1462
+#: common/tool/actions.cpp:1456
 #, fuzzy
 msgid "Remove an embedded file"
 msgstr "Elimina totes les capes coincidents."
 
-#: common/tool/actions.cpp:1467
+#: common/tool/actions.cpp:1461
 #, fuzzy
 msgid "Extract File"
 msgstr "Exporta a un Fitxer"
 
-#: common/tool/actions.cpp:1468
+#: common/tool/actions.cpp:1462
 #, fuzzy
 msgid "Extract an embedded file"
 msgstr "Fitxer executable"
@@ -11731,17 +11903,17 @@ msgstr "Selecciona un Fitxer"
 msgid "Select Path"
 msgstr "Selecciona Camí"
 
-#: common/widgets/kistatusbar.cpp:146
+#: common/widgets/kistatusbar.cpp:128
 #, fuzzy
 msgid "View load messages"
 msgstr "Missatges d'informació:"
 
-#: common/widgets/kistatusbar.cpp:410
+#: common/widgets/kistatusbar.cpp:461
 #, c-format
 msgid "View %zu load message(s)"
 msgstr ""
 
-#: common/widgets/kistatusbar.cpp:458
+#: common/widgets/kistatusbar.cpp:510
 #, fuzzy
 msgid "Load Messages"
 msgstr "Missatges"
@@ -11798,7 +11970,7 @@ msgstr "<crea xarxa>"
 
 #: common/widgets/paged_dialog.cpp:85 common/widgets/paged_dialog.cpp:347
 #: eeschema/dialogs/dialog_bom_base.cpp:114
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:106
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:367
 #: pcb_calculator/calculator_panels/panel_track_width_base.cpp:288
 #: pcb_calculator/calculator_panels/panel_transline_base.cpp:480
@@ -16080,91 +16252,154 @@ msgstr ""
 msgid "Plot Schematic"
 msgstr "Imprimeix l'esquemàtic"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:44
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
 #, fuzzy
 msgid "Remote Symbol Settings"
 msgstr "Importa ajustaments"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:58
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
 msgid ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:65
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
+msgid "Providers"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#, fuzzy
+msgid "Add / Update"
+msgstr "Actualitza"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
+#, fuzzy
+msgid "Refresh Metadata"
+msgstr "Cerca un text"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+msgid "Sign Out"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
+msgid "Metadata URL:"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#, fuzzy
+msgid "Display name:"
+msgstr "Pantalla"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#, fuzzy
+msgid "Last account:"
+msgstr "Quantitat de pads"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
+#, fuzzy
+msgid "Not signed in"
+msgstr "No especificat"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
+#, fuzzy
+msgid "Auth status:"
+msgstr "Estat: "
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
+#, fuzzy
+msgid "Not configured"
+msgstr "Sense mirall"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 #, fuzzy
 msgid "Destination directory:"
 msgstr "Designació"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:71
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:121
 msgid ""
 "Directory where downloaded symbol, footprint, and 3D model data will be "
 "written."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:74
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:124
 msgid "Browse..."
 msgstr "Navega..."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:128
 #, fuzzy
 msgid "Library prefix:"
 msgstr "Error de sobrenom de biblioteca"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:131
 msgid "Prefix that will be applied to the generated libraries."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:89
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:139
 #, fuzzy
 msgid "Add libraries to:"
 msgstr "Desa la biblioteca"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:93
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:143
 #, fuzzy
 msgid "Project library table"
 msgstr "Biblioteca de símbols no habilitada."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:146
 #, fuzzy
 msgid "Adds the generated libraries to the project's library tables."
 msgstr "Afegeix una entrada a la taula de biblioteques del projecte"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:98
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:149
 #, fuzzy
 msgid "Global library table"
 msgstr "Biblioteca de símbols no habilitada."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
 #, fuzzy
 msgid "Adds the generated libraries to the global library tables."
 msgstr "Vols afegir la biblioteca a la taula global de biblioteques?"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:107
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:159
 msgid "Restore the default destination and prefix."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:208
 #, fuzzy
 msgid "Please choose a destination directory."
 msgstr "Si us plau tria un fitxer llista de xarxes vàlid."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:216
 #, fuzzy
 msgid "Please enter a library prefix."
 msgstr "Selecciona un fitxer de taula de biblioteques de símbols."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:191
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:252
 #, fuzzy
 msgid "Select Destination Directory"
 msgstr "Selecciona predefinició:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:258
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
+msgid "Enter a provider metadata URL first."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
+msgid "Provider metadata refreshed."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
+#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
+#: pcbnew/zone.cpp:989
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:519
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:263
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:524
 #, c-format
 msgid "Will create libraries like %1$s_symbols, %1$s_fp, %1$s_3d, etc."
 msgstr ""
@@ -16432,7 +16667,7 @@ msgid "Project"
 msgstr "Projecte"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:119
-#: eeschema/tools/sch_edit_tool.cpp:3624
+#: eeschema/tools/sch_edit_tool.cpp:3618
 #: pcbnew/dialogs/dialog_board_setup.cpp:217
 #: pcbnew/widgets/appearance_controls.cpp:526
 #: pcbnew/widgets/appearance_controls.cpp:2507
@@ -19265,19 +19500,19 @@ msgstr "Àrea de prohibit el pas"
 msgid "URL"
 msgstr "URL"
 
-#: eeschema/eeschema.cpp:496 eeschema/eeschema.cpp:508
+#: eeschema/eeschema.cpp:513 eeschema/eeschema.cpp:525
 #: eeschema/libraries/legacy_symbol_library.cpp:523
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1349
 msgid "Loading Symbol Libraries"
 msgstr "Càrrega de biblioteques de símbols"
 
-#: eeschema/eeschema.cpp:633
+#: eeschema/eeschema.cpp:650
 #, c-format
 msgid ""
 "Cannot copy file '%s' as it will be overwritten by the new root sheet file."
 msgstr ""
 
-#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:298
+#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:299
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0."
 msgstr ""
 
@@ -19288,7 +19523,7 @@ msgstr "No s'ha pogut carregar el fitxer de l'esquemàtic\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:275
 #: kicad/cli/command_pcb_export_hpgl.cpp:36
-#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:286
+#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:287
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0.\n"
 msgstr ""
 
@@ -19296,14 +19531,14 @@ msgstr ""
 #: eeschema/eeschema_jobs_handler.cpp:522
 #: eeschema/eeschema_jobs_handler.cpp:877
 #: eeschema/eeschema_jobs_handler.cpp:959
-#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:569
-#: pcbnew/pcbnew_jobs_handler.cpp:698 pcbnew/pcbnew_jobs_handler.cpp:962
-#: pcbnew/pcbnew_jobs_handler.cpp:1071 pcbnew/pcbnew_jobs_handler.cpp:1168
-#: pcbnew/pcbnew_jobs_handler.cpp:1254 pcbnew/pcbnew_jobs_handler.cpp:1309
-#: pcbnew/pcbnew_jobs_handler.cpp:1496 pcbnew/pcbnew_jobs_handler.cpp:1563
-#: pcbnew/pcbnew_jobs_handler.cpp:1710 pcbnew/pcbnew_jobs_handler.cpp:1877
-#: pcbnew/pcbnew_jobs_handler.cpp:2168 pcbnew/pcbnew_jobs_handler.cpp:2308
-#: pcbnew/pcbnew_jobs_handler.cpp:2527 pcbnew/pcbnew_jobs_handler.cpp:2639
+#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:570
+#: pcbnew/pcbnew_jobs_handler.cpp:699 pcbnew/pcbnew_jobs_handler.cpp:963
+#: pcbnew/pcbnew_jobs_handler.cpp:1072 pcbnew/pcbnew_jobs_handler.cpp:1169
+#: pcbnew/pcbnew_jobs_handler.cpp:1255 pcbnew/pcbnew_jobs_handler.cpp:1310
+#: pcbnew/pcbnew_jobs_handler.cpp:1497 pcbnew/pcbnew_jobs_handler.cpp:1564
+#: pcbnew/pcbnew_jobs_handler.cpp:1711 pcbnew/pcbnew_jobs_handler.cpp:1878
+#: pcbnew/pcbnew_jobs_handler.cpp:2169 pcbnew/pcbnew_jobs_handler.cpp:2314
+#: pcbnew/pcbnew_jobs_handler.cpp:2533 pcbnew/pcbnew_jobs_handler.cpp:2645
 #, fuzzy
 msgid "Failed to create output directory\n"
 msgstr "Impossible de crear fitxer <%s>"
@@ -19356,8 +19591,8 @@ msgid "Plotting symbol '%s' unit %d to '%s'\n"
 msgstr "Canvia el símbol %s de '%s' a '%s'"
 
 #: eeschema/eeschema_jobs_handler.cpp:1106
-#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2087
-#: pcbnew/pcbnew_jobs_handler.cpp:2160
+#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2088
+#: pcbnew/pcbnew_jobs_handler.cpp:2161
 msgid "Unable to load library\n"
 msgstr "No s'ha pogut carregar la biblioteca\n"
 
@@ -19371,17 +19606,17 @@ msgstr "No hi ha cap símbol seleccionat per desar."
 msgid "Unable to create output directory '%s'."
 msgstr "No es pot crear el directori de sortida «%s»."
 
-#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1407
-#: pcbnew/pcbnew_jobs_handler.cpp:2179
+#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1408
+#: pcbnew/pcbnew_jobs_handler.cpp:2180
 #, fuzzy, c-format
 msgid "Exporting %s"
 msgstr "Importa ajustaments"
 
-#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2056
+#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2057
 msgid "Output path must not conflict with existing path\n"
 msgstr ""
 
-#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2063
+#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2064
 msgid ""
 "Output path must be specified to convert legacy and non-KiCad libraries\n"
 msgstr ""
@@ -19396,7 +19631,7 @@ msgstr "Identificador de biblioteca de símbols invàlid"
 msgid "Symbol library was not updated\n"
 msgstr "Biblioteca de símbols no habilitada."
 
-#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2439
+#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2445
 #, fuzzy, c-format
 msgid "Found %d violations\n"
 msgstr "Permet la violació del DRC"
@@ -20244,11 +20479,6 @@ msgstr "Deriva-ho del símbol:"
 msgid "Error loading symbol %s from library '%s'."
 msgstr "Error al carregar el símbol %s des de la biblioteca '%s'."
 
-#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
-#: pcbnew/zone.cpp:989
-msgid "Unknown"
-msgstr "Desconegut"
-
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:62
 #: pcbnew/import_gfx/dialog_import_graphics.cpp:49
 #, fuzzy
@@ -20601,7 +20831,7 @@ msgstr ""
 
 #: eeschema/menubar.cpp:196
 msgid ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
 
 #: eeschema/menubar.cpp:330
@@ -20722,7 +20952,7 @@ msgid "Failed to create directory 'devices' ."
 msgstr "Impossible de crear fitxer <%s>"
 
 #: eeschema/netlist_exporters/netlist_exporter_allegro.cpp:408
-#: pcbnew/pcbnew_jobs_handler.cpp:1502 pcbnew/pcbnew_jobs_handler.cpp:1571
+#: pcbnew/pcbnew_jobs_handler.cpp:1503 pcbnew/pcbnew_jobs_handler.cpp:1572
 #, fuzzy, c-format
 msgid "Failed to create file '%s'.\n"
 msgstr "No s'ha pogut crear del fitxer '%s'."
@@ -20817,7 +21047,7 @@ msgstr "Unitats"
 msgid "Change Unit"
 msgstr "Canvia el tipus"
 
-#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2507
+#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2501
 #, fuzzy
 msgid "Change Body Style"
 msgstr "Estil de la vora:"
@@ -20965,6 +21195,144 @@ msgstr "No s'ha trobat"
 #: eeschema/project_sch.cpp:115
 msgid "The following libraries were not found:"
 msgstr "No s'han trobat les següents biblioteques:"
+
+#: eeschema/remote_symbol_download_manager.cpp:35
+msgid "Remote asset URL"
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:49
+msgid "Remote asset URL origin must match the selected provider."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:66
+#, fuzzy, c-format
+msgid "Unable to set download URL '%s'."
+msgstr "No es pot crear «%s»"
+
+#: eeschema/remote_symbol_download_manager.cpp:124
+msgid "Remote asset manifest declared an invalid size."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:130
+msgid "Remote asset manifest must declare sha256 for URL-based downloads."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:139
+msgid "Remote asset exceeds the provider download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:150
+#, c-format
+msgid "Remote download failed with HTTP %d."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:156
+msgid "Remote asset content type did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:162
+msgid "Remote asset size did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:168
+msgid "Remote asset exceeds the remaining download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:174
+msgid "Remote asset digest did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:44
+#, fuzzy
+msgid "Downloaded symbol payload was empty."
+msgstr "El fitxer de la biblioteca de peces «%s» està buit."
+
+#: eeschema/remote_symbol_import_job.cpp:52
+#, fuzzy
+msgid "Downloaded symbol payload was not a KiCad symbol library."
+msgstr "No s'ha trobat el símbol %s a la taula de biblioteques de símbols."
+
+#: eeschema/remote_symbol_import_job.cpp:62
+#, c-format
+msgid "Downloaded symbol payload did not include expected symbol '%s'."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:96
+#: eeschema/remote_symbol_import_utils.cpp:114
+#: eeschema/widgets/panel_remote_symbol.cpp:1072
+#: eeschema/widgets/panel_remote_symbol.cpp:1295
+#, fuzzy
+msgid "Unable to load schematic settings."
+msgstr "No s'ha pogut carregar el fitxer de l'esquemàtic\n"
+
+#: eeschema/remote_symbol_import_job.cpp:234
+#, fuzzy
+msgid "No symbol asset was available to place."
+msgstr "Utilitza el tema de color de l'editor d'esquemàtics"
+
+#: eeschema/remote_symbol_import_utils.cpp:76
+msgid "Payload was empty."
+msgstr ""
+
+#: eeschema/remote_symbol_import_utils.cpp:85
+#, fuzzy, c-format
+msgid "Unable to create '%s'."
+msgstr "No es pot crear «%s»"
+
+#: eeschema/remote_symbol_import_utils.cpp:93
+#, fuzzy, c-format
+msgid "Unable to open '%s' for writing."
+msgstr "No s'ha pogut obrir el fitxer %s per a la lectura."
+
+#: eeschema/remote_symbol_import_utils.cpp:99
+#, fuzzy, c-format
+msgid "Failed to write '%s'."
+msgstr "No s'ha pogut escriure el fitxer «%s»."
+
+#: eeschema/remote_symbol_import_utils.cpp:128
+#, fuzzy
+msgid "Destination directory is not configured."
+msgstr "Es desconeix el directori de la configuració 3D"
+
+#: eeschema/remote_symbol_import_utils.cpp:137
+#, fuzzy, c-format
+msgid "Unable to create directory '%s'."
+msgstr "Impossible de crear fitxer <%s>"
+
+#: eeschema/remote_symbol_import_utils.cpp:158
+#, fuzzy
+msgid "Unable to access the library table."
+msgstr "No s'ha pogut crear el fitxer de la biblioteca de símbols '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:178
+#, fuzzy
+msgid "Failed to update the library table."
+msgstr "No s'ha pogut crear el fitxer de la biblioteca de símbols '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:192
+#, fuzzy
+msgid "Remote download"
+msgstr "Mantingues el fitxer descarregat"
+
+#: eeschema/remote_symbol_import_utils.cpp:197
+#, fuzzy
+msgid "Failed to save the library table."
+msgstr "No s'ha pogut desar el fitxer de biblioteca de símbols '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:210
+#, fuzzy
+msgid "No schematic editor is available for placement."
+msgstr "Utilitza el tema de color de l'editor d'esquemàtics"
+
+#: eeschema/remote_symbol_import_utils.cpp:222
+#, fuzzy
+msgid "Unable to load the downloaded symbol for placement."
+msgstr "Visualitza l'empremta seleccionada"
+
+#: eeschema/remote_symbol_import_utils.cpp:237
+#, fuzzy
+msgid "Unable to access the schematic placement tools."
+msgstr "Visualitza l'empremta seleccionada"
 
 #: eeschema/sch_base_frame.cpp:746
 #, fuzzy
@@ -21897,7 +22265,7 @@ msgstr "Fitxers de biblioteques de símbols de KiCad"
 
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:118
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:288
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:309
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:324
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:108
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:221
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:504
@@ -21991,19 +22359,19 @@ msgstr "el document de biblioteca de símbols està buit"
 msgid "library %s does not contain a symbol named %s"
 msgstr "la biblioteca %s no conté un símbol anomenat %s"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:215
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:219
 #, c-format
 msgid ""
 "Could not load sheet '%s' because it already appears as a direct ancestor in "
 "the schematic hierarchy."
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:345
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:360
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:306
 msgid "Internal Group Data Error"
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:346
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:361
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:307
 #, c-format
 msgid ""
@@ -22012,28 +22380,28 @@ msgid ""
 "Save anyway?"
 msgstr ""
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:349
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:364
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:309
 #, fuzzy
 msgid "Save Anyway"
 msgstr "Afegeix un àlies"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1782
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1797
 #, fuzzy, c-format
 msgid "Symbol library file '%s' already exists."
 msgstr "La biblioteca de símbols '%s' ja existeix."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1787
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1802
 #, fuzzy, c-format
 msgid "Symbol library path '%s' already exists."
 msgstr "La biblioteca de símbols '%s' ja existeix."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1817
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1832
 #, fuzzy, c-format
 msgid "Symbol library file '%s' cannot be deleted."
 msgstr "No es pot eliminar la biblioteca de símbols '%s'."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1827
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1842
 #, fuzzy, c-format
 msgid "Symbol library folder '%s' cannot be deleted."
 msgstr "No es pot eliminar la biblioteca de símbols '%s'."
@@ -22215,28 +22583,28 @@ msgstr "Nom de la biblioteca de símbols invàlida"
 msgid "Invalid symbol library ID"
 msgstr "ID de biblioteca de símbols invàlida"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3956
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3970
 #, fuzzy
 msgid "Missing sheet name property"
 msgstr "Falta l'argument del nom de la capa per %s."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3962
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3976
 #, fuzzy
 msgid "Missing sheet file property"
 msgstr "Falta l'argument del nom de la capa per %s."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5070
 #, fuzzy
 msgid "Invalid table: no cells defined"
 msgstr "S'ha especificat una empremta invàlida"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5195
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
 #, fuzzy, c-format
 msgid "Group library link %s contains invalid character '%c'"
 msgstr "No s'ha trobat el símbol '%s' a la biblioteca '%s'."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5187
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5201
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6976
 #, fuzzy
 msgid "Invalid library ID"
@@ -22564,7 +22932,7 @@ msgstr "Nom del pin"
 msgid "No sheets to plot."
 msgstr "Importa els pins del full"
 
-#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1429
+#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1430
 #, c-format
 msgid "Plotted to '%s'.\n"
 msgstr "Traçat a '%s'.\n"
@@ -26564,7 +26932,7 @@ msgstr "Distribueix horitzontalment"
 msgid "Flips selected item(s) from left to right"
 msgstr "Alinea els elements seleccionats a la vora dreta"
 
-#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1699
+#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1693
 #: pcbnew/tools/edit_tool_move_fct.cpp:201 pcbnew/tools/pcb_actions.cpp:696
 msgid "Swap"
 msgstr ""
@@ -26574,7 +26942,7 @@ msgstr ""
 msgid "Swap positions of selected items"
 msgstr "Elimina l'element seleccionat"
 
-#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1849
+#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1843
 #, fuzzy
 msgid "Swap Pins"
 msgstr "Intercanvia les capes"
@@ -26584,7 +26952,7 @@ msgstr "Intercanvia les capes"
 msgid "Swap the selected symbol pins' positions"
 msgstr "Copia les cel·les seleccionades al porta-retalls"
 
-#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1952
+#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1946
 #, fuzzy
 msgid "Swap Pin Labels"
 msgstr "Intercanvia les capes"
@@ -26594,7 +26962,7 @@ msgstr "Intercanvia les capes"
 msgid "Swap the labels attached to selected pins"
 msgstr "Elimina l'element seleccionat"
 
-#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2034
+#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2028
 #, fuzzy
 msgid "Swap Unit Labels"
 msgstr "Unitats"
@@ -26617,7 +26985,7 @@ msgstr "Edita el valor..."
 msgid "Edit Footprint..."
 msgstr "Edita l'empremta..."
 
-#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2448
+#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2442
 msgid "Autoplace Fields"
 msgstr "Posiciona automàticament els camps"
 
@@ -26742,7 +27110,7 @@ msgstr "Canvia al text"
 msgid "Change existing item to a text box"
 msgstr "Els canvis estan a la taula de components"
 
-#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3370
+#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3364
 #, fuzzy
 msgid "Cleanup Sheet Pins"
 msgstr "Pin de la fulla"
@@ -27665,7 +28033,7 @@ msgid "Press <ESC> to cancel image creation."
 msgstr ""
 
 #: eeschema/tools/sch_drawing_tools.cpp:1237
-#: eeschema/tools/sch_edit_tool.cpp:3470
+#: eeschema/tools/sch_edit_tool.cpp:3464
 #: pagelayout_editor/pl_editor_frame.cpp:859
 #: pagelayout_editor/pl_editor_frame.cpp:867 pcbnew/tools/drawing_tool.cpp:796
 #, c-format
@@ -27835,134 +28203,134 @@ msgstr "Entroncament"
 msgid "Pin Helpers"
 msgstr "Propietats del pin"
 
-#: eeschema/tools/sch_edit_tool.cpp:702
+#: eeschema/tools/sch_edit_tool.cpp:696
 #, fuzzy
 msgid "Transform Selection"
 msgstr "Zoom a la selecció"
 
-#: eeschema/tools/sch_edit_tool.cpp:730
+#: eeschema/tools/sch_edit_tool.cpp:724
 #, fuzzy
 msgid "Edit Main Fields"
 msgstr "Edita el camp %s"
 
-#: eeschema/tools/sch_edit_tool.cpp:743 eeschema/tools/sch_edit_tool.cpp:3252
+#: eeschema/tools/sch_edit_tool.cpp:737 eeschema/tools/sch_edit_tool.cpp:3246
 #, fuzzy
 msgid "Change To"
 msgstr "Canvia"
 
-#: eeschema/tools/sch_edit_tool.cpp:1238
+#: eeschema/tools/sch_edit_tool.cpp:1232
 #: eeschema/tools/symbol_editor_edit_tool.cpp:602
 #: pcbnew/tools/edit_tool.cpp:2530
 msgid "Rotate"
 msgstr "Gira"
 
-#: eeschema/tools/sch_edit_tool.cpp:1454 gerbview/gerber_draw_item.cpp:724
+#: eeschema/tools/sch_edit_tool.cpp:1448 gerbview/gerber_draw_item.cpp:724
 #: pcbnew/pcb_tablecell.cpp:209 pcbnew/pcb_text.cpp:308
 #: pcbnew/pcb_textbox.cpp:501 pcbnew/tools/edit_tool.cpp:2680
 msgid "Mirror"
 msgstr "Reflexió"
 
-#: eeschema/tools/sch_edit_tool.cpp:1761
+#: eeschema/tools/sch_edit_tool.cpp:1755
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects. Duplicate "
 "the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1767
+#: eeschema/tools/sch_edit_tool.cpp:1761
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1777
+#: eeschema/tools/sch_edit_tool.cpp:1771
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols used by multiple sheet instances (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1784
+#: eeschema/tools/sch_edit_tool.cpp:1778
 msgid ""
 "Pin swaps are disabled for shared symbols. Duplicate the sheet to edit pins "
 "independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1928
+#: eeschema/tools/sch_edit_tool.cpp:1922
 msgid ""
 "Each selected pin must have exactly one attached net label and no other pin "
 "connections."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1984
+#: eeschema/tools/sch_edit_tool.cpp:1978
 msgid ""
 "Each pin of selected units must have exactly one attached net label and no "
 "other pin connections."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:2077
+#: eeschema/tools/sch_edit_tool.cpp:2071
 msgid "Label value cannot go below zero"
 msgstr "El valor de l'etiqueta no pot estar per sota de zero"
 
-#: eeschema/tools/sch_edit_tool.cpp:2157
+#: eeschema/tools/sch_edit_tool.cpp:2151
 #, fuzzy
 msgid "Repeat Item"
 msgstr "Elements repetits"
 
-#: eeschema/tools/sch_edit_tool.cpp:2294
+#: eeschema/tools/sch_edit_tool.cpp:2288
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1009
 #, c-format
 msgid "Edit %s Field"
 msgstr "Edita el camp %s"
 
-#: eeschema/tools/sch_edit_tool.cpp:2298
+#: eeschema/tools/sch_edit_tool.cpp:2292
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1011
 #, c-format
 msgid "Edit '%s' Field"
 msgstr "Edita el camp '%s'"
 
-#: eeschema/tools/sch_edit_tool.cpp:2744
+#: eeschema/tools/sch_edit_tool.cpp:2738
 #, fuzzy
 msgid "Edit Sheet Properties"
 msgstr "Propietats del pin del full"
 
-#: eeschema/tools/sch_edit_tool.cpp:2868
+#: eeschema/tools/sch_edit_tool.cpp:2862
 #: pcbnew/dialogs/dialog_rule_area_properties_base.h:64
 #, fuzzy
 msgid "Rule Area Properties"
 msgstr "Propietats de l'àrea de prohibit el pas"
 
-#: eeschema/tools/sch_edit_tool.cpp:2940 eeschema/tools/sch_edit_tool.cpp:3028
+#: eeschema/tools/sch_edit_tool.cpp:2934 eeschema/tools/sch_edit_tool.cpp:3022
 #, fuzzy
 msgid "<empty>"
 msgstr "En blanc"
 
-#: eeschema/tools/sch_edit_tool.cpp:3361
+#: eeschema/tools/sch_edit_tool.cpp:3355
 msgid "Do you wish to delete the unreferenced pins from this sheet?"
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:3422
+#: eeschema/tools/sch_edit_tool.cpp:3416
 #, fuzzy, c-format
 msgid "Enter page number for sheet path%s"
 msgstr "necessita un NÚMERO per «%s»"
 
-#: eeschema/tools/sch_edit_tool.cpp:3425
+#: eeschema/tools/sch_edit_tool.cpp:3419
 #: eeschema/widgets/hierarchy_pane.cpp:631
 #, fuzzy
 msgid "Edit Sheet Page Number"
 msgstr "Edita la disposició de la pàgina"
 
-#: eeschema/tools/sch_edit_tool.cpp:3551
+#: eeschema/tools/sch_edit_tool.cpp:3545
 #, fuzzy
 msgid "Toggle Attribute"
 msgstr "Atribut"
 
-#: eeschema/tools/sch_edit_tool.cpp:3566
+#: eeschema/tools/sch_edit_tool.cpp:3560
 #, fuzzy
 msgid "Edit Symbol Properties..."
 msgstr "Propietats del símbol"
 
-#: eeschema/tools/sch_edit_tool.cpp:3583
+#: eeschema/tools/sch_edit_tool.cpp:3577
 #, fuzzy
 msgid "Edit Netclasses..."
 msgstr "S'està carregant..."
@@ -28495,259 +28863,214 @@ msgstr "Fulla de dibuix"
 msgid "(page %s)"
 msgstr "(pàgina %s)"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:85
+#: eeschema/widgets/panel_remote_symbol.cpp:76
 #, fuzzy
 msgid "Missing payload data."
 msgstr "Paraules clau:"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:93
+#: eeschema/widgets/panel_remote_symbol.cpp:84
 #, fuzzy
 msgid "Failed to decode base64 payload."
 msgstr "No s'ha pogut carregar '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:115
+#: eeschema/widgets/panel_remote_symbol.cpp:107
 #, fuzzy, c-format
 msgid "Unsupported compression '%s'."
 msgstr "Fitxers d'esquemàtics d'Altium"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:122
+#: eeschema/widgets/panel_remote_symbol.cpp:114
 msgid "Compressed payload was empty."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:139
+#: eeschema/widgets/panel_remote_symbol.cpp:133
+#, c-format
+msgid "Decompressed size %llu exceeds limit %llu."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:144
 #, fuzzy, c-format
 msgid "ZSTD decompression failed: %s"
 msgstr "S'estan comprovant les connexions de xarxa..."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:182
-msgid "Payload was empty."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:193
-#: eeschema/widgets/panel_remote_symbol.cpp:1249
-#: eeschema/widgets/panel_remote_symbol.cpp:1364
-#: eeschema/widgets/panel_remote_symbol.cpp:1388
-#: eeschema/widgets/panel_remote_symbol.cpp:1461
-#: eeschema/widgets/panel_remote_symbol.cpp:1525
-#, fuzzy, c-format
-msgid "Unable to create '%s'."
-msgstr "No es pot crear «%s»"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:202
-#, fuzzy, c-format
-msgid "Unable to open '%s' for writing."
-msgstr "No s'ha pogut obrir el fitxer %s per a la lectura."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:208
-#, fuzzy, c-format
-msgid "Failed to write '%s'."
-msgstr "No s'ha pogut escriure el fitxer «%s»."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:223
+#: eeschema/widgets/panel_remote_symbol.cpp:169
 #, fuzzy
 msgid "Symbol payload was empty."
 msgstr "El fitxer de la biblioteca de peces «%s» està buit."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:231
-#: eeschema/widgets/panel_remote_symbol.cpp:241
+#: eeschema/widgets/panel_remote_symbol.cpp:177
+#: eeschema/widgets/panel_remote_symbol.cpp:186
 #, fuzzy
 msgid "Unable to create a temporary file for the symbol payload."
 msgstr "<b>No s'ha pogut crear el fitxer temporal '%s'.</b>"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:248
+#: eeschema/widgets/panel_remote_symbol.cpp:193
 #, fuzzy
 msgid "Failed to write the temporary symbol payload."
 msgstr "No s'ha pogut crear el fitxer temporal '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:260
+#: eeschema/widgets/panel_remote_symbol.cpp:205
 #, fuzzy
 msgid "Unable to access the KiCad symbol plugin."
 msgstr "Visualitza l'empremta seleccionada"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:280
+#: eeschema/widgets/panel_remote_symbol.cpp:219
 msgid "Symbol payload did not include the expected symbol."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:285
+#: eeschema/widgets/panel_remote_symbol.cpp:223
 #, fuzzy, c-format
 msgid "Unable to decode the symbol payload: %s"
 msgstr "Visualitza l'empremta seleccionada"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:309
-msgid "Select which remote data source to query."
+#: eeschema/widgets/panel_remote_symbol.cpp:252
+msgid "Reload current provider page"
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:315
+#: eeschema/widgets/panel_remote_symbol.cpp:257
 #, fuzzy
-msgid "Configure remote data sources."
+msgid "Configure remote providers"
 msgstr "Configura els camins"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:391
-msgid "No remote data sources are currently installed."
-msgstr ""
+#: eeschema/widgets/panel_remote_symbol.cpp:379
+#, fuzzy
+msgid "No remote providers configured."
+msgstr "No s'ha configurat una simulació vàlida."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:444
-#, fuzzy, c-format
-msgid "No configuration JSON found for '%s'."
-msgstr "Error en carregar la biblioteca de símbols '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:455
-#, fuzzy, c-format
-msgid "Unable to open '%s'."
-msgstr "Ha fallat l'obertura del fitxer «%s»"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:465
-#, fuzzy, c-format
-msgid "Unable to read '%s'."
-msgstr "No es pot crear «%s»"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:479
-#, fuzzy, c-format
-msgid "Unable to load remote data for '%s'."
+#: eeschema/widgets/panel_remote_symbol.cpp:451
+#, fuzzy
+msgid "Unable to load remote provider metadata."
 msgstr "No s'ha pogut llegir el fitxer de dades '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:809
+#: eeschema/widgets/panel_remote_symbol.cpp:696
+msgid "A remote provider sign-in flow is already in progress."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:728
+#, fuzzy
+msgid "Unable to start the local OAuth callback listener."
+msgstr "Visualitza l'empremta seleccionada"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:738
+#, fuzzy
+msgid "Unable to open the system browser for sign-in."
+msgstr "No s'ha pogut obrir el fitxer %s per a la lectura."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:768
+#, fuzzy
+msgid "Failed to delete stored remote provider tokens."
+msgstr ""
+"No s'ha pogut analitzar el repositori:\n"
+"\n"
+"%s"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:808
 #, fuzzy, c-format
 msgid "Unsupported RPC version %d."
 msgstr "Forma de via no suportada: %s."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:818
+#: eeschema/widgets/panel_remote_symbol.cpp:817
 #, fuzzy
 msgid "Missing session identifier."
 msgstr "Falta el número de versió."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:902
-#, fuzzy
-msgid "Missing compression metadata."
-msgstr "Falta l'expressió de la condició."
+#: eeschema/widgets/panel_remote_symbol.cpp:824
+msgid "Session identifier did not match the active provider session."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:941
-#: eeschema/widgets/panel_remote_symbol.cpp:955
+#: eeschema/widgets/panel_remote_symbol.cpp:912
+#, fuzzy
+msgid "No remote provider is currently selected."
+msgstr "Empremta no seleccionada"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1033
+#, fuzzy
+msgid "Unable to process provider payload."
+msgstr "ha fallat l'obertura del fitxer"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, fuzzy, c-format
 msgid "Command '%s' is not supported."
 msgstr "No s'admet %s."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:949
-#, fuzzy
-msgid "Unable to store payload."
-msgstr "ha fallat l'obertura del fitxer"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:965
-#: eeschema/widgets/panel_remote_symbol.cpp:1233
-#: eeschema/widgets/panel_remote_symbol.cpp:1410
-#, fuzzy
-msgid "Unable to load schematic settings."
-msgstr "No s'ha pogut carregar el fitxer de l'esquemàtic\n"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:980
-#, fuzzy
-msgid "Destination directory is not configured."
-msgstr "Es desconeix el directori de la configuració 3D"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:991
-#, fuzzy, c-format
-msgid "Unable to create directory '%s'."
-msgstr "Impossible de crear fitxer <%s>"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1011
-#, fuzzy
-msgid "Unable to access the symbol library table."
-msgstr "No s'ha pogut crear el fitxer de la biblioteca de símbols '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1030
-#, fuzzy
-msgid "Failed to update the symbol library table."
-msgstr "No s'ha pogut crear el fitxer de la biblioteca de símbols '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1044
-#: eeschema/widgets/panel_remote_symbol.cpp:1100
-#, fuzzy
-msgid "Remote download"
-msgstr "Mantingues el fitxer descarregat"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1049
-#, fuzzy
-msgid "Failed to save the symbol library table."
-msgstr "No s'ha pogut desar el fitxer de biblioteca de símbols '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1067
-#, fuzzy
-msgid "Unable to access the footprint library table."
-msgstr "No s'ha pogut crear el fitxer de l'informe «%s» "
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1086
-#, fuzzy
-msgid "Failed to update the footprint library table."
-msgstr "No s'ha pogut desar el fitxer de biblioteca de símbols '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1105
-#, fuzzy
-msgid "Failed to save the footprint library table."
-msgstr "No s'ha pogut desar el fitxer de biblioteca de símbols '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1146
-#, fuzzy
-msgid "No schematic editor is available for placement."
-msgstr "Utilitza el tema de color de l'editor d'esquemàtics"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1153
-msgid "Downloaded symbol metadata is incomplete."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1165
-#, fuzzy
-msgid "Unable to load the downloaded symbol for placement."
-msgstr "Visualitza l'empremta seleccionada"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1187
-#, fuzzy
-msgid "Unable to access the schematic placement tools."
-msgstr "Visualitza l'empremta seleccionada"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1211
-#: eeschema/widgets/panel_remote_symbol.cpp:1342
-#: eeschema/widgets/panel_remote_symbol.cpp:1438
-#: eeschema/widgets/panel_remote_symbol.cpp:1503
+#: eeschema/widgets/panel_remote_symbol.cpp:1052
 #, fuzzy, c-format
 msgid "Unsupported transfer mode '%s'."
 msgstr "Fitxers d'esquemàtics d'Altium"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1219
+#: eeschema/widgets/panel_remote_symbol.cpp:1058
 #, fuzzy
 msgid "Unsupported symbol payload type."
 msgstr "[no hi ha símbols carregats]"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1225
+#: eeschema/widgets/panel_remote_symbol.cpp:1064
 msgid "No schematic editor is available to store symbols."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1278
+#: eeschema/widgets/panel_remote_symbol.cpp:1109
 #, fuzzy
 msgid "Unable to access the symbol library manager."
 msgstr "No s'ha pogut crear el fitxer de la biblioteca de símbols '%s'."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1287
-#, fuzzy
-msgid "Unable to parse the downloaded symbol."
-msgstr "No s'ha pogut crear la carpeta de descàrregues!"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1302
+#: eeschema/widgets/panel_remote_symbol.cpp:1126
 #, fuzzy
 msgid "Unable to save the downloaded symbol."
 msgstr "Trieu una carpeta per desar les biblioteques baixades"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1350
+#: eeschema/widgets/panel_remote_symbol.cpp:1154
+#, fuzzy, c-format
+msgid "Failed to parse component list: %s"
+msgstr "No s'ha pogut carregar '%s'."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1160
+#, fuzzy
+msgid "Component list must be a non-empty array."
+msgstr "Fitxers de posicionament de components"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1170
+#, fuzzy
+msgid "Component entries must be objects."
+msgstr "El camp %s no pot estar buit."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1178
+#, fuzzy
+msgid "Component entry was missing a type."
+msgstr "Nombre de components: %d."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1237
+#, fuzzy, c-format
+msgid "Unsupported component type '%s'."
+msgstr "Fitxers d'esquemàtics d'Altium"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1256
 #, fuzzy
 msgid "Unsupported footprint payload type."
 msgstr "No s'ha carregat cap empremta."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1447
-msgid "Unsupported 3D model payload type."
+#: eeschema/widgets/panel_remote_symbol.cpp:1371
+msgid "Remote provider metadata is not loaded."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1511
-msgid "Unsupported SPICE payload type."
+#: eeschema/widgets/panel_remote_symbol.cpp:1401
+msgid ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
 msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1437
+msgid "Remote provider sign-in was cancelled or failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1448
+msgid "Remote provider sign-in failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1464
+#, fuzzy
+msgid "Failed to store remote provider tokens securely."
+msgstr ""
+"No s'ha pogut analitzar el repositori:\n"
+"\n"
+"%s"
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -39556,7 +39879,7 @@ msgid "Generate IPC-2581 File"
 msgstr "Genera el fitxer netlist IPC-D-356"
 
 #: pcbnew/dialogs/dialog_export_2581.cpp:289
-#: pcbnew/pcbnew_jobs_handler.cpp:2564
+#: pcbnew/pcbnew_jobs_handler.cpp:2570
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -48212,12 +48535,12 @@ msgstr "S'estan reunint els patis d'empremtes..."
 msgid "Checking footprints for overlapping courtyards..."
 msgstr "S'estan reunint els patis d'empremtes..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:89
+#: pcbnew/drc/drc_test_provider_creepage.cpp:90
 #, fuzzy
 msgid "Checking creepage..."
 msgstr "S'estan verificant els pads..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:166
+#: pcbnew/drc/drc_test_provider_creepage.cpp:167
 #, fuzzy, c-format
 msgid "(%s creepage %s; actual %s)"
 msgstr "(%s marge %s; actual %s)"
@@ -50014,7 +50337,7 @@ msgid "Error saving custom rules file '%s'."
 msgstr "Error en desar el fitxer de normes personalitzades '%s'."
 
 #: pcbnew/files.cpp:1094 pcbnew/files.cpp:1185
-#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2751
+#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2757
 #, c-format
 msgid ""
 "Error saving board file '%s'.\n"
@@ -52297,7 +52620,7 @@ msgstr ""
 "mode independent. Per crear/actualitzar PCBs des de l'esquemàtic, executa el "
 "shell de KiCad i crea un projecte."
 
-#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2383
+#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2389
 #, fuzzy
 msgid "Eeschema netlist"
 msgstr "Netlist d'EEschema"
@@ -52380,22 +52703,22 @@ msgstr "Actualitzat"
 msgid "Generator Properties"
 msgstr "Propietats del generador d'scripts"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4435
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
 #, fuzzy
 msgid "Constructing caches"
 msgstr "Etiquetes en conflicte"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4450
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
 #, fuzzy
 msgid "Creating nets"
 msgstr "Mode de dibuix"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4459
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
 #, fuzzy
 msgid "Creating tracks"
 msgstr "Quan es creïn les pistes"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4498
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
 #, fuzzy
 msgid "Converting footprints"
 msgstr "A partir de l'empremta ascendent"
@@ -54871,147 +55194,147 @@ msgstr "Falta l'argument del nom de la capa per %s."
 msgid "Loading Footprint Libraries"
 msgstr "S'estan carregant les biblioteques d'empremtes"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:452 pcbnew/pcbnew_jobs_handler.cpp:2932
+#: pcbnew/pcbnew_jobs_handler.cpp:453 pcbnew/pcbnew_jobs_handler.cpp:2938
 #, fuzzy
 msgid "Failed to load board\n"
 msgstr "No s'ha pogut carregar '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:518
+#: pcbnew/pcbnew_jobs_handler.cpp:519
 #, fuzzy, c-format
 msgid "Invalid layer name '%s'\n"
 msgstr "Nom de propietat no vàlid"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:558 pcbnew/pcbnew_jobs_handler.cpp:638
-#: pcbnew/pcbnew_jobs_handler.cpp:682
+#: pcbnew/pcbnew_jobs_handler.cpp:559 pcbnew/pcbnew_jobs_handler.cpp:639
+#: pcbnew/pcbnew_jobs_handler.cpp:683
 #, fuzzy
 msgid "Unknown export format"
 msgstr "tipus de via desconegut %d"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:612
+#: pcbnew/pcbnew_jobs_handler.cpp:613
 #, c-format
 msgid "Successfully exported VRML to %s"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:618
+#: pcbnew/pcbnew_jobs_handler.cpp:619
 #, fuzzy
 msgid "Error exporting VRML"
 msgstr "Error quan s'extreia el fitxer!"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:664
+#: pcbnew/pcbnew_jobs_handler.cpp:665
 #, fuzzy
 msgid "Invalid image dimensions"
 msgstr "Definició dels noms dels pins invàlida"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:919
+#: pcbnew/pcbnew_jobs_handler.cpp:920
 #, fuzzy
 msgid "Successfully created 3D render image"
 msgstr "Error mentre es llegia el fitxer."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:924
+#: pcbnew/pcbnew_jobs_handler.cpp:925
 #, fuzzy
 msgid "Error creating 3D render image"
 msgstr "Error mentre es llegia el fitxer."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:982 pcbnew/pcbnew_jobs_handler.cpp:1051
-#: pcbnew/pcbnew_jobs_handler.cpp:1144 pcbnew/pcbnew_jobs_handler.cpp:1232
-#: pcbnew/pcbnew_jobs_handler.cpp:1618
+#: pcbnew/pcbnew_jobs_handler.cpp:983 pcbnew/pcbnew_jobs_handler.cpp:1052
+#: pcbnew/pcbnew_jobs_handler.cpp:1145 pcbnew/pcbnew_jobs_handler.cpp:1233
+#: pcbnew/pcbnew_jobs_handler.cpp:1619
 #, fuzzy
 msgid "At least one layer must be specified\n"
 msgstr "No s'ha especificat cap biblioteca."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1437 pcbnew/pcbnew_jobs_handler.cpp:1680
+#: pcbnew/pcbnew_jobs_handler.cpp:1438 pcbnew/pcbnew_jobs_handler.cpp:1681
 #, fuzzy, c-format
 msgid "Failed to plot to '%s'.\n"
 msgstr "No s'ha pogut carregar '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1508
+#: pcbnew/pcbnew_jobs_handler.cpp:1509
 msgid "Successfully created genCAD file\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1578
+#: pcbnew/pcbnew_jobs_handler.cpp:1579
 #, fuzzy, c-format
 msgid "Error writing file '%s'.\n"
 msgstr "Error en escriure al fitxer '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1584
+#: pcbnew/pcbnew_jobs_handler.cpp:1585
 #, fuzzy, c-format
 msgid "Wrote board statistics to '%s'.\n"
 msgstr "No es pot crear el directori de sortida '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1924 pcbnew/pcbnew_jobs_handler.cpp:2002
+#: pcbnew/pcbnew_jobs_handler.cpp:1925 pcbnew/pcbnew_jobs_handler.cpp:2003
 #, fuzzy, c-format
 msgid "Wrote front position data to '%s'.\n"
 msgstr "Exporta l'empremta"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1942 pcbnew/pcbnew_jobs_handler.cpp:2026
+#: pcbnew/pcbnew_jobs_handler.cpp:1943 pcbnew/pcbnew_jobs_handler.cpp:2027
 #, fuzzy, c-format
 msgid "Wrote back position data to '%s'.\n"
 msgstr "No es pot crear el directori de sortida '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1971
+#: pcbnew/pcbnew_jobs_handler.cpp:1972
 #, fuzzy, c-format
 msgid "Wrote position data to '%s'.\n"
 msgstr "Exporta l'empremta"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2073
+#: pcbnew/pcbnew_jobs_handler.cpp:2074
 #, fuzzy
 msgid "Footprint library path does not exist or is not accessible\n"
 msgstr "no es pot eliminar la biblioteca d'empremtes «%s»"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2113
+#: pcbnew/pcbnew_jobs_handler.cpp:2114
 #, fuzzy
 msgid "Unable to save library\n"
 msgstr "no hi ha cap biblioteca activa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2119
+#: pcbnew/pcbnew_jobs_handler.cpp:2120
 #, fuzzy
 msgid "Footprint library was not updated\n"
 msgstr "Biblioteca d'empremtes no habilitada."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2200
+#: pcbnew/pcbnew_jobs_handler.cpp:2201
 #, fuzzy
 msgid "The given footprint could not be found to export."
 msgstr ""
 "No s'ha pogut trobar el fitxer d'equivalències «%s» als camins "
 "predeterminats de cerca."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2242
+#: pcbnew/pcbnew_jobs_handler.cpp:2243
 #, fuzzy, c-format
 msgid "Plotting footprint '%s' to '%s'\n"
 msgstr "Canvia l'empremta %s de '%s' a '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2271
+#: pcbnew/pcbnew_jobs_handler.cpp:2272
 #, fuzzy
 msgid "Error creating svg file"
 msgstr "Error mentre es llegia el fitxer."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2336 pcbnew/tools/drc_tool.cpp:170
+#: pcbnew/pcbnew_jobs_handler.cpp:2342 pcbnew/tools/drc_tool.cpp:170
 msgid "Schematic parity tests require a fully annotated schematic."
 msgstr ""
 "Les proves de paritat de l'esquemàtic requereixen un esquemàtic completament "
 "anotat."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2357 pcbnew/pcbnew_jobs_handler.cpp:2390
+#: pcbnew/pcbnew_jobs_handler.cpp:2363 pcbnew/pcbnew_jobs_handler.cpp:2396
 #, fuzzy
 msgid "Failed to fetch schematic netlist for parity tests.\n"
 msgstr "No s'ha pogut carregar el fitxer de l'esquemàtic\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2421 pcbnew/tools/drc_tool.cpp:208
+#: pcbnew/pcbnew_jobs_handler.cpp:2427 pcbnew/tools/drc_tool.cpp:208
 #, fuzzy
 msgid "DRC"
 msgstr "ERC"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2442
+#: pcbnew/pcbnew_jobs_handler.cpp:2448
 #, fuzzy, c-format
 msgid "Found %d unconnected items\n"
 msgstr "Elements no connectats (%s)"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2448
+#: pcbnew/pcbnew_jobs_handler.cpp:2454
 #, c-format
 msgid "Found %d schematic parity issues\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2464
+#: pcbnew/pcbnew_jobs_handler.cpp:2470
 #, fuzzy, c-format
 msgid "Unable to save DRC report to %s\n"
 msgstr ""
@@ -55019,22 +55342,22 @@ msgstr ""
 "\n"
 "%s"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2469
+#: pcbnew/pcbnew_jobs_handler.cpp:2475
 #, fuzzy, c-format
 msgid "Saved DRC Report to %s\n"
 msgstr "Desa el fitxer de l'informe DRC"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2476
+#: pcbnew/pcbnew_jobs_handler.cpp:2482
 #, fuzzy
 msgid "Saved board\n"
 msgstr "Desa la placa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2480
+#: pcbnew/pcbnew_jobs_handler.cpp:2486
 #, fuzzy
 msgid "Failed to save board.\n"
 msgstr "No s'ha pogut carregar '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2603
+#: pcbnew/pcbnew_jobs_handler.cpp:2609
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -55043,51 +55366,51 @@ msgstr ""
 "Error en desar el fitxer de la placa '%s'.\n"
 "No s'ha pogut canviar el nom al fitxer temporal '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2649
+#: pcbnew/pcbnew_jobs_handler.cpp:2655
 #, fuzzy
 msgid "Successfully created IPC-D-356 file\n"
 msgstr "Error mentre es llegia el fitxer."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2654
+#: pcbnew/pcbnew_jobs_handler.cpp:2660
 #, fuzzy
 msgid "Failed to create IPC-D-356 file\n"
 msgstr "No s'ha pogut crear del fitxer '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2741
+#: pcbnew/pcbnew_jobs_handler.cpp:2747
 msgid "Successfully saved board file using the latest format\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2745
+#: pcbnew/pcbnew_jobs_handler.cpp:2751
 #, fuzzy
 msgid "Board file was not updated\n"
 msgstr "Biblioteca de símbols no habilitada."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2883
+#: pcbnew/pcbnew_jobs_handler.cpp:2889
 #, fuzzy, c-format
 msgid "Unable to determine file format for '%s'\n"
 msgstr "No s'ha pogut llegir el fitxer '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2892
+#: pcbnew/pcbnew_jobs_handler.cpp:2898
 #, fuzzy, c-format
 msgid "Input file not found: '%s'\n"
 msgstr "No s'ha trobat el fitxer: '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2918
+#: pcbnew/pcbnew_jobs_handler.cpp:2924
 #, fuzzy, c-format
 msgid "No plugin found for file type '%s'\n"
 msgstr "Exporta l'empremta"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2924
+#: pcbnew/pcbnew_jobs_handler.cpp:2930
 #, c-format
 msgid "Importing '%s' using %s format...\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2940
+#: pcbnew/pcbnew_jobs_handler.cpp:2946
 #, c-format
 msgid "Successfully saved imported board to '%s'\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:3062
+#: pcbnew/pcbnew_jobs_handler.cpp:3068
 #, fuzzy, c-format
 msgid "Error during import: %s\n"
 msgstr "Error en carregar el tipus de lletra '%s'."
@@ -55167,7 +55490,7 @@ msgstr "Aplica l'escalat de les icones als tipus de lletra"
 msgid "Exception on python footprint wizard code"
 msgstr ""
 
-#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:214
+#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:216
 #, fuzzy, c-format
 msgid "Error loading drawing sheet '%s': %s"
 msgstr "Error en carregar la fulla de dibuix '%s'."
@@ -55842,11 +56165,11 @@ msgstr "S'han reparat %d problemes potencials."
 msgid "No board problems found."
 msgstr "No s'han trobat errors a la placa."
 
-#: pcbnew/tools/board_editor_control.cpp:694
+#: pcbnew/tools/board_editor_control.cpp:699
 msgid "Updating PCB requires a fully annotated schematic."
 msgstr "Per actualitzar la PCB es requereix un esquemàtic completament anotat."
 
-#: pcbnew/tools/board_editor_control.cpp:708
+#: pcbnew/tools/board_editor_control.cpp:715
 #, fuzzy
 msgid ""
 "Cannot update schematic because Pcbnew is opened in stand-alone mode. In "
@@ -55857,76 +56180,76 @@ msgstr ""
 "mode independent. Per crear/actualitzar PCBs des de l'esquemàtic, executa el "
 "shell de KiCad i crea un projecte."
 
-#: pcbnew/tools/board_editor_control.cpp:752
+#: pcbnew/tools/board_editor_control.cpp:759
 #, fuzzy, c-format
 msgid "Schematic file '%s' not found."
 msgstr "No s'ha trobat el fitxer de recuperació «%s»."
 
-#: pcbnew/tools/board_editor_control.cpp:783
+#: pcbnew/tools/board_editor_control.cpp:793
 msgid "Eeschema failed to load."
 msgstr "No s'ha pogut carregar l'Eeschema."
 
-#: pcbnew/tools/board_editor_control.cpp:896
+#: pcbnew/tools/board_editor_control.cpp:907
 #, fuzzy
 msgid "Increase Track Width"
 msgstr "Incrementa l'amplada de la línia"
 
-#: pcbnew/tools/board_editor_control.cpp:978
+#: pcbnew/tools/board_editor_control.cpp:989
 #, fuzzy
 msgid "Decrease Track Width"
 msgstr "Disminueix l'amplada de la línia"
 
-#: pcbnew/tools/board_editor_control.cpp:1063 pcbnew/tools/pcb_actions.cpp:1375
+#: pcbnew/tools/board_editor_control.cpp:1074 pcbnew/tools/pcb_actions.cpp:1375
 msgid "Increase Via Size"
 msgstr "Augmenta la mida de la via"
 
-#: pcbnew/tools/board_editor_control.cpp:1333
+#: pcbnew/tools/board_editor_control.cpp:1344
 #, fuzzy
 msgid "Place Footprint"
 msgstr "Desa l'empremta"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1500
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1500
 msgid "Lock"
 msgstr "Bloqueja"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1507
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1507
 msgid "Unlock"
 msgstr "Desbloqueja"
 
-#: pcbnew/tools/board_editor_control.cpp:1492
+#: pcbnew/tools/board_editor_control.cpp:1503
 msgid "Zones have insufficient overlap for merging."
 msgstr ""
 
-#: pcbnew/tools/board_editor_control.cpp:1547
+#: pcbnew/tools/board_editor_control.cpp:1558
 #, fuzzy
 msgid "Some zone netcodes did not match and were not merged."
 msgstr "La capa de normes '%s' no coincideix; norma ignorada."
 
-#: pcbnew/tools/board_editor_control.cpp:1553
+#: pcbnew/tools/board_editor_control.cpp:1564
 #, fuzzy
 msgid "Some zones were rule areas and were not merged."
 msgstr "La capa de normes '%s' no coincideix; norma ignorada."
 
-#: pcbnew/tools/board_editor_control.cpp:1559
+#: pcbnew/tools/board_editor_control.cpp:1570
 #, fuzzy
 msgid "Some zone layer sets did not match and were not merged."
 msgstr "La capa de normes '%s' no coincideix; norma ignorada."
 
-#: pcbnew/tools/board_editor_control.cpp:1576
+#: pcbnew/tools/board_editor_control.cpp:1587
 #, fuzzy
 msgid "Some zones did not intersect and were not merged."
 msgstr "La capa de normes '%s' no coincideix; norma ignorada."
 
-#: pcbnew/tools/board_editor_control.cpp:1589 pcbnew/tools/pcb_actions.cpp:1410
+#: pcbnew/tools/board_editor_control.cpp:1600 pcbnew/tools/pcb_actions.cpp:1410
 msgid "Merge Zones"
 msgstr "Combina les zones"
 
-#: pcbnew/tools/board_editor_control.cpp:1643
+#: pcbnew/tools/board_editor_control.cpp:1654
 #, fuzzy
 msgid "Duplicate Zone"
 msgstr "Duplica la zona"
 
-#: pcbnew/tools/board_editor_control.cpp:1716
+#: pcbnew/tools/board_editor_control.cpp:1727
 #, fuzzy
 msgid "Selection contains no items with labeled nets."
 msgstr "La selecció conté %d elements bloquejats."
@@ -61379,6 +61702,44 @@ msgstr "Símbol de l'esquemàtic"
 msgid "KiCad Drawing Sheet"
 msgstr "Editor de fulles de dibuix"
 
+#: scripting/python_manager.cpp:135
+#, fuzzy
+msgid "Process could not be created"
+msgstr "No s'ha pogut crear el fitxer «%s»."
+
+#: scripting/python_scripting.cpp:367
+#, fuzzy, c-format
+msgid "Could not create user scripting path %s."
+msgstr "No s'ha pogut crear el fitxer «%s»"
+
+#, fuzzy, c-format
+#~ msgid "No configuration JSON found for '%s'."
+#~ msgstr "Error en carregar la biblioteca de símbols '%s'."
+
+#, fuzzy, c-format
+#~ msgid "Unable to open '%s'."
+#~ msgstr "Ha fallat l'obertura del fitxer «%s»"
+
+#, fuzzy
+#~ msgid "Missing compression metadata."
+#~ msgstr "Falta l'expressió de la condició."
+
+#, fuzzy
+#~ msgid "Unable to access the footprint library table."
+#~ msgstr "No s'ha pogut crear el fitxer de l'informe «%s» "
+
+#, fuzzy
+#~ msgid "Failed to update the footprint library table."
+#~ msgstr "No s'ha pogut desar el fitxer de biblioteca de símbols '%s'."
+
+#, fuzzy
+#~ msgid "Failed to save the footprint library table."
+#~ msgstr "No s'ha pogut desar el fitxer de biblioteca de símbols '%s'."
+
+#, fuzzy
+#~ msgid "Unable to parse the downloaded symbol."
+#~ msgstr "No s'ha pogut crear la carpeta de descàrregues!"
+
 #, fuzzy
 #~ msgid "PCB: Import"
 #~ msgstr "Importa"
@@ -61720,28 +62081,8 @@ msgstr "Editor de fulles de dibuix"
 #~ msgstr "Falta empremta"
 
 #, fuzzy
-#~ msgid "Unable to start the local login listener."
-#~ msgstr "Visualitza l'empremta seleccionada"
-
-#, fuzzy
 #~ msgid "Failed to allocate a callback port for login."
 #~ msgstr "No s'ha pogut crear la carpeta de còpies de seguretat '%s'.\n"
-
-#, fuzzy
-#~ msgid "Component list was empty."
-#~ msgstr "Fitxers de posicionament de components"
-
-#, fuzzy
-#~ msgid "Component entries must be objects."
-#~ msgstr "El camp %s no pot estar buit."
-
-#, fuzzy
-#~ msgid "Component entry was missing a type."
-#~ msgstr "Nombre de components: %d."
-
-#, fuzzy, c-format
-#~ msgid "Unsupported component type '%s'."
-#~ msgstr "Fitxers d'esquemàtics d'Altium"
 
 #~ msgid "Select Templates Directory"
 #~ msgstr "Selecciona el directori de les plantilles"
@@ -64338,9 +64679,6 @@ msgstr "Editor de fulles de dibuix"
 
 #~ msgid "Export D-356 Test File"
 #~ msgstr "Exporta el fitxer de proves D-356"
-
-#~ msgid "Display"
-#~ msgstr "Pantalla"
 
 #, fuzzy
 #~ msgid "Add Net"
@@ -67095,9 +67433,6 @@ msgstr "Editor de fulles de dibuix"
 
 #~ msgid "You need to select DC source"
 #~ msgstr "Has de seleccionar una font DC"
-
-#~ msgid "No valid simulation is configured."
-#~ msgstr "No s'ha configurat una simulació vàlida."
 
 #~ msgid ""
 #~ "A valid simulation can be configured by selecting a simulation tab, "
@@ -72908,9 +73243,6 @@ msgstr "Editor de fulles de dibuix"
 
 #~ msgid "(start point)"
 #~ msgstr "(punt inicial)"
-
-#~ msgid "(end point)"
-#~ msgstr "(punt final)"
 
 #~ msgid "Selection Clarification"
 #~ msgstr "Aclariment de la selecció"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 11:13-0700\n"
+"POT-Creation-Date: 2026-03-11 13:57-0700\n"
 "PO-Revision-Date: 2018-07-15 17:07+0200\n"
 "Last-Translator: Simon Richter <Simon.Richter@hogyros.de>\n"
 "Language-Team: Simon Richter <Simon.Richter@hogyros.de>\n"
@@ -5612,6 +5612,24 @@ msgstr "Notifications"
 msgid "There are no notifications available"
 msgstr "There are no notifications available"
 
+msgid "Missing HTTP method in callback request."
+msgstr "Missing HTTP method in callback request."
+
+msgid "Missing callback URL in request."
+msgstr "Missing callback URL in request."
+
+msgid "Unexpected callback path."
+msgstr "Unexpected callback path."
+
+msgid "OAuth callback state did not match."
+msgstr "OAuth callback state did not match."
+
+msgid "Authorization server returned an OAuth error."
+msgstr "Authorization server returned an OAuth error."
+
+msgid "Missing authorization code in callback."
+msgstr "Missing authorization code in callback."
+
 msgid "A5 148 x 210mm"
 msgstr "A5 148 x 210mm"
 
@@ -5765,6 +5783,117 @@ msgstr "Warning: "
 
 msgid "Error: "
 msgstr "Error: "
+
+msgid "Sign in required for this provider."
+msgstr "Sign in required for this provider."
+
+msgid "Provider metadata does not include a session bootstrap URL."
+msgstr "Provider metadata does not include a session bootstrap URL."
+
+msgid "Bootstrap response did not include a nonce URL."
+msgstr "Bootstrap response did not include a nonce URL."
+
+msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+msgstr "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+
+#, c-format
+msgid "Remote provider request failed with HTTP %d."
+msgstr "Remote provider request failed with HTTP %d."
+
+#, c-format
+msgid "Remote provider returned invalid JSON: %s"
+msgstr "Remote provider returned invalid JSON: %s"
+
+#, c-format
+msgid "Remote provider returned invalid token JSON: %s"
+msgstr "Remote provider returned invalid token JSON: %s"
+
+#, c-format
+msgid "Remote provider token response was incomplete: %s"
+msgstr "Remote provider token response was incomplete: %s"
+
+#, c-format
+msgid "Remote provider metadata schema '%s' is not readable."
+msgstr "Remote provider metadata schema '%s' is not readable."
+
+#, c-format
+msgid "Remote provider metadata failed schema validation: %s"
+msgstr "Remote provider metadata failed schema validation: %s"
+
+#, c-format
+msgid "Unsupported provider capability '%s'."
+msgstr "Unsupported provider capability '%s'."
+
+#, c-format
+msgid "Unable to parse remote provider metadata: %s"
+msgstr "Unable to parse remote provider metadata: %s"
+
+msgid "Remote provider metadata must enable web_ui_v1."
+msgstr "Remote provider metadata must enable web_ui_v1."
+
+msgid ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+msgstr ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+
+msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
+msgstr "Remote provider metadata must define session_bootstrap_url for oauth2."
+
+msgid "api_base_url"
+msgstr "api_base_url"
+
+msgid "panel_url"
+msgstr "panel_url"
+
+msgid "session_bootstrap_url"
+msgstr "session_bootstrap_url"
+
+msgid "session_bootstrap_url must share the same origin as panel_url."
+msgstr "session_bootstrap_url must share the same origin as panel_url."
+
+msgid "auth.metadata_url"
+msgstr "auth.metadata_url"
+
+#, c-format
+msgid "Unable to parse OAuth metadata: %s"
+msgstr "Unable to parse OAuth metadata: %s"
+
+msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
+msgstr "OAuth metadata must include authorization_endpoint and token_endpoint."
+
+msgid "authorization_endpoint"
+msgstr "authorization_endpoint"
+
+msgid "token_endpoint"
+msgstr "token_endpoint"
+
+msgid "revocation_endpoint"
+msgstr "revocation_endpoint"
+
+#, c-format
+msgid "Remote provider manifest schema '%s' is not readable."
+msgstr "Remote provider manifest schema '%s' is not readable."
+
+#, c-format
+msgid "Remote provider manifest failed schema validation: %s"
+msgstr "Remote provider manifest failed schema validation: %s"
+
+msgid "assets[].download_url"
+msgstr "assets[].download_url"
+
+#, c-format
+msgid "Unable to parse remote provider manifest: %s"
+msgstr "Unable to parse remote provider manifest: %s"
+
+#, c-format
+msgid ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
+msgstr ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
 
 #, c-format
 msgid "File '%s' does not exist."
@@ -9704,11 +9833,39 @@ msgid "Remote Symbol Settings"
 msgstr "Remote Symbol Settings"
 
 msgid ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
+
+msgid "Providers"
+msgstr "Providers"
+
+msgid "Add / Update"
+msgstr "Add / Update"
+
+msgid "Refresh Metadata"
+msgstr "Refresh Metadata"
+
+msgid "Sign Out"
+msgstr "Sign Out"
+
+msgid "Metadata URL:"
+msgstr "Metadata URL:"
+
+msgid "Display name:"
+msgstr "Display name:"
+
+msgid "Last account:"
+msgstr "Last account:"
+
+msgid "Not signed in"
+msgstr "Not signed in"
+
+msgid "Auth status:"
+msgstr "Auth status:"
+
+msgid "Not configured"
+msgstr "Not configured"
 
 msgid "Destination directory:"
 msgstr "Destination directory:"
@@ -9755,6 +9912,15 @@ msgstr "Please enter a library prefix."
 
 msgid "Select Destination Directory"
 msgstr "Select Destination Directory"
+
+msgid "Enter a provider metadata URL first."
+msgstr "Enter a provider metadata URL first."
+
+msgid "Provider metadata refreshed."
+msgstr "Provider metadata refreshed."
+
+msgid "Unknown"
+msgstr "Unknown"
 
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
@@ -12423,9 +12589,6 @@ msgstr "Derived from"
 msgid "Error loading symbol %s from library '%s'."
 msgstr "Error loading symbol %s from library '%s'."
 
-msgid "Unknown"
-msgstr "Unknown"
-
 msgid "Centimeter"
 msgstr "Centimeter"
 
@@ -12643,9 +12806,9 @@ msgid "Panels"
 msgstr "Panels"
 
 msgid ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 
 msgid "Variants"
 msgstr "Variants"
@@ -12893,6 +13056,100 @@ msgstr "Not Found"
 
 msgid "The following libraries were not found:"
 msgstr "The following libraries were not found:"
+
+msgid "Remote asset URL"
+msgstr "Remote asset URL"
+
+msgid "Remote asset URL origin must match the selected provider."
+msgstr "Remote asset URL origin must match the selected provider."
+
+#, c-format
+msgid "Unable to set download URL '%s'."
+msgstr "Unable to set download URL '%s'."
+
+msgid "Remote asset manifest declared an invalid size."
+msgstr "Remote asset manifest declared an invalid size."
+
+msgid "Remote asset manifest must declare sha256 for URL-based downloads."
+msgstr "Remote asset manifest must declare sha256 for URL-based downloads."
+
+msgid "Remote asset exceeds the provider download limit."
+msgstr "Remote asset exceeds the provider download limit."
+
+#, c-format
+msgid "Remote download failed with HTTP %d."
+msgstr "Remote download failed with HTTP %d."
+
+msgid "Remote asset content type did not match the manifest."
+msgstr "Remote asset content type did not match the manifest."
+
+msgid "Remote asset size did not match the manifest."
+msgstr "Remote asset size did not match the manifest."
+
+msgid "Remote asset exceeds the remaining download limit."
+msgstr "Remote asset exceeds the remaining download limit."
+
+msgid "Remote asset digest did not match the manifest."
+msgstr "Remote asset digest did not match the manifest."
+
+msgid "Downloaded symbol payload was empty."
+msgstr "Downloaded symbol payload was empty."
+
+msgid "Downloaded symbol payload was not a KiCad symbol library."
+msgstr "Downloaded symbol payload was not a KiCad symbol library."
+
+#, c-format
+msgid "Downloaded symbol payload did not include expected symbol '%s'."
+msgstr "Downloaded symbol payload did not include expected symbol '%s'."
+
+msgid "Unable to load schematic settings."
+msgstr "Unable to load schematic settings."
+
+msgid "No symbol asset was available to place."
+msgstr "No symbol asset was available to place."
+
+msgid "Payload was empty."
+msgstr "Payload was empty."
+
+#, c-format
+msgid "Unable to create '%s'."
+msgstr "Unable to create '%s'."
+
+#, c-format
+msgid "Unable to open '%s' for writing."
+msgstr "Unable to open '%s' for writing."
+
+#, c-format
+msgid "Failed to write '%s'."
+msgstr "Failed to write '%s'."
+
+msgid "Destination directory is not configured."
+msgstr "Destination directory is not configured."
+
+#, c-format
+msgid "Unable to create directory '%s'."
+msgstr "Unable to create directory '%s'."
+
+msgid "Unable to access the library table."
+msgstr "Unable to access the library table."
+
+msgid "Failed to update the library table."
+msgstr "Failed to update the library table."
+
+msgid "Remote download"
+msgstr "Remote download"
+
+msgid "Failed to save the library table."
+msgstr "Failed to save the library table."
+
+msgid "No schematic editor is available for placement."
+msgstr "No schematic editor is available for placement."
+
+msgid "Unable to load the downloaded symbol for placement."
+msgstr "Unable to load the downloaded symbol for placement."
+
+msgid "Unable to access the schematic placement tools."
+msgstr "Unable to access the schematic placement tools."
 
 msgid "Create New Library"
 msgstr "Create New Library"
@@ -18697,23 +18954,12 @@ msgid "Compressed payload was empty."
 msgstr "Compressed payload was empty."
 
 #, c-format
+msgid "Decompressed size %llu exceeds limit %llu."
+msgstr "Decompressed size %llu exceeds limit %llu."
+
+#, c-format
 msgid "ZSTD decompression failed: %s"
 msgstr "ZSTD decompression failed: %s"
-
-msgid "Payload was empty."
-msgstr "Payload was empty."
-
-#, c-format
-msgid "Unable to create '%s'."
-msgstr "Unable to create '%s'."
-
-#, c-format
-msgid "Unable to open '%s' for writing."
-msgstr "Unable to open '%s' for writing."
-
-#, c-format
-msgid "Failed to write '%s'."
-msgstr "Failed to write '%s'."
 
 msgid "Symbol payload was empty."
 msgstr "Symbol payload was empty."
@@ -18734,30 +18980,29 @@ msgstr "Symbol payload did not include the expected symbol."
 msgid "Unable to decode the symbol payload: %s"
 msgstr "Unable to decode the symbol payload: %s"
 
-msgid "Select which remote data source to query."
-msgstr "Select which remote data source to query."
+msgid "Reload current provider page"
+msgstr "Reload current provider page"
 
-msgid "Configure remote data sources."
-msgstr "Configure remote data sources."
+msgid "Configure remote providers"
+msgstr "Configure remote providers"
 
-msgid "No remote data sources are currently installed."
-msgstr "No remote data sources are currently installed."
+msgid "No remote providers configured."
+msgstr "No remote providers configured."
 
-#, c-format
-msgid "No configuration JSON found for '%s'."
-msgstr "No configuration JSON found for '%s'."
+msgid "Unable to load remote provider metadata."
+msgstr "Unable to load remote provider metadata."
 
-#, c-format
-msgid "Unable to open '%s'."
-msgstr "Unable to open '%s'."
+msgid "A remote provider sign-in flow is already in progress."
+msgstr "A remote provider sign-in flow is already in progress."
 
-#, c-format
-msgid "Unable to read '%s'."
-msgstr "Unable to read '%s'."
+msgid "Unable to start the local OAuth callback listener."
+msgstr "Unable to start the local OAuth callback listener."
 
-#, c-format
-msgid "Unable to load remote data for '%s'."
-msgstr "Unable to load remote data for '%s'."
+msgid "Unable to open the system browser for sign-in."
+msgstr "Unable to open the system browser for sign-in."
+
+msgid "Failed to delete stored remote provider tokens."
+msgstr "Failed to delete stored remote provider tokens."
 
 #, c-format
 msgid "Unsupported RPC version %d."
@@ -18766,58 +19011,18 @@ msgstr "Unsupported RPC version %d."
 msgid "Missing session identifier."
 msgstr "Missing session identifier."
 
-msgid "Missing compression metadata."
-msgstr "Missing compression metadata."
+msgid "Session identifier did not match the active provider session."
+msgstr "Session identifier did not match the active provider session."
+
+msgid "No remote provider is currently selected."
+msgstr "No remote provider is currently selected."
+
+msgid "Unable to process provider payload."
+msgstr "Unable to process provider payload."
 
 #, c-format
 msgid "Command '%s' is not supported."
 msgstr "Command '%s' is not supported."
-
-msgid "Unable to store payload."
-msgstr "Unable to store payload."
-
-msgid "Unable to load schematic settings."
-msgstr "Unable to load schematic settings."
-
-msgid "Destination directory is not configured."
-msgstr "Destination directory is not configured."
-
-#, c-format
-msgid "Unable to create directory '%s'."
-msgstr "Unable to create directory '%s'."
-
-msgid "Unable to access the symbol library table."
-msgstr "Unable to access the symbol library table."
-
-msgid "Failed to update the symbol library table."
-msgstr "Failed to update the symbol library table."
-
-msgid "Remote download"
-msgstr "Remote download"
-
-msgid "Failed to save the symbol library table."
-msgstr "Failed to save the symbol library table."
-
-msgid "Unable to access the footprint library table."
-msgstr "Unable to access the footprint library table."
-
-msgid "Failed to update the footprint library table."
-msgstr "Failed to update the footprint library table."
-
-msgid "Failed to save the footprint library table."
-msgstr "Failed to save the footprint library table."
-
-msgid "No schematic editor is available for placement."
-msgstr "No schematic editor is available for placement."
-
-msgid "Downloaded symbol metadata is incomplete."
-msgstr "Downloaded symbol metadata is incomplete."
-
-msgid "Unable to load the downloaded symbol for placement."
-msgstr "Unable to load the downloaded symbol for placement."
-
-msgid "Unable to access the schematic placement tools."
-msgstr "Unable to access the schematic placement tools."
 
 #, c-format
 msgid "Unsupported transfer mode '%s'."
@@ -18832,20 +19037,47 @@ msgstr "No schematic editor is available to store symbols."
 msgid "Unable to access the symbol library manager."
 msgstr "Unable to access the symbol library manager."
 
-msgid "Unable to parse the downloaded symbol."
-msgstr "Unable to parse the downloaded symbol."
-
 msgid "Unable to save the downloaded symbol."
 msgstr "Unable to save the downloaded symbol."
+
+#, c-format
+msgid "Failed to parse component list: %s"
+msgstr "Failed to parse component list: %s"
+
+msgid "Component list must be a non-empty array."
+msgstr "Component list must be a non-empty array."
+
+msgid "Component entries must be objects."
+msgstr "Component entries must be objects."
+
+msgid "Component entry was missing a type."
+msgstr "Component entry was missing a type."
+
+#, c-format
+msgid "Unsupported component type '%s'."
+msgstr "Unsupported component type '%s'."
 
 msgid "Unsupported footprint payload type."
 msgstr "Unsupported footprint payload type."
 
-msgid "Unsupported 3D model payload type."
-msgstr "Unsupported 3D model payload type."
+msgid "Remote provider metadata is not loaded."
+msgstr "Remote provider metadata is not loaded."
 
-msgid "Unsupported SPICE payload type."
-msgstr "Unsupported SPICE payload type."
+msgid ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
+msgstr ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
+
+msgid "Remote provider sign-in was cancelled or failed."
+msgstr "Remote provider sign-in was cancelled or failed."
+
+msgid "Remote provider sign-in failed."
+msgstr "Remote provider sign-in failed."
+
+msgid "Failed to store remote provider tokens securely."
+msgstr "Failed to store remote provider tokens securely."
 
 #, c-format
 msgid "Only %s"
@@ -42540,6 +42772,88 @@ msgstr "KiCad Schematic Symbol"
 msgid "KiCad Drawing Sheet"
 msgstr "KiCad Drawing Sheet"
 
+msgid "Process could not be created"
+msgstr "Process could not be created"
+
+#, c-format
+msgid "Could not create user scripting path %s."
+msgstr "Could not create user scripting path %s."
+
+#~ msgid ""
+#~ "Configure where downloaded remote libraries are stored and how they are "
+#~ "named."
+#~ msgstr ""
+#~ "Configure where downloaded remote libraries are stored and how they are "
+#~ "named."
+
+#~ msgid ""
+#~ "Install a remote symbol server using the Plugin and Content Manager to "
+#~ "enable"
+#~ msgstr ""
+#~ "Install a remote symbol server using the Plugin and Content Manager to "
+#~ "enable"
+
+#~ msgid "Select which remote data source to query."
+#~ msgstr "Select which remote data source to query."
+
+#~ msgid "Configure remote data sources."
+#~ msgstr "Configure remote data sources."
+
+#~ msgid "No remote data sources are currently installed."
+#~ msgstr "No remote data sources are currently installed."
+
+#, c-format
+#~ msgid "No configuration JSON found for '%s'."
+#~ msgstr "No configuration JSON found for '%s'."
+
+#, c-format
+#~ msgid "Unable to open '%s'."
+#~ msgstr "Unable to open '%s'."
+
+#, c-format
+#~ msgid "Unable to read '%s'."
+#~ msgstr "Unable to read '%s'."
+
+#, c-format
+#~ msgid "Unable to load remote data for '%s'."
+#~ msgstr "Unable to load remote data for '%s'."
+
+#~ msgid "Missing compression metadata."
+#~ msgstr "Missing compression metadata."
+
+#~ msgid "Unable to store payload."
+#~ msgstr "Unable to store payload."
+
+#~ msgid "Unable to access the symbol library table."
+#~ msgstr "Unable to access the symbol library table."
+
+#~ msgid "Failed to update the symbol library table."
+#~ msgstr "Failed to update the symbol library table."
+
+#~ msgid "Failed to save the symbol library table."
+#~ msgstr "Failed to save the symbol library table."
+
+#~ msgid "Unable to access the footprint library table."
+#~ msgstr "Unable to access the footprint library table."
+
+#~ msgid "Failed to update the footprint library table."
+#~ msgstr "Failed to update the footprint library table."
+
+#~ msgid "Failed to save the footprint library table."
+#~ msgstr "Failed to save the footprint library table."
+
+#~ msgid "Downloaded symbol metadata is incomplete."
+#~ msgstr "Downloaded symbol metadata is incomplete."
+
+#~ msgid "Unable to parse the downloaded symbol."
+#~ msgstr "Unable to parse the downloaded symbol."
+
+#~ msgid "Unsupported 3D model payload type."
+#~ msgstr "Unsupported 3D model payload type."
+
+#~ msgid "Unsupported SPICE payload type."
+#~ msgstr "Unsupported SPICE payload type."
+
 #~ msgid "PCB: Import"
 #~ msgstr "PCB: Import"
 
@@ -43217,25 +43531,11 @@ msgstr "KiCad Drawing Sheet"
 #~ msgid "Failed to allocate a callback port for login."
 #~ msgstr "Failed to allocate a callback port for login."
 
-#, c-format
-#~ msgid "Failed to parse component list: %s"
-#~ msgstr "Failed to parse component list: %s"
-
 #~ msgid "Component list must be an array."
 #~ msgstr "Component list must be an array."
 
 #~ msgid "Component list was empty."
 #~ msgstr "Component list was empty."
-
-#~ msgid "Component entries must be objects."
-#~ msgstr "Component entries must be objects."
-
-#~ msgid "Component entry was missing a type."
-#~ msgstr "Component entry was missing a type."
-
-#, c-format
-#~ msgid "Unsupported component type '%s'."
-#~ msgstr "Unsupported component type '%s'."
 
 #~ msgid "Select Templates Directory"
 #~ msgstr "Select Templates Directory"

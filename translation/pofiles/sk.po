@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 11:13-0700\n"
+"POT-Creation-Date: 2026-03-11 13:57-0700\n"
 "PO-Revision-Date: 2026-03-11 16:09+0000\n"
 "Last-Translator: EdizonTN <edizontn@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
@@ -178,7 +178,7 @@ msgstr "Čas opätovného načítania %.3f s"
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:363
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:571
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:285
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:306
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:321
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:347
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:155
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.cpp:117
@@ -220,7 +220,7 @@ msgstr "Vykreslenie: shader po spracovaní"
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:54
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:627
 #: common/eda_base_frame.cpp:1509 common/hotkey_store.cpp:80
-#: common/tool/actions.cpp:1270 pcbnew/footprint_chooser_frame.cpp:364
+#: common/tool/actions.cpp:1264 pcbnew/footprint_chooser_frame.cpp:364
 #: pcbnew/footprint_viewer_frame.cpp:968 pcbnew/pcb_base_frame.cpp:668
 msgid "3D Viewer"
 msgstr "Zobrazovač 3D"
@@ -312,7 +312,7 @@ msgstr "Nastavenie zobrazenia DPS"
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:567
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:753
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:940
-#: pcbnew/pcbnew_jobs_handler.cpp:814
+#: pcbnew/pcbnew_jobs_handler.cpp:815
 msgid "legacy colors"
 msgstr "staršie farby"
 
@@ -2547,11 +2547,11 @@ msgstr "Kopírovať informácie o verzii KiCad-u do schránky"
 msgid "&Report Bug"
 msgstr "&Nahlásiť chybu"
 
-#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1434
+#: common/dialog_about/dialog_about_base.cpp:60 common/tool/actions.cpp:1428
 msgid "Report a problem with KiCad"
 msgstr "Nahlásiť problém s KiCad-om"
 
-#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1427
+#: common/dialog_about/dialog_about_base.cpp:64 common/tool/actions.cpp:1421
 msgid "Donate"
 msgstr "Prispieť"
 
@@ -3141,7 +3141,7 @@ msgstr "Rohové razítko"
 #: common/dialogs/dialog_page_settings.cpp:465
 #: eeschema/eeschema_jobs_handler.cpp:249 pagelayout_editor/files.cpp:254
 #: pagelayout_editor/pl_editor_frame.cpp:369
-#: pcbnew/pcbnew_jobs_handler.cpp:2818
+#: pcbnew/pcbnew_jobs_handler.cpp:2824
 #, c-format
 msgid "Error loading drawing sheet '%s'."
 msgstr "Chyba pri načítaní listu výkresu '%s'."
@@ -3399,8 +3399,8 @@ msgstr "Ukážka pred tlačou"
 
 #: common/dialogs/dialog_print_generic.cpp:98
 #: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:466
-#: common/dialogs/rule_editor_dialog_base.cpp:506 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:469
+#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3734,7 +3734,7 @@ msgstr "OK"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:458 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4856,7 +4856,7 @@ msgstr "Nikdy"
 msgid "Cursor"
 msgstr "Kurzor"
 
-#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1182
+#: common/dialogs/panel_gal_options_base.cpp:102 common/tool/actions.cpp:1179
 #: common/widgets/gal_options_panel_base.cpp:102
 msgid "Small crosshairs"
 msgstr "Malý zameriavací kríž"
@@ -6036,30 +6036,30 @@ msgstr "Vložiť oddeľovač"
 msgid "Save"
 msgstr "Uložiť"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:462
-#: common/dialogs/rule_editor_dialog_base.cpp:480
+#: common/dialogs/rule_editor_dialog_base.cpp:465
+#: common/dialogs/rule_editor_dialog_base.cpp:483
 #: kicad/kicad_manager_frame.cpp:973
 msgid "Discard"
 msgstr "Zahodiť"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:556
+#: common/dialogs/rule_editor_dialog_base.cpp:559
 msgid "New Rule"
 msgstr "Nové pravidlo"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:562
 msgid "Copy Rule"
 msgstr "Kopírovať pravidlo"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:565
 msgid "Delete Rule"
 msgstr "Odstrániť pravidlo"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "Posunúť vyššie"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "Posunúť nižšie"
@@ -6081,7 +6081,7 @@ msgid "Error switching GAL backend"
 msgstr "Chyba pri prepínaní vykresľovacieho jadra GAL"
 
 #: common/drawing_sheet/drawing_sheet_parser.cpp:559
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3643
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3650
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3662
 msgid "Failed to read image data."
 msgstr "Nepodarilo sa načítať dáta obrázku."
@@ -6310,6 +6310,7 @@ msgid "Do you want to remove it from list of recently opened files?"
 msgstr "Chcete ho odstrániť zo zoznamu naposledy otvorených súborov?"
 
 #: common/eda_base_frame.cpp:1323
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:79
 msgid "Remove"
 msgstr "Odstrániť"
 
@@ -6342,7 +6343,7 @@ msgstr "Klávesové skratky"
 msgid "Version Control"
 msgstr "Správa verzií"
 
-#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1285
+#: common/eda_base_frame.cpp:1449 common/tool/actions.cpp:1279
 #: common/tool/common_tools.cpp:617 eeschema/symbol_editor/symbol_editor.cpp:84
 #: kicad/tools/kicad_manager_actions.cpp:116
 msgid "Symbol Editor"
@@ -6396,7 +6397,7 @@ msgstr "Zdroje dát"
 msgid "Simulator"
 msgstr "Simulátor"
 
-#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1302
+#: common/eda_base_frame.cpp:1483 common/tool/actions.cpp:1296
 #: common/tool/common_tools.cpp:619 kicad/tools/kicad_manager_actions.cpp:138
 #: pcbnew/dialogs/panel_display_options_base.cpp:97
 #: pcbnew/footprint_edit_frame.cpp:1126 pcbnew/menubar_footprint_editor.cpp:92
@@ -6490,7 +6491,7 @@ msgstr "Súbor dokumentácie '%s' sa nenašiel."
 msgid "Unknown MIME type for documentation file '%s'"
 msgstr "Neznámy MIME typ pre súbor dokumentácie '%s'"
 
-#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1214
+#: common/eda_draw_frame.cpp:237 common/tool/action_toolbar.cpp:1222
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:55
 msgid "Override locks"
 msgstr "Ignorovať uzamknutia"
@@ -6571,7 +6572,7 @@ msgstr "Palce"
 msgid "Search"
 msgstr "Hľadať"
 
-#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1320
+#: common/eda_draw_frame.cpp:1286 common/tool/actions.cpp:1314
 #: eeschema/eeschema_settings.cpp:94 eeschema/sch_edit_frame.cpp:2038
 #: pagelayout_editor/pl_editor_frame.cpp:201
 #: pcbnew/footprint_edit_frame.cpp:236 pcbnew/pcb_edit_frame.cpp:370
@@ -7367,7 +7368,7 @@ msgstr "Nepodarilo sa nájsť prehliadač PDF pre '%s'."
 msgid "Problem while running the PDF viewer '%s'."
 msgstr "Problém so spustením prehliadača PDF '%s'."
 
-#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:732
+#: common/gestfich.cpp:302 common/gestfich.cpp:375 eeschema/eeschema.cpp:749
 #: gerbview/gerbview.cpp:262 kicad/project_template.cpp:364
 #: pcbnew/pcbnew.cpp:749
 #, c-format
@@ -7808,7 +7809,7 @@ msgid "Paste clipboard cells to matrix at current cell"
 msgstr "Prilepiť bunky zo schránky do matice v aktuálnej bunke"
 
 #: common/grid_tricks.cpp:388 common/tool/actions.cpp:404
-#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2267
+#: common/widgets/listbox_tricks.cpp:212 eeschema/tools/sch_edit_tool.cpp:2261
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
@@ -9042,20 +9043,20 @@ msgstr "Referencia na túto tabuľku knižnice už existuje"
 msgid "Added by Plugin and Content Manager"
 msgstr "Pridané správcom doplnkov a obsahu"
 
-#: common/libraries/library_manager.cpp:409
+#: common/libraries/library_manager.cpp:420
 msgid "KiCad Default Libraries"
 msgstr "Predvolené knižnice KiCad"
 
-#: common/libraries/library_manager.cpp:1132
+#: common/libraries/library_manager.cpp:1143
 msgid "Library not found in library table"
 msgstr "Knižnica sa nenašla v tabuľke knižníc"
 
-#: common/libraries/library_manager.cpp:1152
+#: common/libraries/library_manager.cpp:1163
 #, c-format
 msgid "Library '%s': %s"
 msgstr "Knižnica '%s': %s"
 
-#: common/libraries/library_manager.cpp:1369
+#: common/libraries/library_manager.cpp:1380
 #, c-format
 msgid "Library %s not found"
 msgstr "Knižnica %s sa nenašla"
@@ -9251,6 +9252,30 @@ msgstr "Oznámenia"
 #: common/notifications_manager.cpp:182
 msgid "There are no notifications available"
 msgstr "Žiadne oznamy"
+
+#: common/oauth/oauth_loopback_server.cpp:126
+msgid "Missing HTTP method in callback request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:134
+msgid "Missing callback URL in request."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:145
+msgid "Unexpected callback path."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:153
+msgid "OAuth callback state did not match."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:163
+msgid "Authorization server returned an OAuth error."
+msgstr ""
+
+#: common/oauth/oauth_loopback_server.cpp:171
+msgid "Missing authorization code in callback."
+msgstr ""
 
 #: common/page_info.cpp:48
 msgid "A5 148 x 210mm"
@@ -9487,6 +9512,150 @@ msgstr "Varovanie: "
 msgid "Error: "
 msgstr "Chyba: "
 
+#: common/remote_provider_client.cpp:287
+msgid "Sign in required for this provider."
+msgstr ""
+
+#: common/remote_provider_client.cpp:329
+msgid "Provider metadata does not include a session bootstrap URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:352
+msgid "Bootstrap response did not include a nonce URL."
+msgstr ""
+
+#: common/remote_provider_client.cpp:371
+msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
+msgstr ""
+
+#: common/remote_provider_client.cpp:407
+#, c-format
+msgid "Remote provider request failed with HTTP %d."
+msgstr ""
+
+#: common/remote_provider_client.cpp:432
+#, c-format
+msgid "Remote provider returned invalid JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:453
+#, c-format
+msgid "Remote provider returned invalid token JSON: %s"
+msgstr ""
+
+#: common/remote_provider_client.cpp:485
+#, c-format
+msgid "Remote provider token response was incomplete: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:53
+#, c-format
+msgid "Remote provider metadata schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:64
+#, c-format
+msgid "Remote provider metadata failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:124
+#, fuzzy, c-format
+msgid "Unsupported provider capability '%s'."
+msgstr "Altiové schematické súbory"
+
+#: common/remote_provider_metadata.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider metadata: %s"
+msgstr ""
+"Nepodarilo sa spracovať metadáta balíka\n"
+"\n"
+"%s"
+
+#: common/remote_provider_metadata.cpp:154
+msgid "Remote provider metadata must enable web_ui_v1."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:161
+msgid ""
+"Remote provider metadata must enable direct_downloads_v1, "
+"inline_payloads_v1, or both."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:168
+msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:173
+msgid "api_base_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:179
+msgid "panel_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:185
+msgid "session_bootstrap_url"
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:193
+msgid "session_bootstrap_url must share the same origin as panel_url."
+msgstr ""
+
+#: common/remote_provider_metadata.cpp:199
+msgid "auth.metadata_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:44
+#, fuzzy, c-format
+msgid "Unable to parse OAuth metadata: %s"
+msgstr ""
+"Nepodarilo sa spracovať metadáta balíka\n"
+"\n"
+"%s"
+
+#: common/remote_provider_models.cpp:50
+msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
+msgstr ""
+
+#: common/remote_provider_models.cpp:55
+msgid "authorization_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:60
+#, fuzzy
+msgid "token_endpoint"
+msgstr "Koncový bod X"
+
+#: common/remote_provider_models.cpp:66
+msgid "revocation_endpoint"
+msgstr ""
+
+#: common/remote_provider_models.cpp:98
+#, c-format
+msgid "Remote provider manifest schema '%s' is not readable."
+msgstr ""
+
+#: common/remote_provider_models.cpp:109
+#, c-format
+msgid "Remote provider manifest failed schema validation: %s"
+msgstr ""
+
+#: common/remote_provider_models.cpp:136
+msgid "assets[].download_url"
+msgstr ""
+
+#: common/remote_provider_models.cpp:147
+#, fuzzy, c-format
+msgid "Unable to parse remote provider manifest: %s"
+msgstr "Nepodarilo sa spracovať repozitár: %s"
+
+#: common/remote_provider_utils.cpp:94
+#, c-format
+msgid ""
+"%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
+"URL."
+msgstr ""
+
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, c-format
 msgid "File '%s' does not exist."
@@ -9544,7 +9713,7 @@ msgstr "Zoskupené podľa hodnoty a puzdra"
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:77
 #: eeschema/lib_symbol.cpp:2552 eeschema/menubar.cpp:166
 #: eeschema/sch_sheet.cpp:2154 eeschema/sch_symbol.cpp:3959
-#: eeschema/tools/sch_edit_tool.cpp:716 pcbnew/footprint.cpp:4847
+#: eeschema/tools/sch_edit_tool.cpp:710 pcbnew/footprint.cpp:4847
 msgid "Attributes"
 msgstr "Atribúty"
 
@@ -9610,19 +9779,19 @@ msgstr ""
 "Ste si istý?  Ak zrušíte nastavenie KiCad, budú vybrané predvolené "
 "nastavenia."
 
-#: common/startwizard/startwizard_provider_libraries.cpp:109
+#: common/startwizard/startwizard_provider_libraries.cpp:112
 msgid "Symbol library table"
 msgstr "Tabuľka knižnice symbolov"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:113
+#: common/startwizard/startwizard_provider_libraries.cpp:116
 msgid "Footprint library table"
 msgstr "Tabuľka knižnice puzdier"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:117
+#: common/startwizard/startwizard_provider_libraries.cpp:120
 msgid "Design Block library table"
 msgstr "Tabuľka knižnice návrhových blokov"
 
-#: common/startwizard/startwizard_provider_libraries.cpp:136
+#: common/startwizard/startwizard_provider_libraries.cpp:146
 #: eeschema/dialogs/dialog_database_lib_settings_base.cpp:99
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:220
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1530
@@ -9656,55 +9825,55 @@ msgstr "Zavrieť %s"
 msgid "Quit %s"
 msgstr "Ukončiť %s"
 
-#: common/tool/action_toolbar.cpp:1162
+#: common/tool/action_toolbar.cpp:1170
 msgid "Grid selector"
 msgstr "Výber mriežky"
 
-#: common/tool/action_toolbar.cpp:1163
+#: common/tool/action_toolbar.cpp:1171
 msgid "Grid Selection box"
 msgstr "Pole výberu mriežky"
 
-#: common/tool/action_toolbar.cpp:1175
+#: common/tool/action_toolbar.cpp:1183
 msgid "Zoom selector"
 msgstr "Výber priblíženia"
 
-#: common/tool/action_toolbar.cpp:1176
+#: common/tool/action_toolbar.cpp:1184
 msgid "Zoom Selection box"
 msgstr "Pole výberu priblíženia"
 
-#: common/tool/action_toolbar.cpp:1188
+#: common/tool/action_toolbar.cpp:1196
 msgid "IPC/Scripting plugins"
 msgstr "Pluginy pre IPC/skriptovanie"
 
-#: common/tool/action_toolbar.cpp:1189
+#: common/tool/action_toolbar.cpp:1197
 msgid "Region to hold the IPC/Scripting action buttons"
 msgstr "Oblasť na uloženie akčných tlačidiel IPC/Skriptovanie"
 
-#: common/tool/action_toolbar.cpp:1194
+#: common/tool/action_toolbar.cpp:1202
 msgid "Layer selector"
 msgstr "Výber vrstvy"
 
-#: common/tool/action_toolbar.cpp:1195
+#: common/tool/action_toolbar.cpp:1203
 msgid "Control to select the layer"
 msgstr "Ovládací prvok na výber vrstvy"
 
-#: common/tool/action_toolbar.cpp:1202
+#: common/tool/action_toolbar.cpp:1210
 msgid "Symbol unit selector"
 msgstr "Výber symbolickej jednotky"
 
-#: common/tool/action_toolbar.cpp:1203
+#: common/tool/action_toolbar.cpp:1211
 msgid "Displays the current unit"
 msgstr "Zobrazenie aktuálnych jednotiek"
 
-#: common/tool/action_toolbar.cpp:1208
+#: common/tool/action_toolbar.cpp:1216
 msgid "Symbol body style selector"
 msgstr "Výber štýlu tela symbolu"
 
-#: common/tool/action_toolbar.cpp:1209
+#: common/tool/action_toolbar.cpp:1217
 msgid "Displays the current body style"
 msgstr "Zobrazenie aktuálneho štýlu tela"
 
-#: common/tool/action_toolbar.cpp:1215
+#: common/tool/action_toolbar.cpp:1223
 msgid "Allow moving of locked items with the mouse"
 msgstr "Povoliť presúvanie uzamknutých položiek myšou"
 
@@ -9962,7 +10131,7 @@ msgstr "Nástroj na interaktívne mazanie"
 msgid "Delete clicked items"
 msgstr "Odstrániť kliknuté položky"
 
-#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3340
+#: common/tool/actions.cpp:421 eeschema/tools/sch_edit_tool.cpp:3334
 #: pcbnew/tools/edit_tool.cpp:2748
 msgid "Left Justify"
 msgstr "Zarovnať vľavo"
@@ -9971,7 +10140,7 @@ msgstr "Zarovnať vľavo"
 msgid "Left-justify fields and text items"
 msgstr "Zarovnať vľavo polia a textové položky"
 
-#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3342
+#: common/tool/actions.cpp:428 eeschema/tools/sch_edit_tool.cpp:3336
 #: pcbnew/tools/edit_tool.cpp:2750
 msgid "Center Justify"
 msgstr "Zarovnať na stred"
@@ -9980,7 +10149,7 @@ msgstr "Zarovnať na stred"
 msgid "Center-justify fields and text items"
 msgstr "Zarovnať na stred polia a textové položky"
 
-#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3344
+#: common/tool/actions.cpp:435 eeschema/tools/sch_edit_tool.cpp:3338
 #: pcbnew/tools/edit_tool.cpp:2752
 msgid "Right Justify"
 msgstr "Zarovnať vpravo"
@@ -10489,7 +10658,7 @@ msgstr "Počiatok mriežky..."
 msgid "Set the grid origin point"
 msgstr "Nastaviť počiatočný bod mriežky"
 
-#: common/tool/actions.cpp:1115
+#: common/tool/actions.cpp:1114
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:61
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:122
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:78
@@ -10499,7 +10668,7 @@ msgstr "Nastaviť počiatočný bod mriežky"
 msgid "Mils"
 msgstr "Mils"
 
-#: common/tool/actions.cpp:1124
+#: common/tool/actions.cpp:1122
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:165
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:60
 #: pcbnew/dialogs/dialog_board_stats_job_base.cpp:47
@@ -10516,124 +10685,124 @@ msgstr "Mils"
 msgid "Millimeters"
 msgstr "Milimetre"
 
-#: common/tool/actions.cpp:1144
+#: common/tool/actions.cpp:1141
 msgid "Select Columns..."
 msgstr "Vybrať stĺpce..."
 
-#: common/tool/actions.cpp:1151
+#: common/tool/actions.cpp:1148
 msgid "Switch units"
 msgstr "Prepnite jednotky"
 
-#: common/tool/actions.cpp:1152
+#: common/tool/actions.cpp:1149
 msgid "Switch between imperial and metric units"
 msgstr "Prepínanie medzi imperiálnymi a metrickými jednotkami"
 
-#: common/tool/actions.cpp:1158
+#: common/tool/actions.cpp:1155
 msgid "Polar Coordinates"
 msgstr "Polárne súradnice"
 
-#: common/tool/actions.cpp:1159
+#: common/tool/actions.cpp:1156
 msgid "Switch between polar and cartesian coordinate systems"
 msgstr "Prepínanie medzi polárnym a karteziánskym súradnicovým systémom"
 
-#: common/tool/actions.cpp:1168
+#: common/tool/actions.cpp:1165
 msgid "Reset Local Coordinates"
 msgstr "Obnoviť lokálne súradnice"
 
-#: common/tool/actions.cpp:1175
+#: common/tool/actions.cpp:1172
 msgid "Always Show Crosshairs"
 msgstr "Vždy zobraziť zameriavací kríž"
 
-#: common/tool/actions.cpp:1176
+#: common/tool/actions.cpp:1173
 msgid "Display crosshairs even when not drawing objects"
 msgstr "Zobraziť zameriavací kríž, aj keď sa práve nekreslia objekty"
 
-#: common/tool/actions.cpp:1183
+#: common/tool/actions.cpp:1180
 msgid "Use small crosshairs aligned at 0 and 90 degrees"
 msgstr "Použiť malý 0/90° zameriavací kríž"
 
-#: common/tool/actions.cpp:1190
+#: common/tool/actions.cpp:1186
 msgid "Full-Window Crosshairs"
 msgstr "Zameriavací kríž cez celé oknom"
 
-#: common/tool/actions.cpp:1191
+#: common/tool/actions.cpp:1187
 msgid "Display full-window crosshairs aligned at 0 and 90 degrees"
 msgstr "Zobraziť 0/90° zameriavací kríž cez celé okno"
 
-#: common/tool/actions.cpp:1198
+#: common/tool/actions.cpp:1193
 msgid "45 Degree Crosshairs"
 msgstr "45° zameriavací kríž"
 
-#: common/tool/actions.cpp:1199
+#: common/tool/actions.cpp:1194
 msgid "Display full-window crosshairs aligned at 45 and 135 degrees"
 msgstr "Zobraziť 45/135° zameriavací kríž cez celé okno"
 
-#: common/tool/actions.cpp:1207
+#: common/tool/actions.cpp:1201
 msgid "Inactive Layer View Mode"
 msgstr "Režim zobrazenia jednej vrstvy"
 
-#: common/tool/actions.cpp:1208
+#: common/tool/actions.cpp:1202
 msgid "Toggle inactive layers between normal and dimmed"
 msgstr "Neaktívne vrstvy môžete prepínať medzi normálnymi a stlmenými"
 
-#: common/tool/actions.cpp:1216
+#: common/tool/actions.cpp:1210
 msgid "Inactive Layer View Mode (3-state)"
 msgstr "Režim zobrazenia jednej vrstvy (3-stavový)"
 
-#: common/tool/actions.cpp:1217
+#: common/tool/actions.cpp:1211
 msgid "Cycle inactive layers between normal, dimmed, and hidden"
 msgstr ""
 "Prepínať zobrazenie neaktívnych vrstiev medzi normálnym, tlmeným a skrytým "
 "zobrazením"
 
-#: common/tool/actions.cpp:1223
+#: common/tool/actions.cpp:1217
 msgid "Draw Bounding Boxes"
 msgstr "Kresliť ohraničujúce rámčeky"
 
-#: common/tool/actions.cpp:1230 pcbnew/dialogs/panel_edit_options_base.cpp:141
+#: common/tool/actions.cpp:1224 pcbnew/dialogs/panel_edit_options_base.cpp:141
 #: pcbnew/dialogs/panel_edit_options_base.cpp:215
 msgid "Select item(s)"
 msgstr "Vyberte položky"
 
-#: common/tool/actions.cpp:1241
+#: common/tool/actions.cpp:1235
 msgid "Measure Tool"
 msgstr "Nástroj na meranie"
 
-#: common/tool/actions.cpp:1242
+#: common/tool/actions.cpp:1236
 msgid "Interactively measure distance between points"
 msgstr "Interaktívne merajte vzdialenosť medzi bodmi"
 
-#: common/tool/actions.cpp:1261
+#: common/tool/actions.cpp:1255
 msgid "Switch to Project Manager"
 msgstr "Prepnúť na správcu projektov"
 
-#: common/tool/actions.cpp:1262
+#: common/tool/actions.cpp:1256
 msgid "Show project window"
 msgstr "Zobraziť okno projektu"
 
-#: common/tool/actions.cpp:1271
+#: common/tool/actions.cpp:1265
 msgid "Show 3D viewer window"
 msgstr "Zobraziť okno 3D prehliadača"
 
-#: common/tool/actions.cpp:1277 eeschema/symbol_viewer_frame.cpp:107
+#: common/tool/actions.cpp:1271 eeschema/symbol_viewer_frame.cpp:107
 #: eeschema/symbol_viewer_frame.cpp:1055
 msgid "Symbol Library Browser"
 msgstr "Prehliadač knižnice symbolov"
 
-#: common/tool/actions.cpp:1286 kicad/tools/kicad_manager_actions.cpp:117
+#: common/tool/actions.cpp:1280 kicad/tools/kicad_manager_actions.cpp:117
 msgid "Create, delete and edit schematic symbols"
 msgstr "Vytvárať, odstraňovať a upravovať schematické symbolov"
 
-#: common/tool/actions.cpp:1294 pcbnew/footprint_viewer_frame.cpp:105
+#: common/tool/actions.cpp:1288 pcbnew/footprint_viewer_frame.cpp:105
 #: pcbnew/footprint_viewer_frame.cpp:996
 msgid "Footprint Library Browser"
 msgstr "Prehliadač knižníc pudzier"
 
-#: common/tool/actions.cpp:1303
+#: common/tool/actions.cpp:1297
 msgid "Create, delete and edit board footprints"
 msgstr "Vytvoriť, odstrániť a upraviť puzdrá"
 
-#: common/tool/actions.cpp:1311 kicad/tools/kicad_manager_actions.cpp:168
+#: common/tool/actions.cpp:1305 kicad/tools/kicad_manager_actions.cpp:168
 #: pcb_calculator/pcb_calculator_frame.cpp:62
 #: pcb_calculator/pcb_calculator_frame.cpp:212
 #: pcb_calculator/pcb_calculator_frame.cpp:213
@@ -10641,139 +10810,139 @@ msgstr "Vytvoriť, odstrániť a upraviť puzdrá"
 msgid "Calculator Tools"
 msgstr "Nástroje kalkulačky"
 
-#: common/tool/actions.cpp:1312 kicad/tools/kicad_manager_actions.cpp:169
+#: common/tool/actions.cpp:1306 kicad/tools/kicad_manager_actions.cpp:169
 msgid "Run component calculations, track width calculations, etc."
 msgstr "Spustiť výpočty komponentov, výpočty šírky spoja atď."
 
-#: common/tool/actions.cpp:1321
+#: common/tool/actions.cpp:1315
 msgid "Show/hide the properties manager"
 msgstr "Zobraziť/skryť správcu vlastností"
 
-#: common/tool/actions.cpp:1330
+#: common/tool/actions.cpp:1324
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:134
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:121
 #: eeschema/fields_grid_table.cpp:1203
 msgid "Show Datasheet"
 msgstr "Zobraziť technický list"
 
-#: common/tool/actions.cpp:1331
+#: common/tool/actions.cpp:1325
 msgid "Open the datasheet in a browser"
 msgstr "Otvoriť technický list v prehliadači"
 
-#: common/tool/actions.cpp:1339
+#: common/tool/actions.cpp:1333
 msgid "Update PCB from Schematic..."
 msgstr "Aktualizácia PCB zo schémy..."
 
-#: common/tool/actions.cpp:1340
+#: common/tool/actions.cpp:1334
 msgid "Update PCB with changes made to schematic"
 msgstr "Aktualizujte PCB zmenami vykonanými v schéme"
 
-#: common/tool/actions.cpp:1346
+#: common/tool/actions.cpp:1340
 msgid "Update Schematic from PCB..."
 msgstr "Aktualizovať schému z DPS..."
 
-#: common/tool/actions.cpp:1347
+#: common/tool/actions.cpp:1341
 msgid "Update schematic with changes made to PCB"
 msgstr "Aktualizujte schému so zmenami vykonanými na DPS"
 
-#: common/tool/actions.cpp:1354
+#: common/tool/actions.cpp:1348
 msgid "Preferences..."
 msgstr "Nastavenia..."
 
-#: common/tool/actions.cpp:1355
+#: common/tool/actions.cpp:1349
 msgid "Show preferences for all open tools"
 msgstr "Zobraziť nastavenia pre všetky otvorené nástroje"
 
-#: common/tool/actions.cpp:1362
+#: common/tool/actions.cpp:1356
 #: pcbnew/dialogs/panel_fp_properties_3d_model_base.cpp:78
 msgid "Configure Paths..."
 msgstr "Konfigurovať cesty..."
 
-#: common/tool/actions.cpp:1363
+#: common/tool/actions.cpp:1357
 msgid "Edit path configuration environment variables"
 msgstr "Upraviť konfiguráciu ciesty premenných prostredia"
 
-#: common/tool/actions.cpp:1369
+#: common/tool/actions.cpp:1363
 msgid "Manage Symbol Libraries..."
 msgstr "Spravovať knižnice symbolov..."
 
-#: common/tool/actions.cpp:1370
+#: common/tool/actions.cpp:1364
 msgid "Edit the global and project symbol library lists"
 msgstr "Upraviť globálne a projektové zoznamy knižníc symbolov"
 
-#: common/tool/actions.cpp:1376
+#: common/tool/actions.cpp:1370
 msgid "Manage Footprint Libraries..."
 msgstr "Spravovať knižnice puzdier..."
 
-#: common/tool/actions.cpp:1377
+#: common/tool/actions.cpp:1371
 msgid "Edit the global and project footprint library lists"
 msgstr "Upraviť globálne a projektové zoznamy knižníc puzdier"
 
-#: common/tool/actions.cpp:1383
+#: common/tool/actions.cpp:1377
 msgid "Manage Design Block Libraries..."
 msgstr "Spravovať knižnice návrhových blokov..."
 
-#: common/tool/actions.cpp:1384
+#: common/tool/actions.cpp:1378
 msgid "Edit the global and project design block library lists"
 msgstr "Upraviť zoznamy globálnych a projektových knižníc"
 
-#: common/tool/actions.cpp:1390
+#: common/tool/actions.cpp:1384
 msgid "Getting Started with KiCad"
 msgstr "Začíname s KiCadom"
 
-#: common/tool/actions.cpp:1391
+#: common/tool/actions.cpp:1385
 msgid "Open \"Getting Started in KiCad\" guide for beginners"
 msgstr "Otvoríť príručku \"Začíname s KiCad-om\" pre začiatočníkov"
 
-#: common/tool/actions.cpp:1397
+#: common/tool/actions.cpp:1391
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:330
 #: pcb_calculator/calculator_panels/panel_fusing_current_base.cpp:136
 #: pcb_calculator/calculator_panels/panel_r_calculator_base.cpp:187
 msgid "Help"
 msgstr "Pomoc"
 
-#: common/tool/actions.cpp:1398
+#: common/tool/actions.cpp:1392
 msgid "Open product documentation in a web browser"
 msgstr "Otvorte dokumentáciu k produktu vo webovom prehliadači"
 
-#: common/tool/actions.cpp:1404
+#: common/tool/actions.cpp:1398
 msgid "About KiCad"
 msgstr "O KiCad-e"
 
-#: common/tool/actions.cpp:1413
+#: common/tool/actions.cpp:1407
 msgid "List Hotkeys..."
 msgstr "Zoznam klávesových skratiek..."
 
-#: common/tool/actions.cpp:1414
+#: common/tool/actions.cpp:1408
 msgid "Displays current hotkeys table and corresponding commands"
 msgstr ""
 "Zobrazenie tabuľku aktuálnych klávesových skratiek a príslušných príkazov"
 
-#: common/tool/actions.cpp:1420
+#: common/tool/actions.cpp:1414
 msgid "Get Involved"
 msgstr "Zapojte sa"
 
-#: common/tool/actions.cpp:1421
+#: common/tool/actions.cpp:1415
 msgid "Open \"Contribute to KiCad\" in a web browser"
 msgstr "Otvoriť \"Prispejte do KiCad-u\" vo webovom prehliadači"
 
-#: common/tool/actions.cpp:1428
+#: common/tool/actions.cpp:1422
 msgid "Open \"Donate to KiCad\" in a web browser"
 msgstr "Otvoriť \"Podporiť KiCad\" vo webovom prehliadači"
 
-#: common/tool/actions.cpp:1433
+#: common/tool/actions.cpp:1427
 msgid "Report Bug"
 msgstr "Nahlásiť chybu"
 
-#: common/tool/actions.cpp:1446
+#: common/tool/actions.cpp:1440
 msgid "Refresh Plugins"
 msgstr "Obnoviť doplnky"
 
-#: common/tool/actions.cpp:1447
+#: common/tool/actions.cpp:1441
 msgid "Reload all python plugins and refresh plugin menus"
 msgstr "Znova načítajte všetky doplnky pythonu a obnovte ponuky doplnkov"
 
-#: common/tool/actions.cpp:1455
+#: common/tool/actions.cpp:1449
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:85
 #: eeschema/dialogs/dialog_schematic_setup.cpp:143
 #: eeschema/dialogs/dialog_symbol_properties.cpp:346
@@ -10783,23 +10952,23 @@ msgstr "Znova načítajte všetky doplnky pythonu a obnovte ponuky doplnkov"
 msgid "Embedded Files"
 msgstr "Vložené súbory"
 
-#: common/tool/actions.cpp:1456
+#: common/tool/actions.cpp:1450
 msgid "Manage embedded files"
 msgstr "Spravovať vložené súbory"
 
-#: common/tool/actions.cpp:1461
+#: common/tool/actions.cpp:1455
 msgid "Remove File"
 msgstr "Odstrániť súbor"
 
-#: common/tool/actions.cpp:1462
+#: common/tool/actions.cpp:1456
 msgid "Remove an embedded file"
 msgstr "Odstrániť vložený súbor"
 
-#: common/tool/actions.cpp:1467
+#: common/tool/actions.cpp:1461
 msgid "Extract File"
 msgstr "Extrahovať súbor"
 
-#: common/tool/actions.cpp:1468
+#: common/tool/actions.cpp:1462
 msgid "Extract an embedded file"
 msgstr "Extrahovať vložený súbor"
 
@@ -11112,16 +11281,16 @@ msgstr "Vybrať súbor"
 msgid "Select Path"
 msgstr "Zvoľte cestu"
 
-#: common/widgets/kistatusbar.cpp:146
+#: common/widgets/kistatusbar.cpp:128
 msgid "View load messages"
 msgstr "Zobraziť správy o načítaní"
 
-#: common/widgets/kistatusbar.cpp:410
+#: common/widgets/kistatusbar.cpp:461
 #, c-format
 msgid "View %zu load message(s)"
 msgstr "Zobraziť %zu správ(y) z načítania"
 
-#: common/widgets/kistatusbar.cpp:458
+#: common/widgets/kistatusbar.cpp:510
 msgid "Load Messages"
 msgstr "Načítať správy"
 
@@ -11174,7 +11343,7 @@ msgstr "<vytvoriť sieť>"
 
 #: common/widgets/paged_dialog.cpp:85 common/widgets/paged_dialog.cpp:347
 #: eeschema/dialogs/dialog_bom_base.cpp:114
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:106
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:367
 #: pcb_calculator/calculator_panels/panel_track_width_base.cpp:288
 #: pcb_calculator/calculator_panels/panel_transline_base.cpp:480
@@ -13253,8 +13422,8 @@ msgstr "Uložiť všetky stratové výkony"
 msgid ""
 "Write directives to save power dissipation of all items (.probe p(<item>))"
 msgstr ""
-"Napísať direktívy na uloženie stratových výkonov všetkých položiek (.probe p"
-"(<item>))"
+"Napísať direktívy na uloženie stratových výkonov všetkých položiek (.probe "
+"p(<item>))"
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:369
 #: eeschema/dialogs/dialog_sim_command_base.cpp:656
@@ -15315,80 +15484,144 @@ msgstr ""
 msgid "Plot Schematic"
 msgstr "Vykresliť schému"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:44
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
 msgid "Remote Symbol Settings"
 msgstr "Nastavenia vzdialeného symbolu"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:58
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
 msgid ""
-"Configure where downloaded remote libraries are stored and how they are "
-"named."
+"Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:65
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
+msgid "Providers"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#, fuzzy
+msgid "Add / Update"
+msgstr "Aktualizovať"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
+#, fuzzy
+msgid "Refresh Metadata"
+msgstr "Hľadať Metadáta"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+msgid "Sign Out"
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
+#, fuzzy
+msgid "Metadata URL:"
+msgstr "Metadata"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#, fuzzy
+msgid "Display name:"
+msgstr "Zobraziť ďalšiu stranu"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#, fuzzy
+msgid "Last account:"
+msgstr "Počet plôšok"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
+#, fuzzy
+msgid "Not signed in"
+msgstr "Neuvedený"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
+#, fuzzy
+msgid "Auth status:"
+msgstr "Stav: "
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
+#, fuzzy
+msgid "Not configured"
+msgstr "Nezrkadlené"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 msgid "Destination directory:"
 msgstr "Cieľový adresár:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:71
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:121
 msgid ""
 "Directory where downloaded symbol, footprint, and 3D model data will be "
 "written."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:74
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:124
 msgid "Browse..."
 msgstr "Prechádzať..."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:128
 msgid "Library prefix:"
 msgstr "Prefix knižnice:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:131
 msgid "Prefix that will be applied to the generated libraries."
 msgstr "Prefix, ktorý sa použije na vygenerované knižnice."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:89
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:139
 msgid "Add libraries to:"
 msgstr "Pridať knižnice do:"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:93
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:143
 msgid "Project library table"
 msgstr "Projektová tabuľka knižníc"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:146
 msgid "Adds the generated libraries to the project's library tables."
 msgstr "Pridať vygenerované knižnice do tabuľky knižníc projektu."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:98
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:149
 msgid "Global library table"
 msgstr "Globálna tabuľka knižníc"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
 msgid "Adds the generated libraries to the global library tables."
 msgstr "Pridať vygenerované knižnice do tabuľky globálnych knižníc."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:107
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:159
 msgid "Restore the default destination and prefix."
 msgstr "Obnoviť predvolený cieľ a prefix."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:151
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:208
 msgid "Please choose a destination directory."
 msgstr "Prosím, vyberte cieľový adresár."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:158
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:216
 msgid "Please enter a library prefix."
 msgstr "Prosím, zadajte prefix knižnice."
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:191
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:252
 msgid "Select Destination Directory"
 msgstr "Vybrať cieľový adresár"
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:258
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
+msgid "Enter a provider metadata URL first."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
+msgid "Provider metadata refreshed."
+msgstr ""
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
+#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
+#: pcbnew/zone.cpp:989
+msgid "Unknown"
+msgstr "Neznámy"
+
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:519
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
 msgstr ""
 
-#: eeschema/dialogs/dialog_remote_symbol_config.cpp:263
+#: eeschema/dialogs/dialog_remote_symbol_config.cpp:524
 #, c-format
 msgid "Will create libraries like %1$s_symbols, %1$s_fp, %1$s_3d, etc."
 msgstr ""
@@ -15642,7 +15875,7 @@ msgid "Project"
 msgstr "Projekt"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:119
-#: eeschema/tools/sch_edit_tool.cpp:3624
+#: eeschema/tools/sch_edit_tool.cpp:3618
 #: pcbnew/dialogs/dialog_board_setup.cpp:217
 #: pcbnew/widgets/appearance_controls.cpp:526
 #: pcbnew/widgets/appearance_controls.cpp:2507
@@ -18336,13 +18569,13 @@ msgstr "Zachovať medzery"
 msgid "URL"
 msgstr "URL"
 
-#: eeschema/eeschema.cpp:496 eeschema/eeschema.cpp:508
+#: eeschema/eeschema.cpp:513 eeschema/eeschema.cpp:525
 #: eeschema/libraries/legacy_symbol_library.cpp:523
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1349
 msgid "Loading Symbol Libraries"
 msgstr "Načítavajú sa knižnice symbolov"
 
-#: eeschema/eeschema.cpp:633
+#: eeschema/eeschema.cpp:650
 #, c-format
 msgid ""
 "Cannot copy file '%s' as it will be overwritten by the new root sheet file."
@@ -18350,7 +18583,7 @@ msgstr ""
 "Nie je možné kopírovať súbor '%s', pretože bude prepísaný novým súborom "
 "východzieho listu."
 
-#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:298
+#: eeschema/eeschema_jobs_handler.cpp:138 pcbnew/pcbnew_jobs_handler.cpp:299
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0."
 msgstr ""
 "Vykresľovanie do HPGL formátu už nie je podporované od KiCad verzie 10.0."
@@ -18361,7 +18594,7 @@ msgstr "Nepodarilo sa načítať schému\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:275
 #: kicad/cli/command_pcb_export_hpgl.cpp:36
-#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:286
+#: kicad/cli/command_sch_export_plot.cpp:131 pcbnew/pcbnew_jobs_handler.cpp:287
 msgid "Plotting to HPGL is no longer supported as of KiCad 10.0.\n"
 msgstr ""
 "Vykresľovanie do HPGL formátu už nie je podporované od KiCad verzie 10.0.\n"
@@ -18370,14 +18603,14 @@ msgstr ""
 #: eeschema/eeschema_jobs_handler.cpp:522
 #: eeschema/eeschema_jobs_handler.cpp:877
 #: eeschema/eeschema_jobs_handler.cpp:959
-#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:569
-#: pcbnew/pcbnew_jobs_handler.cpp:698 pcbnew/pcbnew_jobs_handler.cpp:962
-#: pcbnew/pcbnew_jobs_handler.cpp:1071 pcbnew/pcbnew_jobs_handler.cpp:1168
-#: pcbnew/pcbnew_jobs_handler.cpp:1254 pcbnew/pcbnew_jobs_handler.cpp:1309
-#: pcbnew/pcbnew_jobs_handler.cpp:1496 pcbnew/pcbnew_jobs_handler.cpp:1563
-#: pcbnew/pcbnew_jobs_handler.cpp:1710 pcbnew/pcbnew_jobs_handler.cpp:1877
-#: pcbnew/pcbnew_jobs_handler.cpp:2168 pcbnew/pcbnew_jobs_handler.cpp:2308
-#: pcbnew/pcbnew_jobs_handler.cpp:2527 pcbnew/pcbnew_jobs_handler.cpp:2639
+#: eeschema/eeschema_jobs_handler.cpp:1293 pcbnew/pcbnew_jobs_handler.cpp:570
+#: pcbnew/pcbnew_jobs_handler.cpp:699 pcbnew/pcbnew_jobs_handler.cpp:963
+#: pcbnew/pcbnew_jobs_handler.cpp:1072 pcbnew/pcbnew_jobs_handler.cpp:1169
+#: pcbnew/pcbnew_jobs_handler.cpp:1255 pcbnew/pcbnew_jobs_handler.cpp:1310
+#: pcbnew/pcbnew_jobs_handler.cpp:1497 pcbnew/pcbnew_jobs_handler.cpp:1564
+#: pcbnew/pcbnew_jobs_handler.cpp:1711 pcbnew/pcbnew_jobs_handler.cpp:1878
+#: pcbnew/pcbnew_jobs_handler.cpp:2169 pcbnew/pcbnew_jobs_handler.cpp:2314
+#: pcbnew/pcbnew_jobs_handler.cpp:2533 pcbnew/pcbnew_jobs_handler.cpp:2645
 msgid "Failed to create output directory\n"
 msgstr "Nepodarilo sa vytvoriť výstupný adresár\n"
 
@@ -18429,8 +18662,8 @@ msgid "Plotting symbol '%s' unit %d to '%s'\n"
 msgstr "Vykresľovanie symbolu '%s' jednotky %d do '%s'\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1106
-#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2087
-#: pcbnew/pcbnew_jobs_handler.cpp:2160
+#: eeschema/eeschema_jobs_handler.cpp:1215 pcbnew/pcbnew_jobs_handler.cpp:2088
+#: pcbnew/pcbnew_jobs_handler.cpp:2161
 msgid "Unable to load library\n"
 msgstr "Nepodarilo sa načítať knižnicu\n"
 
@@ -18444,17 +18677,17 @@ msgstr "Nie je vybraný žiadny symbol na uloženie."
 msgid "Unable to create output directory '%s'."
 msgstr "Nepodarilo sa vytvoriť výstupný adresár '%s'."
 
-#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1407
-#: pcbnew/pcbnew_jobs_handler.cpp:2179
+#: eeschema/eeschema_jobs_handler.cpp:1161 pcbnew/pcbnew_jobs_handler.cpp:1408
+#: pcbnew/pcbnew_jobs_handler.cpp:2180
 #, c-format
 msgid "Exporting %s"
 msgstr "Exportovanie %s"
 
-#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2056
+#: eeschema/eeschema_jobs_handler.cpp:1191 pcbnew/pcbnew_jobs_handler.cpp:2057
 msgid "Output path must not conflict with existing path\n"
 msgstr "Výstupná cesta nesmie kolidovať s existujúcou cestou\n"
 
-#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2063
+#: eeschema/eeschema_jobs_handler.cpp:1199 pcbnew/pcbnew_jobs_handler.cpp:2064
 msgid ""
 "Output path must be specified to convert legacy and non-KiCad libraries\n"
 msgstr ""
@@ -18469,7 +18702,7 @@ msgstr "Ukladanie knižnice symbolov v aktualizovanom formáte\n"
 msgid "Symbol library was not updated\n"
 msgstr "Knižnica symbolov nebola aktualizovaná\n"
 
-#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2439
+#: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2445
 #, c-format
 msgid "Found %d violations\n"
 msgstr "Nájdených %d porušení\n"
@@ -19294,11 +19527,6 @@ msgstr "Odvodiť od symbolu:"
 msgid "Error loading symbol %s from library '%s'."
 msgstr "Chyba pri načítaní symbolu '%s' z knižnice '%s'."
 
-#: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
-#: pcbnew/zone.cpp:989
-msgid "Unknown"
-msgstr "Neznámy"
-
 #: eeschema/import_gfx/dialog_import_gfx_sch.cpp:62
 #: pcbnew/import_gfx/dialog_import_graphics.cpp:49
 msgid "Centimeter"
@@ -19639,7 +19867,7 @@ msgstr ""
 
 #: eeschema/menubar.cpp:196
 msgid ""
-"Install a remote symbol server using the Plugin and Content Manager to enable"
+"Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
 
 #: eeschema/menubar.cpp:330
@@ -19760,7 +19988,7 @@ msgid "Failed to create directory 'devices' ."
 msgstr "Nie je možné vytvoriť adresár '%s'"
 
 #: eeschema/netlist_exporters/netlist_exporter_allegro.cpp:408
-#: pcbnew/pcbnew_jobs_handler.cpp:1502 pcbnew/pcbnew_jobs_handler.cpp:1571
+#: pcbnew/pcbnew_jobs_handler.cpp:1503 pcbnew/pcbnew_jobs_handler.cpp:1572
 #, fuzzy, c-format
 msgid "Failed to create file '%s'.\n"
 msgstr "Nepodarilo sa vytvoriť súbor '%s'\n"
@@ -19854,7 +20082,7 @@ msgstr "Jednotky"
 msgid "Change Unit"
 msgstr "Zmeniť typ"
 
-#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2507
+#: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2501
 #, fuzzy
 msgid "Change Body Style"
 msgstr "Štýl pokosu:"
@@ -20002,6 +20230,141 @@ msgstr "Nenájdené"
 #: eeschema/project_sch.cpp:115
 msgid "The following libraries were not found:"
 msgstr "Nasledujúce knižnice sa nenašli:"
+
+#: eeschema/remote_symbol_download_manager.cpp:35
+msgid "Remote asset URL"
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:49
+msgid "Remote asset URL origin must match the selected provider."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:66
+#, fuzzy, c-format
+msgid "Unable to set download URL '%s'."
+msgstr "Nepodarilo sa prečítať '%s'."
+
+#: eeschema/remote_symbol_download_manager.cpp:124
+msgid "Remote asset manifest declared an invalid size."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:130
+msgid "Remote asset manifest must declare sha256 for URL-based downloads."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:139
+msgid "Remote asset exceeds the provider download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:150
+#, c-format
+msgid "Remote download failed with HTTP %d."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:156
+msgid "Remote asset content type did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:162
+msgid "Remote asset size did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:168
+msgid "Remote asset exceeds the remaining download limit."
+msgstr ""
+
+#: eeschema/remote_symbol_download_manager.cpp:174
+msgid "Remote asset digest did not match the manifest."
+msgstr ""
+
+#: eeschema/remote_symbol_import_job.cpp:44
+#, fuzzy
+msgid "Downloaded symbol payload was empty."
+msgstr "Dátový obsah symbolu bol prázdny."
+
+#: eeschema/remote_symbol_import_job.cpp:52
+#, fuzzy
+msgid "Downloaded symbol payload was not a KiCad symbol library."
+msgstr "Žiadny symbol %s nenájdený v tabuľke knižnice symbolov."
+
+#: eeschema/remote_symbol_import_job.cpp:62
+#, fuzzy, c-format
+msgid "Downloaded symbol payload did not include expected symbol '%s'."
+msgstr "Dátový obsah symbolu neobsahuje očakávaný symbol."
+
+#: eeschema/remote_symbol_import_job.cpp:96
+#: eeschema/remote_symbol_import_utils.cpp:114
+#: eeschema/widgets/panel_remote_symbol.cpp:1072
+#: eeschema/widgets/panel_remote_symbol.cpp:1295
+msgid "Unable to load schematic settings."
+msgstr "Nepodarilo sa načítať nastavenie schémy."
+
+#: eeschema/remote_symbol_import_job.cpp:234
+#, fuzzy
+msgid "No symbol asset was available to place."
+msgstr "Použite farebný motív Eeschema"
+
+#: eeschema/remote_symbol_import_utils.cpp:76
+msgid "Payload was empty."
+msgstr "Dátový obsah bol prázdny."
+
+#: eeschema/remote_symbol_import_utils.cpp:85
+#, c-format
+msgid "Unable to create '%s'."
+msgstr "Nepodarilo sa vytvoriť '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:93
+#, c-format
+msgid "Unable to open '%s' for writing."
+msgstr "Nepodarilo sa otvoriť '%s' pre zápis."
+
+#: eeschema/remote_symbol_import_utils.cpp:99
+#, fuzzy, c-format
+msgid "Failed to write '%s'."
+msgstr "Nepodarilo sa vytvoriť súbor '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:128
+#, fuzzy
+msgid "Destination directory is not configured."
+msgstr "3D konfiguračný adresár nie je známy"
+
+#: eeschema/remote_symbol_import_utils.cpp:137
+#, c-format
+msgid "Unable to create directory '%s'."
+msgstr "Nepodarilo sa vytvoriť adresár '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:158
+#, fuzzy
+msgid "Unable to access the library table."
+msgstr "Nepodarilo sa získať prístup k tabuľke knižnice symbolu."
+
+#: eeschema/remote_symbol_import_utils.cpp:178
+#, fuzzy
+msgid "Failed to update the library table."
+msgstr "Nepodarilo sa vytvoriť súbor knižnice symbolov '%s'"
+
+#: eeschema/remote_symbol_import_utils.cpp:192
+#, fuzzy
+msgid "Remote download"
+msgstr "Chráňte medené odlievanie"
+
+#: eeschema/remote_symbol_import_utils.cpp:197
+#, fuzzy
+msgid "Failed to save the library table."
+msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
+
+#: eeschema/remote_symbol_import_utils.cpp:210
+#, fuzzy
+msgid "No schematic editor is available for placement."
+msgstr "Použite farebný motív Eeschema"
+
+#: eeschema/remote_symbol_import_utils.cpp:222
+msgid "Unable to load the downloaded symbol for placement."
+msgstr "Nepodarilo sa načítať stiahnuté symboly pre umiestnenie."
+
+#: eeschema/remote_symbol_import_utils.cpp:237
+msgid "Unable to access the schematic placement tools."
+msgstr "Nepodarilo sa získať prístup pre nástroje umiestnenia v schéme."
 
 #: eeschema/sch_base_frame.cpp:746
 #, fuzzy
@@ -20950,7 +21313,7 @@ msgstr "KiCad HTTP súbory knižnice"
 
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:118
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy.cpp:288
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:309
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:324
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:108
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:221
 #: pcbnew/pcb_io/kicad_legacy/pcb_io_kicad_legacy.cpp:504
@@ -21045,7 +21408,7 @@ msgstr "súbor knižnice symbolov je prázdny"
 msgid "library %s does not contain a symbol named %s"
 msgstr "knižnica %s neobsahuje symbol s názvom %s"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:215
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:219
 #, c-format
 msgid ""
 "Could not load sheet '%s' because it already appears as a direct ancestor in "
@@ -21054,12 +21417,12 @@ msgstr ""
 "Nebolo možné načítať list '%s' pretože sa objavuje ako priamy predchodca v "
 "schematickej hierarchii."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:345
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:360
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:306
 msgid "Internal Group Data Error"
 msgstr "Poškodená interná dátová štruktúra"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:346
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:361
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:307
 #, c-format
 msgid ""
@@ -21071,27 +21434,27 @@ msgstr ""
 "\n"
 "Napriek tomu uložiť?"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:349
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:364
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:309
 msgid "Save Anyway"
 msgstr "Určite uložiť"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1782
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1797
 #, c-format
 msgid "Symbol library file '%s' already exists."
 msgstr "Súbor knižnice symbolov %s už existuje."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1787
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1802
 #, c-format
 msgid "Symbol library path '%s' already exists."
 msgstr "Cesta knižnice symbolov %s už existuje."
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1817
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1832
 #, fuzzy, c-format
 msgid "Symbol library file '%s' cannot be deleted."
 msgstr "knižnicu \"%s\" nie je možné vymazať"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1827
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1842
 #, fuzzy, c-format
 msgid "Symbol library folder '%s' cannot be deleted."
 msgstr "knižnicu \"%s\" nie je možné vymazať"
@@ -21283,28 +21646,28 @@ msgstr "Neplatný knižničný identifikátor symbolu"
 msgid "Invalid symbol library ID"
 msgstr "Neplatné knižničné ID symbolu"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3956
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3970
 #, fuzzy
 msgid "Missing sheet name property"
 msgstr "Chýbajúci argument pre '%s'"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3962
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:3976
 #, fuzzy
 msgid "Missing sheet file property"
 msgstr "Chýbajúci argument pre '%s'"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5056
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5070
 #, fuzzy
 msgid "Invalid table: no cells defined"
 msgstr "Zadaná neplatná stopa\n"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5181
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5195
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6969
 #, c-format
 msgid "Group library link %s contains invalid character '%c'"
 msgstr "Skupina knižničného prepojenia %s obsahuje neplatný znak '%c'"
 
-#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5187
+#: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:5201
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6976
 msgid "Invalid library ID"
 msgstr "Neplatné knižničné ID"
@@ -21632,7 +21995,7 @@ msgstr "Názov špendlíka"
 msgid "No sheets to plot."
 msgstr "Žiadne listy k vykresleniu."
 
-#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1429
+#: eeschema/sch_plotter.cpp:227 pcbnew/pcbnew_jobs_handler.cpp:1430
 #, c-format
 msgid "Plotted to '%s'.\n"
 msgstr "Vykreslené do '%s'.\n"
@@ -25697,7 +26060,7 @@ msgstr "Distribuovať horizontálne"
 msgid "Flips selected item(s) from left to right"
 msgstr "Prevráti vybrané položky zľava doprava"
 
-#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1699
+#: eeschema/tools/sch_actions.cpp:802 eeschema/tools/sch_edit_tool.cpp:1693
 #: pcbnew/tools/edit_tool_move_fct.cpp:201 pcbnew/tools/pcb_actions.cpp:696
 msgid "Swap"
 msgstr "Prohodit"
@@ -25707,7 +26070,7 @@ msgstr "Prohodit"
 msgid "Swap positions of selected items"
 msgstr "Povoliť výber uzamknutých položiek"
 
-#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1849
+#: eeschema/tools/sch_actions.cpp:810 eeschema/tools/sch_edit_tool.cpp:1843
 #, fuzzy
 msgid "Swap Pins"
 msgstr "Zamieňajte vrstvy"
@@ -25717,7 +26080,7 @@ msgstr "Zamieňajte vrstvy"
 msgid "Swap the selected symbol pins' positions"
 msgstr "Otočí vybraté položky v smere hodinových ručičiek"
 
-#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1952
+#: eeschema/tools/sch_actions.cpp:817 eeschema/tools/sch_edit_tool.cpp:1946
 msgid "Swap Pin Labels"
 msgstr "Zameniť označenia vývodov"
 
@@ -25725,7 +26088,7 @@ msgstr "Zameniť označenia vývodov"
 msgid "Swap the labels attached to selected pins"
 msgstr "Zameniť označenia pripojené k vybraným vývodom"
 
-#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2034
+#: eeschema/tools/sch_actions.cpp:824 eeschema/tools/sch_edit_tool.cpp:2028
 msgid "Swap Unit Labels"
 msgstr "Zameniť označenie jednotiek"
 
@@ -25746,7 +26109,7 @@ msgstr "Upraviť hodnotu..."
 msgid "Edit Footprint..."
 msgstr "Upraviť puzdro..."
 
-#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2448
+#: eeschema/tools/sch_actions.cpp:865 eeschema/tools/sch_edit_tool.cpp:2442
 msgid "Autoplace Fields"
 msgstr "Automaticky umiestňovať polia"
 
@@ -25862,7 +26225,7 @@ msgstr "Zmeniť na textové pole"
 msgid "Change existing item to a text box"
 msgstr "Zmeniť existujúcu položku na textové pole"
 
-#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3370
+#: eeschema/tools/sch_actions.cpp:976 eeschema/tools/sch_edit_tool.cpp:3364
 msgid "Cleanup Sheet Pins"
 msgstr "Vyčistiť vývody listu"
 
@@ -26741,7 +27104,7 @@ msgid "Press <ESC> to cancel image creation."
 msgstr "Stlačiť <ESC> pre zrušenie tvorby obrázku."
 
 #: eeschema/tools/sch_drawing_tools.cpp:1237
-#: eeschema/tools/sch_edit_tool.cpp:3470
+#: eeschema/tools/sch_edit_tool.cpp:3464
 #: pagelayout_editor/pl_editor_frame.cpp:859
 #: pagelayout_editor/pl_editor_frame.cpp:867 pcbnew/tools/drawing_tool.cpp:796
 #, fuzzy, c-format
@@ -26904,57 +27267,57 @@ msgstr "Uzol"
 msgid "Pin Helpers"
 msgstr "Vlastnosti vývodu"
 
-#: eeschema/tools/sch_edit_tool.cpp:702
+#: eeschema/tools/sch_edit_tool.cpp:696
 msgid "Transform Selection"
 msgstr "Transformovať výber"
 
-#: eeschema/tools/sch_edit_tool.cpp:730
+#: eeschema/tools/sch_edit_tool.cpp:724
 msgid "Edit Main Fields"
 msgstr "Upraviť hlavné polia"
 
-#: eeschema/tools/sch_edit_tool.cpp:743 eeschema/tools/sch_edit_tool.cpp:3252
+#: eeschema/tools/sch_edit_tool.cpp:737 eeschema/tools/sch_edit_tool.cpp:3246
 msgid "Change To"
 msgstr "Zmeniť na"
 
-#: eeschema/tools/sch_edit_tool.cpp:1238
+#: eeschema/tools/sch_edit_tool.cpp:1232
 #: eeschema/tools/symbol_editor_edit_tool.cpp:602
 #: pcbnew/tools/edit_tool.cpp:2530
 msgid "Rotate"
 msgstr "Otočiť"
 
-#: eeschema/tools/sch_edit_tool.cpp:1454 gerbview/gerber_draw_item.cpp:724
+#: eeschema/tools/sch_edit_tool.cpp:1448 gerbview/gerber_draw_item.cpp:724
 #: pcbnew/pcb_tablecell.cpp:209 pcbnew/pcb_text.cpp:308
 #: pcbnew/pcb_textbox.cpp:501 pcbnew/tools/edit_tool.cpp:2680
 msgid "Mirror"
 msgstr "Zrkadliť"
 
-#: eeschema/tools/sch_edit_tool.cpp:1761
+#: eeschema/tools/sch_edit_tool.cpp:1755
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects. Duplicate "
 "the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1767
+#: eeschema/tools/sch_edit_tool.cpp:1761
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols shared across other projects (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1777
+#: eeschema/tools/sch_edit_tool.cpp:1771
 #, c-format
 msgid ""
 "Pin swaps are disabled for symbols used by multiple sheet instances (%s). "
 "Duplicate the sheet to edit pins independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1784
+#: eeschema/tools/sch_edit_tool.cpp:1778
 msgid ""
 "Pin swaps are disabled for shared symbols. Duplicate the sheet to edit pins "
 "independently."
 msgstr ""
 
-#: eeschema/tools/sch_edit_tool.cpp:1928
+#: eeschema/tools/sch_edit_tool.cpp:1922
 msgid ""
 "Each selected pin must have exactly one attached net label and no other pin "
 "connections."
@@ -26962,7 +27325,7 @@ msgstr ""
 "Každý vybraný vývod musí mať presne jedno pripojené označenie spoja a žiadne "
 "iné pripojenia vývodov."
 
-#: eeschema/tools/sch_edit_tool.cpp:1984
+#: eeschema/tools/sch_edit_tool.cpp:1978
 msgid ""
 "Each pin of selected units must have exactly one attached net label and no "
 "other pin connections."
@@ -26970,66 +27333,66 @@ msgstr ""
 "Každý vývod vybraných jednotiek musí mať presne jedno pripojené označenie "
 "spoja a žiadne iné pripojenia vývodov."
 
-#: eeschema/tools/sch_edit_tool.cpp:2077
+#: eeschema/tools/sch_edit_tool.cpp:2071
 msgid "Label value cannot go below zero"
 msgstr "Hodnota označenia nemôže klesnúť pod nulu"
 
-#: eeschema/tools/sch_edit_tool.cpp:2157
+#: eeschema/tools/sch_edit_tool.cpp:2151
 msgid "Repeat Item"
 msgstr "Opakovať položku"
 
-#: eeschema/tools/sch_edit_tool.cpp:2294
+#: eeschema/tools/sch_edit_tool.cpp:2288
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1009
 #, c-format
 msgid "Edit %s Field"
 msgstr "Upraviť %s pole"
 
-#: eeschema/tools/sch_edit_tool.cpp:2298
+#: eeschema/tools/sch_edit_tool.cpp:2292
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1011
 #, c-format
 msgid "Edit '%s' Field"
 msgstr "Upraviť '%s' pole"
 
-#: eeschema/tools/sch_edit_tool.cpp:2744
+#: eeschema/tools/sch_edit_tool.cpp:2738
 #, fuzzy
 msgid "Edit Sheet Properties"
 msgstr "Upraviť vlastnosti vývodov listu"
 
-#: eeschema/tools/sch_edit_tool.cpp:2868
+#: eeschema/tools/sch_edit_tool.cpp:2862
 #: pcbnew/dialogs/dialog_rule_area_properties_base.h:64
 msgid "Rule Area Properties"
 msgstr "Vlastnosti oblasti pravidiel"
 
-#: eeschema/tools/sch_edit_tool.cpp:2940 eeschema/tools/sch_edit_tool.cpp:3028
+#: eeschema/tools/sch_edit_tool.cpp:2934 eeschema/tools/sch_edit_tool.cpp:3022
 msgid "<empty>"
 msgstr "<prázdny>"
 
-#: eeschema/tools/sch_edit_tool.cpp:3361
+#: eeschema/tools/sch_edit_tool.cpp:3355
 msgid "Do you wish to delete the unreferenced pins from this sheet?"
 msgstr "Prajete si vymazať neodkázané piny z tohto hárku?"
 
-#: eeschema/tools/sch_edit_tool.cpp:3422
+#: eeschema/tools/sch_edit_tool.cpp:3416
 #, c-format
 msgid "Enter page number for sheet path%s"
 msgstr "Zadajte číslo strany pre cestu hárku %s"
 
-#: eeschema/tools/sch_edit_tool.cpp:3425
+#: eeschema/tools/sch_edit_tool.cpp:3419
 #: eeschema/widgets/hierarchy_pane.cpp:631
 #, fuzzy
 msgid "Edit Sheet Page Number"
 msgstr "Upraviť číslo stránky"
 
-#: eeschema/tools/sch_edit_tool.cpp:3551
+#: eeschema/tools/sch_edit_tool.cpp:3545
 #, fuzzy
 msgid "Toggle Attribute"
 msgstr "Atribút"
 
-#: eeschema/tools/sch_edit_tool.cpp:3566
+#: eeschema/tools/sch_edit_tool.cpp:3560
 #, fuzzy
 msgid "Edit Symbol Properties..."
 msgstr "Upraviť vlastnosti symbolu"
 
-#: eeschema/tools/sch_edit_tool.cpp:3583
+#: eeschema/tools/sch_edit_tool.cpp:3577
 #, fuzzy
 msgid "Edit Netclasses..."
 msgstr "Načítavam..."
@@ -27554,245 +27917,198 @@ msgstr "Kresliaci list"
 msgid "(page %s)"
 msgstr "(strana %s)"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:85
+#: eeschema/widgets/panel_remote_symbol.cpp:76
 msgid "Missing payload data."
 msgstr "Chýbajúci dátový obsah."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:93
+#: eeschema/widgets/panel_remote_symbol.cpp:84
 msgid "Failed to decode base64 payload."
 msgstr "Nepodarilo sa dekódovať dátový obsah base64."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:115
+#: eeschema/widgets/panel_remote_symbol.cpp:107
 #, fuzzy, c-format
 msgid "Unsupported compression '%s'."
 msgstr "Altiové schematické súbory"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:122
+#: eeschema/widgets/panel_remote_symbol.cpp:114
 msgid "Compressed payload was empty."
 msgstr "Skomprimovaný dátový obsah bol prázdny."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:139
+#: eeschema/widgets/panel_remote_symbol.cpp:133
+#, c-format
+msgid "Decompressed size %llu exceeds limit %llu."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:144
 #, fuzzy, c-format
 msgid "ZSTD decompression failed: %s"
 msgstr "Prebieha kontrola sieťových pripojení..."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:182
-msgid "Payload was empty."
-msgstr "Dátový obsah bol prázdny."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:193
-#: eeschema/widgets/panel_remote_symbol.cpp:1249
-#: eeschema/widgets/panel_remote_symbol.cpp:1364
-#: eeschema/widgets/panel_remote_symbol.cpp:1388
-#: eeschema/widgets/panel_remote_symbol.cpp:1461
-#: eeschema/widgets/panel_remote_symbol.cpp:1525
-#, c-format
-msgid "Unable to create '%s'."
-msgstr "Nepodarilo sa vytvoriť '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:202
-#, c-format
-msgid "Unable to open '%s' for writing."
-msgstr "Nepodarilo sa otvoriť '%s' pre zápis."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:208
-#, fuzzy, c-format
-msgid "Failed to write '%s'."
-msgstr "Nepodarilo sa vytvoriť súbor '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:223
+#: eeschema/widgets/panel_remote_symbol.cpp:169
 msgid "Symbol payload was empty."
 msgstr "Dátový obsah symbolu bol prázdny."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:231
-#: eeschema/widgets/panel_remote_symbol.cpp:241
+#: eeschema/widgets/panel_remote_symbol.cpp:177
+#: eeschema/widgets/panel_remote_symbol.cpp:186
 msgid "Unable to create a temporary file for the symbol payload."
 msgstr "Nepodarilo sa vytvoriť dočasný súbor pre dátový obsah symbolu."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:248
+#: eeschema/widgets/panel_remote_symbol.cpp:193
 msgid "Failed to write the temporary symbol payload."
 msgstr "Nepodarilo sa zapísať dočasný súbor dátového obsahu."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:260
+#: eeschema/widgets/panel_remote_symbol.cpp:205
 msgid "Unable to access the KiCad symbol plugin."
 msgstr "Nepodarilo sa získať prístup k pluginu symbolov KiCad."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:280
+#: eeschema/widgets/panel_remote_symbol.cpp:219
 msgid "Symbol payload did not include the expected symbol."
 msgstr "Dátový obsah symbolu neobsahuje očakávaný symbol."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:285
+#: eeschema/widgets/panel_remote_symbol.cpp:223
 #, c-format
 msgid "Unable to decode the symbol payload: %s"
 msgstr "Nepodarilo sa dekódovať dátový obsah symbolu: %s"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:309
-msgid "Select which remote data source to query."
+#: eeschema/widgets/panel_remote_symbol.cpp:252
+msgid "Reload current provider page"
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:315
+#: eeschema/widgets/panel_remote_symbol.cpp:257
 #, fuzzy
-msgid "Configure remote data sources."
+msgid "Configure remote providers"
 msgstr "Nakonfigurujte triedy sietí"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:391
-msgid "No remote data sources are currently installed."
-msgstr ""
+#: eeschema/widgets/panel_remote_symbol.cpp:379
+#, fuzzy
+msgid "No remote providers configured."
+msgstr "Nenakonfigurovaná vzdialená vetva."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:444
-#, fuzzy, c-format
-msgid "No configuration JSON found for '%s'."
-msgstr ""
-"Chyba pri načítaní knižnice symbolov %s.\n"
-"\n"
-"%s"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:455
-#, c-format
-msgid "Unable to open '%s'."
-msgstr "Nepodarilo sa otvoriť '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:465
-#, c-format
-msgid "Unable to read '%s'."
-msgstr "Nepodarilo sa prečítať '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:479
-#, c-format
-msgid "Unable to load remote data for '%s'."
+#: eeschema/widgets/panel_remote_symbol.cpp:451
+#, fuzzy
+msgid "Unable to load remote provider metadata."
 msgstr "Nepodarilo sa načítať vzdialené dáta pre '%s'"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:809
+#: eeschema/widgets/panel_remote_symbol.cpp:696
+msgid "A remote provider sign-in flow is already in progress."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:728
+#, fuzzy
+msgid "Unable to start the local OAuth callback listener."
+msgstr "Vybrané segmenty stopy sa nepodarilo zaobliť."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:738
+#, fuzzy
+msgid "Unable to open the system browser for sign-in."
+msgstr "Nepodarilo sa otvoriť '%s' pre zápis."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:768
+#, fuzzy
+msgid "Failed to delete stored remote provider tokens."
+msgstr "Nemožno otvoriť %s"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:808
 #, fuzzy, c-format
 msgid "Unsupported RPC version %d."
 msgstr "Nepodporované prostredníctvom tvaru: %s"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:818
+#: eeschema/widgets/panel_remote_symbol.cpp:817
 #, fuzzy
 msgid "Missing session identifier."
 msgstr "Chýba číslo verzie."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:902
-#, fuzzy
-msgid "Missing compression metadata."
-msgstr "Chýba výraz podmienky."
+#: eeschema/widgets/panel_remote_symbol.cpp:824
+msgid "Session identifier did not match the active provider session."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:941
-#: eeschema/widgets/panel_remote_symbol.cpp:955
+#: eeschema/widgets/panel_remote_symbol.cpp:912
+#, fuzzy
+msgid "No remote provider is currently selected."
+msgstr "Priblížiť na aktuálne vybrané položky"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1033
+#, fuzzy
+msgid "Unable to process provider payload."
+msgstr "Nepodarilo sa uložiť dátový obsah."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, fuzzy, c-format
 msgid "Command '%s' is not supported."
 msgstr "%s nie je podporované."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:949
-msgid "Unable to store payload."
-msgstr "Nepodarilo sa uložiť dátový obsah."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:965
-#: eeschema/widgets/panel_remote_symbol.cpp:1233
-#: eeschema/widgets/panel_remote_symbol.cpp:1410
-msgid "Unable to load schematic settings."
-msgstr "Nepodarilo sa načítať nastavenie schémy."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:980
-#, fuzzy
-msgid "Destination directory is not configured."
-msgstr "3D konfiguračný adresár nie je známy"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:991
-#, c-format
-msgid "Unable to create directory '%s'."
-msgstr "Nepodarilo sa vytvoriť adresár '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1011
-msgid "Unable to access the symbol library table."
-msgstr "Nepodarilo sa získať prístup k tabuľke knižnice symbolu."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1030
-#, fuzzy
-msgid "Failed to update the symbol library table."
-msgstr "Nepodarilo sa vytvoriť súbor knižnice symbolov '%s'"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1044
-#: eeschema/widgets/panel_remote_symbol.cpp:1100
-#, fuzzy
-msgid "Remote download"
-msgstr "Chráňte medené odlievanie"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1049
-#, fuzzy
-msgid "Failed to save the symbol library table."
-msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1067
-msgid "Unable to access the footprint library table."
-msgstr "Nepodarilo sa získať prístup k tabuľke knižnice puzdra."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1086
-#, fuzzy
-msgid "Failed to update the footprint library table."
-msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1105
-#, fuzzy
-msgid "Failed to save the footprint library table."
-msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1146
-#, fuzzy
-msgid "No schematic editor is available for placement."
-msgstr "Použite farebný motív Eeschema"
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1153
-msgid "Downloaded symbol metadata is incomplete."
-msgstr ""
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1165
-msgid "Unable to load the downloaded symbol for placement."
-msgstr "Nepodarilo sa načítať stiahnuté symboly pre umiestnenie."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1187
-msgid "Unable to access the schematic placement tools."
-msgstr "Nepodarilo sa získať prístup pre nástroje umiestnenia v schéme."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1211
-#: eeschema/widgets/panel_remote_symbol.cpp:1342
-#: eeschema/widgets/panel_remote_symbol.cpp:1438
-#: eeschema/widgets/panel_remote_symbol.cpp:1503
+#: eeschema/widgets/panel_remote_symbol.cpp:1052
 #, fuzzy, c-format
 msgid "Unsupported transfer mode '%s'."
 msgstr "Altiové schematické súbory"
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1219
+#: eeschema/widgets/panel_remote_symbol.cpp:1058
 msgid "Unsupported symbol payload type."
 msgstr "Nepodporovaný typ dátového obsahu symbolu."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1225
+#: eeschema/widgets/panel_remote_symbol.cpp:1064
 msgid "No schematic editor is available to store symbols."
 msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1278
+#: eeschema/widgets/panel_remote_symbol.cpp:1109
 msgid "Unable to access the symbol library manager."
 msgstr "Nepodarilo sa získať prístup pre správcu knižníc symbolov."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1287
-msgid "Unable to parse the downloaded symbol."
-msgstr "Nepodarilo sa spracovať stiahnutý symbol."
-
-#: eeschema/widgets/panel_remote_symbol.cpp:1302
+#: eeschema/widgets/panel_remote_symbol.cpp:1126
 msgid "Unable to save the downloaded symbol."
 msgstr "Nepodarilo sa uložiť stiahnutý symbol."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1350
+#: eeschema/widgets/panel_remote_symbol.cpp:1154
+#, fuzzy, c-format
+msgid "Failed to parse component list: %s"
+msgstr "Obrázok sa nepodarilo sa načítať."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1160
+#, fuzzy
+msgid "Component list must be a non-empty array."
+msgstr "Knižnica súčiastok <%s> je prázdna."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1170
+#, fuzzy
+msgid "Component entries must be objects."
+msgstr "Názov siete nemôže byť prázdny."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1178
+#, fuzzy
+msgid "Component entry was missing a type."
+msgstr "Knižnica súčiastok <%s> je prázdna."
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1237
+#, fuzzy, c-format
+msgid "Unsupported component type '%s'."
+msgstr "Altiové schematické súbory"
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1256
 msgid "Unsupported footprint payload type."
 msgstr "Nepodporovaný typ dátového obsahu puzdra."
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1447
-msgid "Unsupported 3D model payload type."
-msgstr "Nepodporovaný typ dátového obsahu 3D modelu."
+#: eeschema/widgets/panel_remote_symbol.cpp:1371
+msgid "Remote provider metadata is not loaded."
+msgstr ""
 
-#: eeschema/widgets/panel_remote_symbol.cpp:1511
-msgid "Unsupported SPICE payload type."
-msgstr "Nepodporovaný typ dátového obsahu SPICE."
+#: eeschema/widgets/panel_remote_symbol.cpp:1401
+msgid ""
+"Manifest assets require asset_type, content_type, size_bytes, and "
+"download_url."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1437
+msgid "Remote provider sign-in was cancelled or failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1448
+msgid "Remote provider sign-in failed."
+msgstr ""
+
+#: eeschema/widgets/panel_remote_symbol.cpp:1464
+#, fuzzy
+msgid "Failed to store remote provider tokens securely."
+msgstr "Nepodarilo sa push-núť zmeny do vzdialeného repozitára."
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -38600,7 +38916,7 @@ msgid "Generate IPC-2581 File"
 msgstr "Generovať súbor IPC-2581"
 
 #: pcbnew/dialogs/dialog_export_2581.cpp:289
-#: pcbnew/pcbnew_jobs_handler.cpp:2564
+#: pcbnew/pcbnew_jobs_handler.cpp:2570
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -47150,11 +47466,11 @@ msgstr "Prebieha kontrola definícií stopy nádvoria..."
 msgid "Checking footprints for overlapping courtyards..."
 msgstr "Kontrolujú sa puzdrá na prekrývanie montážnych oblastí..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:89
+#: pcbnew/drc/drc_test_provider_creepage.cpp:90
 msgid "Checking creepage..."
 msgstr "Kontrolujú sa povrchové cesty..."
 
-#: pcbnew/drc/drc_test_provider_creepage.cpp:166
+#: pcbnew/drc/drc_test_provider_creepage.cpp:167
 #, fuzzy, c-format
 msgid "(%s creepage %s; actual %s)"
 msgstr "(%s klírens %s; skutočný %s)"
@@ -48965,7 +49281,7 @@ msgstr ""
 "%s"
 
 #: pcbnew/files.cpp:1094 pcbnew/files.cpp:1185
-#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2751
+#: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2757
 #, fuzzy, c-format
 msgid ""
 "Error saving board file '%s'.\n"
@@ -51179,7 +51495,7 @@ msgstr ""
 "samostatnom režime. Ak chcete vytvoriť alebo aktualizovať PCB zo schém, "
 "musíte spustiť projektového manažéra KiCad a vytvoriť projekt."
 
-#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2383
+#: pcbnew/pcb_edit_frame.cpp:2273 pcbnew/pcbnew_jobs_handler.cpp:2389
 msgid "Eeschema netlist"
 msgstr "Netlist systému Eeschema"
 
@@ -51260,22 +51576,22 @@ msgstr "Aktualizované"
 msgid "Generator Properties"
 msgstr "Vlastnosti generátora skriptov"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4435
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
 #, fuzzy
 msgid "Constructing caches"
 msgstr "Konfliktné štítky"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4450
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
 #, fuzzy
 msgid "Creating nets"
 msgstr "Redakčné poznámky"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4459
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
 #, fuzzy
 msgid "Creating tracks"
 msgstr "Pri vytváraní spojov"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4498
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
 #, fuzzy
 msgid "Converting footprints"
 msgstr "stopa rodiča"
@@ -53845,162 +54161,162 @@ msgstr "Chýbajúci argument pre '%s'"
 msgid "Loading Footprint Libraries"
 msgstr "Načítavajú sa knižnice stopy"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:452 pcbnew/pcbnew_jobs_handler.cpp:2932
+#: pcbnew/pcbnew_jobs_handler.cpp:453 pcbnew/pcbnew_jobs_handler.cpp:2938
 #, fuzzy
 msgid "Failed to load board\n"
 msgstr "Nepodarilo sa načítať '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:518
+#: pcbnew/pcbnew_jobs_handler.cpp:519
 #, fuzzy, c-format
 msgid "Invalid layer name '%s'\n"
 msgstr "Neplatné meno signálu\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:558 pcbnew/pcbnew_jobs_handler.cpp:638
-#: pcbnew/pcbnew_jobs_handler.cpp:682
+#: pcbnew/pcbnew_jobs_handler.cpp:559 pcbnew/pcbnew_jobs_handler.cpp:639
+#: pcbnew/pcbnew_jobs_handler.cpp:683
 #, fuzzy
 msgid "Unknown export format"
 msgstr "Neznámy formát súboru <%s>\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:612
+#: pcbnew/pcbnew_jobs_handler.cpp:613
 #, fuzzy, c-format
 msgid "Successfully exported VRML to %s"
 msgstr "DPS a schéma boli úspešne opätovne anotované"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:618
+#: pcbnew/pcbnew_jobs_handler.cpp:619
 msgid "Error exporting VRML"
 msgstr "Chyba počas exportu VRML"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:664
+#: pcbnew/pcbnew_jobs_handler.cpp:665
 msgid "Invalid image dimensions"
 msgstr "Neplatné rozmery obrázku"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:919
+#: pcbnew/pcbnew_jobs_handler.cpp:920
 #, fuzzy
 msgid "Successfully created 3D render image"
 msgstr "DPS a schéma boli úspešne opätovne anotované"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:924
+#: pcbnew/pcbnew_jobs_handler.cpp:925
 #, fuzzy
 msgid "Error creating 3D render image"
 msgstr "Chyba počas vytvárania súboru svg"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:982 pcbnew/pcbnew_jobs_handler.cpp:1051
-#: pcbnew/pcbnew_jobs_handler.cpp:1144 pcbnew/pcbnew_jobs_handler.cpp:1232
-#: pcbnew/pcbnew_jobs_handler.cpp:1618
+#: pcbnew/pcbnew_jobs_handler.cpp:983 pcbnew/pcbnew_jobs_handler.cpp:1052
+#: pcbnew/pcbnew_jobs_handler.cpp:1145 pcbnew/pcbnew_jobs_handler.cpp:1233
+#: pcbnew/pcbnew_jobs_handler.cpp:1619
 #, fuzzy
 msgid "At least one layer must be specified\n"
 msgstr "Musia byť vybrané najmenej dva priame segmenty trate.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1437 pcbnew/pcbnew_jobs_handler.cpp:1680
+#: pcbnew/pcbnew_jobs_handler.cpp:1438 pcbnew/pcbnew_jobs_handler.cpp:1681
 #, c-format
 msgid "Failed to plot to '%s'.\n"
 msgstr "Nepodarilo sa vykresliť do '%s'.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1508
+#: pcbnew/pcbnew_jobs_handler.cpp:1509
 #, fuzzy
 msgid "Successfully created genCAD file\n"
 msgstr "DPS a schéma boli úspešne opätovne anotované"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1578
+#: pcbnew/pcbnew_jobs_handler.cpp:1579
 #, fuzzy, c-format
 msgid "Error writing file '%s'.\n"
 msgstr "Chyba pri zápise do súboru '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1584
+#: pcbnew/pcbnew_jobs_handler.cpp:1585
 #, fuzzy, c-format
 msgid "Wrote board statistics to '%s'.\n"
 msgstr "Nemožno vytvoriť výstupný adresár '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1924 pcbnew/pcbnew_jobs_handler.cpp:2002
+#: pcbnew/pcbnew_jobs_handler.cpp:1925 pcbnew/pcbnew_jobs_handler.cpp:2003
 #, c-format
 msgid "Wrote front position data to '%s'.\n"
 msgstr "Predné polohové dáta zapísané do súboru '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1942 pcbnew/pcbnew_jobs_handler.cpp:2026
+#: pcbnew/pcbnew_jobs_handler.cpp:1943 pcbnew/pcbnew_jobs_handler.cpp:2027
 #, fuzzy, c-format
 msgid "Wrote back position data to '%s'.\n"
 msgstr "Nemožno vytvoriť výstupný adresár '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:1971
+#: pcbnew/pcbnew_jobs_handler.cpp:1972
 #, fuzzy, c-format
 msgid "Wrote position data to '%s'.\n"
 msgstr "Exportná stopa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2073
+#: pcbnew/pcbnew_jobs_handler.cpp:2074
 #, fuzzy
 msgid "Footprint library path does not exist or is not accessible\n"
 msgstr "Cesta knižnice stopy '%s' neexistuje (alebo nejde o adresár).\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2113
+#: pcbnew/pcbnew_jobs_handler.cpp:2114
 msgid "Unable to save library\n"
 msgstr "Nepodarilo sa uložiť knižnicu\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2119
+#: pcbnew/pcbnew_jobs_handler.cpp:2120
 #, fuzzy
 msgid "Footprint library was not updated\n"
 msgstr "Knižnica stopy nie je povolená.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2200
+#: pcbnew/pcbnew_jobs_handler.cpp:2201
 #, fuzzy
 msgid "The given footprint could not be found to export."
 msgstr ""
 "Súbor knižnice puzdier DPS <%s> nebol nájdený v cestách nastavených na "
 "hľadanie."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2242
+#: pcbnew/pcbnew_jobs_handler.cpp:2243
 #, c-format
 msgid "Plotting footprint '%s' to '%s'\n"
 msgstr "Vykresľovanie puzdra '%s' do '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2271
+#: pcbnew/pcbnew_jobs_handler.cpp:2272
 msgid "Error creating svg file"
 msgstr "Chyba počas vytvárania súboru svg"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2336 pcbnew/tools/drc_tool.cpp:170
+#: pcbnew/pcbnew_jobs_handler.cpp:2342 pcbnew/tools/drc_tool.cpp:170
 #, fuzzy
 msgid "Schematic parity tests require a fully annotated schematic."
 msgstr "Export netlistu si vyžaduje úplne anotovanú schému."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2357 pcbnew/pcbnew_jobs_handler.cpp:2390
+#: pcbnew/pcbnew_jobs_handler.cpp:2363 pcbnew/pcbnew_jobs_handler.cpp:2396
 #, fuzzy
 msgid "Failed to fetch schematic netlist for parity tests.\n"
 msgstr "Nepodarilo sa načítať schému '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2421 pcbnew/tools/drc_tool.cpp:208
+#: pcbnew/pcbnew_jobs_handler.cpp:2427 pcbnew/tools/drc_tool.cpp:208
 msgid "DRC"
 msgstr "KDR"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2442
+#: pcbnew/pcbnew_jobs_handler.cpp:2448
 #, fuzzy, c-format
 msgid "Found %d unconnected items\n"
 msgstr "Nepripojené položky (%d)\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2448
+#: pcbnew/pcbnew_jobs_handler.cpp:2454
 #, c-format
 msgid "Found %d schematic parity issues\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2464
+#: pcbnew/pcbnew_jobs_handler.cpp:2470
 #, c-format
 msgid "Unable to save DRC report to %s\n"
 msgstr "Nepodaril sa uložiť protokol DRC do %s\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2469
+#: pcbnew/pcbnew_jobs_handler.cpp:2475
 #, c-format
 msgid "Saved DRC Report to %s\n"
 msgstr "Uložený súbor protokolu DRC do %s\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2476
+#: pcbnew/pcbnew_jobs_handler.cpp:2482
 #, fuzzy
 msgid "Saved board\n"
 msgstr "Uložiť na palubu"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2480
+#: pcbnew/pcbnew_jobs_handler.cpp:2486
 #, fuzzy
 msgid "Failed to save board.\n"
 msgstr "Nepodarilo sa načítať '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2603
+#: pcbnew/pcbnew_jobs_handler.cpp:2609
 #, fuzzy, c-format
 msgid ""
 "Error generating IPC-2581 file '%s'.\n"
@@ -54009,51 +54325,51 @@ msgstr ""
 "Chyba pri ukladaní súboru nástenky '%s'.\n"
 "Nepodarilo sa premenovať dočasný súbor '%s'"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2649
+#: pcbnew/pcbnew_jobs_handler.cpp:2655
 #, fuzzy
 msgid "Successfully created IPC-D-356 file\n"
 msgstr "DPS a schéma boli úspešne opätovne anotované"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2654
+#: pcbnew/pcbnew_jobs_handler.cpp:2660
 #, fuzzy
 msgid "Failed to create IPC-D-356 file\n"
 msgstr "Nepodarilo sa vytvoriť súbor."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2741
+#: pcbnew/pcbnew_jobs_handler.cpp:2747
 msgid "Successfully saved board file using the latest format\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2745
+#: pcbnew/pcbnew_jobs_handler.cpp:2751
 #, fuzzy
 msgid "Board file was not updated\n"
 msgstr "Knižnica symbolov nie je povolená.\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2883
+#: pcbnew/pcbnew_jobs_handler.cpp:2889
 #, c-format
 msgid "Unable to determine file format for '%s'\n"
 msgstr "Nepodarilo sa určiť formát súboru pre '%s'\n"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2892
+#: pcbnew/pcbnew_jobs_handler.cpp:2898
 #, fuzzy, c-format
 msgid "Input file not found: '%s'\n"
 msgstr "Súbor sa nenašiel: '%s'."
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2918
+#: pcbnew/pcbnew_jobs_handler.cpp:2924
 #, fuzzy, c-format
 msgid "No plugin found for file type '%s'\n"
 msgstr "Exportná stopa"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2924
+#: pcbnew/pcbnew_jobs_handler.cpp:2930
 #, c-format
 msgid "Importing '%s' using %s format...\n"
 msgstr ""
 
-#: pcbnew/pcbnew_jobs_handler.cpp:2940
+#: pcbnew/pcbnew_jobs_handler.cpp:2946
 #, fuzzy, c-format
 msgid "Successfully saved imported board to '%s'\n"
 msgstr "DPS a schéma boli úspešne opätovne anotované"
 
-#: pcbnew/pcbnew_jobs_handler.cpp:3062
+#: pcbnew/pcbnew_jobs_handler.cpp:3068
 #, fuzzy, c-format
 msgid "Error during import: %s\n"
 msgstr "Pri načítaní písma sa vyskytla chyba '%s'."
@@ -54133,7 +54449,7 @@ msgstr "Pouzit mierku ikon na pismo"
 msgid "Exception on python footprint wizard code"
 msgstr "Výnimka v kóde sprievodcu stopou pythonu"
 
-#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:214
+#: pcbnew/python/scripting/pcbnew_scripting_helpers.cpp:216
 #, c-format
 msgid "Error loading drawing sheet '%s': %s"
 msgstr "Chyba pri načítavaní listu výkresu '%s': %s"
@@ -54802,12 +55118,12 @@ msgstr "%d opravené potenciálne problémy."
 msgid "No board problems found."
 msgstr "Nenájdené žiadne problémy s doskou."
 
-#: pcbnew/tools/board_editor_control.cpp:694
+#: pcbnew/tools/board_editor_control.cpp:699
 #, fuzzy
 msgid "Updating PCB requires a fully annotated schematic."
 msgstr "Export netlistu si vyžaduje úplne anotovanú schému."
 
-#: pcbnew/tools/board_editor_control.cpp:708
+#: pcbnew/tools/board_editor_control.cpp:715
 msgid ""
 "Cannot update schematic because Pcbnew is opened in stand-alone mode. In "
 "order to create or update PCBs from schematics, you must launch the KiCad "
@@ -54817,76 +55133,76 @@ msgstr ""
 "samostatnom režime. Ak chcete vytvoriť alebo aktualizovať PCB zo schém, "
 "musíte spustiť projektového manažéra KiCad a vytvoriť projekt."
 
-#: pcbnew/tools/board_editor_control.cpp:752
+#: pcbnew/tools/board_editor_control.cpp:759
 #, fuzzy, c-format
 msgid "Schematic file '%s' not found."
 msgstr "Schematický súbor '%s' sa nenašiel."
 
-#: pcbnew/tools/board_editor_control.cpp:783
+#: pcbnew/tools/board_editor_control.cpp:793
 #, fuzzy
 msgid "Eeschema failed to load."
 msgstr "Eeschema sa nepodarilo načítať:"
 
-#: pcbnew/tools/board_editor_control.cpp:896
+#: pcbnew/tools/board_editor_control.cpp:907
 #, fuzzy
 msgid "Increase Track Width"
 msgstr "Zväčšiť šírku čiary"
 
-#: pcbnew/tools/board_editor_control.cpp:978
+#: pcbnew/tools/board_editor_control.cpp:989
 #, fuzzy
 msgid "Decrease Track Width"
 msgstr "Zmenšiť šírku čiary"
 
-#: pcbnew/tools/board_editor_control.cpp:1063 pcbnew/tools/pcb_actions.cpp:1375
+#: pcbnew/tools/board_editor_control.cpp:1074 pcbnew/tools/pcb_actions.cpp:1375
 msgid "Increase Via Size"
 msgstr "Zväčšiť prostredníctvom veľkosti"
 
-#: pcbnew/tools/board_editor_control.cpp:1333
+#: pcbnew/tools/board_editor_control.cpp:1344
 #, fuzzy
 msgid "Place Footprint"
 msgstr "Umiestnite stopu"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1500
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1500
 msgid "Lock"
 msgstr "Zámok"
 
-#: pcbnew/tools/board_editor_control.cpp:1461 pcbnew/tools/pcb_actions.cpp:1507
+#: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1507
 msgid "Unlock"
 msgstr "Odomknúť"
 
-#: pcbnew/tools/board_editor_control.cpp:1492
+#: pcbnew/tools/board_editor_control.cpp:1503
 msgid "Zones have insufficient overlap for merging."
 msgstr "Na zlúčenie, sa zóny dostatočne neprekrývajú."
 
-#: pcbnew/tools/board_editor_control.cpp:1547
+#: pcbnew/tools/board_editor_control.cpp:1558
 #, fuzzy
 msgid "Some zone netcodes did not match and were not merged."
 msgstr "Vrstva pravidla '%s' sa nezhoduje."
 
-#: pcbnew/tools/board_editor_control.cpp:1553
+#: pcbnew/tools/board_editor_control.cpp:1564
 #, fuzzy
 msgid "Some zones were rule areas and were not merged."
 msgstr "Vrstva pravidla '%s' sa nezhoduje."
 
-#: pcbnew/tools/board_editor_control.cpp:1559
+#: pcbnew/tools/board_editor_control.cpp:1570
 #, fuzzy
 msgid "Some zone layer sets did not match and were not merged."
 msgstr "Vrstva pravidla '%s' sa nezhoduje."
 
-#: pcbnew/tools/board_editor_control.cpp:1576
+#: pcbnew/tools/board_editor_control.cpp:1587
 msgid "Some zones did not intersect and were not merged."
 msgstr "Niektoré zóny sa nepretínali a neboli zlúčené."
 
-#: pcbnew/tools/board_editor_control.cpp:1589 pcbnew/tools/pcb_actions.cpp:1410
+#: pcbnew/tools/board_editor_control.cpp:1600 pcbnew/tools/pcb_actions.cpp:1410
 msgid "Merge Zones"
 msgstr "Zlúčiť zóny"
 
-#: pcbnew/tools/board_editor_control.cpp:1643
+#: pcbnew/tools/board_editor_control.cpp:1654
 #, fuzzy
 msgid "Duplicate Zone"
 msgstr "Duplicitná zóna"
 
-#: pcbnew/tools/board_editor_control.cpp:1716
+#: pcbnew/tools/board_editor_control.cpp:1727
 msgid "Selection contains no items with labeled nets."
 msgstr "Výber neobsahuje položky s označenými spojmi."
 
@@ -60087,6 +60403,51 @@ msgstr "KiCad schematický symbol"
 msgid "KiCad Drawing Sheet"
 msgstr "KiCad list výkresu"
 
+#: scripting/python_manager.cpp:135
+#, fuzzy
+msgid "Process could not be created"
+msgstr "Súbor '%s' sa nepodarilo vytvoriť."
+
+#: scripting/python_scripting.cpp:367
+#, fuzzy, c-format
+msgid "Could not create user scripting path %s."
+msgstr "Nebolo možné otvoriť/vytvoriť cestu '%s'."
+
+#, fuzzy, c-format
+#~ msgid "No configuration JSON found for '%s'."
+#~ msgstr ""
+#~ "Chyba pri načítaní knižnice symbolov %s.\n"
+#~ "\n"
+#~ "%s"
+
+#, c-format
+#~ msgid "Unable to open '%s'."
+#~ msgstr "Nepodarilo sa otvoriť '%s'."
+
+#, fuzzy
+#~ msgid "Missing compression metadata."
+#~ msgstr "Chýba výraz podmienky."
+
+#~ msgid "Unable to access the footprint library table."
+#~ msgstr "Nepodarilo sa získať prístup k tabuľke knižnice puzdra."
+
+#, fuzzy
+#~ msgid "Failed to update the footprint library table."
+#~ msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
+
+#, fuzzy
+#~ msgid "Failed to save the footprint library table."
+#~ msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
+
+#~ msgid "Unable to parse the downloaded symbol."
+#~ msgstr "Nepodarilo sa spracovať stiahnutý symbol."
+
+#~ msgid "Unsupported 3D model payload type."
+#~ msgstr "Nepodporovaný typ dátového obsahu 3D modelu."
+
+#~ msgid "Unsupported SPICE payload type."
+#~ msgstr "Nepodporovaný typ dátového obsahu SPICE."
+
 #~ msgid "PCB: Import"
 #~ msgstr "DPS: Import"
 
@@ -60437,28 +60798,8 @@ msgstr "KiCad list výkresu"
 #~ msgstr "Chýbajúca informácia"
 
 #, fuzzy
-#~ msgid "Unable to start the local login listener."
-#~ msgstr "Vybrané segmenty stopy sa nepodarilo zaobliť."
-
-#, fuzzy
 #~ msgid "Failed to allocate a callback port for login."
 #~ msgstr "Nepodarilo sa vytvorenie zložky zálohy \"%s\"\n"
-
-#, fuzzy
-#~ msgid "Component list was empty."
-#~ msgstr "Knižnica súčiastok <%s> je prázdna."
-
-#, fuzzy
-#~ msgid "Component entries must be objects."
-#~ msgstr "Názov siete nemôže byť prázdny."
-
-#, fuzzy
-#~ msgid "Component entry was missing a type."
-#~ msgstr "Knižnica súčiastok <%s> je prázdna."
-
-#, fuzzy, c-format
-#~ msgid "Unsupported component type '%s'."
-#~ msgstr "Altiové schematické súbory"
 
 #~ msgid "Select Templates Directory"
 #~ msgstr "Vyberte adresár šablón"
@@ -72234,10 +72575,6 @@ msgstr "KiCad list výkresu"
 #~ msgid "(start point)"
 #~ msgstr "Počiatočný bod X"
 
-#, fuzzy
-#~ msgid "(end point)"
-#~ msgstr "Koncový bod X"
-
 #~ msgid "Selection Clarification"
 #~ msgstr "Spresnenie výberu"
 
@@ -76271,9 +76608,6 @@ msgstr "KiCad list výkresu"
 
 #~ msgid " *"
 #~ msgstr " *"
-
-#~ msgid "Display next page"
-#~ msgstr "Zobraziť ďalšiu stranu"
 
 #~ msgid "ErrType"
 #~ msgstr "Typ chyby"
