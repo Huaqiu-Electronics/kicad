@@ -21,6 +21,7 @@
 
 #include <wx/tokenzr.h>
 #include <wx/uri.h>
+#include <wx/intl.h>
 
 
 wxDEFINE_EVENT( EVT_OAUTH_LOOPBACK_RESULT, wxCommandEvent );

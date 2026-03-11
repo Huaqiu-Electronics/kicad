@@ -24,6 +24,7 @@
 #include <json_schema_validator.h>
 #include <paths.h>
 #include <remote_provider_utils.h>
+#include <wx_filename.h>
 #include <wx/intl.h>
 
 
