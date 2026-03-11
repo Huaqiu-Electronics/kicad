@@ -25,18 +25,24 @@
 
 wxString UrlEncode( const wxString& aValue )
 {
-    wxString encoded;
+    wxString           encoded;
+    const wxScopedCharBuffer utf8 = aValue.ToUTF8();
+    const char*        p = utf8.data();
+    size_t             len = utf8.length();
 
-    for( wxUniChar ch : aValue )
+    for( size_t i = 0; i < len; ++i )
     {
-        if( ( ch >= 'A' && ch <= 'Z' ) || ( ch >= 'a' && ch <= 'z' ) || ( ch >= '0' && ch <= '9' )
-            || ch == '-' || ch == '_' || ch == '.' || ch == '~' )
+        unsigned char byte = static_cast<unsigned char>( p[i] );
+
+        if( ( byte >= 'A' && byte <= 'Z' ) || ( byte >= 'a' && byte <= 'z' )
+            || ( byte >= '0' && byte <= '9' ) || byte == '-' || byte == '_'
+            || byte == '.' || byte == '~' )
         {
-            encoded.Append( ch );
+            encoded.Append( static_cast<char>( byte ) );
         }
         else
         {
-            encoded.Append( wxString::Format( wxS( "%%%02X" ), static_cast<unsigned int>( ch ) ) );
+            encoded.Append( wxString::Format( wxS( "%%%02X" ), byte ) );
         }
     }
 
