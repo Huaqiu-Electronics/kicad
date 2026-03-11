@@ -19,7 +19,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <nlohmann/json.hpp>
+#include <json_common.h>
 
 #include <remote_provider_settings.h>
 

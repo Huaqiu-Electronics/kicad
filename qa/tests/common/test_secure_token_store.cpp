@@ -21,7 +21,7 @@
 
 #include <map>
 
-#include <nlohmann/json.hpp>
+#include <json_common.h>
 
 #include <oauth/secure_token_store.h>
 #include <remote_provider_settings.h>
