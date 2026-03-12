@@ -178,7 +178,8 @@ void KICAD_MANAGER_FRAME::ImportNonKiCadProject( const wxString& aWindowTitle,
 void KICAD_MANAGER_FRAME::OnImportAltiumProjectFiles( wxCommandEvent& event )
 {
     ImportNonKiCadProject( _( "Import Altium Project Files" ),
-                           FILEEXT::AltiumProjectFilesWildcard(), { "SchDoc" }, { "PcbDoc" },
+                           FILEEXT::AltiumProjectFilesWildcard(), { "SchDoc" },
+                           { "PcbDoc", "CSPcbDoc", "CMPcbDoc", "SWPcbDoc" },
                            SCH_IO_MGR::SCH_ALTIUM, PCB_IO_MGR::ALTIUM_DESIGNER );
 }
 
