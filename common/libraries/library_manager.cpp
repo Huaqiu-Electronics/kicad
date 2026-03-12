@@ -1451,6 +1451,18 @@ void LIBRARY_MANAGER_ADAPTER::AsyncLoad()
                 return false;
             };
 
+    // Collect work items with pre-resolved URIs. URI expansion accesses PROJECT data
+    // (text variables, env vars) that is not thread-safe, so resolve on the calling thread.
+    struct LOAD_WORK
+    {
+        wxString              nickname;
+        LIBRARY_TABLE_SCOPE   scope;
+        wxString              uri;
+    };
+
+    auto workQueue = std::make_shared<std::vector<LOAD_WORK>>();
+    workQueue->reserve( rows.size() );
+
     for( const LIBRARY_TABLE_ROW* row : rows )
     {
         wxString nickname = row->Nickname();
@@ -1468,67 +1480,102 @@ void LIBRARY_MANAGER_ADAPTER::AsyncLoad()
             continue;
         }
 
-        // Resolve the URI on the main thread. URI expansion accesses PROJECT data
-        // (text variables, env vars) that is not thread-safe.
-        wxString uri = getUri( row );
+        workQueue->emplace_back( LOAD_WORK{ nickname, scope, getUri( row ) } );
+    }
 
+    if( workQueue->empty() )
+    {
+        wxLogTrace( traceLibraries, "AsyncLoad: all libraries already loaded; exiting" );
+        return;
+    }
+
+    // Cap loading threads to leave headroom for the GUI and other thread pool work.
+    // Each worker pulls libraries from a shared queue, so we submit fewer tasks than
+    // libraries and avoid flooding the pool.
+    size_t poolSize = tp.get_thread_count();
+    size_t maxLoadThreads = std::max<size_t>( 1, poolSize > 2 ? poolSize - 2 : 1 );
+    size_t numWorkers = std::min( maxLoadThreads, workQueue->size() );
+
+    auto workIndex = std::make_shared<std::atomic<size_t>>( 0 );
+
+    wxLogTrace( traceLibraries, "AsyncLoad: %zu libraries to load, using %zu worker threads (pool has %zu)",
+                workQueue->size(), numWorkers, poolSize );
+
+    for( size_t w = 0; w < numWorkers; ++w )
+    {
         m_futures.emplace_back( tp.submit_task(
-                [this, nickname, scope, uri]()
+                [this, workQueue, workIndex]()
                 {
-                    if( m_abort.load() )
-                        return;
-
-                    LIBRARY_RESULT<LIB_DATA*> result = loadIfNeeded( nickname );
-
-                    if( result.has_value() )
+                    while( true )
                     {
-                        LIB_DATA* lib = *result;
+                        if( m_abort.load() )
+                            return;
 
-                        try
+                        size_t idx = workIndex->fetch_add( 1 );
+
+                        if( idx >= workQueue->size() )
+                            return;
+
+                        const LOAD_WORK& work = ( *workQueue )[idx];
+                        LIBRARY_RESULT<LIB_DATA*> result = loadIfNeeded( work.nickname );
+
+                        if( result.has_value() )
                         {
+                            LIB_DATA* lib = *result;
+
+                            try
                             {
-                                std::unique_lock lock( scope == LIBRARY_TABLE_SCOPE::GLOBAL ? globalLibsMutex()
-                                                                                            : m_librariesMutex );
-                                lib->status.load_status = LOAD_STATUS::LOADING;
+                                {
+                                    std::unique_lock lock(
+                                            work.scope == LIBRARY_TABLE_SCOPE::GLOBAL
+                                                    ? globalLibsMutex()
+                                                    : m_librariesMutex );
+                                    lib->status.load_status = LOAD_STATUS::LOADING;
+                                }
+
+                                enumerateLibrary( lib, work.uri );
+
+                                {
+                                    std::unique_lock lock(
+                                            work.scope == LIBRARY_TABLE_SCOPE::GLOBAL
+                                                    ? globalLibsMutex()
+                                                    : m_librariesMutex );
+                                    lib->status.load_status = LOAD_STATUS::LOADED;
+                                }
                             }
-
-                            enumerateLibrary( lib, uri );
-
+                            catch( IO_ERROR& e )
                             {
-                                std::unique_lock lock( scope == LIBRARY_TABLE_SCOPE::GLOBAL ? globalLibsMutex()
-                                                                                            : m_librariesMutex );
-                                lib->status.load_status = LOAD_STATUS::LOADED;
+                                std::unique_lock lock(
+                                        work.scope == LIBRARY_TABLE_SCOPE::GLOBAL
+                                                ? globalLibsMutex()
+                                                : m_librariesMutex );
+                                lib->status.load_status = LOAD_STATUS::LOAD_ERROR;
+                                lib->status.error = LIBRARY_ERROR( { e.What() } );
+                                wxLogTrace( traceLibraries, "%s: plugin threw exception: %s",
+                                            work.nickname, e.What() );
                             }
                         }
-                        catch( IO_ERROR& e )
+                        else
                         {
-                            std::unique_lock lock( scope == LIBRARY_TABLE_SCOPE::GLOBAL ? globalLibsMutex()
-                                                                                        : m_librariesMutex );
-                            lib->status.load_status = LOAD_STATUS::LOAD_ERROR;
-                            lib->status.error = LIBRARY_ERROR( { e.What() } );
-                            wxLogTrace( traceLibraries, "%s: plugin threw exception: %s", nickname, e.What() );
+                            std::unique_lock lock(
+                                    work.scope == LIBRARY_TABLE_SCOPE::GLOBAL
+                                            ? globalLibsMutex()
+                                            : m_librariesMutex );
+
+                            std::map<wxString, LIB_DATA>& target =
+                                    ( work.scope == LIBRARY_TABLE_SCOPE::GLOBAL ) ? globalLibs()
+                                                                                  : m_libraries;
+
+                            target[work.nickname].status = LIB_STATUS( {
+                                    .load_status = LOAD_STATUS::LOAD_ERROR,
+                                    .error = result.error()
+                            } );
                         }
+
+                        ++m_loadCount;
                     }
-                    else
-                    {
-                        std::unique_lock lock( scope == LIBRARY_TABLE_SCOPE::GLOBAL ? globalLibsMutex()
-                                                                                    : m_librariesMutex );
-
-                        std::map<wxString, LIB_DATA>& target = ( scope == LIBRARY_TABLE_SCOPE::GLOBAL ) ? globalLibs()
-                                                                                                        : m_libraries;
-
-                        target[nickname].status = LIB_STATUS( {
-                                .load_status = LOAD_STATUS::LOAD_ERROR,
-                                .error = result.error()
-                        } );
-                    }
-
-                    ++m_loadCount;
                 }, BS::pr::lowest ) );
     }
 
-    size_t total = m_loadTotal.load();
-
-    if( total )
-        wxLogTrace( traceLibraries, "Started async load of %zu libraries", total );
+    wxLogTrace( traceLibraries, "Started async load of %zu libraries", workQueue->size() );
 }
