@@ -675,6 +675,7 @@ set( COMMON_IO_SRCS
     io/altium/altium_binary_parser.cpp
     io/altium/altium_ascii_parser.cpp
     io/altium/altium_parser_utils.cpp
+    io/altium/altium_project_variants.cpp
     io/altium/altium_props_utils.cpp
 
     # Cadstar

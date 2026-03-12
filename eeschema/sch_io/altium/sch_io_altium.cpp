@@ -29,6 +29,7 @@
 #include <io/altium/altium_binary_parser.h>
 #include <io/altium/altium_ascii_parser.h>
 #include <io/altium/altium_parser_utils.h>
+#include <io/altium/altium_project_variants.h>
 #include <sch_io/altium/sch_io_altium.h>
 
 #include <progress_reporter.h>
@@ -638,6 +639,106 @@ SCH_SHEET* SCH_IO_ALTIUM::LoadSchematicFile( const wxString& aFileName, SCHEMATI
     SCH_SCREENS allSheets( m_rootSheet );
     allSheets.UpdateSymbolLinks( &LOAD_INFO_REPORTER::GetInstance() ); // Update all symbol library links for all sheets.
     allSheets.ClearEditFlags();
+
+    // Apply Altium project variants to schematic symbols
+    if( aProperties && aProperties->count( "project_file" ) )
+    {
+        auto variants = ParseAltiumProjectVariants( aProperties->at( "project_file" ) );
+
+        if( !variants.empty() )
+        {
+            // Build lookups keyed by both UniqueId and designator. UniqueId is preferred
+            // because repeated-channel designs can have multiple components sharing a
+            // designator but with distinct UniqueIds.
+            using ENTRY_LIST =
+                    std::vector<std::pair<wxString, const ALTIUM_VARIANT_ENTRY*>>;
+
+            std::map<wxString, ENTRY_LIST> variantsByUid;
+            std::map<wxString, ENTRY_LIST> variantsByDesignator;
+
+            for( const ALTIUM_PROJECT_VARIANT& pv : variants )
+            {
+                m_schematic->AddVariant( pv.name );
+
+                if( !pv.description.empty() && pv.description != pv.name )
+                    m_schematic->SetVariantDescription( pv.name, pv.description );
+
+                for( const ALTIUM_VARIANT_ENTRY& entry : pv.variations )
+                {
+                    if( !entry.uniqueId.empty() )
+                        variantsByUid[entry.uniqueId].push_back( { pv.name, &entry } );
+
+                    variantsByDesignator[entry.designator].push_back( { pv.name, &entry } );
+                }
+            }
+
+            SCH_SHEET_LIST sheetList( m_rootSheet );
+
+            for( const SCH_SHEET_PATH& path : sheetList )
+            {
+                SCH_SCREEN* screen = path.LastScreen();
+
+                if( !screen )
+                    continue;
+
+                for( SCH_ITEM* item : screen->Items().OfType( SCH_SYMBOL_T ) )
+                {
+                    SCH_SYMBOL* symbol = static_cast<SCH_SYMBOL*>( item );
+
+                    const ENTRY_LIST* entries = nullptr;
+
+                    auto symUidIt = m_altiumSymbolToUid.find( symbol );
+
+                    if( symUidIt != m_altiumSymbolToUid.end() )
+                    {
+                        auto varIt = variantsByUid.find( symUidIt->second );
+
+                        if( varIt != variantsByUid.end() )
+                            entries = &varIt->second;
+                    }
+
+                    if( !entries )
+                    {
+                        wxString ref = symbol->GetRef( &path );
+                        auto     varIt = variantsByDesignator.find( ref );
+
+                        if( varIt != variantsByDesignator.end() )
+                            entries = &varIt->second;
+                    }
+
+                    if( !entries )
+                        continue;
+
+                    for( const auto& [variantName, entry] : *entries )
+                    {
+                        SCH_SYMBOL_VARIANT variant( variantName );
+                        variant.InitializeAttributes( *symbol );
+
+                        if( entry->kind == 1 )
+                        {
+                            variant.m_DNP = true;
+                            variant.m_ExcludedFromBOM = true;
+                            variant.m_ExcludedFromPosFiles = true;
+                        }
+                        else if( entry->kind == 0 )
+                        {
+                            for( const auto& [key, value] : entry->alternateFields )
+                            {
+                                if( key.CmpNoCase( wxS( "LibReference" ) ) == 0 )
+                                    variant.m_Fields[wxS( "Value" )] = value;
+                                else if( key.CmpNoCase( wxS( "Description" ) ) == 0 )
+                                    variant.m_Fields[wxS( "Description" )] = value;
+                                else if( key.CmpNoCase( wxS( "Footprint" ) ) == 0 )
+                                    variant.m_Fields[wxS( "Footprint" )] = value;
+                            }
+                        }
+
+                        symbol->AddVariant( path, variant );
+                    }
+                }
+            }
+        }
+    }
 
     // Set up the default netclass wire & bus width based on imported wires & buses.
     //
@@ -1730,6 +1831,9 @@ void SCH_IO_ALTIUM::ParseComponent( int aIndex, const std::map<wxString, wxStrin
     screen->Append( symbol );
 
     m_symbols.insert( { aIndex, symbol } );
+
+    if( !elem.uniqueid.empty() )
+        m_altiumSymbolToUid[symbol] = elem.uniqueid;
 }
 
 
