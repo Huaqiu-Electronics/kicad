@@ -76,6 +76,7 @@ RULE_EDITOR_DIALOG_BASE::RULE_EDITOR_DIALOG_BASE( wxWindow* aParent, const wxStr
         m_enableDuplicateRule( false ),
         m_enableDeleteRule( false ),
         m_modified( false ),
+        m_suppressSelectionEvents( false ),
         m_defaultSashPosition( 200 ),
         m_title( aTitle ),
         m_selectedData( nullptr ),
@@ -356,6 +357,9 @@ void RULE_EDITOR_DIALOG_BASE::InitRuleTreeItems( const std::vector<RULE_TREE_NOD
 
     m_defaultTreeItems = aNodes;
 
+    m_ruleTreeCtrl->Freeze();
+    m_suppressSelectionEvents = true;
+
     wxTreeItemId rootId = m_ruleTreeCtrl->AddRoot( aNodes[0].m_nodeName );
 
     RULE_TREE_ITEM_DATA* itemData = new RULE_TREE_ITEM_DATA( aNodes[0].m_nodeId, nullptr, rootId );
@@ -372,8 +376,12 @@ void RULE_EDITOR_DIALOG_BASE::InitRuleTreeItems( const std::vector<RULE_TREE_NOD
     m_treeHistoryData.clear();
     saveRuleTreeState( m_ruleTreeCtrl->GetRootItem(), m_defaultTreeItems[0].m_nodeId );
 
-    m_ruleTreeCtrl->SelectItem( m_ruleTreeCtrl->GetFirstVisibleItem() );
     m_ruleTreeCtrl->CollapseAll();
+
+    m_suppressSelectionEvents = false;
+    m_ruleTreeCtrl->Thaw();
+
+    m_ruleTreeCtrl->SelectItem( m_ruleTreeCtrl->GetFirstVisibleItem() );
 }
 
 
@@ -437,7 +445,8 @@ void RULE_EDITOR_DIALOG_BASE::AppendNewRuleTreeItem( const RULE_TREE_NODE& aNode
         m_treeHistoryData[aNode.m_nodeId] = { aNode.m_nodeName, {}, currentTreeItemId };
     }
 
-    m_ruleTreeCtrl->SelectItem( currentTreeItemId );
+    if( !m_suppressSelectionEvents )
+        m_ruleTreeCtrl->SelectItem( currentTreeItemId );
 }
 
 
@@ -594,6 +603,9 @@ void RULE_EDITOR_DIALOG_BASE::onRuleTreeItemRightClick( wxTreeEvent& aEvent )
 
 void RULE_EDITOR_DIALOG_BASE::onRuleTreeItemSelectionChanged( wxTreeEvent& aEvent )
 {
+    if( m_suppressSelectionEvents )
+        return;
+
     wxTreeItemId selectedItem = aEvent.GetItem();
 
     RULE_TREE_ITEM_DATA* selectedItemData =
@@ -939,6 +951,9 @@ void RULE_EDITOR_DIALOG_BASE::onFilterSearch( wxCommandEvent& aEvent )
 {
     const auto searchStr = aEvent.GetString().Lower();
 
+    m_ruleTreeCtrl->Freeze();
+    m_suppressSelectionEvents = true;
+
     m_ruleTreeCtrl->DeleteAllItems();
 
     restoreRuleTree( nullptr, m_defaultTreeItems[0].m_nodeId );
@@ -949,6 +964,9 @@ void RULE_EDITOR_DIALOG_BASE::onFilterSearch( wxCommandEvent& aEvent )
     {
         filterRuleTree( root, searchStr );
     }
+
+    m_suppressSelectionEvents = false;
+    m_ruleTreeCtrl->Thaw();
 }
 
 

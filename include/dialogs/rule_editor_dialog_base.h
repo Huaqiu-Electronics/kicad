@@ -490,6 +490,7 @@ private:
     bool m_enableDuplicateRule;
     bool m_enableDeleteRule;
     bool m_modified;
+    bool m_suppressSelectionEvents;
     int  m_defaultSashPosition;
 
     wxString                    m_title;
