@@ -2750,6 +2750,7 @@ void DIALOG_SYMBOL_FIELDS_TABLE::onDeleteVariant( wxCommandEvent& aEvent )
     wxString variantName = m_variantListBox->GetString( selection );
     m_variantListBox->Delete( selection );
     m_parent->Schematic().DeleteVariant( variantName );
+    m_parent->OnModify();
 
     int newSelection = std::max( 0, selection - 1 );
     m_variantListBox->SetSelection( newSelection );
@@ -2830,6 +2831,7 @@ void DIALOG_SYMBOL_FIELDS_TABLE::onRenameVariant( wxCommandEvent& aEvent )
     }
 
     m_parent->Schematic().RenameVariant( oldVariantName, newVariantName );
+    m_parent->OnModify();
 
     wxArrayString ctrlContents = m_variantListBox->GetStrings();
     ctrlContents.Remove( oldVariantName );
@@ -2886,6 +2888,7 @@ void DIALOG_SYMBOL_FIELDS_TABLE::onCopyVariant( wxCommandEvent& aEvent )
     }
 
     m_parent->Schematic().CopyVariant( sourceVariantName, newVariantName );
+    m_parent->OnModify();
 
     wxArrayString ctrlContents = m_variantListBox->GetStrings();
     ctrlContents.Add( newVariantName );
