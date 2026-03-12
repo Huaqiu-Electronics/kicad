@@ -516,10 +516,14 @@ static wxString layerInfoDisplayName( const LAYER_INFO& aLayerInfo )
  *
  * Keepins are bit trickier, but they're still rule areas and might need
  * custom DRC rules.
+ *
+ * In Allegro, zone-y/shape-y is distinguished by class/subclass rather than object type.
  */
 static bool layerIsZone( const LAYER_INFO& aLayerInfo )
 {
-    if ( aLayerInfo.m_Class == LAYER_INFO::CLASS::PACKAGE_KEEPIN ||
+    if ( aLayerInfo.m_Class == LAYER_INFO::CLASS::CONSTRAINTS_REGION ||
+         aLayerInfo.m_Class == LAYER_INFO::CLASS::BOUNDARY ||
+         aLayerInfo.m_Class == LAYER_INFO::CLASS::PACKAGE_KEEPIN ||
          aLayerInfo.m_Class == LAYER_INFO::CLASS::ROUTE_KEEPIN ||
          aLayerInfo.m_Class == LAYER_INFO::CLASS::PACKAGE_KEEPOUT ||
          aLayerInfo.m_Class == LAYER_INFO::CLASS::ROUTE_KEEPOUT ||
@@ -921,6 +925,54 @@ public:
         return lId;
     }
 
+
+    LSET GetRuleAreaLayers( const LAYER_INFO& aLayerInfo )
+    {
+        LSET layerSet{};
+
+        switch( aLayerInfo.m_Class )
+        {
+        case LAYER_INFO::CLASS::ROUTE_KEEPOUT:
+        case LAYER_INFO::CLASS::VIA_KEEPOUT:
+        case LAYER_INFO::CLASS::PACKAGE_KEEPOUT:
+        {
+            switch( aLayerInfo.m_Subclass )
+            {
+            case LAYER_INFO::SUBCLASS::KEEPOUT_ALL:
+                layerSet = LSET::AllCuMask();
+                break;
+            case LAYER_INFO::SUBCLASS::KEEPOUT_TOP:
+                layerSet = LSET{ F_Cu };
+                break;
+            case LAYER_INFO::SUBCLASS::KEEPOUT_BOTTOM:
+                layerSet = LSET{ B_Cu };
+                break;
+            default:
+                layerSet = LSET{ GetLayer( aLayerInfo ) };
+                break;
+            }
+            break;
+        }
+        case LAYER_INFO::CLASS::ROUTE_KEEPIN:
+        case LAYER_INFO::CLASS::PACKAGE_KEEPIN:
+        {
+            // This can be ALL, but can it be anything else?
+            if( aLayerInfo.m_Subclass == LAYER_INFO::SUBCLASS::KEEPOUT_ALL )
+                layerSet = LSET::AllCuMask();
+            else
+                layerSet = LSET{ GetLayer( aLayerInfo ) };
+            break;
+        }
+        default:
+            wxLogTrace( traceAllegroBuilder, "  Unhandled non-copper zone layer class %#02x, using default layers",
+                        aLayerInfo.m_Class );
+            layerSet = LSET{ GetLayer( aLayerInfo ) };
+            break;
+        }
+
+        return layerSet;
+    }
+
 private:
     static PCB_LAYER_ID getNthCopperLayer( int aNum, int aTotal )
     {
@@ -1040,6 +1092,101 @@ BOARD_BUILDER::BOARD_BUILDER( const BRD_DB& aRawBoard, BOARD& aBoard, REPORTER& 
 
     m_scale = baseScale / m_brdDb.m_Header->m_UnitsDivisor;
 }
+
+
+/**
+ * Filled zones have their own outline and the fill itself comes from
+ * a bunch of "related" spaces. To convert this to a KiCad-ish ZONE,
+ * we need to chop out only the bit of the wider filled zone that applies
+ * to the outline (i.e. intersection).
+ *
+ * Then that fill has to be fractured.
+ *
+ * This is all repeated for each layer's separated filled areas.
+ *
+ * This takes ages, so this class handles the information you need to collect to do that
+ * later on in a thread pool, and does that.
+ */
+class BOARD_BUILDER::ZONE_FILL_HANDLER
+{
+public:
+    /**
+     * This is all the info needed to do the fill of one layer of one zone.
+     */
+    struct FILL_INFO
+    {
+        ZONE*        m_Zone;
+        PCB_LAYER_ID m_Layer;
+        /// The wider filled area we will chop a piece out of for this layer of this zone
+        SHAPE_POLY_SET m_CombinedFill;
+    };
+
+    /**
+     * Priority task dispatcher for zone fills - we want to do the biggest ones first.
+     *
+     * On average, sorting the largest zones first is slightly faster (5-10%) on large boards.
+     *
+     * However, if you allow the large zones to be assigned at random, as they basically will be
+     * if they are handled later in the process, there's a chance the very biggest zones will end up
+     * consecutive in the same thread which could be a substantial penalty.
+     */
+    class COMPLEX_FIRST_FILL_TASK : public PRIORITY_THREAD_POOL_TASK<std::vector<FILL_INFO>>
+    {
+    public:
+        COMPLEX_FIRST_FILL_TASK( bool aSimplify ) : m_simplify( aSimplify ) {}
+
+    private:
+        int computePriorityKey( const FILL_INFO& a ) const override
+        {
+            return static_cast<int>( a.m_CombinedFill.TotalVertices() );
+        }
+
+        size_t task( FILL_INFO& fillInfo ) override
+        {
+            SHAPE_POLY_SET finalFillPolys = *fillInfo.m_Zone->Outline();
+
+            finalFillPolys.ClearArcs();
+            fillInfo.m_CombinedFill.ClearArcs();
+
+            // Intersect the zone outline with the combined fill that was assembled
+            // from all the related objects.
+            finalFillPolys.BooleanIntersection( fillInfo.m_CombinedFill );
+            finalFillPolys.Fracture( m_simplify );
+
+            // This is already mutex-ed, so this is safe
+            fillInfo.m_Zone->SetFilledPolysList( fillInfo.m_Layer, finalFillPolys );
+            return 1;
+        }
+
+        bool m_simplify;
+    };
+
+    /**
+     * Process the polygons in a thread pool for more fans, more faster
+     */
+    void ProcessPolygons( bool aSimplify )
+    {
+        PROF_TIMER timer( "Zone fill processing" );
+
+        COMPLEX_FIRST_FILL_TASK fillTask( aSimplify );
+        fillTask.Execute( m_FillInfos );
+
+        wxLogTrace( traceAllegroPerf, wxT( "   Intersected and fractured zone fills in %.3f ms" ),
+                    timer.msecs() ); // format:allow
+    }
+
+    void QueuePolygonForZone( ZONE& aZone, SHAPE_POLY_SET aFilledArea, PCB_LAYER_ID aLayer )
+    {
+        // Rule areas don't need filling
+        if( aZone.GetIsRuleArea() )
+            return;
+
+        m_FillInfos.emplace_back( &aZone, aLayer, std::move( aFilledArea ) );
+    }
+
+private:
+    std::vector<FILL_INFO> m_FillInfos;
+};
 
 
 BOARD_BUILDER::~BOARD_BUILDER()
@@ -3023,14 +3170,33 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
 
     // Areas (courtyards, etc)
     LL_WALKER areaWalker{ aFpInstance.m_AreasPtr, aFpInstance.m_Key, m_brdDb };
+
+    // Probably don't need this as we can't have filled zone, but it's cheap
+    ZONE_FILL_HANDLER zoneFillHandler;
+
     for( const BLOCK_BASE* areaBlock : areaWalker )
     {
-        std::vector<std::unique_ptr<BOARD_ITEM>> shapes = buildGraphicItems( *areaBlock, *fp );
+        std::optional<LAYER_INFO> layerInfo = tryLayerFromBlock( *areaBlock );
 
-        for( std::unique_ptr<BOARD_ITEM>& item : shapes )
+        if( layerInfo.has_value() && layerIsZone( *layerInfo ) )
         {
-            canonicalizeLayer( item.get() );
-            fp->Add( item.release() );
+            // Zone within a footprint - we can handle keepouts at least
+            std::unique_ptr<ZONE> zone = buildZone( *areaBlock, {}, zoneFillHandler );
+            if( zone )
+            {
+                canonicalizeLayer( zone.get() );
+                fp->Add( zone.release() );
+            }
+        }
+        else
+        {
+            std::vector<std::unique_ptr<BOARD_ITEM>> shapes = buildGraphicItems( *areaBlock, *fp );
+
+            for( std::unique_ptr<BOARD_ITEM>& item : shapes )
+            {
+                canonicalizeLayer( item.get() );
+                fp->Add( item.release() );
+            }
         }
     }
 
@@ -3413,19 +3579,13 @@ void BOARD_BUILDER::createBoardShapes()
     {
         blockCount++;
 
-        // Skip boundary layer shapes - these are handled in the zones phase
-        const auto shouldSkip = []( const LAYER_INFO& aLayer ) -> bool
-        {
-            return aLayer.m_Class == LAYER_INFO::CLASS::BOUNDARY;
-        };
-
         switch( block->GetBlockType() )
         {
         case 0x0E:
         {
             const BLK_0x0E_RECT& rectData = BlockDataAs<BLK_0x0E_RECT>( *block );
 
-            if( shouldSkip( rectData.m_Layer ) )
+            if( layerIsZone( rectData.m_Layer ) )
                 continue;
 
             std::unique_ptr<PCB_SHAPE> rectShape = buildRect( rectData, m_board );
@@ -3436,7 +3596,7 @@ void BOARD_BUILDER::createBoardShapes()
         {
             const BLK_0x24_RECT& rectData = BlockDataAs<BLK_0x24_RECT>( *block );
 
-            if( shouldSkip( rectData.m_Layer ) )
+            if( layerIsZone( rectData.m_Layer ) )
                 continue;
 
             std::unique_ptr<PCB_SHAPE> rectShape = buildRect( rectData, m_board );
@@ -3447,7 +3607,7 @@ void BOARD_BUILDER::createBoardShapes()
         {
             const BLK_0x28_SHAPE& shapeData = BlockDataAs<BLK_0x28_SHAPE>( *block );
 
-            if( shouldSkip( shapeData.m_Layer ) )
+            if( layerIsZone( shapeData.m_Layer ) )
                 continue;
 
             std::vector<std::unique_ptr<PCB_SHAPE>> shapeItems = buildPolygonShapes( shapeData, m_board );
@@ -3477,6 +3637,9 @@ void BOARD_BUILDER::createBoardShapes()
         case 0x14:
         {
             const auto& graphicContainer = BlockDataAs<BLK_0x14_GRAPHIC>( *block );
+
+            if( layerIsZone( graphicContainer.m_Layer ) )
+                continue;
 
             std::vector<std::unique_ptr<PCB_SHAPE>> graphicItems = buildShapes( graphicContainer, m_board );
 
@@ -3612,6 +3775,9 @@ SHAPE_LINE_CHAIN BOARD_BUILDER::buildOutline( const BLK_0x0E_RECT& aRect ) const
     outline.Append( botRight );
     outline.Append( botLeft );
 
+    const EDA_ANGLE angle{ static_cast<double>( aRect.m_Rotation ) / 1000.0, DEGREES_T };
+    outline.Rotate( angle, topLeft );
+
     return outline;
 }
 
@@ -3629,6 +3795,9 @@ SHAPE_LINE_CHAIN BOARD_BUILDER::buildOutline( const BLK_0x24_RECT& aRect ) const
     outline.Append( topRight );
     outline.Append( botRight );
     outline.Append( botLeft );
+
+    const EDA_ANGLE angle{ static_cast<double>( aRect.m_Rotation ) / 1000.0, DEGREES_T };
+    outline.Rotate( angle, topLeft );
 
     return outline;
 }
@@ -3763,6 +3932,16 @@ SHAPE_POLY_SET ALLEGRO::BOARD_BUILDER::tryBuildZoneShape( const BLOCK_BASE& aBlo
         polySet = SHAPE_POLY_SET( chain );
         break;
     }
+    case 0x14:
+    {
+        const auto& graphicContainer = BlockDataAs<BLK_0x14_GRAPHIC>( aBlock );
+
+        SHAPE_LINE_CHAIN chain = buildSegmentChain( graphicContainer.m_SegmentPtr );
+        chain.SetClosed( true );
+
+        polySet = SHAPE_POLY_SET( chain );
+        break;
+    }
     case 0x24:
     {
         const auto& rectData = BlockDataAs<BLK_0x24_RECT>( aBlock );
@@ -3785,144 +3964,6 @@ SHAPE_POLY_SET ALLEGRO::BOARD_BUILDER::tryBuildZoneShape( const BLOCK_BASE& aBlo
 
     return polySet;
 }
-
-
-static LSET getRuleAreaLayers( const LAYER_INFO& aLayerInfo, PCB_LAYER_ID aDefault )
-{
-    LSET layerSet{ aDefault };
-
-    switch( aLayerInfo.m_Class )
-    {
-    case LAYER_INFO::CLASS::ROUTE_KEEPOUT:
-    case LAYER_INFO::CLASS::VIA_KEEPOUT:
-    case LAYER_INFO::CLASS::PACKAGE_KEEPOUT:
-    {
-        switch( aLayerInfo.m_Subclass )
-        {
-        case LAYER_INFO::SUBCLASS::KEEPOUT_ALL:
-            layerSet = LSET::AllCuMask();
-            break;
-        case LAYER_INFO::SUBCLASS::KEEPOUT_TOP:
-            layerSet = LSET{ F_Cu };
-            break;
-        case LAYER_INFO::SUBCLASS::KEEPOUT_BOTTOM:
-            layerSet = LSET{ B_Cu };
-            break;
-        default:
-            wxLogTrace( traceAllegroBuilder, "  Unhandled keepout layer subclass %#02x, using default layers",
-                        aLayerInfo.m_Subclass );
-        }
-        break;
-    }
-    case LAYER_INFO::CLASS::ROUTE_KEEPIN:
-    case LAYER_INFO::CLASS::PACKAGE_KEEPIN:
-    {
-        // This can be ALL, but can it be anything else?
-        if( aLayerInfo.m_Subclass == LAYER_INFO::SUBCLASS::KEEPOUT_ALL )
-            layerSet = LSET::AllCuMask();
-        else
-            wxLogTrace( traceAllegroBuilder, "  Unhandled keepin layer subclass %#02x, using default layers",
-                        aLayerInfo.m_Subclass );
-        break;
-    }
-    default:
-        wxLogTrace( traceAllegroBuilder, "  Unhandled non-copper zone layer class %#02x, using default layers",
-                    aLayerInfo.m_Class );
-        break;
-    }
-
-    return layerSet;
-}
-
-
-/**
- * Filled zones have their own outline and the fill itself comes from
- * a bunch of "related" spaces. To convert this to a KiCad-ish ZONE,
- * we need to chop out only the bit of the wider filled zone that applies
- * to the outline (i.e. intersection).
- *
- * Then that fill has to be fractured.
- *
- * This is all repeated for each layer's separated filled areas.
- *
- * This takes ages, so this class handles the information you need to collect to do that
- * later on in a thread pool, and does that.
- */
-class BOARD_BUILDER::ZONE_FILL_HANDLER
-{
-public:
-    /**
-     * This is all the info needed to do the fill of one layer of one zone.
-     */
-    struct FILL_INFO
-    {
-        ZONE*        m_Zone;
-        PCB_LAYER_ID m_Layer;
-        /// The wider filled area we will chop a piece out of for this layer of this zone
-        SHAPE_POLY_SET m_CombinedFill;
-    };
-
-    /**
-     * Priority task dispatcher for zone fills - we want to do the biggest ones first.
-     *
-     * On average, sorting the largest zones first is slightly faster (5-10%) on large boards.
-     *
-     * However, if you allow the large zones to be assigned at random, as they basically will be
-     * if they are handled later in the process, there's a chance the very biggest zones will end up
-     * consecutive in the same thread which could be a substantial penalty.
-     */
-    class COMPLEX_FIRST_FILL_TASK: public PRIORITY_THREAD_POOL_TASK<std::vector<FILL_INFO>>
-    {
-    public:
-        COMPLEX_FIRST_FILL_TASK( bool aSimplify ) : m_simplify( aSimplify ) {}
-
-    private:
-        int computePriorityKey( const FILL_INFO& a ) const override
-        {
-            return static_cast<int>( a.m_CombinedFill.TotalVertices() );
-        }
-
-        size_t task( FILL_INFO& fillInfo ) override
-        {
-            SHAPE_POLY_SET finalFillPolys = *fillInfo.m_Zone->Outline();
-
-            finalFillPolys.ClearArcs();
-            fillInfo.m_CombinedFill.ClearArcs();
-
-            // Intersect the zone outline with the combined fill that was assembled
-            // from all the related objects.
-            finalFillPolys.BooleanIntersection( fillInfo.m_CombinedFill );
-            finalFillPolys.Fracture( m_simplify );
-
-            // This is already mutex-ed, so this is safe
-            fillInfo.m_Zone->SetFilledPolysList( fillInfo.m_Layer, finalFillPolys );
-            return 1;
-        }
-
-        bool m_simplify;
-    };
-
-    /**
-     * Process the polygons in a thread pool for more fans, more faster
-     */
-    void ProcessPolygons( bool aSimplify )
-    {
-        PROF_TIMER timer( "Zone fill processing" );
-
-        COMPLEX_FIRST_FILL_TASK fillTask( aSimplify );
-        fillTask.Execute( m_FillInfos );
-
-        wxLogTrace( traceAllegroPerf, wxT( "   Intersected and fractured zone fills in %.3f ms" ), timer.msecs() ); // format:allow
-    }
-
-    void QueuePolygonForZone( ZONE& aZone, SHAPE_POLY_SET aFilledArea, PCB_LAYER_ID aLayer )
-    {
-        m_FillInfos.emplace_back( &aZone, aLayer, std::move( aFilledArea ) );
-    }
-
-private:
-    std::vector<FILL_INFO> m_FillInfos;
-};
 
 
 std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&                     aBoundaryBlock,
@@ -3983,7 +4024,7 @@ std::unique_ptr<ZONE> BOARD_BUILDER::buildZone( const BLOCK_BASE&               
     }
     else
     {
-        LSET layerSet = getRuleAreaLayers( layerInfo, Cmts_User );
+        LSET layerSet = m_layerMapper->GetRuleAreaLayers( layerInfo );
 
         bool isRouteKeepout = ( layerInfo.m_Class == LAYER_INFO::CLASS::ROUTE_KEEPOUT );
         bool isViaKeepout = ( layerInfo.m_Class == LAYER_INFO::CLASS::VIA_KEEPOUT );
@@ -4169,7 +4210,7 @@ void BOARD_BUILDER::createZones()
 {
     wxLogTrace( traceAllegroBuilder, "Creating zones from m_LL_Shapes and m_LL_0x24_0x28" );
 
-    std::vector<std::unique_ptr<ZONE>> boundaryZones;
+    std::vector<std::unique_ptr<ZONE>> newZones;
     std::vector<std::unique_ptr<ZONE>> keepoutZones;
 
     ZONE_FILL_HANDLER zoneFillHandler;
@@ -4180,24 +4221,59 @@ void BOARD_BUILDER::createZones()
 
     for( const BLOCK_BASE* block : shapeWalker )
     {
-        if( block->GetBlockType() != 0x28 )
-            continue;
+        std::unique_ptr<ZONE> zone;
+        LAYER_INFO            layerInfo{};
 
-        const BLK_0x28_SHAPE& shapeData = static_cast<const BLOCK<BLK_0x28_SHAPE>&>( *block ).GetData();
+        switch( block->GetBlockType() )
+        {
+        case 0x0e:
+        {
+            const BLK_0x0E_RECT& rectData = static_cast<const BLOCK<BLK_0x0E_RECT>&>( *block ).GetData();
 
-        if( shapeData.m_Layer.m_Class != LAYER_INFO::CLASS::BOUNDARY )
-            continue;
+            if( !layerIsZone( rectData.m_Layer ) )
+                continue;
 
-        std::unique_ptr<ZONE> zone = buildZone( *block, getShapeRelatedBlocks( shapeData ), zoneFillHandler );
+            zone = buildZone( *block, {}, zoneFillHandler );
+            layerInfo = rectData.m_Layer;
+            break;
+        }
+        case 0x24:
+        {
+            const BLK_0x24_RECT& rectData = static_cast<const BLOCK<BLK_0x24_RECT>&>( *block ).GetData();
+
+            if( !layerIsZone( rectData.m_Layer ) )
+                continue;
+
+            zone = buildZone( *block, {}, zoneFillHandler );
+            layerInfo = rectData.m_Layer;
+            break;
+        }
+        case 0x28:
+        {
+            const BLK_0x28_SHAPE& shapeData = static_cast<const BLOCK<BLK_0x28_SHAPE>&>( *block ).GetData();
+
+            if( !layerIsZone( shapeData.m_Layer ) )
+                continue;
+
+            zone = buildZone( *block, getShapeRelatedBlocks( shapeData ), zoneFillHandler );
+            layerInfo = shapeData.m_Layer;
+            break;
+        }
+        default:
+        {
+            wxLogWarning( wxString::Format( "Unhandled block type in zone shape walker: %#04x, key: %#010x",
+                                            block->GetBlockType(), block->GetKey() ) );
+            break;
+        }
+        }
 
         if( zone )
         {
-            wxLogTrace( traceAllegroBuilder, "  Zone %#010x net=%d layer=%s (subclass=%#04x)", shapeData.m_Key,
-                        zone->GetNetCode(), m_board.GetLayerName( zone->GetFirstLayer() ),
-                        shapeData.m_Layer.m_Subclass );
+            wxLogTrace( traceAllegroBuilder, "  Zone %#010x net=%d layer=%s class=%#04x:%#04x", block->GetKey(),
+                        zone->GetNetCode(), m_board.GetLayerName( zone->GetFirstLayer() ), layerInfo.m_Class,
+                        layerInfo.m_Subclass );
 
-            zone->SetIslandRemovalMode( ISLAND_REMOVAL_MODE::NEVER );
-            boundaryZones.push_back( std::move( zone ) );
+            newZones.push_back( std::move( zone ) );
         }
     }
 
@@ -4242,28 +4318,39 @@ void BOARD_BUILDER::createZones()
 
         if( zone )
         {
-            keepoutZones.push_back( std::move( zone ) );
+            newZones.push_back( std::move( zone ) );
         }
     }
 
     // Deal with all the collected zone fill polygons now, all at once
     zoneFillHandler.ProcessPolygons( true );
 
-    int keepoutCount = keepoutZones.size();
-    int boundaryCount = boundaryZones.size();
+    int originalCount = newZones.size();
 
     // Merge zones with identical polygons and same net into multi-layer zones.
     // Allegro often defines the same zone outline on multiple copper layers (e.g.
     // a ground pour spanning all layers). KiCad represents this as a single zone
     // with multiple fill layers.
-    std::vector<std::unique_ptr<ZONE>> mergedZones = MergeZonesWithSameOutline( std::move( boundaryZones ) );
+    //
+    // Rule areas (keepouts) can also merge.
+    std::vector<std::unique_ptr<ZONE>> mergedZones = MergeZonesWithSameOutline( std::move( newZones ) );
     int                                mergedCount = mergedZones.size();
 
-    BulkAddToBoard( m_board, std::move( mergedZones ) );
-    BulkAddToBoard( m_board, std::move( keepoutZones ) );
+    int keepoutCount = 0;
+    int boundaryCount = 0;
 
-    wxLogTrace( traceAllegroBuilder, "Created %d zone outlines (%d merged away), %d keepout areas", mergedCount,
-                boundaryCount - mergedCount, keepoutCount );
+    for( const std::unique_ptr<ZONE>& zone : mergedZones )
+    {
+        if( zone->GetIsRuleArea() )
+            keepoutCount++;
+        else
+            boundaryCount++;
+    }
+
+    BulkAddToBoard( m_board, std::move( mergedZones ) );
+
+    wxLogTrace( traceAllegroBuilder, "Created %d zone outlines and %d keepout areas (%d merged away), ", boundaryCount,
+                keepoutCount, originalCount - mergedCount );
 }
 
 

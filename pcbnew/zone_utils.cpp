@@ -27,6 +27,19 @@
 #include <geometry/shape_poly_set.h>
 
 
+static bool RuleAreasHaveSameProps( const ZONE& a, const ZONE& b )
+{
+    // This function is only used to compare rule areas, so we can assume that both a and b are rule areas
+    wxASSERT( a.GetIsRuleArea() && b.GetIsRuleArea() );
+
+    return a.GetDoNotAllowZoneFills() == b.GetDoNotAllowZoneFills()
+           && a.GetDoNotAllowFootprints() == b.GetDoNotAllowFootprints()
+           && a.GetDoNotAllowTracks() == b.GetDoNotAllowTracks()
+           && a.GetDoNotAllowVias() == b.GetDoNotAllowVias()
+           && a.GetDoNotAllowPads() == b.GetDoNotAllowPads();
+}
+
+
 std::vector<std::unique_ptr<ZONE>> MergeZonesWithSameOutline( std::vector<std::unique_ptr<ZONE>>&& aZones )
 {
     const auto polygonsAreMergeable = []( const SHAPE_POLY_SET::POLYGON& a, const SHAPE_POLY_SET::POLYGON& b ) -> bool
@@ -56,12 +69,21 @@ std::vector<std::unique_ptr<ZONE>> MergeZonesWithSameOutline( std::vector<std::u
 
     const auto zonesAreMergeable = [&]( const ZONE& a, const ZONE& b ) -> bool
     {
-        if( a.GetNetCode() != b.GetNetCode() )
-            return false;
-
         // Can't merge rule areas with zone fills
         if( a.GetIsRuleArea() != b.GetIsRuleArea() )
             return false;
+
+        if( a.GetIsRuleArea() )
+        {
+            if( !RuleAreasHaveSameProps( a, b ) )
+                return false;
+        }
+        else
+        {
+            // We could also check clearances and so on
+            if( a.GetNetCode() != b.GetNetCode() )
+                return false;
+        }
 
         const SHAPE_POLY_SET* polySetA = a.Outline();
         const SHAPE_POLY_SET* polySetB = b.Outline();
