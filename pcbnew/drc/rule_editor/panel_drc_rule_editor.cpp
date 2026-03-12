@@ -25,6 +25,7 @@
 #include <widgets/wx_html_report_box.h>
 #include <widgets/paged_dialog.h>
 #include <wx/log.h>
+#include <wx/regex.h>
 
 #include <pgm_base.h>
 #include <settings/settings_manager.h>
@@ -233,20 +234,8 @@ PANEL_DRC_RULE_EDITOR::PANEL_DRC_RULE_EDITOR( wxWindow* aParent, BOARD* aBoard,
                           }
                       } );
 
-    m_netClassRegex.Compile( "^NetClass\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_netNameRegex.Compile( "^NetName\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_typeRegex.Compile( "^Type\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_viaTypeRegex.Compile( "^Via_Type\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_padTypeRegex.Compile( "^Pad_Type\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_pinTypeRegex.Compile( "^Pin_Type\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_fabPropRegex.Compile( "^Fabrication_Property\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_shapeRegex.Compile( "^Shape\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_padShapeRegex.Compile( "^Pad_Shape\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_padConnectionsRegex.Compile( "^Pad_Connections\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_zoneConnStyleRegex.Compile( "^Zone_Connection_Style\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_lineStyleRegex.Compile( "^Line_Style\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_hJustRegex.Compile( "^Horizontal_Justification\\s*[!=]=\\s*$", wxRE_ADVANCED );
-    m_vJustRegex.Compile( "^Vertical_Justification\\s*[!=]=\\s*$", wxRE_ADVANCED );
+    // Regex patterns are compiled as function-local statics in onScintillaCharAdded()
+    // to avoid recompilation on every panel creation.
 }
 
 
@@ -718,7 +707,22 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
         }
         else if( expr_context == EXPR_CONTEXT_T::STRING )
         {
-            if( m_netClassRegex.Matches( last ) )
+            static wxRegEx netClassRegex( wxS( "^NetClass\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx netNameRegex( wxS( "^NetName\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx typeRegex( wxS( "^Type\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx viaTypeRegex( wxS( "^Via_Type\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx padTypeRegex( wxS( "^Pad_Type\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx pinTypeRegex( wxS( "^Pin_Type\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx fabPropRegex( wxS( "^Fabrication_Property\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx shapeRegex( wxS( "^Shape\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx padShapeRegex( wxS( "^Pad_Shape\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx padConnectionsRegex( wxS( "^Pad_Connections\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx zoneConnStyleRegex( wxS( "^Zone_Connection_Style\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx lineStyleRegex( wxS( "^Line_Style\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx hJustRegex( wxS( "^Horizontal_Justification\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+            static wxRegEx vJustRegex( wxS( "^Vertical_Justification\\s*[!=]=\\s*$" ), wxRE_ADVANCED );
+
+            if( netClassRegex.Matches( last ) )
             {
                 BOARD_DESIGN_SETTINGS&         bds = m_board->GetDesignSettings();
                 std::shared_ptr<NET_SETTINGS>& netSettings = bds.m_NetSettings;
@@ -726,12 +730,12 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                 for( const auto& [name, netclass] : netSettings->GetNetclasses() )
                     tokens += wxT( "|" ) + name;
             }
-            else if( m_netNameRegex.Matches( last ) )
+            else if( netNameRegex.Matches( last ) )
             {
                 for( const wxString& netnameCandidate : m_board->GetNetClassAssignmentCandidates() )
                     tokens += wxT( "|" ) + netnameCandidate;
             }
-            else if( m_typeRegex.Matches( last ) )
+            else if( typeRegex.Matches( last ) )
             {
                 tokens = wxT( "Bitmap|"
                               "Dimension|"
@@ -747,20 +751,20 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Via|"
                               "Zone" );
             }
-            else if( m_viaTypeRegex.Matches( last ) )
+            else if( viaTypeRegex.Matches( last ) )
             {
                 tokens = wxT( "Through|"
                               "Blind/buried|"
                               "Micro" );
             }
-            else if( m_padTypeRegex.Matches( last ) )
+            else if( padTypeRegex.Matches( last ) )
             {
                 tokens = wxT( "Through-hole|"
                               "SMD|"
                               "Edge connector|"
                               "NPTH, mechanical" );
             }
-            else if( m_pinTypeRegex.Matches( last ) )
+            else if( pinTypeRegex.Matches( last ) )
             {
                 tokens = wxT( "Input|"
                               "Output|"
@@ -775,7 +779,7 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Open emitter|"
                               "Unconnected" );
             }
-            else if( m_fabPropRegex.Matches( last ) )
+            else if( fabPropRegex.Matches( last ) )
             {
                 tokens = wxT( "None|"
                               "BGA pad|"
@@ -785,7 +789,7 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Heatsink pad|"
                               "Castellated pad" );
             }
-            else if( m_shapeRegex.Matches( last ) )
+            else if( shapeRegex.Matches( last ) )
             {
                 tokens = wxT( "Segment|"
                               "Rectangle|"
@@ -794,7 +798,7 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Polygon|"
                               "Bezier" );
             }
-            else if( m_padShapeRegex.Matches( last ) )
+            else if( padShapeRegex.Matches( last ) )
             {
                 tokens = wxT( "Circle|"
                               "Rectangle|"
@@ -804,7 +808,7 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Chamfered rectangle|"
                               "Custom" );
             }
-            else if( m_padConnectionsRegex.Matches( last ) )
+            else if( padConnectionsRegex.Matches( last ) )
             {
                 tokens = wxT( "Inherited|"
                               "None|"
@@ -812,14 +816,14 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Thermal reliefs|"
                               "Thermal reliefs for PTH" );
             }
-            else if( m_zoneConnStyleRegex.Matches( last ) )
+            else if( zoneConnStyleRegex.Matches( last ) )
             {
                 tokens = wxT( "Inherited|"
                               "None|"
                               "Solid|"
                               "Thermal reliefs" );
             }
-            else if( m_lineStyleRegex.Matches( last ) )
+            else if( lineStyleRegex.Matches( last ) )
             {
                 tokens = wxT( "Default|"
                               "Solid|"
@@ -828,13 +832,13 @@ void PANEL_DRC_RULE_EDITOR::onScintillaCharAdded( wxStyledTextEvent& aEvent )
                               "Dash-Dot|"
                               "Dash-Dot-Dot" );
             }
-            else if( m_hJustRegex.Matches( last ) )
+            else if( hJustRegex.Matches( last ) )
             {
                 tokens = wxT( "Left|"
                               "Center|"
                               "Right" );
             }
-            else if( m_vJustRegex.Matches( last ) )
+            else if( vJustRegex.Matches( last ) )
             {
                 tokens = wxT( "Top|"
                               "Center|"

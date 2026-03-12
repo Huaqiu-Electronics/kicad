@@ -369,6 +369,9 @@ void DIALOG_DRC_RULE_EDITOR::RuleTreeItemSelectionChanged( RULE_TREE_ITEM_DATA* 
 {
     RULE_TREE_NODE* nodeDetail = getRuleTreeNodeInfo( aCurrentRuleTreeItemData->GetNodeId() );
 
+    // Freeze so panel creation and data population happen off-screen.
+    m_scrolledContentWin->Freeze();
+
     if( nodeDetail->m_nodeType == ROOT || nodeDetail->m_nodeType == CATEGORY || nodeDetail->m_nodeType == CONSTRAINT )
     {
         std::vector<RULE_TREE_NODE*> ruleNodes;
@@ -401,7 +404,6 @@ void DIALOG_DRC_RULE_EDITOR::RuleTreeItemSelectionChanged( RULE_TREE_ITEM_DATA* 
                 &constraintName, dynamic_pointer_cast<DRC_RE_BASE_CONSTRAINT_DATA>( nodeDetail->m_nodeData ) );
 
         SetContentPanel( m_ruleEditorPanel );
-
         m_ruleEditorPanel->TransferDataToWindow();
 
         m_ruleEditorPanel->SetSaveCallback(
@@ -436,6 +438,8 @@ void DIALOG_DRC_RULE_EDITOR::RuleTreeItemSelectionChanged( RULE_TREE_ITEM_DATA* 
 
         m_groupHeaderPanel = nullptr;
     }
+
+    m_scrolledContentWin->Thaw();
 }
 
 
