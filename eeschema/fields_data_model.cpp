@@ -1016,7 +1016,7 @@ void FIELDS_EDITOR_GRID_DATA_MODEL::RebuildRows()
             {
                 for( const wxString& variantName : m_variantNames )
                 {
-                    if( ref.GetSymbol()->GetExcludedFromBOM( &ref.GetSheetPath(), variantName )
+                    if( ref.GetSymbol()->ResolveExcludedFromBOM( &ref.GetSheetPath(), variantName )
                         || ref.GetSheetPath().GetExcludedFromBOM( variantName ) )
                     {
                         isExcluded = true;
@@ -1026,7 +1026,7 @@ void FIELDS_EDITOR_GRID_DATA_MODEL::RebuildRows()
             }
             else
             {
-                isExcluded = ref.GetSymbol()->GetExcludedFromBOM( &ref.GetSheetPath(), m_currentVariant )
+                isExcluded = ref.GetSymbol()->ResolveExcludedFromBOM( &ref.GetSheetPath(), m_currentVariant )
                              || ref.GetSheetPath().GetExcludedFromBOM( m_currentVariant );
             }
 
