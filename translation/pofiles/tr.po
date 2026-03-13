@@ -37,8 +37,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 19:43+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-13 19:44+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
 "Language: tr\n"
@@ -24604,8 +24604,8 @@ msgid ""
 "<b>Duplicate pin %s</b> %s at location <b>(%s, %s)</b> conflicts with pin "
 "%s%s at location <b>(%s, %s)</b> in units %s and %s of %s body style."
 msgstr ""
-"\"<b>Yinelenen pin %s</b> %s <b>(%s, %s)</b> konumu, %s%s piniyle <b>(%s, "
-"%s)</b> konumu, %s ve %s birimleri, %s gövde stili çakışıyor."
+"\"<b>Yinelenen pin %s</b> %s <b>(%s, %s)</b> konumu, %s%s piniyle <b>(%s, %s)"
+"</b> konumu, %s ve %s birimleri, %s gövde stili çakışıyor."
 
 #: eeschema/symbol_checker.cpp:158
 #, c-format
@@ -24868,8 +24868,7 @@ msgstr "Geçerli yapılandırma, '%s' sembol kütüphanesini içermiyor."
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1701
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1712
 msgid "Use Manage Symbol Libraries to edit the configuration."
-msgstr ""
-"Yapılandırmayı düzenlemek için Sembol Kütüphanelerini Yönet'i kullanın."
+msgstr "Yapılandırmayı düzenlemek için Sembol Kütüphanelerini Yönet'i kullanın."
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1702
 msgid "Library not found in symbol library table."
@@ -50535,8 +50534,7 @@ msgstr "(SMD pedinin bakır ve maske katmanları kartın farklı yüzeylerindedi
 
 #: pcbnew/pad.cpp:2889 pcbnew/pad.cpp:2902
 msgid "(SMD pad has copper and paste layers on different sides of the board)"
-msgstr ""
-"(Yüzey Montaj pedin bakır ve pasta katmanları kartın farklı yüzlerinde)"
+msgstr "(Yüzey Montaj pedin bakır ve pasta katmanları kartın farklı yüzlerinde)"
 
 #: pcbnew/pad.cpp:2908
 msgid "(SMD pad has no outer layers)"
@@ -56909,8 +56907,7 @@ msgstr "Ayak İzi İlişkilendirme (.cmp) Dosyasını Dışa Aktar..."
 
 #: pcbnew/tools/pcb_actions.cpp:1336
 msgid "Export footprint association file (*.cmp) for schematic back annotation"
-msgstr ""
-"Şematik arka açıklama için ayak izi ilişki dosyasını (*.cmp) dışa aktar"
+msgstr "Şematik arka açıklama için ayak izi ilişki dosyasını (*.cmp) dışa aktar"
 
 #: pcbnew/tools/pcb_actions.cpp:1348
 msgid "Collect And Embed 3D Models"
