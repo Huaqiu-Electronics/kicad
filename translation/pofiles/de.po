@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: KiCad i18n Deutsch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-10 12:04+0000\n"
-"Last-Translator: \"Pferd O.\" <frank.0228@ich-war-hier.de>\n"
+"PO-Revision-Date: 2026-03-13 20:53+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
@@ -9373,27 +9373,27 @@ msgstr "Es sind keine Benachrichtigungen verfügbar"
 
 #: common/oauth/oauth_loopback_server.cpp:126
 msgid "Missing HTTP method in callback request."
-msgstr ""
+msgstr "Fehlende HTTP-Methode in der Callback-Anfrage."
 
 #: common/oauth/oauth_loopback_server.cpp:134
 msgid "Missing callback URL in request."
-msgstr ""
+msgstr "Fehlende Callback-URL in der Anfrage."
 
 #: common/oauth/oauth_loopback_server.cpp:145
 msgid "Unexpected callback path."
-msgstr ""
+msgstr "Unerwarteter Callback-Pfad."
 
 #: common/oauth/oauth_loopback_server.cpp:153
 msgid "OAuth callback state did not match."
-msgstr ""
+msgstr "OAuth-Callback-Status stimmte nicht überein."
 
 #: common/oauth/oauth_loopback_server.cpp:163
 msgid "Authorization server returned an OAuth error."
-msgstr ""
+msgstr "Autorisierungsserver hat einen OAuth-Fehler zurückgegeben."
 
 #: common/oauth/oauth_loopback_server.cpp:171
 msgid "Missing authorization code in callback."
-msgstr ""
+msgstr "Fehlender Autorisierungscode im Callback."
 
 #: common/page_info.cpp:48
 msgid "A5 148 x 210mm"
@@ -9632,76 +9632,81 @@ msgstr "Fehler: "
 
 #: common/remote_provider_client.cpp:287
 msgid "Sign in required for this provider."
-msgstr ""
+msgstr "Anmeldung für diesen Anbieter erforderlich."
 
 #: common/remote_provider_client.cpp:329
 msgid "Provider metadata does not include a session bootstrap URL."
-msgstr ""
+msgstr "Anbieter-Metadaten enthalten keine Session-Bootstrap-URL."
 
 #: common/remote_provider_client.cpp:352
 msgid "Bootstrap response did not include a nonce URL."
-msgstr ""
+msgstr "Bootstrap-Antwort enthielt keine Nonce-URL."
 
 #: common/remote_provider_client.cpp:371
 msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
 msgstr ""
+"Der Ursprung der Bootstrap-Nonce-URL stimmt nicht mit dem Bootstrap-Endpunkt "
+"überein."
 
 #: common/remote_provider_client.cpp:407
 #, c-format
 msgid "Remote provider request failed with HTTP %d."
-msgstr ""
+msgstr "Anfrage an Remote-Anbieter ist mit HTTP %d fehlgeschlagen."
 
 #: common/remote_provider_client.cpp:432
 #, c-format
 msgid "Remote provider returned invalid JSON: %s"
-msgstr ""
+msgstr "Remote-Anbieter hat ungültiges JSON zurückgegeben: %s"
 
 #: common/remote_provider_client.cpp:453
 #, c-format
 msgid "Remote provider returned invalid token JSON: %s"
-msgstr ""
+msgstr "Remote-Anbieter hat ungültiges Token-JSON zurückgegeben: %s"
 
 #: common/remote_provider_client.cpp:485
 #, c-format
 msgid "Remote provider token response was incomplete: %s"
-msgstr ""
+msgstr "Token-Antwort des Remote-Anbieters war unvollständig: %s"
 
 #: common/remote_provider_metadata.cpp:53
 #, c-format
 msgid "Remote provider metadata schema '%s' is not readable."
-msgstr ""
+msgstr "Metadatenschema des Remote-Anbieters '%s' ist nicht lesbar."
 
 #: common/remote_provider_metadata.cpp:64
 #, c-format
 msgid "Remote provider metadata failed schema validation: %s"
 msgstr ""
+"Metadaten des Remote-Anbieters haben die Schemavalidierung nicht bestanden: "
+"%s"
 
 #: common/remote_provider_metadata.cpp:124
-#, fuzzy, c-format
+#, c-format
 msgid "Unsupported provider capability '%s'."
-msgstr "Bauteiltyp \"%s\" wird nicht unterstützt."
+msgstr "Nicht unterstützte Anbieterfähigkeit '%s'."
 
 #: common/remote_provider_metadata.cpp:147
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse remote provider metadata: %s"
-msgstr ""
-"Kann Paket-Metadaten nicht parsen:\n"
-"\n"
-"%s"
+msgstr "Remote-Anbieter-Metadaten konnten nicht geparst werden: %s"
 
 #: common/remote_provider_metadata.cpp:154
 msgid "Remote provider metadata must enable web_ui_v1."
-msgstr ""
+msgstr "Metadaten des Remote-Anbieters müssen web_ui_v1 aktivieren."
 
 #: common/remote_provider_metadata.cpp:161
 msgid ""
 "Remote provider metadata must enable direct_downloads_v1, "
 "inline_payloads_v1, or both."
 msgstr ""
+"Metadaten des Remote-Anbieters müssen direct_downloads_v1, "
+"inline_payloads_v1 oder beides aktivieren."
 
 #: common/remote_provider_metadata.cpp:168
 msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
 msgstr ""
+"Metadaten des Remote-Anbieters müssen session_bootstrap_url für oauth2 "
+"definieren."
 
 #: common/remote_provider_metadata.cpp:173
 msgid "api_base_url"
@@ -9750,21 +9755,22 @@ msgstr ""
 #: common/remote_provider_models.cpp:98
 #, c-format
 msgid "Remote provider manifest schema '%s' is not readable."
-msgstr ""
+msgstr "Manifestschema des Remote-Anbieters '%s' ist nicht lesbar."
 
 #: common/remote_provider_models.cpp:109
 #, c-format
 msgid "Remote provider manifest failed schema validation: %s"
 msgstr ""
+"Manifest des Remote-Anbieters hat die Schemavalidierung nicht bestanden: %s"
 
 #: common/remote_provider_models.cpp:136
 msgid "assets[].download_url"
 msgstr ""
 
 #: common/remote_provider_models.cpp:147
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse remote provider manifest: %s"
-msgstr "Kann Repository nicht parsen: %s"
+msgstr "Remote-Anbieter-Manifest konnte nicht geparst werden: %s"
 
 #: common/remote_provider_utils.cpp:94
 #, c-format
@@ -9772,6 +9778,8 @@ msgid ""
 "%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
 "URL."
 msgstr ""
+"%s muss HTTPS verwenden, es sei denn, allow_insecure_localhost ist für eine "
+"Loopback-URL aktiviert."
 
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, c-format
@@ -15669,63 +15677,54 @@ msgid "Remote Symbol Settings"
 msgstr "Einstellungen für entfernte Symbole"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
-#, fuzzy
 msgid ""
 "Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
-"Konfigurieren, wo heruntergeladene entfernte Bibliotheken gespeichert und "
-"wie sie benannt werden."
+"Konfigurieren Sie Remote-Symbol-Anbieter und wo heruntergeladene "
+"Bibliotheken gespeichert werden."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
 msgid "Providers"
-msgstr ""
+msgstr "Anbieter"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
-#, fuzzy
 msgid "Add / Update"
-msgstr "Aktualisieren"
+msgstr "Hinzufügen / Aktualisieren"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
-#, fuzzy
 msgid "Refresh Metadata"
-msgstr "Metadaten durchsuchen"
+msgstr "Metadaten aktualisieren"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
 msgid "Sign Out"
-msgstr ""
+msgstr "Abmelden"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
-#, fuzzy
 msgid "Metadata URL:"
-msgstr "Metadaten"
+msgstr "Metadaten-URL:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
-#, fuzzy
 msgid "Display name:"
-msgstr "Dateiname:"
+msgstr "Anzeigename:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
-#, fuzzy
 msgid "Last account:"
-msgstr "Padanzahl:"
+msgstr "Letztes Konto:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
-#, fuzzy
 msgid "Not signed in"
-msgstr "Nicht festgelegt"
+msgstr "Nicht angemeldet"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
-#, fuzzy
 msgid "Auth status:"
-msgstr "Status: "
+msgstr "Auth-Status:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
-#, fuzzy
 msgid "Not configured"
-msgstr "Unbedeckt"
+msgstr "Nicht konfiguriert"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 msgid "Destination directory:"
@@ -15789,11 +15788,11 @@ msgstr "Zielverzeichnis wählen"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
 msgid "Enter a provider metadata URL first."
-msgstr ""
+msgstr "Geben Sie zuerst eine Anbieter-Metadaten-URL ein."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
 msgid "Provider metadata refreshed."
-msgstr ""
+msgstr "Anbieter-Metadaten aktualisiert."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
 #: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
@@ -19995,6 +19994,8 @@ msgstr "Panels"
 msgid ""
 "Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
+"Angemeldete Remote-Symbol-Anbieter durchsuchen und verifizierte Bibliotheken "
+"herunterladen."
 
 #: eeschema/menubar.cpp:330
 msgid "Variants"
@@ -20351,64 +20352,66 @@ msgstr "Die folgenden Bibliotheken wurden nicht gefunden:"
 
 #: eeschema/remote_symbol_download_manager.cpp:35
 msgid "Remote asset URL"
-msgstr ""
+msgstr "Remote-Asset-URL"
 
 #: eeschema/remote_symbol_download_manager.cpp:49
 msgid "Remote asset URL origin must match the selected provider."
 msgstr ""
+"Der Ursprung der Remote-Asset-URL muss mit dem ausgewählten Anbieter "
+"übereinstimmen."
 
 #: eeschema/remote_symbol_download_manager.cpp:66
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to set download URL '%s'."
-msgstr "Konnte \"%s\" nicht lesen."
+msgstr "Download-URL '%s' konnte nicht gesetzt werden."
 
 #: eeschema/remote_symbol_download_manager.cpp:124
 msgid "Remote asset manifest declared an invalid size."
-msgstr ""
+msgstr "Remote-Asset-Manifest hat eine ungültige Größe deklariert."
 
 #: eeschema/remote_symbol_download_manager.cpp:130
 msgid "Remote asset manifest must declare sha256 for URL-based downloads."
 msgstr ""
+"Remote-Asset-Manifest muss sha256 für URL-basierte Downloads deklarieren."
 
 #: eeschema/remote_symbol_download_manager.cpp:139
 msgid "Remote asset exceeds the provider download limit."
-msgstr ""
+msgstr "Remote-Asset überschreitet das Downloadlimit des Anbieters."
 
 #: eeschema/remote_symbol_download_manager.cpp:150
 #, c-format
 msgid "Remote download failed with HTTP %d."
-msgstr ""
+msgstr "Remote-Download ist mit HTTP %d fehlgeschlagen."
 
 #: eeschema/remote_symbol_download_manager.cpp:156
 msgid "Remote asset content type did not match the manifest."
-msgstr ""
+msgstr "Inhaltstyp des Remote-Assets stimmte nicht mit dem Manifest überein."
 
 #: eeschema/remote_symbol_download_manager.cpp:162
 msgid "Remote asset size did not match the manifest."
-msgstr ""
+msgstr "Größe des Remote-Assets stimmte nicht mit dem Manifest überein."
 
 #: eeschema/remote_symbol_download_manager.cpp:168
 msgid "Remote asset exceeds the remaining download limit."
-msgstr ""
+msgstr "Remote-Asset überschreitet das verbleibende Downloadlimit."
 
 #: eeschema/remote_symbol_download_manager.cpp:174
 msgid "Remote asset digest did not match the manifest."
-msgstr ""
+msgstr "Prüfsumme des Remote-Assets stimmte nicht mit dem Manifest überein."
 
 #: eeschema/remote_symbol_import_job.cpp:44
-#, fuzzy
 msgid "Downloaded symbol payload was empty."
-msgstr "Symbolnutzdaten waren leer."
+msgstr "Heruntergeladene Symbolnutzdaten waren leer."
 
 #: eeschema/remote_symbol_import_job.cpp:52
-#, fuzzy
 msgid "Downloaded symbol payload was not a KiCad symbol library."
-msgstr "Kein Symbol \"%s\" in der Symbol-Bibliothekstabelle gefunden."
+msgstr "Heruntergeladene Symbolnutzdaten waren keine KiCad-Symbolbibliothek."
 
 #: eeschema/remote_symbol_import_job.cpp:62
-#, fuzzy, c-format
+#, c-format
 msgid "Downloaded symbol payload did not include expected symbol '%s'."
-msgstr "Symbolnutzdaten enthielten nicht das erwartete Symbol."
+msgstr ""
+"Heruntergeladene Symbolnutzdaten enthielten nicht das erwartete Symbol '%s'."
 
 #: eeschema/remote_symbol_import_job.cpp:96
 #: eeschema/remote_symbol_import_utils.cpp:114
@@ -20418,9 +20421,8 @@ msgid "Unable to load schematic settings."
 msgstr "Einstellungen für Schaltplan konnten nicht geladen werden."
 
 #: eeschema/remote_symbol_import_job.cpp:234
-#, fuzzy
 msgid "No symbol asset was available to place."
-msgstr "Für die Platzierung ist kein Schaltplaneditor verfügbar."
+msgstr "Es war kein Symbol-Asset zum Platzieren verfügbar."
 
 #: eeschema/remote_symbol_import_utils.cpp:76
 msgid "Payload was empty."
@@ -20451,23 +20453,20 @@ msgid "Unable to create directory '%s'."
 msgstr "Verzeichnis \"%s\" kann nicht erstellt werden."
 
 #: eeschema/remote_symbol_import_utils.cpp:158
-#, fuzzy
 msgid "Unable to access the library table."
-msgstr "Konnte nicht auf Symbolbibliothek-Tabelle \"%s\" zufgreifen."
+msgstr "Zugriff auf die Bibliothekstabelle nicht möglich."
 
 #: eeschema/remote_symbol_import_utils.cpp:178
-#, fuzzy
 msgid "Failed to update the library table."
-msgstr "Konnte Symbolbibliothek-Tabelle nicht aktualisieren."
+msgstr "Aktualisierung der Bibliothekstabelle fehlgeschlagen."
 
 #: eeschema/remote_symbol_import_utils.cpp:192
 msgid "Remote download"
 msgstr "Remote herunterladen"
 
 #: eeschema/remote_symbol_import_utils.cpp:197
-#, fuzzy
 msgid "Failed to save the library table."
-msgstr "Fehler beim Speichern der Symbolbibliothek-Tabelle."
+msgstr "Speichern der Bibliothekstabelle fehlgeschlagen."
 
 #: eeschema/remote_symbol_import_utils.cpp:210
 msgid "No schematic editor is available for placement."
@@ -28174,7 +28173,7 @@ msgstr "Komprimierte Nutzdaten waren leer."
 #: eeschema/widgets/panel_remote_symbol.cpp:133
 #, c-format
 msgid "Decompressed size %llu exceeds limit %llu."
-msgstr ""
+msgstr "Dekomprimierte Größe %llu überschreitet das Limit %llu."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:144
 #, c-format
@@ -28209,42 +28208,35 @@ msgstr "Konnte Symbol-Nutzdaten nicht dekodieren: %s"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:252
 msgid "Reload current provider page"
-msgstr ""
+msgstr "Aktuelle Anbieterseite neu laden"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:257
-#, fuzzy
 msgid "Configure remote providers"
-msgstr "Entfernte Datenquellen konfigurieren."
+msgstr "Remote-Anbieter konfigurieren"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:379
-#, fuzzy
 msgid "No remote providers configured."
-msgstr "Kein Upstream-Branch eingestellt."
+msgstr "Keine Remote-Anbieter konfiguriert."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:451
-#, fuzzy
 msgid "Unable to load remote provider metadata."
-msgstr "Kann entfernte Daten von \"%s\" nicht laden."
+msgstr "Remote-Anbieter-Metadaten konnten nicht geladen werden."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:696
 msgid "A remote provider sign-in flow is already in progress."
-msgstr ""
+msgstr "Ein Anmeldevorgang bei einem Remote-Anbieter läuft bereits."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:728
-#, fuzzy
 msgid "Unable to start the local OAuth callback listener."
-msgstr ""
-"Der lokale Anmeldungsempfänger (login listener) kann nicht gestartet werden."
+msgstr "Der lokale OAuth-Callback-Listener konnte nicht gestartet werden."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:738
-#, fuzzy
 msgid "Unable to open the system browser for sign-in."
-msgstr "Konnte \"%s\" nicht zum Schreiben öffnen."
+msgstr "Der Systembrowser für die Anmeldung konnte nicht geöffnet werden."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:768
-#, fuzzy
 msgid "Failed to delete stored remote provider tokens."
-msgstr "Lokal gespeicherte repository.json konnte nicht geparst werden."
+msgstr "Gespeicherte Remote-Anbieter-Token konnten nicht gelöscht werden."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:808
 #, c-format
@@ -28257,17 +28249,15 @@ msgstr "Fehlende Sitzungs-ID."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:824
 msgid "Session identifier did not match the active provider session."
-msgstr ""
+msgstr "Sitzungskennung stimmte nicht mit der aktiven Anbietersitzung überein."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:912
-#, fuzzy
 msgid "No remote provider is currently selected."
-msgstr "Auf gewählte Elemente zoomen"
+msgstr "Kein Remote-Anbieter ist derzeit ausgewählt."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1033
-#, fuzzy
 msgid "Unable to process provider payload."
-msgstr "Konnte Nutzdaten nicht speichern."
+msgstr "Anbieter-Nutzdaten konnten nicht verarbeitet werden."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, c-format
@@ -28296,14 +28286,13 @@ msgid "Unable to save the downloaded symbol."
 msgstr "Konnte heruntergeladenes Symbol nicht speichern."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1154
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse component list: %s"
-msgstr "Konnte Bauteildaten nicht hinzufügen"
+msgstr "Komponentenliste konnte nicht geparst werden: %s"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1160
-#, fuzzy
 msgid "Component list must be a non-empty array."
-msgstr "Bauteilliste muss ein Array sein."
+msgstr "Komponentenliste muss ein nicht-leeres Array sein."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1170
 msgid "Component entries must be objects."
@@ -28324,27 +28313,28 @@ msgstr "Footprint Nutzdatentyp wird nicht unterstützt."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1371
 msgid "Remote provider metadata is not loaded."
-msgstr ""
+msgstr "Metadaten des Remote-Anbieters sind nicht geladen."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1401
 msgid ""
 "Manifest assets require asset_type, content_type, size_bytes, and "
 "download_url."
 msgstr ""
+"Manifest-Assets erfordern asset_type, content_type, size_bytes und "
+"download_url."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1437
 msgid "Remote provider sign-in was cancelled or failed."
 msgstr ""
+"Anmeldung beim Remote-Anbieter wurde abgebrochen oder ist fehlgeschlagen."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1448
 msgid "Remote provider sign-in failed."
-msgstr ""
+msgstr "Anmeldung beim Remote-Anbieter ist fehlgeschlagen."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1464
-#, fuzzy
 msgid "Failed to store remote provider tokens securely."
-msgstr ""
-"Änderungen konnten nicht zum Remote-Repository übertragen werden (push)."
+msgstr "Remote-Anbieter-Token konnten nicht sicher gespeichert werden."
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -60389,14 +60379,13 @@ msgid "KiCad Drawing Sheet"
 msgstr "KiCad Zeichnungsblatt"
 
 #: scripting/python_manager.cpp:135
-#, fuzzy
 msgid "Process could not be created"
-msgstr "Konnte die Datei \"%s\" nicht erstellen."
+msgstr "Prozess konnte nicht erstellt werden"
 
 #: scripting/python_scripting.cpp:367
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create user scripting path %s."
-msgstr "Konnte Pfad \"%s\" nicht öffnen/erstellen."
+msgstr "Benutzer-Skriptpfad %s konnte nicht erstellt werden."
 
 #~ msgid ""
 #~ "Install a remote symbol server using the Plugin and Content Manager to "
