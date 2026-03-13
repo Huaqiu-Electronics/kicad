@@ -1231,6 +1231,12 @@ VECTOR2I BOARD_BUILDER::scaleSize( const VECTOR2I& aSize ) const
 }
 
 
+static EDA_ANGLE fromMillidegrees( uint32_t aMilliDegrees )
+{
+    return EDA_ANGLE{ static_cast<double>( aMilliDegrees ) / 1000.0, DEGREES_T };
+}
+
+
 void BOARD_BUILDER::reportMissingBlock( uint32_t aKey, uint8_t aType ) const
 {
     m_reporter.Report( wxString::Format( "Could not find expected block with key %#010x and type %#04x", aKey, aType ),
@@ -2071,7 +2077,7 @@ std::unique_ptr<PCB_TEXT> BOARD_BUILDER::buildPcbText( const BLK_0x30_STR_WRAPPE
     text->SetTextHeight( scale( fontDef->m_CharHeight ) );
     text->SetTextThickness( std::max( 1, scale( fontDef->m_CharHeight ) / 8 ) );
 
-    const EDA_ANGLE textAngle{ static_cast<double>( aStrWrapper.m_Rotation ) / 1000.0, DEGREES_T };
+    const EDA_ANGLE textAngle = fromMillidegrees( aStrWrapper.m_Rotation );
     text->SetTextAngle( textAngle );
 
     if( props->m_Reversal == BLK_0x30_STR_WRAPPER::TEXT_REVERSAL::REVERSED )
@@ -2363,7 +2369,7 @@ std::unique_ptr<PCB_SHAPE> BOARD_BUILDER::buildRect( const BLK_0x24_RECT& aRect,
     shape->SetStart( cornerA );
     shape->SetEnd( cornerB );
 
-    const EDA_ANGLE angle{ static_cast<double>( aRect.m_Rotation ) / 1000.0, DEGREES_T };
+    const EDA_ANGLE angle = fromMillidegrees( aRect.m_Rotation );
     shape->Rotate( cornerA, angle );
 
     const int lineWidth = 0;
@@ -2388,7 +2394,7 @@ std::unique_ptr<PCB_SHAPE> BOARD_BUILDER::buildRect( const BLK_0x0E_RECT& aRect,
     shape->SetStart( cornerA );
     shape->SetEnd( cornerB );
 
-    const EDA_ANGLE angle{ static_cast<double>( aRect.m_Rotation ) / 1000.0, DEGREES_T };
+    const EDA_ANGLE angle = fromMillidegrees( aRect.m_Rotation );
     shape->Rotate( cornerA, angle );
 
     const int lineWidth = 0;
@@ -3228,7 +3234,7 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
         // Use SetFPRelativePosition/Orientation to let KiCad handle the transform to
         // board-absolute coordinates (rotating by FP orientation and adding FP position).
         const VECTOR2I  padLocalPos = scale( VECTOR2I{ padInfo->m_CoordsX, padInfo->m_CoordsY } );
-        const EDA_ANGLE padLocalRot{ static_cast<double>( padInfo->m_Rotation ) / 1000.0, DEGREES_T };
+        const EDA_ANGLE padLocalRot = fromMillidegrees( padInfo->m_Rotation );
 
         std::vector<std::unique_ptr<BOARD_ITEM>> padItems = buildPadItems( *padStack, *fp, padName, netCode );
 
@@ -3775,7 +3781,7 @@ SHAPE_LINE_CHAIN BOARD_BUILDER::buildOutline( const BLK_0x0E_RECT& aRect ) const
     outline.Append( botRight );
     outline.Append( botLeft );
 
-    const EDA_ANGLE angle{ static_cast<double>( aRect.m_Rotation ) / 1000.0, DEGREES_T };
+    const EDA_ANGLE angle = fromMillidegrees( aRect.m_Rotation );
     outline.Rotate( angle, topLeft );
 
     return outline;
@@ -3796,7 +3802,7 @@ SHAPE_LINE_CHAIN BOARD_BUILDER::buildOutline( const BLK_0x24_RECT& aRect ) const
     outline.Append( botRight );
     outline.Append( botLeft );
 
-    const EDA_ANGLE angle{ static_cast<double>( aRect.m_Rotation ) / 1000.0, DEGREES_T };
+    const EDA_ANGLE angle = fromMillidegrees( aRect.m_Rotation );
     outline.Rotate( angle, topLeft );
 
     return outline;
