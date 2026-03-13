@@ -151,7 +151,7 @@ public:
     bool        m_IsAlreadyPlacedGroup;
 
 protected:
-    std::span<SEARCH_TERM> m_sourceSearchTerms;
+    std::vector<SEARCH_TERM> m_sourceSearchTerms;
 };
 
 
