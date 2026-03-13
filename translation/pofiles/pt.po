@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 19:53+0000\n"
-"Last-Translator: Rafael Silva <perigoso@riseup.net>\n"
+"Last-Translator: Hildo Guillardi Júnior <hildogjr@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
 "Language: pt\n"
@@ -8141,8 +8141,7 @@ msgstr "O ficheiro selecionado é inválido ou pode estar corrompido!"
 #: common/io/cadstar/cadstar_archive_parser.cpp:2680
 #, c-format
 msgid "Unexpected number of points in '%s'. Found %d but expected %d."
-msgstr ""
-"Esperado certo número de pontos em '%s': encontrado %d mas esperado %d."
+msgstr "Esperado certo número de pontos em '%s': encontrado %d mas esperado %d."
 
 #: common/io/cadstar/cadstar_archive_parser.h:43
 #, c-format
