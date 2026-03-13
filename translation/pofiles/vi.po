@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 19:48+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: lê văn lập <levanlap2502@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/kicad/master-"
 "source/vi/>\n"
 "Language: vi\n"
@@ -13172,8 +13172,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_erc.cpp:781 pcbnew/dialogs/dialog_drc.cpp:793
 #, c-format
 msgid "Change severity to Warning for all '%s' violations"
-msgstr ""
-"Thay đổi mức độ nghiêm trọng thành Cảnh báo cho tất cả các vi phạm '%s'"
+msgstr "Thay đổi mức độ nghiêm trọng thành Cảnh báo cho tất cả các vi phạm '%s'"
 
 #: eeschema/dialogs/dialog_erc.cpp:788 pcbnew/dialogs/dialog_drc.cpp:799
 #, c-format
