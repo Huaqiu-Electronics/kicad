@@ -40,6 +40,7 @@
 #include <settings/color_settings.h>
 #include <settings/settings_manager.h>
 #include <wx_filename.h>
+#include <gestfich.h>
 #include <pgm_base.h>
 #include <sch_edit_frame.h>
 #include <sch_painter.h>
@@ -360,7 +361,7 @@ void DIALOG_PLOT_SCHEMATIC::plotSchematic( bool aPlotAll )
     schPlotter->Plot( getPlotFileFormat(), plotOpts, &renderSettings, &m_MessagesBox->Reporter() );
 
     if( getPlotFileFormat() == PLOT_FORMAT::PDF && m_openFileAfterPlot->GetValue() )
-        wxLaunchDefaultApplication( schPlotter->GetLastOutputFilePath() );
+        OpenPDF( schPlotter->GetLastOutputFilePath() );
 }
 
 
