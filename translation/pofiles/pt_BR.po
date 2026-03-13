@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 20:44+0000\n"
-"Last-Translator: Augusto Fraga Giachero <afg@augustofg.net>\n"
+"Last-Translator: Pedro Moreira <pedroltmoreira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -50192,8 +50192,8 @@ msgstr "Não é possível atualizar %s (footprint '%s' não foi encontrado)."
 #, c-format
 msgid "Cannot change %s footprint from '%s' to '%s' (footprint is locked)."
 msgstr ""
-"Não é possível alterar o footprint %s de '%s' para '%s' (Footprint "
-"bloqueado)."
+"Não é possível alterar o footprint %s de '%s' para '%s' (Footprint bloqueado)"
+"."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:353
 #, c-format
