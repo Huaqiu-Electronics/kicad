@@ -4284,8 +4284,8 @@ void BOARD_BUILDER::createZones()
         }
         default:
         {
-            wxLogWarning( wxString::Format( "Unhandled block type in zone shape walker: %#04x, key: %#010x",
-                                            block->GetBlockType(), block->GetKey() ) );
+            wxLogTrace( traceAllegroBuilder, "Unhandled block type in zone shape walker: %#04x, key: %#010x",
+                        block->GetBlockType(), block->GetKey() );
             break;
         }
         }
