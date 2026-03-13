@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 20:48+0000\n"
-"Last-Translator: Sárkány Lőrinc <lsarkany@gmail.com>\n"
+"Last-Translator: István Farkas <sakrafi1963@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hu/>\n"
 "Language: hu\n"
@@ -12226,8 +12226,7 @@ msgstr "Alkalmaz, Kapcsolási rajz mentése és Folytatás"
 #: cvpcb/cvpcb_mainframe.cpp:229
 #, fuzzy
 msgid "Symbol to footprint changes are unsaved"
-msgstr ""
-"Az alkatrészrajzolatra vonatkozó rajzjel módosításai nincsenek elmentve"
+msgstr "Az alkatrészrajzolatra vonatkozó rajzjel módosításai nincsenek elmentve"
 
 #: cvpcb/cvpcb_mainframe.cpp:399
 #, fuzzy
@@ -44661,8 +44660,7 @@ msgstr "Újra"
 #: pcbnew/dialogs/panel_edit_options_base.cpp:44
 #, fuzzy
 msgid "Set increment (in degrees) for context menu and hotkey rotation."
-msgstr ""
-"Gyorsbillentyűvel vagy helyi menüből forgatás egysége (fokban megadva)."
+msgstr "Gyorsbillentyűvel vagy helyi menüből forgatás egysége (fokban megadva)."
 
 #: pcbnew/dialogs/panel_edit_options_base.cpp:80
 #, fuzzy
