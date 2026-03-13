@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 20:17+0000\n"
-"Last-Translator: Michalis <michalisntovas@yahoo.gr>\n"
+"Last-Translator: fresh <fresh190@protonmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/kicad/master-"
 "source/el/>\n"
 "Language: el\n"
@@ -21551,8 +21551,8 @@ msgid ""
 "Documentation Symbol '%s' refers to symbol definition ID '%s' which does not "
 "exist in the library. The symbol was not loaded."
 msgstr ""
-"Το σύμβολο τεκμηρίωσης «%s» αναφέρεται στο αναγνωριστικό ορισμού συμβόλων "
-"«%s» που δεν υπάρχει στη βιβλιοθήκη. Το σύμβολο δεν φορτώθηκε."
+"Το σύμβολο τεκμηρίωσης «%s» αναφέρεται στο αναγνωριστικό ορισμού συμβόλων «%s"
+"» που δεν υπάρχει στη βιβλιοθήκη. Το σύμβολο δεν φορτώθηκε."
 
 #: eeschema/sch_io/cadstar/cadstar_sch_archive_loader.cpp:1582
 msgid "Text Variables could not be set as there is no project attached."
@@ -22586,8 +22586,7 @@ msgstr "Σημάδι Σχηματικού"
 #: eeschema/sch_screen.cpp:743 eeschema/sch_screen.cpp:835
 #, c-format
 msgid "Setting schematic symbol '%s %s' library identifier to '%s'."
-msgstr ""
-"Ορισμός σχηματικού συμβόλου '%s %s' αναγνωριστικού βιβλιοθήκης σε '%s'."
+msgstr "Ορισμός σχηματικού συμβόλου '%s %s' αναγνωριστικού βιβλιοθήκης σε '%s'."
 
 #: eeschema/sch_screen.cpp:759
 #, c-format
@@ -53002,8 +53001,8 @@ msgid ""
 "Width' setting. There is no KiCad equivalent for this, so this setting was "
 "ignored."
 msgstr ""
-"Το πρότυπο CADSTAR «%s» έχει μη μηδενική τιμή καθορισμένηγια τη ρύθμιση "
-"«Sliver Width». Δεν υπάρχει αντίστοιχη ρύθμιση στο KiCad, επομένως αγνοήθηκε."
+"Το πρότυπο CADSTAR «%s» έχει μη μηδενική τιμή καθορισμένηγια τη ρύθμιση «"
+"Sliver Width». Δεν υπάρχει αντίστοιχη ρύθμιση στο KiCad, επομένως αγνοήθηκε."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1958
 #, c-format
