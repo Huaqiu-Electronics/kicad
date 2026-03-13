@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-07 17:51+0000\n"
-"Last-Translator: Rafael Serrano <rsr.openware@gmail.com>\n"
+"PO-Revision-Date: 2026-03-13 20:20+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kicad/master-"
 "source/ca/>\n"
 "Language: ca\n"
@@ -573,8 +573,7 @@ msgstr "Mostra els models 3D"
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:325
 #, fuzzy
 msgid "Show 3D models for 'Surface mount' type footprints"
-msgstr ""
-"Commuta els models 3D pels components del tipus 'Muntats en superfície'"
+msgstr "Commuta els models 3D pels components del tipus 'Muntats en superfície'"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:333
 msgid "Show Unspecified 3D Models"
@@ -600,8 +599,7 @@ msgstr "Mostrar models 3D marcats com a DNP"
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:352
 #, fuzzy
 msgid "Show 3D models even if marked 'Do Not Place'"
-msgstr ""
-"Commuta els models 3D pels components del tipus 'Muntats en superfície'"
+msgstr "Commuta els models 3D pels components del tipus 'Muntats en superfície'"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:359
 msgid "Show Model Bounding Boxes"
@@ -28636,8 +28634,7 @@ msgstr ""
 #: pcbnew/tools/footprint_editor_control.cpp:673
 #, fuzzy
 msgid "No text editor selected in KiCad. Please choose one."
-msgstr ""
-"No hi ha cap editor de text seleccionat a KiCad. Si us plau, tria'n un."
+msgstr "No hi ha cap editor de text seleccionat a KiCad. Si us plau, tria'n un."
 
 #: eeschema/tools/symbol_editor_control.cpp:527
 #: eeschema/widgets/panel_symbol_chooser.cpp:657
@@ -49631,8 +49628,7 @@ msgstr "El radi ha de ser més gran que zero."
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:97
 #, fuzzy
 msgid "Minimum Via Diameter cannot be greater than Maximum Via Diameter"
-msgstr ""
-"La mida de perforació de la via és més petita que el diàmetre de la via"
+msgstr "La mida de perforació de la via és més petita que el diàmetre de la via"
 
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:103
 #, fuzzy
@@ -52155,8 +52151,7 @@ msgstr "Error: la mida de la cantonada és negativa."
 #: pcbnew/pad.cpp:2938
 #, fuzzy, c-format
 msgid "(PTH pad hole size must be larger than %s)"
-msgstr ""
-"La mida de perforació de la via és més petita que el diàmetre de la via"
+msgstr "La mida de perforació de la via és més petita que el diàmetre de la via"
 
 #: pcbnew/pad.cpp:2961
 #, fuzzy
@@ -54415,8 +54410,8 @@ msgstr ""
 msgid ""
 "Enter the python module which implements the PCB_IO::Footprint*() functions."
 msgstr ""
-"introduïu el mòdul de python que implementi les funcions "
-"PLUGIN::Footprint*()."
+"introduïu el mòdul de python que implementi les funcions PLUGIN::Footprint*()"
+"."
 
 #: pcbnew/pcb_layer_box_selector.cpp:74
 msgid "(not activated)"
@@ -54873,8 +54868,7 @@ msgstr "No s'ha definit una mida del forat de la via."
 #: pcbnew/pcb_track.cpp:1814
 #, fuzzy
 msgid "Via hole size must be smaller than via diameter"
-msgstr ""
-"La mida de perforació de la via és més petita que el diàmetre de la via"
+msgstr "La mida de perforació de la via és més petita que el diàmetre de la via"
 
 #: pcbnew/pcb_track.cpp:1834
 #, fuzzy
