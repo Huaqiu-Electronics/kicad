@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: KiCad 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-07 16:43+0000\n"
-"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
+"PO-Revision-Date: 2026-03-13 21:07+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/lt/>\n"
 "Language: lt\n"
@@ -18531,8 +18531,7 @@ msgstr "Grynieji vardai"
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:73
 #, fuzzy
 msgid "Update schematic net labels to match net names from the PCB editor."
-msgstr ""
-"Atnaujinkite simbolių reikšmes, kurios buvo pakeistos PCB redaktoriuje."
+msgstr "Atnaujinkite simbolių reikšmes, kurios buvo pakeistos PCB redaktoriuje."
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:79
 msgid ""
@@ -24860,8 +24859,7 @@ msgstr "Forma neturi taškų!"
 #: eeschema/sim/kibis/kibis.cpp:740 eeschema/sim/kibis/kibis.cpp:819
 #, fuzzy
 msgid "Cannot remove temporary output file"
-msgstr ""
-"Negalima pervadinti laikino failo „%s“ į pėdsakų bibliotekos failą „%s“"
+msgstr "Negalima pervadinti laikino failo „%s“ į pėdsakų bibliotekos failą „%s“"
 
 #: eeschema/sim/kibis/kibis.cpp:771
 #, fuzzy
@@ -25274,8 +25272,7 @@ msgstr "Kintamosios srovės fazė:"
 #, fuzzy
 msgid ""
 "Simulation provided no plots. Please refer to console window for results."
-msgstr ""
-"Šis modeliavimas nepateikia siužetų. Rezultatų ieškokite konsolės lange"
+msgstr "Šis modeliavimas nepateikia siužetų. Rezultatų ieškokite konsolės lange"
 
 #: eeschema/sim/simulator_frame.cpp:340
 #, fuzzy
@@ -34776,8 +34773,8 @@ msgstr ""
 "* __a__ susilpnėjimas dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (nuostolis)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> in </sub> \\ * Z <sub> out </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> in </sub> \\ * Z <sub> out </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> į </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> out </sub> \\ * A - R2___\n"
 
@@ -34824,8 +34821,8 @@ msgstr ""
 "* __a__ susilpnėjimas dB\n"
 "* __L = 10 <sup> a / 20 </sup> __ (nuostolis)\n"
 "* ___A = (L + 1) / (L - 1) ___ <br> <br>\n"
-"* ___R2 = 2 & radic; (L \\ * Z <sub> in </sub> \\ * Z <sub> out </sub>) / (L "
-"- 1) ___\n"
+"* ___R2 = 2 & radic; (L \\ * Z <sub> in </sub> \\ * Z <sub> out </sub>) / "
+"(L - 1) ___\n"
 "* ___R1 = Z <sub> į </sub> \\ * A - R2___\n"
 "* ___R3 = Z <sub> out </sub> \\ * A - R2___\n"
 
@@ -40468,8 +40465,7 @@ msgstr "Failas „%s“ jau yra. Ar norite perrašyti šį failą?"
 #: pcbnew/dialogs/dialog_export_odbpp.cpp:334
 #, fuzzy, c-format
 msgid "Cannot remove existing output file '%s'."
-msgstr ""
-"Negalima pervadinti laikino failo „%s“ į pėdsakų bibliotekos failą „%s“"
+msgstr "Negalima pervadinti laikino failo „%s“ į pėdsakų bibliotekos failą „%s“"
 
 #: pcbnew/dialogs/dialog_export_odbpp.cpp:347
 #, fuzzy
@@ -50557,8 +50553,7 @@ msgstr ""
 #: pcbnew/exporters/step/step_pcb_model.cpp:4127
 #, fuzzy, c-format
 msgid "Cannot rename temporary file '%s' to '%s'."
-msgstr ""
-"Negalima pervadinti laikino failo „%s“ į pėdsakų bibliotekos failą „%s“"
+msgstr "Negalima pervadinti laikino failo „%s“ į pėdsakų bibliotekos failą „%s“"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:3515
 msgid "Cannot use VRML models when exporting to non-mesh formats."
@@ -50617,8 +50612,8 @@ msgid ""
 " This may result in different fills from previous KiCad versions which used "
 "the line thicknesses of the board boundary on the Edge Cuts layer."
 msgstr ""
-"Jei šios plokštės zonos bus užpildytos, bus naudojamas „Copper Edge "
-"Clearance“ nustatymas (žr. Lentos sąranka> Dizaino taisyklės).\n"
+"Jei šios plokštės zonos bus užpildytos, bus naudojamas „Copper Edge Clearance"
+"“ nustatymas (žr. Lentos sąranka> Dizaino taisyklės).\n"
 "Tai gali sukelti skirtingus užpildymus, palyginti su ankstesnėmis „Kicad“ "
 "versijomis, kuriose „Edge Cuts“ sluoksnyje buvo naudojami lentos ribos "
 "linijų storiai."
@@ -53298,8 +53293,8 @@ msgid ""
 "Dashed outline found on an Altium layer (%d) with no KiCad equivalent. It "
 "has been moved to KiCad layer Eco1_User."
 msgstr ""
-"Altium sluoksnio zonoje %d nėra KiCad atitikmens. Vietoj to įdėkite jį į "
-"„Eco1_User“"
+"Altium sluoksnio zonoje %d nėra KiCad atitikmens. Vietoj to įdėkite jį į „"
+"Eco1_User“"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2769
 #, fuzzy, c-format
@@ -53324,8 +53319,8 @@ msgid ""
 "Footprint %s contains a dashed outline on Altium layer (%d) with no KiCad "
 "equivalent. It has been moved to KiCad layer Eco1_User."
 msgstr ""
-"Altium sluoksnio zonoje %d nėra KiCad atitikmens. Vietoj to įdėkite jį į "
-"„Eco1_User“"
+"Altium sluoksnio zonoje %d nėra KiCad atitikmens. Vietoj to įdėkite jį į „"
+"Eco1_User“"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2903
 #, fuzzy, c-format
@@ -53901,8 +53896,8 @@ msgid ""
 "KiCad only supports one width for the hatching. The imported hatching uses "
 "the width defined in the first hatch definition, i.e. %.2f mm."
 msgstr ""
-"CADSTAR perėjimo kodas „%s“ turi skirtingus kiekvieno liuko linijų pločius. "
-"„KiCad“ palaiko tik vieną plotį. Importuotam perinti naudojamas plotis, "
+"CADSTAR perėjimo kodas „%s“ turi skirtingus kiekvieno liuko linijų pločius. „"
+"KiCad“ palaiko tik vieną plotį. Importuotam perinti naudojamas plotis, "
 "apibrėžtas pirmojo liuko apibrėžime, t. Y. %.2f mm."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:3543
