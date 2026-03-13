@@ -1969,7 +1969,12 @@ static std::unique_ptr<BLOCK_BASE> ParseBlock_0x36( FILE_STREAM& aStream, FMT_VE
             item.m_CharWidth = aStream.ReadU32();
 
             ReadCond( aStream, aVer, item.m_Unknown2 );
-            ReadArrayU32( aStream, item.m_Xs );
+
+            item.m_CharacterSpace = aStream.ReadU32();
+            item.m_LineSpace = aStream.ReadU32();
+            item.m_Unknown3 = aStream.ReadU32();
+            item.m_StrokeWidth = aStream.ReadU32();
+
             ReadCond( aStream, aVer, item.m_Ys );
 
             data.m_Items.emplace_back( std::move( item ) );

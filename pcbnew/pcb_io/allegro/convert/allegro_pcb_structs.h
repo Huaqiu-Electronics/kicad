@@ -2036,7 +2036,10 @@ struct BLK_0x36_DEF_TABLE
 
         COND_GE<FMT_VER::V_174, uint32_t> m_Unknown2;
 
-        std::array<uint32_t, 4> m_Xs;
+        uint32_t m_CharacterSpace;
+        uint32_t m_LineSpace;
+        uint32_t m_Unknown3;    // Always 0?
+        uint32_t m_StrokeWidth; // Aka "photo width"
 
         COND_GE<FMT_VER::V_172, std::array<uint32_t, 8>> m_Ys;
     };
