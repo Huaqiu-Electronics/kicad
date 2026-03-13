@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 20:27+0000\n"
-"Last-Translator: Laurens Holst <laurens@grauw.nl>\n"
+"PO-Revision-Date: 2026-03-13 20:28+0000\n"
+"Last-Translator: CJ van der Hoeven <KeesEnJoa@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kicad/master-"
 "source/nl/>\n"
 "Language: nl\n"
@@ -18383,8 +18383,7 @@ msgstr "Globaal-labelmarge:"
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:72
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:77
 msgid "Percentage of the text size to use as space around a global label"
-msgstr ""
-"Percentage van de tekstgrootte als tussenruimte rond een algemeen label"
+msgstr "Percentage van de tekstgrootte als tussenruimte rond een algemeen label"
 
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:100
 #: eeschema/import_gfx/dialog_import_gfx_sch_base.cpp:158
@@ -32829,8 +32828,7 @@ msgstr ""
 
 #: kicad/tools/kicad_manager_control.cpp:763
 msgid "Create (or open) a project to edit a schematic."
-msgstr ""
-"Maak een nieuw project (of open een project) om het schema te bewerken."
+msgstr "Maak een nieuw project (of open een project) om het schema te bewerken."
 
 #: kicad/tools/kicad_manager_control.cpp:768
 msgid "Create (or open) a project to edit a pcb."
