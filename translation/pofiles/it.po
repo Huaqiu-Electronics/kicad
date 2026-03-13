@@ -116,8 +116,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-07 16:39+0000\n"
-"Last-Translator: boromyr <davideromeo.g@gmail.com>\n"
+"PO-Revision-Date: 2026-03-13 21:42+0000\n"
+"Last-Translator: Marco Ciampa <ciampix@posteo.net>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kicad/master-"
 "source/it/>\n"
 "Language: it\n"
@@ -5693,8 +5693,7 @@ msgstr "Tratto-punto-punto"
 
 #: common/dialogs/panel_setup_netclasses.cpp:181
 msgid "Set color to transparent to use layer default color."
-msgstr ""
-"Imposta il colore a trasparente per usare il colore strato predefinito."
+msgstr "Imposta il colore a trasparente per usare il colore strato predefinito."
 
 #: common/dialogs/panel_setup_netclasses.cpp:402
 msgid ""
@@ -10424,8 +10423,7 @@ msgstr "Aggiungi colonna prima"
 
 #: common/tool/actions.cpp:526
 msgid "Insert a new table column before the selected cell(s)"
-msgstr ""
-"Inserisci una nuova colonna della tabella prima delle celle selezionate"
+msgstr "Inserisci una nuova colonna della tabella prima delle celle selezionate"
 
 #: common/tool/actions.cpp:532 include/tool/edit_table_tool_base.h:315
 msgid "Add Column After"
@@ -17001,8 +16999,7 @@ msgstr "#"
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:844
 #, c-format
 msgid "The first %d fields are mandatory and names cannot be changed."
-msgstr ""
-"I primi %d campi sono obbligatori e i nomi non possono essere cambiati."
+msgstr "I primi %d campi sono obbligatori e i nomi non possono essere cambiati."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:871
 #, c-format
@@ -19106,8 +19103,7 @@ msgstr "La configurazione corrente non include la libreria impronte '%s'"
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:1120
 #, c-format
 msgid "The footprint library '%s' is not enabled in the current configuration"
-msgstr ""
-"La libreria impronte '%s' non è abilitata nella configurazione corrente"
+msgstr "La libreria impronte '%s' non è abilitata nella configurazione corrente"
 
 #: eeschema/erc/erc.cpp:1828
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:1171
@@ -24724,8 +24720,7 @@ msgstr "La configurazione corrente non include la libreria di simboli '%s'."
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1701
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1712
 msgid "Use Manage Symbol Libraries to edit the configuration."
-msgstr ""
-"Usare la gestione librerie di simboli per modificare la configurazione."
+msgstr "Usare la gestione librerie di simboli per modificare la configurazione."
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1702
 msgid "Library not found in symbol library table."
@@ -25727,8 +25722,7 @@ msgstr "Piazza successiva unità simbolo"
 #: eeschema/tools/sch_actions.cpp:472
 msgid ""
 "Place the next unit of the current symbol that is missing from the schematic"
-msgstr ""
-"Posiziona nello schema l'unità mancante successiva del simbolo corrente"
+msgstr "Posiziona nello schema l'unità mancante successiva del simbolo corrente"
 
 #: eeschema/tools/sch_actions.cpp:482
 msgid "Place Power Symbols"
@@ -37956,8 +37950,7 @@ msgstr "Segnala tutti gli errori per ogni pista"
 
 #: pcbnew/dialogs/dialog_drc.cpp:281
 msgid "If unchecked, only the first error will be reported for each track"
-msgstr ""
-"Se non selezionata, verrà segnalato solo il primo errore per ogni pista"
+msgstr "Se non selezionata, verrà segnalato solo il primo errore per ogni pista"
 
 #: pcbnew/dialogs/dialog_drc.cpp:288
 msgid "Highlight corresponding items on canvas when selected in the DRC list"
@@ -38417,8 +38410,7 @@ msgstr "Esporta file ODB++"
 
 #: pcbnew/dialogs/dialog_export_odbpp.cpp:164
 msgid "The selected output file name is not a supported archive format."
-msgstr ""
-"Il nome file d'uscita selezionato non è un formato archivio supportato."
+msgstr "Il nome file d'uscita selezionato non è un formato archivio supportato."
 
 #: pcbnew/dialogs/dialog_export_odbpp.cpp:221
 msgid "Output file name cannot be empty."
@@ -39434,8 +39426,8 @@ msgstr ""
 "Questo è il rapporto di clearance locale in percentuale della larghezza e "
 "altezza per questa impronta.\n"
 "Un valore di 10 indica che la clearance orizzontale sarà pari al 10% della "
-"larghezza della piazzola, e il valore di clearance verticale al "
-"10% dell'altezza della piazzola.\n"
+"larghezza della piazzola, e il valore di clearance verticale al 10% "
+"dell'altezza della piazzola.\n"
 "La clearance finale sarà data dalla somma di questo valore e il valore di "
 "distanza assoluto.\n"
 "Un valore negativo indica un valore di apertura dalla maschera (stencil) "
@@ -40412,8 +40404,8 @@ msgstr "Caratteristiche di protezione via:"
 msgid ""
 "Select which protection feature according to IPC-4761 the via should have."
 msgstr ""
-"Selezionare quale caratteristica di protezione deve avere il via secondo "
-"IPC-4761."
+"Selezionare quale caratteristica di protezione deve avere il via secondo IPC-"
+"4761."
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:220
 msgid "Set to net class / custom rule values"
@@ -43972,8 +43964,7 @@ msgstr "Applica impostazioni predefinite scheda alle dimensioni dell'impronta"
 
 #: pcbnew/dialogs/panel_setup_formatting_base.cpp:78
 msgid "Apply board defaults to footprint barcodes"
-msgstr ""
-"Applica impostazioni predefinite scheda ai codici a barre dell'impronta"
+msgstr "Applica impostazioni predefinite scheda ai codici a barre dell'impronta"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:59
 msgid "This layer is required and cannot be disabled"
@@ -48251,8 +48242,7 @@ msgstr "Il diametro massimo via deve essere maggiore di 0"
 
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:97
 msgid "Minimum Via Diameter cannot be greater than Maximum Via Diameter"
-msgstr ""
-"Il diametro minimo del via non può essere maggiore del diametro massimo"
+msgstr "Il diametro minimo del via non può essere maggiore del diametro massimo"
 
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:103
 msgid "Minimum Via Hole Size must be greater than 0"
@@ -50122,8 +50112,7 @@ msgstr "Rimossi %s attributi di fabbricazione 'escludi dai file posizionali'."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:860
 #, c-format
 msgid "Added %s 'duplicate pad numbers are jumpers' attribute."
-msgstr ""
-"Aggiunti %s attributi 'i numeri di piazzola duplicati sono ponticelli'."
+msgstr "Aggiunti %s attributi 'i numeri di piazzola duplicati sono ponticelli'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:865
 #, c-format
@@ -51861,8 +51850,7 @@ msgstr ""
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1731
 #, c-format
 msgid "Unable to find component '%s' in the library (Symdef ID: '%s')"
-msgstr ""
-"Impossibile trovare il componente '%s' nella libreria (Symdef ID: '%s')"
+msgstr "Impossibile trovare il componente '%s' nella libreria (Symdef ID: '%s')"
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:1853
 #, c-format
@@ -52518,8 +52506,7 @@ msgstr "Esportazione strato %s, collegamento %s"
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:3422
 msgid "Via uses unsupported padstack; omitted from drill data."
-msgstr ""
-"Il via usa un padstack non supportato; omesso dai dati di perforazione."
+msgstr "Il via usa un padstack non supportato; omesso dai dati di perforazione."
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:3449
 msgid "Pad uses unsupported padstack; hole was omitted from drill data."
@@ -52901,8 +52888,7 @@ msgstr "Avvio importazione PADS PCB"
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:530
 #, c-format
 msgid "Footprint '%s' not found in decal list, part skipped"
-msgstr ""
-"Impronta '%s' non trovata nell'elenco delle decalcomanie, parte saltata"
+msgstr "Impronta '%s' non trovata nell'elenco delle decalcomanie, parte saltata"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:1050
 #, c-format
@@ -52983,8 +52969,8 @@ msgid ""
 "Footprint Libraries..."
 msgstr ""
 "Il file selezionato contiene più impronte. Solo la prima verrà importata.\n"
-"Per caricare tutte le impronte, aggiungerle come libreria tramite Preferenze "
-"-> Gestione librerie impronte..."
+"Per caricare tutte le impronte, aggiungerle come libreria tramite "
+"Preferenze -> Gestione librerie impronte..."
 
 #: pcbnew/pcb_io/pcb_io.cpp:175
 msgid "Enable <b>debug</b> logging for Footprint*() functions in this PCB_IO."
@@ -53739,8 +53725,8 @@ msgstr "Argomento del nome netclass mancante per hasExactNetclass()"
 #: pcbnew/pcbexpr_functions.cpp:1464
 msgid "Missing component class name argument to hasComponentClass()"
 msgstr ""
-"Argomento mancante del nome della classe del componente per "
-"hasComponentClass()"
+"Argomento mancante del nome della classe del componente per hasComponentClass"
+"()"
 
 #: pcbnew/pcbnew.cpp:790 pcbnew/pcbnew.cpp:803
 msgid "Loading Footprint Libraries"
@@ -55631,8 +55617,7 @@ msgstr "Impossibile aggiungere vertici dogbone alle linee selezionate."
 
 #: pcbnew/tools/item_modification_routine.cpp:273
 msgid "Some of the lines could not have dogbone corners added."
-msgstr ""
-"Ad alcune linee potrebbero non essere stati aggiunti i vertici dogbone."
+msgstr "Ad alcune linee potrebbero non essere stati aggiunti i vertici dogbone."
 
 #: pcbnew/tools/item_modification_routine.cpp:280
 msgid ""
