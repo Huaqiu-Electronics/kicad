@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 22:07+0000\n"
-"Last-Translator: Iñigo Figuero Sanz <news@imagedworld.com>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
@@ -3373,8 +3373,8 @@ msgid ""
 "Select an <b>Option Choice</b> in the listbox above, and then click the "
 "<b>Append Selected Option</b> button."
 msgstr ""
-"Seleccione una <b>Opción</b> en el listado superior, y pulse el botón de "
-"<b>Añadir opción seleccionada</b>."
+"Seleccione una <b>Opción</b> en el listado superior, y pulse el botón de <b>"
+"Añadir opción seleccionada</b>."
 
 #: common/dialogs/dialog_plugin_options.cpp:53
 #, c-format
@@ -12322,8 +12322,7 @@ msgstr "Eliminar anotación"
 #: eeschema/annotate.cpp:296
 #, c-format
 msgid "%d duplicate time stamps were found and replaced."
-msgstr ""
-"Se han encontrado %d códigos de tiempo duplicados y se han reemplazado."
+msgstr "Se han encontrado %d códigos de tiempo duplicados y se han reemplazado."
 
 #: eeschema/annotate.cpp:452
 #, c-format
@@ -35249,8 +35248,8 @@ msgstr ""
 "sólo como estimación.\n"
 "\n"
 "La calculadora estima la energía necesaria para calentar el cable<br>\n"
-"a su punto de fusión, así como la energía necesaria para el cambio de fase."
-"<br>\n"
+"a su punto de fusión, así como la energía necesaria para el cambio de "
+"fase.<br>\n"
 "A continuación, esta energía se compara con la disipada por la resistencia "
 "del cable."
 
@@ -35276,8 +35275,8 @@ msgstr ""
 "El ánodo de un par electroquímico se oxida y corroe, mientras que el cátodo "
 "es revestido con metales disueltos pero se mantiene protegido.<br>\n"
 "Un número positivo indica que la fila es anódica (-) y la columna es "
-"catódica (+), tonos fríos y cálidos también indican potenciales de filas."
-"<br>\n"
+"catódica (+), tonos fríos y cálidos también indican potenciales de filas.<br>"
+"\n"
 "EN 50310 sugiere una diferencia de potencial menor a 300mV. Prácticas "
 "conocidas usan un tercer metal como interfaz entre la pareja principal (la "
 "terminación superficial ENIG).<br>\n"
@@ -50454,8 +50453,7 @@ msgstr "Atributo de fabricación 'No colocar' %s eliminado."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:815
 #, c-format
 msgid "Add %s 'exclude from position files' fabrication attribute."
-msgstr ""
-"Añadir el atributo de fabricación 'excluir de archivos de posición' %s."
+msgstr "Añadir el atributo de fabricación 'excluir de archivos de posición' %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:820
 #, c-format
@@ -50471,8 +50469,7 @@ msgstr "Atributo de fabricación 'excluir de archivos de posición' %s añadido.
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:837
 #, c-format
 msgid "Removed %s 'exclude from position files' fabrication attribute."
-msgstr ""
-"Atributo de fabricación 'excluir de archivos de posición' %s eliminado."
+msgstr "Atributo de fabricación 'excluir de archivos de posición' %s eliminado."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:860
 #, c-format
@@ -57199,8 +57196,7 @@ msgstr "Dibujar huecos de microondas"
 
 #: pcbnew/tools/pcb_actions.cpp:1069
 msgid "Create gap of specified length for microwave applications"
-msgstr ""
-"Creación de GAPS de longitud específica (para aplicaciones micro-ondas)"
+msgstr "Creación de GAPS de longitud específica (para aplicaciones micro-ondas)"
 
 #: pcbnew/tools/pcb_actions.cpp:1077
 msgid "Draw Microwave Stubs"
