@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:48+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Luka Borkovic <borkovic@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sr/>\n"
 "Language: sr\n"
@@ -8649,8 +8649,7 @@ msgstr "Грешка у учитавању kiface библиотеке '%s'."
 #: common/kiway.cpp:291
 #, c-format
 msgid "Could not read instance name and version from kiface library '%s'."
-msgstr ""
-"Не могу да прочитам име инстанце и верзију из kiface библиотеке \"%s\"."
+msgstr "Не могу да прочитам име инстанце и верзију из kiface библиотеке \"%s\"."
 
 #: common/kiway.cpp:452
 msgid "Error loading editor."
