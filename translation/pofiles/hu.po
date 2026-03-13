@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 20:48+0000\n"
-"Last-Translator: István Farkas <sakrafi1963@gmail.com>\n"
+"Last-Translator: Hajdu Norbert <norbert.hajdu.biz@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hu/>\n"
 "Language: hu\n"
@@ -1601,8 +1601,7 @@ msgstr "Tükröződések:"
 
 #: 3d-viewer/dialogs/panel_3D_raytracing_options_base.cpp:89
 msgid "Number of rays that will be cast to evaluate a reflection point"
-msgstr ""
-"A tükröződési pont értékeléséhez a fény irányába vetített sugarak száma"
+msgstr "A tükröződési pont értékeléséhez a fény irányába vetített sugarak száma"
 
 #: 3d-viewer/dialogs/panel_3D_raytracing_options_base.cpp:97
 msgid ""
