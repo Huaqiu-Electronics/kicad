@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:36+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Stanislav Kaliuk <staskalyuk.096@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kicad/master-"
 "source/uk/>\n"
 "Language: uk\n"
@@ -38094,8 +38094,7 @@ msgstr ""
 
 #: pcbnew/dialogs/dialog_drc.cpp:371
 msgid "DRC incomplete: could not compile custom design rules."
-msgstr ""
-"Конфігурація DRC неповна: не вдалося скомпілювати правила проектування."
+msgstr "Конфігурація DRC неповна: не вдалося скомпілювати правила проектування."
 
 #: pcbnew/dialogs/dialog_drc.cpp:373 pcbnew/tools/board_inspection_tool.cpp:417
 msgid "Show design rules."
