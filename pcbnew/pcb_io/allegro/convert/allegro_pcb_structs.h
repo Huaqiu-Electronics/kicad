@@ -1132,6 +1132,16 @@ struct PADSTACK_COMPONENT
  */
 struct BLK_0x1C_PADSTACK
 {
+    /**
+     * Pad flags are founds in a byte of the pad info
+     */
+    enum PAD_FLAGS
+    {
+        // Some through-holes have this, some don't
+        FLAG_UNKNOWN1   = 0x01,
+        FLAG_PLATED     = 0x20,
+    };
+
     uint8_t m_UnknownByte1;
 
     /**
@@ -1162,7 +1172,8 @@ struct BLK_0x1C_PADSTACK
     // Only lower 4 bits (top 4 are type)
     uint8_t m_A;
     uint8_t m_B;
-    uint8_t m_C;
+    /// Mask of @c PAD_FLAGS values
+    uint8_t m_Flags;
     uint8_t m_D;
 
     COND_GE<FMT_VER::V_172, uint32_t> m_Unknown7;

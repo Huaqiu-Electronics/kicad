@@ -1037,7 +1037,7 @@ static std::unique_ptr<BLOCK_BASE> ParseBlock_0x1C_PADSTACK( FILE_STREAM& aStrea
     }
 
     data.m_B = aStream.ReadU8();
-    data.m_C = aStream.ReadU8();
+    data.m_Flags = aStream.ReadU8();
     data.m_D = aStream.ReadU8();
 
     ReadCond( aStream, aVer, data.m_Unknown7 );

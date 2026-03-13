@@ -2964,10 +2964,15 @@ std::vector<std::unique_ptr<BOARD_ITEM>> BOARD_BUILDER::buildPadItems( const BLK
         pad->SetAttribute( PAD_ATTRIB::SMD );
         pad->SetLayerSet( PAD::SMDMask() );
     }
-    else
+    else if( aPadstack.m_Flags & BLK_0x1C_PADSTACK::PAD_FLAGS::FLAG_PLATED )
     {
         pad->SetAttribute( PAD_ATTRIB::PTH );
         pad->SetLayerSet( PAD::PTHMask() );
+    }
+    else
+    {
+        pad->SetAttribute( PAD_ATTRIB::NPTH );
+        pad->SetLayerSet( PAD::UnplatedHoleMask() );
     }
 
     if( thermalGap.has_value() )
@@ -3223,7 +3228,7 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
                 expectBlockByKey<BLK_0x04_NET_ASSIGNMENT>( placedPadInfo.m_NetPtr, 0x04 );
         const BLK_0x0D_PAD* padInfo = expectBlockByKey<BLK_0x0D_PAD>( placedPadInfo.m_PadPtr, 0x0D );
 
-        if( !netAssignment || !padInfo )
+        if( !padInfo )
             continue;
 
         const BLK_0x1C_PADSTACK* padStack = expectBlockByKey<BLK_0x1C_PADSTACK>( padInfo->m_PadStack, 0x1C );
@@ -3231,10 +3236,16 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
         if( !padStack )
             continue;
 
-        auto netIt = m_netCache.find( netAssignment->m_Net );
-        const int       netCode = ( netIt != m_netCache.end() ) ? netIt->second->GetNetCode()
-                                                                 : NETINFO_LIST::UNCONNECTED;
-        const wxString  padName = m_brdDb.GetString( padInfo->m_NameStrId );
+        int netCode = NETINFO_LIST::UNCONNECTED;
+
+        if( netAssignment )
+        {
+            auto netIt = m_netCache.find( netAssignment->m_Net );
+            if( netIt != m_netCache.end() )
+                netCode = netIt->second->GetNetCode();
+        }
+
+        const wxString padName = m_brdDb.GetString( padInfo->m_NameStrId );
 
         // 0x0D coordinates and rotation are in the footprint's local (unrotated) space.
         // Use SetFPRelativePosition/Orientation to let KiCad handle the transform to
