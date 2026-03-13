@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-09 18:07+0000\n"
+"PO-Revision-Date: 2026-03-13 21:39+0000\n"
 "Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kicad/master-"
 "source/sv/>\n"
@@ -4247,8 +4247,7 @@ msgstr "Automatisk"
 #: common/dialogs/panel_common_settings_base.cpp:221
 msgid ""
 "Automatically choose light or dark icons based on the system color theme"
-msgstr ""
-"Välj ljusa eller mörka ikoner automatiskt baserat på systemets färgtema"
+msgstr "Välj ljusa eller mörka ikoner automatiskt baserat på systemets färgtema"
 
 #: common/dialogs/panel_common_settings_base.cpp:231
 msgid "Toolbar icon size:"
@@ -9145,8 +9144,7 @@ msgstr ""
 
 #: common/local_history.cpp:1749
 msgid "Cannot restore - the following files are open by another user:"
-msgstr ""
-"Kan inte återställa - följande filer har öppnats av en annan användare:"
+msgstr "Kan inte återställa - följande filer har öppnats av en annan användare:"
 
 #: common/local_history.cpp:1751
 msgid "Restore Failed"
@@ -10664,8 +10662,7 @@ msgstr "Visa rutnät i redigeringsfönstrets bakgrund"
 
 #: common/tool/actions.cpp:1085
 msgid "Enables item-specific grids that override the current grid"
-msgstr ""
-"Aktiverar objektspecifika rutnät som åsidosätter det nuvarande rutnätet"
+msgstr "Aktiverar objektspecifika rutnät som åsidosätter det nuvarande rutnätet"
 
 #: common/tool/actions.cpp:1093
 msgid "Edit grid definitions"
@@ -13450,8 +13447,8 @@ msgstr "Spara alla effektförluster"
 msgid ""
 "Write directives to save power dissipation of all items (.probe p(<item>))"
 msgstr ""
-"Skriv direktiv för att spara effektförlusterna för alla objekt (.probe "
-"p(<objekt>))"
+"Skriv direktiv för att spara effektförlusterna för alla objekt (.probe p"
+"(<objekt>))"
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:369
 #: eeschema/dialogs/dialog_sim_command_base.cpp:656
@@ -15536,18 +15533,16 @@ msgid "Providers"
 msgstr ""
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
-#, fuzzy
 msgid "Add / Update"
-msgstr "Uppdatera"
+msgstr "Lägg till / Uppdatera"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
-#, fuzzy
 msgid "Refresh Metadata"
-msgstr "Genomsök metadata"
+msgstr "Förnya metadata"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
 msgid "Sign Out"
-msgstr ""
+msgstr "Logga ut"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
 #, fuzzy
@@ -15560,27 +15555,23 @@ msgid "Display name:"
 msgstr "Filnamn:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
-#, fuzzy
 msgid "Last account:"
-msgstr "Antal lödytor:"
+msgstr "Senaste konto:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
-#, fuzzy
 msgid "Not signed in"
-msgstr "Inte angiven"
+msgstr "Inte inloggad"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
-#, fuzzy
 msgid "Auth status:"
-msgstr "Status: "
+msgstr "Autentiseringsstatus:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
-#, fuzzy
 msgid "Not configured"
-msgstr "Ej våtfilmstäckt"
+msgstr "Ej konfigurerad"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 msgid "Destination directory:"
@@ -17174,8 +17165,8 @@ msgid ""
 "This is useful for adding symbols that should not be included in the \n"
 "exported position files used for pick and place machines"
 msgstr ""
-"Detta är användbart för att lägga till symboler som inte skall inkluderas "
-"i \n"
+"Detta är användbart för att lägga till symboler som inte skall inkluderas i "
+"\n"
 "exporterade positionsfiler för plock- och placeringsmaskiner"
 
 #: eeschema/dialogs/dialog_symbol_properties_base.cpp:236
@@ -20187,9 +20178,9 @@ msgid "Remote asset URL origin must match the selected provider."
 msgstr ""
 
 #: eeschema/remote_symbol_download_manager.cpp:66
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to set download URL '%s'."
-msgstr "Det gick inte att läsa '%s'."
+msgstr "Det gick inte att ställa in nedladdnings-URL '%s'."
 
 #: eeschema/remote_symbol_download_manager.cpp:124
 msgid "Remote asset manifest declared an invalid size."
@@ -20225,19 +20216,18 @@ msgid "Remote asset digest did not match the manifest."
 msgstr ""
 
 #: eeschema/remote_symbol_import_job.cpp:44
-#, fuzzy
 msgid "Downloaded symbol payload was empty."
-msgstr "Symbolens datainnehåll var tomt."
+msgstr "Datainnehåll för nedladdad symbol var tomt."
 
 #: eeschema/remote_symbol_import_job.cpp:52
-#, fuzzy
 msgid "Downloaded symbol payload was not a KiCad symbol library."
-msgstr "Ingen symbol '%s' hittades i symbolbibliotekstabellen."
+msgstr "Datainnehållet för nedladdad symbol var inte ett KiCad symbolbibliotek."
 
 #: eeschema/remote_symbol_import_job.cpp:62
-#, fuzzy, c-format
+#, c-format
 msgid "Downloaded symbol payload did not include expected symbol '%s'."
-msgstr "Symbolens datainnehåll innehöll inte den förväntade symbolen."
+msgstr ""
+"Datainnehåll för nedladdad symbol innehöll inte den förväntade symbolen '%s'."
 
 #: eeschema/remote_symbol_import_job.cpp:96
 #: eeschema/remote_symbol_import_utils.cpp:114
@@ -20280,23 +20270,20 @@ msgid "Unable to create directory '%s'."
 msgstr "Kunde inte skapa katalog '%s'."
 
 #: eeschema/remote_symbol_import_utils.cpp:158
-#, fuzzy
 msgid "Unable to access the library table."
-msgstr "Det gick inte att komma åt symbolbibliotekstabellen."
+msgstr "Det gick inte att komma åt bibliotekstabellen."
 
 #: eeschema/remote_symbol_import_utils.cpp:178
-#, fuzzy
 msgid "Failed to update the library table."
-msgstr "Det gick inte att uppdatera symbolbibliotekstabellen."
+msgstr "Det gick inte att uppdatera bibliotekstabellen."
 
 #: eeschema/remote_symbol_import_utils.cpp:192
 msgid "Remote download"
 msgstr "Fjärrnedladdning"
 
 #: eeschema/remote_symbol_import_utils.cpp:197
-#, fuzzy
 msgid "Failed to save the library table."
-msgstr "Det gick inte att spara symbolbibliotekstabell."
+msgstr "Det gick inte att spara bibliotekstabell."
 
 #: eeschema/remote_symbol_import_utils.cpp:210
 msgid "No schematic editor is available for placement."
@@ -20497,8 +20484,7 @@ msgstr "Öppna kretsschema"
 
 #: eeschema/sch_edit_frame.cpp:1540
 msgid "Assigning footprints requires a fully annotated schematic."
-msgstr ""
-"Tilldelning av fotavtryck kräver ett fullständigt numrerat kretsschema."
+msgstr "Tilldelning av fotavtryck kräver ett fullständigt numrerat kretsschema."
 
 #: eeschema/sch_edit_frame.cpp:1567
 msgid "Could not open CvPcb"
@@ -21415,8 +21401,8 @@ msgid ""
 "Saving would permanently lose symbols that could not be loaded.\n"
 "Please fix the library file manually before saving."
 msgstr ""
-"Kan inte spara bibliotek '%s' eftersom det hade tolkningsfel vid "
-"inläsning. \n"
+"Kan inte spara bibliotek '%s' eftersom det hade tolkningsfel vid inläsning. "
+"\n"
 " \n"
 "Att spara skulle orsaka att symboler som inte kunde laddas skulle förloras "
 "permanent. \n"
@@ -26004,8 +25990,7 @@ msgstr "Massredigera symbolbibliotekslänkar..."
 
 #: eeschema/tools/sch_actions.cpp:1119
 msgid "Edit a table of links between schematic and library symbols"
-msgstr ""
-"Redigera en tabell av länkar mellan kretsschema- och bibliotekssymboler"
+msgstr "Redigera en tabell av länkar mellan kretsschema- och bibliotekssymboler"
 
 #: eeschema/tools/sch_actions.cpp:1125
 msgid "Assign Footprints..."
@@ -27487,7 +27472,7 @@ msgstr "Komprimerat datainnehåll var tomt."
 #: eeschema/widgets/panel_remote_symbol.cpp:133
 #, c-format
 msgid "Decompressed size %llu exceeds limit %llu."
-msgstr ""
+msgstr "Uppackad storlek %llu överstiger gränsen %llu."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:144
 #, c-format
@@ -27608,14 +27593,13 @@ msgid "Unable to save the downloaded symbol."
 msgstr "Kunde inte spara den nedladdade symbolen."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1154
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse component list: %s"
-msgstr "Det gick inte att lägga till komponentdata"
+msgstr "Det gick inte att tolka komponentlista: %s"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1160
-#, fuzzy
 msgid "Component list must be a non-empty array."
-msgstr "Komponentlistan måste vara en array."
+msgstr "Komponentlistan måste vara en icke tom array."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1170
 msgid "Component entries must be objects."
@@ -29394,8 +29378,8 @@ msgid ""
 "Output file format, options: step, stepz, brep, xao, glb (binary glTF), ply, "
 "stl"
 msgstr ""
-"Filformat för utmatning; alternativ: step, stepz, brep, xao, glb (binär "
-"glTF), ply, stl"
+"Filformat för utmatning; alternativ: step, stepz, brep, xao, glb (binär glTF)"
+", ply, stl"
 
 #: kicad/cli/command_pcb_export_3d.cpp:84
 msgid "Overwrite output file"
@@ -34653,8 +34637,8 @@ msgstr ""
 "\n"
 "Emellertid täcks vissa fall inte av denna kalkylator:\n"
 "\n"
-"- För frekvenser över 30kHz är den dielektriska förmågan försämrad. "
-"IEC60664-4 behandlar dessa fall.\n"
+"- För frekvenser över 30kHz är den dielektriska förmågan försämrad. IEC60664-"
+"4 behandlar dessa fall.\n"
 "- Om täckande skikt eller ingjutning används för att skydda mot "
 "nedsmutsning, och alla villkor specificerade i IEC60664-3 uppfylls, kan "
 "isolations- och krypavstånd reduceras. Lödmask anses vanligen inte som "
@@ -36184,8 +36168,7 @@ msgstr ""
 #: pcbnew/connectivity/topo_match.cpp:247
 #, c-format
 msgid "Pad %s of %s has inconsistent net mapping in candidate %s."
-msgstr ""
-"Lödyta %s tillhörande %s har inkonsekvent nättilldelning i kandidat %s."
+msgstr "Lödyta %s tillhörande %s har inkonsekvent nättilldelning i kandidat %s."
 
 #: pcbnew/connectivity/topo_match.cpp:355
 msgid "No compatible component found in the target area."
@@ -37734,8 +37717,7 @@ msgstr "Rapportera alla fel för varje ledare"
 
 #: pcbnew/dialogs/dialog_drc.cpp:281
 msgid "If unchecked, only the first error will be reported for each track"
-msgstr ""
-"Om ej ikryssad, kommer bara det första felet för varje ledare att visas"
+msgstr "Om ej ikryssad, kommer bara det första felet för varje ledare att visas"
 
 #: pcbnew/dialogs/dialog_drc.cpp:288
 msgid "Highlight corresponding items on canvas when selected in the DRC list"
@@ -45720,8 +45702,7 @@ msgstr "mönsterkortsinställningarnas begränsningar för anvisningstryck"
 
 #: pcbnew/drc/drc_engine.cpp:208
 msgid "board setup constraints silk text height"
-msgstr ""
-"mönsterkortsinställningarnas begränsning för texthöjd i anvisningstryck"
+msgstr "mönsterkortsinställningarnas begränsning för texthöjd i anvisningstryck"
 
 #: pcbnew/drc/drc_engine.cpp:215
 msgid "board setup constraints silk text thickness"
@@ -46405,7 +46386,7 @@ msgstr "Ledare ansluten till efterbearbetat eller \"backdrill\" lager"
 
 #: pcbnew/drc/drc_item.cpp:318
 msgid "Track endpoint not centered on via"
-msgstr ""
+msgstr "Ledarens slutpunkt är inte centrerad på viat"
 
 #: pcbnew/drc/drc_item.cpp:522
 #, c-format
@@ -49506,8 +49487,7 @@ msgstr "Uppdaterade %s fotavtrycksfilter till '%s'."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:742
 #, c-format
 msgid "Add %s 'exclude from BOM' fabrication attribute."
-msgstr ""
-"Lägg till tillverkningsattribut 'exkludera från komponentlista' för %s."
+msgstr "Lägg till tillverkningsattribut 'exkludera från komponentlista' för %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:744
 #, c-format
@@ -49517,8 +49497,7 @@ msgstr "Ta bort tillverkningsattribut 'exkludera från komponentlista' för %s."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:753
 #, c-format
 msgid "Added %s 'exclude from BOM' fabrication attribute."
-msgstr ""
-"Lade till tillverkningsattribut 'exkludera från komponentlista' för %s."
+msgstr "Lade till tillverkningsattribut 'exkludera från komponentlista' för %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:758
 #, c-format
@@ -52445,8 +52424,7 @@ msgstr "Lösenord för <b>inloggning</b> till någon speciell biblioteksserver."
 #: pcbnew/pcb_io/pcb_io.cpp:196
 msgid ""
 "Enter the python module which implements the PCB_IO::Footprint*() functions."
-msgstr ""
-"Ange pythonmodulen som implementerar funktionerna PCB_IO::Footprint*()."
+msgstr "Ange pythonmodulen som implementerar funktionerna PCB_IO::Footprint*()."
 
 #: pcbnew/pcb_layer_box_selector.cpp:74
 msgid "(not activated)"
@@ -53136,8 +53114,7 @@ msgstr "Footprint har ingen bakgård."
 #: pcbnew/pcbexpr_functions.cpp:709
 #, c-format
 msgid "Missing rule-area argument (A, B, or rule-area name) to %s."
-msgstr ""
-"Saknat argument för regelområde (A, B eller regelområdets namn) för %s."
+msgstr "Saknat argument för regelområde (A, B eller regelområdets namn) för %s."
 
 #: pcbnew/pcbexpr_functions.cpp:949
 #, c-format
@@ -53616,8 +53593,7 @@ msgstr "Placera Microvia"
 
 #: pcbnew/router/router_tool.cpp:171
 msgid "Adds a microvia at the end of currently routed track."
-msgstr ""
-"Lägger till en mikrovia i slutet av den ledare som dras för närvarande."
+msgstr "Lägger till en mikrovia i slutet av den ledare som dras för närvarande."
 
 #: pcbnew/router/router_tool.cpp:181
 msgid "Select Layer and Place Through Via..."
@@ -54096,8 +54072,7 @@ msgstr "Inga mönsterkortsproblem hittades."
 
 #: pcbnew/tools/board_editor_control.cpp:699
 msgid "Updating PCB requires a fully annotated schematic."
-msgstr ""
-"Uppdatering av mönsterkort kräver att schemat är fullständigt numrerat."
+msgstr "Uppdatering av mönsterkort kräver att schemat är fullständigt numrerat."
 
 #: pcbnew/tools/board_editor_control.cpp:715
 msgid ""
@@ -57092,8 +57067,7 @@ msgstr "Försök avsluta"
 
 #: pcbnew/tools/pcb_actions.cpp:2643
 msgid "Attempts to complete current route to nearest ratsnest end."
-msgstr ""
-"Försöker göra klart nuvarande ledardragning till närmaste nätlinjeända."
+msgstr "Försöker göra klart nuvarande ledardragning till närmaste nätlinjeända."
 
 #: pcbnew/tools/pcb_actions.cpp:2650
 msgid "Route Selected"
@@ -59008,14 +58982,13 @@ msgid "KiCad Drawing Sheet"
 msgstr "KiCad-ritningsark"
 
 #: scripting/python_manager.cpp:135
-#, fuzzy
 msgid "Process could not be created"
-msgstr "Filen '%s' kunde inte skapas."
+msgstr "Process kunde inte skapas"
 
 #: scripting/python_scripting.cpp:367
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create user scripting path %s."
-msgstr "Det gick inte att öppna/skapa sökvägen '%s'."
+msgstr "Det gick inte att skapa sökvägen för användarskript %s."
 
 #~ msgid ""
 #~ "Install a remote symbol server using the Plugin and Content Manager to "
