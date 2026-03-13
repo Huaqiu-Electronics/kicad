@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-11 16:09+0000\n"
-"Last-Translator: EdizonTN <edizontn@gmail.com>\n"
+"PO-Revision-Date: 2026-03-13 20:06+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
 "source/sk/>\n"
 "Language: sk\n"
@@ -24726,8 +24726,7 @@ msgstr "Spravovať knižnice symbolov"
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:989
 #, fuzzy, c-format
 msgid "Symbol %s is a derived symbol. Symbol graphics will not be editable."
-msgstr ""
-"Symbol %s je odvodeným symbolom.  Grafiku symbolu nebude možné upraviť."
+msgstr "Symbol %s je odvodeným symbolom.  Grafiku symbolu nebude možné upraviť."
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1018
 msgid "Library is read-only.  Changes cannot be saved to this library."
