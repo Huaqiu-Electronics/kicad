@@ -21,6 +21,7 @@
 #define WEBVIEW_PANEL_H
 
 #include <wx/panel.h>
+#include <wx/timer.h>
 #include <wx/webview.h>
 #include <functional>
 #include <map>
@@ -67,6 +68,8 @@ protected:
     void OnScriptResult( wxWebViewEvent& evt );
     void OnError( wxWebViewEvent& evt );
 
+    void DoInitHandlers();
+
 private:
 
     bool                                m_initialized;
@@ -78,6 +81,7 @@ private:
     std::map<wxString, MESSAGE_HANDLER> m_msgHandlers;
     TOOL_MANAGER*                       m_toolManager;
     TOOL_BASE*                          m_tool;
+    wxTimer                             m_initRetryTimer;
 };
 
 #endif // WEBVIEW_PANEL_H

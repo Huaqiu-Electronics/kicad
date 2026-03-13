@@ -23,6 +23,7 @@
 #include <tool/tool_base.h>
 
 #include <widgets/webview_panel.h>
+#include <wx/evtloop.h>
 #include <wx/sizer.h>
 #include <wx/webviewarchivehandler.h>
 #include <wx/webviewfshandler.h>
@@ -95,6 +96,8 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
     Bind( wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED, &WEBVIEW_PANEL::OnScriptMessage, this, m_browser->GetId() );
     Bind( wxEVT_WEBVIEW_SCRIPT_RESULT, &WEBVIEW_PANEL::OnScriptResult, this, m_browser->GetId() );
     Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_PANEL::OnError, this, m_browser->GetId() );
+
+    m_initRetryTimer.Bind( wxEVT_TIMER, [this]( wxTimerEvent& ) { DoInitHandlers(); } );
 }
 
 WEBVIEW_PANEL::~WEBVIEW_PANEL()
@@ -151,8 +154,17 @@ bool WEBVIEW_PANEL::AddMessageHandler( const wxString& aName, MESSAGE_HANDLER aH
 
     if( m_initialized )
     {
-        if( !m_browser->AddScriptMessageHandler( aName ) )
-            wxLogTrace( "webview", "Could not add script message handler %s", aName );
+        wxEventLoopBase* activeLoop = wxEventLoopBase::GetActive();
+
+        if( activeLoop && !activeLoop->IsMain() )
+        {
+            m_initRetryTimer.StartOnce( 200 );
+        }
+        else
+        {
+            if( !m_browser->AddScriptMessageHandler( aName ) )
+                wxLogTrace( "webview", "Could not add script message handler %s", aName );
+        }
     }
 
     return true;
@@ -183,54 +195,64 @@ void WEBVIEW_PANEL::OnNavigationRequest( wxWebViewEvent& aEvt )
     }
 }
 
+void WEBVIEW_PANEL::DoInitHandlers()
+{
+    // WebKit's AddScriptMessageHandler internally calls RunScript which yields the
+    // event loop via wxGUIEventLoop::DoYieldFor. If we're inside a nested event loop
+    // (e.g., a modal dialog opened by another component), this causes WebKit's JSC to
+    // crash in sanitizeStackForVM when creating a JS context. Re-defer until we're
+    // back at the main event loop.
+    wxEventLoopBase* activeLoop = wxEventLoopBase::GetActive();
+
+    if( activeLoop && !activeLoop->IsMain() )
+    {
+        m_initRetryTimer.StartOnce( 200 );
+        return;
+    }
+
+    for( const auto& handler : m_msgHandlers )
+    {
+        if( !m_browser->AddScriptMessageHandler( handler.first ) )
+            wxLogTrace( "webview", "Could not add script message handler %s", handler.first );
+    }
+
+    m_browser->AddUserScript( R"(
+        (function() {
+            // Change window.open to navigate in the same window
+            window.open = function(url) { if (url) window.location.href = url; return null; };
+            window.showModalDialog = function() { return null; };
+
+            if (window.external && window.external.invoke) {
+                function notifyHost() {
+                    window.external.invoke('navigation:' + window.location.href);
+                }
+                window.addEventListener('popstate', notifyHost);
+                window.addEventListener('pushstate', notifyHost);
+                window.addEventListener('replacestate', notifyHost);
+                ['pushState', 'replaceState'].forEach(function(type) {
+                    var orig = history[type];
+                    history[type] = function() {
+                        var rv = orig.apply(this, arguments);
+                        window.dispatchEvent(new Event(type.toLowerCase()));
+                        return rv;
+                    };
+                });
+            }
+        })();
+    )" );
+}
+
+
 void WEBVIEW_PANEL::OnWebViewLoaded( wxWebViewEvent& aEvt )
 {
     if( !m_initialized )
     {
-        // Defer handler registration to avoid running during modal dialog/yield
-        auto initFunc = [this]() {
-            for( const auto& handler : m_msgHandlers )
-            {
-                if( !m_browser->AddScriptMessageHandler( handler.first ) )
-                {
-                    wxLogTrace( "webview", "Could not add script message handler %s", handler.first );
-                }
-            }
-
-             // Inject navigation hook for SPA/JS navigation to prevent webkit crashing without new window
-            m_browser->AddUserScript( R"(
-                (function() {
-                    // Change window.open to navigate in the same window
-                    window.open = function(url) { if (url) window.location.href = url; return null; };
-                    window.showModalDialog = function() { return null; };
-
-                    if (window.external && window.external.invoke) {
-                        function notifyHost() {
-                            window.external.invoke('navigation:' + window.location.href);
-                        }
-                        window.addEventListener('popstate', notifyHost);
-                        window.addEventListener('pushstate', notifyHost);
-                        window.addEventListener('replacestate', notifyHost);
-                        ['pushState', 'replaceState'].forEach(function(type) {
-                            var orig = history[type];
-                            history[type] = function() {
-                                var rv = orig.apply(this, arguments);
-                                window.dispatchEvent(new Event(type.toLowerCase()));
-                                return rv;
-                            };
-                        });
-                    }
-                })();
-            )" );
-
-        };
+        m_initialized = true;
 
         if( m_toolManager && m_tool )
-            m_toolManager->RunMainStack( m_tool, initFunc );
+            m_toolManager->RunMainStack( m_tool, [this]() { DoInitHandlers(); } );
         else
-            CallAfter( initFunc );
-
-        m_initialized = true;
+            CallAfter( [this]() { DoInitHandlers(); } );
     }
 
     aEvt.Skip();
