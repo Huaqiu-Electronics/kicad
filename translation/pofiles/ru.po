@@ -25,8 +25,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 21:15+0000\n"
-"Last-Translator: Konstantin Baranovskiy <baranovskiykonstantin@gmail.com>\n"
+"PO-Revision-Date: 2026-03-13 21:16+0000\n"
+"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ru/>\n"
 "Language: ru\n"
@@ -600,8 +600,7 @@ msgstr "Показать 3D-модели неопределённых"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:334
 msgid "Show 3D models for 'unspecified' type footprints"
-msgstr ""
-"Переключить отображение 3D-моделей компонентов с типом 'неопределённый'"
+msgstr "Переключить отображение 3D-моделей компонентов с типом 'неопределённый'"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:342
 msgid "Show 3D Models not in POS File"
@@ -2105,8 +2104,7 @@ msgstr "Экспорт в буфер обмена"
 
 #: bitmap2component/bitmap2component.cpp:404
 msgid "No shape in black and white image to convert: no outline created."
-msgstr ""
-"Нет фигуры в черно-белом изображении для конвертации: контур не создан."
+msgstr "Нет фигуры в черно-белом изображении для конвертации: контур не создан."
 
 #: common/api/api_handler.cpp:27
 msgid "Modification from API"
@@ -4257,8 +4255,7 @@ msgstr ""
 
 #: common/dialogs/panel_common_settings_base.cpp:184
 msgid "Show popup indicator when toggling settings with hotkeys"
-msgstr ""
-"Показывать вспл. индикатор при переключении настроек горячими клавишами"
+msgstr "Показывать вспл. индикатор при переключении настроек горячими клавишами"
 
 #: common/dialogs/panel_common_settings_base.cpp:185
 msgid ""
@@ -5566,8 +5563,7 @@ msgstr "Определить автоматически"
 #: common/dialogs/panel_plugin_settings_base.cpp:68
 msgid ""
 "No Python interpreter chosen; external Python plugins will not be available"
-msgstr ""
-"Интерпретатор Python не выбран; внешние плагины Python будут недоступны"
+msgstr "Интерпретатор Python не выбран; внешние плагины Python будут недоступны"
 
 #: common/dialogs/panel_plugin_settings_base.cpp:70
 msgid "Python interpreter status"
@@ -27366,8 +27362,7 @@ msgstr "Цепь не выбрана."
 #: eeschema/tools/sch_editor_control.cpp:2090 pcbnew/tools/pcb_control.cpp:1187
 msgid ""
 "Pasting a long text text string may be very slow.  Do you want to continue?"
-msgstr ""
-"Вставка большого объема текста может быть очень медленным.  Продолжить?"
+msgstr "Вставка большого объема текста может быть очень медленным.  Продолжить?"
 
 #: eeschema/tools/sch_editor_control.cpp:2145 pcbnew/tools/pcb_control.cpp:1152
 #, fuzzy
@@ -30502,8 +30497,7 @@ msgstr ""
 
 #: kicad/cli/command_pcb_render.cpp:307
 msgid "Bottom light intensity, format 'R,G,B' or a single number, range: 0-1"
-msgstr ""
-"Яркость нижнего освещения, формат 'R,G,B' или одно число, диапазон: 0-1"
+msgstr "Яркость нижнего освещения, формат 'R,G,B' или одно число, диапазон: 0-1"
 
 #: kicad/cli/command_pcb_render.cpp:312
 msgid "Side lights intensity, format 'R,G,B' or a single number, range: 0-1"
@@ -39730,8 +39724,7 @@ msgstr "Не учитывать область установки в DRC"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:426
 msgid "Will not generate \"missing courtyard\" DRC violations"
-msgstr ""
-"Не будет генерировать нарушения DRC \"отсутствующая область установки\""
+msgstr "Не будет генерировать нарушения DRC \"отсутствующая область установки\""
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:437
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:976
@@ -42868,8 +42861,7 @@ msgstr "Ширина линии должна быть больше нуля дл
 
 #: pcbnew/dialogs/dialog_shape_properties.cpp:1257
 msgid "Line width must be greater than zero for an unfilled rectangle."
-msgstr ""
-"Ширина линии должна быть больше нуля для незаполненного прямоугольника."
+msgstr "Ширина линии должна быть больше нуля для незаполненного прямоугольника."
 
 #: pcbnew/dialogs/dialog_shape_properties.cpp:1263
 msgid "Corner radius must be less than or equal to half the smaller side."
@@ -48974,8 +48966,7 @@ msgstr ""
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2988
 msgid "Failed to set STEP product name, but will attempt to continue."
-msgstr ""
-"Не удалось установить название продукта STEP, но попытаемся продолжить."
+msgstr "Не удалось установить название продукта STEP, но попытаемся продолжить."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2996
 msgid "Failed to set surface curve mode, but will attempt to continue."
@@ -49652,8 +49643,7 @@ msgstr "Паттерн настройки длины"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2384
 msgid "Unable to tune segments inside other tuning patterns."
-msgstr ""
-"Невозможно подстроить сегменты внутри других паттернов настройки длины."
+msgstr "Невозможно подстроить сегменты внутри других паттернов настройки длины."
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2422
 msgid "Tune"
@@ -50244,8 +50234,7 @@ msgstr ""
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:758
 #, c-format
 msgid "Removed %s 'exclude from BOM' fabrication attribute."
-msgstr ""
-"Удален производственный атрибут 'исключён из перечня элементов' для %s."
+msgstr "Удален производственный атрибут 'исключён из перечня элементов' для %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:778
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1598
