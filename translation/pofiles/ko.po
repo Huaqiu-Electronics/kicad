@@ -42,7 +42,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:28+0000\n"
-"Last-Translator: kmn4555 <kmn4555@naver.com>\n"
+"Last-Translator: KwonHyeokbeom <gurqja3810@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
@@ -17288,9 +17288,9 @@ msgid ""
 "or http(s)://) or \"#<page number>\" to create a hyperlink to a page in this "
 "schematic."
 msgstr ""
-"하이퍼링크 경로가 잘못되었습니다. 유효한 URL(예: file:// 또는 http(s)://) 또"
-"는 \"#<페이지 번호>\"을 입력하여 이 회로도의 페이지에 대한 하이퍼링크를 만드"
-"십시오."
+"하이퍼링크 경로가 잘못되었습니다. 유효한 URL(예: file:// 또는 http(s)://) "
+"또는 \"#<페이지 번호>\"을 입력하여 이 회로도의 페이지에 대한 하이퍼링크를 "
+"만드십시오."
 
 #: eeschema/dialogs/dialog_text_properties.cpp:595
 #: pcbnew/dialogs/dialog_text_properties.cpp:590
@@ -17730,8 +17730,7 @@ msgstr "<ESC>는 네트 강조 표시를 지움"
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:67
 msgid ""
 "First <ESC> in selection tool clears selection, next clears net highlighting"
-msgstr ""
-"선택 도구의 첫 번째 <ESC>는 선택을 지우고 다음은 네트 강조 표시를 지웁니다"
+msgstr "선택 도구의 첫 번째 <ESC>는 선택을 지우고 다음은 네트 강조 표시를 지웁니다"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:71
 msgid "Automatically annotate symbols"
@@ -20616,9 +20615,9 @@ msgid ""
 "alignment issues. Please review the imported text elements carefully and "
 "correct manually if required."
 msgstr ""
-"CADSTAR 글꼴은 KiCad의 글꼴과 다릅니다. 이로 인해 정렬 문제가 발생할 수 있습"
-"니다. 가져온 텍스트 요소를 주의 깊게 검토하고 필요한 경우 수동으로 수정하십시"
-"오."
+"CADSTAR 글꼴은 KiCad의 글꼴과 다릅니다. 이로 인해 정렬 문제가 발생할 수 "
+"있습니다. 가져온 텍스트 요소를 주의 깊게 검토하고 필요한 경우 수동으로 "
+"수정하십시오."
 
 #: eeschema/sch_io/cadstar/cadstar_sch_archive_loader.cpp:523
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:172
@@ -20827,8 +20826,8 @@ msgstr "데이터베이스 테이블 %s 읽기 오류: %s"
 #, c-format
 msgid "Could not load database library: settings file %s missing or invalid"
 msgstr ""
-"데이터베이스 라이브러리를 로드할 수 없습니다: 설정 파일 %s이 없거나 잘못되었"
-"습니다"
+"데이터베이스 라이브러리를 로드할 수 없습니다: 설정 파일 %s이 없거나 "
+"잘못되었습니다"
 
 #: eeschema/sch_io/database/sch_io_database.cpp:330
 #, c-format
@@ -47831,8 +47830,8 @@ msgid ""
 "File contains pad shapes that are not supported by the Hyperlynx exporter "
 "(supported shapes are oval, rectangle, rounded rectangle, and circle)."
 msgstr ""
-"파일에 Hyperlynx 내보내기 도구에서 지원하지 않는 패드 도형이 포함되어 있습니"
-"다 (지원되는 도형은 타원, 직사각형과 원 입니다)."
+"파일에 Hyperlynx 내보내기 도구에서 지원하지 않는 패드 도형이 포함되어 "
+"있습니다 (지원되는 도형은 타원, 직사각형과 원 입니다)."
 
 #: pcbnew/exporters/export_hyperlynx.cpp:182
 msgid "They have been exported as oval pads."
@@ -51049,9 +51048,9 @@ msgid ""
 "alignment issues that may cause DRC errors. Please review the imported text "
 "elements carefully and correct manually if required."
 msgstr ""
-"CADSTAR 글꼴은 KiCad의 글꼴과 다릅니다.이로 인해 DRC에 잘못된 정렬 문제가 발"
-"생할 수 있습니다.가져온 텍스트 요소를주의 깊게 검토하고 필요한 경우 수동으로 "
-"수정하십시오."
+"CADSTAR 글꼴은 KiCad의 글꼴과 다릅니다.이로 인해 DRC에 잘못된 정렬 문제가 "
+"발생할 수 있습니다.가져온 텍스트 요소를주의 깊게 검토하고 필요한 경우 "
+"수동으로 수정하십시오."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:243
 #, c-format
@@ -57191,8 +57190,8 @@ msgstr "다른 끝에서 경로"
 msgid ""
 "Commits current segments and starts next segment from nearest ratsnest end."
 msgstr ""
-"현재 세그먼트를 커밋하고 가장 가까운 ratsnest 끝에서 다음 세그먼트를 시작합니"
-"다."
+"현재 세그먼트를 커밋하고 가장 가까운 ratsnest 끝에서 다음 세그먼트를 "
+"시작합니다."
 
 #: pcbnew/tools/pcb_actions.cpp:2642
 msgid "Attempt Finish"
