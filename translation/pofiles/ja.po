@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 20:52+0000\n"
-"Last-Translator: Ji Yoon Choi <chichoon.choi@gmail.com>\n"
+"Last-Translator: Yutaro Urata2 <yutarourata03@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kicad/master-"
 "source/ja/>\n"
 "Language: ja\n"
@@ -15430,8 +15430,7 @@ msgstr "AUTHORとSUBJECTの変数から付帯情報を生成する"
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:149
 #: pcbnew/dialogs/dialog_plot_base.cpp:431
 msgid "Generate PDF document properties from AUTHOR and SUBJECT text variables"
-msgstr ""
-"AUTHOR と SUBJECTのテキスト変数からPDFドキュメントのプロパティを生成する"
+msgstr "AUTHOR と SUBJECTのテキスト変数からPDFドキュメントのプロパティを生成する"
 
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:156
 #: pcbnew/dialogs/dialog_plot_base.cpp:330
