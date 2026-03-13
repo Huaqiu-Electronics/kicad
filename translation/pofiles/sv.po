@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:40+0000\n"
-"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
+"Last-Translator: Richard Jonsson <richard_jonsson@hotmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kicad/master-"
 "source/sv/>\n"
 "Language: sv\n"
@@ -2099,8 +2099,7 @@ msgstr "Det går inte att skapa utmatningskatalogen '%s'."
 
 #: common/common.cpp:788
 msgid "This operating system is not supported by KiCad and its dependencies."
-msgstr ""
-"Det här operativsystemet stöds inte längre av KiCad och dess beroenden."
+msgstr "Det här operativsystemet stöds inte längre av KiCad och dess beroenden."
 
 #: common/common.cpp:790
 msgid "Unsupported Operating System"
