@@ -42,7 +42,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:28+0000\n"
-"Last-Translator: 이기형 <oddlight0@gmail.com>\n"
+"Last-Translator: 박세훈 <helloworld4327@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
@@ -7932,8 +7932,7 @@ msgstr "API가 오류 코드로 응답: %s"
 #: common/import_gfx/dxf_import_plugin.cpp:134
 #: common/import_gfx/dxf_import_plugin.cpp:154
 msgid "Memory was exhausted trying to load the DXF, it may be too large."
-msgstr ""
-"메모리가 부족하여 DXF 파일을 로드할 수 없습니다. 파일이 너무 클 수 있습니다."
+msgstr "메모리가 부족하여 DXF 파일을 로드할 수 없습니다. 파일이 너무 클 수 있습니다."
 
 #: common/import_gfx/dxf_import_plugin.cpp:1549
 msgid "Invalid spline definition encountered"
