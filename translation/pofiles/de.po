@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: KiCad i18n Deutsch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 20:54+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-13 20:55+0000\n"
+"Last-Translator: Jonathan Haas <haasjona@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kicad/master-"
 "source/de/>\n"
 "Language: de\n"
@@ -9325,8 +9325,7 @@ msgstr "Konnte einen Wert in der Symbol-Sektion der Netzliste nicht parsen."
 #: common/netlist_reader/legacy_netlist_reader.cpp:186
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:187
 msgid "Cannot parse pin name in symbol net section of netlist."
-msgstr ""
-"Konnte einen Pinnamen in der Symbol-Sektion der Netzliste nicht parsen."
+msgstr "Konnte einen Pinnamen in der Symbol-Sektion der Netzliste nicht parsen."
 
 #: common/netlist_reader/legacy_netlist_reader.cpp:195
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:196
@@ -29469,8 +29468,7 @@ msgstr "Gerber-Jobdatei öffnen ..."
 
 #: gerbview/tools/gerbview_actions.cpp:63
 msgid "Open a Gerber job file and its associated gerber plot files"
-msgstr ""
-"Öffnet eine Gerber-Jobdatei und lädt die zugehörigen Gerber-Plotdateien"
+msgstr "Öffnet eine Gerber-Jobdatei und lädt die zugehörigen Gerber-Plotdateien"
 
 #: gerbview/tools/gerbview_actions.cpp:69
 msgid "Open Zip Archive File..."
@@ -54948,8 +54946,7 @@ msgstr "Benutzerdefinierte Leiterbahn-/Via-Größe ..."
 
 #: pcbnew/router/router_tool.cpp:213
 msgid "Shows a dialog for changing the track width and via size."
-msgstr ""
-"Zeigt einen Dialog zum Verändern der Leiterbahnbreite und der Viagröße."
+msgstr "Zeigt einen Dialog zum Verändern der Leiterbahnbreite und der Viagröße."
 
 #: pcbnew/router/router_tool.cpp:221
 msgid "Switch Track Posture"
