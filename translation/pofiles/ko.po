@@ -42,7 +42,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:28+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: DevAny <devany.kr@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
 "source/ko/>\n"
 "Language: ko\n"
@@ -23820,8 +23820,7 @@ msgstr ""
 
 #: eeschema/sim/ngspice.cpp:551
 msgid "Unable to load ngspice shared library. Please check your install."
-msgstr ""
-"ngspice 공유 라이브러리를 불러올 수 없습니다. 설치 상태를 확인해 주세요."
+msgstr "ngspice 공유 라이브러리를 불러올 수 없습니다. 설치 상태를 확인해 주세요."
 
 #: eeschema/sim/sim_lib_mgr.cpp:109 eeschema/sim/sim_lib_mgr.cpp:162
 #, c-format
@@ -30007,8 +30006,7 @@ msgstr "레이어 목록에서 Postscript 생성"
 msgid ""
 "Track width correction [mm]. Used to compensate errors in track widths, pad "
 "and via sizes."
-msgstr ""
-"배선 너비 보정 [mm]. 배선 너비, 패드 및 비아 크기 오차를 보정하는 데 사용됨."
+msgstr "배선 너비 보정 [mm]. 배선 너비, 패드 및 비아 크기 오차를 보정하는 데 사용됨."
 
 #: kicad/cli/command_pcb_export_ps.cpp:121
 msgid "X scale adjust for exact scale."
