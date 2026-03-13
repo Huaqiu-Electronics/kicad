@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 19:38+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kicad/master-"
 "source/fi/>\n"
 "Language: fi\n"
@@ -26351,8 +26351,7 @@ msgstr "Vie Netlist ..."
 
 #: eeschema/tools/sch_actions.cpp:1220
 msgid "Export file containing netlist in one of several formats"
-msgstr ""
-"Vie tiedosto, joka sisältää netlist-tiedoston yhdessä useista muodoista"
+msgstr "Vie tiedosto, joka sisältää netlist-tiedoston yhdessä useista muodoista"
 
 #: eeschema/tools/sch_actions.cpp:1226
 msgid "Generate Bill of Materials..."
@@ -28706,8 +28705,7 @@ msgstr "Tiedostoa ei löytynyt:"
 #: gerbview/files.cpp:305
 #, c-format
 msgid "<b>A gerber job file cannot be loaded as a plot file</b> <i>%s</i>"
-msgstr ""
-"<b> Gerber-työtiedostoa ei voi ladata juontotiedostona </b> <i> %s </i>"
+msgstr "<b> Gerber-työtiedostoa ei voi ladata juontotiedostona </b> <i> %s </i>"
 
 #: gerbview/files.cpp:318
 #, fuzzy
@@ -33921,8 +33919,8 @@ msgstr ""
 "* B1 - Sisäiset johtimet\n"
 "* B2 - Ulkoiset johtimet, päällystämättömät, merenpinta 3050 metriin saakka\n"
 "* B3 - Ulkoiset johtimet, päällystämättömät, yli 3050 m\n"
-"* B4 - Ulkoiset johtimet, pysyvällä polymeeripinnoitteella (kaikki "
-"korkeudet)\n"
+"* B4 - Ulkoiset johtimet, pysyvällä polymeeripinnoitteella (kaikki korkeudet)"
+"\n"
 "* A5 - Ulkoiset johtimet, konformisella pinnoitteella kokoonpanon päällä "
 "(mikä tahansa korkeus)\n"
 "* A6 - Ulkoisen osan johto / pääte, päällystämätön\n"
@@ -40687,8 +40685,7 @@ msgstr "Netlist-tiedosto:"
 
 #: pcbnew/dialogs/dialog_import_netlist_base.cpp:42
 msgid "Link footprints using component tstamps (unique ids)"
-msgstr ""
-"Linkitä jalanjäljet komponenttimerkkien avulla (yksilölliset tunnukset)"
+msgstr "Linkitä jalanjäljet komponenttimerkkien avulla (yksilölliset tunnukset)"
 
 #: pcbnew/dialogs/dialog_import_netlist_base.cpp:42
 msgid "Link footprints using reference designators"
@@ -49230,8 +49227,7 @@ msgstr ""
 #: pcbnew/initpcb.cpp:49
 msgid ""
 "Current Board will be lost and this operation cannot be undone. Continue?"
-msgstr ""
-"Nykyinen hallitus menetetään, eikä tätä toimintoa voida kumota. Jatkaa?"
+msgstr "Nykyinen hallitus menetetään, eikä tätä toimintoa voida kumota. Jatkaa?"
 
 #: pcbnew/initpcb.cpp:120 pcbnew/tools/footprint_editor_control.cpp:254
 msgid "The current footprint has been modified.  Save changes?"
