@@ -37,7 +37,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-11 16:10+0000\n"
+"PO-Revision-Date: 2026-03-13 19:42+0000\n"
 "Last-Translator: YÜKSEL AÇIKGÖZ <yukselacikgoz@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
@@ -612,8 +612,7 @@ msgstr "Model Sınırlama Kutusunu Göster"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:360
 msgid "Show 3D model bounding boxes in realtime renderer"
-msgstr ""
-"3B modellerin sınırlayıcı kutularını gerçek zamanlı oluşturucuda göster"
+msgstr "3B modellerin sınırlayıcı kutularını gerçek zamanlı oluşturucuda göster"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:367
 msgid "Show 3D Navigator"
@@ -3365,8 +3364,8 @@ msgid ""
 "Select an <b>Option Choice</b> in the listbox above, and then click the "
 "<b>Append Selected Option</b> button."
 msgstr ""
-"Yukarıdaki liste kutusundan bir <b>Seçenek Seçimi</b> seçin ve ardından "
-"<b>Seçili Seçeneği Ekle</b> düğmesine tıklayın."
+"Yukarıdaki liste kutusundan bir <b>Seçenek Seçimi</b> seçin ve ardından <b>"
+"Seçili Seçeneği Ekle</b> düğmesine tıklayın."
 
 #: common/dialogs/dialog_plugin_options.cpp:53
 #, c-format
@@ -5562,8 +5561,7 @@ msgstr "Çizgi-Nokta-Nokta"
 
 #: common/dialogs/panel_setup_netclasses.cpp:181
 msgid "Set color to transparent to use layer default color."
-msgstr ""
-"Katman varsayılan rengini kullanmak için rengi şeffaf olarak ayarlayın."
+msgstr "Katman varsayılan rengini kullanmak için rengi şeffaf olarak ayarlayın."
 
 #: common/dialogs/panel_setup_netclasses.cpp:402
 msgid ""
@@ -9216,8 +9214,7 @@ msgstr "Ağ listesinin sembol bölümündeki ayak izi adı ayrıştırılamıyor
 #: common/netlist_reader/legacy_netlist_reader.cpp:139
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:140
 msgid "Cannot parse reference designator in symbol section of netlist."
-msgstr ""
-"Ağ listesinin sembol bölümündeki referans tanımlayıcı ayrıştırılamıyor."
+msgstr "Ağ listesinin sembol bölümündeki referans tanımlayıcı ayrıştırılamıyor."
 
 #: common/netlist_reader/legacy_netlist_reader.cpp:149
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:150
@@ -9270,27 +9267,27 @@ msgstr "Kullanılabilir bildirim yok"
 
 #: common/oauth/oauth_loopback_server.cpp:126
 msgid "Missing HTTP method in callback request."
-msgstr ""
+msgstr "Geri çağırma isteğinde HTTP metodu eksik."
 
 #: common/oauth/oauth_loopback_server.cpp:134
 msgid "Missing callback URL in request."
-msgstr ""
+msgstr "İstekte geri çağırma URL adresi eksik."
 
 #: common/oauth/oauth_loopback_server.cpp:145
 msgid "Unexpected callback path."
-msgstr ""
+msgstr "Beklenmeyen geri çağırma yolu."
 
 #: common/oauth/oauth_loopback_server.cpp:153
 msgid "OAuth callback state did not match."
-msgstr ""
+msgstr "OAuth geri çağırma durumu eşleşmedi."
 
 #: common/oauth/oauth_loopback_server.cpp:163
 msgid "Authorization server returned an OAuth error."
-msgstr ""
+msgstr "Yetkilendirme sunucusu bir OAuth hatası döndürdü."
 
 #: common/oauth/oauth_loopback_server.cpp:171
 msgid "Missing authorization code in callback."
-msgstr ""
+msgstr "Geri çağırmada yetkilendirme kodu eksik."
 
 #: common/page_info.cpp:48
 msgid "A5 148 x 210mm"
@@ -9529,139 +9526,139 @@ msgstr "Hata: "
 
 #: common/remote_provider_client.cpp:287
 msgid "Sign in required for this provider."
-msgstr ""
+msgstr "Bu sağlayıcı için oturum açma gereklidir."
 
 #: common/remote_provider_client.cpp:329
 msgid "Provider metadata does not include a session bootstrap URL."
-msgstr ""
+msgstr "Sağlayıcı meta verileri bir oturum başlatma URL adresi içermiyor."
 
 #: common/remote_provider_client.cpp:352
 msgid "Bootstrap response did not include a nonce URL."
-msgstr ""
+msgstr "Başlatma yanıtı bir nonce URL adresi içermiyor."
 
 #: common/remote_provider_client.cpp:371
 msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
 msgstr ""
+"Başlatma nonce URL adresinin kaynağı, başlatma uç noktasıyla eşleşmiyor."
 
 #: common/remote_provider_client.cpp:407
 #, c-format
 msgid "Remote provider request failed with HTTP %d."
-msgstr ""
+msgstr "Uzak sağlayıcı isteği HTTP %d ile başarısız oldu."
 
 #: common/remote_provider_client.cpp:432
 #, c-format
 msgid "Remote provider returned invalid JSON: %s"
-msgstr ""
+msgstr "Uzak sağlayıcı geçersiz JSON döndürdü: %s"
 
 #: common/remote_provider_client.cpp:453
 #, c-format
 msgid "Remote provider returned invalid token JSON: %s"
-msgstr ""
+msgstr "Uzak sağlayıcı geçersiz token JSON'ı döndürdü: %s"
 
 #: common/remote_provider_client.cpp:485
 #, c-format
 msgid "Remote provider token response was incomplete: %s"
-msgstr ""
+msgstr "Uzak sağlayıcı token yanıtı eksikti: %s"
 
 #: common/remote_provider_metadata.cpp:53
 #, c-format
 msgid "Remote provider metadata schema '%s' is not readable."
-msgstr ""
+msgstr "Uzak sağlayıcı meta veri şeması '%s' okunabilir değil."
 
 #: common/remote_provider_metadata.cpp:64
 #, c-format
 msgid "Remote provider metadata failed schema validation: %s"
-msgstr ""
+msgstr "Uzak sağlayıcı meta verileri şema doğrulamasında başarısız oldu: %s"
 
 #: common/remote_provider_metadata.cpp:124
-#, fuzzy, c-format
+#, c-format
 msgid "Unsupported provider capability '%s'."
-msgstr "Altium şematik dosyaları"
+msgstr "Desteklenmeyen sağlayıcı yeteneği '%s'."
 
 #: common/remote_provider_metadata.cpp:147
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse remote provider metadata: %s"
-msgstr ""
-"Paket meta verileri ayrıştırılamıyor:\n"
-"\n"
-"%s"
+msgstr "Uzak sağlayıcı meta verileri ayrıştırılamıyor: %s"
 
 #: common/remote_provider_metadata.cpp:154
 msgid "Remote provider metadata must enable web_ui_v1."
-msgstr ""
+msgstr "Uzak sağlayıcı meta verileri web_ui_v1'i etkinleştirmelidir."
 
 #: common/remote_provider_metadata.cpp:161
 msgid ""
 "Remote provider metadata must enable direct_downloads_v1, "
 "inline_payloads_v1, or both."
 msgstr ""
+"Uzak sağlayıcı meta verileri direct_downloads_v1, inline_payloads_v1 veya "
+"her ikisini de etkinleştirmelidir."
 
 #: common/remote_provider_metadata.cpp:168
 msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
 msgstr ""
+"Uzak sağlayıcı meta verileri, oauth2 için session_bootstrap_url "
+"tanımlamalıdır."
 
 #: common/remote_provider_metadata.cpp:173
 msgid "api_base_url"
-msgstr ""
+msgstr "api_temel_url"
 
 #: common/remote_provider_metadata.cpp:179
 msgid "panel_url"
-msgstr ""
+msgstr "panel_url_adresi"
 
 #: common/remote_provider_metadata.cpp:185
 msgid "session_bootstrap_url"
-msgstr ""
+msgstr "oturum_başlatma_url"
 
 #: common/remote_provider_metadata.cpp:193
 msgid "session_bootstrap_url must share the same origin as panel_url."
-msgstr ""
+msgstr "oturum_başlatma_url, panel_url_adresi ile aynı kaynağı paylaşmalıdır."
 
 #: common/remote_provider_metadata.cpp:199
 msgid "auth.metadata_url"
-msgstr ""
+msgstr "yetkilendirme.metadata_url"
 
 #: common/remote_provider_models.cpp:44
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse OAuth metadata: %s"
-msgstr ""
-"Paket meta verileri ayrıştırılamıyor:\n"
-"\n"
-"%s"
+msgstr "OAuth meta verileri ayrıştırılamıyor: %s"
 
 #: common/remote_provider_models.cpp:50
 msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
 msgstr ""
+"OAuth meta verileriyetkilendirme_uçnoktası ve token_uçnoktası içermelidir."
 
 #: common/remote_provider_models.cpp:55
 msgid "authorization_endpoint"
-msgstr ""
+msgstr "yetkilendirme_uç_noktası"
 
 #: common/remote_provider_models.cpp:60
 msgid "token_endpoint"
-msgstr ""
+msgstr "token_uçnoktası"
 
 #: common/remote_provider_models.cpp:66
 msgid "revocation_endpoint"
-msgstr ""
+msgstr "iptal_edilme_uç_noktası"
 
 #: common/remote_provider_models.cpp:98
 #, c-format
 msgid "Remote provider manifest schema '%s' is not readable."
-msgstr ""
+msgstr "Uzak sağlayıcı manifest şeması '%s' okunabilir değil."
 
 #: common/remote_provider_models.cpp:109
 #, c-format
 msgid "Remote provider manifest failed schema validation: %s"
-msgstr ""
+msgstr "Uzak sağlayıcı manifesti şema doğrulamasında başarısız oldu: %s"
 
 #: common/remote_provider_models.cpp:136
 msgid "assets[].download_url"
-msgstr ""
+msgstr "assets[].indirme_url"
 
 #: common/remote_provider_models.cpp:147
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse remote provider manifest: %s"
-msgstr "Depo çözümlenemiyor: %s"
+msgstr "Uzak sağlayıcı manifesti ayrıştırılamıyor: %s"
 
 #: common/remote_provider_utils.cpp:94
 #, c-format
@@ -9669,6 +9666,8 @@ msgid ""
 "%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
 "URL."
 msgstr ""
+"%s, güvenli olmayan localhost'a izin ver bir geri döngü URL adresi için "
+"etkinleştirilmedikçe HTTPS kullanmalıdır."
 
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, c-format
@@ -10517,8 +10516,7 @@ msgstr "Son Yakınlaştırmayı Tekrarla"
 
 #: common/tool/actions.cpp:833 common/widgets/mathplot.cpp:1413
 msgid "Return zoom to level prior to last zoom undo"
-msgstr ""
-"Yakınlaştırmayı son yakınlaştırmadan önceki seviyeye döndürmeyi geri al"
+msgstr "Yakınlaştırmayı son yakınlaştırmadan önceki seviyeye döndürmeyi geri al"
 
 #: common/tool/actions.cpp:848
 msgid "Pan to Center Selected Objects"
@@ -12708,9 +12706,8 @@ msgstr ""
 "python <betik_dosya_adı> <girdi_dosya_adı> <çıktı_dosya_adı>\n"
 "```\n"
 "\n"
-"Windows'ta, bir CSV BOM'u için istenen oluşturucu betiği `C:"
-"\\Users\\username\\kicad\\my_python_script.py` ise, komut satırı şöyle "
-"olacaktır:\n"
+"Windows'ta, bir CSV BOM'u için istenen oluşturucu betiği `C:\\Users\\u"
+"sername\\kicad\\my_python_script.py` ise, komut satırı şöyle olacaktır:\n"
 "\n"
 "```\n"
 "python.exe C:\\Users\\username\\kicad\\my_python_script.py \"%I\" "
@@ -13167,8 +13164,8 @@ msgstr "%d sembol(ler) numaralanmış olmalı. <br><br>"
 #: eeschema/dialogs/dialog_erc.cpp:540
 msgid "-------- ERC cancelled by user.<br><br>"
 msgstr ""
-"-------- Elektriksel Kural Kontrolü kullanıcı tarafından iptal edildi. "
-"<br><br>"
+"-------- Elektriksel Kural Kontrolü kullanıcı tarafından iptal edildi. <br>"
+"<br>"
 
 #: eeschema/dialogs/dialog_erc.cpp:542 pcbnew/dialogs/dialog_drc.cpp:428
 msgid "Done.<br><br>"
@@ -13437,8 +13434,8 @@ msgstr "Tüm güç tüketimlerini kaydet"
 msgid ""
 "Write directives to save power dissipation of all items (.probe p(<item>))"
 msgstr ""
-"Tüm ögelerin güç dağıtımını kaydetmek için yönergeler yazın (.probe "
-"p(<item>))"
+"Tüm ögelerin güç dağıtımını kaydetmek için yönergeler yazın (.probe p"
+"(<item>))"
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:369
 #: eeschema/dialogs/dialog_sim_command_base.cpp:656
@@ -15515,63 +15512,54 @@ msgid "Remote Symbol Settings"
 msgstr "Uzak Sembol Ayarları"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
-#, fuzzy
 msgid ""
 "Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
-"İndirilen uzak kütüphanelerin nerede saklanacağını ve nasıl "
-"adlandırılacağını yapılandırın."
+"Uzak sembol sağlayıcılarını ve indirilen kütüphanelerin nerede "
+"depolanacağını yapılandırın."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
 msgid "Providers"
-msgstr ""
+msgstr "Sağlayıcılar"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
-#, fuzzy
 msgid "Add / Update"
-msgstr "Güncelle"
+msgstr "Ekle / Güncelle"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
-#, fuzzy
 msgid "Refresh Metadata"
-msgstr "Üst Veri Ara"
+msgstr "Meta Verileri Yenile"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
 msgid "Sign Out"
-msgstr ""
+msgstr "Oturumu Kapat"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
-#, fuzzy
 msgid "Metadata URL:"
-msgstr "Meta Veriler"
+msgstr "Meta Veriler URL:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
-#, fuzzy
 msgid "Display name:"
-msgstr "Dosya adı:"
+msgstr "Görünen ad:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
-#, fuzzy
 msgid "Last account:"
-msgstr "Ped sayısı:"
+msgstr "Son hesap:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
-#, fuzzy
 msgid "Not signed in"
-msgstr "Belirtilmemiş"
+msgstr "Oturum açılmamış"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
-#, fuzzy
 msgid "Auth status:"
-msgstr "Durum: "
+msgstr "Yetkilendirme durumu:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
-#, fuzzy
 msgid "Not configured"
-msgstr "Kapatılmadı"
+msgstr "Yapılandırılmamış"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
 msgid "Destination directory:"
@@ -15633,11 +15621,11 @@ msgstr "Hedef Dizin Seçin"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
 msgid "Enter a provider metadata URL first."
-msgstr ""
+msgstr "Önce bir sağlayıcı meta veri URL girin."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
 msgid "Provider metadata refreshed."
-msgstr ""
+msgstr "Sağlayıcı meta verileri yenilendi."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
 #: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
@@ -18820,8 +18808,7 @@ msgstr "%s sembolünde yerleştirilmemiş %s birimleri var"
 #: eeschema/erc/erc.cpp:684
 #, c-format
 msgid "Symbol %s has input power pins in units %s that are not placed"
-msgstr ""
-"%s sembolünün, %s birimlerinde yerleştirilmemiş giriş güç bacakları var"
+msgstr "%s sembolünün, %s birimlerinde yerleştirilmemiş giriş güç bacakları var"
 
 #: eeschema/erc/erc.cpp:690
 #, c-format
@@ -19799,6 +19786,8 @@ msgstr "Paneller"
 msgid ""
 "Search signed-in remote symbol providers and download verified libraries."
 msgstr ""
+"Oturum açılmış uzak sembol sağlayıcılarında ara ve doğrulanmış kütüphaneleri "
+"indir."
 
 #: eeschema/menubar.cpp:330
 msgid "Variants"
@@ -20154,64 +20143,63 @@ msgstr "Aşağıdaki kütüphaneler bulunamadı:"
 
 #: eeschema/remote_symbol_download_manager.cpp:35
 msgid "Remote asset URL"
-msgstr ""
+msgstr "Uzak varlık URL"
 
 #: eeschema/remote_symbol_download_manager.cpp:49
 msgid "Remote asset URL origin must match the selected provider."
-msgstr ""
+msgstr "Uzak varlık URL kaynağı, seçili sağlayıcıyla eşleşmelidir."
 
 #: eeschema/remote_symbol_download_manager.cpp:66
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to set download URL '%s'."
-msgstr "'%s' okunamıyor."
+msgstr "İndirme adresi '%s' ayarlanamıyor."
 
 #: eeschema/remote_symbol_download_manager.cpp:124
 msgid "Remote asset manifest declared an invalid size."
-msgstr ""
+msgstr "Uzak varlık manifesti geçersiz bir boyut bildirdi."
 
 #: eeschema/remote_symbol_download_manager.cpp:130
 msgid "Remote asset manifest must declare sha256 for URL-based downloads."
 msgstr ""
+"Adres tabanlı indirmeler için uzak varlık manifesti sha256 bildirmelidir."
 
 #: eeschema/remote_symbol_download_manager.cpp:139
 msgid "Remote asset exceeds the provider download limit."
-msgstr ""
+msgstr "Uzak varlık, sağlayıcı indirme limitini aşıyor."
 
 #: eeschema/remote_symbol_download_manager.cpp:150
 #, c-format
 msgid "Remote download failed with HTTP %d."
-msgstr ""
+msgstr "Uzak indirme HTTP %d ile başarısız oldu."
 
 #: eeschema/remote_symbol_download_manager.cpp:156
 msgid "Remote asset content type did not match the manifest."
-msgstr ""
+msgstr "Uzak varlık içerik türü manifest ile eşleşmedi."
 
 #: eeschema/remote_symbol_download_manager.cpp:162
 msgid "Remote asset size did not match the manifest."
-msgstr ""
+msgstr "Uzak varlık boyutu manifest ile eşleşmedi."
 
 #: eeschema/remote_symbol_download_manager.cpp:168
 msgid "Remote asset exceeds the remaining download limit."
-msgstr ""
+msgstr "Uzak varlık, kalan indirme limitini aşıyor."
 
 #: eeschema/remote_symbol_download_manager.cpp:174
 msgid "Remote asset digest did not match the manifest."
-msgstr ""
+msgstr "Uzak varlık özeti manifest ile eşleşmedi."
 
 #: eeschema/remote_symbol_import_job.cpp:44
-#, fuzzy
 msgid "Downloaded symbol payload was empty."
-msgstr "Sembol veri yükü boştu."
+msgstr "İndirilen sembol veri yükü boştu."
 
 #: eeschema/remote_symbol_import_job.cpp:52
-#, fuzzy
 msgid "Downloaded symbol payload was not a KiCad symbol library."
-msgstr "Sembol kütüphanesi tablosunda %s simgesi bulunamadı."
+msgstr "İndirilen sembol veri yükü bir KiCad sembol kütüphanesi değildi."
 
 #: eeschema/remote_symbol_import_job.cpp:62
-#, fuzzy, c-format
+#, c-format
 msgid "Downloaded symbol payload did not include expected symbol '%s'."
-msgstr "Sembol yüklemesi beklenen sembolü içermiyor."
+msgstr "İndirilen sembol veri yükü beklenen '%s' sembolünü içermiyordu."
 
 #: eeschema/remote_symbol_import_job.cpp:96
 #: eeschema/remote_symbol_import_utils.cpp:114
@@ -20221,9 +20209,8 @@ msgid "Unable to load schematic settings."
 msgstr "Şematik ayarları yüklenemiyor."
 
 #: eeschema/remote_symbol_import_job.cpp:234
-#, fuzzy
 msgid "No symbol asset was available to place."
-msgstr "Yerleştirme için hiçbir şematik düzenleyici mevcut değil."
+msgstr "Yerleştirilebilecek hiçbir sembol varlığı mevcut değildi."
 
 #: eeschema/remote_symbol_import_utils.cpp:76
 msgid "Payload was empty."
@@ -20254,23 +20241,20 @@ msgid "Unable to create directory '%s'."
 msgstr "'%s' dizini oluşturulamıyor."
 
 #: eeschema/remote_symbol_import_utils.cpp:158
-#, fuzzy
 msgid "Unable to access the library table."
-msgstr "Sembol kütüphane tablosuna erişilemiyor."
+msgstr "Kütüphane tablosuna erişilemiyor."
 
 #: eeschema/remote_symbol_import_utils.cpp:178
-#, fuzzy
 msgid "Failed to update the library table."
-msgstr "Sembol kütüphane tablosu güncellenemedi."
+msgstr "Kütüphane tablosu güncellenemedi."
 
 #: eeschema/remote_symbol_import_utils.cpp:192
 msgid "Remote download"
 msgstr "Uzak indirme"
 
 #: eeschema/remote_symbol_import_utils.cpp:197
-#, fuzzy
 msgid "Failed to save the library table."
-msgstr "Sembol kütüphane tablosu kaydedilemedi."
+msgstr "Kütüphane tablosu kaydedilemedi."
 
 #: eeschema/remote_symbol_import_utils.cpp:210
 msgid "No schematic editor is available for placement."
@@ -21000,8 +20984,7 @@ msgstr "Veritabanı tablosu %s okunurken hata oluştu: %s"
 #: eeschema/sch_io/database/sch_io_database.cpp:289
 #, c-format
 msgid "Could not load database library: settings file %s missing or invalid"
-msgstr ""
-"Veritabanı kütüphanesi yüklenemedi: %s ayar dosyası eksik veya geçersiz"
+msgstr "Veritabanı kütüphanesi yüklenemedi: %s ayar dosyası eksik veya geçersiz"
 
 #: eeschema/sch_io/database/sch_io_database.cpp:330
 #, c-format
@@ -21184,8 +21167,7 @@ msgstr "HTTP kütüphane ayarları dosyası %s'nin kök URL'si eksik."
 #: eeschema/sch_io/http_lib/sch_io_http_lib.cpp:242
 #, c-format
 msgid "HTTP library settings file %s has invalid library type."
-msgstr ""
-"HTTP kütüphane ayarları dosyası %s geçersiz bir kütüphane türüne sahip."
+msgstr "HTTP kütüphane ayarları dosyası %s geçersiz bir kütüphane türüne sahip."
 
 #: eeschema/sch_io/http_lib/sch_io_http_lib.cpp:283
 #, c-format
@@ -22663,9 +22645,9 @@ msgstr ""
 "        <td> &nbsp;<br><samp>~{üst çizgi}</samp><br> &nbsp;<br><samp>~{CLK}</"
 "samp></td>\n"
 "        <td></td>\n"
-"        <td> <samp><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></"
-"samp><br> <samp>üst çizgi</samp><br> <samp><u>&nbsp;&nbsp;&nbsp;</u></"
-"samp><br> <samp>CLK</samp></td>\n"
+"        <td> <samp><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></samp>"
+"<br> <samp>üst çizgi</samp><br> <samp><u>&nbsp;&nbsp;&nbsp;</u></samp><br> "
+"<samp>CLK</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
 "        <td></td>\n"
@@ -22749,8 +22731,8 @@ msgstr ""
 "        <td>&nbsp;<br><samp>1</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
-"        <td>&nbsp;<br><samp>@{if(condition, true_val, false_val)}</samp></"
-"td>\n"
+"        <td>&nbsp;<br><samp>@{if(condition, true_val, false_val)}</samp></td>"
+"\n"
 "        <td></td>\n"
 "        <td>&nbsp;<br><samp>Koşullu metin görüntüleme</samp></td>\n"
 "    </tr>\n"
@@ -22758,12 +22740,12 @@ msgstr ""
 "        <td>&nbsp;<br><samp>@{if(\"${LAYER}\" == \"F.Cu\", \"TOP\", "
 "\"BOTTOM\")}</samp></td>\n"
 "        <td></td>\n"
-"        <td>&nbsp;<br><samp>TOP</samp> (ön katmanda) veya <samp>BOTTOM</"
-"samp></td>\n"
+"        <td>&nbsp;<br><samp>TOP</samp> (ön katmanda) veya <samp>BOTTOM</samp>"
+"</td>\n"
 "    </tr>\n"
 "    <tr>\n"
-"        <td>&nbsp;<br><samp>@{if(${ROW} > 5, \"High\", \"Low\")}</samp></"
-"td>\n"
+"        <td>&nbsp;<br><samp>@{if(${ROW} > 5, \"High\", \"Low\")}</samp></td>"
+"\n"
 "        <td></td>\n"
 "        <td>&nbsp;<br><samp>Sayısal karşılaştırmalar da çalışır</samp></td>\n"
 "    </tr>\n"
@@ -22840,8 +22822,8 @@ msgstr ""
 "    <tr>\n"
 "        <td>&nbsp;<br><samp>${refdes:PIN_ALT_LIST(pin)}</samp></td>\n"
 "        <td></td>\n"
-"        <td>&nbsp;<br><samp>Tüm alternatif pin fonksiyonları (temel ad "
-"hariç)</samp></td>\n"
+"        <td>&nbsp;<br><samp>Tüm alternatif pin fonksiyonları (temel ad hariç)"
+"</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
 "        <td>&nbsp;<br><samp>${U1:PIN_ALT_LIST(5)}</samp></td>\n"
@@ -22945,8 +22927,9 @@ msgstr ""
 "    </tr>\n"
 "    <tr>\n"
 "        <th>Bus Tanımı</th>\n"
-"        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-"</th>\n"
+"        <th>"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</"
+"th>\n"
 "        <th>Sonuç Netler</th>\n"
 "    </tr>\n"
 "    <tr>\n"
@@ -23015,9 +22998,9 @@ msgstr ""
 "<p><b>Tablo Hücre Referansları:</b> <samp>CELL()</samp> fonksiyonu yalnızca "
 "tablo hücrelerinde çalışır. Aynı tablodaki diğer hürelere başvurmak için "
 "<samp>${CELL(\"A0\")}</samp> veya <samp>${CELL(satır, sütun)}</samp> "
-"kullanın. Satır ve sütun numaraları 0 tabanlıdır (A0 ilk satır, ilk "
-"sütundur). CELL, ham hücre metnini değil hesaplanmış/görüntülenen değeri "
-"döndürür.</p>\n"
+"kullanın. Satır ve sütun numaraları 0 tabanlıdır (A0 ilk satır, ilk sütundur)"
+". CELL, ham hücre metnini değil hesaplanmış/görüntülenen değeri döndürür.</p>"
+"\n"
 "<p><b>İç İçe Değişkenler:</b> Değişkenler başka değişkenler içerebilir. İç "
 "değişkenler önce genişletilir. Maksimum iç içe derinlik: 6 seviye.</p>\n"
 "<p><b>Hata Mesajları:</b></p>\n"
@@ -24709,8 +24692,7 @@ msgstr "Bilgi: <b>Gizli güç pini %s</b> %s konumunda <b>(%s, %s)</b>."
 #, c-format
 msgid ""
 "Info: <b>Hidden power pin %s</b> %s at location <b>(%s, %s)</b> in unit %c."
-msgstr ""
-"Bilgi: <b>Gizli güç pini %s</b> %s konumunda <b>(%s,%s)</b> in unit %c."
+msgstr "Bilgi: <b>Gizli güç pini %s</b> %s konumunda <b>(%s,%s)</b> in unit %c."
 
 #: eeschema/symbol_checker.cpp:352
 msgid ""
@@ -27845,7 +27827,7 @@ msgstr "Sıkıştırılmış yükleme boş."
 #: eeschema/widgets/panel_remote_symbol.cpp:133
 #, c-format
 msgid "Decompressed size %llu exceeds limit %llu."
-msgstr ""
+msgstr "Açılmış boyut %llu limit %llu aşıyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:144
 #, c-format
@@ -27880,41 +27862,35 @@ msgstr "Sembol veri yükü çözümlenemiyor: %s"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:252
 msgid "Reload current provider page"
-msgstr ""
+msgstr "Geçerli sağlayıcı sayfasını yeniden yükle"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:257
-#, fuzzy
 msgid "Configure remote providers"
-msgstr "Uzak veri kaynaklarını yapılandır."
+msgstr "Uzak sağlayıcıları yapılandır"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:379
-#, fuzzy
 msgid "No remote providers configured."
-msgstr "Yapılandırılmış yukarı akış dallandırması yok."
+msgstr "Uzak sağlayıcı yapılandırılmamış."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:451
-#, fuzzy
 msgid "Unable to load remote provider metadata."
-msgstr "'%s' için uzak veri yüklenemiyor."
+msgstr "Uzak sağlayıcı meta verileri yüklenemiyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:696
 msgid "A remote provider sign-in flow is already in progress."
-msgstr ""
+msgstr "Bir uzak sağlayıcı oturum açma işlemi zaten devam ediyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:728
-#, fuzzy
 msgid "Unable to start the local OAuth callback listener."
-msgstr "Seçili çokgenler çıkarılamıyor."
+msgstr "Yerel OAuth geri çağırma dinleyicisi başlatılamıyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:738
-#, fuzzy
 msgid "Unable to open the system browser for sign-in."
-msgstr "'%s' yazma için açılamıyor."
+msgstr "Oturum açmak için sistem tarayıcısı açılamıyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:768
-#, fuzzy
 msgid "Failed to delete stored remote provider tokens."
-msgstr "Yerel olarak depolanan repository.json dosyası ayrıştırılamadı."
+msgstr "Depolanmış uzak sağlayıcı token'ları silinemedi."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:808
 #, c-format
@@ -27927,17 +27903,15 @@ msgstr "Oturum tanımlayıcısı eksik."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:824
 msgid "Session identifier did not match the active provider session."
-msgstr ""
+msgstr "Oturum tanımlayıcısı, etkin sağlayıcı oturumuyla eşleşmedi."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:912
-#, fuzzy
 msgid "No remote provider is currently selected."
-msgstr "Seçili ögelere yakınlaştır"
+msgstr "Şu anda hiçbir uzak sağlayıcı seçili değil."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1033
-#, fuzzy
 msgid "Unable to process provider payload."
-msgstr "Veri yükü depolanamıyor."
+msgstr "Sağlayıcı veri yükü işlenemiyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1039
 #, c-format
@@ -27966,29 +27940,26 @@ msgid "Unable to save the downloaded symbol."
 msgstr "İndirilen sembol kaydedilemiyor."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1154
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse component list: %s"
-msgstr "Bileşen verileri eklenemedi"
+msgstr "Bileşen listesi ayrıştırılamadı: %s"
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1160
-#, fuzzy
 msgid "Component list must be a non-empty array."
-msgstr "Bileşen yerleştirme"
+msgstr "Bileşen listesi, boş olmayan bir dizi olmalıdır."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1170
-#, fuzzy
 msgid "Component entries must be objects."
-msgstr "Bileşen: ad boş olamaz."
+msgstr "Bileşen girdileri nesne olmalıdır."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1178
-#, fuzzy
 msgid "Component entry was missing a type."
-msgstr "Bileşen sayısı uyuşmuyor"
+msgstr "Bileşen girdisinde tür eksikti."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1237
-#, fuzzy, c-format
+#, c-format
 msgid "Unsupported component type '%s'."
-msgstr "Altium şematik dosyaları"
+msgstr "Desteklenmeyen bileşen türü '%s'."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1256
 msgid "Unsupported footprint payload type."
@@ -27996,26 +27967,27 @@ msgstr "Desteklenmeyen ayak izi veri yükü türü."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1371
 msgid "Remote provider metadata is not loaded."
-msgstr ""
+msgstr "Uzak sağlayıcı meta verileri yüklenmemiş."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1401
 msgid ""
 "Manifest assets require asset_type, content_type, size_bytes, and "
 "download_url."
 msgstr ""
+"Manifest varlıkları, varlık_türü, içerik_türü, boyut_baytları ve indirme_url "
+"gerektirir."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1437
 msgid "Remote provider sign-in was cancelled or failed."
-msgstr ""
+msgstr "Uzak sağlayıcı oturum açma işlemi iptal edildi veya başarısız oldu."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1448
 msgid "Remote provider sign-in failed."
-msgstr ""
+msgstr "Uzak sağlayıcı oturum açma başarısız oldu."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1464
-#, fuzzy
 msgid "Failed to store remote provider tokens securely."
-msgstr "Uzak depodan değişiklikleri çekme başarısız oldu."
+msgstr "Uzak sağlayıcı token'ları güvenli bir şekilde depolanamadı."
 
 #: eeschema/widgets/panel_sch_selection_filter.cpp:189
 #: pcbnew/widgets/panel_selection_filter.cpp:180
@@ -29748,16 +29720,15 @@ msgstr "Geçersiz rapor biçimi\n"
 
 #: kicad/cli/command_pcb_export.h:33
 msgid "Export utilities (Gerbers, drill, position files, etc)"
-msgstr ""
-"Dışa aktarma yardımcı programları (Gerber, delme, konum dosyaları, vb.)"
+msgstr "Dışa aktarma yardımcı programları (Gerber, delme, konum dosyaları, vb.)"
 
 #: kicad/cli/command_pcb_export_3d.cpp:79
 msgid ""
 "Output file format, options: step, stepz, brep, xao, glb (binary glTF), ply, "
 "stl"
 msgstr ""
-"Çıktı dosyası formatı, seçenekler: step, stepz, brep, xao, glb (binary "
-"glTF), ply, stl"
+"Çıktı dosyası formatı, seçenekler: step, stepz, brep, xao, glb (binary glTF)"
+", ply, stl"
 
 #: kicad/cli/command_pcb_export_3d.cpp:84
 msgid "Overwrite output file"
@@ -29929,8 +29900,7 @@ msgstr "Geçerli seçenekler: mutlak, çizim"
 
 #: kicad/cli/command_pcb_export_drill.cpp:66
 msgid "Valid options are: decimal, suppressleading, suppresstrailing, keep."
-msgstr ""
-"Geçerli seçenekler: ondalık, baştakini kaldır, sondakini kaldır, sakla."
+msgstr "Geçerli seçenekler: ondalık, baştakini kaldır, sondakini kaldır, sakla."
 
 #: kicad/cli/command_pcb_export_drill.cpp:71
 msgid "Valid options are: route, alternate."
@@ -31144,8 +31114,7 @@ msgstr "Kart Katman Dizilimleri"
 
 #: kicad/dialogs/template_default_html.h:258
 msgid "Layer configurations optimized for common manufacturing processes."
-msgstr ""
-"Yaygın üretim süreçleri için optimize edilmiş katman konfigürasyonları."
+msgstr "Yaygın üretim süreçleri için optimize edilmiş katman konfigürasyonları."
 
 #: kicad/dialogs/template_default_html.h:265
 msgid ""
@@ -32423,8 +32392,7 @@ msgstr "Gerber çıktı dosyalarını ön izle"
 
 #: kicad/tools/kicad_manager_actions.cpp:160
 msgid "Convert bitmap images to schematic or PCB components"
-msgstr ""
-"Bit eşlem görüntülerini şematik veya Baskı Devre bileşenlerine dönüştür"
+msgstr "Bit eşlem görüntülerini şematik veya Baskı Devre bileşenlerine dönüştür"
 
 #: kicad/tools/kicad_manager_actions.cpp:179
 msgid "Edit drawing sheet borders and title block"
@@ -33691,8 +33659,8 @@ msgstr ""
 "Temel: Tehlikeli-canlı parçaların yalıtımı.\n"
 "\n"
 "Güçlendirilmiş: Çift yalıtıma eşdeğer bir koruma derecesi sağlayan tek "
-"yalıtım. (bunlardan birinin arızalanması durumunda iki ayrı temel "
-"yalıtımdır)."
+"yalıtım. (bunlardan birinin arızalanması durumunda iki ayrı temel yalıtımdır)"
+"."
 
 #: pcb_calculator/calculator_panels/panel_electrical_spacing_iec60664_base.cpp:170
 msgid "Functional"
@@ -36634,8 +36602,7 @@ msgstr "Nakavt"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:59
 msgid "If checked, the barcode will be inverted with a margin around it"
-msgstr ""
-"İşaretlenirse, barkod ters çevrilir ve etrafında bir kenar boşluğu olur"
+msgstr "İşaretlenirse, barkod ters çevrilir ve etrafında bir kenar boşluğu olur"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:63
 msgid "Show text"
@@ -38825,8 +38792,7 @@ msgstr "Ağ filtresi (joker karakterleri destekler):"
 #: pcbnew/dialogs/dialog_export_step_base.cpp:163
 msgid ""
 "Only copper items belonging to nets matching this filter will be exported."
-msgstr ""
-"Yalnızca bu filtreyle eşleşen ağlara ait bakır ögeler dışa aktarılacak."
+msgstr "Yalnızca bu filtreyle eşleşen ağlara ait bakır ögeler dışa aktarılacak."
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:177
 msgid "Coordinates"
@@ -42476,8 +42442,7 @@ msgstr "Kenar yumuşatma"
 
 #: pcbnew/dialogs/dialog_render_job_base.cpp:112
 msgid "Screen space ambient occlusions and global illumination reflections"
-msgstr ""
-"Ekran alanı ortam gölgelemesi ve küresel aydınlatma yansımaları (yavaş)"
+msgstr "Ekran alanı ortam gölgelemesi ve küresel aydınlatma yansımaları (yavaş)"
 
 #: pcbnew/dialogs/dialog_render_job_base.cpp:123
 msgid "View"
@@ -43508,8 +43473,7 @@ msgstr "Otomatik olarak yeniden doldurma bölgeleri"
 
 #: pcbnew/dialogs/panel_edit_options_base.cpp:443
 msgid "If checked, zones will be re-filled after each edit operation"
-msgstr ""
-"İşaretliyse, her düzenleme işleminden sonra bölgeler yeniden doldurulur"
+msgstr "İşaretliyse, her düzenleme işleminden sonra bölgeler yeniden doldurulur"
 
 #: pcbnew/dialogs/panel_fp_editor_color_settings.cpp:112
 msgid "Internal Layers"
@@ -44710,214 +44674,218 @@ msgid ""
 msgstr ""
 "### Kısıtlamalar\n"
 "\n"
-"| Kısıtlama türü            | Argüman "
-"türü                                                                                                         "
-"| "
-"Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                               "
+"| Kısıtlama türü            | Argüman türü"
+"                                                                                                         "
+"| Açıklama"
+"                                                                                                                                                                                                                                                                                                                                                                                                                                               "
 "|\n"
-"|---------------------------|-----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n"
-"| `annular_width`           | min/opt/"
-"max                                                                                                           "
-"| Via'lardaki halka genişliğini denetler."
-"<br>                                                                                                                                                                                                                                                                                                                                                                                                            "
+"|---------------------------"
+"|-----------------------------------------------------------------------------------------------------------------------"
+"|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 "|\n"
-"| `assertion`               | "
-"\"&lt;ifade>\"                                                                                                          "
-"| Verilen ifadeyi denetler."
-"<br>                                                                                                                                                                                                                                                                                                                                                                                                     "
+"| `annular_width`           | min/opt/max"
+"                                                                                                           "
+"| Via'lardaki halka genişliğini denetler.<br>"
+"                                                                                                                                                                                                                                                                                                                                                                                                            "
+"|\n"
+"| `assertion`               | \"&lt;ifade>"
+"\"                                                                                                          "
+"| Verilen ifadeyi denetler.<br>"
+"                                                                                                                                                                                                                                                                                                                                                                                                     "
 "|\n"
 "| `bridged_mask`            "
 "|                                                                                                                       "
 "| Bakır nesneler arasındaki lehim maskesi köprülerini denetler.  Bu "
 "kısıtlama min/opt/max değeri almaz.  Bir önem derecesi maddesiyle birlikte, "
 "çeşitli koşullarda lehim maskesi köprülemeye izin vermek veya yasaklamak "
-"için kullanılabilir."
-"<br>                                                                                                                                                                                                          "
+"için kullanılabilir.<br>"
+"                                                                                                                                                                                                          "
 "|\n"
-"| `clearance`               | "
-"min                                                                                                                   "
+"| `clearance`               | min"
+"                                                                                                                   "
 "| Farklı netlerdeki bakır nesneler arasındaki **elektriksel** boşluğu "
 "belirtir.  (Netten bağımsız olarak nesneler arasındaki boşluğu belirtmek "
 "için `physical_clearance` bölümüne bakın.)<br><br>Bakır nesnelerin "
 "örtüşmesine (çakışmasına) izin vermek için `min` değeri sıfırdan küçük "
-"(örneğin `-1`) olan bir `clearance` kısıtlaması oluşturun."
-"<br>                                                                                                 "
+"(örneğin `-1`) olan bir `clearance` kısıtlaması oluşturun.<br>"
+"                                                                                                 "
 "|\n"
-"| `courtyard_clearance`     | "
-"min                                                                                                                   "
+"| `courtyard_clearance`     | min"
+"                                                                                                                   "
 "| Bileşen koruma alanları (courtyard) arasındaki boşluğu denetler; herhangi "
 "iki koruma alanı `min` mesafesinden yakınsa hata üretir.  Bir bileşende "
-"koruma alanı şekli yoksa bu kısıtlamadan hata üretilmez."
-"<br>                                                                                                                                                                                                                                        "
+"koruma alanı şekli yoksa bu kısıtlamadan hata üretilmez.<br>"
+"                                                                                                                                                                                                                                        "
 "|\n"
-"| `creepage`                | "
-"min                                                                                                                   "
+"| `creepage`                | min"
+"                                                                                                                   "
 "| Farklı netlerdeki bakır nesneler arasındaki yüzey kaçak mesafesini "
-"belirtir."
-"<br>                                                                                                                                                                                                                                                                                                                                                                       "
+"belirtir.<br>"
+"                                                                                                                                                                                                                                                                                                                                                                       "
 "|\n"
-"| `diff_pair_gap`           | min/opt/"
-"max                                                                                                           "
+"| `diff_pair_gap`           | min/opt/max"
+"                                                                                                           "
 "| Diferansiyel çift içindeki eşleşmiş izler arasındaki boşluğu denetler.  "
 "Eşleşmiş izler, birbirine paralel olan segmentlerdir.  Diferansiyel çift "
 "boşluğu, çiftin eşleşmemiş bölümlerinde (örneğin bileşenden çıkış fanout'u) "
-"test edilmez."
-"<br>                                                                                                                                                                                                        "
+"test edilmez.<br>"
+"                                                                                                                                                                                                        "
 "|\n"
-"| `diff_pair_uncoupled`     | "
-"max                                                                                                                   "
+"| `diff_pair_uncoupled`     | max"
+"                                                                                                                   "
 "| Bir diferansiyel çift izinin, çiftteki diğer polarite izinden bağımsız "
 "olarak yönlendirildiği mesafeyi denetler (örneğin çiftin bileşenden çıkış "
 "yaptığı veya bir via gibi başka bir nesneyi aşmak için bağının koptuğu "
-"yerler)."
-"<br>                                                                                                                                                                                                                   "
+"yerler).<br>"
+"                                                                                                                                                                                                                   "
 "|\n"
-"| `disallow`                | "
-"`track`<br>`via`<br>`through_via`<br>`blind_via`<br>`buried_via`<br>`micro_via`<br>`pad`<br>`zone`<br>`text`<br>`graphic`<br>`hole`<br>`footprint`<br> "
-"| İzin verilmeyecek bir veya daha fazla nesne türünü boşlukla ayırarak "
-"belirtin.  Örneğin `(constraint disallow track)` veya `(constraint disallow "
-"track via pad)`.  Bu türdeki bir nesne kural koşuluyla eşleşirse DRC hatası "
-"oluşturulur.<br><br>Bu kısıtlama özünde bir yasak alan kuralıyla aynıdır; "
-"ancak daha özel yasak alan kısıtlamaları oluşturmak için kullanılabilir."
-"<br>                                                                   |\n"
-"| `edge_clearance`          | min/opt/"
-"max                                                                                                           "
+"| `disallow`                | `track`<br>`via`<br>`through_via`<br>"
+"`blind_via`<br>`buried_via`<br>`micro_via`<br>`pad`<br>`zone`<br>`text`<br>"
+"`graphic`<br>`hole`<br>`footprint`<br> | İzin verilmeyecek bir veya daha "
+"fazla nesne türünü boşlukla ayırarak belirtin.  Örneğin `(constraint "
+"disallow track)` veya `(constraint disallow track via pad)`.  Bu türdeki bir "
+"nesne kural koşuluyla eşleşirse DRC hatası oluşturulur.<br><br>Bu kısıtlama "
+"özünde bir yasak alan kuralıyla aynıdır; ancak daha özel yasak alan "
+"kısıtlamaları oluşturmak için kullanılabilir.<br>"
+"                                                                   |\n"
+"| `edge_clearance`          | min/opt/max"
+"                                                                                                           "
 "| Nesneler ile kart kenarı arasındaki boşluğu denetler.<br><br>Bu aynı "
 "zamanda \"frezeleme toleransı\" olarak da düşünülebilir; zira kart kenarı "
 "`Edge.Cuts` katmanındaki tüm grafik öğeleri ve *oval* pad deliklerini "
-"kapsar.  (Delme toleransı için `physical_hole_clearance` bölümüne "
-"bakın.)<br>                                                                                                                                                      "
+"kapsar.  (Delme toleransı için `physical_hole_clearance` bölümüne bakın.)<br>"
+"                                                                                                                                                      "
 "|\n"
-"| `length`                  | min/"
-"max                                                                                                               "
+"| `length`                  | min/max"
+"                                                                                                               "
 "| Kural koşuluyla eşleşen netlerin toplam yönlendirme uzunluğunu denetler; "
 "`min` değerinin (belirtilmişse) altında veya `max` değerinin (belirtilmişse) "
-"üzerinde olan her net için hata üretir."
-"<br>                                                                                                                                                                                                                                                      "
+"üzerinde olan her net için hata üretir.<br>"
+"                                                                                                                                                                                                                                                      "
 "|\n"
-"| `hole`                    | min/"
-"max                                                                                                               "
+"| `hole`                    | min/max"
+"                                                                                                               "
 "| Pad veya via'daki delme deliğinin boyutunu (çapını) denetler.  Oval "
 "delikler için küçük (minör) çap `min` değeriyle (belirtilmişse), büyük "
-"(majör) çap `max` değeriyle (belirtilmişse) karşılaştırılır."
-"<br>                                                                                                                                                                                                                                           "
+"(majör) çap `max` değeriyle (belirtilmişse) karşılaştırılır.<br>"
+"                                                                                                                                                                                                                                           "
 "|\n"
-"| `hole_clearance`          | "
-"min                                                                                                                   "
+"| `hole_clearance`          | min"
+"                                                                                                                   "
 "| Pad veya via'daki delme deliği ile farklı bir netteki bakır nesneler "
 "arasındaki boşluğu denetler.  Boşluk, delik merkezinden değil çapından "
-"ölçülür."
-"<br>                                                                                                                                                                                                                                                                                              "
+"ölçülür.<br>"
+"                                                                                                                                                                                                                                                                                              "
 "|\n"
-"| `hole_to_hole`            | "
-"min                                                                                                                   "
+"| `hole_to_hole`            | min"
+"                                                                                                                   "
 "| Pad ve via'lardaki mekanik olarak delinmiş delikler arasındaki boşluğu "
 "denetler.  Boşluk, deliklerin merkezleri arasında değil çapları arasında "
 "ölçülür.<br><br>Bu kısıtlama yalnızca matkap uçlarının korunması içindir.  "
 "**Lazerle delinmiş** (mikro-via) ve mekanik olmayan diğer delikler "
 "arasındaki boşluk denetlenmez; **frezelenmiş** (oval şekilli) ve mekanik "
 "olmayan diğer delikler arasındaki boşluk da denetlenmez.<br> |\n"
-"| `physical_clearance`      | "
-"min                                                                                                                   "
+"| `physical_clearance`      | min"
+"                                                                                                                   "
 "| Belirli bir katmandaki (bakır dışı katmanlar dahil) iki nesne arasındaki "
 "boşluğu denetler.<br><br>`clearance`'a kıyasla daha genel amaçlı denetimler "
-"yapabilse de çok daha yavaştır.  Mümkün olduğunca `clearance` kullanın."
-"<br>                                                                                                                                                                                                                      "
+"yapabilse de çok daha yavaştır.  Mümkün olduğunca `clearance` kullanın.<br>"
+"                                                                                                                                                                                                                      "
 "|\n"
-"| `physical_hole_clearance` | "
-"min                                                                                                                   "
+"| `physical_hole_clearance` | min"
+"                                                                                                                   "
 "| Pad veya via'daki delme deliği ile netten bağımsız olarak başka bir nesne "
 "arasındaki boşluğu denetler. Boşluk, delik merkezinden değil çapından "
 "ölçülür.<br><br>Bu aynı zamanda \"delme toleransı\" olarak da düşünülebilir; "
 "yalnızca **yuvarlak** delikleri kapsar (frezeleme toleransı için "
-"`edge_clearance` bölümüne bakın)."
-"<br>                                                                                                                    "
+"`edge_clearance` bölümüne bakın).<br>"
+"                                                                                                                    "
 "|\n"
-"| `silk_clearance`          | min/opt/"
-"max                                                                                                           "
+"| `silk_clearance`          | min/opt/max"
+"                                                                                                           "
 "| Serigrafi katmanlarındaki nesneler ile diğer nesneler arasındaki boşluğu "
-"denetler."
-"<br>                                                                                                                                                                                                                                                                                                                                                                "
+"denetler.<br>"
+"                                                                                                                                                                                                                                                                                                                                                                "
 "|\n"
-"| `skew`                    | "
-"max                                                                                                                   "
+"| `skew`                    | max"
+"                                                                                                                   "
 "| Kural koşuluyla eşleşen netlerin toplam sapmasını denetler; yani her netin "
 "uzunluğu ile kuralla eşleşen tüm netlerin ortalama uzunluğu arasındaki farkı "
 "hesaplar.  Herhangi bir netin ortalamayla arasındaki farkın mutlak değeri "
-"kısıtlamanın `max` değerini aşarsa hata üretilir."
-"<br>                                                                                                                                                               "
+"kısıtlamanın `max` değerini aşarsa hata üretilir.<br>"
+"                                                                                                                                                               "
 "|\n"
-"| `solder_mask_expansion`   | "
-"opt                                                                                                                   "
-"| Pad'ler, şekiller ve izler için lehim maskesi genişlemesini belirtir."
-"<br>                                                                                                                                                                                                                                                                                                                                                                               "
+"| `solder_mask_expansion`   | opt"
+"                                                                                                                   "
+"| Pad'ler, şekiller ve izler için lehim maskesi genişlemesini belirtir.<br>"
+"                                                                                                                                                                                                                                                                                                                                                                               "
 "|\n"
-"| `solder_paste_abs_margin` | "
-"opt                                                                                                                   "
+"| `solder_paste_abs_margin` | opt"
+"                                                                                                                   "
 "| Pad'ler için mutlak lehim macunu boşluğunu belirtir.  Genellikle macunu "
 "içe çekmek için negatif.<br><br>Son lehim macunu boşluğu mutlak boşluk artı "
-"göreli boşluk olacaktır."
-"<br>                                                                                                                                                                                                                                                                        "
+"göreli boşluk olacaktır.<br>"
+"                                                                                                                                                                                                                                                                        "
 "|\n"
-"| `solder_paste_rel_margin` | "
-"opt                                                                                                                   "
+"| `solder_paste_rel_margin` | opt"
+"                                                                                                                   "
 "| Pad'ler için göreli lehim macunu boşluğunu belirtir.  Genellikle macunu "
 "içe çekmek için negatif.<br><br>Son lehim macunu boşluğu mutlak boşluk artı "
-"göreli boşluk olacaktır."
-"<br>                                                                                                                                                                                                                                                                        "
+"göreli boşluk olacaktır.<br>"
+"                                                                                                                                                                                                                                                                        "
 "|\n"
-"| `thermal_relief_gap`      | "
-"min                                                                                                                   "
+"| `thermal_relief_gap`      | min"
+"                                                                                                                   "
 "| Termal relief bağlantısına sahip bir pad ile zone arasındaki boşluk "
-"genişliğini belirtir."
-"<br>                                                                                                                                                                                                                                                                                                                                                         "
+"genişliğini belirtir.<br>"
+"                                                                                                                                                                                                                                                                                                                                                         "
 "|\n"
-"| `thermal_spoke_width`     | "
-"opt                                                                                                                   "
+"| `thermal_spoke_width`     | opt"
+"                                                                                                                   "
 "| Termal relief bağlantısına sahip bir pad'i zone'a bağlayan ispitlerin "
-"genişliğini belirtir."
-"<br>                                                                                                                                                                                                                                                                                                                                                       "
+"genişliğini belirtir.<br>"
+"                                                                                                                                                                                                                                                                                                                                                       "
 "|\n"
-"| `track_width`             | min/opt/"
-"max                                                                                                           "
+"| `track_width`             | min/opt/max"
+"                                                                                                           "
 "| İz ve yay segmentlerinin genişliğini denetler.  `min` değerinin "
 "(belirtilmişse) altında veya `max` değerinin (belirtilmişse) üzerinde "
-"genişliğe sahip her segment için hata üretilir."
-"<br>                                                                                                                                                                                                                                                             "
+"genişliğe sahip her segment için hata üretilir.<br>"
+"                                                                                                                                                                                                                                                             "
 "|\n"
-"| `track_angle`             | min/opt/"
-"max                                                                                                           "
+"| `track_angle`             | min/opt/max"
+"                                                                                                           "
 "| Birbirine bağlı iki iz segmenti arasındaki açıyı denetler.  Açısı `min` "
 "değerinin (belirtilmişse) altında veya `max` değerinin (belirtilmişse) "
-"üzerinde olan her bağlı çift için hata üretilir."
-"<br>                                                                                                                                                                                                                                                  "
+"üzerinde olan her bağlı çift için hata üretilir.<br>"
+"                                                                                                                                                                                                                                                  "
 "|\n"
-"| `track_segment_length`    | min/"
-"max                                                                                                               "
+"| `track_segment_length`    | min/max"
+"                                                                                                               "
 "| İz ve yay segmentlerinin uzunluğunu denetler.  Uzunluğu `min` değerinin "
 "(belirtilmişse) altında veya `max` değerinin (belirtilmişse) üzerinde olan "
-"her segment için hata üretilir."
-"<br>                                                                                                                                                                                                                                                               "
+"her segment için hata üretilir.<br>"
+"                                                                                                                                                                                                                                                               "
 "|\n"
-"| `via_count`               | "
-"max                                                                                                                   "
+"| `via_count`               | max"
+"                                                                                                                   "
 "| Kural koşuluyla eşleşen her netteki via sayısını sayar.  Bu sayı eşleşen "
 "herhangi bir nette kısıtlamanın `max` değerini aşarsa o net için hata "
-"üretilir."
-"<br>                                                                                                                                                                                                                                                                                         "
+"üretilir.<br>"
+"                                                                                                                                                                                                                                                                                         "
 "|\n"
 "| `via_dangling`            "
 "|                                                                                                                       "
 "| Bağlantısız veya yalnızca bir katmanda bağlı via'ları denetler.  Bu "
 "kısıtlama min/opt/max değeri almaz.  Bir önem derecesi maddesiyle birlikte, "
 "çeşitli koşullarda sallanan via'lara izin vermek veya yasaklamak için "
-"kullanılabilir."
-"<br>                                                                                                                                                                                                                 "
+"kullanılabilir.<br>"
+"                                                                                                                                                                                                                 "
 "|\n"
-"| `zone_connection`         | "
-"`solid`<br>`thermal_reliefs`<br>`none`                                                                                "
-"| Zone ile pad arasında kurulacak bağlantı türünü belirtir."
-"<br>                                                                                                                                                                                                                                                                                                                                                                                         "
+"| `zone_connection`         | `solid`<br>`thermal_reliefs`<br>"
+"`none`                                                                                "
+"| Zone ile pad arasında kurulacak bağlantı türünü belirtir.<br>"
+"                                                                                                                                                                                                                                                                                                                                                                                         "
 "|\n"
 "\n"
 "\n"
@@ -45290,8 +45258,8 @@ msgid ""
 msgstr ""
 "### İfade Fonksiyonları\n"
 "\n"
-"Tüm fonksiyon parametreleri basit joker karakterleri destekler (`*` ve `?"
-"`).\n"
+"Tüm fonksiyon parametreleri basit joker karakterleri destekler (`*` ve `?`)"
+".\n"
 "\n"
 "\n"
 "```\n"
@@ -45647,13 +45615,13 @@ msgstr ""
 "\n"
 "    (rule \"Farklı Netlerdeki Via'lar Arasındaki Mesafe\"\n"
 "        (constraint hole_to_hole (min 0.254mm))\n"
-"        (condition \"A.Type == 'Via' && B.Type == 'Via' && A.Net != "
-"B.Net\"))\n"
+"        (condition \"A.Type == 'Via' && B.Type == 'Via' && A.Net != B.Net\"))"
+"\n"
 "\n"
 "    (rule \"Farklı Netlerdeki Pad'ler Arasındaki Boşluk\"\n"
 "        (constraint clearance (min 3.0mm))\n"
-"        (condition \"A.Type == 'Pad' && B.Type == 'Pad' && A.Net != "
-"B.Net\"))\n"
+"        (condition \"A.Type == 'Pad' && B.Type == 'Pad' && A.Net != B.Net\"))"
+"\n"
 "\n"
 "\n"
 "    (rule \"Via Deliği ile İz Arasındaki Boşluk\"\n"
@@ -45764,8 +45732,8 @@ msgstr ""
 "delecekse.\n"
 "    # \n"
 "    (rule hole_to_hole_uvia_exclusion\n"
-"        (condition \"A.Via_Type == 'Blind/buried' && B.Via_Type == "
-"'Micro'\")\n"
+"        (condition \"A.Via_Type == 'Blind/buried' && B.Via_Type == 'Micro'\")"
+"\n"
 "        (constraint hole_to_hole)\n"
 "        (severity ignore))\n"
 "\n"
@@ -49222,8 +49190,7 @@ msgstr "Ayak izlerini kütüphaneye aktar:"
 
 #: pcbnew/footprint_libraries_utils.cpp:659
 msgid "Update board footprints to link to exported footprints"
-msgstr ""
-"Kart ayak izlerini dışa aktarılmış ayak izlerine bağlamak için güncelle"
+msgstr "Kart ayak izlerini dışa aktarılmış ayak izlerine bağlamak için güncelle"
 
 #: pcbnew/footprint_libraries_utils.cpp:859
 #: pcbnew/footprint_viewer_frame.cpp:742
@@ -53327,9 +53294,9 @@ msgstr ""
 "        <td> &nbsp;<br><samp>~{overbar}</samp><br> &nbsp;<br><samp>~{CLK}</"
 "samp></td>\n"
 "        <td></td>\n"
-"        <td> <samp><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></"
-"samp><br> <samp>üstçizgi</samp><br> <samp><u>&nbsp;&nbsp;&nbsp;</u></"
-"samp><br> <samp>CLK</samp></td>\n"
+"        <td> <samp><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></samp>"
+"<br> <samp>üstçizgi</samp><br> <samp><u>&nbsp;&nbsp;&nbsp;</u></samp><br> "
+"<samp>CLK</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
 "        <td></td>\n"
@@ -53514,8 +53481,8 @@ msgstr ""
 "        <td>&nbsp;<br><samp>1</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
-"        <td>&nbsp;<br><samp>@{if(condition, true_val, false_val)}</samp></"
-"td>\n"
+"        <td>&nbsp;<br><samp>@{if(condition, true_val, false_val)}</samp></td>"
+"\n"
 "        <td></td>\n"
 "        <td>&nbsp;<br><samp>Koşullu metin gösterimi</samp></td>\n"
 "    </tr>\n"
@@ -53523,12 +53490,12 @@ msgstr ""
 "        <td>&nbsp;<br><samp>@{if(\"${LAYER}\" == \"F.Cu\", \"TOP\", "
 "\"BOTTOM\")}</samp></td>\n"
 "        <td></td>\n"
-"        <td>&nbsp;<br><samp>TOP</samp> (ön katmanda) veya <samp>BOTTOM</"
-"samp></td>\n"
+"        <td>&nbsp;<br><samp>TOP</samp> (ön katmanda) veya <samp>BOTTOM</samp>"
+"</td>\n"
 "    </tr>\n"
 "    <tr>\n"
-"        <td>&nbsp;<br><samp>@{if(${ROW} > 5, \"High\", \"Low\")}</samp></"
-"td>\n"
+"        <td>&nbsp;<br><samp>@{if(${ROW} > 5, \"High\", \"Low\")}</samp></td>"
+"\n"
 "        <td></td>\n"
 "        <td>&nbsp;<br><samp>Sayısal karşılaştırmalar da çalışır</samp></td>\n"
 "    </tr>\n"
@@ -53579,8 +53546,8 @@ msgstr ""
 "</table>\n"
 "<p></p>\n"
 "<p></p>\n"
-"<i>İşaretlemenin değişken genişletmeye göre önceliği olduğunu unutmayın.</"
-"i>\n"
+"<i>İşaretlemenin değişken genişletmeye göre önceliği olduğunu unutmayın.</i>"
+"\n"
 "<p></p>\n"
 "<p><b>Ayak İzi Çapraz Referansları:</b> Diğer ayak izlerindeki alanlara ve "
 "pedlere <samp>${refdes:field}</samp> veya <samp>${refdes:function(pad)}</"
@@ -56594,8 +56561,7 @@ msgstr "Kütüphaneden Ayak İzlerini Güncelle..."
 
 #: pcbnew/tools/pcb_actions.cpp:990
 msgid "Update footprints to include any changes from the library"
-msgstr ""
-"Kütüphanedeki değişiklikleri içerecek şekilde ayak izlerini güncelleyin"
+msgstr "Kütüphanedeki değişiklikleri içerecek şekilde ayak izlerini güncelleyin"
 
 #: pcbnew/tools/pcb_actions.cpp:996
 msgid "Remove Unused Pads..."
@@ -59748,14 +59714,13 @@ msgid "KiCad Drawing Sheet"
 msgstr "KiCad Çizim Sayfası"
 
 #: scripting/python_manager.cpp:135
-#, fuzzy
 msgid "Process could not be created"
-msgstr "Dosya '%s' oluşturulamadı."
+msgstr "İşlem oluşturulamadı"
 
 #: scripting/python_scripting.cpp:367
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create user scripting path %s."
-msgstr "'%s' yolu açılamadı veya oluşturulamadı."
+msgstr "Kullanıcı betik yolu %s oluşturulamadı."
 
 #~ msgid ""
 #~ "Install a remote symbol server using the Plugin and Content Manager to "
