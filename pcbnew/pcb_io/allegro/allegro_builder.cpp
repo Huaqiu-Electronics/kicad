@@ -2033,10 +2033,7 @@ std::unique_ptr<PCB_TEXT> BOARD_BUILDER::buildPcbText( const BLK_0x30_STR_WRAPPE
 {
     std::unique_ptr<PCB_TEXT> text = std::make_unique<PCB_TEXT>( &aParent );
 
-    VECTOR2I     textPos = scale( VECTOR2I{ aStrWrapper.m_CoordsX, aStrWrapper.m_CoordsY } );
     PCB_LAYER_ID layer = getLayer( aStrWrapper.m_Layer );
-
-    text->SetPosition( textPos );
     text->SetLayer( layer );
 
     const BLK_0x31_SGRAPHIC* strGraphic = expectBlockByKey<BLK_0x31_SGRAPHIC>( aStrWrapper.m_StrGraphicPtr, 0x31 );
@@ -2079,6 +2076,15 @@ std::unique_ptr<PCB_TEXT> BOARD_BUILDER::buildPcbText( const BLK_0x30_STR_WRAPPE
 
     const EDA_ANGLE textAngle = fromMillidegrees( aStrWrapper.m_Rotation );
     text->SetTextAngle( textAngle );
+
+    VECTOR2I textPos = scale( VECTOR2I{ aStrWrapper.m_CoordsX, aStrWrapper.m_CoordsY } );
+
+    // KiCad's stroke font has a different baseline than Allegro's, so apply a vertical offset to compensate.
+    // The exact offset is a bit of guesswork based on visually matching Allegro and KiCad text, but the
+    // stoke font itself isn't the same anyway, so we can't be 100% here.
+    VECTOR2I textFontOffset = VECTOR2I{ 0, -( scale( fontDef->m_CharHeight ) * 45 ) / 100 };
+    RotatePoint( textFontOffset, textAngle );
+    text->SetPosition( textPos + textFontOffset );
 
     if( props->m_Reversal == BLK_0x30_STR_WRAPPER::TEXT_REVERSAL::REVERSED )
         text->SetMirrored( true );
