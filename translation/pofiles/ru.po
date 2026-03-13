@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 21:16+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"Last-Translator: alevtina-karashokova <karashokovaaa@basealt.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ru/>\n"
 "Language: ru\n"
@@ -12264,8 +12264,8 @@ msgstr ""
 #, c-format
 msgid "Component '%s' footprint '%s' was found in <b>multiple</b> libraries.\n"
 msgstr ""
-"Компонент '%s' с посад. местом '%s' был найден в <b>нескольких</"
-"b>библиотеках.\n"
+"Компонент '%s' с посад. местом '%s' был найден в <b>нескольких</b>"
+"библиотеках.\n"
 
 #: cvpcb/readwrite_dlgs.cpp:167
 msgid "First check your footprint library table entries."
@@ -25332,8 +25332,7 @@ msgstr ""
 
 #: eeschema/tools/backannotate.cpp:348
 msgid "Re-linking footprints requires a fully annotated schematic."
-msgstr ""
-"Для переопределения посад. мест требуется полностью обозначенная схема."
+msgstr "Для переопределения посад. мест требуется полностью обозначенная схема."
 
 #: eeschema/tools/backannotate.cpp:351
 #, fuzzy
@@ -39708,8 +39707,8 @@ msgstr ""
 "зазора.\n"
 "Задание отрицательного значения сделает размер апертуры трафарета меньше "
 "конт. пл.\n"
-"Это значение можно переопределить для отдельных конт. пл. на вкладке "
-"«Настройка зазоров» в окне «Свойства контактной площадки»."
+"Это значение можно переопределить для отдельных конт. пл. на вкладке «"
+"Настройка зазоров» в окне «Свойства контактной площадки»."
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:423
 #: pcbnew/dialogs/dialog_global_edit_text_and_graphics.cpp:222
@@ -40748,8 +40747,7 @@ msgstr "Чтение файла списка цепей '%s'.\n"
 
 #: pcbnew/dialogs/dialog_import_netlist.cpp:221
 msgid "Using reference designators to match symbols and footprints.\n"
-msgstr ""
-"Для сопоставление компонентов и посад. мест используются обозначения.\n"
+msgstr "Для сопоставление компонентов и посад. мест используются обозначения.\n"
 
 #: pcbnew/dialogs/dialog_import_netlist.cpp:223
 msgid "Using tstamps (unique IDs) to match symbols and footprints.\n"
@@ -42216,8 +42214,8 @@ msgstr ""
 "Установить глобальную коррекцию ширины для точной печати в PostScript.\n"
 "Эта коррекция предназначена для компенсации ошибок ширины дорожек, а также "
 "размеров конт. пл. и перех. отв.\n"
-"Разумное значение коррекции ширины должно быть в диапазоне [-"
-"(MinTrackWidth-1), +(MinClearanceValue-1)]."
+"Разумное значение коррекции ширины должно быть в диапазоне [-(MinTrackWidth-"
+"1), +(MinClearanceValue-1)]."
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:324
 msgid "Force A4 output"
@@ -49207,8 +49205,7 @@ msgstr "(ожидался тип 'SMD'; но задано '%s')"
 #: pcbnew/footprint.cpp:4072
 #, c-format
 msgid "(net-tie pad group contains unknown pad number %s)"
-msgstr ""
-"(группа связки цепей конт. пл. содержит неизвестный номер конт. пл. %s)"
+msgstr "(группа связки цепей конт. пл. содержит неизвестный номер конт. пл. %s)"
 
 #: pcbnew/footprint.cpp:4077
 #, c-format
@@ -51710,8 +51707,7 @@ msgstr ""
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3702
 #, c-format
 msgid "Footprint %s pad %s uses a hole of unknown kind %d."
-msgstr ""
-"У посад. места %s конт. пл. %s содержит отверстие неизвестного типа %d."
+msgstr "У посад. места %s конт. пл. %s содержит отверстие неизвестного типа %d."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3767
 #, fuzzy, c-format
@@ -56669,8 +56665,7 @@ msgstr "Обновить посад. место..."
 
 #: pcbnew/tools/pcb_actions.cpp:983
 msgid "Update footprint to include any changes from the library"
-msgstr ""
-"Обновить посад. место, чтобы получить последние изменения из библиотеки"
+msgstr "Обновить посад. место, чтобы получить последние изменения из библиотеки"
 
 #: pcbnew/tools/pcb_actions.cpp:989
 msgid "Update Footprints from Library..."
@@ -56678,8 +56673,7 @@ msgstr "Обновить посад. места из библиотеки..."
 
 #: pcbnew/tools/pcb_actions.cpp:990
 msgid "Update footprints to include any changes from the library"
-msgstr ""
-"Обновить посад. места, чтобы получить последние изменения из библиотеки"
+msgstr "Обновить посад. места, чтобы получить последние изменения из библиотеки"
 
 #: pcbnew/tools/pcb_actions.cpp:996
 msgid "Remove Unused Pads..."
