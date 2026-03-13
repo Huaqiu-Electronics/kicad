@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 20:08+0000\n"
-"Last-Translator: Andrej Valek <andy@skyrain.eu>\n"
+"PO-Revision-Date: 2026-03-13 20:09+0000\n"
+"Last-Translator: EdizonTN <edizontn@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
 "source/sk/>\n"
 "Language: sk\n"
@@ -117,7 +117,7 @@ msgstr "Vaša verzia OpenGL nie je podporovaná. Potrebné minimum je 1.5."
 #: 3d-viewer/3d_canvas/eda_3d_canvas.cpp:575
 #, c-format
 msgid "Last render time %.0f ms"
-msgstr "Čas renderovania %.0f ms"
+msgstr "Posledný čas vykreslenia %.0f ms"
 
 #: 3d-viewer/3d_canvas/eda_3d_canvas.cpp:812
 #, c-format
@@ -989,9 +989,10 @@ msgid ""
 "Successive Tabs while holding %s down will cycle through viewports in the "
 "popup."
 msgstr ""
-"Uložiť a obnoviť pozíciu kamery a priblíženie.\n"
-"Použiť %s+Tab pre aktiváciu.\n"
-"Nasledujúce okná sa budú cyklicky zobrazovať kým je aktívny %s."
+"Uložiť a obnoviť pozíciu kamery a priblížiť.\n"
+"Pomocou %s+Tab je aktivovaný výber.\n"
+"Opakovaným stláčaním klávesy Tab pri stlačenej klávese %s, je prepínané "
+"medzi zobrazeniami vo vyskakovacom okne."
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:575
 msgid "Left double click or middle click to change color"
@@ -1071,42 +1072,42 @@ msgstr "Vybrať predvoľbu:"
 #: pcbnew/widgets/appearance_controls.cpp:2990
 #, c-format
 msgid "Viewports (%s+Tab):"
-msgstr "Okná zobrazenia (%s+Tab):"
+msgstr "Zobrazenia (%s+Tab):"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:964
 #: pcbnew/widgets/appearance_controls.cpp:2999
 msgid "Save viewport..."
-msgstr "Uložiť oblasť zobrazenia..."
+msgstr "Uložiť zobrazenie..."
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:965
 #: pcbnew/widgets/appearance_controls.cpp:3000
 msgid "Delete viewport..."
-msgstr "Odstrániť oblasť zobrazenia..."
+msgstr "Odstrániť zobrazenie..."
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:998
 #: pcbnew/widgets/appearance_controls.cpp:3050
 msgid "Viewport name:"
-msgstr "Názov oblasti pohľadu:"
+msgstr "Názov zobrazenia:"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:999
 #: pcbnew/widgets/appearance_controls.cpp:3050
 msgid "Save Viewport"
-msgstr "Uložiť oblasť zobrazenia"
+msgstr "Uložiť zobrazenie"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:1040
 #: pcbnew/widgets/appearance_controls.cpp:3091
 msgid "Viewports"
-msgstr "Oblasť zobrazenia"
+msgstr "Zobrazenia"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:1049
 #: pcbnew/widgets/appearance_controls.cpp:3100
 msgid "Delete Viewport"
-msgstr "Odstrániť oblasť zobrazenia"
+msgstr "Odstrániť zobrazenie"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:1050
 #: pcbnew/widgets/appearance_controls.cpp:3101
 msgid "Select viewport:"
-msgstr "Vybrať oblasť zobrazenia:"
+msgstr "Vybrať zobrazenie:"
 
 #: 3d-viewer/dialogs/appearance_controls_3D_base.cpp:39
 #: pcbnew/widgets/appearance_controls_base.cpp:161
@@ -1880,7 +1881,7 @@ msgstr "Obrázok v odtieňoch sivej"
 
 #: bitmap2component/bitmap2cmp_panel_base.cpp:28
 msgid "Black && White Picture"
-msgstr "Čierno && biely obrázok"
+msgstr "Čierno-biely obrázok"
 
 #: bitmap2component/bitmap2cmp_panel_base.cpp:36
 msgid "Image Information"
@@ -4315,7 +4316,7 @@ msgstr "Editovanie"
 
 #: common/dialogs/panel_common_settings_base.cpp:329
 msgid "Warp mouse to anchor of moved object"
-msgstr "Umiestniť kurzor myši na kotvu presunutého objektu"
+msgstr "Umiestniť kurzor myši na bod ukotvenia presunutého objektu"
 
 #: common/dialogs/panel_common_settings_base.cpp:333
 msgid "First hotkey selects tool"
@@ -6406,7 +6407,7 @@ msgstr "Editor puzdier"
 
 #: common/eda_base_frame.cpp:1486 common/eda_base_frame.cpp:1500
 msgid "Origins & Axes"
-msgstr "Počiatky & Osi"
+msgstr "Počiatky a osi"
 
 #: common/eda_base_frame.cpp:1490
 msgid "Footprint Defaults"
@@ -8592,15 +8593,15 @@ msgstr "Výplň tvarov"
 #: common/layer_id.cpp:89
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:72
 msgid "Schematic text && graphics"
-msgstr "Text schémy && grafika"
+msgstr "Schematické texty a grafiky"
 
 #: common/layer_id.cpp:90
 msgid "Symbol private text && graphics"
-msgstr "Privátny text symbolu && grafika"
+msgstr "Neverejný text a grafika symbolu"
 
 #: common/layer_id.cpp:91
 msgid "Schematic text && graphics backgrounds"
-msgstr "Text schémy && grafické pozadie"
+msgstr "Schematický text a grafické pozadia"
 
 #: common/layer_id.cpp:92 eeschema/widgets/panel_sch_selection_filter.cpp:232
 #: eeschema/widgets/panel_sch_selection_filter_base.cpp:37
@@ -8659,7 +8660,7 @@ msgstr "Vylúčenia ERC"
 #: common/layer_id.cpp:105 common/layer_id.cpp:145
 #: pcbnew/widgets/appearance_controls.cpp:351
 msgid "Anchors"
-msgstr "Ukotvenia"
+msgstr "Body ukotvenia"
 
 #: common/layer_id.cpp:106 common/layer_id.cpp:150
 msgid "Helper items"
@@ -9121,8 +9122,8 @@ msgid ""
 "files that are not present in the restored commit."
 msgstr ""
 "Výberom možnosti „Zachovať všetky súbory“ sa obnoví vybraný commit, ale "
-"zachovajú sa všetky existujúce súbory v adresári projektu. Výberom možnosti "
-"„Pokračovať“ sa vymažú súbory, ktoré sa v obnovenom commite nenachádzajú."
+"zachovajú sa všetky existujúce súbory v adresári projektu. Výberom možnosti „"
+"Pokračovať“ sa vymažú súbory, ktoré sa v obnovenom commite nenachádzajú."
 
 #: common/local_history.cpp:1749
 msgid "Cannot restore - the following files are open by another user:"
@@ -9211,8 +9212,7 @@ msgstr "Nie je možné analyzovať hodnotu v sekcii symbolov netlistu."
 #: common/netlist_reader/legacy_netlist_reader.cpp:186
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:187
 msgid "Cannot parse pin name in symbol net section of netlist."
-msgstr ""
-"Nie je možné analyzovať meno špendlíka v časti so symbolmi net netlist."
+msgstr "Nie je možné spracovať názov vývodu v sekcii s symbolov v netliste."
 
 #: common/netlist_reader/legacy_netlist_reader.cpp:195
 #: pcbnew/netlist_reader/legacy_netlist_reader.cpp:196
@@ -9255,27 +9255,27 @@ msgstr "Žiadne oznamy"
 
 #: common/oauth/oauth_loopback_server.cpp:126
 msgid "Missing HTTP method in callback request."
-msgstr ""
+msgstr "Chýbajúca HTTP metóda v požiadavke spätného volania."
 
 #: common/oauth/oauth_loopback_server.cpp:134
 msgid "Missing callback URL in request."
-msgstr ""
+msgstr "Chýbajúce URL spätného volania v požiadavke."
 
 #: common/oauth/oauth_loopback_server.cpp:145
 msgid "Unexpected callback path."
-msgstr ""
+msgstr "Neočakávaná cesta v spätnom volaní."
 
 #: common/oauth/oauth_loopback_server.cpp:153
 msgid "OAuth callback state did not match."
-msgstr ""
+msgstr "Stav spätného volania OAuth nesúhlasí."
 
 #: common/oauth/oauth_loopback_server.cpp:163
 msgid "Authorization server returned an OAuth error."
-msgstr ""
+msgstr "Autorizačný server vrátil chybu OAuth."
 
 #: common/oauth/oauth_loopback_server.cpp:171
 msgid "Missing authorization code in callback."
-msgstr ""
+msgstr "Chýbajúci autorizačný kód v spätnom volaní."
 
 #: common/page_info.cpp:48
 msgid "A5 148 x 210mm"
@@ -9514,49 +9514,51 @@ msgstr "Chyba: "
 
 #: common/remote_provider_client.cpp:287
 msgid "Sign in required for this provider."
-msgstr ""
+msgstr "Tento poskytovateľ vyžaduje prihlásenie."
 
 #: common/remote_provider_client.cpp:329
 msgid "Provider metadata does not include a session bootstrap URL."
-msgstr ""
+msgstr "Metadáta poskytovateľa neobsahujú URL adresu relácie bootstrap."
 
 #: common/remote_provider_client.cpp:352
 msgid "Bootstrap response did not include a nonce URL."
-msgstr ""
+msgstr "Odpoveď bootstrapu neobsahovala URL s jednorazovým token (nonce)."
 
 #: common/remote_provider_client.cpp:371
 msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
 msgstr ""
+"Pôvod jednorazového tokenu (nonce) bootstrap URL sa nezhoduje s bootstrap "
+"endpointom."
 
 #: common/remote_provider_client.cpp:407
 #, c-format
 msgid "Remote provider request failed with HTTP %d."
-msgstr ""
+msgstr "Vzdialená požiadavka poskytovateľa zlyhala s HTTP %d."
 
 #: common/remote_provider_client.cpp:432
 #, c-format
 msgid "Remote provider returned invalid JSON: %s"
-msgstr ""
+msgstr "Vzdialený poskytovateľ vrátil neplatný JSON: %s"
 
 #: common/remote_provider_client.cpp:453
 #, c-format
 msgid "Remote provider returned invalid token JSON: %s"
-msgstr ""
+msgstr "Vzdialený poskytovateľ vrátil neplatný JSON token: %s"
 
 #: common/remote_provider_client.cpp:485
 #, c-format
 msgid "Remote provider token response was incomplete: %s"
-msgstr ""
+msgstr "Odpoveď vzdialeného poskytovateľa tokenu bola neúplná: %s"
 
 #: common/remote_provider_metadata.cpp:53
 #, c-format
 msgid "Remote provider metadata schema '%s' is not readable."
-msgstr ""
+msgstr "Schéma metadát vzdialeného poskytovateľa '%s‘ nie je čitateľná."
 
 #: common/remote_provider_metadata.cpp:64
 #, c-format
 msgid "Remote provider metadata failed schema validation: %s"
-msgstr ""
+msgstr "Zlyhalo overenie schémy metadát vzdialeného poskytovateľa: %s"
 
 #: common/remote_provider_metadata.cpp:124
 #, fuzzy, c-format
@@ -9573,37 +9575,41 @@ msgstr ""
 
 #: common/remote_provider_metadata.cpp:154
 msgid "Remote provider metadata must enable web_ui_v1."
-msgstr ""
+msgstr "Vzdialený poskytovateľ metadát musí povoliť web_ui_v1."
 
 #: common/remote_provider_metadata.cpp:161
 msgid ""
 "Remote provider metadata must enable direct_downloads_v1, "
 "inline_payloads_v1, or both."
 msgstr ""
+"Vzdialený poskytovateľ metadát musí povoliť direct_downloads_v1, "
+"inline_payloads_v1, alebo oboje."
 
 #: common/remote_provider_metadata.cpp:168
 msgid "Remote provider metadata must define session_bootstrap_url for oauth2."
 msgstr ""
+"Vzdialený poskytovateľ metadát musí povoliť web_ui_v1 definovať "
+"session_bootstrap_url pre oauth2."
 
 #: common/remote_provider_metadata.cpp:173
 msgid "api_base_url"
-msgstr ""
+msgstr "api_base_url"
 
 #: common/remote_provider_metadata.cpp:179
 msgid "panel_url"
-msgstr ""
+msgstr "panel_url"
 
 #: common/remote_provider_metadata.cpp:185
 msgid "session_bootstrap_url"
-msgstr ""
+msgstr "session_bootstrap_url"
 
 #: common/remote_provider_metadata.cpp:193
 msgid "session_bootstrap_url must share the same origin as panel_url."
-msgstr ""
+msgstr "session_bootstrap_url musí mať rovnaký pôvod ako panel_url."
 
 #: common/remote_provider_metadata.cpp:199
 msgid "auth.metadata_url"
-msgstr ""
+msgstr "auth.metadata_url"
 
 #: common/remote_provider_models.cpp:44
 #, fuzzy, c-format
@@ -9615,11 +9621,11 @@ msgstr ""
 
 #: common/remote_provider_models.cpp:50
 msgid "OAuth metadata must include authorization_endpoint and token_endpoint."
-msgstr ""
+msgstr "Metadáta OAuth musia obsahovať authorization_endpoint a token_endpoint."
 
 #: common/remote_provider_models.cpp:55
 msgid "authorization_endpoint"
-msgstr ""
+msgstr "authorization_endpoint"
 
 #: common/remote_provider_models.cpp:60
 #, fuzzy
@@ -9628,21 +9634,21 @@ msgstr "Koncový bod X"
 
 #: common/remote_provider_models.cpp:66
 msgid "revocation_endpoint"
-msgstr ""
+msgstr "revocation_endpoint"
 
 #: common/remote_provider_models.cpp:98
 #, c-format
 msgid "Remote provider manifest schema '%s' is not readable."
-msgstr ""
+msgstr "Schéma manifestu vzdialeného poskytovateľa '%s‘ nie je čitateľná."
 
 #: common/remote_provider_models.cpp:109
 #, c-format
 msgid "Remote provider manifest failed schema validation: %s"
-msgstr ""
+msgstr "Overenie schémy manifestu vzdialeného poskytovateľa zlyhalo: %s"
 
 #: common/remote_provider_models.cpp:136
 msgid "assets[].download_url"
-msgstr ""
+msgstr "assets[].download_url"
 
 #: common/remote_provider_models.cpp:147
 #, fuzzy, c-format
@@ -9655,6 +9661,8 @@ msgid ""
 "%s must use HTTPS unless allow_insecure_localhost is enabled for a loopback "
 "URL."
 msgstr ""
+"%s musí používať HTTPS, pokiaľ nie je pre loopback URL povolená voľba "
+"allow_insecure_localhost."
 
 #: common/richio.cpp:59 eeschema/tools/sch_drawing_tools.cpp:3195
 #, c-format
@@ -9801,7 +9809,7 @@ msgstr "Knižnice"
 
 #: common/startwizard/startwizard_provider_privacy.cpp:76
 msgid "Updates && Privacy"
-msgstr "Aktualizácie && Súkromie"
+msgstr "Aktualizácie a súkromie"
 
 #: common/startwizard/startwizard_provider_settings.cpp:73
 msgid "Import settings from a previous version (none found)"
@@ -10125,7 +10133,7 @@ msgstr "Odstrániť vybrané položky"
 
 #: common/tool/actions.cpp:412
 msgid "Interactive Delete Tool"
-msgstr "Nástroj na interaktívne mazanie"
+msgstr "Nástroj na interaktívne odstraňovanie"
 
 #: common/tool/actions.cpp:413
 msgid "Delete clicked items"
@@ -10201,7 +10209,7 @@ msgstr "Zvýšiť sekundárne pole vybranej položky (položiek)"
 
 #: common/tool/actions.cpp:483
 msgid "Decrement Secondary"
-msgstr ""
+msgstr "Úbytok sekundárny"
 
 #: common/tool/actions.cpp:484
 msgid "Decrement the secondary field of the selected item(s)"
@@ -10213,7 +10221,7 @@ msgstr "Vybrať stĺpec(stĺpce)"
 
 #: common/tool/actions.cpp:491
 msgid "Select complete column(s) containing the current selected cell(s)"
-msgstr ""
+msgstr "Vybrať celý stĺpec (stĺpce) obsahujúce aktuálnu vybranú bunku (bunky)"
 
 #: common/tool/actions.cpp:497
 msgid "Select Row(s)"
@@ -10221,7 +10229,7 @@ msgstr "Vybrať riadok(riadky)"
 
 #: common/tool/actions.cpp:498
 msgid "Select complete row(s) containing the current selected cell(s)"
-msgstr ""
+msgstr "Vybrať celý riadok (riadky) obsahujúce aktuálnu vybranú bunku (bunky)"
 
 #: common/tool/actions.cpp:504
 msgid "Select Table"
@@ -10245,7 +10253,7 @@ msgstr "Pridať riadok pod"
 
 #: common/tool/actions.cpp:519
 msgid "Insert a new table row below the selected cell(s)"
-msgstr ""
+msgstr "Vložiť nový riadok tabuľky pod vybranú bunku (bunky)"
 
 #: common/tool/actions.cpp:525 include/tool/edit_table_tool_base.h:264
 msgid "Add Column Before"
@@ -10253,7 +10261,7 @@ msgstr "Pridať stĺpec pred"
 
 #: common/tool/actions.cpp:526
 msgid "Insert a new table column before the selected cell(s)"
-msgstr ""
+msgstr "Vložiť nový riadok tabuľky pred vybranú bunku (bunky)"
 
 #: common/tool/actions.cpp:532 include/tool/edit_table_tool_base.h:315
 msgid "Add Column After"
@@ -10285,11 +10293,11 @@ msgstr "Zlúčiť bunky"
 
 #: common/tool/actions.cpp:554
 msgid "Turn selected table cells into a single cell"
-msgstr ""
+msgstr "Premeniť vybrané bunky tabuľky na jednu bunku"
 
 #: common/tool/actions.cpp:560 include/tool/edit_table_tool_base.h:585
 msgid "Unmerge Cells"
-msgstr ""
+msgstr "Rozdeliť bunky"
 
 #: common/tool/actions.cpp:561
 msgid "Turn merged table cells back into separate cells."
@@ -10308,6 +10316,7 @@ msgstr "Exportovať tabuľku do CSV..."
 #: common/tool/actions.cpp:575
 msgid "Export table contents to CSV file with resolved text variables"
 msgstr ""
+"Exportovať obsah tabuľky s vyriešenými textovými premennými do CSV súboru"
 
 #: common/tool/actions.cpp:586
 msgid "Keep Arc Center, Adjust Radius"
@@ -10338,6 +10347,7 @@ msgstr "Zachovať polomer a stred oblúka, s možnosťou nastaviť uhol"
 #: common/tool/actions.cpp:601
 msgid "Switch arc editing mode to maintaining radius when endpoint are moved"
 msgstr ""
+"Prepnúť režim úpravy oblúka na zachovanie polomeru pri pohybe koncových bodov"
 
 #: common/tool/actions.cpp:608
 msgid "Cycle Arc Editing Mode"
@@ -10345,7 +10355,7 @@ msgstr "Prepnúť režim úprav oblúka"
 
 #: common/tool/actions.cpp:609
 msgid "Switch to a different method of editing arcs"
-msgstr ""
+msgstr "Prepnúť na iný spôsob úpravy oblúkov"
 
 #: common/tool/actions.cpp:617
 msgid "Show/hide the search panel"
@@ -10359,7 +10369,7 @@ msgstr "Hľadať"
 
 #: common/tool/actions.cpp:633 eeschema/dialogs/dialog_sch_find.cpp:44
 msgid "Find and Replace"
-msgstr "Nájsť a nahradiť"
+msgstr "Hľadať a nahradiť"
 
 #: common/tool/actions.cpp:641 pcbnew/dialogs/dialog_find_base.cpp:111
 msgid "Find Next"
@@ -10408,6 +10418,7 @@ msgstr "Priblížiť a prispôsobiť"
 #: common/tool/actions.cpp:721
 msgid "Zoom to worksheet area if exists or edited object"
 msgstr ""
+"Priblížiť na oblasť pracovného listu, ak existuje, alebo na upravovaný objekt"
 
 #: common/tool/actions.cpp:728
 msgid "Zoom to All Objects"
@@ -10487,7 +10498,7 @@ msgstr "Priblížiť na vybrané"
 
 #: common/tool/actions.cpp:817
 msgid "Zoom to an area selection created by a mouse drag"
-msgstr ""
+msgstr "Priblížiť na oblasť vybranú ťahaním myši"
 
 #: common/tool/actions.cpp:825 common/widgets/mathplot.cpp:1410
 msgid "Undo Last Zoom"
@@ -10495,7 +10506,7 @@ msgstr "Vrátiť poslednú zmenu priblíženia"
 
 #: common/tool/actions.cpp:826 common/widgets/mathplot.cpp:1411
 msgid "Return zoom to level prior to last zoom action"
-msgstr ""
+msgstr "Návrat na úroveň priblíženia pred poslednou akciou priblíženia"
 
 #: common/tool/actions.cpp:832 common/widgets/mathplot.cpp:1412
 msgid "Redo Last Zoom"
@@ -10503,7 +10514,7 @@ msgstr "Obnoviť posledné priblíženie"
 
 #: common/tool/actions.cpp:833 common/widgets/mathplot.cpp:1413
 msgid "Return zoom to level prior to last zoom undo"
-msgstr ""
+msgstr "Návrat na úroveň priblíženia pred posledným zrušením priblíženia"
 
 #: common/tool/actions.cpp:848
 msgid "Pan to Center Selected Objects"
@@ -11048,7 +11059,7 @@ msgstr "Nový názov:"
 
 #: common/tool/selection_tool.cpp:335
 msgid "Select &All\tA"
-msgstr "Vyberte & Všetko A"
+msgstr "Vybrať &všetko"
 
 #: common/tool/selection_tool.cpp:338
 msgid "Show &More Choices...\tM"
@@ -11449,8 +11460,7 @@ msgstr "Nastaviť klávesovú skratku"
 #: common/widgets/widget_hotkey_list.cpp:383
 #, c-format
 msgid "'%s' is a reserved hotkey in KiCad and cannot be assigned."
-msgstr ""
-"'%s' je v KiCad-e rezervovaná klávesová skratka a nemôže byť priradená."
+msgstr "'%s' je v KiCad-e rezervovaná klávesová skratka a nemôže byť priradená."
 
 #: common/widgets/widget_hotkey_list.cpp:447
 msgid "Edit..."
@@ -11865,7 +11875,7 @@ msgstr "Filtrované puzdra"
 #: cvpcb/cvpcb_mainframe.cpp:160
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:400
 msgid "Apply, Save Schematic && Continue"
-msgstr "Použiť, Uložiť schému && Pokračovať"
+msgstr "Použiť, uložiť schému a pokračovať"
 
 #: cvpcb/cvpcb_mainframe.cpp:229
 msgid "Symbol to footprint changes are unsaved"
@@ -12135,8 +12145,7 @@ msgstr "Uložiť do schémy"
 
 #: cvpcb/tools/cvpcb_actions.cpp:66
 msgid "Save footprint assignments in 'footprint' fields of schematic symbols"
-msgstr ""
-"Uložiť priradenia puzdier do polí 'footprint' v schematických symboloch"
+msgstr "Uložiť priradenia puzdier do polí 'footprint' v schematických symboloch"
 
 #: cvpcb/tools/cvpcb_actions.cpp:74
 msgid "Save to Schematic and File"
@@ -12691,8 +12700,8 @@ msgstr ""
 "Formát príkazového riadka pre skript Python je v tvare:\n"
 "\n"
 "```\n"
-"python <názov súboru skriptu> <vstupný názov súboru> <výstupný názov "
-"súboru>\n"
+"python <názov súboru skriptu> <vstupný názov súboru> <výstupný názov súboru>"
+"\n"
 "```\n"
 "\n"
 "Ak je v systéme Windows požadovaný skript generátora pre zoznam materiálu "
@@ -13422,8 +13431,8 @@ msgstr "Uložiť všetky stratové výkony"
 msgid ""
 "Write directives to save power dissipation of all items (.probe p(<item>))"
 msgstr ""
-"Napísať direktívy na uloženie stratových výkonov všetkých položiek (.probe "
-"p(<item>))"
+"Napísať direktívy na uloženie stratových výkonov všetkých položiek (.probe p"
+"(<item>))"
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:369
 #: eeschema/dialogs/dialog_sim_command_base.cpp:656
@@ -13726,11 +13735,11 @@ msgstr "Ostatné polia so symbolmi"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:39
 msgid "Wires && wire labels"
-msgstr "Drôty a etikety"
+msgstr "Spoje a označenia spojov"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:42
 msgid "Buses && bus labels"
-msgstr "Autobusy && štítky autobusov"
+msgstr "Zbernice a označenia zberníc"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:51
 msgid "Label fields"
@@ -13746,7 +13755,7 @@ msgstr "Ostatné polia hárka"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:66
 msgid "Sheet borders && backgrounds"
-msgstr "Okraje h. listu && pozadie"
+msgstr "Okraje listu a pozadia"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:79
 #: pcbnew/dialogs/dialog_cleanup_tracks_and_vias_base.cpp:71
@@ -14330,6 +14339,8 @@ msgid ""
 "The value '%s' can't be converted to boolean correctly, it has been "
 "interpreted as 'False'"
 msgstr ""
+"Hodnota '%s‘ sa nedá správne previesť na boolean, bola interpretovaná ako "
+"'False‘"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1016
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1574
@@ -14339,7 +14350,7 @@ msgstr "Vybrať súbor s údajmi vývodov"
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1044
 #, c-format
 msgid "Unknown columns in data: %s. These columns will be ignored."
-msgstr ""
+msgstr "Neznáme stĺpce v dátach: %s. Tieto stĺpce budú ignorované."
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1203
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:152
@@ -14714,7 +14725,7 @@ msgstr "Vytvoriť symbol ako symbol napájania"
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:835
 #: pcbnew/drc/drc_test_provider_schematic_parity.cpp:197
 msgid "Exclude from bill of materials"
-msgstr "Vylúčiť z kusovníka"
+msgstr "Vylúčiť zo zoznamu materiálu"
 
 #: eeschema/dialogs/dialog_lib_new_symbol_base.cpp:92
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:262
@@ -14722,7 +14733,7 @@ msgstr "Vylúčiť z kusovníka"
 #: eeschema/dialogs/dialog_sheet_properties_base.cpp:157
 #: eeschema/dialogs/dialog_symbol_properties_base.cpp:214
 msgid "Exclude from board"
-msgstr "Vylúčiť z hracieho plánu"
+msgstr "Vylúčiť z dosky"
 
 #: eeschema/dialogs/dialog_lib_new_symbol_base.cpp:95
 msgid "Keep linked datasheet"
@@ -14805,7 +14816,7 @@ msgstr "Upraviť vlastnosti symbolu"
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:730
 #, c-format
 msgid "Pin '%s' in jumper pin group %d does not exist in this symbol."
-msgstr ""
+msgstr "Vývod '%s‘ v skupine prepojok vývodov %d neexistuje v tomto symbole."
 
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:772
 #, c-format
@@ -14917,9 +14928,9 @@ msgid ""
 "Check this option to have pin names inside the body and pin number outside.\n"
 "If not checked pins names and pins numbers are outside."
 msgstr ""
-"Ak začiarknete túto možnosť, budú mať názvy špendlíkov vnútri tela a číslo "
-"špendlíku vonku.\n"
-"Pokiaľ nie je zaškrtnuté, názvy a čísla pinov sú vonku."
+"Začiarknuť túto možnosť, pre presun názvov vývodov do vnútra tela a čísla "
+"vývodov mimo.\n"
+"Inak názvy vývodov aj čísla budú mimo."
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:222
 msgid "Position offset:"
@@ -14997,6 +15008,9 @@ msgid ""
 "For instance, this should be checked for a quad NAND gate, while it should "
 "not be checked for a dual triode (where unit C is the filament)."
 msgstr ""
+"Vybrať túto možnosť ak všetky jednotky symbolu majú rovnakú funkciu.\n"
+"Napríklad môže byť táto možnosť vybraná pre štvornásobné hradlo NAND, zatiaľ "
+"čo pre dvojitú triódu (kde jednotka C je vlákno) by sa nemala vybrať."
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:315
 msgid "Unit display names (optional):"
@@ -15013,7 +15027,7 @@ msgstr "Jeden štýl tela"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:359
 msgid "‘Standard’ and ‘Alternate’ De Morgan body styles"
-msgstr ""
+msgstr "‘Štandardné’ a ‘Alternatívne’ De Morgan štýly tela"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:365
 msgid "Custom body styles:"
@@ -15021,7 +15035,7 @@ msgstr "Vlastné štýly tela:"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:436
 msgid "Units && Body Styles"
-msgstr "Jednotky && Štýly tela"
+msgstr "Jednotky a štýly tela"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:444
 msgid "Footprint filters:"
@@ -15063,6 +15077,8 @@ msgid ""
 "Pins with the same number will be considered to be jumpered together "
 "internally."
 msgstr ""
+"Ak je povolené, tento symbol môže mať viac ako jeden vývod s rovnakým "
+"číslom.  Vývody s rovnakým číslom sa budú považovať za interné prepojky."
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:500
 msgid "Explicit jumper pin groups:"
@@ -15168,7 +15184,7 @@ msgid ""
 "Synchronized pins mode is enabled.\n"
 "Similar pins will be edited regardless of this option."
 msgstr ""
-"Režim synchronizácie vývodov je povolený.\n"
+"Synchronizovaný režim vývodov je povolený.\n"
 "Podobné vývody budú upravené, bez ohľadu na túto možnosť."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:324
@@ -15181,7 +15197,7 @@ msgstr "Symbol má pouze jednu jednotku. Tato kontrola nemá efekt."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:352
 msgid "Alternate pin definitions must have a name."
-msgstr "Alternatívne definície špendlíkov musia mať názov."
+msgstr "Alternatívne definície vývodov musia mať názov."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:372
 #, c-format
@@ -15196,17 +15212,19 @@ msgstr ""
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:431
 msgid "Synchronized Pins Mode."
-msgstr "Režim synchronizovania vývodov"
+msgstr "Synchronizovaný režim vývodov."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:433
 msgid "Synchronized Pins Mode.  New pin will be added to all units."
 msgstr ""
-"Synchronizovaný režim vývodů je povolen.    Do všech jednotek bude přidán "
-"nový pin."
+"Synchronizovaný režim vývodov.    Nový vývod bude pridaný do všetkých "
+"jednotiek."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:435
 msgid "Synchronized Pins Mode.  Matching pins in other units will be updated."
 msgstr ""
+"Synchronizovaný režim vývodov.   Zhodné vývody v iných jednotkách budú "
+"aktualizované."
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:44
 msgid "Pin &name:"
@@ -15214,7 +15232,7 @@ msgstr "&Názov vývodu:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:51
 msgid "Pin num&ber:"
-msgstr "PIN kód:"
+msgstr "Číslo &vývodu:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:53
 msgid "Pin number: 1 to 4 ASCII letters and/or digits"
@@ -15222,23 +15240,23 @@ msgstr "Číslo PIN: 1 až 4 písmená alebo číslice ASCII"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:60
 msgid "&X position:"
-msgstr "& Pozícia X:"
+msgstr "Pozícia &X:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:69
 msgid "&Y position:"
-msgstr "& Pozícia Y:"
+msgstr "Pozícia &Y:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:76
 msgid "&Pin length:"
-msgstr "& Dĺžka špendlíka:"
+msgstr "Dĺžka &vývodu:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:83
 msgid "N&ame text size:"
-msgstr "& & Nbsp; veľkosť textu:"
+msgstr "Veľkosť textu &názvu:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:90
 msgid "Number text si&ze:"
-msgstr "Číslo textu si & ze:"
+msgstr "Veľkosť textu čí&sla:"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:97
 msgid "Electrical type:"
@@ -15255,7 +15273,7 @@ msgstr "Grafický štýl:"
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:154
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:251
 msgid "Common to all &units in symbol"
-msgstr "Spoločné pre všetky & jednotky v symbole"
+msgstr "Spoločný pre všetky &jednotky v symbole"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:157
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:254
@@ -15264,7 +15282,7 @@ msgstr "&Spoločné pre všetky štýly tela"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:163
 msgid "&Visible"
-msgstr "& Viditeľné"
+msgstr "&Viditeľný"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:170
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:356
@@ -15478,7 +15496,7 @@ msgstr "Otvoriť súbor po vykreslení"
 
 #: eeschema/dialogs/dialog_plot_schematic_base.cpp:180
 msgid "Open output file with associated application after successful plot"
-msgstr ""
+msgstr "Otvoriť výstupný súbor s priradenou aplikáciou po úspešnom vykreslení"
 
 #: eeschema/dialogs/dialog_plot_schematic_base.h:90
 msgid "Plot Schematic"
@@ -15492,10 +15510,12 @@ msgstr "Nastavenia vzdialeného symbolu"
 msgid ""
 "Configure remote symbol providers and where downloaded libraries are stored."
 msgstr ""
+"Nastaviť vzdialených poskytovateľov symbolov a miesto uloženia pre stiahnuté "
+"knižnice."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
 msgid "Providers"
-msgstr ""
+msgstr "Poskytovatelia"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
 #, fuzzy
@@ -15509,7 +15529,7 @@ msgstr "Hľadať Metadáta"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
 msgid "Sign Out"
-msgstr ""
+msgstr "Odhlásiť"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:91
 #, fuzzy
@@ -15552,7 +15572,7 @@ msgstr "Cieľový adresár:"
 msgid ""
 "Directory where downloaded symbol, footprint, and 3D model data will be "
 "written."
-msgstr ""
+msgstr "Adresár pre ukladanie stiahnutých symbolov, obrysov a 3D modelov."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:124
 msgid "Browse..."
@@ -15604,11 +15624,11 @@ msgstr "Vybrať cieľový adresár"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
 msgid "Enter a provider metadata URL first."
-msgstr ""
+msgstr "Zadať najskôr URL metadát poskytovateľa."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
 msgid "Provider metadata refreshed."
-msgstr ""
+msgstr "Metadáta poskytovateľa boli obnovené."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:474
 #: eeschema/generate_alias_info.cpp:124 kicad/pcm/pcm.cpp:813
@@ -15620,11 +15640,12 @@ msgstr "Neznámy"
 msgid ""
 "Library names will be created with suffixes such as _symbols, _fp, and _3d."
 msgstr ""
+"Názvy knižníc budú vytvorené s príponami, ako napríklad _symbols, _fp a _3d."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:524
 #, c-format
 msgid "Will create libraries like %1$s_symbols, %1$s_fp, %1$s_3d, etc."
-msgstr ""
+msgstr "Vytvorí knižnice ako %1$s_symbols, %1$s_fp, %1$s_3d atď."
 
 #: eeschema/dialogs/dialog_rescue_each.cpp:97
 msgid ""
@@ -15736,7 +15757,7 @@ msgstr "Zhoda pri &veľkosti písmen"
 #: eeschema/dialogs/dialog_sch_find_base.cpp:86
 #: pcbnew/dialogs/dialog_find_base.cpp:49
 msgid "Whole &words only"
-msgstr ""
+msgstr "Iba celé &slová"
 
 #: eeschema/dialogs/dialog_sch_find_base.cpp:90
 msgid "Regular Expression"
@@ -16192,7 +16213,7 @@ msgstr "Hz"
 #: eeschema/dialogs/dialog_sim_command_base.cpp:440
 #: eeschema/dialogs/dialog_sim_command_base.cpp:510
 msgid "Stop frequency:"
-msgstr "Frekvencia zastavenia:"
+msgstr "Koncová frekvencia:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:111
 msgid "Source 2"
@@ -16324,11 +16345,11 @@ msgstr "Zdroj šumu:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:459
 msgid "Save contributions from all noise generators"
-msgstr ""
+msgstr "Uložiť príspevky od všetkých generátorov šumu"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:526
 msgid "Compute noise current correlation matrix"
-msgstr ""
+msgstr "Výpočet šumového prúdu korelačnej matice"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:538
 msgid "SPICE directives:"
@@ -16344,11 +16365,11 @@ msgstr "Funkcia prenosu:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:571
 msgid "(output voltage) / (input voltage)"
-msgstr ""
+msgstr "(výstupné napätie) / (vstupné napätie)"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:571
 msgid "(output voltage) / (input current)"
-msgstr ""
+msgstr "(výstupné napätie) / (vstupný prúd)"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:577
 msgid "Input:"
@@ -16369,7 +16390,7 @@ msgstr "Hľadať:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:623
 msgid "Poles and Zeros"
-msgstr ""
+msgstr "Póly a nuly"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:623
 msgid "Poles"
@@ -16448,7 +16469,7 @@ msgstr "Bodkovaný prúd/fáza"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:822
 msgid "Margins:"
-msgstr ""
+msgstr "Okraje:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:832
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:546
@@ -16534,7 +16555,7 @@ msgstr "Fáza"
 
 #: eeschema/dialogs/dialog_sim_format_value_base.cpp:25
 msgid "Significant digits:"
-msgstr ""
+msgstr "Platné číslice:"
 
 #: eeschema/dialogs/dialog_sim_format_value_base.cpp:32
 msgid "Range:"
@@ -16664,6 +16685,10 @@ msgid ""
 "%s\n"
 "Using generic SPICE model."
 msgstr ""
+"Zlyhalo spracovanie:\n"
+"\n"
+"%s\n"
+"Použitie všeobecného SPICE modelu."
 
 #: eeschema/dialogs/dialog_sim_model_base.cpp:38
 msgid "SPICE model from file (*.lib, *.sub or *.ibs)"
@@ -16814,6 +16839,8 @@ msgid ""
 "Show symbols marked 'Exclude from BOM' in the table.  Symbols marked "
 "'Exclude from BOM' are never included on export."
 msgstr ""
+"Zobraziť v tabuľke symboly označené 'Vylúčiť zo zoznamu materiálu'. Symboly "
+"označené ako 'Vylúčiť zo zoznamu materiálu' sa nikdy nezahrnú do exportu."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:971
 msgid "Highlight corresponding item on canvas when it is selected in the table"
@@ -17146,7 +17173,7 @@ msgstr "Upraviť symbol knižnice..."
 #: eeschema/dialogs/dialog_symbol_properties_base.cpp:286
 #: eeschema/sch_pin.cpp:1968
 msgid "Pin Number"
-msgstr "PIN kód"
+msgstr "Číslo vývodu"
 
 #: eeschema/dialogs/dialog_symbol_properties_base.cpp:287
 msgid "Base Pin Name"
@@ -17220,8 +17247,7 @@ msgstr "Mapovanie tabuľky knižnice symbolov je dokončené!"
 #: eeschema/dialogs/dialog_symbol_remap.cpp:353
 #, c-format
 msgid "Cannot create project remap back up folder '%s'."
-msgstr ""
-"Nie je možné vytvoriť záložný priečinok '%s' pre premapovanie projektu."
+msgstr "Nie je možné vytvoriť záložný priečinok '%s' pre premapovanie projektu."
 
 #: eeschema/dialogs/dialog_symbol_remap.cpp:356
 #: eeschema/dialogs/dialog_symbol_remap.cpp:529
@@ -17440,7 +17466,7 @@ msgstr "Aktualizujte odkazy na symboly, ktoré boli zmenené v editore PCB."
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:59
 msgid "Footprint assignments"
-msgstr "Priradenia stôp"
+msgstr "Priradenia puzdier"
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:61
 msgid ""
@@ -17467,7 +17493,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:79
 msgid ""
 "Update symbol attribute flags like Do Not Populate to match the footprint."
-msgstr ""
+msgstr "Aktualizovať atribút symbolu ako \"Neosadzovať\" aby zodpovedal puzdru."
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:83
 msgid "Prefer symbol unit swaps over label swaps"
@@ -17563,7 +17589,7 @@ msgstr ""
 
 #: eeschema/dialogs/dialog_wire_bus_properties_base.h:69
 msgid "Wire & Bus Properties"
-msgstr "Vlastnosti spoja & zbernice"
+msgstr "Vlastnosti spoja a zbernice"
 
 #: eeschema/dialogs/panel_bom_presets_base.cpp:20
 msgid "Bill of Materials Presets"
@@ -17728,7 +17754,7 @@ msgstr "Zobraziť hranice strany"
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:157
 #: pcbnew/dialogs/panel_display_options_base.cpp:138
 msgid "Selection && Highlighting"
-msgstr "Výber && Zvýraznenie"
+msgstr "Výber a zvýrazňovanie"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:167
 msgid "Draw selected child items"
@@ -17754,9 +17780,8 @@ msgid "Net collision marker width:"
 msgstr "Šírka textu:"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:200
-#, fuzzy
 msgid "Highlight thickness:"
-msgstr "& Hrúbka zvýraznenia:"
+msgstr "Hrúbka zvýraznenia:"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:211
 #, fuzzy
@@ -17764,9 +17789,8 @@ msgid "Highlight netclass colors"
 msgstr "Nastaviť farbu netclass"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:219
-#, fuzzy
 msgid "Color highlight thickness:"
-msgstr "& Hrúbka zvýraznenia:"
+msgstr "Hrúbka farebného zvýraznenia:"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:227
 #, fuzzy
@@ -17836,14 +17860,15 @@ msgstr ""
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:66
 #: pcbnew/dialogs/panel_edit_options_base.cpp:427
-#, fuzzy
 msgid "<ESC> clears net highlighting"
-msgstr "Vymazať zvýraznenie siete"
+msgstr "<ESC> zrušiť zvýrazňovanie spoja"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:67
 msgid ""
 "First <ESC> in selection tool clears selection, next clears net highlighting"
 msgstr ""
+"Prvé stlačenie klávesu <ESC> v nástroji na výber, zruší výber, ďalšie zruší "
+"zvýrazňovanie spojov"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:71
 msgid "Automatically annotate symbols"
@@ -17960,11 +17985,11 @@ msgstr "Automatické umiestnenie poľa so symbolmi"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:291
 msgid "A&utomatically place symbol fields"
-msgstr "& Utomaticky umiestniť polia so symbolmi"
+msgstr "A&utomaticky umiestniť polia symbolu"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:294
 msgid "A&llow field autoplace to change justification"
-msgstr "Automatické nahradenie & nízkeho poľa na zmenu zarovnania"
+msgstr "Povo&liť automatické umiestnenie polí na zmenu zarovnania"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:297
 msgid "Al&ways align autoplaced fields to the 50 mil grid"
@@ -17977,11 +18002,11 @@ msgstr "Opakované položky"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:321
 msgid "&Horizontal pitch:"
-msgstr "& Horizontálna rozteč:"
+msgstr "Vo&dorovná rozteč:"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:332
 msgid "&Vertical pitch:"
-msgstr "& Vertikálna rozteč:"
+msgstr "Z&vislá rozteč:"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:343
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:127
@@ -18094,7 +18119,7 @@ msgstr "Predvolená šírka riadku:"
 
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:111
 msgid "Pin symbol size:"
-msgstr "Veľkosť symbolu špendlíka:"
+msgstr "Veľkosť symbolu vývodu:"
 
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:129
 #: eeschema/erc/erc_item.cpp:39
@@ -18423,7 +18448,7 @@ msgstr ""
 
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:36
 msgid "&Default line width:"
-msgstr "& Predvolená šírka riadku:"
+msgstr "&Predvolená šírka čiary:"
 
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:47
 #, fuzzy
@@ -18440,15 +18465,15 @@ msgstr "Predvolená dĺžka kolíka:"
 
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:73
 msgid "De&fault pin number size:"
-msgstr "Veľkosť čísla PIN & chyby:"
+msgstr "&Predvolená veľkosť čísla vývodu:"
 
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:84
 msgid "Def&ault pin name size:"
-msgstr "Predbežná a veľká veľkosť názvu špendlíka:"
+msgstr "Pre&dvolená veľkosť názvu vývodu:"
 
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:116
 msgid "&Pitch of repeated pins:"
-msgstr "& Rozstup opakovaných kolíkov:"
+msgstr "&Rozstup opakovania vývodov:"
 
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:146
 #, fuzzy
@@ -19101,7 +19126,7 @@ msgstr "Odlišná stopa priradená k inej jednotke symbolu"
 
 #: eeschema/erc/erc_item.cpp:137
 msgid "Different net assigned to a shared pin in another unit of the symbol"
-msgstr "Odlišná sieť priradená zdieľanému špendlíku v inej jednotke symbolu"
+msgstr "Odlišný spoj priradený zdieľanému vývodu v inej jednotke symbolu"
 
 #: eeschema/erc/erc_item.cpp:141
 msgid "Conflict between bus alias definitions across schematic sheets"
@@ -19171,9 +19196,8 @@ msgid "Footprint link issue"
 msgstr "Naznačiť spoje puzdra"
 
 #: eeschema/erc/erc_item.cpp:201
-#, fuzzy
 msgid "Assigned footprint doesn't match footprint filters"
-msgstr "Puzdro sa nezhoduje s kópiou v knižnici"
+msgstr "Priradené puzdro nezodpovedá filtru puzdier"
 
 #: eeschema/erc/erc_item.cpp:205
 msgid "Symbol is not annotated"
@@ -19716,24 +19740,20 @@ msgid "Show pin numbers settings differ."
 msgstr "Zobraziť číslo vývodu"
 
 #: eeschema/lib_symbol.cpp:2256
-#, fuzzy
 msgid "Exclude from simulation settings differ."
-msgstr "Vylúčiť z hracieho plánu"
+msgstr "Nastavenia vylúčenia zo simulácie sa líšia."
 
 #: eeschema/lib_symbol.cpp:2265
-#, fuzzy
 msgid "Exclude from bill of materials settings differ."
-msgstr "Vylúčiť z kusovníka"
+msgstr "Nastavenia vylúčenia zo zoznamu materiálu sa líšia."
 
 #: eeschema/lib_symbol.cpp:2274
-#, fuzzy
 msgid "Exclude from board settings differ."
-msgstr "Vylúčiť z hracieho plánu"
+msgstr "Nastavenia vylúčenia z dosky sa líšia."
 
 #: eeschema/lib_symbol.cpp:2283
-#, fuzzy
 msgid "Exclude from position files settings differ."
-msgstr "Vylúčiť z hracieho plánu"
+msgstr "Nastavenia vylúčenia z polohových súborov sa líšia."
 
 #: eeschema/lib_symbol.cpp:2518 eeschema/symbol_editor/symbol_editor.cpp:1751
 msgid "Datasheet"
@@ -19777,18 +19797,16 @@ msgid "Pin Name Position Offset"
 msgstr "Posun pozície názvu vývodu"
 
 #: eeschema/lib_symbol.cpp:2554 eeschema/tools/sch_actions.cpp:1085
-#, fuzzy
 msgid "Exclude from Simulation"
-msgstr "Zakázať symbol pre simuláciu"
+msgstr "Vylúčiť zo simulácie"
 
 #: eeschema/lib_symbol.cpp:2558 eeschema/tools/sch_actions.cpp:1091
 msgid "Exclude from Board"
 msgstr "Vylúčiť z dosky"
 
 #: eeschema/lib_symbol.cpp:2562 eeschema/tools/sch_actions.cpp:1079
-#, fuzzy
 msgid "Exclude from Bill of Materials"
-msgstr "Vylúčiť z kusovníka"
+msgstr "Vylúčiť zo zoznamu materiálu"
 
 #: eeschema/lib_symbol.cpp:2566
 msgid "Exclude from Position Files"
@@ -19825,9 +19843,8 @@ msgstr ""
 "%s"
 
 #: eeschema/menubar.cpp:104
-#, fuzzy
 msgid "Non-KiCad Schematic..."
-msgstr "Importovať schému mimo KiCad..."
+msgstr "Importovať schému inú ako KiCad..."
 
 #: eeschema/menubar.cpp:105
 msgid ""
@@ -19836,14 +19853,13 @@ msgstr ""
 "Nahraďte aktuálny schematický hárok listom importovaným z inej aplikácie"
 
 #: eeschema/menubar.cpp:109
-#, fuzzy
 msgid "Footprint Assignments..."
-msgstr "Priradenia stôp"
+msgstr "Priradenia puzdier..."
 
 #: eeschema/menubar.cpp:110 eeschema/symbol_editor/menubar_symbol_editor.cpp:71
 #: pcbnew/menubar_footprint_editor.cpp:69 pcbnew/menubar_pcb_editor.cpp:113
 msgid "Graphics..."
-msgstr "Grafický..."
+msgstr "Grafiky..."
 
 #: eeschema/menubar.cpp:119
 msgid "Drawing to Clipboard"
@@ -19855,15 +19871,14 @@ msgid "Netlist..."
 msgstr "Netlist..."
 
 #: eeschema/menubar.cpp:121
-#, fuzzy
 msgid "Symbols..."
-msgstr "Symbol..."
+msgstr "Symboly..."
 
 #: eeschema/menubar.cpp:181
 #: eeschema/symbol_editor/menubar_symbol_editor.cpp:124 kicad/menubar.cpp:194
 #: pcbnew/menubar_footprint_editor.cpp:133 pcbnew/menubar_pcb_editor.cpp:218
 msgid "Panels"
-msgstr ""
+msgstr "Panely"
 
 #: eeschema/menubar.cpp:196
 msgid ""
@@ -19887,7 +19902,7 @@ msgstr "&Umiestniť"
 #: pagelayout_editor/menubar.cpp:154 pcbnew/menubar_footprint_editor.cpp:251
 #: pcbnew/menubar_pcb_editor.cpp:483
 msgid "&Inspect"
-msgstr "& Skontrolovať"
+msgstr "&Skontrolovať"
 
 #: eeschema/menubar.cpp:360 gerbview/menubar.cpp:233 kicad/menubar.cpp:258
 #: pcbnew/menubar_footprint_editor.cpp:252 pcbnew/menubar_pcb_editor.cpp:484
@@ -20094,13 +20109,13 @@ msgstr "Vyberte Pripojenie"
 
 #: eeschema/pin_type.cpp:90 eeschema/sch_pin.cpp:1916
 msgid "Free"
-msgstr "Voľné"
+msgstr "Voľný"
 
 #: eeschema/pin_type.cpp:91 eeschema/sch_pin.cpp:1917
 #: pcbnew/dialogs/dialog_footprint_properties_base.cpp:188
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:153
 msgid "Unspecified"
-msgstr "Nešpecifikované"
+msgstr "Nešpecifikovaný"
 
 #: eeschema/pin_type.cpp:92 eeschema/sch_pin.cpp:1918
 msgid "Power input"
@@ -20120,11 +20135,11 @@ msgstr "Otvorený emitor"
 
 #: eeschema/pin_type.cpp:96 eeschema/sch_pin.cpp:1922
 msgid "Unconnected"
-msgstr "Nespojené"
+msgstr "Nezapojený"
 
 #: eeschema/pin_type.cpp:101 eeschema/sch_pin.cpp:1930
 msgid "Inverted"
-msgstr "Obrátené"
+msgstr "Negovaný"
 
 #: eeschema/pin_type.cpp:102 eeschema/sch_pin.cpp:1931
 msgid "Clock"
@@ -20136,7 +20151,7 @@ msgstr "Negované hodiny"
 
 #: eeschema/pin_type.cpp:104 eeschema/sch_pin.cpp:1933
 msgid "Input low"
-msgstr "Vstup je nízky"
+msgstr "Aktívny v log. nule"
 
 #: eeschema/pin_type.cpp:105 eeschema/sch_pin.cpp:1934
 msgid "Clock low"
@@ -20144,15 +20159,15 @@ msgstr "Hodiny akt. v nule"
 
 #: eeschema/pin_type.cpp:106 eeschema/sch_pin.cpp:1935
 msgid "Output low"
-msgstr "Nízky výkon"
+msgstr "Výstup akt. v log. nule"
 
 #: eeschema/pin_type.cpp:107 eeschema/sch_pin.cpp:1936
 msgid "Falling edge clock"
-msgstr "Hodiny akt. zostupnou hranou"
+msgstr "Hodiny akt. zostupne"
 
 #: eeschema/pin_type.cpp:108 eeschema/sch_pin.cpp:1937
 msgid "NonLogic"
-msgstr "Nie logický"
+msgstr "Žiadna logika"
 
 #: eeschema/printing/dialog_print.cpp:444
 msgid "Print Schematic"
@@ -20563,9 +20578,8 @@ msgid "Open Schematic"
 msgstr "Otvoriť schému"
 
 #: eeschema/sch_edit_frame.cpp:1540
-#, fuzzy
 msgid "Assigning footprints requires a fully annotated schematic."
-msgstr "Export netlistu si vyžaduje úplne anotovanú schému."
+msgstr "Priraďovanie puzdier vyžaduje úplne očíslovanú schému."
 
 #: eeschema/sch_edit_frame.cpp:1567
 msgid "Could not open CvPcb"
@@ -20984,7 +20998,7 @@ msgid ""
 "pins. The expected number of pins is 1 but %d were found."
 msgstr ""
 "Symbol ID '%s' je referenčný signál alebo globálny signál, ale má príliš "
-"veľa kolíkov. Očakávaný počet špendlíkov je 1, ale našlo sa %d."
+"veľa vývodov. Očakávaný počet vývodov je 1, ale našlo sa %d."
 
 #: eeschema/sch_io/cadstar/cadstar_sch_archive_loader.cpp:994
 #, c-format
@@ -21988,7 +22002,7 @@ msgstr "PIN %s [%s, %s]"
 
 #: eeschema/sch_pin.cpp:1964 pcbnew/pad.cpp:1860 pcbnew/pad.cpp:3403
 msgid "Pin Name"
-msgstr "Názov špendlíka"
+msgstr "Názov vývodu"
 
 #: eeschema/sch_plotter.cpp:117
 msgid "No sheets to plot."
@@ -22048,8 +22062,7 @@ msgstr "Schematický marker"
 #: eeschema/sch_screen.cpp:743 eeschema/sch_screen.cpp:835
 #, c-format
 msgid "Setting schematic symbol '%s %s' library identifier to '%s'."
-msgstr ""
-"Nastaviť knižničný identifikátor schematického symbolu '%s %s' na '%s'."
+msgstr "Nastaviť knižničný identifikátor schematického symbolu '%s %s' na '%s'."
 
 #: eeschema/sch_screen.cpp:759
 #, c-format
@@ -22154,7 +22167,7 @@ msgstr "BOM"
 #: eeschema/sch_sheet.cpp:1027 eeschema/sch_symbol.cpp:2655
 #: eeschema/sch_text.cpp:634 eeschema/sch_textbox.cpp:463
 msgid "Exclude from"
-msgstr "Vyloučit z"
+msgstr "Vylúčiť z"
 
 #: eeschema/sch_sheet.cpp:1338
 #, fuzzy, c-format
@@ -22181,18 +22194,16 @@ msgstr "Farba pozadia"
 #: pcbnew/widgets/pcb_properties_panel.cpp:589
 #: pcbnew/widgets/pcb_properties_panel.cpp:603
 #: pcbnew/widgets/pcb_properties_panel.cpp:701
-#, fuzzy
 msgid "Exclude From Bill of Materials"
-msgstr "Vyloučit z rozpisky materiálu"
+msgstr "Vylúčiť zo zoznamu materiálu"
 
 #: eeschema/sch_sheet.cpp:2167 eeschema/sch_symbol.cpp:1450
 #: eeschema/sch_symbol.cpp:3977 eeschema/tools/sch_actions.cpp:1097
 #: pcbnew/footprint.cpp:4857 pcbnew/widgets/pcb_properties_panel.cpp:588
 #: pcbnew/widgets/pcb_properties_panel.cpp:601
 #: pcbnew/widgets/pcb_properties_panel.cpp:696
-#, fuzzy
 msgid "Do not Populate"
-msgstr "Není osazeno (DNP)"
+msgstr "Neosadzovať"
 
 #: eeschema/sch_sheet_path.cpp:58 include/board_item.h:483
 msgid "(Deleted Item)"
@@ -22261,9 +22272,8 @@ msgstr "Popis knižnice"
 #: pcbnew/widgets/pcb_properties_panel.cpp:590
 #: pcbnew/widgets/pcb_properties_panel.cpp:605
 #: pcbnew/widgets/pcb_properties_panel.cpp:706
-#, fuzzy
 msgid "Exclude From Position Files"
-msgstr "Vylúčiť z pozičných súborov"
+msgstr "Vylúčiť z polohových súborov"
 
 #: eeschema/sch_table.cpp:301
 #, c-format
@@ -25355,14 +25365,14 @@ msgid "Change %s value from '%s' to '%s'."
 msgstr "Zmeniť hodnotu %s z '%s' na '%s'."
 
 #: eeschema/tools/backannotate.cpp:857
-#, fuzzy, c-format
+#, c-format
 msgid "Change %s 'Do not populate' from '%s' to '%s'."
-msgstr "Zmeniť stopu %s z '%s' na '%s'"
+msgstr "Zmeniť %s 'Neosadzovať' z '%s' na '%s'"
 
 #: eeschema/tools/backannotate.cpp:871
-#, fuzzy, c-format
+#, c-format
 msgid "Change %s 'Exclude from bill of materials' from '%s' to '%s'."
-msgstr "Zmeniť stopu %s z '%s' na '%s'"
+msgstr "Zmeniť %s 'Vylúčiť zo zoznamu materiálu' z '%s' na '%s'."
 
 #: eeschema/tools/backannotate.cpp:902
 #, c-format
@@ -25737,9 +25747,8 @@ msgid "Create SVG file from the current symbol"
 msgstr "Vytvorte súbor SVG z aktuálneho symbolu"
 
 #: eeschema/tools/sch_actions.cpp:340
-#, fuzzy
 msgid "Synchronized Pins Mode"
-msgstr "Režim úprav synchronizovaných kolíkov"
+msgstr "Synchronizovaný režim vývodov"
 
 #: eeschema/tools/sch_actions.cpp:341
 msgid ""
@@ -25747,7 +25756,7 @@ msgid ""
 "When enabled propagates all changes (except pin numbers) to other units.\n"
 "Enabled by default for multiunit parts with interchangeable units."
 msgstr ""
-"Synchronizovaný režim úprav vývodov\n"
+"Synchronizovaný režim vývodov\n"
 "Ak je táto možnosť povolená, všetky zmeny (okrem čísel vývodov) sa rozšíria "
 "na ďalšie jednotky.\n"
 "Predvolene je povolené pre viac jednotkové súčiastky so zameniteľnými "
@@ -25800,7 +25809,7 @@ msgstr "Kresliť mnohouholníky"
 
 #: eeschema/tools/sch_actions.cpp:426
 msgid "Move Symbol Anchor"
-msgstr "Presuňte kotvu symbolov"
+msgstr "Presunúť bod ukotvenia symbolu"
 
 #: eeschema/tools/sch_actions.cpp:436
 msgid "Push Pin Length"
@@ -25808,7 +25817,7 @@ msgstr "Dĺžka pripináčika"
 
 #: eeschema/tools/sch_actions.cpp:437
 msgid "Copy pin length to other pins in symbol"
-msgstr "Skopírujte dĺžku špendlíka na ďalšie kolíky v symbole"
+msgstr "Skopírovať dĺžku vývodu na ďalšie vývody v symbole"
 
 #: eeschema/tools/sch_actions.cpp:443
 msgid "Push Pin Name Size"
@@ -25816,7 +25825,7 @@ msgstr "Veľkosť názvu pripináčika"
 
 #: eeschema/tools/sch_actions.cpp:444
 msgid "Copy pin name size to other pins in symbol"
-msgstr "Skopírujte veľkosť názvu špendlíka na ďalšie kolíky v symbole"
+msgstr "Skopírovať veľkosť názvu vývodu na ďalšie vývody v symbole"
 
 #: eeschema/tools/sch_actions.cpp:450
 msgid "Push Pin Number Size"
@@ -25824,23 +25833,20 @@ msgstr "Veľkosť čísla pripináčika"
 
 #: eeschema/tools/sch_actions.cpp:451
 msgid "Copy pin number size to other pins in symbol"
-msgstr "Skopírujte veľkosť čísla špendlíka na ďalšie kolíky v symbole"
+msgstr "Skopírovať veľkosť čísla vývodu na ďalšie vývody v symbole"
 
 #: eeschema/tools/sch_actions.cpp:462
-#, fuzzy
 msgid "Place Symbols"
-msgstr "Prilepiť symbol"
+msgstr "Umiestniť symbol"
 
 #: eeschema/tools/sch_actions.cpp:471
-#, fuzzy
 msgid "Place Next Symbol Unit"
-msgstr "Symbol Unit"
+msgstr "Umiestniť ďalšiu jednotku symbolu"
 
 #: eeschema/tools/sch_actions.cpp:472
-#, fuzzy
 msgid ""
 "Place the next unit of the current symbol that is missing from the schematic"
-msgstr "Uložte aktuálny symbol do schémy"
+msgstr "Umiestniť ďalšiu jednotku aktuálneho symbolu, ktorá v schéme chýba"
 
 #: eeschema/tools/sch_actions.cpp:482
 msgid "Place Power Symbols"
@@ -25848,23 +25854,20 @@ msgstr "Umiestniť symboly napájania"
 
 #: eeschema/tools/sch_actions.cpp:492 pcbnew/tools/pcb_actions.cpp:472
 #: pcbnew/tools/pcb_control.cpp:2128
-#, fuzzy
 msgid "Place Design Block"
-msgstr "Zrušiť blok"
+msgstr "Umiestniť návrhový blok"
 
 #: eeschema/tools/sch_actions.cpp:493
 msgid "Add selected design block to current sheet"
 msgstr ""
 
 #: eeschema/tools/sch_actions.cpp:501 pcbnew/tools/pcb_actions.cpp:481
-#, fuzzy
 msgid "Place Linked Design Block"
-msgstr "Zrušiť blok"
+msgstr "Umiestniť prepojený návrhový blok"
 
 #: eeschema/tools/sch_actions.cpp:502 pcbnew/tools/pcb_actions.cpp:482
-#, fuzzy
 msgid "Place design block linked to selected group"
-msgstr "Zrušiť blok"
+msgstr "Umiestniť návrhový blok prepojený na vybranú skupinu"
 
 #: eeschema/tools/sch_actions.cpp:509 pcbnew/tools/pcb_actions.cpp:498
 #, fuzzy
@@ -25877,19 +25880,16 @@ msgid "Save selected group to linked design block"
 msgstr "Uložiť aktuálny list &ako"
 
 #: eeschema/tools/sch_actions.cpp:520
-#, fuzzy
 msgid "Place No Connect Flags"
-msgstr "Označí ako nezapojené"
+msgstr "Umiestniť príznak nepripojenia"
 
 #: eeschema/tools/sch_actions.cpp:531
-#, fuzzy
 msgid "Place Junctions"
-msgstr "Umiestniť uzol"
+msgstr "Umiestniť spojovacie body"
 
 #: eeschema/tools/sch_actions.cpp:542
-#, fuzzy
 msgid "Place Wire to Bus Entries"
-msgstr "Umiestni spoj do zbernice"
+msgstr "Umiestniť pripojenie k zbernicovému pripojeniu"
 
 #: eeschema/tools/sch_actions.cpp:553
 msgid "Place Net Labels"
@@ -25925,9 +25925,8 @@ msgid "Copy design block into project as a sheet on current sheet"
 msgstr "Vytvorte súbor PNG z aktuálneho zobrazenia"
 
 #: eeschema/tools/sch_actions.cpp:608
-#, fuzzy
 msgid "Place Pins from Sheet"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť vývody z listu"
 
 #: eeschema/tools/sch_actions.cpp:609
 msgid "Add sheet pins from existing hierarchical labels found on that sheet"
@@ -25936,9 +25935,8 @@ msgstr ""
 "na danom liste"
 
 #: eeschema/tools/sch_actions.cpp:617
-#, fuzzy
 msgid "Autoplace All Sheet Pins"
-msgstr "Odstrániť vývod listu"
+msgstr "Automaticky umiestniť všetky vývody listu"
 
 #: eeschema/tools/sch_actions.cpp:618
 #, fuzzy
@@ -25999,9 +25997,8 @@ msgid "Draw Bezier Curve"
 msgstr "Kresliť Bézierovu krivku"
 
 #: eeschema/tools/sch_actions.cpp:721
-#, fuzzy
 msgid "Place Images"
-msgstr "Pridať uzol"
+msgstr "Umiestniť obrázky"
 
 #: eeschema/tools/sch_actions.cpp:730 pcbnew/tools/pcb_actions.cpp:346
 msgid "Draw Rule Areas"
@@ -26233,7 +26230,7 @@ msgstr "Odstrániť nepripojené vývody listu"
 
 #: eeschema/tools/sch_actions.cpp:982 pcbnew/tools/pcb_actions.cpp:1031
 msgid "Edit Text & Graphics Properties..."
-msgstr "Upraviť text & Vlastnosti grafiky..."
+msgstr "Upraviť vlastnosti textu a grafiky..."
 
 #: eeschema/tools/sch_actions.cpp:983
 msgid "Edit text and graphics properties globally across schematic"
@@ -26296,7 +26293,7 @@ msgstr "Zvýraznite sieť pod kurzorom"
 #: eeschema/tools/sch_actions.cpp:1045 pcbnew/tools/pcb_actions.cpp:1533
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1098
 msgid "Clear Net Highlighting"
-msgstr "Vymazať zvýraznenie siete"
+msgstr "Zrušiť zvýrazňovanie spojov"
 
 #: eeschema/tools/sch_actions.cpp:1046
 msgid "Clear any existing net highlighting"
@@ -26325,9 +26322,8 @@ msgid "Open the selected symbol in the Symbol Editor"
 msgstr "Otvorí vybranú stopu v editore Footprint"
 
 #: eeschema/tools/sch_actions.cpp:1080
-#, fuzzy
 msgid "Set the exclude from bill of materials attribute"
-msgstr "Vylúčiť z kusovníka"
+msgstr "Nastaviť atribút vylúčenia zo zoznamu materiálu"
 
 #: eeschema/tools/sch_actions.cpp:1086
 msgid "Set the exclude from simulation attribute"
@@ -26335,11 +26331,11 @@ msgstr "Nastaviť atribút vylúčenia zo simulácie"
 
 #: eeschema/tools/sch_actions.cpp:1092
 msgid "Set the exclude from board attribute"
-msgstr "Nastaviť vylúčenie z atribútu dosky"
+msgstr "Nastaviť atribút vylúčenia z dosky"
 
 #: eeschema/tools/sch_actions.cpp:1098
 msgid "Set the do not populate attribute"
-msgstr ""
+msgstr "Nastaviť atribút 'neosadzovať'"
 
 #: eeschema/tools/sch_actions.cpp:1105
 #, fuzzy
@@ -26373,12 +26369,11 @@ msgid "Import Footprint Assignments..."
 msgstr "Importovať priradenia puzdra..."
 
 #: eeschema/tools/sch_actions.cpp:1133
-#, fuzzy
 msgid ""
 "Import symbol footprint assignments from .cmp file created by board editor"
 msgstr ""
-"Importujte priradenia stôp symbolov zo súboru .cmp vytvoreného programom "
-"Pcbnew"
+"Importovať priradenia puzdier symbolov zo súboru .cmp vytvoreného editorom "
+"dosky"
 
 #: eeschema/tools/sch_actions.cpp:1139
 msgid "Annotate Schematic..."
@@ -26418,7 +26413,7 @@ msgstr "Upraviť číslo strany aktuálneho alebo vybratého hárka"
 
 #: eeschema/tools/sch_actions.cpp:1167
 msgid "Rescue Symbols..."
-msgstr "Záchranné symboly..."
+msgstr "Záchrana symbolov..."
 
 #: eeschema/tools/sch_actions.cpp:1168
 msgid "Find old symbols in project and rename/rescue them"
@@ -26518,9 +26513,8 @@ msgstr ""
 "Generovať zoznam materiálu aktuálnej schémy pomocou externého generátora"
 
 #: eeschema/tools/sch_actions.cpp:1248
-#, fuzzy
 msgid "Export Symbols..."
-msgstr "Exportovať púzdro"
+msgstr "Exportovať symboly..."
 
 #: eeschema/tools/sch_actions.cpp:1249
 msgid ""
@@ -26700,7 +26694,7 @@ msgstr "Prejsť hore"
 
 #: eeschema/tools/sch_actions.cpp:1419
 msgid "Navigate up one sheet in the hierarchy"
-msgstr "Skoč hore v aktuálnej hierarchii schém"
+msgstr "Prejsť na vyšší list v hierarchii"
 
 #: eeschema/tools/sch_actions.cpp:1426
 msgid "Navigate Back"
@@ -26711,31 +26705,28 @@ msgid "Move backward in sheet navigation history"
 msgstr "Presunúť sa dozadu v histórii prechádzania"
 
 #: eeschema/tools/sch_actions.cpp:1434
-#, fuzzy
 msgid "Navigate Forward"
-msgstr "Navigátor"
+msgstr "Prejsť vpred"
 
 #: eeschema/tools/sch_actions.cpp:1435
 msgid "Move forward in sheet navigation history"
 msgstr "Posun vpřed v historii navigace listů"
 
 #: eeschema/tools/sch_actions.cpp:1442
-#, fuzzy
 msgid "Previous Sheet"
-msgstr "Predchádzajúca vrstva"
+msgstr "Predchádzajúci list"
 
 #: eeschema/tools/sch_actions.cpp:1443
 msgid "Move to previous sheet by number"
-msgstr "Přesunout na předchozí list podle čísla"
+msgstr "Presunúť sa na predchádzajúci list podľa čísla"
 
 #: eeschema/tools/sch_actions.cpp:1450
-#, fuzzy
 msgid "Next Sheet"
-msgstr "Vložiť list"
+msgstr "Ďalší list"
 
 #: eeschema/tools/sch_actions.cpp:1451
 msgid "Move to next sheet by number"
-msgstr "Přesunout na následující list podle čísla"
+msgstr "Presunúť sa na nasledujúci list podľa čísla"
 
 #: eeschema/tools/sch_actions.cpp:1458
 #, fuzzy
@@ -26863,9 +26854,8 @@ msgid ""
 msgstr "Zarovnať vybrané položky k zvislému stredu"
 
 #: eeschema/tools/sch_actions.cpp:1610
-#, fuzzy
 msgid "Save Current Sheet Copy As..."
-msgstr "Uložiť aktuálny list &ako"
+msgstr "Uložiť kópiu aktuálneho listu ako..."
 
 #: eeschema/tools/sch_actions.cpp:1611
 #, fuzzy
@@ -27045,14 +27035,12 @@ msgid "Press <ESC> to cancel symbol creation."
 msgstr "Stlačiť <ESC> pre zrušenie tvorby symbolu."
 
 #: eeschema/tools/sch_drawing_tools.cpp:467
-#, fuzzy
 msgid "Place Symbol"
-msgstr "Prilepiť symbol"
+msgstr "Umiestniť symbol"
 
 #: eeschema/tools/sch_drawing_tools.cpp:635
-#, fuzzy
 msgid "Select a single symbol to place the next unit."
-msgstr "Vyberte roh, za ktorý chcete pridať nový roh."
+msgstr "Vybrať jeden symbol pre umiestnenie nasledujúcej jednotky."
 
 #: eeschema/tools/sch_drawing_tools.cpp:648
 #, fuzzy
@@ -27109,9 +27097,8 @@ msgid "Could not load image from '%s'."
 msgstr "Obrázok z '%s' sa nepodarilo načítať"
 
 #: eeschema/tools/sch_drawing_tools.cpp:1260 pcbnew/tools/drawing_tool.cpp:817
-#, fuzzy
 msgid "Place Image"
-msgstr "Pridať uzol"
+msgstr "Umiestniť obrázok"
 
 #: eeschema/tools/sch_drawing_tools.cpp:1358
 #: eeschema/tools/symbol_editor_drawing_tools.cpp:708
@@ -27176,7 +27163,7 @@ msgstr "Neboli nájdené nové hierarchické označenia."
 #: eeschema/tools/sch_drawing_tools.cpp:2263
 #: eeschema/tools/sch_drawing_tools.cpp:3748
 msgid "Add Sheet Pin"
-msgstr "Pridajte špendlík"
+msgstr "Pridať vývod listu"
 
 #: eeschema/tools/sch_drawing_tools.cpp:2598
 #: eeschema/tools/symbol_editor_drawing_tools.cpp:502
@@ -27250,9 +27237,9 @@ msgid " (already placed)"
 msgstr " (už umiestnené)"
 
 #: eeschema/tools/sch_edit_tool.cpp:133
-#, fuzzy, c-format
+#, c-format
 msgid "Place unit %s"
-msgstr "Umiestnite všetky jednotky"
+msgstr "Umiestniť jednotku %s"
 
 #: eeschema/tools/sch_edit_tool.cpp:194
 #, fuzzy
@@ -27744,9 +27731,8 @@ msgid "Failed to update library with flattened symbol"
 msgstr "Nepodarilo sa vytvoriť súbor knižnice symbolov '%s'"
 
 #: eeschema/tools/symbol_editor_drawing_tools.cpp:302
-#, fuzzy
 msgid "Place Pin"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť vývod"
 
 #: eeschema/tools/symbol_editor_edit_tool.cpp:850
 #: pcbnew/tools/edit_tool.cpp:3032
@@ -27806,10 +27792,11 @@ msgstr "Táto pozícia je už obsadená iným vývodom v jednotke %d."
 #: eeschema/tools/symbol_editor_pin_tool.cpp:234
 msgid "Disable the 'Synchronized Pins Mode' option to avoid this message."
 msgstr ""
+"Zakázať možnosť 'synchronizovaný režim vývodov' pre potlačenie tejto správy."
 
 #: eeschema/tools/symbol_editor_pin_tool.cpp:235
 msgid "Place Pin Anyway"
-msgstr "Rovnako umiestnite špendlík"
+msgstr "Umiestniť rovnako vývod"
 
 #: eeschema/tools/symbol_editor_pin_tool.cpp:453
 #, fuzzy
@@ -28178,15 +28165,13 @@ msgid "Invalid footprint specified"
 msgstr "Zadaná neplatná stopa"
 
 #: eeschema/widgets/sch_design_block_pane.cpp:42
-#, fuzzy
 msgid "Place as sheet"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť ako list"
 
 #: eeschema/widgets/sch_design_block_pane.cpp:43
 #: pcbnew/widgets/pcb_design_block_pane.cpp:44
-#, fuzzy
 msgid "Place as group"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť ako skupinu"
 
 #: eeschema/widgets/sch_design_block_pane.cpp:44
 #: pcbnew/widgets/pcb_design_block_pane.cpp:45
@@ -28195,19 +28180,17 @@ msgstr "Zachovať očíslovania"
 
 #: eeschema/widgets/sch_design_block_pane.cpp:106
 #: pcbnew/widgets/pcb_design_block_pane.cpp:100
-#, fuzzy
 msgid "Place copies of the design block on subsequent clicks."
-msgstr "Symbol nechajte vybraný pre ďalšie kliknutia."
+msgstr "Umiestniť kópie návrhových blokov pri nasledujúcich kliknutiach."
 
 #: eeschema/widgets/sch_design_block_pane.cpp:113
 #: pcbnew/widgets/pcb_design_block_pane.cpp:107
-#, fuzzy
 msgid "Place the design block as a group."
-msgstr "Zrušiť blok"
+msgstr "Umiestniť návrhový blok ako skupinu."
 
 #: eeschema/widgets/sch_design_block_pane.cpp:119
 msgid "Place the design block as a new sheet."
-msgstr ""
+msgstr "Umiestniť návrhový blok ako nový list."
 
 #: eeschema/widgets/sch_design_block_pane.cpp:125
 msgid ""
@@ -29943,23 +29926,21 @@ msgid "Exclude 3D models for components with 'Unspecified' footprint type"
 msgstr "Vylúčiť 3D modely pre komponenty s typom puzdra 'Nešpecifikovaný'"
 
 #: kicad/cli/command_pcb_export_3d.cpp:93
-#, fuzzy
 msgid "Exclude 3D models for components with 'Do not populate' attribute"
-msgstr "Vylúčte komponenty bez kolíkov"
+msgstr "Vylúčiť 3d modely pre komponenty s atribútom 'neosadzovať'"
 
 #: kicad/cli/command_pcb_export_3d.cpp:103
 msgid "Use Grid Origin for output origin"
 msgstr "Použiť počiatok mriežky aj pre počiatok výstupu"
 
 #: kicad/cli/command_pcb_export_3d.cpp:107
-#, fuzzy
 msgid "Use Drill Origin for output origin"
-msgstr "Použite pôvod súboru drill / place ako pôvod"
+msgstr "Použiť počiatok súradníc vŕtania ako počiatok súradníc výstupu"
 
 #: kicad/cli/command_pcb_export_3d.cpp:111
 msgid ""
 "Substitute STEP or IGS models with the same name in place of VRML models"
-msgstr "Nahradit modely STEP nebo IGS se stejným názvem namísto modelů VRML"
+msgstr "Nahradiť modely STEP alebo IGS s rovnakým názvom namiesto modelov VRML"
 
 #: kicad/cli/command_pcb_export_3d.cpp:116
 msgid "Only generate a board with no components"
@@ -30321,7 +30302,7 @@ msgstr ""
 #: kicad/cli/command_pcb_export_gencad.cpp:49
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:221
 msgid "Use drill/place file origin as origin"
-msgstr "Použite pôvod súboru drill / place ako pôvod"
+msgstr "Použiť počiatok súradníc vŕtania/umiestnenia ako počiatok súradníc"
 
 #: kicad/cli/command_pcb_export_gencad.cpp:53
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:222
@@ -30350,7 +30331,7 @@ msgstr "Zakázať makrá clony (neodporúča sa)"
 #: pcbnew/dialogs/dialog_gen_footprint_position_file_base.cpp:119
 #: pcbnew/dialogs/dialog_plot_base.cpp:169
 msgid "Use drill/place file origin"
-msgstr "Použite pôvod súboru drill / place"
+msgstr "Použiť počiatok súradníc vŕtania/umiestnenia"
 
 #: kicad/cli/command_pcb_export_gerber.cpp:90
 #, fuzzy
@@ -30441,9 +30422,8 @@ msgstr ""
 "ascii alebo csv)"
 
 #: kicad/cli/command_pcb_export_pos.cpp:69
-#, fuzzy
 msgid "Use drill/place file origin (ascii or csv only)"
-msgstr "Použite pôvod súboru drill / place ako pôvod"
+msgstr "Použiť počiatok súradníc vŕtania/umiestnenia (iba ascii alebo csv)"
 
 #: kicad/cli/command_pcb_export_pos.cpp:73
 #, fuzzy
@@ -30457,9 +30437,8 @@ msgstr ""
 
 #: kicad/cli/command_pcb_export_pos.cpp:82
 #: pcbnew/dialogs/dialog_gen_footprint_position_file_base.cpp:110
-#, fuzzy
 msgid "Exclude all footprints with the Do Not Populate flag set"
-msgstr "Vylúčte všetky stopy pomocou podložiek s priechodnými otvormi"
+msgstr "Vylúčiť všetky puzdrá s nastaveným príznakom 'neosadzovať'"
 
 #: kicad/cli/command_pcb_export_pos.cpp:86
 #, fuzzy
@@ -31712,8 +31691,8 @@ msgid ""
 msgstr ""
 "Toto sa môže stať, ak sa vaša predchádzajúca relácia neočakávane skončila.\n"
 "\n"
-"Vyberte možnosť „Obnoviť“, ak chcete obnoviť tieto zmeny, alebo možnosť "
-"„Zahodiť“, ak chcete zachovať aktuálne uložené súbory."
+"Vyberte možnosť „Obnoviť“, ak chcete obnoviť tieto zmeny, alebo možnosť „"
+"Zahodiť“, ak chcete zachovať aktuálne uložené súbory."
 
 #: kicad/kicad_manager_frame.cpp:1144
 #, fuzzy
@@ -31799,9 +31778,8 @@ msgid "EasyEDA (JLCEDA) Std Backup..."
 msgstr "Záloha EasyEDA (JLCEDA) Std..."
 
 #: kicad/menubar.cpp:141
-#, fuzzy
 msgid "Import EasyEDA (JLCEDA) Standard schematic and board"
-msgstr "Importujte schému XML EAGLE CAD a dosku"
+msgstr "Importovať EasyEDA (JLCEDA) Standard schému a dosku"
 
 #: kicad/menubar.cpp:145
 #, fuzzy
@@ -33391,9 +33369,8 @@ msgid "Select the page to simulate item displays"
 msgstr "Výber spôsobu zobrazenia spojov"
 
 #: pagelayout_editor/tools/pl_actions.cpp:72
-#, fuzzy
 msgid "Place Bitmaps"
-msgstr "Pridať uzol"
+msgstr "Umiestniť bitmapy"
 
 #: pagelayout_editor/tools/pl_actions.cpp:93
 msgid "Append Existing Drawing Sheet..."
@@ -33738,7 +33715,7 @@ msgstr "Vlastnosti kruhu"
 
 #: pcb_calculator/calculator_panels/panel_cable_size_base.cpp:34
 msgid "Standard Size:"
-msgstr "Štandardná velkosť:"
+msgstr "Štandardná veľkosť:"
 
 #: pcb_calculator/calculator_panels/panel_cable_size_base.cpp:58
 #: pcbnew/dialogs/dialog_board_statistics.cpp:133
@@ -35491,7 +35468,6 @@ msgstr ""
 "Ukončiť a zahodiť zmeny?"
 
 #: pcb_calculator/r_calculator_help.h:2
-#, fuzzy
 msgid ""
 "- This calculator finds combinations of standard E-series (between 10Ω and "
 "1MΩ) to create arbitrary values.\n"
@@ -35508,34 +35484,20 @@ msgid ""
 "\tR1 | R2 |...| Rn\tresistors in parallel\n"
 "\tR1 + (R2|R3)...\t\tany combination of the above\n"
 msgstr ""
-"Série E definované v IEC 60063 sú všeobecne akceptovaným preferovaným "
-"systémom\n"
-"čísla pre elektronické súčiastky. Dostupné hodnoty sú približne\n"
-"rovnako rozložené v logaritmickej mierke.\n"
+"- Táto kalkulačka vyhľadáva kombinácie štandardných rezistorov rady E (medzi "
+"10Ω a 1MΩ) na vytvorenie ľubovoľných hodnôt.\n"
+"- Môžete zadať požadovaný odpor od 0,0025 do 4000 kΩ.\n"
+"- Umožňuje riešenia s použitím až 4 komponentov.\n"
 "\n"
-"E12: 1,0 1,2 1,5 1,8 2,2 2,7 3,3 3,9 4,7 5,6 6,8 8,2\n"
-"E6: 1,0 - 1,5 - 2,2 - 3,3 - 4,7 - 6,8 -\n"
-"E3: 1,0 - - - 2,2 - - - 4,7 - - -\n"
-"E1: 1,0 - - - - - - - - - - - -\n"
-"\n"
-"Táto kalkulačka vyhľadáva kombinácie štandardných komponentov série E.\n"
-"vytvárať ľubovoľné hodnoty. Môžete zadať požadovaný odpor od 0,0025 do 4000 "
-"kOhm.\n"
-"Uvádzané sú riešenia využívajúce až 3 komponenty.\n"
-"\n"
-"Ak je potrebné bližšie riešenie, poskytne riešenie možnosť 4R\n"
-"s použitím iba 4 komponentov iba pre sériu E12. Táto možnosť\n"
-"výpočet môže trvať dlhšie.\n"
-"\n"
-"Je tiež možné určiť až dve hodnoty, ktoré sa majú z riešenia vylúčiť, ak sú "
-"tieto\n"
-"hodnoty komponentov nie sú k dispozícii\n"
+"Požadovaná hodnota je vždy vylúčená zo sady riešení.<br>\n"
+"V prípade problémov s dostupnosťou súčiastok, je možné vylúčiť až dve ďalšie "
+"hodnoty.\n"
 "\n"
 "Riešenia sú uvedené v nasledujúcich formátoch:\n"
 "\n"
-"Rezistory R1 + R2 +... + Rn v sérii\n"
-"R1 | R2 |... | Rn rezistory paralelne\n"
-"R1 + (R2 | R3)... akákoľvek kombinácia vyššie uvedených\n"
+"\tR1 + R2 +...+ Rn \trezistory zapojené sériovo\n"
+"\tR1 | R2 |...| Rn\trezistory zapojené paralelne\n"
+"\tR1 + (R2|R3)...\t\tľubovoľná kombinácia vyššie uvedených\n"
 
 #: pcb_calculator/tracks_width_versus_current_formula.h:2
 #, fuzzy
@@ -36043,9 +36005,8 @@ msgstr "Okraje dosky musia byť definované vo vrstve %s."
 
 #: pcbnew/autorouter/autoplace_tool.cpp:101
 #: pcbnew/autorouter/autoplace_tool.cpp:107
-#, fuzzy
 msgid "Autoplace Footprints"
-msgstr "Automatické umiestňovanie stôp"
+msgstr "Automatické umiestňovanie puzdier"
 
 #: pcbnew/board.cpp:1152 pcbnew/drc/drc_cache_generator.cpp:214
 msgid "Tessellating copper zones..."
@@ -37505,7 +37466,7 @@ msgstr "Posun šrafovania zón"
 
 #: pcbnew/dialogs/dialog_board_setup.cpp:141
 msgid "Text & Graphics"
-msgstr "Text & grafika"
+msgstr "Text a grafika"
 
 #: pcbnew/dialogs/dialog_board_setup.cpp:148
 msgid "Defaults"
@@ -39072,9 +39033,8 @@ msgstr "Výstupné jednotky"
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:84
 #: pcbnew/dialogs/dialog_export_step_base.cpp:250
 #: pcbnew/dialogs/dialog_export_vrml_base.cpp:120
-#, fuzzy
 msgid "Ignore 'Do not populate' components"
-msgstr "Virtuálne komponenty ignorujte"
+msgstr "Ignorovať komponenty s príznakom 'neosadzovať'"
 
 #: pcbnew/dialogs/dialog_export_idf_base.cpp:87
 #: pcbnew/dialogs/dialog_export_step_base.cpp:255
@@ -39422,7 +39382,7 @@ msgstr "Súradnice"
 #: pcbnew/dialogs/dialog_gendrill_base.cpp:148
 #: pcbnew/dialogs/panel_pcbnew_display_origin_base.cpp:38
 msgid "Drill/place file origin"
-msgstr "Pôvod súboru vrtáka / umiestnenia"
+msgstr "Počiatok súradníc vŕtania/umiestnenia"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:183
 #: pcbnew/dialogs/panel_pcbnew_display_origin_base.cpp:41
@@ -39444,7 +39404,7 @@ msgstr "Používateľom definovaný počiatok"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:251
 msgid "Do not show components marked 'Do not populate'"
-msgstr ""
+msgstr "Nezobrazovať komponenty označené ako 'neosadzovať'"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:256
 msgid "Do not show components with Footprint Type 'Unspecified'"
@@ -39456,7 +39416,7 @@ msgstr "Vyměnit modely s podobným názvem"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:262
 msgid "Replace VRML models with STEP models of the same name"
-msgstr "Vyměňte modely VRML za STEP modely stejného jména"
+msgstr "Nahradiť modely VRML za STEP modely rovnakého názvu"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:266
 msgid "Overwrite old file"
@@ -39485,9 +39445,8 @@ msgid "Tight (0.001 mm)"
 msgstr "Štandardné (1,2,3)"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:280
-#, fuzzy
 msgid "Standard (0.01 mm)"
-msgstr "Štandardné (1,2,3)"
+msgstr "Štandardné (0,01 mm)"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:280
 msgid "Loose (0.1 mm)"
@@ -39625,7 +39584,7 @@ msgstr "Zahrnúť &prekovy"
 
 #: pcbnew/dialogs/dialog_filter_selection_base.cpp:51
 msgid "Include &zones"
-msgstr "Zahrnúť & zóny"
+msgstr "Zahrnúť &zóny"
 
 #: pcbnew/dialogs/dialog_filter_selection_base.h:56
 #, fuzzy
@@ -40018,8 +39977,8 @@ msgid ""
 "The library ID and footprint ID currently assigned.  Use \"Change "
 "Footprint...\" to assign a different footprint."
 msgstr ""
-"Knižničné ID a ID puzdra sú priradené.   Pomocou príkazu \"Zameniť puzdro..."
-"\" môžete priradiť iné puzdro."
+"Knižničné ID a ID puzdra sú priradené.   Pomocou príkazu \"Zameniť "
+"puzdro...\" môžete priradiť iné puzdro."
 
 #: pcbnew/dialogs/dialog_footprint_properties_base.h:120
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.h:133
@@ -40459,9 +40418,9 @@ msgid "Exclude all footprints with through hole pads"
 msgstr "Vylúčiť všetky puzdrá s plôškami s priechodzími otvormi"
 
 #: pcbnew/dialogs/dialog_gen_footprint_position_file_base.cpp:113
-#, fuzzy
 msgid "Exclude all footprints with the Exclude from BOM flag set"
-msgstr "Vylúčte všetky stopy pomocou podložiek s priechodnými otvormi"
+msgstr ""
+"Vylúčiť všetky puzdrá s nastaveným príznakom 'Vylúčiť zo zoznamu materiálu'"
 
 #: pcbnew/dialogs/dialog_gen_footprint_position_file_base.cpp:116
 msgid "Include board edge layer"
@@ -40641,7 +40600,7 @@ msgstr "Vybrať a presunúť puzdro"
 
 #: pcbnew/dialogs/dialog_global_deletion.cpp:288
 msgid "Global Delete"
-msgstr "Globálne mazanie"
+msgstr "Globálne odstránenie"
 
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:23
 msgid "Items to Delete"
@@ -40662,7 +40621,7 @@ msgstr "Obrysy dosky"
 
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:40
 msgid "Tracks && vias"
-msgstr "Spoje && prekovy"
+msgstr "Spoje a prekovy"
 
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:46
 msgid "Markers"
@@ -41301,9 +41260,8 @@ msgid "Group footprints based on symbol group"
 msgstr "Pre symbol '%s' nie je definovaná žiadna stopa."
 
 #: pcbnew/dialogs/dialog_import_netlist_base.cpp:64
-#, fuzzy
 msgid "Delete/replace footprints even if locked"
-msgstr "Odstrániť filter stopy"
+msgstr "Odstrániť/nahradiť puzdrá aj keď sú uzamknuté"
 
 #: pcbnew/dialogs/dialog_import_netlist_base.cpp:67
 msgid "Delete tracks shorting multiple nets"
@@ -41333,7 +41291,7 @@ msgstr "Predvolené vlastnosti textu a grafiky"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:63
 msgid "Text && graphics formatting"
-msgstr "Text a formátovanie grafiky"
+msgstr "Formátovanie textu a grafiky"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:66
 #, fuzzy
@@ -41454,7 +41412,7 @@ msgstr ""
 
 #: pcbnew/dialogs/dialog_move_exact.cpp:96
 msgid "Rotate around item anchor"
-msgstr "Otočiť okolo kotvy položky"
+msgstr "Otočiť položku okolo bodu ukotvenia"
 
 #: pcbnew/dialogs/dialog_move_exact.cpp:97
 msgid "Rotate around selection center"
@@ -41468,7 +41426,7 @@ msgstr "Otočiť okolo pôvodu miestnych súradníc"
 #: pcbnew/dialogs/dialog_move_exact.cpp:99
 #: pcbnew/dialogs/dialog_move_exact_base.cpp:69
 msgid "Rotate around drill/place origin"
-msgstr "Otáčajte okolo začiatku / miesta začiatku"
+msgstr "Otáčať okolo počiatku súradníc vŕtania/umiestnenia"
 
 #: pcbnew/dialogs/dialog_move_exact.cpp:196
 #: pcbnew/dialogs/dialog_offset_item.cpp:153
@@ -41550,9 +41508,8 @@ msgid "Reference rule area:"
 msgstr "Referenčné označenie"
 
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:44
-#, fuzzy
 msgid "Anchor footprint:"
-msgstr "Puzdro nenájdené"
+msgstr "Bod ukotvenia puzdra:"
 
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:51
 msgid ""
@@ -42597,12 +42554,11 @@ msgid "3:1"
 msgstr "3:1"
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:170
-#, fuzzy
 msgid ""
 "Use the drill/place file origin as the coordinate origin for plotted files"
 msgstr ""
-"Ako počiatok súradnice pre vykreslené súbory použite počiatok súboru "
-"vrtania / umiestnenia"
+"Použiť počiatok súradníc vŕtania/umiestnenia ako počiatok súradníc pre "
+"vykresľované súbory"
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:174
 msgid "Mirrored plot"
@@ -43057,7 +43013,7 @@ msgid ""
 "The anchor position will be the position of the selected item."
 msgstr ""
 "Kliknite a vyberte položku na doske.\n"
-"Poloha ukotvenia bude pozíciou vybranej položky."
+"Poloha bodu ukotvenia bude pozíciou vybranej položky."
 
 #: pcbnew/dialogs/dialog_position_relative_base.h:73
 msgid "Position Relative To Reference Item"
@@ -43784,7 +43740,7 @@ msgstr ""
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.h:191
 msgid "Track & Via Properties"
-msgstr "Vlastnosti služby Track & Via"
+msgstr "Vlastnosti spoja a prekovu"
 
 #: pcbnew/dialogs/dialog_track_via_size_base.h:53
 msgid "Track and Via Dimensions"
@@ -43930,9 +43886,8 @@ msgid "Update Footprints"
 msgstr "Aktualizujte Footprint"
 
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:44
-#, fuzzy
 msgid "Replace footprints with those specified by symbols"
-msgstr "Vymeňte stopy za tie, ktoré sú uvedené v zozname netlistov"
+msgstr "Nahradiť puzdrá za puzdrá špecifikované symbolmi"
 
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:46
 msgid ""
@@ -44442,8 +44397,7 @@ msgstr "Knižnica stopy nie je povolená."
 #, c-format
 msgid ""
 "Folder '%s' already exists. Do you want overwrite any existing footprints?"
-msgstr ""
-"Priečinok '%s' už existuje. Chcete prepísať niektoré existujúce puzdrá?"
+msgstr "Priečinok '%s' už existuje. Chcete prepísať niektoré existujúce puzdrá?"
 
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:578
 #, fuzzy, c-format
@@ -44605,19 +44559,16 @@ msgid "No placement"
 msgstr "Umiestnenie"
 
 #: pcbnew/dialogs/panel_rule_area_properties_placement_base.cpp:24
-#, fuzzy
 msgid "Place items from sheet:"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť položky z listu:"
 
 #: pcbnew/dialogs/panel_rule_area_properties_placement_base.cpp:33
-#, fuzzy
 msgid "Place items matching component class:"
-msgstr "Filtrovať položky podľa triedy siete:"
+msgstr "Umiestniť položky zodpovedajúce triede komponentov:"
 
 #: pcbnew/dialogs/panel_rule_area_properties_placement_base.cpp:42
-#, fuzzy
 msgid "Place items in group:"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť položky v skupine:"
 
 #: pcbnew/dialogs/panel_setup_condition_help_1clauses.h:2
 msgid ""
@@ -47349,7 +47300,7 @@ msgstr "Chýba číslo verzie."
 
 #: pcbnew/drc/drc_test_provider_annular_width.cpp:76
 msgid "Checking pad & via annular rings..."
-msgstr "Kontrolujú sa prstence plôšok & prekovov..."
+msgstr "Kontrolujú sa prstence plôšok a prekovov..."
 
 #: pcbnew/drc/drc_test_provider_annular_width.cpp:261
 #, c-format
@@ -47380,7 +47331,7 @@ msgstr "Kontrolujú sa pripojenia spojov..."
 
 #: pcbnew/drc/drc_test_provider_copper_clearance.cpp:119
 msgid "Checking track & via clearances..."
-msgstr "Kontrolujú sa min. vzdialenosti spoja & prekovu..."
+msgstr "Kontrolujú sa min. vzdialenosti spoja a prekovu..."
 
 #: pcbnew/drc/drc_test_provider_copper_clearance.cpp:126
 msgid "Checking hole clearances..."
@@ -48257,6 +48208,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Nie je možné uložiť z dôvodu chyby overenia v pravidle '%s':\n"
+"\n"
+"%s"
 
 #: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #, fuzzy
@@ -48638,7 +48592,7 @@ msgstr "Výber vrstvy:"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
-msgstr ""
+msgstr "CHYBA: nie je poskytnutá textová podmienka pre overenie."
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 #, fuzzy
@@ -49329,7 +49283,7 @@ msgstr "vylúčiť zo súborov pos"
 #: pcbnew/footprint.cpp:2169
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1478
 msgid "exclude from BOM"
-msgstr "vylúčiť z kusovníka"
+msgstr "vylúčiť zo zoznamu materiálu"
 
 #: pcbnew/footprint.cpp:2174
 msgid "Status: "
@@ -49965,9 +49919,8 @@ msgid "Used when the DXF file has no unit set"
 msgstr ""
 
 #: pcbnew/import_gfx/dialog_import_graphics_base.cpp:97
-#, fuzzy
 msgid "Place at:"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť na:"
 
 #: pcbnew/import_gfx/dialog_import_graphics_base.cpp:98
 msgid "If not checked: use interactive placement."
@@ -50070,7 +50023,7 @@ msgstr "Režim &kreslenia"
 
 #: pcbnew/menubar_footprint_editor.cpp:163 pcbnew/menubar_pcb_editor.cpp:270
 msgid "&Contrast Mode"
-msgstr "& Režim kontrastu"
+msgstr "&Režim kontrastu"
 
 #: pcbnew/menubar_pcb_editor.cpp:112
 msgid "Specctra Session..."
@@ -50124,7 +50077,7 @@ msgstr "Kresliť kóty"
 
 #: pcbnew/menubar_pcb_editor.cpp:340
 msgid "Auto-Place Footprints"
-msgstr "Automatické umiestňovanie stôp"
+msgstr "Automatické umiestňovanie puzdier"
 
 #: pcbnew/menubar_pcb_editor.cpp:438
 msgid "Multi-Channel"
@@ -50136,7 +50089,7 @@ msgstr "Externé doplnky"
 
 #: pcbnew/menubar_pcb_editor.cpp:482
 msgid "Ro&ute"
-msgstr "Ro & ute"
+msgstr "Ro&ute"
 
 #: pcbnew/microwave/microwave_footprint.cpp:57
 msgid "Gap Size:"
@@ -50224,7 +50177,7 @@ msgstr "Tvar nemá žiadne body."
 
 #: pcbnew/microwave/microwave_tool.cpp:93
 msgid "Place microwave feature"
-msgstr "Umiestnite mikrovlnnú rúru"
+msgstr "Umiestniť mikrovlnné prvky"
 
 #: pcbnew/netinfo_item.cpp:90 pcbnew/widgets/pcb_net_inspector_panel.cpp:112
 msgid "Net Name"
@@ -50412,24 +50365,24 @@ msgid "Updated %s footprint filters to '%s'."
 msgstr "Zmeniť stopu %s z '%s' na '%s'"
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:742
-#, fuzzy, c-format
+#, c-format
 msgid "Add %s 'exclude from BOM' fabrication attribute."
-msgstr "Nastavenie %s atribútu výroby „vylúčiť z kusovníka“."
+msgstr "Pridať %s výrobný atribút 'vylúčiť zo zoznamu materiálu'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:744
-#, fuzzy, c-format
+#, c-format
 msgid "Remove %s 'exclude from BOM' fabrication attribute."
-msgstr "Odstránenie atribútu %s „vylúčiť z kusovníka“."
+msgstr "Odstrániť %s výrobný atribútu 'vylúčiť zo zoznamu materiálu'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:753
-#, fuzzy, c-format
+#, c-format
 msgid "Added %s 'exclude from BOM' fabrication attribute."
-msgstr "Nastavenie %s atribútu výroby „vylúčiť z kusovníka“."
+msgstr "Pridaný %s výrobný atribút 'vylúčiť zo zoznamu materiálu'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:758
-#, fuzzy, c-format
+#, c-format
 msgid "Removed %s 'exclude from BOM' fabrication attribute."
-msgstr "Odstránenie atribútu %s „vylúčiť z kusovníka“."
+msgstr "Odstránený %s výrobný atribút 'vylúčiť zo zoznamu materiálu'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:778
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1598
@@ -50454,24 +50407,24 @@ msgid "Removed %s 'Do not place' fabrication attribute."
 msgstr "Odstránenie atribútu %s „vylúčiť z kusovníka“."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:815
-#, fuzzy, c-format
+#, c-format
 msgid "Add %s 'exclude from position files' fabrication attribute."
-msgstr "Nastavenie %s atribútu výroby „vylúčiť z kusovníka“."
+msgstr "Pridať %s výrobný atribút 'vylúčiť z polohových súborov'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:820
-#, fuzzy, c-format
+#, c-format
 msgid "Remove %s 'exclude from position files' fabrication attribute."
-msgstr "Odstránenie atribútu %s „vylúčiť z kusovníka“."
+msgstr "Odstrániť %s výrobný atribút 'vylúčiť z polohových súborov'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:831
-#, fuzzy, c-format
+#, c-format
 msgid "Added %s 'exclude from position files' fabrication attribute."
-msgstr "Nastavenie %s atribútu výroby „vylúčiť z kusovníka“."
+msgstr "Pridaný %s výrobný atribút 'vylúčiť z polohových súborov'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:837
-#, fuzzy, c-format
+#, c-format
 msgid "Removed %s 'exclude from position files' fabrication attribute."
-msgstr "Odstránenie atribútu %s „vylúčiť z kusovníka“."
+msgstr "Odstránený %s výrobný atribút 'vylúčiť z polohových súborov'."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:860
 #, c-format
@@ -50628,9 +50581,8 @@ msgid "Do not place"
 msgstr "Neexportovať"
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1497
-#, fuzzy
 msgid "exclude from position files"
-msgstr "Vylúčiť z polohových súborov"
+msgstr "vylúčiť z polohových súborov"
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1523
 #, fuzzy, c-format
@@ -53223,8 +53175,7 @@ msgstr ""
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:7760
 #, c-format
 msgid "Invalid padstack layer '%s' in file '%s' at line %d, offset %d."
-msgstr ""
-"Neplatná vrstva v padstacku '%s' v súbore '%s' na riadku %d, offset %d."
+msgstr "Neplatná vrstva v padstacku '%s' v súbore '%s' na riadku %d, offset %d."
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:8411
 msgid ""
@@ -54593,16 +54544,15 @@ msgstr "Pridá priechodzí prekov na konci aktuálne routovaného spoja."
 
 #: pcbnew/router/router_tool.cpp:159
 msgid "Place Blind/Buried Via"
-msgstr "Vložiť slepú/vnorenú prechodku"
+msgstr "Umiestniť slepý/vnorený prekov"
 
 #: pcbnew/router/router_tool.cpp:160
 msgid "Adds a blind or buried via at the end of currently routed track."
-msgstr ""
-"Na konci aktuálne routovaného spoja pridá slepý alebo pochovaný prekov."
+msgstr "Na konci aktuálne routovaného spoja pridá slepý alebo pochovaný prekov."
 
 #: pcbnew/router/router_tool.cpp:170
 msgid "Place Microvia"
-msgstr "Miesto Microvia"
+msgstr "Umiestniť mikroprekov"
 
 #: pcbnew/router/router_tool.cpp:171
 msgid "Adds a microvia at the end of currently routed track."
@@ -54622,7 +54572,7 @@ msgstr ""
 
 #: pcbnew/router/router_tool.cpp:192
 msgid "Select Layer and Place Blind/Buried Via..."
-msgstr "Vyberte vrstvu a umiestnite nevidiacich / zakopaných cez..."
+msgstr "Vybrať vrstvu a umiestniť slepý/vnorený prekov..."
 
 #: pcbnew/router/router_tool.cpp:193
 msgid ""
@@ -54633,9 +54583,8 @@ msgstr ""
 "alebo pochovaný prekov."
 
 #: pcbnew/router/router_tool.cpp:201
-#, fuzzy
 msgid "Select Layer and Place Micro Via..."
-msgstr "Vyberte vrstvu a vložte ju cez..."
+msgstr "Vybrať vrstvu a umiestniť mikroprekov..."
 
 #: pcbnew/router/router_tool.cpp:202
 msgid ""
@@ -55152,9 +55101,8 @@ msgid "Increase Via Size"
 msgstr "Zväčšiť prostredníctvom veľkosti"
 
 #: pcbnew/tools/board_editor_control.cpp:1344
-#, fuzzy
 msgid "Place Footprint"
-msgstr "Umiestnite stopu"
+msgstr "Umiestniť puzdro"
 
 #: pcbnew/tools/board_editor_control.cpp:1472 pcbnew/tools/pcb_actions.cpp:1500
 msgid "Lock"
@@ -55787,9 +55735,8 @@ msgid "Draw Bezier"
 msgstr "Kresliť Bézier"
 
 #: pcbnew/tools/drawing_tool.cpp:925
-#, fuzzy
 msgid "Place point"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť bod"
 
 #: pcbnew/tools/drawing_tool.cpp:1552
 msgid "Draw Barcode"
@@ -55800,9 +55747,8 @@ msgid "Draw Dimension"
 msgstr "Kresliť kótu"
 
 #: pcbnew/tools/drawing_tool.cpp:2308
-#, fuzzy
 msgid "Move Footprint Anchor"
-msgstr "Umiestnite kotvu stopy"
+msgstr "Presunúť bod kotvenia puzdra"
 
 #: pcbnew/tools/drawing_tool.cpp:4015
 #, fuzzy
@@ -55816,7 +55762,7 @@ msgstr "Počiatočný bod smerovania porušuje KDR."
 
 #: pcbnew/tools/drawing_tool.cpp:4371
 msgid "Place via"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť prekov"
 
 #: pcbnew/tools/drc_tool.cpp:323
 #, fuzzy
@@ -56454,9 +56400,8 @@ msgid "Add a board stackup table on a graphic layer"
 msgstr "Přidat tabulku vlastností desky do grafické vrstvy"
 
 #: pcbnew/tools/pcb_actions.cpp:194
-#, fuzzy
 msgid "Place Point"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť bod"
 
 #: pcbnew/tools/pcb_actions.cpp:195
 #, fuzzy
@@ -56464,9 +56409,8 @@ msgid "Add reference/snap points"
 msgstr "Referenčný bod siete:"
 
 #: pcbnew/tools/pcb_actions.cpp:203
-#, fuzzy
 msgid "Place Reference Images"
-msgstr "Referenčný obrázok"
+msgstr "Umiestniť referenčné obrázky"
 
 #: pcbnew/tools/pcb_actions.cpp:204
 msgid ""
@@ -56531,14 +56475,12 @@ msgid "Draw Filled Zones"
 msgstr "Kresliť vyplnené zóny"
 
 #: pcbnew/tools/pcb_actions.cpp:335
-#, fuzzy
 msgid "Place Vias"
-msgstr "Umiestniť cez"
+msgstr "Umiestniť prekovy"
 
 #: pcbnew/tools/pcb_actions.cpp:336
-#, fuzzy
 msgid "Place free-standing vias"
-msgstr "Pridajte samostatne stojace priechody"
+msgstr "Umiestniť samostatné prekovy"
 
 #: pcbnew/tools/pcb_actions.cpp:357
 msgid "Add a Zone Cutout"
@@ -56558,12 +56500,11 @@ msgstr "Pridať zónu s rovnakými nastaveniami ako má existujúca zóna"
 
 #: pcbnew/tools/pcb_actions.cpp:390
 msgid "Place the Footprint Anchor"
-msgstr "Umiestnite kotvu stopy"
+msgstr "Umiestniť bod ukotvenia puzdra"
 
 #: pcbnew/tools/pcb_actions.cpp:391
-#, fuzzy
 msgid "Set the anchor point of the footprint"
-msgstr "Nastavte začiatočný bod (kotvu) súradnice stopy"
+msgstr "Nastaviť bod ukotvenia puzdra"
 
 #: pcbnew/tools/pcb_actions.cpp:401
 msgid "Increase Line Width"
@@ -57013,11 +56954,11 @@ msgstr "Presunúť spoje alebo kresby z jednej vrstvy do inej"
 
 #: pcbnew/tools/pcb_actions.cpp:1024
 msgid "Edit Track & Via Properties..."
-msgstr "Upraviť vlastnosti spoja & prekovu..."
+msgstr "Upraviť vlastnosti spoja a prekovu..."
 
 #: pcbnew/tools/pcb_actions.cpp:1025
 msgid "Edit track and via properties globally across board"
-msgstr "Upraviť vlastnosti spoja & prekovu globálne cez celú dosku..."
+msgstr "Upraviť vlastnosti spoja a prekovu globálne naprieč celou doskou..."
 
 #: pcbnew/tools/pcb_actions.cpp:1032
 msgid "Edit Text and graphics properties globally across board"
@@ -57043,7 +56984,7 @@ msgstr "Odstráňte stopy, stopy a grafické prvky z hracej plochy"
 
 #: pcbnew/tools/pcb_actions.cpp:1052
 msgid "Cleanup Tracks & Vias..."
-msgstr "Čistenie stôp a vias..."
+msgstr "Vyčistiť spoje a prekovy..."
 
 #: pcbnew/tools/pcb_actions.cpp:1053
 msgid "Cleanup redundant items, shorting items, etc."
@@ -57111,8 +57052,7 @@ msgstr "Prilepte predvolené vlastnosti podložky na vybrané"
 
 #: pcbnew/tools/pcb_actions.cpp:1123
 msgid "Replace the current pad's properties with those copied earlier"
-msgstr ""
-"Nahraďte vlastnosti aktuálnej podložky tými, ktoré ste skopírovali skôr"
+msgstr "Nahradiť vlastnosti aktuálnej plôšky tými, ktoré boli skopírované skôr"
 
 #: pcbnew/tools/pcb_actions.cpp:1129
 msgid "Push Pad Properties to Other Pads..."
@@ -57407,19 +57347,17 @@ msgid "Duplicate Zone onto Layer..."
 msgstr "Duplikovať zónu na vrstvu..."
 
 #: pcbnew/tools/pcb_actions.cpp:1423
-#, fuzzy
 msgid "Place Footprints"
-msgstr "Umiestnite stopu"
+msgstr "Umiestniť puzdrá"
 
 #: pcbnew/tools/pcb_actions.cpp:1432
 msgid "Drill/Place File Origin"
-msgstr "Vŕtanie / umiestnenie pôvodu súboru"
+msgstr "Počiatok súradníc súboru vŕtania/umiestnenia"
 
 #: pcbnew/tools/pcb_actions.cpp:1433
-#, fuzzy
 msgid "Place origin point for drill files and component placement files"
 msgstr ""
-"Umiestnite východiskový bod pre súbory vrtákov a súbory umiestnenia stopy"
+"Umiestniť počiatočný bod pre súbory vŕtania a súbory umiestnenia komponentov"
 
 #: pcbnew/tools/pcb_actions.cpp:1441
 #, fuzzy
@@ -58047,7 +57985,7 @@ msgstr "Vyberte možnosť Všetky stopy v sieti"
 
 #: pcbnew/tools/pcb_actions.cpp:2379
 msgid "Selects all tracks & vias belonging to the same net."
-msgstr "Vyberie všetky stopy a trasy, ktoré patria do rovnakej siete."
+msgstr "Vybrať všetky spoje a prekovy, ktoré patria rovnakému spoju."
 
 #: pcbnew/tools/pcb_actions.cpp:2385
 msgid "Deselect All Tracks in Net"
@@ -58055,8 +57993,7 @@ msgstr "Zrušte výber všetkých stôp v sieti"
 
 #: pcbnew/tools/pcb_actions.cpp:2386
 msgid "Deselects all tracks & vias belonging to the same net."
-msgstr ""
-"Zruší výber všetkých skladieb a prechodov patriacich do rovnakej siete."
+msgstr "Zrušiť výber všetkých spojov a prekovov patriacich rovnakému spoju."
 
 #: pcbnew/tools/pcb_actions.cpp:2393
 #, fuzzy
@@ -58155,7 +58092,7 @@ msgstr "Odstrániť vyplnené plochy vo všetkých zónach"
 
 #: pcbnew/tools/pcb_actions.cpp:2477
 msgid "Place Selected Footprints"
-msgstr "Umiestnite vybrané stopy"
+msgstr "Umiestniť vybrané puzdrá"
 
 #: pcbnew/tools/pcb_actions.cpp:2478
 msgid "Performs automatic placement of selected components"
@@ -58163,7 +58100,7 @@ msgstr "Vykoná automatické umiestnenie vybraných komponentov"
 
 #: pcbnew/tools/pcb_actions.cpp:2483
 msgid "Place Off-Board Footprints"
-msgstr "Umiestnite stopy mimo vozidla"
+msgstr "Umiestniť puzdrá mimo dosky"
 
 #: pcbnew/tools/pcb_actions.cpp:2484
 msgid "Performs automatic placement of components outside board area"
@@ -58613,14 +58550,12 @@ msgid "Selected 2D Total Area"
 msgstr "Vyberte pár medi"
 
 #: pcbnew/tools/pcb_control.cpp:2757
-#, fuzzy
 msgid "Place Board Characteristics"
-msgstr "Prispôsobenie vlastností plošiek"
+msgstr "Umiestniť charakteristiky dosky"
 
 #: pcbnew/tools/pcb_control.cpp:2777
-#, fuzzy
 msgid "Place Board Stackup Table"
-msgstr "obmedzenia nastavenia dosky"
+msgstr "Umiestniť tabuľku skladby vrstiev dosky"
 
 #: pcbnew/tools/pcb_control.cpp:2900
 #, fuzzy
@@ -59086,10 +59021,10 @@ msgid ""
 "Successive Tabs while holding %s down will cycle through viewports in the "
 "popup."
 msgstr ""
-"Uložiť a obnoviť polohu pohľadu a priblíženie.\n"
-"Použite %s+Tab pre aktiváciu selektora\n"
-"Postupným stlačením klávesu Tab a podržaním klávesu %s sa prepínajú "
-"predvoľby v kontextovom okne."
+"Uložiť a obnoviť polohu pohľadu a priblížiť.\n"
+"Pomocou %s+Tab je aktivovaný výber.\n"
+"Opakovaným stláčaním klávesy Tab pri stlačenej klávese %s, je prepínané "
+"medzi zobrazeniami vo vyskakovacom okne."
 
 #: pcbnew/widgets/appearance_controls.cpp:623
 #: pcbnew/widgets/appearance_controls.cpp:1885
