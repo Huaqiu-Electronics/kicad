@@ -78,7 +78,7 @@ struct DB_REF : public RESOLVABLE
     // which may not be a resolvable object (e.g. a header LinkedList tail pointer, which is
     // an artificial value).
     // This is not a resolution failure, but it also means the reference is null.
-    uint32_t m_EndKey;
+    uint32_t m_EndKey = 0;
     DB_OBJ*  m_Target;
 };
 
