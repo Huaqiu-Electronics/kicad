@@ -1171,8 +1171,8 @@ public:
         COMPLEX_FIRST_FILL_TASK fillTask( aSimplify );
         fillTask.Execute( m_FillInfos );
 
-        wxLogTrace( traceAllegroPerf, wxT( "   Intersected and fractured zone fills in %.3f ms" ),
-                    timer.msecs() ); // format:allow
+        wxLogTrace( traceAllegroPerf, wxT( "   Intersected and fractured zone fills in %.3f ms" ), // format:allow
+                    timer.msecs() );
     }
 
     void QueuePolygonForZone( ZONE& aZone, SHAPE_POLY_SET aFilledArea, PCB_LAYER_ID aLayer )
