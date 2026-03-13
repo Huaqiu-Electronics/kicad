@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 22:06+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
@@ -2282,8 +2282,7 @@ msgstr "El bloque de diseño «%s» no existe."
 #: common/design_block_io.cpp:353
 #, c-format
 msgid "Design block metadata file '%s' could not be read."
-msgstr ""
-"No se ha podido leer el archivo de metadatos del bloque de diseño «%s»."
+msgstr "No se ha podido leer el archivo de metadatos del bloque de diseño «%s»."
 
 #: common/design_block_io.cpp:380
 msgid "Design block does not have a valid library ID."
@@ -25117,8 +25116,7 @@ msgstr "La configuración actual no incluye la biblioteca de símbolos '%s'."
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1701
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1712
 msgid "Use Manage Symbol Libraries to edit the configuration."
-msgstr ""
-"Utilice Gestionar bibliotecas de símbolos para editar la configuración."
+msgstr "Utilice Gestionar bibliotecas de símbolos para editar la configuración."
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1702
 msgid "Library not found in symbol library table."
