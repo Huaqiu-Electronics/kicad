@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 20:34+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-13 20:35+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/kicad/"
 "master-source/es_MX/>\n"
 "Language: es_MX\n"
@@ -12331,8 +12331,7 @@ msgstr "Eliminar anotación"
 #: eeschema/annotate.cpp:296
 #, c-format
 msgid "%d duplicate time stamps were found and replaced."
-msgstr ""
-"Se han encontrado %d códigos de tiempo duplicados y se han reemplazado."
+msgstr "Se han encontrado %d códigos de tiempo duplicados y se han reemplazado."
 
 #: eeschema/annotate.cpp:452
 #, c-format
@@ -20800,8 +20799,8 @@ msgstr ""
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr ""
-"El archivo de almacenamiento no fue completamente analizado (quedan %d "
-"bytes)."
+"El archivo de almacenamiento no fue completamente analizado (quedan %d bytes)"
+"."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1320
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1415
@@ -24965,8 +24964,7 @@ msgstr ""
 #: eeschema/symbol_checker.cpp:391
 #, c-format
 msgid "<b>Off grid pin %s</b> %s at location <b>(%s, %s)</b>."
-msgstr ""
-"<b>Pin %s fuera de la cuadrícula</b> %s en la posición <b>(%s, %s)</b>."
+msgstr "<b>Pin %s fuera de la cuadrícula</b> %s en la posición <b>(%s, %s)</b>."
 
 #: eeschema/symbol_checker.cpp:399
 #, c-format
@@ -26917,8 +26915,7 @@ msgstr "Entrar en la hoja"
 
 #: eeschema/tools/sch_actions.cpp:1402
 msgid "Display the selected sheet's contents in the schematic editor"
-msgstr ""
-"Muestra los contenidos de la hoja seleccionada en el editor de esquemas"
+msgstr "Muestra los contenidos de la hoja seleccionada en el editor de esquemas"
 
 #: eeschema/tools/sch_actions.cpp:1410
 msgid "Leave Sheet"
@@ -37608,8 +37605,7 @@ msgstr "Eliminar pistas completamente dentro de pads"
 
 #: pcbnew/dialogs/dialog_cleanup_tracks_and_vias_base.cpp:63
 msgid "Delete tracks that have both start and end positions inside of a pad"
-msgstr ""
-"Eliminar pistas que tengan la posición inicial y final dentro de un pad"
+msgstr "Eliminar pistas que tengan la posición inicial y final dentro de un pad"
 
 #: pcbnew/dialogs/dialog_cleanup_tracks_and_vias_base.cpp:83
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:58
@@ -38352,8 +38348,7 @@ msgstr "Desfase de línea de extensión:"
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:414
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:419
 msgid "Gap between the measured points and the start of the extension lines"
-msgstr ""
-"Espacio entre los puntos medidos y el inicio de las líneas de extensión"
+msgstr "Espacio entre los puntos medidos y el inicio de las líneas de extensión"
 
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:427
 msgid "Extension line overshoot:"
@@ -42367,8 +42362,8 @@ msgstr ""
 "PostScript.\n"
 "Esta corrección del ancho tiene como objeto compensar la anchura de pistas y "
 "errores en el tamaño de pads y vías.\n"
-"El valor de corrección razonable debe estar en el rango de [-"
-"(MinTrackWidth-1), +(MinClearanceValue-1)]."
+"El valor de corrección razonable debe estar en el rango de [-(MinTrackWidth-"
+"1), +(MinClearanceValue-1)]."
 
 # ¿Tamaño A4?
 #: pcbnew/dialogs/dialog_plot_base.cpp:324
@@ -49233,8 +49228,7 @@ msgstr "Placa de circuito impreso"
 #: pcbnew/files.cpp:337
 #, c-format
 msgid "Current board will be closed, save changes to '%s' before continuing?"
-msgstr ""
-"Se cerrará la placa actual, ¿guardar cambios a '%s' antes de continuar?"
+msgstr "Se cerrará la placa actual, ¿guardar cambios a '%s' antes de continuar?"
 
 #: pcbnew/files.cpp:351
 msgid "Current Board will be closed. Continue?"
@@ -50421,8 +50415,7 @@ msgstr ""
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:753
 #, c-format
 msgid "Added %s 'exclude from BOM' fabrication attribute."
-msgstr ""
-"Atributo de fabricación 'excluir de la lista de materiales' %s añadido."
+msgstr "Atributo de fabricación 'excluir de la lista de materiales' %s añadido."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:758
 #, c-format
@@ -51606,8 +51599,7 @@ msgstr "Tipo de información primitiva extendida desconocida: '%s'."
 #: pcbnew/pcb_io/altium/altium_parser_pcb.cpp:1057
 #, c-format
 msgid "Pads6 stream has unexpected length for subrecord 6: %d."
-msgstr ""
-"El flujo Pads6 tiene una longitud inesperada para el subregistro 6: %d."
+msgstr "El flujo Pads6 tiene una longitud inesperada para el subregistro 6: %d."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:483
 #, c-format
@@ -52647,8 +52639,7 @@ msgstr ""
 #: pcbnew/pcb_io/fabmaster/import_fabmaster.cpp:642
 #, c-format
 msgid "Unknown pad shape name '%s' on layer '%s' in row %zu."
-msgstr ""
-"Nombre de forma de pad desconocido '%s' en la capa '%s' en la fila %zu."
+msgstr "Nombre de forma de pad desconocido '%s' en la capa '%s' en la fila %zu."
 
 #: pcbnew/pcb_io/fabmaster/import_fabmaster.cpp:780
 #, c-format
@@ -57198,8 +57189,7 @@ msgstr "Dibujar brechas de microondas"
 
 #: pcbnew/tools/pcb_actions.cpp:1069
 msgid "Create gap of specified length for microwave applications"
-msgstr ""
-"Creación de GAPS de longitud específica (para aplicaciones micro-ondas)"
+msgstr "Creación de GAPS de longitud específica (para aplicaciones micro-ondas)"
 
 #: pcbnew/tools/pcb_actions.cpp:1077
 msgid "Draw Microwave Stubs"
@@ -57577,8 +57567,7 @@ msgstr ""
 
 #: pcbnew/tools/pcb_actions.cpp:1508
 msgid "Allow items to be moved and/or resized on the canvas"
-msgstr ""
-"Permite que los elementos sean movidos y/o redimensionados en el lienzo"
+msgstr "Permite que los elementos sean movidos y/o redimensionados en el lienzo"
 
 #: pcbnew/tools/pcb_actions.cpp:1525
 msgid "Toggle Last Net Highlight"
@@ -57639,8 +57628,8 @@ msgstr "Líneas aéreas locales"
 #: pcbnew/tools/pcb_actions.cpp:1593
 msgid "Toggle ratsnest display of selected item(s)"
 msgstr ""
-"Alterna la visualización de líneas aéreas para los elemento(s) "
-"seleccionado(s)"
+"Alterna la visualización de líneas aéreas para los elemento(s) seleccionado"
+"(s)"
 
 #: pcbnew/tools/pcb_actions.cpp:1610
 msgid "Scripting Console"
