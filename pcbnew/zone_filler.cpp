@@ -2910,12 +2910,7 @@ bool ZONE_FILLER::fillCopperZone( const ZONE* aZone, PCB_LAYER_ID aLayer, PCB_LA
      * Lastly give any same-net but higher-priority zones control over their own area.
      */
 
-    double preSubtractArea = aFillPolys.Area();
     subtractHigherPriorityZones( aZone, aLayer, aFillPolys );
-
-    if( aFillPolys.Area() < preSubtractArea )
-        knockoutsApplied = true;
-
     DUMP_POLYS_TO_COPPER_LAYER( aFillPolys, In18_Cu, wxT( "minus-higher-priority-zones" ) );
 
     if( knockoutsApplied )
@@ -3849,6 +3844,8 @@ bool ZONE_FILLER::refillZoneFromCache( ZONE* aZone, PCB_LAYER_ID aLayer, SHAPE_P
                     return c.GetValue().Min();
             };
 
+    bool knockoutsApplied = false;
+
     auto knockoutZoneFill =
             [&]( ZONE* otherZone )
             {
@@ -3894,6 +3891,7 @@ bool ZONE_FILLER::refillZoneFromCache( ZONE* aZone, PCB_LAYER_ID aLayer, SHAPE_P
                     inflatedFill.Inflate( gap + extra_margin + m_maxError,
                                           CORNER_STRATEGY::ROUND_ALL_CORNERS, m_maxError );
                     aFillPolys.BooleanSubtract( inflatedFill );
+                    knockoutsApplied = true;
                 }
             };
 
@@ -3930,6 +3928,8 @@ bool ZONE_FILLER::refillZoneFromCache( ZONE* aZone, PCB_LAYER_ID aLayer, SHAPE_P
                             keepoutOutline.ClearArcs();
                             aFillPolys.BooleanSubtract( keepoutOutline );
                         }
+
+                        knockoutsApplied = true;
                     }
                 }
             };
@@ -3943,7 +3943,8 @@ bool ZONE_FILLER::refillZoneFromCache( ZONE* aZone, PCB_LAYER_ID aLayer, SHAPE_P
             subtractKeepout( keepout );
     }
 
-    postKnockoutMinWidthPrune( aZone, aFillPolys );
+    if( knockoutsApplied )
+        postKnockoutMinWidthPrune( aZone, aFillPolys );
 
     aFillPolys.Fracture();
 

@@ -1490,3 +1490,67 @@ BOOST_FIXTURE_TEST_CASE( RegressionZoneFillMinWidthAfterKnockout, ZONE_FILL_TEST
         }
     }
 }
+
+
+BOOST_FIXTURE_TEST_CASE( RegressionSameNetOverlappingZones, ZONE_FILL_TEST_FIXTURE )
+{
+    KI_TEST::LoadBoard( m_settingsManager, "issue23418/testing", m_board );
+
+    KI_TEST::FillZones( m_board.get() );
+
+    int epsilon = pcbIUScale.mmToIU( 0.001 );
+
+    for( ZONE* zone : m_board->Zones() )
+    {
+        int half_min_width = zone->GetMinThickness() / 2;
+
+        if( half_min_width - epsilon <= epsilon )
+            continue;
+
+        for( PCB_LAYER_ID layer : zone->GetLayerSet().Seq() )
+        {
+            if( !zone->HasFilledPolysForLayer( layer ) )
+                continue;
+
+            std::shared_ptr<SHAPE_POLY_SET> fill = zone->GetFilledPolysList( layer );
+
+            if( !fill || fill->OutlineCount() == 0 )
+                continue;
+
+            for( int ii = 0; ii < fill->OutlineCount(); ii++ )
+            {
+                SHAPE_POLY_SET island;
+                island.AddOutline( fill->Outline( ii ) );
+
+                for( int jj = 0; jj < fill->HoleCount( ii ); jj++ )
+                    island.AddHole( fill->Hole( ii, jj ) );
+
+                double originalArea = island.Area();
+
+                if( originalArea <= 0 )
+                    continue;
+
+                SHAPE_POLY_SET test = island.CloneDropTriangulation();
+
+                test.Deflate( half_min_width - epsilon, CORNER_STRATEGY::CHAMFER_ALL_CORNERS,
+                              ARC_HIGH_DEF );
+
+                test.Inflate( half_min_width - epsilon, CORNER_STRATEGY::ROUND_ALL_CORNERS,
+                              ARC_HIGH_DEF, true );
+
+                double prunedArea = test.Area();
+                double areaLoss = ( originalArea - prunedArea ) / originalArea;
+
+                BOOST_CHECK_MESSAGE( areaLoss < 0.01,
+                                     wxString::Format(
+                                             "Zone %s (priority %d) layer %d island %d lost "
+                                             "%.2f%% area from min-width pruning, suggesting "
+                                             "degenerate geometry from overlapping same-net zones",
+                                             zone->GetNetname(),
+                                             zone->GetAssignedPriority(),
+                                             static_cast<int>( layer ), ii,
+                                             areaLoss * 100.0 ) );
+            }
+        }
+    }
+}
