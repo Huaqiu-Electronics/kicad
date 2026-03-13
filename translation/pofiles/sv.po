@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 13:57-0700\n"
+"POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-09 18:07+0000\n"
 "Last-Translator: Henrik Kauhanen <henrik@kauhanen.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kicad/master-"
@@ -2134,7 +2134,7 @@ msgid "&Open Anyway"
 msgstr "&Öppna ändå"
 
 #: common/confirm.cpp:68 common/confirm.cpp:107
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1253
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1248
 msgid "Save Changes?"
 msgstr "Spara ändringar?"
 
@@ -2191,7 +2191,7 @@ msgstr "Information"
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:202
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:924
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:962
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #: pcbnew/footprint_libraries_utils.cpp:394
 #: pcbnew/footprint_libraries_utils.cpp:1134
 #: pcbnew/pcb_design_block_utils.cpp:58 pcbnew/pcb_design_block_utils.cpp:72
@@ -2431,19 +2431,19 @@ msgstr "Tidigare ledande utvecklare"
 msgid "Additional Contributions By"
 msgstr "Ytterligare bidrag från"
 
-#: common/dialog_about/AboutDialog_main.cpp:628
+#: common/dialog_about/AboutDialog_main.cpp:668
 msgid "Documentation Team"
 msgstr "Dokumentationsgruppen"
 
-#: common/dialog_about/AboutDialog_main.cpp:854
+#: common/dialog_about/AboutDialog_main.cpp:1030
 msgid "Librarian Team"
 msgstr "Biblioteksgruppen"
 
-#: common/dialog_about/AboutDialog_main.cpp:913
+#: common/dialog_about/AboutDialog_main.cpp:1089
 msgid "3D models"
 msgstr "3D-modeller"
 
-#: common/dialog_about/AboutDialog_main.cpp:914
+#: common/dialog_about/AboutDialog_main.cpp:1090
 #: eeschema/dialogs/dialog_edit_symbols_libid_base.cpp:37
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:92
 #: eeschema/sch_symbol.cpp:3327
@@ -2453,7 +2453,7 @@ msgstr "3D-modeller"
 msgid "Symbols"
 msgstr "Symboler"
 
-#: common/dialog_about/AboutDialog_main.cpp:915
+#: common/dialog_about/AboutDialog_main.cpp:1091
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:37
 #: pcbnew/plot_board_layers.cpp:212
 #: pcbnew/widgets/panel_selection_filter.cpp:221
@@ -2462,11 +2462,11 @@ msgstr "Symboler"
 msgid "Footprints"
 msgstr "Fotavtryck"
 
-#: common/dialog_about/AboutDialog_main.cpp:941
+#: common/dialog_about/AboutDialog_main.cpp:1117
 msgid "Icons"
 msgstr "Ikoner"
 
-#: common/dialog_about/AboutDialog_main.cpp:948
+#: common/dialog_about/AboutDialog_main.cpp:1124
 msgid "Package Developers"
 msgstr "Paketutvecklare"
 
@@ -3403,9 +3403,9 @@ msgid "Print Preview"
 msgstr "Förhandsgranskning av utskrift"
 
 #: common/dialogs/dialog_print_generic.cpp:98
-#: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:469
-#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:182
+#: common/dialogs/rule_editor_dialog_base.cpp:478
+#: common/dialogs/rule_editor_dialog_base.cpp:518 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3739,7 +3739,7 @@ msgstr "OK"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:470 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4967,7 +4967,7 @@ msgid "Graphics:"
 msgstr "Grafik:"
 
 #: common/dialogs/panel_hotkeys_editor.cpp:75
-#: common/dialogs/rule_editor_dialog_base.cpp:106
+#: common/dialogs/rule_editor_dialog_base.cpp:107
 msgid "Type filter text"
 msgstr "Skriv filtertext"
 
@@ -6043,37 +6043,37 @@ msgstr "Verktygslist:"
 msgid "Insert separator"
 msgstr "Infoga avskiljare"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:184 common/tool/actions.cpp:93
+#: common/dialogs/rule_editor_dialog_base.cpp:185 common/tool/actions.cpp:93
 #: eeschema/symbol_editor/symbol_editor.cpp:804
 #: eeschema/widgets/tuner_slider_base.cpp:130
 #: pcbnew/footprint_libraries_utils.cpp:1005
 msgid "Save"
 msgstr "Spara"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:465
-#: common/dialogs/rule_editor_dialog_base.cpp:483
+#: common/dialogs/rule_editor_dialog_base.cpp:474
+#: common/dialogs/rule_editor_dialog_base.cpp:492
 #: kicad/kicad_manager_frame.cpp:973
 msgid "Discard"
 msgstr "Kasta"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 msgid "New Rule"
 msgstr "Ny regel"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 msgid "Copy Rule"
 msgstr "Kopiera regel"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:574
 msgid "Delete Rule"
 msgstr "Radera regel"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:577
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "Flytta upp"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:571
+#: common/dialogs/rule_editor_dialog_base.cpp:580
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "Flytta ner"
@@ -6294,13 +6294,13 @@ msgstr "Ogiltigt flyttalsnummer"
 
 #: common/eda_base_frame.cpp:511 common/tool/actions.cpp:289
 #: pcbnew/dialogs/panel_setup_rules.cpp:135
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:988
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:992
 msgid "Undo"
 msgstr "Ångra"
 
 #: common/eda_base_frame.cpp:520 common/tool/actions.cpp:301
 #: pcbnew/dialogs/panel_setup_rules.cpp:136
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:989
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
 msgid "Redo"
 msgstr "Upprepa"
 
@@ -7099,7 +7099,7 @@ msgstr "Centrera"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:42
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1115
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1119
 msgid "Top"
 msgstr "Överst"
 
@@ -7111,7 +7111,7 @@ msgstr "Överst"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:38
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1117
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1121
 msgid "Bottom"
 msgstr "Nederst"
 
@@ -7785,7 +7785,7 @@ msgstr "Avslut av grenflytt misslyckades: %s"
 #: common/grid_tricks.cpp:379 common/tool/actions.cpp:313
 #: common/widgets/listbox_tricks.cpp:209 eeschema/tools/sch_actions.cpp:244
 #: pcbnew/dialogs/panel_setup_rules.cpp:140
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:997
 #: pcbnew/tools/edit_tool.cpp:3027
 msgid "Cut"
 msgstr "Klipp ut"
@@ -7801,7 +7801,7 @@ msgstr "Töm markerade celler och placera originalinnehållet i urklipp"
 #: eeschema/tools/sch_actions.cpp:250 kicad/dialogs/panel_jobset.cpp:439
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:76
 #: pcbnew/dialogs/panel_setup_rules.cpp:141
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:994
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:998
 msgid "Copy"
 msgstr "Kopiera"
 
@@ -7814,7 +7814,7 @@ msgstr "Kopiera valda celler till urklipp"
 #: eeschema/tools/sch_editor_control.cpp:2798
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1739
 #: pcbnew/dialogs/panel_setup_rules.cpp:142
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:995
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:999
 #: pcbnew/tools/pcb_control.cpp:1380
 msgid "Paste"
 msgstr "Klistra In"
@@ -7828,8 +7828,8 @@ msgstr "Klistra in celler i urklipp vid aktuell cell i matris"
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:996
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
 #: pcbnew/tools/edit_tool.cpp:2997 pcbnew/tools/edit_tool.cpp:3040
 msgid "Delete"
 msgstr "Radera"
@@ -7850,7 +7850,7 @@ msgstr "Radera innehåll i markerade celler"
 #: pcbnew/dialogs/dialog_import_settings.cpp:100
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:101
 #: pcbnew/dialogs/panel_setup_rules.cpp:147
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
 msgid "Select All"
 msgstr "Markera allt"
 
@@ -8069,7 +8069,7 @@ msgstr "Kan inte öppna filen '%s'"
 
 #: common/io/cadstar/cadstar_archive_parser.cpp:2495
 #: common/io/cadstar/cadstar_archive_parser.cpp:2819 eeschema/files-io.cpp:1535
-#: eeschema/sch_io/altium/sch_io_altium.cpp:925
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1026
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:332
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:308
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:350
@@ -9371,31 +9371,31 @@ msgstr ""
 "2. Säkerställ att inget antivirusprogram stör KiCad\n"
 "3. Säkerställ att du har rätt åtkomstinställningar"
 
-#: common/pgm_base.cpp:240
+#: common/pgm_base.cpp:246
 msgid "No default editor found, you must choose one."
 msgstr "Ingen standardredigerare hittades, du måste välja en."
 
-#: common/pgm_base.cpp:260 common/pgm_base.cpp:262
+#: common/pgm_base.cpp:266 common/pgm_base.cpp:268
 msgid "Executable file"
 msgstr "Körbar fil"
 
-#: common/pgm_base.cpp:272
+#: common/pgm_base.cpp:278
 msgid "Select Preferred Editor"
 msgstr "Välj önskad redigerare"
 
-#: common/pgm_base.cpp:363
+#: common/pgm_base.cpp:369
 msgid "Environment variable HOME is empty.  Unable to continue."
 msgstr "Miljövariabeln HOME är tom. Kan inte fortsätta."
 
-#: common/pgm_base.cpp:589
+#: common/pgm_base.cpp:595
 msgid "This language is not supported by the operating system."
 msgstr "Det här språket stöds inte av operativsystemet."
 
-#: common/pgm_base.cpp:640 common/pgm_base.cpp:681
+#: common/pgm_base.cpp:646 common/pgm_base.cpp:687
 msgid "The KiCad language file for this language is not installed."
 msgstr "KiCad-språkfilen för detta språk är inte installerad."
 
-#: common/pgm_base.cpp:897 common/pgm_base.cpp:909
+#: common/pgm_base.cpp:903 common/pgm_base.cpp:915
 msgid "Loading Design Block Libraries"
 msgstr "Läser in designblocksbibliotek"
 
@@ -10455,13 +10455,13 @@ msgstr "Zooma ut vid markören"
 
 #: common/tool/actions.cpp:766 common/widgets/mathplot.cpp:1415
 #: pcbnew/dialogs/panel_setup_rules.cpp:151
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1008
 msgid "Zoom In"
 msgstr "Zooma in"
 
 #: common/tool/actions.cpp:772 common/widgets/mathplot.cpp:1416
 #: pcbnew/dialogs/panel_setup_rules.cpp:152
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1005
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1009
 msgid "Zoom Out"
 msgstr "Zooma ut"
 
@@ -16957,46 +16957,46 @@ msgstr ""
 msgid "Cannot delete the default variant."
 msgstr "Kan inte radera standardvarianten."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2784
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 msgid "Cannot rename the default variant."
 msgstr "Kan inte byta namn på standardvarianten."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Enter new variant name:"
 msgstr "Ange namn för ny variant:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Rename Design Variant"
 msgstr "Byt namn på variant"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2802
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2875
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
 msgid "Variant name cannot be empty."
 msgstr "Variantnamn kan inte utelämnas."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2809
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
 #, c-format
 msgid "'%s' is a reserved variant name."
 msgstr "'%s' är ett reserverat variantnamn."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2825
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2882
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
 #, c-format
 msgid "Variant '%s' already exists."
 msgstr "Variant '%s' finns redan."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2857
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
 msgstr "Kan inte kopiera standardvarianten."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Enter name for the copied variant:"
 msgstr "Ange namn för den kopierade varianten:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Copy Design Variant"
 msgstr "Kopiera designvariant"
 
@@ -17598,7 +17598,7 @@ msgstr "Uppdatera/återställ fältens storlekar och stilar"
 #: eeschema/sch_label.cpp:2375
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:35
 #: pcbnew/dialogs/panel_setup_rules.cpp:988
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:913 pcbnew/pcb_text.cpp:695
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:917 pcbnew/pcb_text.cpp:695
 msgid "Syntax Help"
 msgstr "Syntaxhjälp"
 
@@ -20634,17 +20634,17 @@ msgstr "<namn>"
 msgid "Members"
 msgstr "Medlemmar"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:922
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1023
 #, c-format
 msgid "Importing %s"
 msgstr "Importerar %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:946
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1047
 #, c-format
 msgid "Error parsing Altium schematic: %s"
 msgstr "Fel vid inläsning av Altium-kretsschema: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1012
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1113
 #, c-format
 msgid ""
 "The file name for sheet %s is undefined, this is probably an Altium signal "
@@ -20653,104 +20653,104 @@ msgstr ""
 "Filnamnet för ark %s är inte definierat; detta är förmodligen en Altium "
 "signalkabelstam som blivit konverterad till ett ark."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1139
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1240
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr "Lagringsfilen ofullständigt tolkad (%d bytes återstår)."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1219
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1314
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1320
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1415
 msgid "Expected Altium Schematic file version 5.0"
 msgstr "Altium kretsschemabiblioteksfil av version 5.0 förväntades"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1422
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1523
 msgid "Record 'IEEE_SYMBOL' not handled."
 msgstr "Post 'IEEE_SYMBOL' hanterades inte."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1541
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1642
 msgid "Parameter Set not currently supported."
 msgstr "Parameteruppsättning stöds för närvarande inte."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1566
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1667
 msgid "Compile mask not currently supported."
 msgstr "\"Compile mask\" stöds för närvarande inte."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1591
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1692
 msgid "Blanket not currently supported."
 msgstr "Objekt av typ \"blanket\" stöds för närvarande inte."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1596
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5016
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1697
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5120
 #, c-format
 msgid "Unknown or unexpected record id %d found in %s."
 msgstr "Okänt eller oväntat post-id %d funnet i %s."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1654
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1755
 #, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr "Symbol '%s' i ark '%s' vid index %d ersatt med symbol \"%s\"."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1837
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4008
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1941
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4112
 msgid "Pin has unexpected orientation."
 msgstr "Stiftet har en oväntad riktning."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1895
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1999
 msgid "Pin has unexpected electrical type."
 msgstr "Stift har en oväntad elektrisk typ."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1900
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2004
 msgid "Pin has unexpected outer edge type."
 msgstr "Stift har oväntad yttre-kant-typ."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1903
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2007
 msgid "Pin has unexpected inner edge type."
 msgstr "Stift har oväntad inre-kant-typ."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:2402
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2506
 #, c-format
 msgid "Bezier has %d control points. At least 2 are expected."
 msgstr "Bezier har %d kontrollpunkter. Åtminstone 2 förväntas."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3893
+#: eeschema/sch_io/altium/sch_io_altium.cpp:3997
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:373
 msgid "Power Port with unknown style imported as 'Bar' type."
 msgstr "Strömförsörjningsport med okänd stil har importerats som typ 'Bar'."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3942
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4046
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:1000
 #: eeschema/sch_io/easyedapro/sch_easyedapro_parser.cpp:699
 #, c-format
 msgid "Power symbol creates a global label with name '%s'"
 msgstr "Strömförsörjningssymbolen skapar en global etikett med namnet '%s'"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4102
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4206
 #, c-format
 msgid "Port %s has no connections."
 msgstr "Port %s har inga anslutningar."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4297
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4401
 #, c-format
 msgid "Embedded file %s not found in storage."
 msgstr "Inbäddad fil %s hittades inte i lagring."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4314
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4333
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4418
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4437
 #, c-format
 msgid "Error reading image %s."
 msgstr "Fel vid inläsning av bild %s."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4326
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4430
 #, c-format
 msgid "File not found %s."
 msgstr "Fil %s hittades inte."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5131
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5235
 #, c-format
 msgid "Error parsing Altium library: %s"
 msgstr "Fel vid tolkning av Altium-bibliotek: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5154
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5258
 msgid "Expected Altium Schematic Library file version 5.0"
 msgstr "Förväntade Altimu Kretsschemabiblioteksfil version 5.0"
 
@@ -21185,7 +21185,7 @@ msgstr "Fil '%s' är inte ett giltigt gEDA-kretsschema."
 msgid "Failed to load page '%s': %s"
 msgstr "Det gick inte att läsa in sida '%s': %s"
 
-#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:458
+#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
 msgid "gEDA / Lepton EDA schematic files"
 msgstr "gEDA / Lepton EDA kretsschemafiler"
 
@@ -30903,20 +30903,20 @@ msgstr "Målkatalog"
 msgid "Unzipping project in '%s'.\n"
 msgstr "Packar upp projektet i '%s'\n"
 
-#: kicad/import_proj.cpp:348
+#: kicad/import_proj.cpp:372
 #, c-format
 msgid "Could not open gEDA / Lepton EDA project file '%s'."
 msgstr "Det gick inte att öppna gEDA / Lepton EDA projektfil '%s'."
 
-#: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
+#: kicad/import_proj.cpp:488 kicad/import_proj.cpp:499
 msgid "Locate gEDA / Lepton EDA Schematic"
 msgstr "Sök efter gEDA / Lepton EDA kretsschema"
 
-#: kicad/import_proj.cpp:573
+#: kicad/import_proj.cpp:597
 msgid "gEDA / Lepton EDA PCB files"
 msgstr "gEDA / Lepton EDA mönsterkortsfiler"
 
-#: kicad/import_proj.cpp:576
+#: kicad/import_proj.cpp:600
 msgid "Locate gEDA / Lepton EDA PCB"
 msgstr "Sök efter gEDA / Lepton EDA mönsterkort"
 
@@ -30953,27 +30953,27 @@ msgstr ""
 msgid "Import Altium Project Files"
 msgstr "Importera Altium projektfiler"
 
-#: kicad/import_project.cpp:188
+#: kicad/import_project.cpp:189
 msgid "Import CADSTAR Archive Project Files"
 msgstr "Importera CADSTAR-arkivprojektfiler"
 
-#: kicad/import_project.cpp:196
+#: kicad/import_project.cpp:197
 msgid "Import Eagle Project Files"
 msgstr "Importera Eagle Project-filer"
 
-#: kicad/import_project.cpp:203
+#: kicad/import_project.cpp:204
 msgid "Import EasyEDA Std Backup"
 msgstr "Importera EasyEDA standard backup"
 
-#: kicad/import_project.cpp:210
+#: kicad/import_project.cpp:211
 msgid "Import EasyEDA Pro Project"
 msgstr "Importera EasyEDA Pro projekt"
 
-#: kicad/import_project.cpp:217
+#: kicad/import_project.cpp:218
 msgid "Import PADS Project Files"
 msgstr "Importera PADS projektfiler"
 
-#: kicad/import_project.cpp:225
+#: kicad/import_project.cpp:226
 msgid "Import gEDA / Lepton EDA Project Files"
 msgstr "Importera gEDA / Lepton EDA projektfiler"
 
@@ -44048,7 +44048,7 @@ msgstr "DRC regler"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:952
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:956
 msgid "ERROR:"
 msgstr "FEL:"
 
@@ -47452,7 +47452,7 @@ msgstr "Kontrollerar termisk avlastning..."
 msgid "Design Rule Editor"
 msgstr "Designregelredigerare"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:504
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:499
 #, c-format
 msgid ""
 "Cannot save due to validation errors in rule '%s':\n"
@@ -47463,11 +47463,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 msgid "Are you sure you want to delete?"
 msgstr "Är du säker på att du vill radera?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1227
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1222
 msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
@@ -47475,7 +47475,7 @@ msgstr ""
 "Flera regler med samma namn har olika villkor. Regel med samma namn måste ha "
 "identiska villkor för att kunna slås samman."
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 msgid ""
 "The following rules have unsaved changes:\n"
 "\n"
@@ -47483,7 +47483,7 @@ msgstr ""
 "Följande regler har osparade ändringar:\n"
 "\n"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1251
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
 msgid ""
 "\n"
 "Do you want to save your changes?"
@@ -47491,7 +47491,7 @@ msgstr ""
 "\n"
 "Vill du spara dina ändringar?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1418
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, c-format
 msgid "Failed to reload DRC rules: %s"
 msgstr "Kunde inte läsa in designregler på nytt: %s"
@@ -47583,7 +47583,7 @@ msgstr "Objekt B"
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:62
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1075
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1079
 #, fuzzy
 msgid "Any"
 msgstr "Godtycklig:"
@@ -47789,40 +47789,40 @@ msgstr "Regeltyp"
 msgid "Rule name"
 msgstr "Regelnamn"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:455
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:444
 msgid "Rule name must be unique."
 msgstr "Regelnamnet måste vara unikt."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:463
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:452
 msgid "Layer selection is required."
 msgstr "Ett urval av lager behövs."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:935
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
 msgstr "FEL: Ingen villkorstext har tillhandahållits för kontroll."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:946
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 msgid "DRC rule"
 msgstr "Designregel"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1054
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 msgid "Show Matches (error)"
 msgstr "Visa matchningar (fel)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1062
 #, c-format
 msgid "Show Matches (%d)"
 msgstr "Visa matchningar (%d)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1066
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1070
 msgid "Show Matches"
 msgstr "Visa matchningar"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1122
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
 msgid "outer"
 msgstr "yttre"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1124
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
 msgstr "inre"
 
@@ -50633,28 +50633,28 @@ msgstr "Uppdatera ordning"
 msgid "Generator Properties"
 msgstr "Generatoregenskaper"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4641
 #, fuzzy
 msgid "Constructing caches"
 msgstr "Motstridiga etiketter"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4656
 msgid "Creating nets"
 msgstr "Skapar nät"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4665
 msgid "Creating tracks"
 msgstr "Skapar ledare"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4704
 msgid "Converting footprints"
 msgstr "Konverterar fotavtryck"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2471
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
 msgstr "Tolkar Allegro-objekt"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2686
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
 msgid ""
 "This file was created with %s, which uses a binary format that predates "
@@ -50734,7 +50734,7 @@ msgstr "Filen hittades inte: '%s' för bibliotek '%s'."
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:693
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:233
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
 #, c-format
 msgid "File not found: '%s'."
 msgstr "Filen hittades inte: '%s'."
@@ -51081,21 +51081,21 @@ msgstr "Altium Circuit Maker PCB-filer"
 msgid "Altium Circuit Studio PCB files"
 msgstr "Altium Circuit Studio PCB-filer"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:308
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:400
 #, c-format
 msgid "No footprints in library '%s'"
 msgstr "Inga fotavtryck i bibliotek '%s'"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:330
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
 #, c-format
 msgid "Footprint '%s' not found in '%s'."
 msgstr "Fotavtryck '%s' hittades inte i '%s'."
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:44
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 msgid "Altium Designer PCB files"
 msgstr "Altium Designer PCB-filer"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:49
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:59
 msgid "Altium PCB Library or Integrated Library"
 msgstr "Altium mönsterkortsbibliotek eller integrerat bibliotek"
 
@@ -56839,7 +56839,7 @@ msgstr ""
 "Väljer en anslutning eller expanderar ett befintligt val till korsningar, "
 "lödytor eller hela anslutningar"
 
-#: pcbnew/tools/pcb_actions.cpp:2355
+#: pcbnew/tools/pcb_actions.cpp:2355 pcbnew/tools/pcb_selection_tool.cpp:1665
 msgid "Unroute Selected"
 msgstr "Ta bort vald ledardragning"
 
@@ -56847,7 +56847,7 @@ msgstr "Ta bort vald ledardragning"
 msgid "Unroutes selected items to the nearest pad."
 msgstr "Tar bort valda objekt till närmaste lödyta."
 
-#: pcbnew/tools/pcb_actions.cpp:2363
+#: pcbnew/tools/pcb_actions.cpp:2363 pcbnew/tools/pcb_selection_tool.cpp:1777
 msgid "Unroute Segment"
 msgstr "Ta bort valt ledarsegment"
 
@@ -57447,11 +57447,11 @@ msgstr "Dela upp ett hörn i zon"
 msgid "Break Polygon Corner"
 msgstr "Dela upp ett hörn i polygon"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:83
+#: pcbnew/tools/pcb_selection_tool.cpp:82
 msgid "Select"
 msgstr "Markera"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:1606
+#: pcbnew/tools/pcb_selection_tool.cpp:1827
 msgid "Select/Expand Connection..."
 msgstr "Välj / Expandera anslutning..."
 

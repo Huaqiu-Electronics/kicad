@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 13:57-0700\n"
+"POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-07 17:04+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/kicad/master-"
@@ -2139,7 +2139,7 @@ msgid "&Open Anyway"
 msgstr "무조건 열기(&O)"
 
 #: common/confirm.cpp:68 common/confirm.cpp:107
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1253
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1248
 msgid "Save Changes?"
 msgstr "변경 사항을 저장 할까요?"
 
@@ -2196,7 +2196,7 @@ msgstr "정보"
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:202
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:924
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:962
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #: pcbnew/footprint_libraries_utils.cpp:394
 #: pcbnew/footprint_libraries_utils.cpp:1134
 #: pcbnew/pcb_design_block_utils.cpp:58 pcbnew/pcb_design_block_utils.cpp:72
@@ -2436,19 +2436,19 @@ msgstr "리드 개발 동문"
 msgid "Additional Contributions By"
 msgstr "추가 기여자"
 
-#: common/dialog_about/AboutDialog_main.cpp:628
+#: common/dialog_about/AboutDialog_main.cpp:668
 msgid "Documentation Team"
 msgstr "문서 팀"
 
-#: common/dialog_about/AboutDialog_main.cpp:854
+#: common/dialog_about/AboutDialog_main.cpp:1030
 msgid "Librarian Team"
 msgstr "사서 팀"
 
-#: common/dialog_about/AboutDialog_main.cpp:913
+#: common/dialog_about/AboutDialog_main.cpp:1089
 msgid "3D models"
 msgstr "3D 모델"
 
-#: common/dialog_about/AboutDialog_main.cpp:914
+#: common/dialog_about/AboutDialog_main.cpp:1090
 #: eeschema/dialogs/dialog_edit_symbols_libid_base.cpp:37
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:92
 #: eeschema/sch_symbol.cpp:3327
@@ -2458,7 +2458,7 @@ msgstr "3D 모델"
 msgid "Symbols"
 msgstr "심볼"
 
-#: common/dialog_about/AboutDialog_main.cpp:915
+#: common/dialog_about/AboutDialog_main.cpp:1091
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:37
 #: pcbnew/plot_board_layers.cpp:212
 #: pcbnew/widgets/panel_selection_filter.cpp:221
@@ -2467,11 +2467,11 @@ msgstr "심볼"
 msgid "Footprints"
 msgstr "풋프린트"
 
-#: common/dialog_about/AboutDialog_main.cpp:941
+#: common/dialog_about/AboutDialog_main.cpp:1117
 msgid "Icons"
 msgstr "아이콘"
 
-#: common/dialog_about/AboutDialog_main.cpp:948
+#: common/dialog_about/AboutDialog_main.cpp:1124
 msgid "Package Developers"
 msgstr "패키지 개발자"
 
@@ -3405,9 +3405,9 @@ msgid "Print Preview"
 msgstr "인쇄 미리보기"
 
 #: common/dialogs/dialog_print_generic.cpp:98
-#: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:469
-#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:182
+#: common/dialogs/rule_editor_dialog_base.cpp:478
+#: common/dialogs/rule_editor_dialog_base.cpp:518 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3741,7 +3741,7 @@ msgstr "확인"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:470 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4949,7 +4949,7 @@ msgid "Graphics:"
 msgstr "그래픽:"
 
 #: common/dialogs/panel_hotkeys_editor.cpp:75
-#: common/dialogs/rule_editor_dialog_base.cpp:106
+#: common/dialogs/rule_editor_dialog_base.cpp:107
 msgid "Type filter text"
 msgstr "필터 텍스트 입력"
 
@@ -6006,37 +6006,37 @@ msgstr "도구 모음:"
 msgid "Insert separator"
 msgstr "구분자 삽입"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:184 common/tool/actions.cpp:93
+#: common/dialogs/rule_editor_dialog_base.cpp:185 common/tool/actions.cpp:93
 #: eeschema/symbol_editor/symbol_editor.cpp:804
 #: eeschema/widgets/tuner_slider_base.cpp:130
 #: pcbnew/footprint_libraries_utils.cpp:1005
 msgid "Save"
 msgstr "저장"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:465
-#: common/dialogs/rule_editor_dialog_base.cpp:483
+#: common/dialogs/rule_editor_dialog_base.cpp:474
+#: common/dialogs/rule_editor_dialog_base.cpp:492
 #: kicad/kicad_manager_frame.cpp:973
 msgid "Discard"
 msgstr "취소"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 msgid "New Rule"
 msgstr "새 규칙"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 msgid "Copy Rule"
 msgstr "규칙 복사"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:574
 msgid "Delete Rule"
 msgstr "규칙 삭제"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:577
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "위로 이동"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:571
+#: common/dialogs/rule_editor_dialog_base.cpp:580
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "아래로 이동"
@@ -6257,13 +6257,13 @@ msgstr "잘못된 부동 소수점 숫자"
 
 #: common/eda_base_frame.cpp:511 common/tool/actions.cpp:289
 #: pcbnew/dialogs/panel_setup_rules.cpp:135
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:988
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:992
 msgid "Undo"
 msgstr "실행 취소"
 
 #: common/eda_base_frame.cpp:520 common/tool/actions.cpp:301
 #: pcbnew/dialogs/panel_setup_rules.cpp:136
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:989
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
 msgid "Redo"
 msgstr "재실행"
 
@@ -7062,7 +7062,7 @@ msgstr "중"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:42
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1115
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1119
 msgid "Top"
 msgstr "상"
 
@@ -7074,7 +7074,7 @@ msgstr "상"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:38
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1117
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1121
 msgid "Bottom"
 msgstr "하"
 
@@ -7740,7 +7740,7 @@ msgstr "리베이스 완료 실패: %s"
 #: common/grid_tricks.cpp:379 common/tool/actions.cpp:313
 #: common/widgets/listbox_tricks.cpp:209 eeschema/tools/sch_actions.cpp:244
 #: pcbnew/dialogs/panel_setup_rules.cpp:140
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:997
 #: pcbnew/tools/edit_tool.cpp:3027
 msgid "Cut"
 msgstr "자르기"
@@ -7756,7 +7756,7 @@ msgstr "클립보드에 원본 콘텐츠를 배치하여 선택한 셀 지우기
 #: eeschema/tools/sch_actions.cpp:250 kicad/dialogs/panel_jobset.cpp:439
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:76
 #: pcbnew/dialogs/panel_setup_rules.cpp:141
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:994
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:998
 msgid "Copy"
 msgstr "복사"
 
@@ -7769,7 +7769,7 @@ msgstr "선택한 셀을 클립보드에 복사"
 #: eeschema/tools/sch_editor_control.cpp:2798
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1739
 #: pcbnew/dialogs/panel_setup_rules.cpp:142
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:995
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:999
 #: pcbnew/tools/pcb_control.cpp:1380
 msgid "Paste"
 msgstr "붙여넣기"
@@ -7783,8 +7783,8 @@ msgstr "현재 셀의 행렬에 클립보드 셀 붙여넣기"
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:996
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
 #: pcbnew/tools/edit_tool.cpp:2997 pcbnew/tools/edit_tool.cpp:3040
 msgid "Delete"
 msgstr "삭제"
@@ -7805,7 +7805,7 @@ msgstr "선택한 셀의 내용 지우기"
 #: pcbnew/dialogs/dialog_import_settings.cpp:100
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:101
 #: pcbnew/dialogs/panel_setup_rules.cpp:147
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
 msgid "Select All"
 msgstr "모두 선택"
 
@@ -8023,7 +8023,7 @@ msgstr "'%s' 파일을 열 수 없음"
 
 #: common/io/cadstar/cadstar_archive_parser.cpp:2495
 #: common/io/cadstar/cadstar_archive_parser.cpp:2819 eeschema/files-io.cpp:1535
-#: eeschema/sch_io/altium/sch_io_altium.cpp:925
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1026
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:332
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:308
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:350
@@ -9319,31 +9319,31 @@ msgstr ""
 "2. 다른 바이러스 백신 소프트웨어가 KiCad를 방해하지 않는지 확인하세요\n"
 "3. 올바른 권한이 설정되어 있는지 확인하세요"
 
-#: common/pgm_base.cpp:240
+#: common/pgm_base.cpp:246
 msgid "No default editor found, you must choose one."
 msgstr "기본 편집기를 선택해야 합니다."
 
-#: common/pgm_base.cpp:260 common/pgm_base.cpp:262
+#: common/pgm_base.cpp:266 common/pgm_base.cpp:268
 msgid "Executable file"
 msgstr "실행 파일"
 
-#: common/pgm_base.cpp:272
+#: common/pgm_base.cpp:278
 msgid "Select Preferred Editor"
 msgstr "선호하는 편집기 선택"
 
-#: common/pgm_base.cpp:363
+#: common/pgm_base.cpp:369
 msgid "Environment variable HOME is empty.  Unable to continue."
 msgstr "환경 변수 HOME이 비어 있습니다. 계속할 수 없습니다."
 
-#: common/pgm_base.cpp:589
+#: common/pgm_base.cpp:595
 msgid "This language is not supported by the operating system."
 msgstr "이 언어는 운영 체제에서 지원하지 않습니다."
 
-#: common/pgm_base.cpp:640 common/pgm_base.cpp:681
+#: common/pgm_base.cpp:646 common/pgm_base.cpp:687
 msgid "The KiCad language file for this language is not installed."
 msgstr "이 언어에 대한 KiCad 언어 파일이 설치되어 있지 않습니다."
 
-#: common/pgm_base.cpp:897 common/pgm_base.cpp:909
+#: common/pgm_base.cpp:903 common/pgm_base.cpp:915
 msgid "Loading Design Block Libraries"
 msgstr "디자인 블록 라이브러리 로드 중"
 
@@ -10390,13 +10390,13 @@ msgstr "커서를 중심으로 축소"
 
 #: common/tool/actions.cpp:766 common/widgets/mathplot.cpp:1415
 #: pcbnew/dialogs/panel_setup_rules.cpp:151
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1008
 msgid "Zoom In"
 msgstr "확대"
 
 #: common/tool/actions.cpp:772 common/widgets/mathplot.cpp:1416
 #: pcbnew/dialogs/panel_setup_rules.cpp:152
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1005
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1009
 msgid "Zoom Out"
 msgstr "축소"
 
@@ -16826,46 +16826,46 @@ msgstr ""
 msgid "Cannot delete the default variant."
 msgstr "기본 변형은 삭제할 수 없습니다."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2784
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 msgid "Cannot rename the default variant."
 msgstr "기본 변형은 이름을 변경할 수 없습니다."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Enter new variant name:"
 msgstr "새 변형 이름 입력:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Rename Design Variant"
 msgstr "설계 변형 이름 변경"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2802
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2875
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
 msgid "Variant name cannot be empty."
 msgstr "변형 이름은 비워 둘 수 없습니다."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2809
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
 #, c-format
 msgid "'%s' is a reserved variant name."
 msgstr "'%s'은(는) 예약된 변형 이름입니다."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2825
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2882
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
 #, c-format
 msgid "Variant '%s' already exists."
 msgstr "변형 '%s'이(가) 이미 존재합니다."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2857
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
 msgstr "기본 변형은 복사할 수 없습니다."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Enter name for the copied variant:"
 msgstr "복사할 변형의 이름 입력:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Copy Design Variant"
 msgstr "설계 변형 복사"
 
@@ -17453,7 +17453,7 @@ msgstr "필드 크기와 스타일 업데이트 / 초기화"
 #: eeschema/sch_label.cpp:2375
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:35
 #: pcbnew/dialogs/panel_setup_rules.cpp:988
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:913 pcbnew/pcb_text.cpp:695
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:917 pcbnew/pcb_text.cpp:695
 msgid "Syntax Help"
 msgstr "구문 도움말"
 
@@ -20457,17 +20457,17 @@ msgstr "<이름 없음>"
 msgid "Members"
 msgstr "멤버"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:922
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1023
 #, c-format
 msgid "Importing %s"
 msgstr "%s 가져오는 중"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:946
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1047
 #, c-format
 msgid "Error parsing Altium schematic: %s"
 msgstr "Altium 회로도 구문 분석 오류: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1012
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1113
 #, c-format
 msgid ""
 "The file name for sheet %s is undefined, this is probably an Altium signal "
@@ -20476,105 +20476,105 @@ msgstr ""
 "시트 %s의 파일 이름은 정의되지 않았으며 시트로 변환 된 Altium 신호 하네스 일 "
 "수 있습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1139
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1240
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr "저장소 파일이 완전히 파싱되지 않았습니다 (%d바이트 남음)."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1219
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1314
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1320
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1415
 msgid "Expected Altium Schematic file version 5.0"
 msgstr "알티움 회로도 파일 버전 5.0이 필요함"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1422
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1523
 msgid "Record 'IEEE_SYMBOL' not handled."
 msgstr "'IEEE_SYMBOL' 레코드가 처리되지 않았습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1541
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1642
 msgid "Parameter Set not currently supported."
 msgstr "현재 지원되지 않는 매개변수 설정임."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1566
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1667
 msgid "Compile mask not currently supported."
 msgstr "컴파일 마스크는 현재 지원되지 않습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1591
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1692
 msgid "Blanket not currently supported."
 msgstr "블랭킷은 현재 지원되지 않음."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1596
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5016
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1697
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5120
 #, c-format
 msgid "Unknown or unexpected record id %d found in %s."
 msgstr "알 수 없거나 예상치 못한 레코드 ID %d가 %s에 있습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1654
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1755
 #, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr ""
 "시트 '%s'의 심볼 '%s'(인덱스 %d)이(가) 심볼 \"%s\"(으)로 대체되었습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1837
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4008
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1941
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4112
 msgid "Pin has unexpected orientation."
 msgstr "예기치 않은 핀 방향."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1895
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1999
 msgid "Pin has unexpected electrical type."
 msgstr "핀에 예기치 않은 전기 유형이 있습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1900
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2004
 msgid "Pin has unexpected outer edge type."
 msgstr "핀에 예기치 않은 외부 모서리 타입이 있습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1903
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2007
 msgid "Pin has unexpected inner edge type."
 msgstr "핀에 예기치 않은 내부 모서리 타입이 있습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:2402
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2506
 #, c-format
 msgid "Bezier has %d control points. At least 2 are expected."
 msgstr "베지어 곡선에는 %d 개의 조절점이 있습니다. 최소 2개가 필요합니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3893
+#: eeschema/sch_io/altium/sch_io_altium.cpp:3997
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:373
 msgid "Power Port with unknown style imported as 'Bar' type."
 msgstr "알 수 없는 스타일의 전원 포트를 '바' 유형으로 가져왔습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3942
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4046
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:1000
 #: eeschema/sch_io/easyedapro/sch_easyedapro_parser.cpp:699
 #, c-format
 msgid "Power symbol creates a global label with name '%s'"
 msgstr "전원 심볼은 '%s'라는 이름의 전역 라벨을 생성합니다"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4102
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4206
 #, c-format
 msgid "Port %s has no connections."
 msgstr "포트 %s에 연결이 없습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4297
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4401
 #, c-format
 msgid "Embedded file %s not found in storage."
 msgstr "내장된 파일 %s을 저장소에서 찾을 수 없습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4314
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4333
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4418
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4437
 #, c-format
 msgid "Error reading image %s."
 msgstr "이미지 %s를 읽는 동안 오류가 발생했습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4326
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4430
 #, c-format
 msgid "File not found %s."
 msgstr "%s 파일을 찾을 수 없습니다."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5131
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5235
 #, c-format
 msgid "Error parsing Altium library: %s"
 msgstr "Altium 라이브러리 구문 분석 오류: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5154
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5258
 msgid "Expected Altium Schematic Library file version 5.0"
 msgstr "Altium Schematic Library 파일 버전 5.0이 필요함"
 
@@ -21002,7 +21002,7 @@ msgstr "파일 '%s'은(는) 유효한 gEDA 회로도가 아닙니다."
 msgid "Failed to load page '%s': %s"
 msgstr "페이지 '%s' 로드 실패: %s"
 
-#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:458
+#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
 msgid "gEDA / Lepton EDA schematic files"
 msgstr "gEDA / Lepton EDA 회로도 파일"
 
@@ -30966,20 +30966,20 @@ msgstr "타겟 디렉터리"
 msgid "Unzipping project in '%s'.\n"
 msgstr "'%s'에서 프로젝트 압축을 푸는 중입니다.\n"
 
-#: kicad/import_proj.cpp:348
+#: kicad/import_proj.cpp:372
 #, c-format
 msgid "Could not open gEDA / Lepton EDA project file '%s'."
 msgstr "gEDA / Lepton EDA 프로젝트 파일 '%s'을(를) 열 수 없습니다."
 
-#: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
+#: kicad/import_proj.cpp:488 kicad/import_proj.cpp:499
 msgid "Locate gEDA / Lepton EDA Schematic"
 msgstr "gEDA / Lepton EDA 회로도 찾기"
 
-#: kicad/import_proj.cpp:573
+#: kicad/import_proj.cpp:597
 msgid "gEDA / Lepton EDA PCB files"
 msgstr "gEDA / Lepton EDA PCB 파일"
 
-#: kicad/import_proj.cpp:576
+#: kicad/import_proj.cpp:600
 msgid "Locate gEDA / Lepton EDA PCB"
 msgstr "gEDA / Lepton EDA PCB 찾기"
 
@@ -31015,27 +31015,27 @@ msgstr ""
 msgid "Import Altium Project Files"
 msgstr "Altium 프로젝트 파일 가져오기"
 
-#: kicad/import_project.cpp:188
+#: kicad/import_project.cpp:189
 msgid "Import CADSTAR Archive Project Files"
 msgstr "CADSTAR 보관 프로젝트 파일 가져오기"
 
-#: kicad/import_project.cpp:196
+#: kicad/import_project.cpp:197
 msgid "Import Eagle Project Files"
 msgstr "Eagle 프로젝트 파일 가져오기"
 
-#: kicad/import_project.cpp:203
+#: kicad/import_project.cpp:204
 msgid "Import EasyEDA Std Backup"
 msgstr "EasyEDA 표준 백업 가져오기"
 
-#: kicad/import_project.cpp:210
+#: kicad/import_project.cpp:211
 msgid "Import EasyEDA Pro Project"
 msgstr "EasyEDA Pro 프로젝트 가져오기"
 
-#: kicad/import_project.cpp:217
+#: kicad/import_project.cpp:218
 msgid "Import PADS Project Files"
 msgstr "PADS 프로젝트 파일 가져오기"
 
-#: kicad/import_project.cpp:225
+#: kicad/import_project.cpp:226
 msgid "Import gEDA / Lepton EDA Project Files"
 msgstr "gEDA / Lepton EDA 프로젝트 파일 가져오기"
 
@@ -43956,7 +43956,7 @@ msgstr "DRC 규칙"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:952
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:956
 msgid "ERROR:"
 msgstr "오류:"
 
@@ -47457,7 +47457,7 @@ msgstr "단열판 확인..."
 msgid "Design Rule Editor"
 msgstr "설계 규칙 편집기"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:504
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:499
 #, c-format
 msgid ""
 "Cannot save due to validation errors in rule '%s':\n"
@@ -47468,11 +47468,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 msgid "Are you sure you want to delete?"
 msgstr "삭제하시겠습니까?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1227
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1222
 msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
@@ -47480,7 +47480,7 @@ msgstr ""
 "같은 이름의 여러 규칙에 서로 다른 조건이 있습니다. 같은 이름의 규칙은 병합하"
 "려면 동일한 조건을 가져야 합니다."
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 msgid ""
 "The following rules have unsaved changes:\n"
 "\n"
@@ -47488,7 +47488,7 @@ msgstr ""
 "다음 규칙에 저장되지 않은 변경 사항이 있습니다:\n"
 "\n"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1251
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
 msgid ""
 "\n"
 "Do you want to save your changes?"
@@ -47496,7 +47496,7 @@ msgstr ""
 "\n"
 "변경 사항을 저장하시겠습니까?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1418
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, c-format
 msgid "Failed to reload DRC rules: %s"
 msgstr "DRC 규칙을 다시 불러오지 못했습니다: %s"
@@ -47589,7 +47589,7 @@ msgstr "객체 B"
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:62
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1075
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1079
 msgid "Any"
 msgstr "모두"
 
@@ -47793,40 +47793,40 @@ msgstr "규칙 유형"
 msgid "Rule name"
 msgstr "규칙 이름"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:455
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:444
 msgid "Rule name must be unique."
 msgstr "규칙 이름은 고유해야 합니다."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:463
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:452
 msgid "Layer selection is required."
 msgstr "레이어 선택이 필요합니다."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:935
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
 msgstr "오류: 유효성 검사를 위한 조건 텍스트가 제공되지 않았습니다."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:946
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 msgid "DRC rule"
 msgstr "DRC 규칙"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1054
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 msgid "Show Matches (error)"
 msgstr "일치 항목 표시 (오류)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1062
 #, c-format
 msgid "Show Matches (%d)"
 msgstr "일치 항목 표시 (%d)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1066
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1070
 msgid "Show Matches"
 msgstr "일치 항목 표시"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1122
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
 msgid "outer"
 msgstr "외부"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1124
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
 msgstr "내부"
 
@@ -50599,27 +50599,27 @@ msgstr "명령 업데이트"
 msgid "Generator Properties"
 msgstr "생성기 속성"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4641
 msgid "Constructing caches"
 msgstr "캐시 구성 중"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4656
 msgid "Creating nets"
 msgstr "네트 생성 중"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4665
 msgid "Creating tracks"
 msgstr "트랙 생성 중"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4704
 msgid "Converting footprints"
 msgstr "풋프린트 변환 중"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2471
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
 msgstr "Allegro 객체 구문 분석 중"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2686
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
 msgid ""
 "This file was created with %s, which uses a binary format that predates "
@@ -50699,7 +50699,7 @@ msgstr "파일을 찾을 수 없음: '%s' 디렉터리에 대한 '%s' 파일입�
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:693
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:233
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
 #, c-format
 msgid "File not found: '%s'."
 msgstr "파일을 찾지 못했습니다: '%s'."
@@ -51044,21 +51044,21 @@ msgstr "알티움 서킷 메이커 PCB 파일"
 msgid "Altium Circuit Studio PCB files"
 msgstr "알티움 서킷 스튜디오 PCB 파일"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:308
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:400
 #, c-format
 msgid "No footprints in library '%s'"
 msgstr "라이브러리 '%s'에 풋프린트 없음"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:330
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
 #, c-format
 msgid "Footprint '%s' not found in '%s'."
 msgstr "'%s' 풋프린트를 '%s'에서 찾을 수 없음."
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:44
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 msgid "Altium Designer PCB files"
 msgstr "알티움 디자이너 PCB 파일"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:49
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:59
 msgid "Altium PCB Library or Integrated Library"
 msgstr "Altium PCB 라이브러리 또는 통합 라이브러리"
 
@@ -57024,7 +57024,7 @@ msgid ""
 "entire connections"
 msgstr "접합, 패드 또는 전체 연결에 대한 연결 선택 또는 기존 선택 확장"
 
-#: pcbnew/tools/pcb_actions.cpp:2355
+#: pcbnew/tools/pcb_actions.cpp:2355 pcbnew/tools/pcb_selection_tool.cpp:1665
 msgid "Unroute Selected"
 msgstr "선택한 라우팅 제거"
 
@@ -57032,7 +57032,7 @@ msgstr "선택한 라우팅 제거"
 msgid "Unroutes selected items to the nearest pad."
 msgstr "선택한 항목을 가장 가까운 패드로 언라우트함."
 
-#: pcbnew/tools/pcb_actions.cpp:2363
+#: pcbnew/tools/pcb_actions.cpp:2363 pcbnew/tools/pcb_selection_tool.cpp:1777
 msgid "Unroute Segment"
 msgstr "세그먼트 미배선"
 
@@ -57625,11 +57625,11 @@ msgstr "영역 코너 끊기"
 msgid "Break Polygon Corner"
 msgstr "다각형 코너 끊기"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:83
+#: pcbnew/tools/pcb_selection_tool.cpp:82
 msgid "Select"
 msgstr "선택"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:1606
+#: pcbnew/tools/pcb_selection_tool.cpp:1827
 msgid "Select/Expand Connection..."
 msgstr "연결 선택/확장..."
 

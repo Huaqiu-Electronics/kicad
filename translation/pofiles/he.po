@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 13:57-0700\n"
+"POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-10 12:04+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/kicad/master-"
@@ -2091,7 +2091,7 @@ msgid "&Open Anyway"
 msgstr "&פתח בכל זאת"
 
 #: common/confirm.cpp:68 common/confirm.cpp:107
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1253
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1248
 msgid "Save Changes?"
 msgstr "לשמור שינויים?"
 
@@ -2148,7 +2148,7 @@ msgstr "מידע"
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:202
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:924
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:962
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #: pcbnew/footprint_libraries_utils.cpp:394
 #: pcbnew/footprint_libraries_utils.cpp:1134
 #: pcbnew/pcb_design_block_utils.cpp:58 pcbnew/pcb_design_block_utils.cpp:72
@@ -2388,19 +2388,19 @@ msgstr "בוגרי מובילי פיתוח"
 msgid "Additional Contributions By"
 msgstr "תרומות נוספות מאת"
 
-#: common/dialog_about/AboutDialog_main.cpp:628
+#: common/dialog_about/AboutDialog_main.cpp:668
 msgid "Documentation Team"
 msgstr "צוות תיעוד"
 
-#: common/dialog_about/AboutDialog_main.cpp:854
+#: common/dialog_about/AboutDialog_main.cpp:1030
 msgid "Librarian Team"
 msgstr "צוות ספרנים"
 
-#: common/dialog_about/AboutDialog_main.cpp:913
+#: common/dialog_about/AboutDialog_main.cpp:1089
 msgid "3D models"
 msgstr "מודלים תלת-ממדיים"
 
-#: common/dialog_about/AboutDialog_main.cpp:914
+#: common/dialog_about/AboutDialog_main.cpp:1090
 #: eeschema/dialogs/dialog_edit_symbols_libid_base.cpp:37
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:92
 #: eeschema/sch_symbol.cpp:3327
@@ -2410,7 +2410,7 @@ msgstr "מודלים תלת-ממדיים"
 msgid "Symbols"
 msgstr "סמלים"
 
-#: common/dialog_about/AboutDialog_main.cpp:915
+#: common/dialog_about/AboutDialog_main.cpp:1091
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:37
 #: pcbnew/plot_board_layers.cpp:212
 #: pcbnew/widgets/panel_selection_filter.cpp:221
@@ -2419,11 +2419,11 @@ msgstr "סמלים"
 msgid "Footprints"
 msgstr "תצורות רכיב"
 
-#: common/dialog_about/AboutDialog_main.cpp:941
+#: common/dialog_about/AboutDialog_main.cpp:1117
 msgid "Icons"
 msgstr "סמלים"
 
-#: common/dialog_about/AboutDialog_main.cpp:948
+#: common/dialog_about/AboutDialog_main.cpp:1124
 msgid "Package Developers"
 msgstr "מפתחי חבילות"
 
@@ -3354,9 +3354,9 @@ msgid "Print Preview"
 msgstr "תצוגת הדפסה מקדימה"
 
 #: common/dialogs/dialog_print_generic.cpp:98
-#: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:469
-#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:182
+#: common/dialogs/rule_editor_dialog_base.cpp:478
+#: common/dialogs/rule_editor_dialog_base.cpp:518 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3690,7 +3690,7 @@ msgstr "אישור"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:470 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4895,7 +4895,7 @@ msgid "Graphics:"
 msgstr "גרפיקה:"
 
 #: common/dialogs/panel_hotkeys_editor.cpp:75
-#: common/dialogs/rule_editor_dialog_base.cpp:106
+#: common/dialogs/rule_editor_dialog_base.cpp:107
 msgid "Type filter text"
 msgstr "הקלד טקסט סינון"
 
@@ -5946,37 +5946,37 @@ msgstr "סרגל כלים:"
 msgid "Insert separator"
 msgstr "הוסף מפריד"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:184 common/tool/actions.cpp:93
+#: common/dialogs/rule_editor_dialog_base.cpp:185 common/tool/actions.cpp:93
 #: eeschema/symbol_editor/symbol_editor.cpp:804
 #: eeschema/widgets/tuner_slider_base.cpp:130
 #: pcbnew/footprint_libraries_utils.cpp:1005
 msgid "Save"
 msgstr "שמור"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:465
-#: common/dialogs/rule_editor_dialog_base.cpp:483
+#: common/dialogs/rule_editor_dialog_base.cpp:474
+#: common/dialogs/rule_editor_dialog_base.cpp:492
 #: kicad/kicad_manager_frame.cpp:973
 msgid "Discard"
 msgstr "בטל"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 msgid "New Rule"
 msgstr "כלל חדש"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 msgid "Copy Rule"
 msgstr "העתק כלל"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:574
 msgid "Delete Rule"
 msgstr "מחק כלל"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:577
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "הזז למעלה"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:571
+#: common/dialogs/rule_editor_dialog_base.cpp:580
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "הזז למטה"
@@ -6197,13 +6197,13 @@ msgstr "מספר נקודה צפה לא חוקי"
 
 #: common/eda_base_frame.cpp:511 common/tool/actions.cpp:289
 #: pcbnew/dialogs/panel_setup_rules.cpp:135
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:988
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:992
 msgid "Undo"
 msgstr "בטל"
 
 #: common/eda_base_frame.cpp:520 common/tool/actions.cpp:301
 #: pcbnew/dialogs/panel_setup_rules.cpp:136
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:989
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
 msgid "Redo"
 msgstr "בצע שוב"
 
@@ -7002,7 +7002,7 @@ msgstr "מרכז"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:42
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1115
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1119
 msgid "Top"
 msgstr "עליון"
 
@@ -7014,7 +7014,7 @@ msgstr "עליון"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:38
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1117
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1121
 msgid "Bottom"
 msgstr "תחתון"
 
@@ -7676,7 +7676,7 @@ msgstr "סיום rebase נכשל: %s"
 #: common/grid_tricks.cpp:379 common/tool/actions.cpp:313
 #: common/widgets/listbox_tricks.cpp:209 eeschema/tools/sch_actions.cpp:244
 #: pcbnew/dialogs/panel_setup_rules.cpp:140
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:997
 #: pcbnew/tools/edit_tool.cpp:3027
 msgid "Cut"
 msgstr "גזור"
@@ -7692,7 +7692,7 @@ msgstr "נקה תאים נבחרים והעבר את תוכנם המקורי ל�
 #: eeschema/tools/sch_actions.cpp:250 kicad/dialogs/panel_jobset.cpp:439
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:76
 #: pcbnew/dialogs/panel_setup_rules.cpp:141
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:994
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:998
 msgid "Copy"
 msgstr "העתק"
 
@@ -7705,7 +7705,7 @@ msgstr "העתק תאים נבחרים ללוח הכתיבה"
 #: eeschema/tools/sch_editor_control.cpp:2798
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1739
 #: pcbnew/dialogs/panel_setup_rules.cpp:142
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:995
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:999
 #: pcbnew/tools/pcb_control.cpp:1380
 msgid "Paste"
 msgstr "הדבק"
@@ -7719,8 +7719,8 @@ msgstr "הדבק תאים מלוח הכתיבה למטריצה בתא הנוכח
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:996
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
 #: pcbnew/tools/edit_tool.cpp:2997 pcbnew/tools/edit_tool.cpp:3040
 msgid "Delete"
 msgstr "מחק"
@@ -7741,7 +7741,7 @@ msgstr "נקה תוכן של תאים נבחרים"
 #: pcbnew/dialogs/dialog_import_settings.cpp:100
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:101
 #: pcbnew/dialogs/panel_setup_rules.cpp:147
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
 msgid "Select All"
 msgstr "בחר הכול"
 
@@ -7958,7 +7958,7 @@ msgstr "לא ניתן לפתוח את הקובץ '%s'"
 
 #: common/io/cadstar/cadstar_archive_parser.cpp:2495
 #: common/io/cadstar/cadstar_archive_parser.cpp:2819 eeschema/files-io.cpp:1535
-#: eeschema/sch_io/altium/sch_io_altium.cpp:925
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1026
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:332
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:308
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:350
@@ -9252,31 +9252,31 @@ msgstr ""
 "2. ודא שאין תוכנת אנטי-וירוס אחרת שמפריעה ל-KiCad\n"
 "3. ודא שהרשאות הגישה מוגדרות כהלכה"
 
-#: common/pgm_base.cpp:240
+#: common/pgm_base.cpp:246
 msgid "No default editor found, you must choose one."
 msgstr "לא נמצא עורך ברירת מחדל, עליך לבחור אחד."
 
-#: common/pgm_base.cpp:260 common/pgm_base.cpp:262
+#: common/pgm_base.cpp:266 common/pgm_base.cpp:268
 msgid "Executable file"
 msgstr "קובץ הרצה"
 
-#: common/pgm_base.cpp:272
+#: common/pgm_base.cpp:278
 msgid "Select Preferred Editor"
 msgstr "בחר עורך מועדף"
 
-#: common/pgm_base.cpp:363
+#: common/pgm_base.cpp:369
 msgid "Environment variable HOME is empty.  Unable to continue."
 msgstr "משתנה הסביבה HOME ריק. לא ניתן להמשיך."
 
-#: common/pgm_base.cpp:589
+#: common/pgm_base.cpp:595
 msgid "This language is not supported by the operating system."
 msgstr "שפה זו אינה נתמכת על ידי מערכת ההפעלה."
 
-#: common/pgm_base.cpp:640 common/pgm_base.cpp:681
+#: common/pgm_base.cpp:646 common/pgm_base.cpp:687
 msgid "The KiCad language file for this language is not installed."
 msgstr "קובץ השפה של KiCad עבור שפה זו אינו מותקן."
 
-#: common/pgm_base.cpp:897 common/pgm_base.cpp:909
+#: common/pgm_base.cpp:903 common/pgm_base.cpp:915
 msgid "Loading Design Block Libraries"
 msgstr "טעינת ספריות בלוקי עיצוב"
 
@@ -10323,13 +10323,13 @@ msgstr "הקטן בסמן"
 
 #: common/tool/actions.cpp:766 common/widgets/mathplot.cpp:1415
 #: pcbnew/dialogs/panel_setup_rules.cpp:151
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1008
 msgid "Zoom In"
 msgstr "הגדל תצוגה"
 
 #: common/tool/actions.cpp:772 common/widgets/mathplot.cpp:1416
 #: pcbnew/dialogs/panel_setup_rules.cpp:152
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1005
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1009
 msgid "Zoom Out"
 msgstr "הקטן תצוגה"
 
@@ -16736,46 +16736,46 @@ msgstr ""
 msgid "Cannot delete the default variant."
 msgstr "לא ניתן למחוק את גרסת ברירת המחדל."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2784
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 msgid "Cannot rename the default variant."
 msgstr "לא ניתן לשנות את שם גרסת ברירת המחדל."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Enter new variant name:"
 msgstr "הזן שם גרסה חדש:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Rename Design Variant"
 msgstr "שנה שם גרסת עיצוב"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2802
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2875
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
 msgid "Variant name cannot be empty."
 msgstr "שם הגרסה לא יכול להיות ריק."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2809
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
 #, c-format
 msgid "'%s' is a reserved variant name."
 msgstr "'%s' הוא שם גרסה שמור."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2825
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2882
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
 #, c-format
 msgid "Variant '%s' already exists."
 msgstr "הגרסה '%s' כבר קיימת."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2857
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
 msgstr "לא ניתן להעתיק את גרסת ברירת המחדל."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Enter name for the copied variant:"
 msgstr "הזן שם לגרסה המועתקת:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Copy Design Variant"
 msgstr "העתק גרסת עיצוב"
 
@@ -17359,7 +17359,7 @@ msgstr "עדכן/אפס גדלים וסגנונות שדות"
 #: eeschema/sch_label.cpp:2375
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:35
 #: pcbnew/dialogs/panel_setup_rules.cpp:988
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:913 pcbnew/pcb_text.cpp:695
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:917 pcbnew/pcb_text.cpp:695
 msgid "Syntax Help"
 msgstr "עזרת תחביר"
 
@@ -20347,17 +20347,17 @@ msgstr "<ללא שם>"
 msgid "Members"
 msgstr "חברים"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:922
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1023
 #, c-format
 msgid "Importing %s"
 msgstr "מייבא %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:946
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1047
 #, c-format
 msgid "Error parsing Altium schematic: %s"
 msgstr "שגיאה בניתוח סכימת Altium: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1012
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1113
 #, c-format
 msgid ""
 "The file name for sheet %s is undefined, this is probably an Altium signal "
@@ -20366,104 +20366,104 @@ msgstr ""
 "שם הקובץ עבור הגיליון %s אינו מוגדר, ככל הנראה זהו רתמת אותות של Altium "
 "שהומרה לגיליון."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1139
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1240
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr "קובץ האחסון לא נותח במלואו (%d בתים נותרו)."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1219
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1314
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1320
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1415
 msgid "Expected Altium Schematic file version 5.0"
 msgstr "גרסה 5.0 של קובץ סכימת Altium צפויה"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1422
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1523
 msgid "Record 'IEEE_SYMBOL' not handled."
 msgstr "הרשומה 'IEEE_SYMBOL' לא מטופלת."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1541
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1642
 msgid "Parameter Set not currently supported."
 msgstr "Parameter Set אינו נתמך כעת."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1566
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1667
 msgid "Compile mask not currently supported."
 msgstr "Compile mask אינו נתמך כעת."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1591
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1692
 msgid "Blanket not currently supported."
 msgstr "Blanket אינו נתמך כעת."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1596
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5016
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1697
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5120
 #, c-format
 msgid "Unknown or unexpected record id %d found in %s."
 msgstr "מזהה רשומה %d לא מוכר או לא צפוי נמצא ב-%s."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1654
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1755
 #, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr "הסמל '%s' בגיליון '%s' במיקום %d הוחלף בסמל \"%s\"."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1837
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4008
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1941
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4112
 msgid "Pin has unexpected orientation."
 msgstr "לפין כיוון לא צפוי."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1895
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1999
 msgid "Pin has unexpected electrical type."
 msgstr "לפין סוג חשמלי לא צפוי."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1900
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2004
 msgid "Pin has unexpected outer edge type."
 msgstr "לפין סוג קצה חיצוני לא צפוי."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1903
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2007
 msgid "Pin has unexpected inner edge type."
 msgstr "לפין סוג קצה פנימי לא צפוי."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:2402
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2506
 #, c-format
 msgid "Bezier has %d control points. At least 2 are expected."
 msgstr "ל-Bezier יש %d נקודות בקרה. נדרשות לפחות 2."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3893
+#: eeschema/sch_io/altium/sch_io_altium.cpp:3997
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:373
 msgid "Power Port with unknown style imported as 'Bar' type."
 msgstr "יציאת כוח עם סגנון לא מוכר יובאה כסוג 'Bar'."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3942
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4046
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:1000
 #: eeschema/sch_io/easyedapro/sch_easyedapro_parser.cpp:699
 #, c-format
 msgid "Power symbol creates a global label with name '%s'"
 msgstr "סמל כוח יוצר תווית גלובלית עם השם '%s'"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4102
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4206
 #, c-format
 msgid "Port %s has no connections."
 msgstr "ליציאה %s אין חיבורים."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4297
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4401
 #, c-format
 msgid "Embedded file %s not found in storage."
 msgstr "קובץ מוטבע %s לא נמצא באחסון."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4314
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4333
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4418
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4437
 #, c-format
 msgid "Error reading image %s."
 msgstr "שגיאה בקריאת תמונה %s."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4326
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4430
 #, c-format
 msgid "File not found %s."
 msgstr "הקובץ %s לא נמצא."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5131
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5235
 #, c-format
 msgid "Error parsing Altium library: %s"
 msgstr "שגיאה בניתוח ספריית Altium: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5154
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5258
 msgid "Expected Altium Schematic Library file version 5.0"
 msgstr "גרסה 5.0 של קובץ ספריית סכימת Altium צפויה"
 
@@ -20875,7 +20875,7 @@ msgstr "הקובץ '%s' אינו סכימת gEDA תקינה."
 msgid "Failed to load page '%s': %s"
 msgstr "טעינת העמוד '%s' נכשלה: %s"
 
-#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:458
+#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
 msgid "gEDA / Lepton EDA schematic files"
 msgstr "קובצי סכימה של gEDA / Lepton EDA"
 
@@ -30772,20 +30772,20 @@ msgstr "תיקיית יעד"
 msgid "Unzipping project in '%s'.\n"
 msgstr "מחלץ פרויקט ב-'%s'.\n"
 
-#: kicad/import_proj.cpp:348
+#: kicad/import_proj.cpp:372
 #, c-format
 msgid "Could not open gEDA / Lepton EDA project file '%s'."
 msgstr "לא ניתן לפתוח את קובץ פרויקט gEDA / Lepton EDA '%s'."
 
-#: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
+#: kicad/import_proj.cpp:488 kicad/import_proj.cpp:499
 msgid "Locate gEDA / Lepton EDA Schematic"
 msgstr "אתר סכימת gEDA / Lepton EDA"
 
-#: kicad/import_proj.cpp:573
+#: kicad/import_proj.cpp:597
 msgid "gEDA / Lepton EDA PCB files"
 msgstr "קבצי מעגל מודפס של gEDA / Lepton EDA"
 
-#: kicad/import_proj.cpp:576
+#: kicad/import_proj.cpp:600
 msgid "Locate gEDA / Lepton EDA PCB"
 msgstr "אתר מעגל מודפס של gEDA / Lepton EDA"
 
@@ -30818,27 +30818,27 @@ msgstr "שגיאה ביצירת תיקייה חדשה. נסה נתיב אחר. �
 msgid "Import Altium Project Files"
 msgstr "ייבא קבצי פרויקט Altium"
 
-#: kicad/import_project.cpp:188
+#: kicad/import_project.cpp:189
 msgid "Import CADSTAR Archive Project Files"
 msgstr "ייבא קבצי פרויקט ארכיון CADSTAR"
 
-#: kicad/import_project.cpp:196
+#: kicad/import_project.cpp:197
 msgid "Import Eagle Project Files"
 msgstr "ייבא קבצי פרויקט Eagle"
 
-#: kicad/import_project.cpp:203
+#: kicad/import_project.cpp:204
 msgid "Import EasyEDA Std Backup"
 msgstr "ייבא גיבוי EasyEDA Std"
 
-#: kicad/import_project.cpp:210
+#: kicad/import_project.cpp:211
 msgid "Import EasyEDA Pro Project"
 msgstr "ייבא פרויקט EasyEDA Pro"
 
-#: kicad/import_project.cpp:217
+#: kicad/import_project.cpp:218
 msgid "Import PADS Project Files"
 msgstr "ייבא קבצי פרויקט PADS"
 
-#: kicad/import_project.cpp:225
+#: kicad/import_project.cpp:226
 msgid "Import gEDA / Lepton EDA Project Files"
 msgstr "ייבא קבצי פרויקט gEDA / Lepton EDA"
 
@@ -43694,7 +43694,7 @@ msgstr "כללי DRC"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:952
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:956
 msgid "ERROR:"
 msgstr "שגיאה:"
 
@@ -47168,7 +47168,7 @@ msgstr "בודק שחרורים תרמיים..."
 msgid "Design Rule Editor"
 msgstr "עורך כללי עיצוב"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:504
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:499
 #, c-format
 msgid ""
 "Cannot save due to validation errors in rule '%s':\n"
@@ -47179,11 +47179,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 msgid "Are you sure you want to delete?"
 msgstr "האם אתה בטוח שברצונך למחוק?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1227
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1222
 msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
@@ -47191,7 +47191,7 @@ msgstr ""
 "לכללים מרובים עם אותו שם יש תנאים שונים. כללים עם אותו שם חייבים לכלול תנאים "
 "זהים כדי שניתן יהיה למזג אותם."
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 msgid ""
 "The following rules have unsaved changes:\n"
 "\n"
@@ -47199,7 +47199,7 @@ msgstr ""
 "לכללים הבאים יש שינויים שלא נשמרו:\n"
 "\n"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1251
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
 msgid ""
 "\n"
 "Do you want to save your changes?"
@@ -47207,7 +47207,7 @@ msgstr ""
 "\n"
 "האם ברצונך לשמור את השינויים?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1418
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, c-format
 msgid "Failed to reload DRC rules: %s"
 msgstr "טעינת כללי DRC מחדש נכשלה: %s"
@@ -47300,7 +47300,7 @@ msgstr "אובייקט B"
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:62
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1075
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1079
 msgid "Any"
 msgstr "כלשהו"
 
@@ -47505,40 +47505,40 @@ msgstr "סוג כלל"
 msgid "Rule name"
 msgstr "שם כלל"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:455
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:444
 msgid "Rule name must be unique."
 msgstr "שם הכלל חייב להיות ייחודי."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:463
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:452
 msgid "Layer selection is required."
 msgstr "נדרשת בחירת שכבה."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:935
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
 msgstr "שגיאה: לא סופק טקסט תנאי לאימות."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:946
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 msgid "DRC rule"
 msgstr "כלל DRC"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1054
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 msgid "Show Matches (error)"
 msgstr "הצג התאמות (שגיאה)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1062
 #, c-format
 msgid "Show Matches (%d)"
 msgstr "הצג התאמות (%d)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1066
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1070
 msgid "Show Matches"
 msgstr "הצג התאמות"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1122
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
 msgid "outer"
 msgstr "חיצוני"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1124
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
 msgstr "פנימי"
 
@@ -50291,27 +50291,27 @@ msgstr "סדר עדכון"
 msgid "Generator Properties"
 msgstr "מאפייני מחולל"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4641
 msgid "Constructing caches"
 msgstr "בונה מטמונים"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4656
 msgid "Creating nets"
 msgstr "יוצר רשתות"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4665
 msgid "Creating tracks"
 msgstr "יצירת מוליכים"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4704
 msgid "Converting footprints"
 msgstr "ממיר תצורות רכיבים"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2471
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
 msgstr "מפענח אובייקטים של Allegro"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2686
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
 msgid ""
 "This file was created with %s, which uses a binary format that predates "
@@ -50390,7 +50390,7 @@ msgstr "קובץ לא נמצא: '%s' עבור תיקייה '%s'."
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:693
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:233
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
 #, c-format
 msgid "File not found: '%s'."
 msgstr "קובץ לא נמצא: '%s'."
@@ -50731,21 +50731,21 @@ msgstr "קבצי מעגל מודפס של Altium Circuit Maker"
 msgid "Altium Circuit Studio PCB files"
 msgstr "קבצי מעגל מודפס של Altium Circuit Studio"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:308
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:400
 #, c-format
 msgid "No footprints in library '%s'"
 msgstr "אין תצורות רכיבים בספרייה '%s'"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:330
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
 #, c-format
 msgid "Footprint '%s' not found in '%s'."
 msgstr "תצורת הרכיב '%s' לא נמצאה ב-'%s'."
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:44
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 msgid "Altium Designer PCB files"
 msgstr "קבצי מעגל מודפס של Altium Designer"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:49
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:59
 msgid "Altium PCB Library or Integrated Library"
 msgstr "ספריית מעגל מודפס או ספרייה משולבת של Altium"
 
@@ -56636,7 +56636,7 @@ msgid ""
 "entire connections"
 msgstr "בוחר חיבור או מרחיב בחירה קיימת לצמתים, פדים או חיבורים שלמים"
 
-#: pcbnew/tools/pcb_actions.cpp:2355
+#: pcbnew/tools/pcb_actions.cpp:2355 pcbnew/tools/pcb_selection_tool.cpp:1665
 msgid "Unroute Selected"
 msgstr "הסר ניתוב מנבחרים"
 
@@ -56644,7 +56644,7 @@ msgstr "הסר ניתוב מנבחרים"
 msgid "Unroutes selected items to the nearest pad."
 msgstr "מבטל ניתוב של פריטים נבחרים עד הפד הקרוב ביותר."
 
-#: pcbnew/tools/pcb_actions.cpp:2363
+#: pcbnew/tools/pcb_actions.cpp:2363 pcbnew/tools/pcb_selection_tool.cpp:1777
 msgid "Unroute Segment"
 msgstr "הסר ניתוב מקטע"
 
@@ -57236,11 +57236,11 @@ msgstr "שבור פינת אזור מילוי"
 msgid "Break Polygon Corner"
 msgstr "שבור פינת מצולע"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:83
+#: pcbnew/tools/pcb_selection_tool.cpp:82
 msgid "Select"
 msgstr "בחר"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:1606
+#: pcbnew/tools/pcb_selection_tool.cpp:1827
 msgid "Select/Expand Connection..."
 msgstr "בחר/הרחב חיבור..."
 

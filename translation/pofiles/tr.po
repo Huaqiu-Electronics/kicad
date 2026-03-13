@@ -36,7 +36,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 13:57-0700\n"
+"POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-11 16:10+0000\n"
 "Last-Translator: YÜKSEL AÇIKGÖZ <yukselacikgoz@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
@@ -2141,7 +2141,7 @@ msgid "&Open Anyway"
 msgstr "&Yine de Aç"
 
 #: common/confirm.cpp:68 common/confirm.cpp:107
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1253
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1248
 msgid "Save Changes?"
 msgstr "Değişiklikler Kaydedilsin mi?"
 
@@ -2198,7 +2198,7 @@ msgstr "Bilgi"
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:202
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:924
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:962
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #: pcbnew/footprint_libraries_utils.cpp:394
 #: pcbnew/footprint_libraries_utils.cpp:1134
 #: pcbnew/pcb_design_block_utils.cpp:58 pcbnew/pcb_design_block_utils.cpp:72
@@ -2438,19 +2438,19 @@ msgstr "Eski Baş Geliştirme Ekibi"
 msgid "Additional Contributions By"
 msgstr "Ek Katkıda Bulunanlar"
 
-#: common/dialog_about/AboutDialog_main.cpp:628
+#: common/dialog_about/AboutDialog_main.cpp:668
 msgid "Documentation Team"
 msgstr "Dokümantasyon Ekibi"
 
-#: common/dialog_about/AboutDialog_main.cpp:854
+#: common/dialog_about/AboutDialog_main.cpp:1030
 msgid "Librarian Team"
 msgstr "Kütüphaneci Ekibi"
 
-#: common/dialog_about/AboutDialog_main.cpp:913
+#: common/dialog_about/AboutDialog_main.cpp:1089
 msgid "3D models"
 msgstr "3B Modeller"
 
-#: common/dialog_about/AboutDialog_main.cpp:914
+#: common/dialog_about/AboutDialog_main.cpp:1090
 #: eeschema/dialogs/dialog_edit_symbols_libid_base.cpp:37
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:92
 #: eeschema/sch_symbol.cpp:3327
@@ -2460,7 +2460,7 @@ msgstr "3B Modeller"
 msgid "Symbols"
 msgstr "Semboller"
 
-#: common/dialog_about/AboutDialog_main.cpp:915
+#: common/dialog_about/AboutDialog_main.cpp:1091
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:37
 #: pcbnew/plot_board_layers.cpp:212
 #: pcbnew/widgets/panel_selection_filter.cpp:221
@@ -2469,11 +2469,11 @@ msgstr "Semboller"
 msgid "Footprints"
 msgstr "Ayak İzleri"
 
-#: common/dialog_about/AboutDialog_main.cpp:941
+#: common/dialog_about/AboutDialog_main.cpp:1117
 msgid "Icons"
 msgstr "Simgeler"
 
-#: common/dialog_about/AboutDialog_main.cpp:948
+#: common/dialog_about/AboutDialog_main.cpp:1124
 msgid "Package Developers"
 msgstr "Paket Geliştiriciler"
 
@@ -3411,9 +3411,9 @@ msgid "Print Preview"
 msgstr "Yazdırma Önizleme"
 
 #: common/dialogs/dialog_print_generic.cpp:98
-#: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:469
-#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:182
+#: common/dialogs/rule_editor_dialog_base.cpp:478
+#: common/dialogs/rule_editor_dialog_base.cpp:518 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3748,7 +3748,7 @@ msgstr "Tamam"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:470 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4979,7 +4979,7 @@ msgid "Graphics:"
 msgstr "Grafikler:"
 
 #: common/dialogs/panel_hotkeys_editor.cpp:75
-#: common/dialogs/rule_editor_dialog_base.cpp:106
+#: common/dialogs/rule_editor_dialog_base.cpp:107
 msgid "Type filter text"
 msgstr "Filtre metni yazın"
 
@@ -6046,37 +6046,37 @@ msgstr "Araç çubuğu:"
 msgid "Insert separator"
 msgstr "Ayırıcı ekle"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:184 common/tool/actions.cpp:93
+#: common/dialogs/rule_editor_dialog_base.cpp:185 common/tool/actions.cpp:93
 #: eeschema/symbol_editor/symbol_editor.cpp:804
 #: eeschema/widgets/tuner_slider_base.cpp:130
 #: pcbnew/footprint_libraries_utils.cpp:1005
 msgid "Save"
 msgstr "Kaydet"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:465
-#: common/dialogs/rule_editor_dialog_base.cpp:483
+#: common/dialogs/rule_editor_dialog_base.cpp:474
+#: common/dialogs/rule_editor_dialog_base.cpp:492
 #: kicad/kicad_manager_frame.cpp:973
 msgid "Discard"
 msgstr "At"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 msgid "New Rule"
 msgstr "Yeni Kural"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 msgid "Copy Rule"
 msgstr "Kuralı Kopyala"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:574
 msgid "Delete Rule"
 msgstr "Kuralı Sil"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:577
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "Yukarı Taşı"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:571
+#: common/dialogs/rule_editor_dialog_base.cpp:580
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "Aşağı Taşı"
@@ -6297,13 +6297,13 @@ msgstr "Geçersiz sinyal adı"
 
 #: common/eda_base_frame.cpp:511 common/tool/actions.cpp:289
 #: pcbnew/dialogs/panel_setup_rules.cpp:135
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:988
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:992
 msgid "Undo"
 msgstr "Geri al"
 
 #: common/eda_base_frame.cpp:520 common/tool/actions.cpp:301
 #: pcbnew/dialogs/panel_setup_rules.cpp:136
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:989
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
 msgid "Redo"
 msgstr "Yinele"
 
@@ -7102,7 +7102,7 @@ msgstr "Merkez"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:42
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1115
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1119
 msgid "Top"
 msgstr "Üst"
 
@@ -7114,7 +7114,7 @@ msgstr "Üst"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:38
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1117
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1121
 msgid "Bottom"
 msgstr "Alt"
 
@@ -7786,7 +7786,7 @@ msgstr "Yeniden temellendirme tamamlaması başarısız: %s"
 #: common/grid_tricks.cpp:379 common/tool/actions.cpp:313
 #: common/widgets/listbox_tricks.cpp:209 eeschema/tools/sch_actions.cpp:244
 #: pcbnew/dialogs/panel_setup_rules.cpp:140
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:997
 #: pcbnew/tools/edit_tool.cpp:3027
 msgid "Cut"
 msgstr "Kes"
@@ -7802,7 +7802,7 @@ msgstr "Seçili hücreleri temizle ve orijinal içeriği panoya yerleştir"
 #: eeschema/tools/sch_actions.cpp:250 kicad/dialogs/panel_jobset.cpp:439
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:76
 #: pcbnew/dialogs/panel_setup_rules.cpp:141
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:994
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:998
 msgid "Copy"
 msgstr "Kopyala"
 
@@ -7815,7 +7815,7 @@ msgstr "Seçili hücreleri panoya kopyala"
 #: eeschema/tools/sch_editor_control.cpp:2798
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1739
 #: pcbnew/dialogs/panel_setup_rules.cpp:142
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:995
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:999
 #: pcbnew/tools/pcb_control.cpp:1380
 msgid "Paste"
 msgstr "Yapıştır"
@@ -7829,8 +7829,8 @@ msgstr "Panodaki hücreleri geçerli hücredeki matrise yapıştır"
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:996
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
 #: pcbnew/tools/edit_tool.cpp:2997 pcbnew/tools/edit_tool.cpp:3040
 msgid "Delete"
 msgstr "Sil"
@@ -7851,7 +7851,7 @@ msgstr "Seçilen hücrelerin içeriğini temizle"
 #: pcbnew/dialogs/dialog_import_settings.cpp:100
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:101
 #: pcbnew/dialogs/panel_setup_rules.cpp:147
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
 msgid "Select All"
 msgstr "Tümünü Seç"
 
@@ -8070,7 +8070,7 @@ msgstr "'%s' dosyası açılamıyor"
 
 #: common/io/cadstar/cadstar_archive_parser.cpp:2495
 #: common/io/cadstar/cadstar_archive_parser.cpp:2819 eeschema/files-io.cpp:1535
-#: eeschema/sch_io/altium/sch_io_altium.cpp:925
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1026
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:332
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:308
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:350
@@ -9368,31 +9368,31 @@ msgstr ""
 "2. Başka bir antivirüs yazılımının KiCad ile çakışmadığından emin olun\n"
 "3. Doğru izinlerin ayarlandığından emin olun"
 
-#: common/pgm_base.cpp:240
+#: common/pgm_base.cpp:246
 msgid "No default editor found, you must choose one."
 msgstr "Varsayılan düzenleyici bulunamadı, bir tane seçmelisiniz."
 
-#: common/pgm_base.cpp:260 common/pgm_base.cpp:262
+#: common/pgm_base.cpp:266 common/pgm_base.cpp:268
 msgid "Executable file"
 msgstr "Çalıştırılabilir dosya"
 
-#: common/pgm_base.cpp:272
+#: common/pgm_base.cpp:278
 msgid "Select Preferred Editor"
 msgstr "Tercih Edilen Düzenleyiciyi Seç"
 
-#: common/pgm_base.cpp:363
+#: common/pgm_base.cpp:369
 msgid "Environment variable HOME is empty.  Unable to continue."
 msgstr "HOME ortam değişkeni boş. Devam edilemiyor."
 
-#: common/pgm_base.cpp:589
+#: common/pgm_base.cpp:595
 msgid "This language is not supported by the operating system."
 msgstr "Bu dil işletim sistemi tarafından desteklenmiyor."
 
-#: common/pgm_base.cpp:640 common/pgm_base.cpp:681
+#: common/pgm_base.cpp:646 common/pgm_base.cpp:687
 msgid "The KiCad language file for this language is not installed."
 msgstr "Bu dil için KiCad dil dosyası kurulu değil."
 
-#: common/pgm_base.cpp:897 common/pgm_base.cpp:909
+#: common/pgm_base.cpp:903 common/pgm_base.cpp:915
 msgid "Loading Design Block Libraries"
 msgstr "Tasarım Bloğu Kütüphaneleri Yükleniyor"
 
@@ -10449,13 +10449,13 @@ msgstr "İmleçte Uzaklaştır"
 
 #: common/tool/actions.cpp:766 common/widgets/mathplot.cpp:1415
 #: pcbnew/dialogs/panel_setup_rules.cpp:151
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1008
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
 #: common/tool/actions.cpp:772 common/widgets/mathplot.cpp:1416
 #: pcbnew/dialogs/panel_setup_rules.cpp:152
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1005
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1009
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
@@ -16943,46 +16943,46 @@ msgstr ""
 msgid "Cannot delete the default variant."
 msgstr "Varsayılan değişken silinemez."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2784
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 msgid "Cannot rename the default variant."
 msgstr "Varsayılan değişken yeniden adlandırılamaz."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Enter new variant name:"
 msgstr "Yeni değişken adını girin:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 msgid "Rename Design Variant"
 msgstr "Tasarım Değişkenini Yeniden Adlandır"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2802
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2875
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
 msgid "Variant name cannot be empty."
 msgstr "Değişken adı boş olamaz."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2809
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
 #, c-format
 msgid "'%s' is a reserved variant name."
 msgstr "'%s' ayrılmış bir değişken adıdır."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2825
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2882
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
 #, c-format
 msgid "Variant '%s' already exists."
 msgstr "'%s' değişkeni zaten mevcut."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2857
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
 msgstr "Varsayılan varyant kopyalanamıyor."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Enter name for the copied variant:"
 msgstr "Kopyalanan değişken için bir ad girin:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 msgid "Copy Design Variant"
 msgstr "Tasarım Değişkenini Kopyala"
 
@@ -17582,7 +17582,7 @@ msgstr "Alan boyutlarını ve stillerini güncelle/sıfırla"
 #: eeschema/sch_label.cpp:2375
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:35
 #: pcbnew/dialogs/panel_setup_rules.cpp:988
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:913 pcbnew/pcb_text.cpp:695
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:917 pcbnew/pcb_text.cpp:695
 msgid "Syntax Help"
 msgstr "Sözdizimi Yardımı"
 
@@ -20608,17 +20608,17 @@ msgstr "<unnamed>"
 msgid "Members"
 msgstr "Üyeler"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:922
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1023
 #, c-format
 msgid "Importing %s"
 msgstr "%s içe aktarılıyor"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:946
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1047
 #, c-format
 msgid "Error parsing Altium schematic: %s"
 msgstr "Altium şematiği ayrıştırılırken hata: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1012
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1113
 #, c-format
 msgid ""
 "The file name for sheet %s is undefined, this is probably an Altium signal "
@@ -20627,105 +20627,105 @@ msgstr ""
 "%s sayfasının dosya adı tanımsızdır, bu muhtemelen bir sayfaya dönüştürülen "
 "bir Altium sinyal demetidir."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1139
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1240
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr "Depolama dosyası tam olarak ayrıştırılmadı (%d bayt kaldı)."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1219
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1314
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1320
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1415
 msgid "Expected Altium Schematic file version 5.0"
 msgstr "Beklenen Altium Şematik dosyası sürümü 5.0"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1422
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1523
 msgid "Record 'IEEE_SYMBOL' not handled."
 msgstr "'IEEE_SYMBOL' kaydı işlenmedi."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1541
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1642
 msgid "Parameter Set not currently supported."
 msgstr "Parametre Seti şu anda desteklenmiyor."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1566
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1667
 msgid "Compile mask not currently supported."
 msgstr "Derleme maskesi şu anda desteklenmiyor."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1591
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1692
 msgid "Blanket not currently supported."
 msgstr "Blanket şu anda desteklenmiyor."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1596
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5016
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1697
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5120
 #, c-format
 msgid "Unknown or unexpected record id %d found in %s."
 msgstr "Bilinmeyen veya beklenmedik kayıt kimliği %d bulundu %s içinde."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1654
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1755
 #, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr ""
 "Sembol '%s', '%s' şemasında %d indeksinde \"%s\" sembolü ile değiştirildi."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1837
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4008
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1941
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4112
 msgid "Pin has unexpected orientation."
 msgstr "Pın'in beklenmedik bir yönü var."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1895
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1999
 msgid "Pin has unexpected electrical type."
 msgstr "Pim beklenmedik bir elektrik tipine sahiptir."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1900
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2004
 msgid "Pin has unexpected outer edge type."
 msgstr "Pim beklenmedik dış kenar tipine sahiptir."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1903
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2007
 msgid "Pin has unexpected inner edge type."
 msgstr "Pim beklenmedik iç kenar tipine sahiptir."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:2402
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2506
 #, c-format
 msgid "Bezier has %d control points. At least 2 are expected."
 msgstr "Bezier'in %d kontrol noktaları var. En az 2 bekleniyor."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3893
+#: eeschema/sch_io/altium/sch_io_altium.cpp:3997
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:373
 msgid "Power Port with unknown style imported as 'Bar' type."
 msgstr "Bilinmeyen stildeki güç portu 'Çubuk' tipi olarak içe aktarıldı."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3942
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4046
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:1000
 #: eeschema/sch_io/easyedapro/sch_easyedapro_parser.cpp:699
 #, c-format
 msgid "Power symbol creates a global label with name '%s'"
 msgstr "Güç simgesi '%s' adlı genel bir etiket oluşturur"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4102
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4206
 #, c-format
 msgid "Port %s has no connections."
 msgstr "%s portunun bağlantısı yok."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4297
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4401
 #, c-format
 msgid "Embedded file %s not found in storage."
 msgstr "Depolamada yerleşik dosya %s bulunamadı."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4314
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4333
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4418
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4437
 #, c-format
 msgid "Error reading image %s."
 msgstr "%s resmi okunurken hata oluştu."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4326
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4430
 #, c-format
 msgid "File not found %s."
 msgstr "Dosya bulunamadı %s."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5131
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5235
 #, c-format
 msgid "Error parsing Altium library: %s"
 msgstr "Altium kütüphanesi ayrıştırılırken hata: %s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5154
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5258
 msgid "Expected Altium Schematic Library file version 5.0"
 msgstr "Altium Şematik Kütüphane dosyası sürüm 5.0 bekleniyor"
 
@@ -21153,7 +21153,7 @@ msgstr "'%s' dosyası geçerli bir gEDA şematiği değil."
 msgid "Failed to load page '%s': %s"
 msgstr "'%s' sayfası yüklenemedi: %s"
 
-#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:458
+#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
 msgid "gEDA / Lepton EDA schematic files"
 msgstr "gEDA / Lepton EDA şematik dosyaları"
 
@@ -31265,20 +31265,20 @@ msgstr "Hedef Dizin"
 msgid "Unzipping project in '%s'.\n"
 msgstr "Projeyi '%s' olarak açma.\n"
 
-#: kicad/import_proj.cpp:348
+#: kicad/import_proj.cpp:372
 #, c-format
 msgid "Could not open gEDA / Lepton EDA project file '%s'."
 msgstr "gEDA / Lepton EDA proje dosyası '%s' açılamadı."
 
-#: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
+#: kicad/import_proj.cpp:488 kicad/import_proj.cpp:499
 msgid "Locate gEDA / Lepton EDA Schematic"
 msgstr "gEDA / Lepton EDA Şemasını Yerleştir"
 
-#: kicad/import_proj.cpp:573
+#: kicad/import_proj.cpp:597
 msgid "gEDA / Lepton EDA PCB files"
 msgstr "gEDA / Lepton EDA Baskı Devre dosyaları"
 
-#: kicad/import_proj.cpp:576
+#: kicad/import_proj.cpp:600
 msgid "Locate gEDA / Lepton EDA PCB"
 msgstr "gEDA / Lepton EDA Baskı Devresini Yerleştir"
 
@@ -31315,27 +31315,27 @@ msgstr ""
 msgid "Import Altium Project Files"
 msgstr "Altium Proje Dosyalarını İçe Aktar"
 
-#: kicad/import_project.cpp:188
+#: kicad/import_project.cpp:189
 msgid "Import CADSTAR Archive Project Files"
 msgstr "CADSTAR Arşiv Proje Dosyalarını İçe Aktar"
 
-#: kicad/import_project.cpp:196
+#: kicad/import_project.cpp:197
 msgid "Import Eagle Project Files"
 msgstr "Eagle Proje Dosyalarını İçe Aktar"
 
-#: kicad/import_project.cpp:203
+#: kicad/import_project.cpp:204
 msgid "Import EasyEDA Std Backup"
 msgstr "EasyEDA Std Yedeklemeyi İçe Aktar"
 
-#: kicad/import_project.cpp:210
+#: kicad/import_project.cpp:211
 msgid "Import EasyEDA Pro Project"
 msgstr "EasyEDA Pro Projeyi İçe Aktar"
 
-#: kicad/import_project.cpp:217
+#: kicad/import_project.cpp:218
 msgid "Import PADS Project Files"
 msgstr "PADS Proje Dosyalarını İçe Aktar"
 
-#: kicad/import_project.cpp:225
+#: kicad/import_project.cpp:226
 msgid "Import gEDA / Lepton EDA Project Files"
 msgstr "gEDA / Lepton EDA Proje Dosyalarını İçe Aktar"
 
@@ -44400,7 +44400,7 @@ msgstr "DRC (Tasarım Kuralı Kontrolü) kuralları"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:952
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:956
 msgid "ERROR:"
 msgstr "HATA:"
 
@@ -47929,7 +47929,7 @@ msgstr "Termal rölyefler kontrol ediliyor..."
 msgid "Design Rule Editor"
 msgstr "Tasarım Kuralı Düzenleyici"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:504
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:499
 #, c-format
 msgid ""
 "Cannot save due to validation errors in rule '%s':\n"
@@ -47940,11 +47940,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 msgid "Are you sure you want to delete?"
 msgstr "Silmek istediğinize emin misiniz?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1227
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1222
 msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
@@ -47952,7 +47952,7 @@ msgstr ""
 "Aynı isme sahip birden çok kuralın farklı koşulları var. Aynı isme sahip "
 "kuralların birleştirilebilmesi için koşullarının aynı olması gerekir."
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 msgid ""
 "The following rules have unsaved changes:\n"
 "\n"
@@ -47960,7 +47960,7 @@ msgstr ""
 "Aşağıdaki kuralların kaydedilmemiş değişiklikleri var:\n"
 "\n"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1251
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
 msgid ""
 "\n"
 "Do you want to save your changes?"
@@ -47968,7 +47968,7 @@ msgstr ""
 "\n"
 "Değişikliklerinizi kaydetmek istiyor musunuz?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1418
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, c-format
 msgid "Failed to reload DRC rules: %s"
 msgstr "Tasarım Kuralı Kontrolü yeniden yüklenemedi: %s"
@@ -48060,7 +48060,7 @@ msgstr "B Nesnesi"
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:62
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1075
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1079
 msgid "Any"
 msgstr "Herhangi"
 
@@ -48265,40 +48265,40 @@ msgstr "Kural türü"
 msgid "Rule name"
 msgstr "Kural adı"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:455
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:444
 msgid "Rule name must be unique."
 msgstr "Kural adı benzersiz olmalıdır."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:463
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:452
 msgid "Layer selection is required."
 msgstr "Katman seçimi gereklidir."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:935
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
 msgstr "HATA: Doğrulama için hiçbir koşul metni sağlanmadı."
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:946
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 msgid "DRC rule"
 msgstr "Tasarım Kuralı Kontrolü kuralı"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1054
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 msgid "Show Matches (error)"
 msgstr "Eşleşmeleri Göster (hata)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1062
 #, c-format
 msgid "Show Matches (%d)"
 msgstr "Eşleşmeleri Göster (%d)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1066
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1070
 msgid "Show Matches"
 msgstr "Eşleşmeleri Göster"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1122
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
 msgid "outer"
 msgstr "dış"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1124
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
 msgstr "iç"
 
@@ -51086,27 +51086,27 @@ msgstr "Sırayı Güncelle"
 msgid "Generator Properties"
 msgstr "Jeneratör Özellikleri"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4641
 msgid "Constructing caches"
 msgstr "Önbellekler oluşturuluyor"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4656
 msgid "Creating nets"
 msgstr "Ağlar oluşturuluyor"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4665
 msgid "Creating tracks"
 msgstr "Yollar oluşturuluyor"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4704
 msgid "Converting footprints"
 msgstr "Ayak izleri dönüştürülüyor"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2471
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
 msgstr "Allegro nesneleri ayrıştırılıyor"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2686
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
 msgid ""
 "This file was created with %s, which uses a binary format that predates "
@@ -51187,7 +51187,7 @@ msgstr "Dizin '%s' için dosya bulunamadı: '%s'."
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:693
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:233
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
 #, c-format
 msgid "File not found: '%s'."
 msgstr "Dosya bulunamadı: '%s'."
@@ -51534,21 +51534,21 @@ msgstr "Altium Circuit Maker Baskı Devre Dosyaları"
 msgid "Altium Circuit Studio PCB files"
 msgstr "Altium Circuit Studio Baskı Devre Dosyaları"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:308
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:400
 #, c-format
 msgid "No footprints in library '%s'"
 msgstr "'%s' kütüphanesinde ayak izi yok"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:330
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
 #, c-format
 msgid "Footprint '%s' not found in '%s'."
 msgstr "'%s' ayak izi '%s' içinde bulunamadı."
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:44
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 msgid "Altium Designer PCB files"
 msgstr "Altium Designer Baskı Devre Dosyaları"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:49
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:59
 msgid "Altium PCB Library or Integrated Library"
 msgstr "Altium Baskı Devre Kütüphanesi veya Entegre Kütüphane"
 
@@ -57573,7 +57573,7 @@ msgstr ""
 "Bir bağlantı seçer veya mevcut seçimi birleşim yerlerine, pedlere veya tüm "
 "bağlantılara genişletir"
 
-#: pcbnew/tools/pcb_actions.cpp:2355
+#: pcbnew/tools/pcb_actions.cpp:2355 pcbnew/tools/pcb_selection_tool.cpp:1665
 msgid "Unroute Selected"
 msgstr "Seçili Yönlendirmeyi Kaldır"
 
@@ -57581,7 +57581,7 @@ msgstr "Seçili Yönlendirmeyi Kaldır"
 msgid "Unroutes selected items to the nearest pad."
 msgstr "Seçili ögeleri en yakın pad'e yönlendirir."
 
-#: pcbnew/tools/pcb_actions.cpp:2363
+#: pcbnew/tools/pcb_actions.cpp:2363 pcbnew/tools/pcb_selection_tool.cpp:1777
 msgid "Unroute Segment"
 msgstr "Segment Yönlendirmesini Kaldır"
 
@@ -58179,11 +58179,11 @@ msgstr "Bölge Köşesini Ayır"
 msgid "Break Polygon Corner"
 msgstr "Çokgen Köşesini Ayır"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:83
+#: pcbnew/tools/pcb_selection_tool.cpp:82
 msgid "Select"
 msgstr "Seç"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:1606
+#: pcbnew/tools/pcb_selection_tool.cpp:1827
 msgid "Select/Expand Connection..."
 msgstr "Bağlantıyı Seç/Genişlet..."
 

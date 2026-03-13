@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 13:57-0700\n"
+"POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-07 17:55+0000\n"
 "Last-Translator: 撒景賢 <james.sa.2013@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -2120,7 +2120,7 @@ msgid "&Open Anyway"
 msgstr "仍要開啟 (&O)"
 
 #: common/confirm.cpp:68 common/confirm.cpp:107
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1253
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1248
 msgid "Save Changes?"
 msgstr "儲存變更嗎?"
 
@@ -2177,7 +2177,7 @@ msgstr "資訊"
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:202
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:924
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:962
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #: pcbnew/footprint_libraries_utils.cpp:394
 #: pcbnew/footprint_libraries_utils.cpp:1134
 #: pcbnew/pcb_design_block_utils.cpp:58 pcbnew/pcb_design_block_utils.cpp:72
@@ -2415,19 +2415,19 @@ msgstr "前主要開發團隊"
 msgid "Additional Contributions By"
 msgstr "附加貢獻"
 
-#: common/dialog_about/AboutDialog_main.cpp:628
+#: common/dialog_about/AboutDialog_main.cpp:668
 msgid "Documentation Team"
 msgstr "文件團隊"
 
-#: common/dialog_about/AboutDialog_main.cpp:854
+#: common/dialog_about/AboutDialog_main.cpp:1030
 msgid "Librarian Team"
 msgstr "庫團隊"
 
-#: common/dialog_about/AboutDialog_main.cpp:913
+#: common/dialog_about/AboutDialog_main.cpp:1089
 msgid "3D models"
 msgstr "3D 模型"
 
-#: common/dialog_about/AboutDialog_main.cpp:914
+#: common/dialog_about/AboutDialog_main.cpp:1090
 #: eeschema/dialogs/dialog_edit_symbols_libid_base.cpp:37
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:92
 #: eeschema/sch_symbol.cpp:3327
@@ -2437,7 +2437,7 @@ msgstr "3D 模型"
 msgid "Symbols"
 msgstr "符號"
 
-#: common/dialog_about/AboutDialog_main.cpp:915
+#: common/dialog_about/AboutDialog_main.cpp:1091
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:37
 #: pcbnew/plot_board_layers.cpp:212
 #: pcbnew/widgets/panel_selection_filter.cpp:221
@@ -2446,11 +2446,11 @@ msgstr "符號"
 msgid "Footprints"
 msgstr "封裝"
 
-#: common/dialog_about/AboutDialog_main.cpp:941
+#: common/dialog_about/AboutDialog_main.cpp:1117
 msgid "Icons"
 msgstr "圖標"
 
-#: common/dialog_about/AboutDialog_main.cpp:948
+#: common/dialog_about/AboutDialog_main.cpp:1124
 msgid "Package Developers"
 msgstr "軟體包開發者"
 
@@ -3386,9 +3386,9 @@ msgid "Print Preview"
 msgstr "列印預覽"
 
 #: common/dialogs/dialog_print_generic.cpp:98
-#: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:469
-#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:182
+#: common/dialogs/rule_editor_dialog_base.cpp:478
+#: common/dialogs/rule_editor_dialog_base.cpp:518 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -3723,7 +3723,7 @@ msgstr "確定"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:470 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -4922,7 +4922,7 @@ msgid "Graphics:"
 msgstr "圖形:"
 
 #: common/dialogs/panel_hotkeys_editor.cpp:75
-#: common/dialogs/rule_editor_dialog_base.cpp:106
+#: common/dialogs/rule_editor_dialog_base.cpp:107
 msgid "Type filter text"
 msgstr "輸入篩選文字 (操作或快捷鍵名稱)"
 
@@ -5991,41 +5991,41 @@ msgstr "工具 (&T)"
 msgid "Insert separator"
 msgstr "插入分隔符號"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:184 common/tool/actions.cpp:93
+#: common/dialogs/rule_editor_dialog_base.cpp:185 common/tool/actions.cpp:93
 #: eeschema/symbol_editor/symbol_editor.cpp:804
 #: eeschema/widgets/tuner_slider_base.cpp:130
 #: pcbnew/footprint_libraries_utils.cpp:1005
 msgid "Save"
 msgstr "儲存"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:465
-#: common/dialogs/rule_editor_dialog_base.cpp:483
+#: common/dialogs/rule_editor_dialog_base.cpp:474
+#: common/dialogs/rule_editor_dialog_base.cpp:492
 #: kicad/kicad_manager_frame.cpp:973
 #, fuzzy
 msgid "Discard"
 msgstr "放棄操作"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #, fuzzy
 msgid "New Rule"
 msgstr "新建網路"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #, fuzzy
 msgid "Copy Rule"
 msgstr "自定義規則"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:574
 #, fuzzy
 msgid "Delete Rule"
 msgstr "刪除檔案"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:577
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 msgid "Move Up"
 msgstr "上移"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:571
+#: common/dialogs/rule_editor_dialog_base.cpp:580
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 msgid "Move Down"
 msgstr "下移"
@@ -6248,13 +6248,13 @@ msgstr "無效的浮點數"
 
 #: common/eda_base_frame.cpp:511 common/tool/actions.cpp:289
 #: pcbnew/dialogs/panel_setup_rules.cpp:135
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:988
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:992
 msgid "Undo"
 msgstr "復原"
 
 #: common/eda_base_frame.cpp:520 common/tool/actions.cpp:301
 #: pcbnew/dialogs/panel_setup_rules.cpp:136
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:989
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
 msgid "Redo"
 msgstr "取消復原"
 
@@ -7062,7 +7062,7 @@ msgstr "置中"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:42
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1115
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1119
 msgid "Top"
 msgstr "上"
 
@@ -7074,7 +7074,7 @@ msgstr "上"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:38
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1117
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1121
 msgid "Bottom"
 msgstr "下"
 
@@ -7733,7 +7733,7 @@ msgstr "變基完成失敗"
 #: common/grid_tricks.cpp:379 common/tool/actions.cpp:313
 #: common/widgets/listbox_tricks.cpp:209 eeschema/tools/sch_actions.cpp:244
 #: pcbnew/dialogs/panel_setup_rules.cpp:140
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:997
 #: pcbnew/tools/edit_tool.cpp:3027
 msgid "Cut"
 msgstr "剪下"
@@ -7749,7 +7749,7 @@ msgstr "將原始內容儲存到剪貼簿並清除所選單元格"
 #: eeschema/tools/sch_actions.cpp:250 kicad/dialogs/panel_jobset.cpp:439
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:76
 #: pcbnew/dialogs/panel_setup_rules.cpp:141
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:994
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:998
 msgid "Copy"
 msgstr "複製"
 
@@ -7762,7 +7762,7 @@ msgstr "複製選中的單元格到剪貼簿"
 #: eeschema/tools/sch_editor_control.cpp:2798
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1739
 #: pcbnew/dialogs/panel_setup_rules.cpp:142
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:995
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:999
 #: pcbnew/tools/pcb_control.cpp:1380
 msgid "Paste"
 msgstr "貼上"
@@ -7776,8 +7776,8 @@ msgstr "將剪貼簿內容貼上到目前單元格位置"
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:996
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
 #: pcbnew/tools/edit_tool.cpp:2997 pcbnew/tools/edit_tool.cpp:3040
 msgid "Delete"
 msgstr "刪除"
@@ -7798,7 +7798,7 @@ msgstr "清除所選單元格的內容"
 #: pcbnew/dialogs/dialog_import_settings.cpp:100
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:101
 #: pcbnew/dialogs/panel_setup_rules.cpp:147
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
 msgid "Select All"
 msgstr "全選"
 
@@ -8015,7 +8015,7 @@ msgstr "無法打開檔案 '%s'"
 
 #: common/io/cadstar/cadstar_archive_parser.cpp:2495
 #: common/io/cadstar/cadstar_archive_parser.cpp:2819 eeschema/files-io.cpp:1535
-#: eeschema/sch_io/altium/sch_io_altium.cpp:925
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1026
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:332
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:308
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:350
@@ -9354,31 +9354,31 @@ msgstr ""
 "2.請確認沒有其他防毒軟體干擾 KiCad 的運作\n"
 "3. 請確認已正確設定相關存取權限"
 
-#: common/pgm_base.cpp:240
+#: common/pgm_base.cpp:246
 msgid "No default editor found, you must choose one."
 msgstr "找不到預設的文字編輯器, 必須選擇一個。"
 
-#: common/pgm_base.cpp:260 common/pgm_base.cpp:262
+#: common/pgm_base.cpp:266 common/pgm_base.cpp:268
 msgid "Executable file"
 msgstr "可執行檔案"
 
-#: common/pgm_base.cpp:272
+#: common/pgm_base.cpp:278
 msgid "Select Preferred Editor"
 msgstr "選擇首選編輯器"
 
-#: common/pgm_base.cpp:363
+#: common/pgm_base.cpp:369
 msgid "Environment variable HOME is empty.  Unable to continue."
 msgstr "環境變數 HOME 為空。無法繼續。"
 
-#: common/pgm_base.cpp:589
+#: common/pgm_base.cpp:595
 msgid "This language is not supported by the operating system."
 msgstr "作業系統不支援此語言。"
 
-#: common/pgm_base.cpp:640 common/pgm_base.cpp:681
+#: common/pgm_base.cpp:646 common/pgm_base.cpp:687
 msgid "The KiCad language file for this language is not installed."
 msgstr "未安裝此語言的 KiCad 語言檔案。"
 
-#: common/pgm_base.cpp:897 common/pgm_base.cpp:909
+#: common/pgm_base.cpp:903 common/pgm_base.cpp:915
 #, fuzzy
 msgid "Loading Design Block Libraries"
 msgstr "載入符號庫"
@@ -10437,13 +10437,13 @@ msgstr "以遊標處縮小"
 
 #: common/tool/actions.cpp:766 common/widgets/mathplot.cpp:1415
 #: pcbnew/dialogs/panel_setup_rules.cpp:151
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1008
 msgid "Zoom In"
 msgstr "放大"
 
 #: common/tool/actions.cpp:772 common/widgets/mathplot.cpp:1416
 #: pcbnew/dialogs/panel_setup_rules.cpp:152
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1005
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1009
 msgid "Zoom Out"
 msgstr "縮小"
 
@@ -16876,51 +16876,51 @@ msgstr ""
 msgid "Cannot delete the default variant."
 msgstr "無法確定電路板輪廓."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2784
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 #, fuzzy
 msgid "Cannot rename the default variant."
 msgstr "標註電路圖符號"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 #, fuzzy
 msgid "Enter new variant name:"
 msgstr "輸入封裝名稱:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 #, fuzzy
 msgid "Rename Design Variant"
 msgstr "移除外掛程式..."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2802
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2875
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
 #, fuzzy
 msgid "Variant name cannot be empty."
 msgstr "變數名不能為空。"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2809
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
 #, fuzzy, c-format
 msgid "'%s' is a reserved variant name."
 msgstr "'%s' 是 KiCad 中的一個保留快捷鍵, 不能進行分配。"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2825
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2882
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
 #, fuzzy, c-format
 msgid "Variant '%s' already exists."
 msgstr "檔案 '%s' 已存在。"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2857
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
 msgstr ""
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 #, fuzzy
 msgid "Enter name for the copied variant:"
 msgstr "輸入圖紙路徑 %s 的頁碼"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 #, fuzzy
 msgid "Copy Design Variant"
 msgstr "資料庫人員"
@@ -17500,7 +17500,7 @@ msgstr "更新/重置欄位大小和樣式"
 #: eeschema/sch_label.cpp:2375
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:35
 #: pcbnew/dialogs/panel_setup_rules.cpp:988
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:913 pcbnew/pcb_text.cpp:695
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:917 pcbnew/pcb_text.cpp:695
 msgid "Syntax Help"
 msgstr "語法幫助"
 
@@ -20523,121 +20523,121 @@ msgstr "<未命名的>"
 msgid "Members"
 msgstr "成員"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:922
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1023
 #, fuzzy, c-format
 msgid "Importing %s"
 msgstr "匯入設定"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:946
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1047
 #, fuzzy, c-format
 msgid "Error parsing Altium schematic: %s"
 msgstr "載入原理圖 '%s' 時出錯。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1012
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1113
 #, c-format
 msgid ""
 "The file name for sheet %s is undefined, this is probably an Altium signal "
 "harness that got converted to a sheet."
 msgstr "圖紙 %s 的檔案名未定義, 這可能是轉換為圖紙的 Altium 信號線束。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1139
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1240
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr "存儲檔案沒有被完全解析 (%d 字節剩餘)。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1219
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1314
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1320
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1415
 msgid "Expected Altium Schematic file version 5.0"
 msgstr "應為 5.0 版本的 Altium 原理圖檔案"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1422
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1523
 msgid "Record 'IEEE_SYMBOL' not handled."
 msgstr "未處理記錄 'IEEE_SYMBOL'。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1541
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1642
 msgid "Parameter Set not currently supported."
 msgstr "尚未支援參數設定。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1566
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1667
 msgid "Compile mask not currently supported."
 msgstr "尚未支援 Compile mask。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1591
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1692
 msgid "Blanket not currently supported."
 msgstr "尚未支援空白。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1596
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5016
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1697
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5120
 #, c-format
 msgid "Unknown or unexpected record id %d found in %s."
 msgstr "'未知' 或 '意外'的記錄 ID %d在 %s 中被發現。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1654
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1755
 #, fuzzy, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr "符號 \"%s\"(位於圖紙 \"%s\", 該圖紙位於索引 %d) 被符號\"%s\"取代。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1837
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4008
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1941
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4112
 msgid "Pin has unexpected orientation."
 msgstr "接腳方向不符預期。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1895
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1999
 msgid "Pin has unexpected electrical type."
 msgstr "接腳電氣類型不符預期。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1900
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2004
 msgid "Pin has unexpected outer edge type."
 msgstr "接腳的外邊緣類型出乎意料。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1903
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2007
 msgid "Pin has unexpected inner edge type."
 msgstr "接腳的內邊緣類型出乎意料。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:2402
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2506
 #, c-format
 msgid "Bezier has %d control points. At least 2 are expected."
 msgstr "貝塞爾曲線有 %d 個控制點。至少應為 2 個。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3893
+#: eeschema/sch_io/altium/sch_io_altium.cpp:3997
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:373
 msgid "Power Port with unknown style imported as 'Bar' type."
 msgstr "未知樣式的電源端口匯入為 'Bar' 類型。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3942
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4046
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:1000
 #: eeschema/sch_io/easyedapro/sch_easyedapro_parser.cpp:699
 #, c-format
 msgid "Power symbol creates a global label with name '%s'"
 msgstr "電源符號建立名為 '%s' 的全域標籤"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4102
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4206
 #, c-format
 msgid "Port %s has no connections."
 msgstr "端口 %s 未連接。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4297
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4401
 #, c-format
 msgid "Embedded file %s not found in storage."
 msgstr "在存儲中找不到嵌入檔案 %s。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4314
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4333
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4418
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4437
 #, c-format
 msgid "Error reading image %s."
 msgstr "讀取圖片 %s 時出錯。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4326
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4430
 #, c-format
 msgid "File not found %s."
 msgstr "找不到檔案 %s。"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5131
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5235
 #, fuzzy, c-format
 msgid "Error parsing Altium library: %s"
 msgstr "載入元件庫「$\\text{\\%s}$」時發生錯誤"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5154
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5258
 msgid "Expected Altium Schematic Library file version 5.0"
 msgstr "Altium 原理圖庫檔案應為 5.0 版本"
 
@@ -21033,7 +21033,7 @@ msgstr "'%s' 不是有效的 SPICE 值。"
 msgid "Failed to load page '%s': %s"
 msgstr "未能載入 '%s'。"
 
-#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:458
+#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
 #, fuzzy
 msgid "gEDA / Lepton EDA schematic files"
 msgstr "Eagle XML 原理圖檔案"
@@ -30688,21 +30688,21 @@ msgstr "目標目錄"
 msgid "Unzipping project in '%s'.\n"
 msgstr "在 '%s' 中解壓專案。\n"
 
-#: kicad/import_proj.cpp:348
+#: kicad/import_proj.cpp:372
 #, fuzzy, c-format
 msgid "Could not open gEDA / Lepton EDA project file '%s'."
 msgstr "無法 打開/建立 路徑 '%s'。"
 
-#: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
+#: kicad/import_proj.cpp:488 kicad/import_proj.cpp:499
 msgid "Locate gEDA / Lepton EDA Schematic"
 msgstr ""
 
-#: kicad/import_proj.cpp:573
+#: kicad/import_proj.cpp:597
 #, fuzzy
 msgid "gEDA / Lepton EDA PCB files"
 msgstr "EasyEDA (嘉立創 EDA) 專業版檔案"
 
-#: kicad/import_proj.cpp:576
+#: kicad/import_proj.cpp:600
 msgid "Locate gEDA / Lepton EDA PCB"
 msgstr ""
 
@@ -30736,28 +30736,28 @@ msgstr "建立新目錄時出錯。請嘗試不同路徑。無法匯入該專案
 msgid "Import Altium Project Files"
 msgstr "匯入 Eagle 專案檔案"
 
-#: kicad/import_project.cpp:188
+#: kicad/import_project.cpp:189
 msgid "Import CADSTAR Archive Project Files"
 msgstr "匯入 CADSTAR 存檔專案檔案"
 
-#: kicad/import_project.cpp:196
+#: kicad/import_project.cpp:197
 msgid "Import Eagle Project Files"
 msgstr "匯入 Eagle 專案檔案"
 
-#: kicad/import_project.cpp:203
+#: kicad/import_project.cpp:204
 msgid "Import EasyEDA Std Backup"
 msgstr "匯入 EasyEDA 標準備份"
 
-#: kicad/import_project.cpp:210
+#: kicad/import_project.cpp:211
 msgid "Import EasyEDA Pro Project"
 msgstr "匯入 EasyEDA Pro 專案"
 
-#: kicad/import_project.cpp:217
+#: kicad/import_project.cpp:218
 #, fuzzy
 msgid "Import PADS Project Files"
 msgstr "匯入 Eagle 專案檔案"
 
-#: kicad/import_project.cpp:225
+#: kicad/import_project.cpp:226
 #, fuzzy
 msgid "Import gEDA / Lepton EDA Project Files"
 msgstr "匯入 Eagle 專案檔案"
@@ -43783,7 +43783,7 @@ msgstr "DRC 規則"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:952
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:956
 msgid "ERROR:"
 msgstr "錯誤:"
 
@@ -47191,7 +47191,7 @@ msgstr "正在檢查緩釋熱焊盤 (花焊盤) ..."
 msgid "Design Rule Editor"
 msgstr "設計規則編輯器"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:504
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:499
 #, c-format
 msgid ""
 "Cannot save due to validation errors in rule '%s':\n"
@@ -47199,18 +47199,18 @@ msgid ""
 "%s"
 msgstr ""
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #, fuzzy
 msgid "Are you sure you want to delete?"
 msgstr "確定要刪除整板嗎？"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1227
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1222
 msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
 msgstr ""
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 #, fuzzy
 msgid ""
 "The following rules have unsaved changes:\n"
@@ -47219,14 +47219,14 @@ msgstr ""
 "下列檔案將被覆蓋:\n"
 "\n"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1251
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
 #, fuzzy
 msgid ""
 "\n"
 "Do you want to save your changes?"
 msgstr "你想取消匯出過程嗎？"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1418
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, fuzzy, c-format
 msgid "Failed to reload DRC rules: %s"
 msgstr "新增檔案 '%s' 失敗。"
@@ -47329,7 +47329,7 @@ msgstr "物件"
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:62
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1075
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1079
 msgid "Any"
 msgstr "任何"
 
@@ -47563,46 +47563,46 @@ msgstr "規則區域"
 msgid "Rule name"
 msgstr "重新命名"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:455
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:444
 #, fuzzy
 msgid "Rule name must be unique."
 msgstr "生成唯一編號"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:463
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:452
 #, fuzzy
 msgid "Layer selection is required."
 msgstr "層選擇:"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:935
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
 msgstr ""
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:946
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 #, fuzzy
 msgid "DRC rule"
 msgstr "DRC 規則"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1054
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 #, fuzzy
 msgid "Show Matches (error)"
 msgstr "顯示所有版本"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1062
 #, fuzzy, c-format
 msgid "Show Matches (%d)"
 msgstr "配色主題 (%d)"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1066
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1070
 #, fuzzy
 msgid "Show Matches"
 msgstr "顯示走線"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1122
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
 #, fuzzy
 msgid "outer"
 msgstr "未佈線"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1124
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
 msgstr ""
 
@@ -50384,31 +50384,31 @@ msgstr "更新順序"
 msgid "Generator Properties"
 msgstr "生成器屬性"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4641
 #, fuzzy
 msgid "Constructing caches"
 msgstr "相互衝突的標籤"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4656
 #, fuzzy
 msgid "Creating nets"
 msgstr "說明"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4665
 #, fuzzy
 msgid "Creating tracks"
 msgstr "現存線路"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4704
 #, fuzzy
 msgid "Converting footprints"
 msgstr "封裝中心"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2471
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
 msgstr ""
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2686
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
 msgid ""
 "This file was created with %s, which uses a binary format that predates "
@@ -50484,7 +50484,7 @@ msgstr "找不到檔案: '%s' (目錄 '%s')。"
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:693
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:233
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
 #, c-format
 msgid "File not found: '%s'."
 msgstr "找不到檔案: '%s'。"
@@ -50823,21 +50823,21 @@ msgstr "Altium Circuit Maker PCB 檔案"
 msgid "Altium Circuit Studio PCB files"
 msgstr "Altium Circuit Studio PCB 檔案"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:308
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:400
 #, c-format
 msgid "No footprints in library '%s'"
 msgstr "庫 '%s' 中沒有封裝"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:330
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
 #, c-format
 msgid "Footprint '%s' not found in '%s'."
 msgstr "在“%s”中找不到封裝“%s”。"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:44
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 msgid "Altium Designer PCB files"
 msgstr "Altium Designer PCB 檔案"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:49
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:59
 msgid "Altium PCB Library or Integrated Library"
 msgstr "Altium PCB 庫或集成庫"
 
@@ -56483,7 +56483,7 @@ msgid ""
 "entire connections"
 msgstr "選擇連接或將現有選擇擴展到結點、焊盤或整個連接"
 
-#: pcbnew/tools/pcb_actions.cpp:2355
+#: pcbnew/tools/pcb_actions.cpp:2355 pcbnew/tools/pcb_selection_tool.cpp:1665
 msgid "Unroute Selected"
 msgstr "取消選中物件的佈線"
 
@@ -56491,7 +56491,7 @@ msgstr "取消選中物件的佈線"
 msgid "Unroutes selected items to the nearest pad."
 msgstr "取消所選項目到距離最近的焊盤的佈線。"
 
-#: pcbnew/tools/pcb_actions.cpp:2363
+#: pcbnew/tools/pcb_actions.cpp:2363 pcbnew/tools/pcb_selection_tool.cpp:1777
 #, fuzzy
 msgid "Unroute Segment"
 msgstr "取消選中物件的佈線"
@@ -57099,11 +57099,11 @@ msgstr "添加區域轉角"
 msgid "Break Polygon Corner"
 msgstr "移除覆銅或多邊形的轉角"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:83
+#: pcbnew/tools/pcb_selection_tool.cpp:82
 msgid "Select"
 msgstr "選擇"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:1606
+#: pcbnew/tools/pcb_selection_tool.cpp:1827
 msgid "Select/Expand Connection..."
 msgstr "選擇/擴展連接..."
 

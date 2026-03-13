@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 13:57-0700\n"
+"POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-07 16:27+0000\n"
 "Last-Translator: Sašo Domadenik <saso.doma@gmail.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
@@ -2375,7 +2375,7 @@ msgid "&Open Anyway"
 msgstr "Vseeno prihrani"
 
 #: common/confirm.cpp:68 common/confirm.cpp:107
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1253
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1248
 #, fuzzy
 msgid "Save Changes?"
 msgstr "Shrani spremembe?"
@@ -2441,7 +2441,7 @@ msgstr "Potrditev"
 #: pcbnew/dialogs/dialog_gencad_export_options.cpp:202
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:924
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:962
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #: pcbnew/footprint_libraries_utils.cpp:394
 #: pcbnew/footprint_libraries_utils.cpp:1134
 #: pcbnew/pcb_design_block_utils.cpp:58 pcbnew/pcb_design_block_utils.cpp:72
@@ -2705,22 +2705,22 @@ msgstr "Vodilni razvojni alumni"
 msgid "Additional Contributions By"
 msgstr "Dodatni prispevki avtorja"
 
-#: common/dialog_about/AboutDialog_main.cpp:628
+#: common/dialog_about/AboutDialog_main.cpp:668
 #, fuzzy
 msgid "Documentation Team"
 msgstr "Dokumentacija"
 
-#: common/dialog_about/AboutDialog_main.cpp:854
+#: common/dialog_about/AboutDialog_main.cpp:1030
 #, fuzzy
 msgid "Librarian Team"
 msgstr "Knjižničarska ekipa KiCad"
 
-#: common/dialog_about/AboutDialog_main.cpp:913
+#: common/dialog_about/AboutDialog_main.cpp:1089
 #, fuzzy
 msgid "3D models"
 msgstr "3D modeli"
 
-#: common/dialog_about/AboutDialog_main.cpp:914
+#: common/dialog_about/AboutDialog_main.cpp:1090
 #: eeschema/dialogs/dialog_edit_symbols_libid_base.cpp:37
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:92
 #: eeschema/sch_symbol.cpp:3327
@@ -2731,7 +2731,7 @@ msgstr "3D modeli"
 msgid "Symbols"
 msgstr "Simboli"
 
-#: common/dialog_about/AboutDialog_main.cpp:915
+#: common/dialog_about/AboutDialog_main.cpp:1091
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:37
 #: pcbnew/plot_board_layers.cpp:212
 #: pcbnew/widgets/panel_selection_filter.cpp:221
@@ -2741,12 +2741,12 @@ msgstr "Simboli"
 msgid "Footprints"
 msgstr "Stopinje"
 
-#: common/dialog_about/AboutDialog_main.cpp:941
+#: common/dialog_about/AboutDialog_main.cpp:1117
 #, fuzzy
 msgid "Icons"
 msgstr "Ikona"
 
-#: common/dialog_about/AboutDialog_main.cpp:948
+#: common/dialog_about/AboutDialog_main.cpp:1124
 #, fuzzy
 msgid "Package Developers"
 msgstr "Razvijalci"
@@ -3814,9 +3814,9 @@ msgid "Print Preview"
 msgstr "Predogled tiskanja"
 
 #: common/dialogs/dialog_print_generic.cpp:98
-#: common/dialogs/rule_editor_dialog_base.cpp:181
-#: common/dialogs/rule_editor_dialog_base.cpp:469
-#: common/dialogs/rule_editor_dialog_base.cpp:509 common/hotkey_store.cpp:59
+#: common/dialogs/rule_editor_dialog_base.cpp:182
+#: common/dialogs/rule_editor_dialog_base.cpp:478
+#: common/dialogs/rule_editor_dialog_base.cpp:518 common/hotkey_store.cpp:59
 #: common/tool/action_menu.cpp:223 common/tool/action_menu.cpp:228
 #: eeschema/dialogs/dialog_annotate.cpp:116 eeschema/dialogs/dialog_bom.cpp:86
 #: eeschema/dialogs/dialog_change_symbols.cpp:139
@@ -4190,7 +4190,7 @@ msgstr "Potrdi"
 #: common/dialogs/git/dialog_git_commit.cpp:151
 #: common/dialogs/git/dialog_git_switch.cpp:73
 #: common/dialogs/panel_embedded_files.cpp:499
-#: common/dialogs/rule_editor_dialog_base.cpp:461 common/tool/actions.cpp:255
+#: common/dialogs/rule_editor_dialog_base.cpp:470 common/tool/actions.cpp:255
 #: eeschema/dialogs/dialog_erc.cpp:509
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1452 eeschema/sheet.cpp:1021
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1033
@@ -5538,7 +5538,7 @@ msgid "Graphics:"
 msgstr "Grafika"
 
 #: common/dialogs/panel_hotkeys_editor.cpp:75
-#: common/dialogs/rule_editor_dialog_base.cpp:106
+#: common/dialogs/rule_editor_dialog_base.cpp:107
 #, fuzzy
 msgid "Type filter text"
 msgstr "Vnesite besedilo filtra"
@@ -6710,7 +6710,7 @@ msgstr "&Orodja"
 msgid "Insert separator"
 msgstr "Uvozi odtis"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:184 common/tool/actions.cpp:93
+#: common/dialogs/rule_editor_dialog_base.cpp:185 common/tool/actions.cpp:93
 #: eeschema/symbol_editor/symbol_editor.cpp:804
 #: eeschema/widgets/tuner_slider_base.cpp:130
 #: pcbnew/footprint_libraries_utils.cpp:1005
@@ -6718,35 +6718,35 @@ msgstr "Uvozi odtis"
 msgid "Save"
 msgstr "Shrani"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:465
-#: common/dialogs/rule_editor_dialog_base.cpp:483
+#: common/dialogs/rule_editor_dialog_base.cpp:474
+#: common/dialogs/rule_editor_dialog_base.cpp:492
 #: kicad/kicad_manager_frame.cpp:973
 #, fuzzy
 msgid "Discard"
 msgstr "Zavrzi spremembe"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:559
+#: common/dialogs/rule_editor_dialog_base.cpp:568
 #, fuzzy
 msgid "New Rule"
 msgstr "Nov modul"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:562
+#: common/dialogs/rule_editor_dialog_base.cpp:571
 #, fuzzy
 msgid "Copy Rule"
 msgstr "Nabor slojev po meri"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:565
+#: common/dialogs/rule_editor_dialog_base.cpp:574
 #, fuzzy
 msgid "Delete Rule"
 msgstr "Briši modul"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:568
+#: common/dialogs/rule_editor_dialog_base.cpp:577
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:65
 #, fuzzy
 msgid "Move Up"
 msgstr "Pomakni se navzgor"
 
-#: common/dialogs/rule_editor_dialog_base.cpp:571
+#: common/dialogs/rule_editor_dialog_base.cpp:580
 #: pcbnew/dialogs/panel_pcbnew_action_plugins_base.cpp:70
 #, fuzzy
 msgid "Move Down"
@@ -7002,14 +7002,14 @@ msgstr ""
 
 #: common/eda_base_frame.cpp:511 common/tool/actions.cpp:289
 #: pcbnew/dialogs/panel_setup_rules.cpp:135
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:988
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:992
 #, fuzzy
 msgid "Undo"
 msgstr "Razveljavi"
 
 #: common/eda_base_frame.cpp:520 common/tool/actions.cpp:301
 #: pcbnew/dialogs/panel_setup_rules.cpp:136
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:989
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
 #, fuzzy
 msgid "Redo"
 msgstr "Obnovi"
@@ -7927,7 +7927,7 @@ msgstr "Center"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:42
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1115
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1119
 #, fuzzy
 msgid "Top"
 msgstr "Zgoraj"
@@ -7940,7 +7940,7 @@ msgstr "Zgoraj"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1199
 #: pcbnew/dialogs/dialog_render_job.cpp:38
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1117
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1121
 #, fuzzy
 msgid "Bottom"
 msgstr "Spodnja stran"
@@ -8665,7 +8665,7 @@ msgstr "Preverjanje omrežnih povezav ..."
 #: common/grid_tricks.cpp:379 common/tool/actions.cpp:313
 #: common/widgets/listbox_tricks.cpp:209 eeschema/tools/sch_actions.cpp:244
 #: pcbnew/dialogs/panel_setup_rules.cpp:140
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:993
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:997
 #: pcbnew/tools/edit_tool.cpp:3027
 #, fuzzy
 msgid "Cut"
@@ -8683,7 +8683,7 @@ msgstr "Počistite izbrane celice, tako da v odložišče shranite izvirno vsebi
 #: eeschema/tools/sch_actions.cpp:250 kicad/dialogs/panel_jobset.cpp:439
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:76
 #: pcbnew/dialogs/panel_setup_rules.cpp:141
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:994
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:998
 #, fuzzy
 msgid "Copy"
 msgstr "Kopiraj"
@@ -8698,7 +8698,7 @@ msgstr "Kopirajte izbrane celice v odložišče"
 #: eeschema/tools/sch_editor_control.cpp:2798
 #: eeschema/tools/symbol_editor_edit_tool.cpp:1739
 #: pcbnew/dialogs/panel_setup_rules.cpp:142
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:995
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:999
 #: pcbnew/tools/pcb_control.cpp:1380
 #, fuzzy
 msgid "Paste"
@@ -8714,8 +8714,8 @@ msgstr "Celice odložišča prilepite v matrico v trenutni celici"
 #: eeschema/tools/symbol_editor_edit_tool.cpp:858
 #: kicad/dialogs/panel_jobset.cpp:440 kicad/project_tree_pane.cpp:1014
 #: pcbnew/dialogs/panel_setup_rules.cpp:143
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:996
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
 #: pcbnew/tools/edit_tool.cpp:2997 pcbnew/tools/edit_tool.cpp:3040
 #, fuzzy
 msgid "Delete"
@@ -8738,7 +8738,7 @@ msgstr "Izbriše izbrane elemente"
 #: pcbnew/dialogs/dialog_import_settings.cpp:100
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:101
 #: pcbnew/dialogs/panel_setup_rules.cpp:147
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1000
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
 #, fuzzy
 msgid "Select All"
 msgstr "Izberi vse"
@@ -8982,7 +8982,7 @@ msgstr "Datoteke '%s' ni mogoče odpreti"
 
 #: common/io/cadstar/cadstar_archive_parser.cpp:2495
 #: common/io/cadstar/cadstar_archive_parser.cpp:2819 eeschema/files-io.cpp:1535
-#: eeschema/sch_io/altium/sch_io_altium.cpp:925
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1026
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:332
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:308
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:350
@@ -10493,37 +10493,37 @@ msgid ""
 "3. Make sure you have correct permissions set up"
 msgstr ""
 
-#: common/pgm_base.cpp:240
+#: common/pgm_base.cpp:246
 #, fuzzy
 msgid "No default editor found, you must choose one."
 msgstr "Privzetega urejevalnika ni bilo mogoče najti, izbrati ga morate"
 
-#: common/pgm_base.cpp:260 common/pgm_base.cpp:262
+#: common/pgm_base.cpp:266 common/pgm_base.cpp:268
 #, fuzzy
 msgid "Executable file"
 msgstr "Izvršljive datoteke ("
 
-#: common/pgm_base.cpp:272
+#: common/pgm_base.cpp:278
 #, fuzzy
 msgid "Select Preferred Editor"
 msgstr "Izberite Preferred Editor"
 
-#: common/pgm_base.cpp:363
+#: common/pgm_base.cpp:369
 #, fuzzy
 msgid "Environment variable HOME is empty.  Unable to continue."
 msgstr "Ime spremenljivke okolja ne sme biti prazno."
 
-#: common/pgm_base.cpp:589
+#: common/pgm_base.cpp:595
 #, fuzzy
 msgid "This language is not supported by the operating system."
 msgstr "Operacijski sistem tega jezika ne podpira."
 
-#: common/pgm_base.cpp:640 common/pgm_base.cpp:681
+#: common/pgm_base.cpp:646 common/pgm_base.cpp:687
 #, fuzzy
 msgid "The KiCad language file for this language is not installed."
 msgstr "Jezikovna datoteka KiCad za ta jezik ni nameščena."
 
-#: common/pgm_base.cpp:897 common/pgm_base.cpp:909
+#: common/pgm_base.cpp:903 common/pgm_base.cpp:915
 #, fuzzy
 msgid "Loading Design Block Libraries"
 msgstr "Nalaganje knjižnic simbolov"
@@ -11718,14 +11718,14 @@ msgstr "Pomanjšaj pri kazalcu"
 
 #: common/tool/actions.cpp:766 common/widgets/mathplot.cpp:1415
 #: pcbnew/dialogs/panel_setup_rules.cpp:151
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1004
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1008
 #, fuzzy
 msgid "Zoom In"
 msgstr "Približaj"
 
 #: common/tool/actions.cpp:772 common/widgets/mathplot.cpp:1416
 #: pcbnew/dialogs/panel_setup_rules.cpp:152
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1005
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1009
 #, fuzzy
 msgid "Zoom Out"
 msgstr "Pomanjšaj"
@@ -19089,51 +19089,51 @@ msgstr ""
 msgid "Cannot delete the default variant."
 msgstr "Številči shemo"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2784
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 #, fuzzy
 msgid "Cannot rename the default variant."
 msgstr "Številči shemo"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 #, fuzzy
 msgid "Enter new variant name:"
 msgstr "Vnesite ime odtisa:"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2791
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
 #, fuzzy
 msgid "Rename Design Variant"
 msgstr "Preimenuj datoteko ..."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2802
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2875
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
 #, fuzzy
 msgid "Variant name cannot be empty."
 msgstr "Ime spremenljivke ne sme biti prazno."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2809
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
 #, fuzzy, c-format
 msgid "'%s' is a reserved variant name."
 msgstr "Ime %s je rezervirano in ga tukaj ni mogoče uporabiti"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2825
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2882
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
 #, fuzzy, c-format
 msgid "Variant '%s' already exists."
 msgstr "\"%s\" že obstaja."
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2857
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
 msgstr ""
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 #, fuzzy
 msgid "Enter name for the copied variant:"
 msgstr "Vnesite številko strani za pot lista %s"
 
-#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2864
+#: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
 #, fuzzy
 msgid "Copy Design Variant"
 msgstr "Knjižničarji"
@@ -19814,7 +19814,7 @@ msgstr "Posodobi/ponastavi velikosti in sloge polj"
 #: eeschema/sch_label.cpp:2375
 #: pagelayout_editor/dialogs/properties_frame_base.cpp:35
 #: pcbnew/dialogs/panel_setup_rules.cpp:988
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:913 pcbnew/pcb_text.cpp:695
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:917 pcbnew/pcb_text.cpp:695
 #, fuzzy
 msgid "Syntax Help"
 msgstr "Pomoč pri sintaksi"
@@ -23269,126 +23269,126 @@ msgstr "<neimenovano>"
 msgid "Members"
 msgstr "Člani"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:922
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1023
 #, fuzzy, c-format
 msgid "Importing %s"
 msgstr "Uvozi nastavitve"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:946
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1047
 #, fuzzy, c-format
 msgid "Error parsing Altium schematic: %s"
 msgstr ""
 "Napaka pri nalaganju sheme.\n"
 "%s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1012
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1113
 #, c-format
 msgid ""
 "The file name for sheet %s is undefined, this is probably an Altium signal "
 "harness that got converted to a sheet."
 msgstr ""
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1139
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1240
 #, c-format
 msgid "Storage file not fully parsed (%d bytes remaining)."
 msgstr ""
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1219
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1314
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1320
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1415
 #, fuzzy
 msgid "Expected Altium Schematic file version 5.0"
 msgstr "Shematske datoteke Altium"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1422
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1523
 msgid "Record 'IEEE_SYMBOL' not handled."
 msgstr ""
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1541
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1642
 #, fuzzy
 msgid "Parameter Set not currently supported."
 msgstr "Trenutno ni odprta shema."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1566
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1667
 #, fuzzy
 msgid "Compile mask not currently supported."
 msgstr "Trenutno ni odprta shema."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1591
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1692
 #, fuzzy
 msgid "Blanket not currently supported."
 msgstr "Trenutno ni odprta shema."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1596
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5016
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1697
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5120
 #, fuzzy, c-format
 msgid "Unknown or unexpected record id %d found in %s."
 msgstr "Nepričakovana datoteka \"%s\" je bila najdena v poti knjižnice \"%s\"."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1654
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1755
 #, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr ""
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1837
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4008
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1941
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4112
 #, fuzzy
 msgid "Pin has unexpected orientation."
 msgstr "Usmerjenost besedila"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1895
+#: eeschema/sch_io/altium/sch_io_altium.cpp:1999
 #, fuzzy
 msgid "Pin has unexpected electrical type."
 msgstr "Pokažite tip pin in elektriko"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1900
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2004
 #, fuzzy
 msgid "Pin has unexpected outer edge type."
 msgstr "Priključek ima nepričakovano vrsto zunanjega roba."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:1903
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2007
 #, fuzzy
 msgid "Pin has unexpected inner edge type."
 msgstr "Priključek ima nepričakovano vrsto notranjega roba."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:2402
+#: eeschema/sch_io/altium/sch_io_altium.cpp:2506
 #, c-format
 msgid "Bezier has %d control points. At least 2 are expected."
 msgstr ""
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3893
+#: eeschema/sch_io/altium/sch_io_altium.cpp:3997
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:373
 msgid "Power Port with unknown style imported as 'Bar' type."
 msgstr ""
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:3942
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4046
 #: eeschema/sch_io/easyeda/sch_easyeda_parser.cpp:1000
 #: eeschema/sch_io/easyedapro/sch_easyedapro_parser.cpp:699
 #, fuzzy, c-format
 msgid "Power symbol creates a global label with name '%s'"
 msgstr "Napajalni simbol ustvari globalna oznaka vozlišča z imenom '%s'"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4102
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4206
 #, fuzzy, c-format
 msgid "Port %s has no connections."
 msgstr "Povezave blazinic:"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4297
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4401
 #, fuzzy, c-format
 msgid "Embedded file %s not found in storage."
 msgstr "Datoteke za obnovitev \"%s\" ni mogoče najti."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4314
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4333
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4418
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4437
 #, fuzzy, c-format
 msgid "Error reading image %s."
 msgstr "Napaka pri branju slike %s."
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:4326
+#: eeschema/sch_io/altium/sch_io_altium.cpp:4430
 #, fuzzy, c-format
 msgid "File not found %s."
 msgstr "Ne najdem datoteke"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5131
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5235
 #, fuzzy, c-format
 msgid "Error parsing Altium library: %s"
 msgstr ""
@@ -23396,7 +23396,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: eeschema/sch_io/altium/sch_io_altium.cpp:5154
+#: eeschema/sch_io/altium/sch_io_altium.cpp:5258
 msgid "Expected Altium Schematic Library file version 5.0"
 msgstr ""
 
@@ -23819,7 +23819,7 @@ msgstr "\"%s\" ni veljavna vrednost začimbe"
 msgid "Failed to load page '%s': %s"
 msgstr "Nalaganja \"%s\" ni uspelo"
 
-#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:458
+#: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
 #, fuzzy
 msgid "gEDA / Lepton EDA schematic files"
 msgstr "Shematske datoteke Eagle XML"
@@ -34591,20 +34591,20 @@ msgstr "Ciljni imenik"
 msgid "Unzipping project in '%s'.\n"
 msgstr "Razpakiranje projekta v \"%s\"\n"
 
-#: kicad/import_proj.cpp:348
+#: kicad/import_proj.cpp:372
 #, fuzzy, c-format
 msgid "Could not open gEDA / Lepton EDA project file '%s'."
 msgstr "Datoteke \"%s\" ni bilo mogoče ustvariti."
 
-#: kicad/import_proj.cpp:464 kicad/import_proj.cpp:475
+#: kicad/import_proj.cpp:488 kicad/import_proj.cpp:499
 msgid "Locate gEDA / Lepton EDA Schematic"
 msgstr ""
 
-#: kicad/import_proj.cpp:573
+#: kicad/import_proj.cpp:597
 msgid "gEDA / Lepton EDA PCB files"
 msgstr ""
 
-#: kicad/import_proj.cpp:576
+#: kicad/import_proj.cpp:600
 msgid "Locate gEDA / Lepton EDA PCB"
 msgstr ""
 
@@ -34645,31 +34645,31 @@ msgstr ""
 msgid "Import Altium Project Files"
 msgstr "Uvozite datoteke projekta Eagle"
 
-#: kicad/import_project.cpp:188
+#: kicad/import_project.cpp:189
 #, fuzzy
 msgid "Import CADSTAR Archive Project Files"
 msgstr "Uvozite datoteke CADSTAR Archive Project"
 
-#: kicad/import_project.cpp:196
+#: kicad/import_project.cpp:197
 #, fuzzy
 msgid "Import Eagle Project Files"
 msgstr "Uvozite datoteke projekta Eagle"
 
-#: kicad/import_project.cpp:203
+#: kicad/import_project.cpp:204
 msgid "Import EasyEDA Std Backup"
 msgstr ""
 
-#: kicad/import_project.cpp:210
+#: kicad/import_project.cpp:211
 #, fuzzy
 msgid "Import EasyEDA Pro Project"
 msgstr "Uvozite datoteke projekta Eagle"
 
-#: kicad/import_project.cpp:217
+#: kicad/import_project.cpp:218
 #, fuzzy
 msgid "Import PADS Project Files"
 msgstr "Uvozite datoteke projekta Eagle"
 
-#: kicad/import_project.cpp:225
+#: kicad/import_project.cpp:226
 #, fuzzy
 msgid "Import gEDA / Lepton EDA Project Files"
 msgstr "Uvozite datoteke projekta Eagle"
@@ -49569,7 +49569,7 @@ msgstr "Pravila DRK"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:952
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:956
 #, fuzzy
 msgid "ERROR:"
 msgstr "NAPAKA:"
@@ -52681,7 +52681,7 @@ msgstr "Preverjanje besedilnih spremenljivk ..."
 msgid "Design Rule Editor"
 msgstr "Odpri urejevalnik modulov"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:504
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:499
 #, c-format
 msgid ""
 "Cannot save due to validation errors in rule '%s':\n"
@@ -52689,18 +52689,18 @@ msgid ""
 "%s"
 msgstr ""
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:593
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #, fuzzy
 msgid "Are you sure you want to delete?"
 msgstr "Ali ste prepričani, da želite izbrisati celotno ploščo?"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1227
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1222
 msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
 msgstr ""
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 #, fuzzy
 msgid ""
 "The following rules have unsaved changes:\n"
@@ -52710,7 +52710,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1251
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1246
 #, fuzzy
 msgid ""
 "\n"
@@ -52719,7 +52719,7 @@ msgstr ""
 "Ali želite uporabiti pot glede na\n"
 "\"%s\""
 
-#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1418
+#: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, fuzzy, c-format
 msgid "Failed to reload DRC rules: %s"
 msgstr "Ne morem ustvariti datoteke <%s>"
@@ -52822,7 +52822,7 @@ msgstr "Predmeti"
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:62
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1075
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1079
 msgid "Any"
 msgstr "Katerikoli"
 
@@ -53056,46 +53056,46 @@ msgstr "Območje pravil"
 msgid "Rule name"
 msgstr "Preimenuj"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:455
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:444
 #, fuzzy
 msgid "Rule name must be unique."
 msgstr "Ustvari opozorilo"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:463
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:452
 #, fuzzy
 msgid "Layer selection is required."
 msgstr "Izbira sloja:"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:935
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
 msgstr ""
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:946
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 #, fuzzy
 msgid "DRC rule"
 msgstr "Pravila DRK"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1054
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 #, fuzzy
 msgid "Show Matches (error)"
 msgstr "Pokaži vse vie"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1062
 #, fuzzy, c-format
 msgid "Show Matches (%d)"
 msgstr "Barvna tema:"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1066
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1070
 #, fuzzy
 msgid "Show Matches"
 msgstr "Pokaži sled"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1122
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
 #, fuzzy
 msgid "outer"
 msgstr "Nepotezno"
 
-#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1124
+#: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
 msgstr ""
 
@@ -56155,31 +56155,31 @@ msgstr "Posodobljeno"
 msgid "Generator Properties"
 msgstr "Lastnosti generatorja skript"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4536
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4641
 #, fuzzy
 msgid "Constructing caches"
 msgstr "Nasprotujoče si oznake"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4551
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4656
 #, fuzzy
 msgid "Creating nets"
 msgstr "Oblikovanje opomb"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4560
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4665
 #, fuzzy
 msgid "Creating tracks"
 msgstr "Pri ustvarjanju skladb"
 
-#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4599
+#: pcbnew/pcb_io/allegro/allegro_builder.cpp:4704
 #, fuzzy
 msgid "Converting footprints"
 msgstr "odtis starša"
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2471
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
 msgstr ""
 
-#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2686
+#: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
 msgid ""
 "This file was created with %s, which uses a binary format that predates "
@@ -56253,7 +56253,7 @@ msgstr "Datoteke ni mogoče najti: '%s'"
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:693
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:233
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
 #, fuzzy, c-format
 msgid "File not found: '%s'."
 msgstr "Datoteke ni mogoče najti: '%s'"
@@ -56620,22 +56620,22 @@ msgstr "Datoteke PCB Altium Circuit Maker"
 msgid "Altium Circuit Studio PCB files"
 msgstr "Datoteke PCB Altium Circuit Studio"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:308
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:400
 #, fuzzy, c-format
 msgid "No footprints in library '%s'"
 msgstr "ID nove knjižnice odtisov:"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:330
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
 #, fuzzy, c-format
 msgid "Footprint '%s' not found in '%s'."
 msgstr "Odtisa ni mogoče najti na seznamu sprememb"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:44
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 #, fuzzy
 msgid "Altium Designer PCB files"
 msgstr "Datoteke PCB Altium Designer"
 
-#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:49
+#: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:59
 msgid "Altium PCB Library or Integrated Library"
 msgstr ""
 
@@ -63016,7 +63016,7 @@ msgstr ""
 "Izbere povezavo ali razširi obstoječo izbiro na spoje, blazinice ali celotne "
 "povezave"
 
-#: pcbnew/tools/pcb_actions.cpp:2355
+#: pcbnew/tools/pcb_actions.cpp:2355 pcbnew/tools/pcb_selection_tool.cpp:1665
 #, fuzzy
 msgid "Unroute Selected"
 msgstr "Prekinite izbrane povezave"
@@ -63026,7 +63026,7 @@ msgstr "Prekinite izbrane povezave"
 msgid "Unroutes selected items to the nearest pad."
 msgstr "Izbrane elemente poravna na levi rob"
 
-#: pcbnew/tools/pcb_actions.cpp:2363
+#: pcbnew/tools/pcb_actions.cpp:2363 pcbnew/tools/pcb_selection_tool.cpp:1777
 #, fuzzy
 msgid "Unroute Segment"
 msgstr "Prekinite izbrane povezave"
@@ -63732,12 +63732,12 @@ msgstr "Dodajte conski kotiček"
 msgid "Break Polygon Corner"
 msgstr "Odstranite cono / vogal mnogokotnika"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:83
+#: pcbnew/tools/pcb_selection_tool.cpp:82
 #, fuzzy
 msgid "Select"
 msgstr "Izberi"
 
-#: pcbnew/tools/pcb_selection_tool.cpp:1606
+#: pcbnew/tools/pcb_selection_tool.cpp:1827
 #, fuzzy
 msgid "Select/Expand Connection..."
 msgstr "Izberite / Razširi povezavo"
