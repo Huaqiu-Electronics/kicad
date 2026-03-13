@@ -28,8 +28,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 21:18+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-13 21:20+0000\n"
+"Last-Translator: Jan Straka <bach@email.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kicad/master-"
 "source/cs/>\n"
 "Language: cs\n"
@@ -7236,8 +7236,8 @@ msgid ""
 "The base path of locally installed system footprint libraries (.pretty "
 "folders)."
 msgstr ""
-"Základní cesta k lokálně instalovanému systému knihoven pouzder "
-"(složky .pretty)."
+"Základní cesta k lokálně instalovanému systému knihoven pouzder (složky "
+".pretty)."
 
 #: common/env_vars.cpp:114
 msgid "The base path of system footprint 3D shapes (.3Dshapes folders)."
@@ -13163,8 +13163,8 @@ msgid ""
 "try to find a candidate having the same name in one of loaded symbol "
 "libraries."
 msgstr ""
-"Pokud jsou některé symboly osamocené (připojený symbol nebyl nikde "
-"nalezen),\n"
+"Pokud jsou některé symboly osamocené (připojený symbol nebyl nikde nalezen)"
+",\n"
 "zkuste najít kandidáta majícího stejné jméno v jedné z načtených knihoven "
 "symbolů."
 
@@ -16137,8 +16137,7 @@ msgstr "Okraj"
 
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:125
 msgid "Set border width to 0 to use schematic's default line width."
-msgstr ""
-"Nastavte šířku ohraničení na 0 pro použití výchozí šířky čáry schématu."
+msgstr "Nastavte šířku ohraničení na 0 pro použití výchozí šířky čáry schématu."
 
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:145
 #: pcbnew/dialogs/dialog_shape_properties_base.cpp:257
@@ -21188,8 +21187,7 @@ msgstr ""
 #: eeschema/sch_io/database/sch_io_database.cpp:330
 #, c-format
 msgid "Could not load database library: could not connect to database %s (%s)"
-msgstr ""
-"Nelze načíst databázovou knihovnu: nelze se připojit k databázi %s (%s)"
+msgstr "Nelze načíst databázovou knihovnu: nelze se připojit k databázi %s (%s)"
 
 #: eeschema/sch_io/database/sch_io_database.h:52
 msgid "KiCad database library files"
@@ -22864,8 +22862,7 @@ msgstr ""
 
 #: eeschema/sch_validators.cpp:64
 msgid "Signal name contains '[' or ']' but is not a valid bus name."
-msgstr ""
-"Název signálu obsahuje znaky '[' or ']' ale není platný název sběrnice."
+msgstr "Název signálu obsahuje znaky '[' or ']' ale není platný název sběrnice."
 
 #: eeschema/schematic.cpp:2019
 msgid "Schematic Cleanup"
@@ -24555,8 +24552,7 @@ msgstr "<b>Vývod mimo mřížku %s</b> %s na pozici <b>(%s, %s)</b>."
 #: eeschema/symbol_checker.cpp:399
 #, c-format
 msgid "<b>Off grid pin %s</b> %s at location <b>(%s, %s)</b> in unit %c."
-msgstr ""
-"<b>Vývod mimo mřížku %s</b> %s na pozici <b>(%s, %s)</b> v jednotce %c."
+msgstr "<b>Vývod mimo mřížku %s</b> %s na pozici <b>(%s, %s)</b> v jednotce %c."
 
 #: eeschema/symbol_checker.cpp:441
 #, c-format
@@ -30191,8 +30187,7 @@ msgstr "Zahrnout pouze SMD pouzdra (pouze ascii nebo csv)"
 
 #: kicad/cli/command_pcb_export_pos.cpp:78
 msgid "Exclude all footprints with through-hole pads (ascii or csv only)"
-msgstr ""
-"Vyloučit všechna pouzdra s průchozí dírou plošek (pouze ascii nebo csv)"
+msgstr "Vyloučit všechna pouzdra s průchozí dírou plošek (pouze ascii nebo csv)"
 
 #: kicad/cli/command_pcb_export_pos.cpp:82
 #: pcbnew/dialogs/dialog_gen_footprint_position_file_base.cpp:110
@@ -39814,8 +39809,8 @@ msgstr "Použít relativní cestu?"
 msgid ""
 "Cannot make path relative (target volume different from board file volume)!"
 msgstr ""
-"Nelze vytvořit relativní cestu (cílový obsah se liší od obsahu souboru "
-"desky)!"
+"Nelze vytvořit relativní cestu (cílový obsah se liší od obsahu souboru desky)"
+"!"
 
 #: pcbnew/dialogs/dialog_gen_footprint_position.cpp:313
 #: pcbnew/dialogs/dialog_gen_footprint_position.cpp:430
@@ -50153,8 +50148,7 @@ msgstr "%s pouzdro ID '%s' není platné."
 #, c-format
 msgid ""
 "%s footprint '%s' not found in any libraries in the footprint library table."
-msgstr ""
-"%s pouzdro '%s' nenalezeno v žádné knihovně v tabulce knihoven pouzder."
+msgstr "%s pouzdro '%s' nenalezeno v žádné knihovně v tabulce knihoven pouzder."
 
 #: pcbnew/pad.cpp:1601 pcbnew/pad.cpp:1815 pcbnew/pad.cpp:1831
 #: pcbnew/pad.cpp:1840
@@ -51798,8 +51792,7 @@ msgstr "Žádný '%s' balíček v knihovně '%s'."
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:2353
 #, c-format
 msgid "Ignoring a polygon since Eagle layer '%s' (%d) was not mapped"
-msgstr ""
-"Ignorovat mnohoúhelník, protože vrstva Eagle '%s' (%d) nebyla přiřazena"
+msgstr "Ignorovat mnohoúhelník, protože vrstva Eagle '%s' (%d) nebyla přiřazena"
 
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:1610
 #, fuzzy, c-format
@@ -52423,8 +52416,7 @@ msgstr "%d není platný počet vrstev"
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3151
 #, c-format
 msgid "Duplicate NETCLASS name '%s' in file '%s' at line %d, offset %d."
-msgstr ""
-"Duplicitní název Třídy spojů '%s' v souboru '%s' na řádku %d, ofset %d."
+msgstr "Duplicitní název Třídy spojů '%s' v souboru '%s' na řádku %d, ofset %d."
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:3726
 #, c-format
