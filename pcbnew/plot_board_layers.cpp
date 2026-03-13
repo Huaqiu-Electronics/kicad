@@ -1392,10 +1392,13 @@ PLOTTER* StartPlotBoard( BOARD *aBoard, const PCB_PLOT_PARAMS *aPlotOpts, int aL
             // Plot the frame reference if requested
             if( aPlotOpts->GetPlotFrameRef() )
             {
-                PlotDrawingSheet( plotter, aBoard->GetProject(), aBoard->GetTitleBlock(),
-                                  aBoard->GetPageSettings(), &aBoard->GetProperties(), aPageNumber,
-                                  aPageCount, aSheetName, aSheetPath, aBoard->GetFileName(),
-                                  renderSettings->GetLayerColor( LAYER_DRAWINGSHEET ) );
+                wxString variantName = aBoard->GetCurrentVariant();
+                wxString variantDesc = aBoard->GetVariantDescription( variantName );
+
+                PlotDrawingSheet( plotter, aBoard->GetProject(), aBoard->GetTitleBlock(), aBoard->GetPageSettings(),
+                                  &aBoard->GetProperties(), aPageNumber, aPageCount, aSheetName, aSheetPath,
+                                  aBoard->GetFileName(), renderSettings->GetLayerColor( LAYER_DRAWINGSHEET ), true,
+                                  variantName, variantDesc );
 
                 if( aPlotOpts->GetMirror() || aPlotOpts->GetScale() != 1.0 || aPlotOpts->GetAutoScale() )
                     initializePlotter( plotter, aBoard, aPlotOpts );
@@ -1447,11 +1450,13 @@ void setupPlotterNewPDFPage( PLOTTER* aPlotter, BOARD* aBoard, PCB_PLOT_PARAMS* 
             revertOps = true;
         }
 
-        PlotDrawingSheet( aPlotter, aBoard->GetProject(), aBoard->GetTitleBlock(),
-                          aBoard->GetPageSettings(), &aBoard->GetProperties(), aPageNumber,
-                          aPageCount,
-                          aSheetName, aSheetPath, aBoard->GetFileName(),
-                          aPlotter->RenderSettings()->GetLayerColor( LAYER_DRAWINGSHEET ) );
+        wxString variantName = aBoard->GetCurrentVariant();
+        wxString variantDesc = aBoard->GetVariantDescription( variantName );
+
+        PlotDrawingSheet( aPlotter, aBoard->GetProject(), aBoard->GetTitleBlock(), aBoard->GetPageSettings(),
+                          &aBoard->GetProperties(), aPageNumber, aPageCount, aSheetName, aSheetPath,
+                          aBoard->GetFileName(), aPlotter->RenderSettings()->GetLayerColor( LAYER_DRAWINGSHEET ), true,
+                          variantName, variantDesc );
 
         if( revertOps )
         {

@@ -339,6 +339,11 @@ wxImage renderSelectionToBitmap( SCH_EDIT_FRAME* aFrame, const SCH_SELECTION& aS
             drawingSheet->SetSheetName( TO_UTF8( aFrame->GetScreenDesc() ) );
             drawingSheet->SetSheetPath( TO_UTF8( aFrame->GetFullScreenDesc() ) );
 
+            wxString currentVariant = screen->Schematic()->GetCurrentVariant();
+            wxString variantDesc = screen->Schematic()->GetVariantDescription( currentVariant );
+            drawingSheet->SetVariantName( TO_UTF8( currentVariant ) );
+            drawingSheet->SetVariantDesc( TO_UTF8( variantDesc ) );
+
             view->Add( drawingSheet.get() );
         }
 

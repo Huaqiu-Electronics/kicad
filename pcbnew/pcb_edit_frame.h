@@ -200,6 +200,12 @@ public:
     void UpdateVariantSelectionCtrl();
 
     /**
+     * Set the current variant on the board and update the drawing sheet's cached
+     * variant name and description accordingly.
+     */
+    void SetCurrentVariant( const wxString& aVariantName );
+
+    /**
      * Event handler for variant selection changes in the toolbar.
      */
     void onVariantSelected( wxCommandEvent& aEvent );

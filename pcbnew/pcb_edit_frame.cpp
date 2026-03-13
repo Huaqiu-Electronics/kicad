@@ -898,7 +898,13 @@ void PCB_EDIT_FRAME::SetPageSettings( const PAGE_INFO& aPageSettings )
     }
 
     if( BOARD* board = GetBoard() )
+    {
         drawingSheet->SetFileName( TO_UTF8( board->GetFileName() ) );
+        wxString currentVariant = board->GetCurrentVariant();
+        wxString variantDesc = board->GetVariantDescription( currentVariant );
+        drawingSheet->SetVariantName( TO_UTF8( currentVariant ) );
+        drawingSheet->SetVariantDesc( TO_UTF8( variantDesc ) );
+    }
 
     // PCB_DRAW_PANEL_GAL takes ownership of the drawing-sheet
     GetCanvas()->SetDrawingSheet( drawingSheet );

@@ -2796,6 +2796,11 @@ DS_PROXY_VIEW_ITEM* PCBNEW_JOBS_HANDLER::getDrawingSheetProxyView( BOARD* aBrd )
 
     drawingSheet->SetFileName( TO_UTF8( aBrd->GetFileName() ) );
 
+    wxString currentVariant = aBrd->GetCurrentVariant();
+    wxString variantDesc = aBrd->GetVariantDescription( currentVariant );
+    drawingSheet->SetVariantName( TO_UTF8( currentVariant ) );
+    drawingSheet->SetVariantDesc( TO_UTF8( variantDesc ) );
+
     return drawingSheet;
 }
 

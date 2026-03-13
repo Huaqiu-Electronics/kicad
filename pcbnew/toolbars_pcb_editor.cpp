@@ -72,6 +72,8 @@
 #include <settings/settings_manager.h>
 #include <eda_text.h>
 #include <tools/pcb_control.h>
+#include <pcb_draw_panel_gal.h>
+#include <drawing_sheet/ds_proxy_view_item.h>
 
 #include <tool/ui/copilot/copilot_toolbar_conf.h>
 #include <tool/ui/webview_library/webview_library_toolbar_cnf.h>
@@ -533,6 +535,26 @@ void PCB_EDIT_FRAME::UpdateVariantSelectionCtrl()
 }
 
 
+void PCB_EDIT_FRAME::SetCurrentVariant( const wxString& aVariantName )
+{
+    GetBoard()->SetCurrentVariant( aVariantName );
+
+    if( PCB_DRAW_PANEL_GAL* canvas = dynamic_cast<PCB_DRAW_PANEL_GAL*>( GetCanvas() ) )
+    {
+        DS_PROXY_VIEW_ITEM* ds = canvas->GetDrawingSheet();
+
+        if( ds )
+        {
+            wxString currentVariant = GetBoard()->GetCurrentVariant();
+            wxString variantDesc = GetBoard()->GetVariantDescription( currentVariant );
+
+            ds->SetVariantName( currentVariant.ToStdString() );
+            ds->SetVariantDesc( variantDesc.ToStdString() );
+        }
+    }
+}
+
+
 void PCB_EDIT_FRAME::onVariantSelected( wxCommandEvent& aEvent )
 {
     if( !m_CurrentVariantCtrl )
@@ -543,12 +565,12 @@ void PCB_EDIT_FRAME::onVariantSelected( wxCommandEvent& aEvent )
     if( selection == wxNOT_FOUND || selection == 0 )
     {
         // "<Default>" selected - clear the current variant
-        GetBoard()->SetCurrentVariant( wxEmptyString );
+        SetCurrentVariant( wxEmptyString );
     }
     else
     {
         wxString selectedVariant = m_CurrentVariantCtrl->GetString( selection );
-        GetBoard()->SetCurrentVariant( selectedVariant );
+        SetCurrentVariant( selectedVariant );
     }
 
     // Refresh the view and properties panel to show the new variant state
