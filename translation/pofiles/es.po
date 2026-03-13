@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-13 22:09+0000\n"
-"Last-Translator: Iñigo <ifs@elektroquark.com>\n"
+"Last-Translator: Ulices <hasecilu@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
 "Language: es\n"
@@ -7272,8 +7272,8 @@ msgid ""
 "The base path of locally installed system footprint libraries (.pretty "
 "folders)."
 msgstr ""
-"La ruta base de las bibliotecas de huellas instaladas localmente "
-"(carpetas .pretty)."
+"La ruta base de las bibliotecas de huellas instaladas localmente (carpetas "
+".pretty)."
 
 #: common/env_vars.cpp:114
 msgid "The base path of system footprint 3D shapes (.3Dshapes folders)."
@@ -25343,8 +25343,7 @@ msgstr "Guardar biblioteca «%s» como..."
 #: eeschema/symbol_editor/symbol_editor.cpp:1590
 #, c-format
 msgid "Failed to save changes to symbol library file '%s'."
-msgstr ""
-"Fallo al guardar los cambios al archivo de biblioteca de símbolos '%s'."
+msgstr "Fallo al guardar los cambios al archivo de biblioteca de símbolos '%s'."
 
 #: eeschema/symbol_editor/symbol_editor.cpp:1592
 msgid "Error Saving Library"
@@ -31342,8 +31341,7 @@ msgstr "Editar el esquema del proyecto"
 
 #: kicad/dialogs/panel_kicad_launcher.cpp:151
 msgid "Edit global and/or project schematic symbol libraries"
-msgstr ""
-"Editar las bibliotecas de símbolos de esquema globales y/o del proyecto"
+msgstr "Editar las bibliotecas de símbolos de esquema globales y/o del proyecto"
 
 #: kicad/dialogs/panel_kicad_launcher.cpp:154
 msgid "Edit the project PCB design"
@@ -49565,8 +49563,8 @@ msgstr ""
 "No se permite escribir/modificar bibliotecas de legado (archivos .mod)\n"
 "Por favor, guarde la biblioteca actual en el nuevo formato .pretty\n"
 "y actualice su tabla de bibliotecas de huellas\n"
-"para guardar la huella (un archivo .kicad_mod) en la carpeta de "
-"biblioteca .pretty"
+"para guardar la huella (un archivo .kicad_mod) en la carpeta de biblioteca "
+".pretty"
 
 #: pcbnew/footprint_libraries_utils.cpp:75
 msgid ""
