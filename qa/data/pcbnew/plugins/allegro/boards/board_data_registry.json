@@ -6,8 +6,22 @@
         },
         "BeagleBone-AI": {
             "formatVersion": "17.2",
+            "url": "https://github.com/beagleboard/beaglebone-ai",
+            "license": "CC-BY-4.0",
             "boardFile": "BeagleBone-AI.brd",
             "testLabels": ["slow-board"]
+        },
+        "BeagleBone-AI-64": {
+            "formatVersion": "17.2",
+            "url": "https://github.com/beagleboard/beaglebone-ai-64",
+            "license": "CC-BY-4.0",
+            "testLabels": ["slow-board"],
+            "blocks": [
+                {
+                    "type": "0x22",
+                    "offset": "0x020858c"
+                }
+            ]
         },
         "copper_text": {
             "formatVersion": "17.4",

@@ -1412,7 +1412,7 @@ struct BLK_0x22_UNKNOWN
     uint16_t m_T2;
     uint32_t m_Key;
 
-    COND_GE<FMT_VER::V_174, uint32_t> m_Unknown1;
+    COND_GE<FMT_VER::V_172, uint32_t> m_Unknown1;
 
     std::array<uint32_t, 8> m_UnknownArray;
 };
