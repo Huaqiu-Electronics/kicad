@@ -2907,19 +2907,23 @@ BOOST_AUTO_TEST_CASE( SmdPadLayerConsistency )
  */
 BOOST_AUTO_TEST_CASE( SmdFootprintTechLayers )
 {
-    std::vector<std::string> boards = GetAllBoardFiles();
+    // Note that this test is NOT true for all boards - some boards have SMD FPs with
+    // back-layer items.
+    std::vector<std::string> boards = {
+        KI_TEST::AllegroBoardFile( "EVK_BaseBoard/EVK_BaseBoard.brd" ),
+    };
 
     for( const std::string& boardPath : boards )
     {
         std::string boardName = std::filesystem::path( boardPath ).filename().string();
         BOARD*      board = GetCachedBoard( boardPath );
 
-        if( !board )
-            continue;
+        BOOST_REQUIRE( board );
 
         BOOST_TEST_CONTEXT( "Testing board: " << boardName )
         {
             int inconsistentCount = 0;
+            int checkedFootprints = 0;
 
             for( FOOTPRINT* fp : board->Footprints() )
             {
@@ -2937,6 +2941,8 @@ BOOST_AUTO_TEST_CASE( SmdFootprintTechLayers )
 
                 if( !hasSmd || hasTH )
                     continue;
+
+                checkedFootprints++;
 
                 const bool onBottom = fp->IsFlipped();
 
@@ -2966,6 +2972,8 @@ BOOST_AUTO_TEST_CASE( SmdFootprintTechLayers )
                 }
             }
 
+            BOOST_TEST_MESSAGE( "Checked " << checkedFootprints
+                                << " SMD-only footprints for tech layer consistency" );
             BOOST_CHECK_EQUAL( inconsistentCount, 0 );
         }
     }
