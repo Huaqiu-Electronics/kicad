@@ -266,6 +266,8 @@ static const std::unordered_map<LAYER_INFO, PCB_LAYER_ID> s_LayerKiMap = {
     { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_ASSEMBLY_TOP},         F_Fab},
     { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_PLACE_BOUND_BOTTOM},   B_CrtYd},
     { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_PLACE_BOUND_TOP},      F_CrtYd},
+    { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_PASTEMASK_BOTTOM},     B_Paste},
+    { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_PASTEMASK_TOP},        F_Paste},
 
     { { LAYER_INFO::CLASS::REF_DES,          LAYER_INFO::SUBCLASS::SILKSCREEN_BOTTOM},          B_SilkS},
     { { LAYER_INFO::CLASS::REF_DES,          LAYER_INFO::SUBCLASS::SILKSCREEN_TOP},             F_SilkS},
@@ -284,7 +286,6 @@ static const std::unordered_map<LAYER_INFO, PCB_LAYER_ID> s_LayerKiMap = {
  * This is a balance between running out of layers and dumping too much unrelated stuff on the same layer.
  */
 static const std::unordered_map<LAYER_INFO, wxString> s_OptionalFixedMappings = {
-    { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::DFA_BOUND_TOP},              "DFA_BOUND_TOP" },
     { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_DISPLAY_TOP},          "DISPLAY_TOP" },
     { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_DISPLAY_BOTTOM},       "DISPLAY_BOTTOM" },
     { { LAYER_INFO::CLASS::PACKAGE_GEOMETRY, LAYER_INFO::SUBCLASS::PGEOM_BODY_CENTER},          "BODY_CENTER" },
@@ -393,8 +394,10 @@ static wxString layerInfoDisplayName( const LAYER_INFO& aLayerInfo )
     };
 
     static const std::unordered_map<uint8_t, wxString> s_PackageGeometrySubclassNames = {
-        { LAYER_INFO::SUBCLASS::DFA_BOUND_BOTTOM,           wxS( "DFA Bound Bottom" ) },
-        { LAYER_INFO::SUBCLASS::DFA_BOUND_TOP,              wxS( "DFA Bound Top" ) },
+        { LAYER_INFO::SUBCLASS::PGEOM_PASTEMASK_BOTTOM,     wxS( "Pastemask Bottom" ) },
+        { LAYER_INFO::SUBCLASS::PGEOM_PASTEMASK_TOP,        wxS( "Pastemask Top" ) },
+        { LAYER_INFO::SUBCLASS::PGEOM_DFA_BOUND_BOTTOM,     wxS( "DFA Bound Bottom" ) },
+        { LAYER_INFO::SUBCLASS::PGEOM_DFA_BOUND_TOP,        wxS( "DFA Bound Top" ) },
         { LAYER_INFO::SUBCLASS::PGEOM_DISPLAY_BOTTOM,       wxS( "Display Bottom" ) },
         { LAYER_INFO::SUBCLASS::PGEOM_DISPLAY_TOP,          wxS( "Display Top" ) },
         { LAYER_INFO::SUBCLASS::PGEOM_SOLDERMASK_BOTTOM,    wxS( "Soldermask Bottom" ) },
@@ -3212,6 +3215,20 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
             for( std::unique_ptr<BOARD_ITEM>& item : shapes )
             {
                 canonicalizeLayer( item.get() );
+
+                // If we find shapes in the areas list, they are (presumably) filled.
+                // Maybe there's a flag to look at rather than just assuming this?
+                if( item->Type() == PCB_SHAPE_T )
+                {
+                    PCB_SHAPE& shape = static_cast<PCB_SHAPE&>( *item );
+
+                    // But in KiCad, courtyards are usually not filled even if they come in as "areas"
+                    if( shape.GetLayer() != F_CrtYd && shape.GetLayer() != B_CrtYd )
+                    {
+                        shape.SetFilled( true );
+                    }
+                }
+
                 fp->Add( item.release() );
             }
         }

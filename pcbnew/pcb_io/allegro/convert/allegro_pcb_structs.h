@@ -417,6 +417,8 @@ struct LAYER_INFO
     enum SUBCLASS
     {
         // BOARD_GEOMETRY
+        // BGEOM_PASTEMASK_BOTTOM     = 0x??
+        // BGEOM_PASTEMASK_TOP        = 0x??
         BGEOM_OUTLINE                 = 0xEA,
         BGEOM_CONSTRAINT_AREA         = 0xEB,
         BGEOM_OFF_GRID_AREA           = 0xEC,
@@ -463,8 +465,10 @@ struct LAYER_INFO
         DFMT_OUTLINE                 = 0xFD,
 
         // PACKAGE_GEOMETRY
-        DFA_BOUND_BOTTOM             = 0xEE,
-        DFA_BOUND_TOP                = 0xEF,
+        PGEOM_PASTEMASK_BOTTOM       = 0xEC,
+        PGEOM_PASTEMASK_TOP          = 0xED,
+        PGEOM_DFA_BOUND_BOTTOM       = 0xEE,
+        PGEOM_DFA_BOUND_TOP          = 0xEF,
         PGEOM_DISPLAY_BOTTOM         = 0xF1,
         PGEOM_DISPLAY_TOP            = 0xF2,
         PGEOM_SOLDERMASK_BOTTOM      = 0xF3,
