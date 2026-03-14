@@ -732,6 +732,7 @@ static std::unique_ptr<BLOCK_BASE> ParseBlock_0x0C( FILE_STREAM& aStream, FMT_VE
     ReadCond( aStream, aVer, data.m_Unknown_16x );
 
     data.m_Unknown4 = aStream.ReadU32();
+    ReadCond( aStream, aVer, data.m_Unknown5 );
 
     for( size_t i = 0; i < data.m_Coords.size(); ++i )
     {
@@ -743,12 +744,11 @@ static std::unique_ptr<BLOCK_BASE> ParseBlock_0x0C( FILE_STREAM& aStream, FMT_VE
         data.m_Size[i] = aStream.ReadS32();
     }
 
-    for( size_t i = 0; i < data.m_UnknownArray.size(); ++i )
-    {
-        data.m_UnknownArray[i] = aStream.ReadU32();
-    }
+    data.m_GroupPtr = aStream.ReadU32();
+    data.m_Unknown6 = aStream.ReadU32();
+    data.m_Unknown7 = aStream.ReadU32();
 
-    ReadCond( aStream, aVer, data.m_Unknown6 );
+    ReadCond( aStream, aVer, data.m_Unknown8 );
 
     return block;
 }

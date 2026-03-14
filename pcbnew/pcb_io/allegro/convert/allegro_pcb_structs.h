@@ -824,12 +824,16 @@ struct BLK_0x0C_PIN_DEF
 
     uint32_t m_Unknown4;
 
+    COND_GE<FMT_VER::V_180, uint32_t> m_Unknown5;
+
     std::array<int32_t, 2> m_Coords;
     std::array<int32_t, 2> m_Size;
 
-    std::array<uint32_t, 3> m_UnknownArray;
+    uint32_t m_GroupPtr;
+    uint32_t m_Unknown6;
+    uint32_t m_Unknown7;
 
-    COND_GE<FMT_VER::V_174, uint32_t> m_Unknown6;
+    COND_GE_LT<FMT_VER::V_174, FMT_VER::V_180, uint32_t> m_Unknown8;
 
     uint32_t GetShape() const
     {
