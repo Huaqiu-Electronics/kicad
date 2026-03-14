@@ -2554,7 +2554,7 @@ void ALLEGRO::PARSER::readObjects( BRD_DB& aBoard )
             {
                 THROW_IO_ERROR( wxString::Format(
                         "Do not have parser for block index %zu type %#02x available at offset %#010zx",
-                        aBoard.GetObjectCount(), blockTypeByte, offset ) );
+                        aBoard.GetObjectCount() + 1, blockTypeByte, offset ) );
             }
             else
             {
@@ -2568,13 +2568,10 @@ void ALLEGRO::PARSER::readObjects( BRD_DB& aBoard )
         }
         else
         {
-            if( wxLog::IsAllowedTraceMask( traceAllegroParser ) )
-            {
-                wxLogTrace( traceAllegroParserBlocks,
-                            wxString::Format( "Added block %zu, type %#04x from %#010zx to %#010zx",
-                                              aBoard.GetObjectCount(), block->GetBlockType(), offset,
-                                              m_stream.Position() ) );
-            }
+            wxLogTrace( traceAllegroParserBlocks,
+                        wxString::Format( "Added block %zu, type %#04x from %#010zx to %#010zx",
+                                          aBoard.GetObjectCount(), block->GetBlockType(), offset,
+                                          m_stream.Position() ) );
 
             aBoard.InsertBlock( std::move( block ) );
 
