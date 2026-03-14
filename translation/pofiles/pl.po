@@ -16,13 +16,14 @@
 # Czam Ciał <lamaforge@proton.me>, 2025, 2026.
 # maksz42 <maksz@op.pl>, 2026.
 # szumsky <beish97@gmail.com>, 2026.
+# Annonmus <cabbagesAreTheBest@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
 "PO-Revision-Date: 2026-03-14 23:23+0000\n"
-"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
+"Last-Translator: Annonmus <cabbagesAreTheBest@proton.me>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
@@ -20324,36 +20325,42 @@ msgstr "Nie można utworzyć '%s'."
 
 #: eeschema/remote_symbol_download_manager.cpp:124
 msgid "Remote asset manifest declared an invalid size."
-msgstr ""
+msgstr "Manifest zdalnego zasobu zawiera nieprawidłowy rozmiar."
 
 #: eeschema/remote_symbol_download_manager.cpp:130
 msgid "Remote asset manifest must declare sha256 for URL-based downloads."
 msgstr ""
+"Manifest zdalnego zasobu musi zawierać sumę kontrolną sha256 dla pobrań URL."
 
 #: eeschema/remote_symbol_download_manager.cpp:139
 msgid "Remote asset exceeds the provider download limit."
-msgstr ""
+msgstr "Zdalny zasób przekracza maksymalny rozmiar pobrań dostawcy."
 
 #: eeschema/remote_symbol_download_manager.cpp:150
 #, c-format
 msgid "Remote download failed with HTTP %d."
-msgstr ""
+msgstr "Zdalne pobieranie nie udało się z kodem HTTP %d."
 
 #: eeschema/remote_symbol_download_manager.cpp:156
 msgid "Remote asset content type did not match the manifest."
 msgstr ""
+"Typ zdalnego zasobu nie zgodził się z typem zadeklarowanym w manifeście."
 
 #: eeschema/remote_symbol_download_manager.cpp:162
 msgid "Remote asset size did not match the manifest."
 msgstr ""
+"Rozmiar zdalnego zasobu nie zgodził się z rozmiarem zadeklarowanym w "
+"manifeście."
 
 #: eeschema/remote_symbol_download_manager.cpp:168
 msgid "Remote asset exceeds the remaining download limit."
-msgstr ""
+msgstr "Zdalny zasób przekracza pozostały limit pobierania."
 
 #: eeschema/remote_symbol_download_manager.cpp:174
 msgid "Remote asset digest did not match the manifest."
 msgstr ""
+"Sumy kontrolne zdalnego zasobu nie zgodziły się z wartością podaną w "
+"manifeście."
 
 #: eeschema/remote_symbol_import_job.cpp:44
 #, fuzzy
