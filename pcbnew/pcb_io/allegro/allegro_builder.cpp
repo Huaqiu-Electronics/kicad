@@ -3011,6 +3011,8 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
 
     const BLK_0x07_COMPONENT_INST* fpInstData = getFpInstRef( aFpInstance );
 
+    const bool backSide = ( aFpInstance.m_Layer != 0 );
+
     wxLogTrace( traceAllegroBuilder, "Building footprint from 0x2D block key %#010x", aFpInstance.m_Key );
 
     wxString refDesStr;
@@ -3034,10 +3036,16 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
     wxLogTrace( traceAllegroBuilder, "  Footprint reference: '%s'", refDesStr );
 
     const VECTOR2I  fpPos = scale( VECTOR2I{ aFpInstance.m_CoordX, aFpInstance.m_CoordY } );
-    const EDA_ANGLE rotation{ aFpInstance.m_Rotation / 1000., DEGREES_T };
 
-    fp->SetPosition( fpPos );
-    fp->SetOrientation( rotation );
+    {
+        EDA_ANGLE rotation = fromMillidegrees( aFpInstance.m_Rotation );
+
+        if( backSide )
+            rotation = ANGLE_180 - rotation;
+
+        fp->SetPosition( fpPos );
+        fp->SetOrientation( rotation );
+    }
 
     // Allegro stores placed instance data in board-absolute form: bottom-side
     // components already have shapes on bottom layers with bottom-side positions.
@@ -3049,10 +3057,12 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
     // consistently mirrors positions AND layers for all children. Without this,
     // bottom-side footprints would have their back-layer graphics double-flipped
     // to the front.
-    const auto canonicalizeLayer = []( BOARD_ITEM* aItem )
+    //
+    // Even if there isn't a layer flip, the postions still need to be flipped.
+    const auto canonicalizeLayer = [backSide, fpPos]( BOARD_ITEM* aItem )
     {
-        if( IsBackLayer( aItem->GetLayer() ) )
-            aItem->SetLayer( FlipLayer( aItem->GetLayer() ) );
+        if( backSide )
+            aItem->Flip( fpPos, FLIP_DIRECTION::LEFT_RIGHT );
     };
 
     const LL_WALKER graphicsWalker{ aFpInstance.m_GraphicPtr, aFpInstance.m_Key, m_brdDb };
@@ -3264,11 +3274,20 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
 
         const wxString padName = m_brdDb.GetString( padInfo->m_NameStrId );
 
-        // 0x0D coordinates and rotation are in the footprint's local (unrotated) space.
+        // 0x0D coordinates and rotation are in the footprint's local (unrotatesinced) space.
         // Use SetFPRelativePosition/Orientation to let KiCad handle the transform to
         // board-absolute coordinates (rotating by FP orientation and adding FP position).
-        const VECTOR2I  padLocalPos = scale( VECTOR2I{ padInfo->m_CoordsX, padInfo->m_CoordsY } );
-        const EDA_ANGLE padLocalRot = fromMillidegrees( padInfo->m_Rotation );
+        VECTOR2I  padLocalPos = scale( VECTOR2I{ padInfo->m_CoordsX, padInfo->m_CoordsY } );
+        EDA_ANGLE padLocalRot = fromMillidegrees( padInfo->m_Rotation );
+
+        // Unlike other items, pads in "canonical front side form" - a normal pad is on F.Cu already,
+        // but the positions, like all the other items, are in board-absolute form, so we need to pre-transform
+        // so that the final footprint flip puts them in the right place.
+        if ( backSide )
+        {
+            RotatePoint( padLocalPos, ANGLE_180 );
+            padLocalRot += ANGLE_180;
+        }
 
         std::vector<std::unique_ptr<BOARD_ITEM>> padItems = buildPadItems( *padStack, *fp, padName, netCode );
 
@@ -3287,16 +3306,11 @@ std::unique_ptr<FOOTPRINT> BOARD_BUILDER::buildFootprint( const BLK_0x2D_FOOTPRI
 
     // Flip AFTER adding all children so that graphics, text, and pads all get
     // their layers and positions mirrored correctly for bottom-layer footprints.
-    //
-    // Allegro mirrors bottom-side components via X-mirror (flip around Y axis),
-    // then rotates by R. KiCad's Flip(TOP_BOTTOM) is a Y-mirror which negates
-    // the orientation. Since X-mirror = Y-mirror + Rotate(180), we need the
-    // final orientation to be R+180. Flip negates what we set before it, so
-    // set -(R+180) to get R+180 after negation.
-    if( aFpInstance.m_Layer != 0 )
+    // We have carefully constructed a front-side canonical form by applying
+    // pre-transforms to compensate for the coming Flip().
+    if( backSide )
     {
-        fp->SetOrientation( -rotation - ANGLE_180 );
-        fp->Flip( fpPos, FLIP_DIRECTION::TOP_BOTTOM );
+        fp->Flip( fpPos, FLIP_DIRECTION::LEFT_RIGHT );
     }
 
     return fp;
