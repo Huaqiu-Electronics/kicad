@@ -43,6 +43,7 @@
 #include <pgm_base.h>
 #include <trace_helpers.h>
 
+#include <wx/app.h>
 #include <wx/frame.h>
 
 #include <macros.h>
@@ -497,6 +498,13 @@ wxString OPENGL_GAL::CheckFeatures( GAL_DISPLAY_OPTIONS& aOptions )
 
         testFrame->Raise();
         testFrame->Show();
+
+#ifdef __WXGTK__
+        // On GTK, Show() only queues realization. The GDK drawing window
+        // needed by SetCurrent() may not exist yet. Yield to let the event
+        // loop process the realize signal before we try to lock the context.
+        wxYield();
+#endif
 
         GAL_CONTEXT_LOCKER lock( opengl_gal );
         opengl_gal->init();
@@ -2837,8 +2845,14 @@ void OPENGL_GAL::init()
     if( glVersion == 0 )
         throw std::runtime_error( "Failed to load OpenGL via loader" );
 
-    SetOpenGLInfo( (const char*) glGetString( GL_VENDOR ), (const char*) glGetString( GL_RENDERER ),
-                   (const char*) glGetString( GL_VERSION ) );
+    const char* vendor = (const char*) glGetString( GL_VENDOR );
+    const char* renderer = (const char*) glGetString( GL_RENDERER );
+    const char* version = (const char*) glGetString( GL_VERSION );
+
+    if( !version )
+        throw std::runtime_error( "No GL context is current (glGetString returned NULL)" );
+
+    SetOpenGLInfo( vendor, renderer, version );
 
     // Check the OpenGL version (minimum 2.1 is required)
     if( !GLAD_GL_VERSION_2_1 )
