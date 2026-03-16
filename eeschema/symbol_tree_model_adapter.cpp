@@ -123,15 +123,22 @@ void SYMBOL_TREE_MODEL_ADAPTER::AddLibraries( SCH_BASE_FRAME* aFrame )
         }
     }
 
+    bool anyLoaded = false;
+
     for( const wxString& lib : toLoad )
     {
         std::optional<LIB_STATUS> status = m_adapter->GetLibraryStatus( lib );
+
+        if( status && status->load_status == LOAD_STATUS::LOAD_ERROR )
+            continue;
 
         if( !status || status->load_status != LOAD_STATUS::LOADED )
         {
             m_pending_load_libraries.insert( lib );
             continue;
         }
+
+        anyLoaded = true;
 
         std::optional<const LIBRARY_TABLE_ROW*> rowResult = manager.GetRow( LIBRARY_TABLE_TYPE::SYMBOL, lib );
 
@@ -205,7 +212,7 @@ void SYMBOL_TREE_MODEL_ADAPTER::AddLibraries( SCH_BASE_FRAME* aFrame )
 
     m_tree.AssignIntrinsicRanks( m_shownColumns );
 
-    if( isLazyLoad && m_lazyLoadHandler )
+    if( isLazyLoad && anyLoaded && m_lazyLoadHandler )
     {
         createMissingColumns();
         m_lazyLoadHandler();
