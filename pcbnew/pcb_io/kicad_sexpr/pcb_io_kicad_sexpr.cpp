@@ -312,6 +312,15 @@ void PCB_IO_KICAD_SEXPR::SaveBoard( const wxString& aFileName, BOARD* aBoard,
         }
     }
 
+    PRETTIFIED_FILE_OUTPUTFORMATTER formatter( aFileName );
+    FormatBoardToFormatter( &formatter, aBoard, aProperties );
+    formatter.Finish();
+}
+
+
+void PCB_IO_KICAD_SEXPR::FormatBoardToFormatter( OUTPUTFORMATTER* aOut, BOARD* aBoard,
+                                                  const std::map<std::string, UTF8>* aProperties )
+{
     init( aProperties );
 
     m_board = aBoard;       // after init()
@@ -323,9 +332,7 @@ void PCB_IO_KICAD_SEXPR::SaveBoard( const wxString& aFileName, BOARD* aBoard,
     else
         m_board->GetEmbeddedFiles()->ClearEmbeddedFonts();
 
-    PRETTIFIED_FILE_OUTPUTFORMATTER formatter( aFileName );
-
-    m_out = &formatter;     // no ownership
+    m_out = aOut;
 
     m_out->Print( "(kicad_pcb (version %d) (generator \"pcbnew\") (generator_version %s)",
                   SEXPR_BOARD_FILE_VERSION,
@@ -334,7 +341,6 @@ void PCB_IO_KICAD_SEXPR::SaveBoard( const wxString& aFileName, BOARD* aBoard,
     Format( aBoard );
 
     m_out->Print( ")" );
-    m_out->Finish();
 
     m_out = nullptr;
 }

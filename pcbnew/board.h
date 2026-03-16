@@ -43,6 +43,7 @@
 #include <project.h>
 #include <list>
 
+struct HISTORY_FILE_DATA;
 class BOARD_DESIGN_SETTINGS;
 class BOARD_CONNECTED_ITEM;
 class BOARD_COMMIT;
@@ -1409,14 +1410,15 @@ public:
     PROJECT::ELEM ProjectElementType() override { return PROJECT::ELEM::BOARD; }
 
     /**
-     * Save board file to the .history directory.
+     * Serialize board into HISTORY_FILE_DATA for non-blocking history commit.
      *
      * This method is used as a saver callback for LOCAL_HISTORY during autosave operations.
+     * Serialization runs on the UI thread; Prettify and file I/O happen in the background.
      *
      * @param aProjectPath The path to check against this board's project path
-     * @param aFiles Output vector to append absolute file paths for history inclusion
+     * @param aFileData Output vector to append serialized data for history inclusion
      */
-    void SaveToHistory( const wxString& aProjectPath, std::vector<wxString>& aFiles );
+    void SaveToHistory( const wxString& aProjectPath, std::vector<HISTORY_FILE_DATA>& aFileData );
 
     const std::unordered_map<KIID, BOARD_ITEM*>& GetItemByIdCache() const
     {

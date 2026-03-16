@@ -23,9 +23,11 @@
 
 #include <local_history.h>
 #include <history_lock.h>
+#include <io/kicad/kicad_io_utils.h>
 #include <lockfile.h>
 #include <settings/common_settings.h>
 #include <pgm_base.h>
+#include <thread_pool.h>
 #include <trace_helpers.h>
 #include <wildcards_and_files_ext.h>
 #include <confirm.h>
@@ -62,6 +64,7 @@ LOCAL_HISTORY::LOCAL_HISTORY()
 
 LOCAL_HISTORY::~LOCAL_HISTORY()
 {
+    WaitForPendingSave();
 }
 
 void LOCAL_HISTORY::NoteFileChange( const wxString& aFile )
@@ -75,8 +78,9 @@ void LOCAL_HISTORY::NoteFileChange( const wxString& aFile )
 }
 
 
-void LOCAL_HISTORY::RegisterSaver( const void* aSaverObject,
-                                   const std::function<void( const wxString&, std::vector<wxString>& )>& aSaver )
+void LOCAL_HISTORY::RegisterSaver(
+        const void* aSaverObject,
+        const std::function<void( const wxString&, std::vector<HISTORY_FILE_DATA>& )>& aSaver )
 {
     if( m_savers.find( aSaverObject ) != m_savers.end() )
     {
@@ -91,6 +95,8 @@ void LOCAL_HISTORY::RegisterSaver( const void* aSaverObject,
 
 void LOCAL_HISTORY::UnregisterSaver( const void* aSaverObject )
 {
+    WaitForPendingSave();
+
     auto it = m_savers.find( aSaverObject );
 
     if( it != m_savers.end() )
@@ -103,6 +109,7 @@ void LOCAL_HISTORY::UnregisterSaver( const void* aSaverObject )
 
 void LOCAL_HISTORY::ClearAllSavers()
 {
+    WaitForPendingSave();
     m_savers.clear();
     wxLogTrace( traceAutoSave, wxS("[history] Cleared all savers") );
 }
@@ -125,37 +132,102 @@ bool LOCAL_HISTORY::RunRegisteredSaversAndCommit( const wxString& aProjectPath, 
         return false;
     }
 
-    std::vector<wxString> files;
+    // Skip if previous background save is still running
+    if( m_saveInProgress.load( std::memory_order_acquire ) )
+    {
+        wxLogTrace( traceAutoSave, wxS("[history] previous save still in progress; skipping cycle") );
+        return false;
+    }
+
+    // Phase 1 (UI thread): call savers to collect serialized data
+    std::vector<HISTORY_FILE_DATA> fileData;
 
     for( const auto& [saverObject, saver] : m_savers )
     {
-        size_t before = files.size();
-        saver( aProjectPath, files );
-        wxLogTrace( traceAutoSave, wxS("[history] saver %p added %zu files (total=%zu)"),
-                    saverObject, files.size() - before, files.size() );
+        size_t before = fileData.size();
+        saver( aProjectPath, fileData );
+        wxLogTrace( traceAutoSave, wxS("[history] saver %p produced %zu entries (total=%zu)"),
+                    saverObject, fileData.size() - before, fileData.size() );
     }
 
-    // Filter out any files not within the project directory
+    // Filter out any entries not within the project directory
     wxString projectDir = aProjectPath;
     if( !projectDir.EndsWith( wxFileName::GetPathSeparator() ) )
         projectDir += wxFileName::GetPathSeparator();
 
-    auto it = std::remove_if( files.begin(), files.end(),
-        [&projectDir]( const wxString& file )
+    auto it = std::remove_if( fileData.begin(), fileData.end(),
+        [&projectDir]( const HISTORY_FILE_DATA& entry )
         {
-            if( !file.StartsWith( projectDir ) )
+            if( !entry.path.StartsWith( projectDir ) )
             {
-                wxLogTrace( traceAutoSave, wxS("[history] filtered out file outside project: %s"), file );
+                wxLogTrace( traceAutoSave, wxS("[history] filtered out entry outside project: %s"), entry.path );
                 return true;
             }
             return false;
         } );
-    files.erase( it, files.end() );
+    fileData.erase( it, fileData.end() );
 
-    if( files.empty() )
+    if( fileData.empty() )
     {
-        wxLogTrace( traceAutoSave, wxS("[history] saver set produced no files; skipping") );
+        wxLogTrace( traceAutoSave, wxS("[history] saver set produced no entries; skipping") );
         return false;
+    }
+
+    // Phase 2: submit Prettify + file I/O + git to background thread
+    m_saveInProgress.store( true, std::memory_order_release );
+
+    m_pendingFuture = GetKiCadThreadPool().submit_task(
+            [this, projectPath = aProjectPath, title = aTitle,
+             data = std::move( fileData )]() mutable -> bool
+            {
+                bool result = commitInBackground( projectPath, title, data );
+                m_saveInProgress.store( false, std::memory_order_release );
+                return result;
+            } );
+
+    return true;
+}
+
+
+bool LOCAL_HISTORY::commitInBackground( const wxString& aProjectPath, const wxString& aTitle,
+                                        const std::vector<HISTORY_FILE_DATA>& aFileData )
+{
+    wxLogTrace( traceAutoSave, wxS("[history] background: writing %zu entries for '%s'"),
+                aFileData.size(), aProjectPath );
+
+    wxString hist = historyPath( aProjectPath );
+
+    // Write files to the .history mirror
+    for( const HISTORY_FILE_DATA& entry : aFileData )
+    {
+        if( !entry.content.empty() )
+        {
+            std::string buf = entry.content;
+
+            if( entry.prettify )
+                KICAD_FORMAT::Prettify( buf, entry.formatMode );
+
+            wxFFile fp( entry.path, wxS( "wb" ) );
+
+            if( fp.IsOpened() )
+            {
+                fp.Write( buf.data(), buf.size() );
+                fp.Close();
+                wxLogTrace( traceAutoSave, wxS("[history] background: wrote %zu bytes to '%s'"),
+                            buf.size(), entry.path );
+            }
+            else
+            {
+                wxLogTrace( traceAutoSave, wxS("[history] background: failed to open '%s' for writing"),
+                            entry.path );
+            }
+        }
+        else if( !entry.sourcePath.IsEmpty() )
+        {
+            wxCopyFile( entry.sourcePath, entry.path, true );
+            wxLogTrace( traceAutoSave, wxS("[history] background: copied '%s' -> '%s'"),
+                        entry.sourcePath, entry.path );
+        }
     }
 
     // Acquire locks using hybrid locking strategy
@@ -163,50 +235,26 @@ bool LOCAL_HISTORY::RunRegisteredSaversAndCommit( const wxString& aProjectPath, 
 
     if( !lock.IsLocked() )
     {
-        wxLogTrace( traceAutoSave, wxS("[history] failed to acquire lock: %s"), lock.GetLockError() );
+        wxLogTrace( traceAutoSave, wxS("[history] background: failed to acquire lock: %s"), lock.GetLockError() );
         return false;
     }
 
     git_repository* repo = lock.GetRepository();
     git_index* index = lock.GetIndex();
-    wxString hist = historyPath( aProjectPath );
 
-    // Stage selected files (mirroring logic from CommitSnapshot but limited to given files)
-    for( const wxString& file : files )
+    // Stage all written files
+    for( const HISTORY_FILE_DATA& entry : aFileData )
     {
-        wxFileName src( file );
+        wxFileName src( entry.path );
 
         if( !src.FileExists() )
-        {
-            wxLogTrace( traceAutoSave, wxS("[history] skip missing '%s'"), file );
             continue;
-        }
 
-        // If saver already produced a path inside history mirror, just stage it.
         if( src.GetFullPath().StartsWith( hist + wxFILE_SEP_PATH ) )
         {
             std::string relHist = src.GetFullPath().ToStdString().substr( hist.length() + 1 );
             git_index_add_bypath( index, relHist.c_str() );
-            wxLogTrace( traceAutoSave, wxS("[history] staged pre-mirrored '%s'"), file );
-            continue;
         }
-
-        wxString relStr;
-        wxString proj = wxFileName( aProjectPath ).GetFullPath();
-
-        if( src.GetFullPath().StartsWith( proj + wxFILE_SEP_PATH ) )
-            relStr = src.GetFullPath().Mid( proj.length() + 1 );
-        else
-            relStr = src.GetFullName();
-
-        wxFileName dst( hist + wxFILE_SEP_PATH + relStr );
-        wxFileName dstDir( dst );
-        dstDir.SetFullName( wxEmptyString );
-        wxFileName::Mkdir( dstDir.GetPath(), 0777, wxPATH_MKDIR_FULL );
-        wxCopyFile( src.GetFullPath(), dst.GetFullPath(), true );
-        std::string rel = dst.GetFullPath().ToStdString().substr( hist.length() + 1 );
-        git_index_add_bypath( index, rel.c_str() );
-        wxLogTrace( traceAutoSave, wxS("[history] staged '%s' as '%s'"), file, wxString::FromUTF8( rel ) );
     }
 
     // Compare index to HEAD; if no diff -> abort to avoid empty commit.
@@ -225,7 +273,7 @@ bool LOCAL_HISTORY::RunRegisteredSaversAndCommit( const wxString& aProjectPath, 
     {
         if( head_tree ) git_tree_free( head_tree );
         if( head_commit ) git_commit_free( head_commit );
-        wxLogTrace( traceAutoSave, wxS("[history] failed to write index tree" ) );
+        wxLogTrace( traceAutoSave, wxS("[history] background: failed to write index tree" ) );
         return false;
     }
 
@@ -241,7 +289,7 @@ bool LOCAL_HISTORY::RunRegisteredSaversAndCommit( const wxString& aProjectPath, 
         if( git_diff_tree_to_tree( &diff, repo, head_tree, indexTree.get(), nullptr ) == 0 )
         {
             hasChanges = git_diff_num_deltas( diff ) > 0;
-            wxLogTrace( traceAutoSave, wxS("[history] diff deltas=%u"), (unsigned) git_diff_num_deltas( diff ) );
+            wxLogTrace( traceAutoSave, wxS("[history] background: diff deltas=%u"), (unsigned) git_diff_num_deltas( diff ) );
             git_diff_free( diff );
         }
     }
@@ -251,7 +299,7 @@ bool LOCAL_HISTORY::RunRegisteredSaversAndCommit( const wxString& aProjectPath, 
 
     if( !hasChanges )
     {
-        wxLogTrace( traceAutoSave, wxS("[history] no changes detected; no commit") );
+        wxLogTrace( traceAutoSave, wxS("[history] background: no changes detected; no commit") );
         return false; // Nothing new; skip commit.
     }
 
@@ -278,15 +326,25 @@ bool LOCAL_HISTORY::RunRegisteredSaversAndCommit( const wxString& aProjectPath, 
                        parents ? &constParent : nullptr );
 
     if( rc == 0 )
-        wxLogTrace( traceAutoSave, wxS("[history] commit created %s (%s files=%zu)"),
-                    wxString::FromUTF8( git_oid_tostr_s( &commit_id ) ), msg, files.size() );
+        wxLogTrace( traceAutoSave, wxS("[history] background: commit created %s (%s entries=%zu)"),
+                    wxString::FromUTF8( git_oid_tostr_s( &commit_id ) ), msg, aFileData.size() );
     else
-        wxLogTrace( traceAutoSave, wxS("[history] commit failed rc=%d"), rc );
+        wxLogTrace( traceAutoSave, wxS("[history] background: commit failed rc=%d"), rc );
 
     if( parent ) git_commit_free( parent );
 
     git_index_write( index );
     return rc == 0;
+}
+
+
+void LOCAL_HISTORY::WaitForPendingSave()
+{
+    if( m_pendingFuture.valid() )
+    {
+        wxLogTrace( traceAutoSave, wxS("[history] waiting for pending background save") );
+        m_pendingFuture.get();
+    }
 }
 
 

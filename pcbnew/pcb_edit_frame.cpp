@@ -3093,14 +3093,14 @@ void PCB_EDIT_FRAME::ProjectChanged()
     PythonSyncProjectName();
 
     // Register autosave history saver for the board.
-    // Saver exports the in-memory BOARD into the history mirror preserving the original
-    // relative path and file name (reparented under .history) without touching dirty flags.
+    // Saver serializes the in-memory BOARD into HISTORY_FILE_DATA. Prettify and
+    // file I/O happen on a background thread to avoid blocking the UI.
     if( GetBoard() )
     {
         Kiway().LocalHistory().RegisterSaver( GetBoard(),
-                [this]( const wxString& aProjectPath, std::vector<wxString>& aFiles )
+                [this]( const wxString& aProjectPath, std::vector<HISTORY_FILE_DATA>& aFileData )
                 {
-                    GetBoard()->SaveToHistory( aProjectPath, aFiles );
+                    GetBoard()->SaveToHistory( aProjectPath, aFileData );
                 } );
     }
 }

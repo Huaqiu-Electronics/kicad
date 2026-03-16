@@ -57,7 +57,9 @@
 #include <tool/tool_manager.h>
 #include <undo_redo_container.h>
 #include <local_history.h>
+#include <richio.h>
 #include <sch_io/sch_io_mgr.h>
+#include <sch_io/kicad_sexpr/sch_io_kicad_sexpr.h>
 #include <sch_io/sch_io.h>
 
 #include <wx/log.h>
@@ -2355,7 +2357,7 @@ void SCHEMATIC::LoadVariants()
 }
 
 
-void SCHEMATIC::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>& aFiles )
+void SCHEMATIC::SaveToHistory( const wxString& aProjectPath, std::vector<HISTORY_FILE_DATA>& aFileData )
 {
     if( !IsValid() )
         return;
@@ -2384,8 +2386,12 @@ void SCHEMATIC::SaveToHistory( const wxString& aProjectPath, std::vector<wxStrin
     // Iterate full schematic hierarchy (all sheets & their screens).
     SCH_SHEET_LIST sheetList = Hierarchy();
 
-    // Acquire plugin once.
-    IO_RELEASER<SCH_IO> pi( SCH_IO_MGR::FindPlugin( SCH_IO_MGR::SCH_KICAD ) );
+    SCH_IO_KICAD_SEXPR pi;
+
+    KICAD_FORMAT::FORMAT_MODE mode = KICAD_FORMAT::FORMAT_MODE::NORMAL;
+
+    if( ADVANCED_CFG::GetCfg().m_CompactSave )
+        mode = KICAD_FORMAT::FORMAT_MODE::COMPACT_TEXT_PROPERTIES;
 
     for( const SCH_SHEET_PATH& path : sheetList )
     {
@@ -2415,7 +2421,7 @@ void SCHEMATIC::SaveToHistory( const wxString& aProjectPath, std::vector<wxStrin
         else
             dst.SetPath( historyRootPath );
 
-        // Ensure destination directory exists
+        // Ensure destination directory exists on UI thread
         wxFileName dstDir( dst );
         dstDir.SetFullName( wxEmptyString );
 
@@ -2424,14 +2430,22 @@ void SCHEMATIC::SaveToHistory( const wxString& aProjectPath, std::vector<wxStrin
 
         try
         {
-            pi->SaveSchematicFile( dst.GetFullPath(), sheet, this );
-            aFiles.push_back( dst.GetFullPath() );
-            wxLogTrace( traceAutoSave, wxS( "[history] sch saver exported sheet '%s' -> '%s'" ), absPath,
-                        dst.GetFullPath() );
+            STRING_FORMATTER formatter;
+            pi.FormatSchematicToFormatter( &formatter, sheet, this );
+
+            HISTORY_FILE_DATA entry;
+            entry.path = dst.GetFullPath();
+            entry.content = std::move( formatter.MutableString() );
+            entry.prettify = true;
+            entry.formatMode = mode;
+            aFileData.push_back( std::move( entry ) );
+
+            wxLogTrace( traceAutoSave, wxS( "[history] sch saver serialized %zu bytes for '%s' -> '%s'" ),
+                        aFileData.back().content.size(), absPath, dst.GetFullPath() );
         }
         catch( const IO_ERROR& ioe )
         {
-            wxLogTrace( traceAutoSave, wxS( "[history] sch saver export failed for '%s': %s" ), absPath,
+            wxLogTrace( traceAutoSave, wxS( "[history] sch saver serialize failed for '%s': %s" ), absPath,
                         wxString::FromUTF8( ioe.What() ) );
         }
     }

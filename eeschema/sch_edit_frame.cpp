@@ -1491,9 +1491,9 @@ void SCH_EDIT_FRAME::ProjectChanged()
 
     // Register schematic saver for autosave history
     Kiway().LocalHistory().RegisterSaver( m_schematic,
-            [this]( const wxString& aProjectPath, std::vector<wxString>& aFiles )
+            [this]( const wxString& aProjectPath, std::vector<HISTORY_FILE_DATA>& aFileData )
             {
-                m_schematic->SaveToHistory( aProjectPath, aFiles );
+                m_schematic->SaveToHistory( aProjectPath, aFileData );
             } );
 
     m_designBlocksPane->ProjectChanged();

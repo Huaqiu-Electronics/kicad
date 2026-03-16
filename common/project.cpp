@@ -458,7 +458,7 @@ void PROJECT::SetProjectLock( LOCKFILE* aLockFile )
 }
 
 
-void PROJECT::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>& aFiles )
+void PROJECT::SaveToHistory( const wxString& aProjectPath, std::vector<HISTORY_FILE_DATA>& aFileData )
 {
     wxString projectFile = GetProjectFullName();
 
@@ -486,11 +486,14 @@ void PROJECT::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>
             return;
     }
 
-    // Save project file (.kicad_pro)
+    // Save project file (.kicad_pro) via file-copy
     wxFileName historyProFile( historyDir.GetFullPath(), projectFn.GetName(),
                                projectFn.GetExt() );
-    wxCopyFile( projectFile, historyProFile.GetFullPath(), true );
-    aFiles.push_back( historyProFile.GetFullPath() );
+
+    HISTORY_FILE_DATA proEntry;
+    proEntry.path = historyProFile.GetFullPath();
+    proEntry.sourcePath = projectFile;
+    aFileData.push_back( std::move( proEntry ) );
 
     // Save project local settings (.kicad_prl) if it exists
     wxFileName prlFile( projectFn.GetPath(), projectFn.GetName(), FILEEXT::ProjectLocalSettingsFileExtension );
@@ -499,7 +502,10 @@ void PROJECT::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>
     {
         wxFileName historyPrlFile( historyDir.GetFullPath(), prlFile.GetName(),
                                    prlFile.GetExt() );
-        wxCopyFile( prlFile.GetFullPath(), historyPrlFile.GetFullPath(), true );
-        aFiles.push_back( historyPrlFile.GetFullPath() );
+
+        HISTORY_FILE_DATA prlEntry;
+        prlEntry.path = historyPrlFile.GetFullPath();
+        prlEntry.sourcePath = prlFile.GetFullPath();
+        aFileData.push_back( std::move( prlEntry ) );
     }
 }

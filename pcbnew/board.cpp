@@ -78,6 +78,9 @@
 #include <pcb_board_outline.h>
 #include <local_history.h>
 #include <pcb_io/pcb_io_mgr.h>
+#include <pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.h>
+#include <advanced_config.h>
+#include <richio.h>
 #include <trace_helpers.h>
 
 // This is an odd place for this, but CvPcb won't link if it's in board_item.cpp like I first
@@ -3690,7 +3693,7 @@ int BOARD::GetPadWithCastellatedAttrCount()
 }
 
 
-void BOARD::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>& aFiles )
+void BOARD::SaveToHistory( const wxString& aProjectPath, std::vector<HISTORY_FILE_DATA>& aFileData )
 {
     wxString projPath = GetProject()->GetProjectPath();
 
@@ -3724,7 +3727,7 @@ void BOARD::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>& 
     historyRoot.AppendDir( wxS( ".history" ) );
     wxFileName dst( historyRoot.GetPath(), rel );
 
-    // Ensure destination directories exist.
+    // Ensure destination directories exist on the UI thread so the background task can write.
     wxFileName dstDir( dst );
     dstDir.SetFullName( wxEmptyString );
 
@@ -3733,14 +3736,26 @@ void BOARD::SaveToHistory( const wxString& aProjectPath, std::vector<wxString>& 
 
     try
     {
-        IO_RELEASER<PCB_IO> pi( PCB_IO_MGR::FindPlugin( PCB_IO_MGR::KICAD_SEXP ) );
-        // Save directly to history mirror path.
-        pi->SaveBoard( dst.GetFullPath(), this, nullptr );
-        aFiles.push_back( dst.GetFullPath() );
-        wxLogTrace( traceAutoSave, wxS( "[history] pcb saver exported '%s'" ), dst.GetFullPath() );
+        PCB_IO_KICAD_SEXPR pi;
+        STRING_FORMATTER   formatter;
+
+        pi.FormatBoardToFormatter( &formatter, this, nullptr );
+
+        HISTORY_FILE_DATA entry;
+        entry.path = dst.GetFullPath();
+        entry.content = std::move( formatter.MutableString() );
+        entry.prettify = true;
+
+        if( ADVANCED_CFG::GetCfg().m_CompactSave )
+            entry.formatMode = KICAD_FORMAT::FORMAT_MODE::COMPACT_TEXT_PROPERTIES;
+
+        aFileData.push_back( std::move( entry ) );
+
+        wxLogTrace( traceAutoSave, wxS( "[history] pcb saver serialized %zu bytes for '%s'" ),
+                    aFileData.back().content.size(), dst.GetFullPath() );
     }
     catch( const IO_ERROR& ioe )
     {
-        wxLogTrace( traceAutoSave, wxS( "[history] pcb saver export failed: %s" ), wxString::FromUTF8( ioe.What() ) );
+        wxLogTrace( traceAutoSave, wxS( "[history] pcb saver serialize failed: %s" ), wxString::FromUTF8( ioe.What() ) );
     }
 }

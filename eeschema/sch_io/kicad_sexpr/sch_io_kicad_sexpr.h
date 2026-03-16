@@ -102,6 +102,13 @@ public:
     void SaveSchematicFile( const wxString& aFileName, SCH_SHEET* aSheet, SCHEMATIC* aSchematic,
                             const std::map<std::string, UTF8>* aProperties = nullptr ) override;
 
+    /** Serialize a schematic sheet to an OUTPUTFORMATTER without file I/O or Prettify.
+     *  Handles init() and Format().
+     *  Skips GroupsSanityCheck and SetFileExists side effects. */
+    void FormatSchematicToFormatter( OUTPUTFORMATTER* aOut, SCH_SHEET* aSheet,
+                                     SCHEMATIC* aSchematic,
+                                     const std::map<std::string, UTF8>* aProperties = nullptr );
+
     void Format( SCH_SHEET* aSheet );
 
     void Format( SCH_SELECTION* aSelection, SCH_SHEET_PATH* aSelectionPath,

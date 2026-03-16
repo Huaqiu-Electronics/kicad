@@ -367,8 +367,6 @@ void SCH_IO_KICAD_SEXPR::SaveSchematicFile( const wxString& aFileName, SCH_SHEET
         }
     }
 
-    init( aSchematic, aProperties );
-
     wxFileName fn = aFileName;
 
     // File names should be absolute.  Don't assume everything relative to the project path
@@ -376,13 +374,26 @@ void SCH_IO_KICAD_SEXPR::SaveSchematicFile( const wxString& aFileName, SCH_SHEET
     wxASSERT( fn.IsAbsolute() );
 
     PRETTIFIED_FILE_OUTPUTFORMATTER formatter( fn.GetFullPath() );
-
-    m_out = &formatter;     // no ownership
-
-    Format( aSheet );
+    FormatSchematicToFormatter( &formatter, aSheet, aSchematic, aProperties );
 
     if( aSheet->GetScreen() )
         aSheet->GetScreen()->SetFileExists( true );
+}
+
+
+void SCH_IO_KICAD_SEXPR::FormatSchematicToFormatter( OUTPUTFORMATTER* aOut, SCH_SHEET* aSheet,
+                                                      SCHEMATIC* aSchematic,
+                                                      const std::map<std::string, UTF8>* aProperties )
+{
+    wxCHECK_RET( aSheet != nullptr, "NULL SCH_SHEET object." );
+
+    init( aSchematic, aProperties );
+
+    m_out = aOut;
+
+    Format( aSheet );
+
+    m_out = nullptr;
 }
 
 
