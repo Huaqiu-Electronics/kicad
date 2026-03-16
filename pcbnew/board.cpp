@@ -1387,6 +1387,14 @@ void BOARD::Remove( BOARD_ITEM* aBoardItem, REMOVE_MODE aRemoveMode )
     // find these calls and fix them!  Don't send me no stinking' nullptr.
     wxASSERT( aBoardItem );
 
+    // This is redundant with BOARD_COMMIT::Push but necessary to support SWIG interaction
+    // until the SWIG API is completely removed (since it doesn't use the commit system)
+    if( EDA_GROUP* parentGroup = aBoardItem->GetParentGroup();
+        parentGroup && !( parentGroup->AsEdaItem()->GetFlags() & STRUCT_DELETED ) )
+    {
+        parentGroup->RemoveItem( aBoardItem );
+    }
+
     m_itemByIdCache.erase( aBoardItem->m_Uuid );
 
     switch( aBoardItem->Type() )
