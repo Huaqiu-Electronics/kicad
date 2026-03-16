@@ -28,8 +28,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 21:21+0000\n"
-"Last-Translator: Roman Ondráček <mail@romanondracek.cz>\n"
+"PO-Revision-Date: 2026-03-17 07:03+0000\n"
+"Last-Translator: Tomas0015 <tom.bezanyi@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kicad/master-"
 "source/cs/>\n"
 "Language: cs\n"
@@ -40367,9 +40367,8 @@ msgstr " )"
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:78
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:248
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:418
-#, fuzzy
 msgid "Maximum length (L):"
-msgstr "Max délka:"
+msgstr "Maximální délka (L):"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:279
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:812
@@ -40377,9 +40376,8 @@ msgstr "Max délka:"
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:89
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:259
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:429
-#, fuzzy
 msgid "Best width (W):"
-msgstr "Šířka spoje (W):"
+msgstr "Nejlepší šířka (W):"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:306
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:840
@@ -40387,9 +40385,8 @@ msgstr "Šířka spoje (W):"
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:120
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:290
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:460
-#, fuzzy
 msgid "Maximum width (W):"
-msgstr "Max šířka:"
+msgstr "Maximální šířka (W):"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:326
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:857
