@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-15 17:31+0000\n"
+"PO-Revision-Date: 2026-03-16 16:19+0000\n"
 "Last-Translator: EdizonTN <edizontn@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
 "source/sk/>\n"
@@ -582,7 +582,7 @@ msgstr "Zobraziť 3D modely, ktoré nie sú v POS súbore"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:343
 msgid "Show 3D models even if not found in .pos file"
-msgstr "Zobraziť 3D modely aj keď neboli nájdené v .pos súbore"
+msgstr "Zobraziť 3D modely aj keď sa nenašli v .pos súbore"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:351
 msgid "Show 3D Models marked DNP"
@@ -2315,7 +2315,7 @@ msgstr "Priečinok návrhových blokov '%s' sa nepodarilo odstrániť."
 #: pcbnew/footprint_library_adapter.cpp:507
 #, c-format
 msgid "Nested table '%s' not found."
-msgstr "Vnorená tabuľka '%s' nebola nájdená."
+msgstr "Vnorená tabuľka '%s' sa nenašla."
 
 #: common/design_block_library_adapter.cpp:79
 #: eeschema/libraries/symbol_library_adapter.cpp:134
@@ -4443,7 +4443,7 @@ msgstr "Globálne knižnice"
 #: eeschema/dialogs/panel_sym_lib_table.cpp:338
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:319
 msgid "Project Specific Libraries"
-msgstr "Knižnice špecifické pre projekt"
+msgstr "Projektové knižnice"
 
 #: common/dialogs/panel_design_block_lib_table.cpp:429
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:361
@@ -6304,7 +6304,7 @@ msgstr "Spustiť: %s"
 #: common/eda_base_frame.cpp:1319
 #, c-format
 msgid "File '%s' was not found.\n"
-msgstr "Súbor '%s' sa nenašiel.\n"
+msgstr "Súbor '%s' nebol nájdený.\n"
 
 #: common/eda_base_frame.cpp:1322
 msgid "Do you want to remove it from list of recently opened files?"
@@ -7352,7 +7352,7 @@ msgstr "Pri načítaní písma sa vyskytla chyba '%s'."
 #: common/font/fontconfig.cpp:378
 #, c-format
 msgid "Font '%s' not found; substituting '%s'."
-msgstr "Písmo '%s' nebolo nenájdené; nahradené '%s'."
+msgstr "Písmo '%s' sa nenašlo; nahradenie '%s'."
 
 #: common/gestfich.cpp:251
 #, c-format
@@ -7477,7 +7477,7 @@ msgstr "Nepodarilo sa naklonovať repozitár."
 
 #: common/git/kicad_git_errors.cpp:46
 msgid "Remote repository not found."
-msgstr "Vzdialený repozitár nebol nájdený."
+msgstr "Vzdialený repozitár sa nenašiel."
 
 #: common/git/kicad_git_errors.cpp:47
 msgid "Authentication failed for remote repository."
@@ -7485,7 +7485,7 @@ msgstr "Nepodarilo sa autentifikovať voči vzdialenému repozitáru."
 
 #: common/git/kicad_git_errors.cpp:50
 msgid "Branch not found."
-msgstr "Vetva nebola nájdená."
+msgstr "Vetva sa nenašla."
 
 #: common/git/kicad_git_errors.cpp:51
 msgid "Failed to create branch."
@@ -7501,7 +7501,7 @@ msgstr "Nepodarilo sa vykonať checkout operáciu."
 
 #: common/git/kicad_git_errors.cpp:56
 msgid "File not found during checkout operation."
-msgstr "Nepodarilo sa nájsť súbor počas checkout operácie."
+msgstr "Súbor sa nenašiel počas checkout operácie."
 
 #: common/git/kicad_git_errors.cpp:59
 msgid "Merge conflict encountered."
@@ -8455,7 +8455,7 @@ msgstr "Priečinok"
 #: common/json_schema_validator.cpp:48
 #, c-format
 msgid "schema file '%s' not found"
-msgstr "Schematický súbor '%s' sa nenašiel"
+msgstr "schematický súbor '%s' sa nenašiel"
 
 #: common/json_schema_validator.cpp:53
 #, c-format
@@ -10994,7 +10994,7 @@ msgstr ""
 
 #: common/tool/common_control.cpp:328 common/tool/common_control.cpp:348
 msgid "File Not Found"
-msgstr "Súbor Sa Nenašiel"
+msgstr "Súbor sa nenašiel"
 
 #: common/tool/common_control.cpp:345
 #, c-format
@@ -11272,7 +11272,7 @@ msgstr "Prepnúť medzi zobrazením A a B"
 
 #: common/widgets/footprint_preview_widget.cpp:123
 msgid "Footprint not found."
-msgstr "Stopa sa nenašla."
+msgstr "Puzdro sa nenašlo."
 
 #: common/widgets/footprint_select_widget.cpp:113
 msgid "No default footprint"
@@ -11843,7 +11843,7 @@ msgstr "Našlo sa %lu ekvivalent puzdier/symbolov."
 msgid ""
 "Component %s: footprint %s not found in any of the project footprint "
 "libraries."
-msgstr "Súčiastka %s: puzdro %s nenájdené v žiadnej knižnici puzdier projektu."
+msgstr "Súčiastka %s: puzdro %s sa nenašlo v žiadnej knižnici puzdier projektu."
 
 #: cvpcb/auto_associate.cpp:300
 msgid "CvPcb Warning"
@@ -12025,7 +12025,7 @@ msgstr "Knižnica '%s' sa nenachádza v tabuľke knižnice puzdier."
 #: cvpcb/display_footprints_frame.cpp:325
 #, c-format
 msgid "Footprint '%s' not found."
-msgstr "Puzdro '%s' nebolo nájdené."
+msgstr "Puzdro '%s' sa nenašlo."
 
 #: cvpcb/display_footprints_frame.cpp:312
 #, c-format
@@ -12057,8 +12057,7 @@ msgstr ""
 #: cvpcb/readwrite_dlgs.cpp:147
 #, c-format
 msgid "Component '%s' footprint '%s' <b>not found</b> in any library.\n"
-msgstr ""
-"Súčiastka '%s' puzdro '%s' <b>neboli nenájdené</b> v žiadnej knižnici.\n"
+msgstr "Súčiastka '%s' puzdro '%s' <b>sa nenašlo</b> v žiadnej knižnici.\n"
 
 #: cvpcb/readwrite_dlgs.cpp:154
 #, c-format
@@ -12275,9 +12274,9 @@ msgid ""
 "%s\n"
 "not found. Script not available."
 msgstr ""
-"Skriptový súbor:\n"
+"Súbor skriptu:\n"
 "%s\n"
-"nebol nájdený. Skript nie je k dispozícii."
+"sa nenašiel. Skript nie je k dispozícii."
 
 #: eeschema/connection_graph.cpp:3490
 #, c-format
@@ -12330,7 +12329,7 @@ msgstr "Vývod %s puzdra %s nájdený"
 #: eeschema/cross-probing.cpp:169
 #, c-format
 msgid "%s found but pin %s not found"
-msgstr "%s nájdené, ale vývod %s nebol nájdený"
+msgstr "%s nájdený, ale vývod %s sa nenašiel"
 
 #: eeschema/cross-probing.cpp:173
 #, c-format
@@ -12342,7 +12341,7 @@ msgstr "%s nájdený"
 #: eeschema/widgets/tuner_slider.cpp:67
 #, c-format
 msgid "%s not found"
-msgstr "%s nenájdený"
+msgstr "%s sa nenašlo"
 
 #: eeschema/cross-probing.cpp:243
 msgid "Highlighted net:"
@@ -12499,7 +12498,7 @@ msgstr "Súbor generátora"
 
 #: eeschema/dialogs/dialog_bom.cpp:394
 msgid "Generator file name not found."
-msgstr "Názov súboru generátora sa nebol nájdený."
+msgstr "Názov súboru generátora sa nenašiel."
 
 #: eeschema/dialogs/dialog_bom.cpp:415
 msgid "Bill of Materials Generation Help"
@@ -12820,7 +12819,7 @@ msgstr "*** lib id symbolu nie je platný ***"
 
 #: eeschema/dialogs/dialog_change_symbols.cpp:609
 msgid "*** symbol not found ***"
-msgstr "*** symbol nebol nájdený ***"
+msgstr "*** symbol sa nenašiel ***"
 
 #: eeschema/dialogs/dialog_change_symbols.cpp:620
 msgid "*** new symbol has too few units ***"
@@ -13033,7 +13032,7 @@ msgstr "Počet kandidátov %d "
 #: eeschema/dialogs/dialog_edit_symbols_libid.cpp:660
 #, c-format
 msgid "%u link(s) mapped, %u not found"
-msgstr "%u odkazy boli mapované, %u sa nenašli"
+msgstr "%u odkaz(y) mapované, %u sa nenašlo"
 
 #: eeschema/dialogs/dialog_edit_symbols_libid.cpp:666
 #, c-format
@@ -13073,7 +13072,7 @@ msgid ""
 "try to find a candidate having the same name in one of loaded symbol "
 "libraries."
 msgstr ""
-"Ak sú niektoré symboly osamotené (prepojený symbol sa nikde nenachádza),\n"
+"Ak sú niektoré symboly osamotené (prepojený symbol sa nenašiel),\n"
 "pokúste sa nájsť kandidáta s rovnakým menom v jednej z načítaných knižníc "
 "symbolov."
 
@@ -13480,7 +13479,7 @@ msgstr "Export netlistu vyžaduje úplne očíslovanú schému."
 #: eeschema/dialogs/dialog_export_netlist.cpp:645
 #: eeschema/dialogs/dialog_export_netlist.cpp:684
 msgid "external simulator not found"
-msgstr "externý simulátor nebol nájdený"
+msgstr "externý simulátor sa nenašiel"
 
 #: eeschema/dialogs/dialog_export_netlist.cpp:646
 #: eeschema/dialogs/dialog_export_netlist.cpp:685
@@ -18654,12 +18653,12 @@ msgstr "Neznámy formát netlistu.\n"
 #: eeschema/eeschema_jobs_handler.cpp:672
 #, c-format
 msgid "BOM preset '%s' not found"
-msgstr "Predvoľba BOM '%s' nebola nájdená"
+msgstr "Predvoľba BOM '%s' sa nenašla"
 
 #: eeschema/eeschema_jobs_handler.cpp:810
 #, c-format
 msgid "BOM format preset '%s' not found"
-msgstr "Predvoľba formátu BOM '%s' nebola nájdená"
+msgstr "Predvoľba formátu BOM '%s' sa nenašla"
 
 #: eeschema/eeschema_jobs_handler.cpp:885
 #: eeschema/eeschema_jobs_handler.cpp:1053
@@ -18907,14 +18906,14 @@ msgid "The current configuration does not include the symbol library '%s'"
 msgstr "Aktuálna konfigurácia neobsahuje knižnicu '%s'."
 
 #: eeschema/erc/erc.cpp:1696
-#, fuzzy, c-format
+#, c-format
 msgid "The symbol library '%s' was not found at '%s'"
-msgstr "Knižnica stopy sa nenašla."
+msgstr "Knižnica symbolov '%s' nebola nájdená na '%s'"
 
 #: eeschema/erc/erc.cpp:1715
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol '%s' not found in symbol library '%s'"
-msgstr "Meno súčiastky '%s' nenájdené v knižnici '%s'."
+msgstr "Symbol '%s' sa nenašiel v knižnici symbolov '%s'"
 
 #: eeschema/erc/erc.cpp:1747
 #, fuzzy, c-format
@@ -18940,9 +18939,9 @@ msgstr "Knižnica '%s' nie je v súčasnej konfigurácii povolená."
 
 #: eeschema/erc/erc.cpp:1828
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:1171
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint '%s' not found in library '%s'"
-msgstr "V knižniciach nemožno nájsť niektoré puzdra"
+msgstr "Puzdro '%s' sa nenašlo v knižnici '%s'"
 
 #: eeschema/erc/erc.cpp:1898
 #, c-format
@@ -19369,9 +19368,9 @@ msgid "Legacy project cache library"
 msgstr "Staršia verzia súboru projektovej cache knižnice"
 
 #: eeschema/files-io.cpp:628
-#, fuzzy, c-format
+#, c-format
 msgid "The project symbol library cache file '%s' was not found."
-msgstr "Nepodarilo sa uložiť súbor knižnice symbolov '%s'."
+msgstr "Cache súbor projektovej knižnice symbolov '%s' nebol nájdený."
 
 #: eeschema/files-io.cpp:630
 msgid ""
@@ -20480,8 +20479,7 @@ msgstr ""
 #: eeschema/sch_design_block_utils.cpp:576
 msgid "Error saving temporary schematic file to create design block."
 msgstr ""
-"Chyba pri ukladaní dočasného schematického súboru pre vytvorenie návrhového "
-"bloku."
+"Chyba pri ukladaní dočasného súboru schémy pre vytvorenie návrhového bloku."
 
 #: eeschema/sch_design_block_utils.cpp:160
 #: eeschema/sch_design_block_utils.cpp:470
@@ -20799,9 +20797,9 @@ msgid "Port %s has no connections."
 msgstr "Port %s nie je pripojený."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:4401
-#, fuzzy, c-format
+#, c-format
 msgid "Embedded file %s not found in storage."
-msgstr "Obnovovací súbor '%s' sa nenašiel."
+msgstr "Vložený súbor %s sa nenašiel v úložisku."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:4418
 #: eeschema/sch_io/altium/sch_io_altium.cpp:4437
@@ -21196,9 +21194,9 @@ msgid "Failed to parse value: '%s'"
 msgstr "Nepodarilo sa spracovať hodnotu %s."
 
 #: eeschema/sch_io/geda/sch_io_geda.cpp:3646
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol '%s' not found in gEDA libraries."
-msgstr "Meno súčiastky '%s' nenájdené v knižnici '%s'."
+msgstr "Symbol '%s' sa nenašiel v gEDA knižniciach."
 
 #: eeschema/sch_io/geda/sch_io_geda.cpp:3650
 #, fuzzy, c-format
@@ -21215,7 +21213,7 @@ msgstr ""
 #: eeschema/sch_io/geda/sch_io_geda.cpp:4088
 #, c-format
 msgid "Hierarchical source '%s' not found, creating empty sheet."
-msgstr ""
+msgstr "Hierarchický zdroj '%s' sa nenašiel, vytváranie prázdneho listu."
 
 #: eeschema/sch_io/geda/sch_io_geda.cpp:4100
 #, c-format
@@ -21361,7 +21359,7 @@ msgid "expected unquoted string"
 msgstr "očakávaný nekótovaný reťazec"
 
 #: eeschema/sch_io/kicad_legacy/sch_io_kicad_legacy_lib_cache.cpp:77
-#, fuzzy, c-format
+#, c-format
 msgid "Library file '%s' not found."
 msgstr "Súbor knižnice '%s' sa nenašiel."
 
@@ -21709,9 +21707,9 @@ msgid "Expecting CELL or BLOCK"
 msgstr "Očekávám CELL nebo BLOCK"
 
 #: eeschema/sch_io/ltspice/ltspice_schematic.cpp:552
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol '%s.asy' not found"
-msgstr "Symbol nenájdený."
+msgstr "Symbol '%s.asy' sa nenašiel"
 
 #: eeschema/sch_io/ltspice/sch_io_ltspice.cpp:120
 #, c-format
@@ -21740,7 +21738,7 @@ msgid "Plugin '%s' does not implement the '%s' function."
 msgstr "Plugin '%s' neimplementuje funkciu '%s'."
 
 #: eeschema/sch_io/sch_io_mgr.cpp:48 pcbnew/pcb_io/pcb_io_mgr.cpp:57
-#, fuzzy, c-format
+#, c-format
 msgid "Plugin type '%s' is not found."
 msgstr "Typ doplnku '%s' sa nenašiel."
 
@@ -22044,9 +22042,8 @@ msgid ""
 "Symbol library '%s' not found and no fallback cache library available.  "
 "Unable to link library symbol."
 msgstr ""
-"Knižnica symbolov '%s' nebola nájdená a nie je k dispozícii ani žiadna "
-"záložná knižnica vo vyrovnávacej pamäti. Nepodarilo sa prepojiť knižnicu "
-"symbolov."
+"Knižnica symbolov '%s' sa nenašla a nie je k dispozícii ani žiadna záložná "
+"knižnica vo vyrovnávacej pamäti.  Nepodarilo sa prepojiť knižnicu symbolov."
 
 #: eeschema/sch_screen.cpp:794
 #, c-format
@@ -22206,7 +22203,7 @@ msgstr "Žádná knihovna není definována!"
 #: eeschema/sch_symbol.cpp:2732
 #, c-format
 msgid "Symbol not found in %s!"
-msgstr "Symbol nebyl nalezen v %s!"
+msgstr "Symbol sa nenašiel v %s!"
 
 #: eeschema/sch_symbol.cpp:3002
 #, c-format
@@ -22742,6 +22739,416 @@ msgid ""
 "</ul>\n"
 "\n"
 msgstr ""
+"<table>\n"
+"    <tr>\n"
+"        <th>Zápis</th>\n"
+"        <th></th>\n"
+"        <th>Výsledok</th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>^{horný index}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp><sup>horný index</sup>&nbsp;</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>Driver Board^{Rev A}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Driver Board<sup>Rev A</sup></samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>_{dolný index}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp><sub>dolný index</sub>&nbsp;</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>D_{0} - D_{15}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>D<sub>0</sub> - D<sub>15</sub></samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td> &nbsp;<br><samp>~{negácia}</samp><br> &nbsp;<br><samp>~{CLK}</"
+"samp></td>\n"
+"        <td></td>\n"
+"        <td> <samp><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></samp>"
+"<br> <samp>negácia</samp><br> <samp><u>&nbsp;&nbsp;&nbsp;</u></samp><br> "
+"<samp>CLK</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${premenná}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp><i>názov_premennej</i></samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${REVISION}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>2020.1</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:field}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp><i>hodnota poľa field</i> symbolu <i>refdes</i></"
+"samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${R3:VALUE}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>150K</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${ROW}</samp> (v tabuľkách)</td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>0, 1, 2...</samp> (číslované od nuly)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${COL}</samp> (v tabuľkách)</td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>0, 1, 2...</samp> (číslované od nuly)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${ADDR}</samp> (v tabuľkách)</td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>A0, B1, C2...</samp> (číslované od nuly)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{výraz}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp><i>vypočítaný výsledok</i></samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{2 + 3}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>5</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{${ROW} + 1}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>4</samp> (ak ROW=3)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <th>Porovnanie reťazcov a podmienený text</th>\n"
+"        <th></th>\n"
+"        <th></th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{\"text\" == \"text\"}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>1</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{\"text\" != \"iný\"}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>1</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{if(podmienka, true_val, false_val)}</samp></td>"
+"\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Zobrazenie podmieneného textu</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{if(\"${LAYER}\" == \"F.Cu\", \"TOP\", "
+"\"BOTTOM\")}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>TOP</samp> (na prednej vrstve) alebo <samp>"
+"BOTTOM</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>@{if(${ROW} > 5, \"High\", \"Low\")}</samp></td>"
+"\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Taktiež funguje číselné porovnanie</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <th>Funkcie vývodu symbolu</th>\n"
+"        <th></th>\n"
+"        <th></th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:REFERENCE(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Plné referenčné označenie s jednotkou pre vývod</"
+"samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:REFERENCE(3)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>J1B</samp> (pre viacjednotkový symbol)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:SHORT_REFERENCE(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Referencia bez písmena jednotky pre vývod</samp>"
+"</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:SHORT_REFERENCE(3)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>J1</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:UNIT(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Iba písmeno jednotky pre vývod</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:UNIT(3)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>B</samp> (písmeno jednotky pre 3 vývod)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:NET_NAME(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Názov spoja pripojeného na vývod</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${R1:NET_NAME(1)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>VCC</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:PIN_NAME(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Názov vývodu alebo zvolenej alternatívy</samp></"
+"td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${U1:PIN_NAME(5)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>USART1_TX</samp> (alternatíva) alebo <samp>PA9</"
+"samp> (základ)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:PIN_BASE_NAME(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Základný názov vývodu (ignorujúc alternatívy)</"
+"samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${U1:PIN_BASE_NAME(5)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>PA9</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:PIN_ALT_LIST(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Všetky alternatívne funkcie vývodu (okrem "
+"základnej)</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${U1:PIN_ALT_LIST(5)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>USART1_TX, TIM1_CH2, I2C1_SCL</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:SHORT_NET_NAME(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Krátky názov spoja alebo NC ak je nepripojený</"
+"samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:SHORT_NET_NAME(3)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>GND</samp> alebo <samp>NC</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${refdes:NET_CLASS(vývod)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Trieda spojov pre vývod</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:NET_CLASS(1)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Power</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <th>Riadiace Esc sekvencie</th>\n"
+"        <th></th>\n"
+"        <th></th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>\\${LITERAL}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>${LITERAL}</samp> (nerozbalená)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>Price: \\$25.00</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Price: $25.00</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>\\@{x+y}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>@{x+y}</samp> (nevypočítané)</td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <th>Vnorené premenné</th>\n"
+"        <th></th>\n"
+"        <th></th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:REFERENCE(@{${ROW}+2})}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>J1B</samp> (ak ROW=0, vývod 2 v jednotke B)</td>"
+"\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${J1:NET_NAME(${COL})}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Dynamické vyhľadávanie spoja v tabuľkách</samp></"
+"td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <th>Odkazy na bunky tabuľky</th>\n"
+"        <th></th>\n"
+"        <th></th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${CELL(\"A0\")}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Vyhodnotená hodnota z bunky A0</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${CELL(0, 1)}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Hodnota z riadka 0, stĺpca 1</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${CELL(${ADDR})}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Dynamický odkaz bunky</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>${CELL(${ROW}-1, ${COL})}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>Hodnota z bunky vyššie (if ROW > 0)</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <th>Definíca zbernice</th>\n"
+"        <th>"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</"
+"th>\n"
+"        <th>Výsledné spoje</th>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>prefix[m..n]</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>od prefixm do prefixn</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>D[0..7]</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>D0, D1, D2, D3, D4, D5, D6, D7</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>{spoj1 spoj2 ...}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>spoj1, spoj2, ...</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>{SCL SDA}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>SCL, SDA</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>prefix{spoj1 spoj2 ...}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>prefix.spoj1, prefix.spoj2, ...</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>USB1{D+ D-}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br><samp>USB1.D+, USB1.D-</samp></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>MEM{D[1..2] LATCH}</samp></td>\n"
+"        <td></td>\n"
+"        <td>&nbsp;<br> <samp>MEM.D1, MEM.D2, MEM.LATCH</samp> </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td>&nbsp;<br><samp>MEM{D_{[1..2]} ~{LATCH}}</samp></td>\n"
+"        <td></td>\n"
+"        <td> <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>&nbsp;</sub>&nbsp; "
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>&nbsp;</sub>&nbsp; "
+"&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></samp><br> "
+"<samp>MEM.D<sub>1</sub>, MEM.D<sub>2</sub>, MEM.LATCH</samp> </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td><br></td>\n"
+"    </tr>\n"
+"</table>\n"
+"<p></p>\n"
+"<p></p>\n"
+"<i>Všimnite si, že označenie má prednosť pred definíciami zbernice.</i>\n"
+"<p></p>\n"
+"<p><b>Funkcie vývodu:</b> Automaticky nájdite správne umiestnenie jednotky. "
+"V prípade symbolov s viacerými jednotkami fungujú funkcie ako <samp>NET_NAME"
+"(vývod)</samp>, aj keď je vývod v inej jednotke, než je tá na aktuálnom "
+"hárku.</p>\n"
+"<p><b>Odkazy na bunky tabuľky:</b> Funkcia <samp>CELL()</samp> funguje iba v "
+"bunkách tabuľky. Použite <samp>${CELL(\"A0\")}</samp> alebo <samp>${CELL"
+"(riadok, stĺpec)}</samp> na odkazovanie na iné bunky v tej istej tabuľke. "
+"Čísla riadkov a stĺpcov začínajú od 0 (A0 je prvý riadok, prvý stĺpec). CELL "
+"vráti vyhodnotenú/zobrazenú hodnotu, nie nespracovaný text bunky.</p>\n"
+"<p><b>Vnorené premenné:</b> Premenné môžu obsahovať ďalšie premenné. Najprv "
+"sa vyhodnotia vnútorné premenné. Maximálna hĺbka vnorenia: 6 úrovní.</p>\n"
+"<p><b>Chybové správy:</b></p>\n"
+"<ul>\n"
+"<li><samp>&lt;NEVYRIEŠENÉ: token&gt;</samp> - Premennú alebo funkciu nemožno "
+"vyriešiť</li>\n"
+"<li><samp>&lt;jednotka X neumiestnená&gt;</samp> - Vývod je v jednotke, "
+"ktorá nie je umiestnená na žiadnom liste</li>\n"
+"<li><samp>&lt;Nevyriešené: Bunka X sa nenašla&gt;</samp> - Adresa bunky je "
+"mimo rámca tabuľky</li>\n"
+"</ul>\n"
+"\n"
 
 #: eeschema/sch_textbox.cpp:363
 #, c-format
@@ -23406,7 +23813,7 @@ msgstr "Chyba na riadku "
 
 #: eeschema/sim/kibis/ibis_parser.cpp:1048
 msgid " submodel not found."
-msgstr " podmodel nebol nájdený."
+msgstr " podmodel sa nenašiel."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:1075
 #, fuzzy
@@ -23814,12 +24221,12 @@ msgstr ""
 #: eeschema/sim/sim_lib_mgr.cpp:109 eeschema/sim/sim_lib_mgr.cpp:162
 #, c-format
 msgid "Simulation model library not found at '%s'"
-msgstr "Knižnica simulačných modelov nebola nájdená v '%s'"
+msgstr "Knižnica simulačných modelov sa nenašla v '%s'"
 
 #: eeschema/sim/sim_lib_mgr.cpp:114
 #, c-format
 msgid "Simulation model library not found at '%s' or '%s'"
-msgstr "Knižnica simulačných modelov nebola nájdená na '%s' alebo '%s'"
+msgstr "Knižnica simulačných modelov sa nenašla na '%s' alebo '%s'"
 
 #: eeschema/sim/sim_lib_mgr.cpp:332
 #, c-format
@@ -24074,8 +24481,8 @@ msgid ""
 "Schematic sheet simulation command directive has changed.  Do you wish to "
 "update the Simulation Command?"
 msgstr ""
-"Směrnice příkazu simulace listu schématu se změnila.  Chcete simulační "
-"příkaz aktualizovat?"
+"Direktíva v príkaze na simuláciu schémy bola zmenená.  Chcete aktualizovať "
+"príkaz na simuláciu?"
 
 #: eeschema/sim/simulator_frame.cpp:483 eeschema/sim/simulator_frame.cpp:867
 msgid "Another simulation is already running."
@@ -24968,9 +25375,9 @@ msgid "Revert '%s' to last version saved?"
 msgstr "Vrátiť '%s' na poslednú uloženú verziu?"
 
 #: eeschema/symbol_editor/symbol_editor.cpp:1496
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol %s not found in library '%s'."
-msgstr "Meno súčiastky '%s' nenájdené v knižnici '%s'."
+msgstr "Symbol '%s' sa nenašiel v knižnici '%s'."
 
 #: eeschema/symbol_editor/symbol_editor.cpp:1527
 msgid "No library specified."
@@ -24987,7 +25394,6 @@ msgid "Failed to save changes to symbol library file '%s'."
 msgstr "Nepodarilo sa uložiť zmeny do súboru knižnice symbolov '%s'."
 
 #: eeschema/symbol_editor/symbol_editor.cpp:1592
-#, fuzzy
 msgid "Error Saving Library"
 msgstr "Chyba pri ukladaní knižnice"
 
@@ -25042,7 +25448,7 @@ msgstr "Chyba pri načítaní symbolu '%s' z knižnice '%s'."
 
 #: eeschema/symbol_library_manager.cpp:403
 msgid "Symbol not found."
-msgstr "Symbol nenájdený."
+msgstr "Symbol sa nenašiel."
 
 #: eeschema/symbol_library_manager.cpp:614
 #, fuzzy, c-format
@@ -25060,9 +25466,9 @@ msgstr "Chyba pri aktualizácii medzipamäte knižnice."
 
 #: eeschema/symbol_library_manager.cpp:1013
 #: eeschema/tools/sch_editor_control.cpp:715
-#, fuzzy, c-format
+#, c-format
 msgid "Error saving symbol %s to library '%s'."
-msgstr "Chyba pri načítaní symbolu '%s' z knižnice '%s'."
+msgstr "Chyba pri ukladaní symbolu %s do knižnice '%s'."
 
 #: eeschema/symbol_tree_synchronizing_adapter.cpp:290
 msgid "(failed to load)"
@@ -27548,9 +27954,9 @@ msgid "Press <ESC> to cancel slice."
 msgstr "Stlačiť <ESC> pre zrušenie strihania."
 
 #: eeschema/tools/sch_navigate_tool.cpp:99
-#, fuzzy, c-format
+#, c-format
 msgid "Page '%s' not found."
-msgstr "Súbor '%s' sa nenašiel."
+msgstr "Stránka '%s' sa nenašla."
 
 #: eeschema/tools/sch_point_editor.cpp:1214
 #: pcbnew/tools/pcb_point_editor.cpp:2675
@@ -27601,9 +28007,9 @@ msgstr "Nie je vybratý žiadny symbol"
 #: eeschema/tools/symbol_editor_control.cpp:331
 #: eeschema/tools/symbol_editor_control.cpp:492
 #: eeschema/tools/symbol_editor_control.cpp:536
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol library '%s' not found."
-msgstr "Editor knižníc"
+msgstr "Knižnica symbolov '%s' sa nenašla."
 
 #: eeschema/tools/symbol_editor_control.cpp:421
 #: pcbnew/tools/footprint_editor_control.cpp:648
@@ -29080,9 +29486,9 @@ msgid "&Units"
 msgstr "&Jednotky"
 
 #: gerbview/readgerb.cpp:64
-#, fuzzy, c-format
+#, c-format
 msgid "File '%s' not found"
-msgstr "Súbor '%s' sa nenašiel."
+msgstr "Súbor '%s' sa nenašiel"
 
 #: gerbview/readgerb.cpp:89
 msgid ""
@@ -29382,9 +29788,9 @@ msgid "D Codes"
 msgstr "D-kódy"
 
 #: gerbview/tools/gerbview_inspection_tool.cpp:173
-#, fuzzy, c-format
+#, c-format
 msgid "Source file '%s' not found."
-msgstr "Schematický súbor '%s' sa nenašiel."
+msgstr "Zdrojový súbor '%s' sa nenašiel."
 
 #: gerbview/tools/gerbview_inspection_tool.cpp:189
 #, fuzzy, c-format
@@ -36073,7 +36479,7 @@ msgstr "Nesprávna hodnota pre Epsilon R"
 
 #: pcbnew/board_stackup_manager/dialog_dielectric_list_manager.cpp:51
 msgid "Incorrect value for Loss Tangent"
-msgstr "Nesprávna hodnota pre stratový tangens"
+msgstr "Nesprávna hodnota pre stratový tangent"
 
 #: pcbnew/board_stackup_manager/dialog_dielectric_list_manager.cpp:93
 #: pcbnew/board_stackup_manager/panel_board_stackup_base.cpp:87
@@ -36293,8 +36699,8 @@ msgid ""
 "If Impedance Controlled option is set,\n"
 "Loss tangent and EpsilonR will be added to constraints."
 msgstr ""
-"Ak je nastavená možnosť Impedancia riadená,\n"
-"Strata tangens a EpsilonR sa pridajú k obmedzeniam."
+"Ak je nastavená možnosť riadenej impedancie,\n"
+"Stratový tangent a EpsilonR budú pridané k návrhovým obmedzeniam."
 
 #: pcbnew/board_stackup_manager/panel_board_stackup_base.cpp:47
 msgid "Add Dielectric Layer..."
@@ -36744,7 +37150,7 @@ msgstr "Základný názov"
 
 #: pcbnew/board_tables/board_stackup_table.cpp:91
 msgid "Loss Tangent"
-msgstr "Stratový Tangens"
+msgstr "Stratový tangent"
 
 #: pcbnew/board_tables/board_stackup_table.cpp:113
 msgid "Dielectric"
@@ -37167,7 +37573,7 @@ msgstr "Prerušené: príliš veľa chýb"
 
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:712
 msgid "Footprint not found in changelist"
-msgstr "Poudro nenájdené v zozname zmien"
+msgstr "Puzdro sa nenašlo v zozname zmien"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:25
 msgid "Footprint Order"
@@ -38666,9 +39072,8 @@ msgid "Changed footprint %s from '%s' to '%s'"
 msgstr "Zmeniť stopu %s z '%s' na '%s'"
 
 #: pcbnew/dialogs/dialog_exchange_footprints.cpp:375
-#, fuzzy
 msgid "*** library footprint not found ***"
-msgstr "*** stopa sa nenašla ***"
+msgstr "*** knižnica puzdier sa nenašla ***"
 
 #: pcbnew/dialogs/dialog_exchange_footprints.cpp:401
 #, fuzzy
@@ -39505,9 +39910,9 @@ msgid "Searching..."
 msgstr "Vyhľadávam..."
 
 #: pcbnew/dialogs/dialog_find.cpp:363
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' not found"
-msgstr "%s nenájdený"
+msgstr "'%s' sa nenašlo"
 
 #: pcbnew/dialogs/dialog_find.cpp:371
 msgid "No more items to show"
@@ -43822,9 +44227,8 @@ msgid "Update footprint fields from symbols"
 msgstr "Pre symbol '%s' nie je definovaná žiadna stopa."
 
 #: pcbnew/dialogs/dialog_update_pcb_base.cpp:71
-#, fuzzy
 msgid "Remove footprint fields not found in symbols"
-msgstr "Odstráňte polia, ak nie sú v novom symbole"
+msgstr "Odstrániť polia puzdra, ak sa tieto nenachádzajú aj v symboloch"
 
 #: pcbnew/dialogs/dialog_update_pcb_base.h:57
 msgid "Update PCB from Schematic"
@@ -45987,9 +46391,8 @@ msgstr ""
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:884
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:940
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:946
-#, fuzzy
 msgid "Signal layer not found in stackup"
-msgstr "Názvy signálov nemôžu obsahovať medzery"
+msgstr "Signálna vrstva sa nenachádza v skladbe vrstiev"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:879
 msgid "Internal error: Microstrip can only be on an outer copper layer"
@@ -46002,9 +46405,8 @@ msgid "Signal layer thickness must be greater than 0"
 msgstr " Uout musí byť väčšie ako Uref"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:901
-#, fuzzy
 msgid "Reference layer not found in stackup"
-msgstr "Odkaz '%s' sa nenašiel."
+msgstr "Referenčná vrstva sa nenašla v skladbe vrstiev"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:907
 msgid "Reference layer must be different to signal layer"
@@ -46017,7 +46419,7 @@ msgstr "Medzera spojov musí byť väčšia než nula."
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:958
 msgid "Top reference layer not found in stackup"
-msgstr ""
+msgstr "Vrchná referenčná vrstva sa nenašla v skladbe vrstiev"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:964
 msgid "Top reference layer must be above signal layer in board stackup"
@@ -46926,7 +47328,7 @@ msgstr "Parametre puzdra sa nezhodujú so symbolom"
 
 #: pcbnew/drc/drc_item.cpp:213
 msgid "Footprint not found in libraries"
-msgstr "Puzdro sa nenachádza v knižnici"
+msgstr "Puzdro sa nenachádza v knižniciach"
 
 #: pcbnew/drc/drc_item.cpp:217
 msgid "Footprint doesn't match copy in library"
@@ -47773,9 +48175,9 @@ msgid "Checking board footprints against library..."
 msgstr "Kontrolujú sa puzdrá voči knižnici..."
 
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:1134
-#, fuzzy, c-format
+#, c-format
 msgid "The footprint library '%s' was not found at '%s'"
-msgstr "Knižnica stopy sa nenašla."
+msgstr "Knižnica puzdier '%s' nebola nájdená na '%s'"
 
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:1184
 #, fuzzy, c-format
@@ -48628,6 +49030,8 @@ msgid ""
 "Could not add 3D model for %s.\n"
 "File not found: %s\n"
 msgstr ""
+"Nebolo možné pridať 3D model pre %s.\n"
+"Súbor sa nenašiel: %s\n"
 
 #: pcbnew/exporters/step/exporter_step.cpp:622
 #, c-format
@@ -48692,11 +49096,9 @@ msgstr ""
 "systémovej pamäte.\n"
 
 #: pcbnew/exporters/step/exporter_step.cpp:1365
-#, fuzzy, c-format
+#, c-format
 msgid "** Error exporting %s file. Export aborted. **\n"
-msgstr ""
-"\n"
-"Chyba pri zápise do súboru '%s'\n"
+msgstr "** Chyba pri exportovaní súboru %s. Export prerušený. **\n"
 
 #: pcbnew/exporters/step/exporter_step.cpp:1373
 #, c-format
@@ -48747,15 +49149,13 @@ msgstr ""
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:692
 #: pcbnew/exporters/step/step_pcb_model.cpp:2598
-#, fuzzy
 msgid "Errors:\n"
-msgstr "Chyby"
+msgstr "Chyby:\n"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:702
 #: pcbnew/exporters/step/step_pcb_model.cpp:2608
-#, fuzzy
 msgid "Warnings:\n"
-msgstr "Varovanie"
+msgstr "Upozornenia:\n"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:725
 msgid "ShapeUpgrade_UnifySameDomain produced a null shape."
@@ -48936,9 +49336,9 @@ msgid "No valid PCB assembly; cannot create output file '%s'."
 msgstr "Nie je možné vytvoriť výstupný adresár '%s'."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2931
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create input stream '%s'.\n"
-msgstr "Nie je možné vytvoriť výstupný adresár '%s'."
+msgstr "Nie je možné vytvoriť vstupný dátový tok '%s'.\n"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2937
 #, fuzzy, c-format
@@ -49071,9 +49471,8 @@ msgstr ""
 "%s"
 
 #: pcbnew/files.cpp:741
-#, fuzzy
 msgid "Finalizing board"
-msgstr "Načítavajú sa súbory Gerber...\n"
+msgstr "Dokončovanie dosky"
 
 #: pcbnew/files.cpp:786 pcbnew/pcb_edit_frame.cpp:1600
 #, fuzzy
@@ -49087,36 +49486,27 @@ msgid "New Footprint Library"
 msgstr "Vytvoriť knižnicu puzdier"
 
 #: pcbnew/files.cpp:865
-#, fuzzy, c-format
+#, c-format
 msgid "Error saving footprint %s to project specific library."
-msgstr ""
-"Pri ukladaní tabuľky knižnej stopy konkrétneho projektu:\n"
-"\n"
-"%s"
+msgstr "Chyba pri ukladaní puzdra %s do projektovej knižnice."
 
 #: pcbnew/files.cpp:896
-#, fuzzy
 msgid "Error saving project specific footprint library table."
-msgstr ""
-"Pri ukladaní tabuľky knižnej stopy konkrétneho projektu:\n"
-"\n"
-"%s"
+msgstr "Chyba pri ukladaní projektovej tabuľky knižníc puzdier."
 
 #: pcbnew/files.cpp:1064 pcbnew/files.cpp:1210
-#, fuzzy, c-format
+#, c-format
 msgid "Error saving custom rules file '%s'."
-msgstr ""
-"Chyba pri ukladaní súboru nástenky '%s'.\n"
-"%s"
+msgstr "Chyba pri ukladaní súboru vlastných pravidiel '%s'."
 
 #: pcbnew/files.cpp:1094 pcbnew/files.cpp:1185
 #: pcbnew/pcb_design_block_utils.cpp:112 pcbnew/pcbnew_jobs_handler.cpp:2757
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error saving board file '%s'.\n"
 "%s"
 msgstr ""
-"Chyba pri ukladaní súboru nástenky '%s'.\n"
+"Chyba pri ukladaní súboru dosky '%s'.\n"
 "%s"
 
 #: pcbnew/files.cpp:1274
@@ -49356,7 +49746,7 @@ msgstr ""
 
 #: pcbnew/footprint_editor_utils.cpp:351
 msgid "Library not found in footprint library table."
-msgstr "Knižnica nebola nájdená v tabuľke knižníc puzdier."
+msgstr "Knižnica sa nenašla v tabuľke knižníc puzdier."
 
 #: pcbnew/footprint_editor_utils.cpp:360
 #, fuzzy, c-format
@@ -49869,9 +50259,8 @@ msgid "Footprint '%s' saved."
 msgstr "Footprint '%s' bol uložený"
 
 #: pcbnew/load_select_footprint.cpp:380
-#, fuzzy
 msgid "Error saving footprint library"
-msgstr "nastavenie knižníc puzdier\n"
+msgstr "Chyba pri ukladaní knižnice puzdier"
 
 #: pcbnew/load_select_footprint.cpp:384
 #, fuzzy, c-format
@@ -50091,9 +50480,9 @@ msgid "Cannot add %s (no footprint assigned)."
 msgstr "Nie je možné pridať %s (nie je priradená žiadna stopa)."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:165
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot add %s (footprint '%s' not found)."
-msgstr "Nie je možné pridať %s (stopa '%s' sa nenašla)."
+msgstr "Nie je možné pridať %s (puzdro '%s' sa nenašlo)."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:178
 #, fuzzy, c-format
@@ -50141,9 +50530,9 @@ msgid "Cannot update %s (no footprint assigned)."
 msgstr "Nie je možné aktualizovať %s (nepriradené puzdro)."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:330
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot update %s (footprint '%s' not found)."
-msgstr "Nie je možné aktualizovať %s (stopa '%s' sa nenašla)."
+msgstr "Nie je možné aktualizovať %s (puzdro '%s' sa nenašlo)."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:342
 #, fuzzy, c-format
@@ -50409,12 +50798,9 @@ msgstr "Aktualizovať polia"
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1356
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:2081
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid footprint ID '%s' for variant '%s' on %s."
-msgstr ""
-"Neplatné ID stopy v\n"
-"súbor: \"%s\"\n"
-"riadok: %d"
+msgstr "Neplatné ID puzdra '%s' pre variant '%s' na %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1394
 #, c-format
@@ -50570,7 +50956,7 @@ msgstr "Symbol zmien stopy nie je uložený"
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1943
 #, c-format
 msgid "%s pad %s not found in %s."
-msgstr "%s podložka %s sa nenašla v priečinku %s."
+msgstr "%s plôška %s sa nenašla v %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1997
 #, c-format
@@ -50671,10 +51057,11 @@ msgid "%s footprint ID '%s' is not valid."
 msgstr "%s puzdro ID \"%s\" nie je platné."
 
 #: pcbnew/netlist_reader/netlist.cpp:271
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s footprint '%s' not found in any libraries in the footprint library table."
-msgstr "%s puzdro \"%s\" nenájdené v žiadnej knižnici v knižnici puzdier."
+msgstr ""
+"%s puzdro '%s' sa nenašlo v žiadnej z knižníc z tabuľky knižníc puzdier."
 
 #: pcbnew/pad.cpp:1601 pcbnew/pad.cpp:1815 pcbnew/pad.cpp:1831
 #: pcbnew/pad.cpp:1840
@@ -51193,11 +51580,12 @@ msgid "Edit Vertices"
 msgstr "Upraviť vlastnosti"
 
 #: pcbnew/pcb_base_frame.cpp:1220
-#, fuzzy
 msgid ""
 "The library containing the current footprint has changed.\n"
 "Do you want to reload the footprint?"
-msgstr "Nastavenie projektu bolo zmenené. Uložiť ho?"
+msgstr ""
+"Knižnica obsahujúca aktuálne puzdro bola zmenená.\n"
+"Chcete znovu načítať puzdro?"
 
 #: pcbnew/pcb_design_block_utils.cpp:70
 #, c-format
@@ -51210,11 +51598,9 @@ msgstr "Prepísať existujúce rozloženie ?"
 
 #: pcbnew/pcb_design_block_utils.cpp:155 pcbnew/pcb_design_block_utils.cpp:220
 #: pcbnew/pcb_design_block_utils.cpp:326
-#, fuzzy
 msgid "Error saving temporary board file to create design block."
 msgstr ""
-"Chyba pri ukladaní schematického súboru '%s'.\n"
-"%s"
+"Chyba pri ukladaní dočasného súboru dosky pre vytvorenie návrhového bloku."
 
 #: pcbnew/pcb_dimension.cpp:633 pcbnew/pcb_dimension.cpp:1888
 msgid "Prefix"
@@ -51502,14 +51888,14 @@ msgstr "Súbor sa nenašiel: '%s' v adresári '%s'."
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:726
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:756
 #: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:325
-#, fuzzy, c-format
+#, c-format
 msgid "File not found: '%s'."
 msgstr "Súbor sa nenašiel: '%s'."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:718
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint directory not found: '%s'."
-msgstr "Knižnica stopy sa nenašla."
+msgstr "Adresár puzdier sa nenašiel: '%s'."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:842
 #, fuzzy, c-format
@@ -51596,7 +51982,7 @@ msgid "Ignored dimension of kind %d (not yet supported)."
 msgstr "Ignorovaná kóta typu %d (zatiaľ nie je podporovaná)."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2268
-#, fuzzy, c-format
+#, c-format
 msgid "File not found: '%s'. 3D-model not imported."
 msgstr "Súbor sa nenašiel: '%s'. 3D-model nebol importovaný."
 
@@ -51642,14 +52028,15 @@ msgstr ""
 "podporovaný."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2846
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Loading library '%s':\n"
 "Footprint %s contains a dashed outline on Altium layer (%d) with no KiCad "
 "equivalent. It has been moved to KiCad layer Eco1_User."
 msgstr ""
-"Polygón na altiovej vrstve %d nemá žiadny ekvivalent KiCad. Namiesto toho ho "
-"vložte na server Eco1_User"
+"Načítavanie knižnice '%s':\n"
+"Puzdro %s obsahuje prerušovaný obrys na Altium vrstve (%d) bez ekvivalentu v "
+"KiCad. Bol presunutý do KiCad vrstvy Eco1_User."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:2860
 #, fuzzy, c-format
@@ -51687,13 +52074,13 @@ msgid "Loading pads..."
 msgstr "Načítávanie plošiek..."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3563
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error loading library '%s':\n"
 "Footprint %s pad %s is not marked as multilayer, but is a TH pad."
 msgstr ""
-"Podložka '%s' stopy Footprint %s má štvorcový otvor. KiCad to zatiaľ "
-"nepodporuje"
+"Chyba pri načítavaní knižnice '%s':\n"
+"Puzdro %s, plôška %s nie je označená ako viacvrstvová, ale je to plôška TH."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3576
 #, fuzzy, c-format
@@ -51703,13 +52090,13 @@ msgstr ""
 "nepodporuje"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3605
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Loading library '%s':\n"
 "Footprint %s pad %s has a square hole (not yet supported)."
 msgstr ""
-"Podložka '%s' stopy Footprint %s má štvorcový otvor. KiCad to zatiaľ "
-"nepodporuje"
+"Načítavanie knižnice '%s':\n"
+"Puzdro %s, plôška %s má štvorcový otvor (zatiaľ nie je podporované)."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3618
 #, fuzzy, c-format
@@ -51719,14 +52106,15 @@ msgstr ""
 "nepodporuje"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3653
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Loading library '%s':\n"
 "Footprint %s pad %s has a hole-rotation of %d degrees. KiCad only supports "
 "90 degree rotations."
 msgstr ""
-"Podložka '%s' stopy Footprint %s má rotáciu otvoru o %f stupňa. KiCad "
-"podporuje iba 90 stupňové uhly"
+"Načítavanie knižnice '%s':\n"
+"Puzdro %s, plôška %s má otvor otočený o  %d stupňov. KiCad podporuje iba "
+"otočenia o 90 stupňov."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3668
 #, fuzzy, c-format
@@ -51738,13 +52126,13 @@ msgstr ""
 "podporuje iba 90 stupňové uhly"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3688
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error loading library '%s':\n"
 "Footprint %s pad %s uses a hole of unknown kind %d."
 msgstr ""
-"Pad '%s' Footprint %s používa zložitý stack padov (druh %d), ktorý zatiaľ "
-"nie je podporovaný"
+"Načítavanie knižnice '%s':\n"
+"Puzdro %s, plôška %s má otvor neznámeho druhu %d."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3702
 #, fuzzy, c-format
@@ -51754,13 +52142,13 @@ msgstr ""
 "nie je podporovaný"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3767
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error loading library '%s':\n"
 "Footprint %s pad %s uses an unknown pad shape."
 msgstr ""
-"Pad '%s' Footprint %s používa zložitý stack padov (druh %d), ktorý zatiaľ "
-"nie je podporovaný"
+"Načítavanie knižnice '%s':\n"
+"Puzdro %s plôška %s má neznámy tvar."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3780
 #, fuzzy, c-format
@@ -51779,14 +52167,15 @@ msgstr ""
 "Namiesto toho ho vložte na server Eco1_User"
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3910
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Loading library '%s':\n"
 "Footprint %s non-copper pad %s found on an Altium layer (%d) with no KiCad "
 "equivalent. It has been moved to KiCad layer Eco1_User."
 msgstr ""
-"Nekovovaná podložka na vrstve altia %d nemá žiadny ekvivalent KiCad. "
-"Namiesto toho ho vložte na server Eco1_User"
+"Načítavanie knižnice '%s':\n"
+"Puzdro %s, plôška bez medi %s nájdená na Altium vrstve (%d) bez ekvivalentu "
+"v KiCad. Bola presunutá do KiCad vrstvy Eco1_User."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:3925
 #, fuzzy, c-format
@@ -51865,9 +52254,9 @@ msgid "No footprints in library '%s'"
 msgstr "Načítať puzdro z knižnice"
 
 #: pcbnew/pcb_io/altium/pcb_io_altium_designer.cpp:422
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint '%s' not found in '%s'."
-msgstr "V knižniciach nemožno nájsť niektoré puzdra"
+msgstr "Puzdro '%s' sa nenašlo v '%s'."
 
 #: pcbnew/pcb_io/altium/pcb_io_altium_designer.h:54
 msgid "Altium Designer PCB files"
@@ -51967,7 +52356,7 @@ msgstr "Neočakávaná vrstva '%s' v zásobníku vrstiev."
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:748
 #, c-format
 msgid "Design rule %s was not found. This was ignored."
-msgstr "Pravidlo návrhu %s sa nenašlo. Toto bolo ignorované."
+msgstr "Pravidlo návrhu %s nebolo nájdené. Toto bolo ignorované."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:777
 msgid ""
@@ -52397,11 +52786,9 @@ msgstr "Nepodarilo sa nájsť platnú dosku v '%s'"
 
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:269
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:273
-#, fuzzy, c-format
+#, c-format
 msgid "Error loading board '%s': %s"
-msgstr ""
-"Chyba načítania dosky.\n"
-"%s"
+msgstr "Chyba načítavania dosky '%s': %s"
 
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:296
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:397
@@ -52411,12 +52798,9 @@ msgstr "Nepodarilo sa nájsť platné puzdrá v '%s'"
 
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:367
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:372
-#, fuzzy, c-format
+#, c-format
 msgid "Error enumerating footprints in library '%s': %s"
-msgstr ""
-"Chyba pri načítaní stopy %s z knižnice %s.\n"
-"\n"
-"%s"
+msgstr "Chyba pri načítavaní zoznamu puzdier v knižnici. '%s': %s"
 
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:527
 #: pcbnew/pcb_io/easyeda/pcb_io_easyeda_plugin.cpp:532
@@ -52431,9 +52815,9 @@ msgid "Cannot load footprint '%s' from '%s'"
 msgstr "Nie je možné načítať stopu '%s' z '%s'"
 
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.cpp:452
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint '%s' not found in project '%s'"
-msgstr "V knižniciach nemožno nájsť niektoré puzdra"
+msgstr "Puzdro '%s' sa nenašlo v projekte '%s'"
 
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.h:40
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.h:45
@@ -52616,9 +53000,9 @@ msgstr "Nie je možné previesť '%s' na celé číslo"
 #: pcbnew/pcb_io/geda/pcb_io_geda.cpp:246
 #: pcbnew/pcb_io/geda/pcb_io_geda.cpp:897
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:161
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint library '%s' not found."
-msgstr "Knižnica stopy sa nenašla."
+msgstr "Knižnica puzdier '%s' sa nenašla."
 
 #: pcbnew/pcb_io/geda/pcb_io_geda.cpp:300
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:232
@@ -52696,9 +53080,9 @@ msgid "Generating BOM section"
 msgstr "Nastavenie rendra"
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:1504
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint %s not found in dictionary; BOM data may be incomplete."
-msgstr "V knižniciach nemožno nájsť niektoré puzdra"
+msgstr "Puzdro %s sa nenašlo v slovníku; údaje BOM môžu byť neúplné."
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:1520
 #, c-format
@@ -52928,15 +53312,17 @@ msgid "Cannot interpret date code %d"
 msgstr "Nie je možné interpretovať kód dátumu %d"
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:1409
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Items found on undefined layers (%s).\n"
 "Do you wish to rescue them to the %s layer?\n"
 "\n"
 "Zones will need to be refilled."
 msgstr ""
-"Položky nájdené v nedefinovaných vrstvách. Prajete si\n"
-"zachrániť ich do vrstvy User.Comments?"
+"Boli nájdené položky v nedefinovaných vrstvách (%s).\n"
+"Chcete ich zachrániť presunutím do vrstvy %s?\n"
+"\n"
+"Zóny bude potrebné znovu vyplniť."
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:1415
 #, fuzzy
@@ -53104,9 +53490,9 @@ msgid "Starting PADS PCB import"
 msgstr ""
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:530
-#, fuzzy, c-format
+#, c-format
 msgid "Footprint '%s' not found in decal list, part skipped"
-msgstr "V knižniciach nemožno nájsť niektoré puzdra"
+msgstr "Puzdro '%s' sa nenašlo v decal zozname, súčiastka vynechaná"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:1050
 #, c-format
@@ -53238,9 +53624,9 @@ msgid "No layers selected for plotting."
 msgstr "Nie je vybraná žiadna vrstva pre vykresľovanie."
 
 #: pcbnew/pcb_plotter.cpp:496
-#, fuzzy, c-format
+#, c-format
 msgid "Color theme '%s' not found, will use theme from PCB Editor.\n"
-msgstr "Barevné téma k použití (bude výchozí v nastavení pcbnew)"
+msgstr "Farebná téma '%s' sa nenašla, bude použitá téma z editora DPS.\n"
 
 #: pcbnew/pcb_point.cpp:189
 #, fuzzy
@@ -53985,9 +54371,8 @@ msgid "Loading Footprint Libraries"
 msgstr "Načítavajú sa knižnice stopy"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:453 pcbnew/pcbnew_jobs_handler.cpp:2938
-#, fuzzy
 msgid "Failed to load board\n"
-msgstr "Nepodarilo sa načítať '%s'"
+msgstr "Nepodarilo sa načítať dosku\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:519
 #, fuzzy, c-format
@@ -53996,9 +54381,8 @@ msgstr "Neplatné meno signálu\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:559 pcbnew/pcbnew_jobs_handler.cpp:639
 #: pcbnew/pcbnew_jobs_handler.cpp:683
-#, fuzzy
 msgid "Unknown export format"
-msgstr "Neznámy formát súboru <%s>\n"
+msgstr "Neznámy formát exportu"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:613
 #, fuzzy, c-format
@@ -54173,9 +54557,9 @@ msgid "Unable to determine file format for '%s'\n"
 msgstr "Nepodarilo sa určiť formát súboru pre '%s'\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2898
-#, fuzzy, c-format
+#, c-format
 msgid "Input file not found: '%s'\n"
-msgstr "Súbor sa nenašiel: '%s'."
+msgstr "Vstupný súbor sa nenašiel: '%s'\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2924
 #, fuzzy, c-format
@@ -54254,9 +54638,9 @@ msgstr "Výnimka v kóde pluginu akcie python"
 
 #: pcbnew/python/scripting/pcbnew_action_plugins.cpp:139
 #: pcbnew/python/scripting/pcbnew_footprint_wizards.cpp:83
-#, fuzzy, c-format
+#, c-format
 msgid "Method '%s' not found, or not callable"
-msgstr "Metóda '%s' sa nenašla alebo sa nedá zavolať"
+msgstr "Metóda '%s' sa nenašla, alebo sa nedá zavolať"
 
 #: pcbnew/python/scripting/pcbnew_action_plugins.cpp:140
 #: pcbnew/python/scripting/pcbnew_footprint_wizards.cpp:84
@@ -54810,7 +55194,7 @@ msgstr "Chýbajúca sekcia \"library_out\" v súbore relácie"
 #: pcbnew/specctra_import_export/specctra_import.cpp:420
 #, c-format
 msgid "Reference '%s' not found."
-msgstr "Odkaz '%s' sa nenašiel."
+msgstr "Referencia '%s' sa nenašla."
 
 #: pcbnew/specctra_import_export/specctra_import.cpp:550
 #, c-format
@@ -54955,7 +55339,7 @@ msgstr ""
 "musíte spustiť projektového manažéra KiCad a vytvoriť projekt."
 
 #: pcbnew/tools/board_editor_control.cpp:759
-#, fuzzy, c-format
+#, c-format
 msgid "Schematic file '%s' not found."
 msgstr "Schematický súbor '%s' sa nenašiel."
 
