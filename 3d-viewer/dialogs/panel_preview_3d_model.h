@@ -163,6 +163,8 @@ private:
     wxString formatRotationValue( double aValue );
     wxString formatOffsetValue( double aValue );
 
+    void evalRotationValue( TEXT_CTRL_EVAL* aRotationControl );
+
 	void View3DISO( wxCommandEvent& event ) override
     {
 	    m_currentCamera.ToggleProjection();

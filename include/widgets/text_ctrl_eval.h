@@ -49,6 +49,11 @@ public:
     {
     }
 
+    void SetCustomEval( std::function<void( TEXT_CTRL_EVAL* aCtrl )> aCustomEval )
+    {
+        m_customEval = std::move( aCustomEval );
+    }
+
     /**
      * Set a new value in evaluator buffer and display it in the wxTextCtrl.
      *
@@ -66,6 +71,9 @@ protected:
     void onTextEnter( wxCommandEvent& aEvent );
 
     void evaluate();
+
+private:
+    std::optional<std::function<void( TEXT_CTRL_EVAL* aCtrl )>> m_customEval;
 };
 
 
