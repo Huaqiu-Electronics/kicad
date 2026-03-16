@@ -26,11 +26,7 @@ namespace
 {
 wxFileName schemaPath()
 {
-    wxFileName schemaFile( wxString::FromUTF8( __FILE__ ) );
-    schemaFile.Normalize( wxPATH_NORM_DOTS | wxPATH_NORM_TILDE | wxPATH_NORM_ABSOLUTE );
-    schemaFile.RemoveLastDir();
-    schemaFile.RemoveLastDir();
-    schemaFile.RemoveLastDir();
+    wxFileName schemaFile( wxString::FromUTF8( QA_SRC_ROOT ) );
     schemaFile.AppendDir( wxS( "resources" ) );
     schemaFile.AppendDir( wxS( "schemas" ) );
     schemaFile.SetFullName( wxS( "kicad-remote-provider-metadata-v1.schema.json" ) );
