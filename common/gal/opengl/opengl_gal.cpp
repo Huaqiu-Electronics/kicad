@@ -433,7 +433,8 @@ OPENGL_GAL::~OPENGL_GAL()
         gl_mgr->LockCtx( m_glPrivContext, this );
 
         --m_instanceCounter;
-        glFlush();
+        if( m_isInitialized )
+            glFlush();
         gluDeleteTess( m_tesselator );
         ClearCache();
 
