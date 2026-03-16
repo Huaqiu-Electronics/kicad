@@ -852,6 +852,8 @@ public:
     */
     double Similarity( const SCH_ITEM& aSymbol ) const override;
 
+    void RefreshLibraryTreeCaches();
+
     void SetParentName( const wxString& aParentName ) { m_parentName = aParentName; }
     const wxString& GetParentName() const { return m_parentName; }
 

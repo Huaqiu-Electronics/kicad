@@ -645,6 +645,8 @@ LIB_SYMBOL* SCH_IO_KICAD_SEXPR_PARSER::parseLibSymbol( LIB_SYMBOL_MAP& aSymbolLi
     if( m_requiredVersion < 20250827 )
         symbol->SetHasDeMorganBodyStyles( symbol->HasLegacyAlternateBodyStyle() );
 
+    symbol->RefreshLibraryTreeCaches();
+
     return symbol.release();
 }
 

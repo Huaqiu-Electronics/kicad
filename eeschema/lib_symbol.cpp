@@ -1463,6 +1463,15 @@ const BOX2I LIB_SYMBOL::GetBodyBoundingBox( int aUnit, int aBodyStyle, bool aInc
 }
 
 
+void LIB_SYMBOL::RefreshLibraryTreeCaches()
+{
+    cacheSearchTerms();
+    cachePinCount();
+    cacheShownDescription();
+    cacheChooserFields();
+}
+
+
 void LIB_SYMBOL::deleteAllFields()
 {
     m_drawings[SCH_FIELD_T].clear();
