@@ -169,7 +169,7 @@ void ZONE::InitDataFromSrcInCopyCtor( const ZONE& aZone, PCB_LAYER_ID aLayer )
     m_minIslandArea           = aZone.m_minIslandArea;
 
     m_isFilled                = aZone.m_isFilled;
-    m_needRefill              = aZone.m_needRefill;
+    m_needRefill              = aZone.m_needRefill.load();
     m_teardropType            = aZone.m_teardropType;
 
     m_thermalReliefGap        = aZone.m_thermalReliefGap;
@@ -1352,10 +1352,10 @@ void ZONE::swapData( BOARD_ITEM* aImage )
 
 void ZONE::CacheTriangulation( PCB_LAYER_ID aLayer )
 {
-    std::lock_guard<std::mutex> lock( m_filledPolysListMutex );
-
     if( aLayer == UNDEFINED_LAYER )
     {
+        std::lock_guard<std::mutex> lock( m_filledPolysListMutex );
+
         for( auto& [ layer, poly ] : m_FilledPolysList )
             poly->CacheTriangulation();
 
@@ -1363,8 +1363,22 @@ void ZONE::CacheTriangulation( PCB_LAYER_ID aLayer )
     }
     else
     {
-        if( m_FilledPolysList.count( aLayer ) )
-            m_FilledPolysList[ aLayer ]->CacheTriangulation();
+        // Grab a shared_ptr copy under the lock, then triangulate outside it.
+        // Each layer's SHAPE_POLY_SET is independent, so concurrent triangulation
+        // of different layers is safe once we have the shared_ptr.
+        std::shared_ptr<SHAPE_POLY_SET> poly;
+
+        {
+            std::lock_guard<std::mutex> lock( m_filledPolysListMutex );
+
+            auto it = m_FilledPolysList.find( aLayer );
+
+            if( it != m_FilledPolysList.end() )
+                poly = it->second;
+        }
+
+        if( poly )
+            poly->CacheTriangulation();
     }
 }
 

@@ -59,6 +59,7 @@ static const wxChar traceZoneFiller[] = wxT( "KICAD_ZONE_FILLER" );
 #include <geometry/convex_hull.h>
 #include <geometry/geometry_utils.h>
 #include <geometry/vertex_set.h>
+#include <geometry/poly_containment_index.h>
 #include <kidialog.h>
 #include <thread_pool.h>
 #include <math/util.h>      // for KiROUND
@@ -680,11 +681,6 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
 
                 // Now we're ready to fill.
                 {
-                    std::unique_lock<std::mutex> zoneLock( zone->GetLock(), std::try_to_lock );
-
-                    if( !zoneLock.owns_lock() )
-                        return 0;
-
                     SHAPE_POLY_SET fillPolys;
 
                     if( !fillSingleZone( zone, layer, fillPolys ) )
@@ -708,15 +704,8 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
                 PCB_LAYER_ID layer = aFillItem.second;
                 ZONE*        zone = aFillItem.first;
 
-                {
-                    std::unique_lock<std::mutex> zoneLock( zone->GetLock(), std::try_to_lock );
-
-                    if( !zoneLock.owns_lock() )
-                        return 0;
-
-                    zone->CacheTriangulation( layer );
-                    zone->SetFillFlag( layer, true );
-                }
+                zone->CacheTriangulation( layer );
+                zone->SetFillFlag( layer, true );
 
                 return 1;
             };
@@ -782,7 +771,6 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
         }
 
         std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
-
 
         if( m_progressReporter )
         {
@@ -1282,6 +1270,70 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
     // The first pass (before filling) marks vias as ZLO_FORCE_FLASHED if they're within the
     // zone outline. However, if the fill doesn't actually reach the via (due to obstacles like
     // tracks), we should not flash the via. See https://gitlab.com/kicad/code/kicad/-/issues/22010
+    //
+    // Build a spatial index per filled zone-layer for O(log V) containment queries instead of
+    // O(V) ray-casting. This is critical for boards with large zone fills (many vertices) and
+    // many vias/pads.
+    struct INDEXED_ZONE
+    {
+        BOX2I                                       bbox;
+        std::unique_ptr<POLY_CONTAINMENT_INDEX>     index;
+    };
+
+    struct NET_LAYER_HASH
+    {
+        size_t operator()( const std::pair<int, PCB_LAYER_ID>& k ) const
+        {
+            return std::hash<int>()( k.first ) ^ ( std::hash<int>()( k.second ) << 16 );
+        }
+    };
+
+    std::unordered_map<std::pair<int, PCB_LAYER_ID>, std::vector<INDEXED_ZONE>, NET_LAYER_HASH>
+            filledZonesByNetLayer;
+
+    for( ZONE* zone : m_board->Zones() )
+    {
+        if( zone->GetIsRuleArea() )
+            continue;
+
+        for( PCB_LAYER_ID layer : zone->GetLayerSet() )
+        {
+            if( !zone->HasFilledPolysForLayer( layer ) )
+                continue;
+
+            const std::shared_ptr<SHAPE_POLY_SET>& fill = zone->GetFilledPolysList( layer );
+
+            if( fill->IsEmpty() )
+                continue;
+
+            INDEXED_ZONE iz;
+            iz.bbox = zone->GetBoundingBox();
+            iz.index = std::make_unique<POLY_CONTAINMENT_INDEX>();
+            iz.index->Build( *fill );
+            filledZonesByNetLayer[{ zone->GetNetCode(), layer }].push_back( std::move( iz ) );
+        }
+    }
+
+    auto zoneReachesPoint =
+            [&]( int aNetcode, PCB_LAYER_ID aLayer, const VECTOR2I& aCenter, int aRadius ) -> bool
+            {
+                auto it = filledZonesByNetLayer.find( { aNetcode, aLayer } );
+
+                if( it == filledZonesByNetLayer.end() )
+                    return false;
+
+                for( const INDEXED_ZONE& iz : it->second )
+                {
+                    if( !iz.bbox.GetInflated( aRadius ).Contains( aCenter ) )
+                        continue;
+
+                    if( iz.index->Contains( aCenter, aRadius ) )
+                        return true;
+                }
+
+                return false;
+            };
+
     for( PCB_TRACK* track : m_board->Tracks() )
     {
         if( track->Type() != PCB_VIA_T )
@@ -1298,42 +1350,11 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
             if( via->GetZoneLayerOverride( layer ) != ZLO_FORCE_FLASHED )
                 continue;
 
-            bool zoneReachesVia = false;
-
-            for( ZONE* zone : m_board->Zones() )
-            {
-                if( zone->GetIsRuleArea() )
-                    continue;
-
-                if( zone->GetNetCode() != netcode )
-                    continue;
-
-                if( !zone->IsOnLayer( layer ) )
-                    continue;
-
-                if( !zone->HasFilledPolysForLayer( layer ) )
-                    continue;
-
-                const std::shared_ptr<SHAPE_POLY_SET>& fill = zone->GetFilledPolysList( layer );
-
-                if( fill->IsEmpty() )
-                    continue;
-
-                // Check if the filled zone reaches the via hole. Use holeRadius as reach distance
-                // to match the pre-fill check logic.
-                if( fill->Contains( center, -1, holeRadius ) )
-                {
-                    zoneReachesVia = true;
-                    break;
-                }
-            }
-
-            if( !zoneReachesVia )
+            if( !zoneReachesPoint( netcode, layer, center, holeRadius ) )
                 via->SetZoneLayerOverride( layer, ZLO_FORCE_NO_ZONE_CONNECTION );
         }
     }
 
-    // Same logic for pads
     for( FOOTPRINT* footprint : m_board->Footprints() )
     {
         for( PAD* pad : footprint->Pads() )
@@ -1342,8 +1363,6 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
             int      netcode = pad->GetNetCode();
             LSET     layers = pad->GetLayerSet() & boardCuMask;
 
-            // For TH pads, use the hole radius as tolerance since the filled zone creates a
-            // thermal relief around the pad hole, similar to vias.
             int holeRadius = 0;
 
             if( pad->HasHole() )
@@ -1354,35 +1373,7 @@ bool ZONE_FILLER::Fill( const std::vector<ZONE*>& aZones, bool aCheck, wxWindow*
                 if( pad->GetZoneLayerOverride( layer ) != ZLO_FORCE_FLASHED )
                     continue;
 
-                bool zoneReachesPad = false;
-
-                for( ZONE* zone : m_board->Zones() )
-                {
-                    if( zone->GetIsRuleArea() )
-                        continue;
-
-                    if( zone->GetNetCode() != netcode )
-                        continue;
-
-                    if( !zone->IsOnLayer( layer ) )
-                        continue;
-
-                    if( !zone->HasFilledPolysForLayer( layer ) )
-                        continue;
-
-                    const std::shared_ptr<SHAPE_POLY_SET>& fill = zone->GetFilledPolysList( layer );
-
-                    if( fill->IsEmpty() )
-                        continue;
-
-                    if( fill->Contains( center, -1, holeRadius ) )
-                    {
-                        zoneReachesPad = true;
-                        break;
-                    }
-                }
-
-                if( !zoneReachesPad )
+                if( !zoneReachesPoint( netcode, layer, center, holeRadius ) )
                     pad->SetZoneLayerOverride( layer, ZLO_FORCE_NO_ZONE_CONNECTION );
             }
         }
