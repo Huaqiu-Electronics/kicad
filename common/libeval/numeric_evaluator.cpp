@@ -242,7 +242,7 @@ bool NUMERIC_EVALUATOR::IsDecimalSeparator( char ch, char localeSeparator, bool 
     if( ch == localeSeparator || ch == '.' || ch == ',' )
         return true;
 
-    if( allowInfixNotation && IsOldSchoolDecimalSeparator( ch, &dummy ) )
+    if( allowInfixNotation && isOldSchoolDecimalSeparator( ch, &dummy ) )
         return true;
 
     return false;
@@ -294,7 +294,7 @@ NUMERIC_EVALUATOR::Token NUMERIC_EVALUATOR::getToken()
                         else
                             haveSeparator = true;
 
-                        if( IsOldSchoolDecimalSeparator( ch, &siScaler ) )
+                        if( isOldSchoolDecimalSeparator( ch, &siScaler ) )
                             *aScaler = siScaler;
 
                         m_token.token[ idx++ ] = m_localeDecimalSeparator;
@@ -410,7 +410,7 @@ NUMERIC_EVALUATOR::Token NUMERIC_EVALUATOR::getToken()
                     return Unit::Mil;
                 }
 
-                if( allowInfix && sizeLeft >= 1 && IsOldSchoolDecimalSeparator( ch, siScaler ) )
+                if( allowInfix && sizeLeft >= 1 && isOldSchoolDecimalSeparator( ch, siScaler ) )
                 {
                     m_token.pos++;
                     return Unit::SI;
