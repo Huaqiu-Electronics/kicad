@@ -23,9 +23,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifndef TEXT_CTRL_EVAL_H
-#define TEXT_CTRL_EVAL_H
+#pragma once
 
+#include <optional>
+#include <functional>
 #include <wx/window.h>
 #include <wx/textctrl.h>
 #include <libeval/numeric_evaluator.h>
@@ -76,5 +77,3 @@ private:
     std::optional<std::function<void( TEXT_CTRL_EVAL* aCtrl )>> m_customEval;
 };
 
-
-#endif /* TEXT_CTRL_EVAL_H */
