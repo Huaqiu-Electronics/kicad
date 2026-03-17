@@ -68,6 +68,28 @@ const DRC_CONSTRAINT* DRC_RULE_LOADER::findConstraint( const DRC_RULE& aRule, DR
 }
 
 
+static bool isSymmetricMinOptMax( const DRC_CONSTRAINT* aConstraint )
+{
+    if( !aConstraint )
+        return true;
+
+    const auto& value = aConstraint->GetValue();
+
+    if( !value.HasMin() || !value.HasOpt() || !value.HasMax() )
+        return true;
+
+    return ( value.Opt() - value.Min() ) == ( value.Max() - value.Opt() );
+}
+
+
+static std::shared_ptr<DRC_RE_BASE_CONSTRAINT_DATA> makeCustomRuleData( const DRC_RULE& aRule )
+{
+    auto customData = std::make_shared<DRC_RE_CUSTOM_RULE_CONSTRAINT_DATA>();
+    customData->SetRuleName( aRule.m_Name );
+    return customData;
+}
+
+
 wxString DRC_RULE_LOADER::extractRuleBody( const wxString& aOriginalText )
 {
     int ruleKeyword = aOriginalText.Find( wxS( "rule " ) );
@@ -199,13 +221,18 @@ DRC_RULE_LOADER::createConstraintData( DRC_RULE_EDITOR_CONSTRAINT_NAME   aPanel,
 
     case ROUTING_DIFF_PAIR:
     {
-        auto data = std::make_shared<DRC_RE_ROUTING_DIFF_PAIR_CONSTRAINT_DATA>();
-        data->SetRuleName( aRule.m_Name );
-        data->SetConstraintCode( "diff_pair_gap" );
-
         const DRC_CONSTRAINT* trackWidth = findConstraint( aRule, TRACK_WIDTH_CONSTRAINT );
         const DRC_CONSTRAINT* diffGap = findConstraint( aRule, DIFF_PAIR_GAP_CONSTRAINT );
         const DRC_CONSTRAINT* uncoupled = findConstraint( aRule, MAX_UNCOUPLED_CONSTRAINT );
+
+        if( !isSymmetricMinOptMax( trackWidth ) || !isSymmetricMinOptMax( diffGap ) )
+        {
+            return makeCustomRuleData( aRule );
+        }
+
+        auto data = std::make_shared<DRC_RE_ROUTING_DIFF_PAIR_CONSTRAINT_DATA>();
+        data->SetRuleName( aRule.m_Name );
+        data->SetConstraintCode( "diff_pair_gap" );
 
         if( trackWidth )
         {
@@ -251,26 +278,22 @@ DRC_RULE_LOADER::createConstraintData( DRC_RULE_EDITOR_CONSTRAINT_NAME   aPanel,
 
     case ROUTING_WIDTH:
     {
+        const DRC_CONSTRAINT* trackWidth = findConstraint( aRule, TRACK_WIDTH_CONSTRAINT );
+
+        if( !isSymmetricMinOptMax( trackWidth ) )
+            return makeCustomRuleData( aRule );
+
         auto data = std::make_shared<DRC_RE_ROUTING_WIDTH_CONSTRAINT_DATA>();
         data->SetRuleName( aRule.m_Name );
         data->SetConstraintCode( "track_width" );
-
-        const DRC_CONSTRAINT* trackWidth = findConstraint( aRule, TRACK_WIDTH_CONSTRAINT );
 
         if( trackWidth )
         {
             double opt = toMM( trackWidth->GetValue().Opt() );
             double min = toMM( trackWidth->GetValue().Min() );
-            double max = toMM( trackWidth->GetValue().Max() );
 
             data->SetOptWidth( opt );
-
-            if( opt > 0 )
-            {
-                double tolFromMin = opt - min;
-                double tolFromMax = max - opt;
-                data->SetWidthTolerance( std::max( tolFromMin, tolFromMax ) );
-            }
+            data->SetWidthTolerance( opt - min );
         }
 
         return data;
@@ -278,11 +301,14 @@ DRC_RULE_LOADER::createConstraintData( DRC_RULE_EDITOR_CONSTRAINT_NAME   aPanel,
 
     case ABSOLUTE_LENGTH:
     {
+        const DRC_CONSTRAINT* length = findConstraint( aRule, LENGTH_CONSTRAINT );
+
+        if( !isSymmetricMinOptMax( length ) )
+            return makeCustomRuleData( aRule );
+
         auto data = std::make_shared<DRC_RE_ABSOLUTE_LENGTH_TWO_CONSTRAINT_DATA>();
         data->SetRuleName( aRule.m_Name );
         data->SetConstraintCode( "length" );
-
-        const DRC_CONSTRAINT* length = findConstraint( aRule, LENGTH_CONSTRAINT );
 
         if( length )
         {
@@ -298,11 +324,14 @@ DRC_RULE_LOADER::createConstraintData( DRC_RULE_EDITOR_CONSTRAINT_NAME   aPanel,
 
     case MATCHED_LENGTH_DIFF_PAIR:
     {
+        const DRC_CONSTRAINT* length = findConstraint( aRule, LENGTH_CONSTRAINT );
+
+        if( !isSymmetricMinOptMax( length ) )
+            return makeCustomRuleData( aRule );
+
         auto data = std::make_shared<DRC_RE_MATCHED_LENGTH_DIFF_PAIR_CONSTRAINT_DATA>();
         data->SetRuleName( aRule.m_Name );
         data->SetConstraintCode( "length" );
-
-        const DRC_CONSTRAINT* length = findConstraint( aRule, LENGTH_CONSTRAINT );
 
         if( length )
         {
