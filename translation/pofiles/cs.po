@@ -28,8 +28,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-17 20:03+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-17 22:13+0000\n"
+"Last-Translator: Tomas0015 <tom.bezanyi@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kicad/master-"
 "source/cs/>\n"
 "Language: cs\n"
@@ -2219,7 +2219,7 @@ msgstr "NEZNÁMÉ (%d)"
 
 #: common/design_block_io.cpp:148
 msgid "KiCad Design Block folders"
-msgstr "Složky s projektovými bloky programu KiCad"
+msgstr "Složky s bloky návrhu KiCad"
 
 #: common/design_block_io.cpp:185
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:3483
@@ -16731,11 +16731,11 @@ msgstr "Vybrat odpovídající položku na plátně při jejím výběru v tabul
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1162
 msgid "The Quantity column cannot be grouped by."
-msgstr "Sloupec Množství nelze seskupit."
+msgstr "Podle sloupce množství nelze seskupovat."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1171
 msgid "The Item Number column cannot be grouped by."
-msgstr "Sloupec Číslo položky nelze použít pro seskupení."
+msgstr "Podle sloupce číslo položky nelze seskupovat."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1400
 msgid "Bill of Materials Output File"
@@ -21156,14 +21156,15 @@ msgstr "Chyba interních dat skupiny"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:361
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:307
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "Please report this bug.  Error validating group structure: %s\n"
 "\n"
 "Save anyway?"
 msgstr ""
-"Nahlaste prosím tuto chybu. Chyba při ověřování struktury skupiny: %s\\n\\n"
-"Uložit přesto?"
+"Nahlaste prosím tuto chybu.  Chyba při ověřování struktury skupiny: %s\n"
+"\n"
+"Přesto uložit?"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:364
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.cpp:309
@@ -21221,16 +21222,16 @@ msgstr ""
 "Knihovna nemůže být uložena dokud nebudou tyto chyby ručně opraveny."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_lib_cache.cpp:220
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "Cannot save library '%s' because it had a parse error during loading.\n"
 "\n"
 "Saving would permanently lose symbols that could not be loaded.\n"
 "Please fix the library file manually before saving."
 msgstr ""
-"Nelze uložit knihovnu '%s', protože při jejím načítání došlo k chybě "
-"analýzy.\\n\\n"
-"Uložením by došlo k trvalé ztrátě symbolů, které nebylo možné načíst.\\n"
+"Nelze uložit knihovnu '%s', protože při jejím načítání došlo k chybě.\n"
+"\n"
+"Uložením by došlo k trvalé ztrátě symbolů, které nebylo možné načíst.\n"
 "Prosím opravte soubor knihovny ručně před uložením."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_lib_cache.cpp:272
@@ -21244,13 +21245,13 @@ msgid "No parent for extended symbol %s found in library '%s'"
 msgstr "V knihovně '%s' nebyl nalezen nadřazený prvek pro rozšířený symbol %s"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:260
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "Error parsing symbol at line %d: %s\n"
 "Skipping symbol and continuing."
 msgstr ""
-"Chyba při analýze symbolu na řádku %d: %s\\n"
-"Symbol je přeskočen, pokračuje se."
+"Chyba při čtení symbolu na řádku %d: %s\n"
+"Symbol přeskočen, pokračuje se."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:309
 #, c-format
@@ -21462,12 +21463,12 @@ msgid "Symbol '%s.asy' not found"
 msgstr "Symbol '%s.asy' nenalezen"
 
 #: eeschema/sch_io/ltspice/sch_io_ltspice.cpp:120
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "Unable to find LTspice symbols.\n"
 "Install LTspice or put its library files into %s"
 msgstr ""
-"Symboly LTspice nebyly nalezeny.\\n"
+"Symboly LTspice nebyly nalezeny.\n"
 "Nainstalujte LTspice nebo umístěte soubory jeho knihovny do %s"
 
 #: eeschema/sch_io/ltspice/sch_io_ltspice.h:49
@@ -27358,13 +27359,14 @@ msgid "Add new top-level sheet"
 msgstr "Přidat nový list nejvyšší úrovně"
 
 #: eeschema/widgets/hierarchy_pane.cpp:593
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "Delete top-level sheet '%s'?\n"
 "\n"
 "This cannot be undone."
 msgstr ""
-"Smazat list nejvyšší úrovně '%s'?\\n\\n"
+"Smazat list nejvyšší úrovně '%s'?\n"
+"\n"
 "Tuto akci nelze vrátit zpět."
 
 #: eeschema/widgets/hierarchy_pane.cpp:601
@@ -32061,14 +32063,15 @@ msgid "Save Project To"
 msgstr "Uložit projekt do"
 
 #: kicad/tools/kicad_manager_control.cpp:699
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Folder '%s' could not be created.\n"
 "\n"
 "Please make sure you have sufficient permissions."
 msgstr ""
-"Složku '%s' se nepodařilo vytvořit.\\n\\n"
-"Zkontrolujte, zda máte dostatečná oprávnění."
+"Složku '%s' nelze vytvořit.\n"
+"\n"
+"Zkontrolujte, jestli máte dostatečná oprávnění."
 
 #: kicad/tools/kicad_manager_control.cpp:763
 msgid "Create (or open) a project to edit a schematic."
