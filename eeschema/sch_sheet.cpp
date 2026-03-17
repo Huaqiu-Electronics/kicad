@@ -44,7 +44,6 @@
 #include <sch_symbol.h>
 #include <sch_painter.h>
 #include <schematic.h>
-#include <settings/color_settings.h>
 #include <settings/settings_manager.h>
 #include <trace_helpers.h>
 #include <validators.h>
@@ -1451,20 +1450,17 @@ void SCH_SHEET::Plot( PLOTTER* aPlotter, bool aBackground, const SCH_PLOT_OPTS& 
 
     if( GetDNP( &instance, variantName) )
     {
-        COLOR_SETTINGS* colors = ::GetColorSettings( DEFAULT_THEME );
-        BOX2I           bbox = GetBodyBoundingBox();
-        BOX2I           pins = GetBoundingBox();
-        VECTOR2D        margins( std::max( bbox.GetX() - pins.GetX(),
-                                           pins.GetEnd().x - bbox.GetEnd().x ),
-                                 std::max( bbox.GetY() - pins.GetY(),
-                                           pins.GetEnd().y - bbox.GetEnd().y ) );
-        int             strokeWidth = 3.0 * schIUScale.MilsToIU( DEFAULT_LINE_WIDTH_MILS );
+        BOX2I    bbox = GetBodyBoundingBox();
+        BOX2I    pins = GetBoundingBox();
+        VECTOR2D margins( std::max( bbox.GetX() - pins.GetX(), pins.GetEnd().x - bbox.GetEnd().x ),
+                          std::max( bbox.GetY() - pins.GetY(), pins.GetEnd().y - bbox.GetEnd().y ) );
+        int      strokeWidth = 3.0 * schIUScale.MilsToIU( DEFAULT_LINE_WIDTH_MILS );
 
         margins.x = std::max( margins.x * 0.6, margins.y * 0.3 );
         margins.y = std::max( margins.y * 0.6, margins.x * 0.3 );
         bbox.Inflate( KiROUND( margins.x ), KiROUND( margins.y ) );
 
-        aPlotter->SetColor( colors->GetColor( LAYER_DNP_MARKER ) );
+        aPlotter->SetColor( renderSettings->GetLayerColor( LAYER_DNP_MARKER ) );
 
         aPlotter->ThickSegment( bbox.GetOrigin(), bbox.GetEnd(), strokeWidth, nullptr );
 
