@@ -607,8 +607,7 @@ void EDA_SHAPE::UpdateHatching() const
 
     case SHAPE_T::RECTANGLE:
         {
-            ROUNDRECT rr( SHAPE_RECT( getPosition(), GetRectangleWidth(), GetRectangleHeight() ),
-                          GetCornerRadius() );
+            ROUNDRECT rr( SHAPE_RECT( getPosition(), GetRectangleWidth(), GetRectangleHeight() ), GetCornerRadius() );
             rr.TransformToPolygon( shapeBuffer, getMaxError() );
         }
         break;
@@ -639,6 +638,14 @@ void EDA_SHAPE::UpdateHatching() const
 
     if( majorAxis / spacing > 100 )
         spacing = majorAxis / 100;
+
+    SHAPE_POLY_SET knockouts = getHatchingKnockouts();
+
+    if( !knockouts.IsEmpty() )
+    {
+        shapeBuffer.BooleanSubtract( knockouts );
+        shapeBuffer.Fracture();
+    }
 
     // Generate hatch lines for stroke-based rendering. All hatch types use line segments.
     std::vector<SEG> hatchSegs = shapeBuffer.GenerateHatchLines( slopes, spacing, -1 );
@@ -701,9 +708,15 @@ void EDA_SHAPE::UpdateHatching() const
         m_hatching.BooleanSubtract( holes );
         m_hatching.Fracture();
 
-        // Must re-rotate after Fracture().  Clipper struggles mightily with fracturing
-        // 45-degree holes.
+        // Must re-rotate after Fracture().  Clipper struggles mightily with fracturing 45-degree holes.
         m_hatching.Rotate( ANGLE_45 );
+
+        if( !knockouts.IsEmpty() )
+        {
+            m_hatching.BooleanSubtract( knockouts );
+            m_hatching.Fracture();
+        }
+
         m_hatchingDirty = false;
     }
 }

@@ -442,6 +442,11 @@ protected:
         m_fill = aFlag ? FILL_T::FILLED_SHAPE : FILL_T::NO_FILL;
     }
 
+    virtual SHAPE_POLY_SET getHatchingKnockouts() const
+    {
+        return SHAPE_POLY_SET();
+    }
+
     void move( const VECTOR2I& aMoveVector );
     void rotate( const VECTOR2I& aRotCentre, const EDA_ANGLE& aAngle );
     void flip( const VECTOR2I& aCentre, FLIP_DIRECTION aFlipDirection );
