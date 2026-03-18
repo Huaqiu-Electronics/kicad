@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:47+0000\n"
+"PO-Revision-Date: 2026-03-19 00:24+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/kicad/master-source/zh_Hant/>\n"
@@ -9862,11 +9862,11 @@ msgstr "清除選定的圖形層"
 
 #: common/tool/action_toolbar.cpp:1210
 msgid "Symbol unit selector"
-msgstr "符號單元標記:"
+msgstr "符號單元選擇器"
 
 #: common/tool/action_toolbar.cpp:1211
 msgid "Displays the current unit"
-msgstr "關閉目前編輯器"
+msgstr "顯示當前符號單元"
 
 #: common/tool/action_toolbar.cpp:1216
 #, fuzzy
@@ -26884,7 +26884,7 @@ msgstr "放置符號"
 
 #: eeschema/tools/sch_drawing_tools.cpp:635
 msgid "Select a single symbol to place the next unit."
-msgstr "選擇一個角落後新增新的拐角。"
+msgstr "選擇一個符號以放置下一個單元。"
 
 #: eeschema/tools/sch_drawing_tools.cpp:648
 msgid "This symbol has only one unit."
