@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-14 23:19+0000\n"
+"PO-Revision-Date: 2026-03-18 20:46+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kicad/master-"
 "source/hu/>\n"
@@ -2457,7 +2457,7 @@ msgstr "Rajzjelek"
 #: pcbnew/widgets/panel_selection_filter_base.cpp:29
 #: pcbnew/widgets/search_handlers.cpp:138
 msgid "Footprints"
-msgstr "Alkatrész rajzolatok"
+msgstr "Lábkiosztások"
 
 #: common/dialog_about/AboutDialog_main.cpp:1117
 msgid "Icons"
@@ -3014,7 +3014,7 @@ msgstr "(opcionális)"
 #: pcbnew/dialogs/panel_setup_tuning_patterns_base.cpp:320
 #: pcbnew/dialogs/panel_setup_tuning_patterns_base.cpp:336
 msgid "unit"
-msgstr "mértékegység"
+msgstr "egység"
 
 #: common/dialogs/dialog_grid_settings_base.cpp:50
 msgid "Linked"
@@ -6026,7 +6026,7 @@ msgstr "Elválasztó"
 #: common/dialogs/panel_toolbar_customization.cpp:390
 #, c-format
 msgid "Spacer: %i"
-msgstr "Elválasztó: %i"
+msgstr "Térköz: %i"
 
 #: common/dialogs/panel_toolbar_customization.cpp:552 common/eda_item.cpp:451
 #: common/eda_item.cpp:476 eeschema/sch_group.cpp:358 pcbnew/pcb_group.cpp:413
@@ -6370,7 +6370,7 @@ msgstr "Rajzjel Szerkesztő"
 #: common/eda_base_frame.cpp:1484 common/eda_base_frame.cpp:1498
 #: common/eda_base_frame.cpp:1530 common/eda_base_frame.cpp:1551
 msgid "Display Options"
-msgstr "Beállítások megjelenítése"
+msgstr "Megjelenítési beállítások"
 
 #: common/eda_base_frame.cpp:1452 common/eda_base_frame.cpp:1462
 #: common/eda_base_frame.cpp:1487 common/eda_base_frame.cpp:1501
@@ -6390,7 +6390,7 @@ msgstr "Színek"
 #: common/eda_base_frame.cpp:1511 common/eda_base_frame.cpp:1532
 #: common/eda_base_frame.cpp:1554
 msgid "Toolbars"
-msgstr "Eszközök"
+msgstr "Eszköztárak"
 
 #: common/eda_base_frame.cpp:1459 common/hotkey_store.cpp:77
 #: common/tool/common_tools.cpp:616 eeschema/menubar.cpp:133
@@ -9352,7 +9352,7 @@ msgstr "ANSI-E méret 34 × 44 hüvelyk"
 
 #: common/page_info.cpp:62
 msgid "User (Custom)"
-msgstr "Egyedi lapméret"
+msgstr "Felhasználói (Egyedi)"
 
 #: common/page_info.cpp:64
 msgid "US Letter 8.5 x 11in"
@@ -11278,7 +11278,7 @@ msgstr "<nincs találat>"
 #: eeschema/sch_symbol.cpp:2646 pcbnew/board_statistics_report.cpp:543
 #: pcbnew/dialogs/dialog_board_statistics_base.cpp:120
 msgid "Board"
-msgstr "Nyákterv"
+msgstr "Panel"
 
 #: common/widgets/footprint_diff_widget.cpp:42 cvpcb/cvpcb_mainframe.cpp:827
 #: eeschema/sch_base_frame.cpp:659 eeschema/sch_symbol.cpp:2697
@@ -12384,7 +12384,7 @@ msgstr "Sorszámozás üzenet:"
 #: eeschema/dialogs/dialog_annotate.cpp:115
 #: eeschema/dialogs/dialog_annotate.cpp:260
 msgid "Annotate"
-msgstr "Feliratoz"
+msgstr "Sorszámoz"
 
 #: eeschema/dialogs/dialog_annotate_base.cpp:40
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:25
@@ -21936,7 +21936,7 @@ msgstr "Nyomtatva ide: '%s'.\n"
 #: eeschema/sch_plotter.cpp:728 pcbnew/pcb_plotter.cpp:288
 #, c-format
 msgid "Plotted to '%s'."
-msgstr "Nyomtatva ide: '%s'."
+msgstr "Kirajzolva: '%s'."
 
 #: eeschema/sch_plotter.cpp:854
 #, c-format
@@ -36306,7 +36306,7 @@ msgstr "Vonalkód módosítása"
 #: pcbnew/pcb_dimension.cpp:2139 pcbnew/pcb_fields_grid_table.cpp:159
 #: pcbnew/pcb_text.cpp:723 pcbnew/pcb_textbox.cpp:868
 msgid "Knockout"
-msgstr "Kiütés"
+msgstr "Negatív szöveg"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:59
 msgid "If checked, the barcode will be inverted with a margin around it"
@@ -41341,14 +41341,14 @@ msgstr "Furat utómegmunkálás"
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:534
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:581 pcbnew/pad.cpp:3304
 msgid "Countersink"
-msgstr "Süllyesztés"
+msgstr "Kúpos süllyesztés"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1116
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1159
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:534
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:581 pcbnew/pad.cpp:3303
 msgid "Counterbore"
-msgstr "Süllyesztés"
+msgstr "Hengeres süllyesztés"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1197
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1284 pcbnew/pcb_track.cpp:3179
@@ -54688,7 +54688,7 @@ msgstr "Kapu hálózatainak cseréje..."
 #: pcbnew/tools/edit_tool.cpp:452
 #, c-format
 msgid "Swap with %s"
-msgstr "Cserre erre: %s"
+msgstr "Csere ezzel: %s"
 
 #: pcbnew/tools/edit_tool.cpp:989
 #, c-format
