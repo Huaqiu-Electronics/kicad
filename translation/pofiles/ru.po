@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-18 22:14+0000\n"
 "Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ru/>\n"
@@ -20015,9 +20015,8 @@ msgid "Number of Symbol Units"
 msgstr "Количество бит"
 
 #: eeschema/lib_symbol.cpp:2576
-#, fuzzy
 msgid "Units are Interchangeable"
-msgstr "Все части не взаимозаменяемы"
+msgstr "Части взаимозаменяемы"
 
 #: eeschema/libraries/legacy_symbol_library.cpp:583
 #, c-format
