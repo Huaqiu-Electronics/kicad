@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-15 17:34+0000\n"
+"PO-Revision-Date: 2026-03-18 20:46+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kicad/master-"
 "source/ca/>\n"
@@ -2016,7 +2016,7 @@ msgstr "F.Cu"
 
 #: bitmap2component/bitmap2cmp_panel_base.cpp:179
 msgid "F.Silkscreen"
-msgstr "Serigrafia.F"
+msgstr "F.Silkscreen"
 
 #: bitmap2component/bitmap2cmp_panel_base.cpp:179
 msgid "F.Mask"
@@ -15593,7 +15593,7 @@ msgstr ""
 
 #: eeschema/dialogs/dialog_plot_schematic_base.h:90
 msgid "Plot Schematic"
-msgstr "Representa l'esquemàtic"
+msgstr "Ploteja l'esquemàtic"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
 msgid "Remote Symbol Settings"
@@ -16350,7 +16350,7 @@ msgstr "Font:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:132
 msgid "Sweep type:"
-msgstr "Tipus d'escombrat:"
+msgstr "Tipus de barrida:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:136
 msgid "Source 1"
@@ -16602,7 +16602,7 @@ msgstr "Dreta:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:892
 msgid "Plot Setup"
-msgstr "Configuració de la representació"
+msgstr "Configuració del ploteig"
 
 #: eeschema/dialogs/dialog_sim_command_base.h:219
 msgid "Simulation Analysis"
@@ -24346,19 +24346,19 @@ msgstr "Potència"
 
 #: eeschema/sim/sim_plot_tab.cpp:919
 msgid "Voltage (swept)"
-msgstr "Voltatge (escombrat)"
+msgstr "Voltatge (en barrida)"
 
 #: eeschema/sim/sim_plot_tab.cpp:930
 msgid "Current (swept)"
-msgstr "Corrent (escombrat)"
+msgstr "Corrent (en barrida)"
 
 #: eeschema/sim/sim_plot_tab.cpp:941
 msgid "Resistance (swept)"
-msgstr "Resistència (escombrada)"
+msgstr "Resistència (en barrida)"
 
 #: eeschema/sim/sim_plot_tab.cpp:952
 msgid "Temperature (swept)"
-msgstr "Temperatura (escombrada)"
+msgstr "Temperatura (en barrida)"
 
 #: eeschema/sim/sim_plot_tab.cpp:970
 msgid "Voltage (measured)"
@@ -27111,7 +27111,7 @@ msgstr ""
 
 #: eeschema/tools/sch_actions.cpp:1713
 msgid "Dark Mode Plots"
-msgstr "Gràfics en mode fosc"
+msgstr "Traçats en mode fosc"
 
 #: eeschema/tools/sch_actions.cpp:1714
 msgid "Draw plots with a black background"
@@ -41853,11 +41853,11 @@ msgstr "Espai d'alleujament:"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:929
 msgid "Spoke width:"
-msgstr "Amplada de l'alleujament:"
+msgstr "Amplada del raig:"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:940
 msgid "Spoke angle:"
-msgstr "Angle del radi:"
+msgstr "Angle del raig:"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:979
 msgid "Leave values blank to use parent footprint or netclass values."
@@ -44174,7 +44174,7 @@ msgstr ""
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:300
 msgid "Silk"
-msgstr "Seda"
+msgstr "Serigrafia"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:328
 msgid "Minimum item clearance:"
@@ -46417,7 +46417,7 @@ msgstr "El marge entre els pads de la mateixa xarxa i les àrees omplertes."
 
 #: pcbnew/dialogs/panel_zone_properties_base.cpp:123
 msgid "Thermal spoke width:"
-msgstr "Amplada de l'alleujament tèrmic:"
+msgstr "Amplada del raig tèrmic:"
 
 #: pcbnew/dialogs/panel_zone_properties_base.cpp:128
 msgid "Width of copper in thermal reliefs."
@@ -57546,7 +57546,7 @@ msgstr "Línies d'embolic corbes"
 
 #: pcbnew/tools/pcb_actions.cpp:1670
 msgid "Ratsnest Mode (3-state)"
-msgstr "Mode de línies aèries (3 estats)"
+msgstr "Mode d'embolic (3 estats)"
 
 #: pcbnew/tools/pcb_actions.cpp:1671
 msgid ""
@@ -59061,12 +59061,12 @@ msgstr "Els colors de xarxa i classe de xarxa no es mostren"
 #: pcbnew/widgets/appearance_controls.cpp:2634
 #, c-format
 msgid "Ratsnest display (%s):"
-msgstr "Visualització de línies aèries (%s):"
+msgstr "Visualització d'embolic (%s):"
 
 #: pcbnew/widgets/appearance_controls.cpp:754
 #: pcbnew/widgets/appearance_controls.cpp:2636
 msgid "Ratsnest display:"
-msgstr "Visualització del ratsnest:"
+msgstr "Visualització de l'embolic:"
 
 #: pcbnew/widgets/appearance_controls.cpp:759
 #: pcbnew/widgets/appearance_controls.cpp:2639
