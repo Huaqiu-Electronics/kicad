@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:46+0000\n"
+"PO-Revision-Date: 2026-03-19 00:30+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ro/>\n"
@@ -27102,11 +27102,11 @@ msgstr "Lipirea unui text lung poate fi foarte lentă.  Doriți să continuați?
 
 #: eeschema/tools/sch_editor_control.cpp:2145 pcbnew/tools/pcb_control.cpp:1152
 msgid "Paste Cells"
-msgstr "Pastă Celule"
+msgstr "Lipiți celulele"
 
 #: eeschema/tools/sch_editor_control.cpp:2150 pcbnew/tools/pcb_control.cpp:1157
 msgid "Failed to paste cells"
-msgstr "Eșuat la pastă celule"
+msgstr "Eroare la lipirea celulelor"
 
 #: eeschema/tools/sch_editor_control.cpp:2266
 #, c-format
@@ -36462,7 +36462,7 @@ msgstr "Față"
 #: pcbnew/dialogs/dialog_render_job.cpp:37
 #: pcbnew/dialogs/panel_setup_mask_and_paste_base.cpp:122
 msgid "Back"
-msgstr "Înapoi"
+msgstr "Spate"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:193
 msgid "Exclude locked footprints"
@@ -55478,7 +55478,7 @@ msgstr "Generare automată a zonelor cu reguli de plasament"
 
 #: pcbnew/tools/pad_tool.cpp:163
 msgid "Paste Pad Properties"
-msgstr "Pastă Pad Proprietăți"
+msgstr "Lipiți proprietățile pad-ului"
 
 #: pcbnew/tools/pad_tool.cpp:268
 msgid "Push Pad Settings"
