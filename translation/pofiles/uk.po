@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:46+0000\n"
+"PO-Revision-Date: 2026-03-19 00:30+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kicad/master-"
 "source/uk/>\n"
@@ -9699,7 +9699,7 @@ msgstr "Редагування за замовчуванням"
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:142
 #: pcbnew/footprint.cpp:4825 pcbnew/widgets/search_handlers.cpp:140
 msgid "Reference"
-msgstr "Налаштування"
+msgstr "Позначення"
 
 #: common/settings/bom_settings.cpp:147
 msgid "Grouped By Value"
@@ -14331,7 +14331,7 @@ msgstr "Частина"
 #: eeschema/sch_item.cpp:816 eeschema/sch_item.cpp:899
 #: eeschema/sch_symbol.cpp:3942 eeschema/tools/sch_edit_tool.cpp:148
 msgid "Body Style"
-msgstr "Тип кузова"
+msgstr "Стиль корпусу"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:344
 #, c-format
@@ -14630,7 +14630,7 @@ msgstr "Символ живлення"
 
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:1050
 msgid "Local Power Symbol"
-msgstr "Символ місцевої влади"
+msgstr "Локальний символ живлення"
 
 #: eeschema/dialogs/dialog_lib_fields_table_base.cpp:49
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:56
