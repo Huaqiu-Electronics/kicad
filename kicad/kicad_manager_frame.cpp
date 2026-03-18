@@ -302,9 +302,6 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
     m_acceptedExts.emplace( FILEEXT::DrillFileExtension, &KICAD_MANAGER_ACTIONS::viewDroppedGerbers );
 
     DragAcceptFiles( true );
-
-    // Ensure the window is on top
-    Raise();
 }
 
 
