@@ -172,7 +172,7 @@ include_directories(
     ${INC_AFTER}
 )
 
-set_source_files_properties( test_remote_provider_metadata.cpp PROPERTIES
+set_source_files_properties( test_remote_provider_metadata.cpp test_remote_provider_client.cpp PROPERTIES
         COMPILE_DEFINITIONS "QA_SRC_ROOT=(\"${CMAKE_SOURCE_DIR}\")"
         )
 

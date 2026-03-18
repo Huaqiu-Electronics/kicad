@@ -24,10 +24,21 @@
 #include <oauth/oauth_session.h>
 #include <oauth/secure_token_store.h>
 #include <remote_provider_client.h>
+#include <wx/utils.h>
 
 
 namespace
 {
+wxFileName schemaPath()
+{
+    wxFileName schemaFile = wxFileName::DirName( wxString::FromUTF8( QA_SRC_ROOT ) );
+    schemaFile.AppendDir( wxS( "resources" ) );
+    schemaFile.AppendDir( wxS( "schemas" ) );
+    schemaFile.SetFullName( wxS( "kicad-remote-provider-metadata-v1.schema.json" ) );
+    return schemaFile;
+}
+
+
 nlohmann::json providerMetadataJson( const wxString& aAuthType = wxS( "oauth2" ) )
 {
     nlohmann::json auth = { { "type", aAuthType.ToStdString() } };
@@ -62,7 +73,7 @@ REMOTE_PROVIDER_METADATA parseProviderMetadata( const wxString& aAuthType = wxS(
 {
     wxString                                error;
     std::optional<REMOTE_PROVIDER_METADATA> metadata =
-            REMOTE_PROVIDER_METADATA::FromJson( providerMetadataJson( aAuthType ), error );
+            REMOTE_PROVIDER_METADATA::FromJson( providerMetadataJson( aAuthType ), schemaPath(), error );
 
     if( !metadata.has_value() )
         throw std::runtime_error( error.ToStdString() );
@@ -109,10 +120,30 @@ wxString dumpJson( const nlohmann::json& aJson )
 {
     return wxString::FromUTF8( aJson.dump().c_str() );
 }
+struct BUILD_DIR_FIXTURE
+{
+    BUILD_DIR_FIXTURE()
+    {
+        m_wasSet = wxGetEnv( wxS( "KICAD_RUN_FROM_BUILD_DIR" ), &m_oldValue );
+
+        if( !m_wasSet )
+            wxSetEnv( wxS( "KICAD_RUN_FROM_BUILD_DIR" ), wxS( "1" ) );
+    }
+
+    ~BUILD_DIR_FIXTURE()
+    {
+        if( !m_wasSet )
+            wxUnsetEnv( wxS( "KICAD_RUN_FROM_BUILD_DIR" ) );
+    }
+
+    bool     m_wasSet;
+    wxString m_oldValue;
+};
+
 } // namespace
 
 
-BOOST_AUTO_TEST_SUITE( RemoteProviderClientTests )
+BOOST_FIXTURE_TEST_SUITE( RemoteProviderClientTests, BUILD_DIR_FIXTURE )
 
 BOOST_AUTO_TEST_CASE( DiscoveryFetchesWellKnownMetadata )
 {
