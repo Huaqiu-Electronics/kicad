@@ -929,6 +929,7 @@ void SCH_EDIT_FRAME::KiwayMailIn( KIWAY_MAIL_EVENT& mail )
 
             if( success )
             {
+                manager.AbortAsyncLoads();
                 manager.LoadProjectTables( { LIBRARY_TABLE_TYPE::SYMBOL } );
 
                 std::ranges::for_each( toLoad,

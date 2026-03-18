@@ -526,6 +526,11 @@ void LIBRARY_MANAGER::LoadProjectTables( std::initializer_list<LIBRARY_TABLE_TYP
 
 void LIBRARY_MANAGER::ProjectChanged()
 {
+    // Abort any running async library loads before reloading project tables.
+    // Background workers hold raw LIBRARY_TABLE_ROW pointers that become dangling
+    // when loadTables() destroys and replaces the table objects.
+    AbortAsyncLoads();
+
     LoadProjectTables( Pgm().GetSettingsManager().Prj().GetProjectDirectory() );
 
     std::scoped_lock lock( m_adaptersMutex );
@@ -762,9 +767,14 @@ void LIBRARY_MANAGER::ReloadTables( LIBRARY_TABLE_SCOPE aScope,
                                     std::initializer_list<LIBRARY_TABLE_TYPE> aTablesToLoad )
 {
     if( aScope == LIBRARY_TABLE_SCOPE::PROJECT )
+    {
+        AbortAsyncLoads();
         LoadProjectTables( aTablesToLoad );
+    }
     else
+    {
         LoadGlobalTables( aTablesToLoad );
+    }
 }
 
 
