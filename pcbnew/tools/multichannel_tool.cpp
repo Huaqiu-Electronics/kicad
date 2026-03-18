@@ -37,6 +37,7 @@
 #include <geometry/convex_hull.h>
 #include <geometry/shape_utils.h>
 #include <pcb_group.h>
+#include <pcb_generator.h>
 #include <footprint.h>
 #include <pad.h>
 #include <pcb_text.h>
@@ -1017,6 +1018,27 @@ int MULTICHANNEL_TOOL::findRoutingInRuleArea( RULE_AREA* aRuleArea, std::set<BOA
             if( drawing->IsConnected() )
                 testAndAdd( static_cast<BOARD_CONNECTED_ITEM*>( drawing ) );
         }
+
+        for( PCB_GENERATOR* generator : board()->Generators() )
+        {
+            if( generator->GetGeneratorType() != wxT( "tuning_pattern" ) )
+                continue;
+
+            if( !generator->HitTest( aRAPoly.Outline( 0 ), false ) )
+                continue;
+
+            for( EDA_ITEM* member : generator->GetItems() )
+            {
+                if( BOARD_CONNECTED_ITEM* bci = dynamic_cast<BOARD_CONNECTED_ITEM*>( member ) )
+                {
+                    if( !aOutput.contains( bci ) )
+                    {
+                        aOutput.insert( bci );
+                        count++;
+                    }
+                }
+            }
+        }
     }
 
     return count;
@@ -1092,6 +1114,14 @@ bool MULTICHANNEL_TOOL::copyRuleAreaContents( RULE_AREA* aRefArea, RULE_AREA* aT
                         PCB_GROUP* newGroup = static_cast<PCB_GROUP*>(
                                 static_cast<PCB_GROUP*>( parentGroup->AsEdaItem() )->Duplicate( false ) );
                         newGroup->GetItems().clear();
+                        newGroup->SetParentGroup( nullptr );
+
+                        if( newGroup->Type() == PCB_GENERATOR_T )
+                        {
+                            newGroup->Rotate( VECTOR2( 0, 0 ), rot );
+                            newGroup->Move( disp );
+                        }
+
                         groupMap[parentGroup] = newGroup;
                         aCommit->Add( newGroup );
                     }
