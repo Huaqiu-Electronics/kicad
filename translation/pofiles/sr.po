@@ -4,13 +4,14 @@
 # Luka Borkovic <borkovic@gmail.com>, 2025, 2026.
 # Seth Hillbrand <seth@kipro-pcb.com>, 2026.
 # dsa-t <dudesuchamazing@gmail.com>, 2026.
+# Damjan Prerad <damjan@kipro-pcb.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 21:48+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
+"PO-Revision-Date: 2026-03-19 00:23+0000\n"
+"Last-Translator: Damjan Prerad <damjan@kipro-pcb.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sr/>\n"
 "Language: sr\n"
@@ -110,7 +111,7 @@ msgstr "Последње трајање исцртавања %.0f ms"
 #: 3d-viewer/3d_canvas/eda_3d_canvas.cpp:812
 #, c-format
 msgid "OpenGL error during off-screen rendering: 0x%04X\n"
-msgstr ""
+msgstr "OpenGL грешка током рендеровања ван екрана:0x%04X\n"
 
 #: 3d-viewer/3d_canvas/eda_3d_canvas.cpp:977
 #, c-format
@@ -138,7 +139,7 @@ msgstr "Учитај OpenGL: плочу"
 
 #: 3d-viewer/3d_rendering/opengl/create_scene.cpp:753
 msgid "Load OpenGL: holes and vias"
-msgstr "Учитај OpenGL: рупе и вие"
+msgstr "Учитај OpenGL: рупе и вије"
 
 #: 3d-viewer/3d_rendering/opengl/create_scene.cpp:810
 msgid "Load OpenGL: layers"
@@ -231,7 +232,7 @@ msgstr "Помери плочу нагоре"
 
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:135
 msgid "Reset to Default Settings"
-msgstr "Врати на почетна подешавања"
+msgstr "Врати на подразумевана подешавања"
 
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:142
 #: bitmap2component/bitmap2cmp_frame.cpp:313 cvpcb/menubar.cpp:79
@@ -243,7 +244,7 @@ msgstr "Врати на почетна подешавања"
 #: pcbnew/menubar_footprint_editor.cpp:247 pcbnew/menubar_pcb_editor.cpp:478
 #: pcbnew/toolbars_footprint_viewer.cpp:138
 msgid "&File"
-msgstr "&Фајл"
+msgstr "&Датотека"
 
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:143 cvpcb/menubar.cpp:80
 #: eeschema/menubar.cpp:356
@@ -261,7 +262,7 @@ msgstr "&Уреди"
 #: pcbnew/menubar_footprint_editor.cpp:249 pcbnew/menubar_pcb_editor.cpp:480
 #: pcbnew/toolbars_footprint_viewer.cpp:139
 msgid "&View"
-msgstr "&Погледати"
+msgstr "&Поглед"
 
 #: 3d-viewer/3d_viewer/3d_menubar.cpp:145
 #: bitmap2component/bitmap2cmp_frame.cpp:314 cvpcb/menubar.cpp:81
@@ -308,14 +309,14 @@ msgstr "застареле боје"
 
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:750
 msgid "3D Image File Name"
-msgstr "Име фајла 3D слике"
+msgstr "Име датотеке 3D слике"
 
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:803
 #: common/eda_base_frame.cpp:1659 common/eda_base_frame.cpp:1663
 #: pcbnew/dialogs/dialog_export_odbpp.cpp:306
 #, c-format
 msgid "Insufficient permissions to save file '%s'."
-msgstr "Недовољне дозволе за чување фајла '%s'."
+msgstr "Недовољне дозволе за чување датотеке '%s'."
 
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:805 common/confirm.cpp:193
 #: common/confirm.cpp:218 common/dialogs/dialog_design_block_properties.cpp:106
@@ -355,11 +356,11 @@ msgstr "Грешка"
 
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:981
 msgid "Failed to copy image to clipboard"
-msgstr "Неуспешно копирање слике у clipboard"
+msgstr "Неуспешно копирање слике у привремену меморију"
 
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:995
 msgid "Can't save file"
-msgstr "Немогуће сачувати фајл"
+msgstr "Немогуће сачувати датотеку"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:48
 msgid "Reload board"
@@ -379,16 +380,15 @@ msgstr "Исцртај тренутни приказ коришћењем Raytra
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:63
 msgid "Copy 3D image to clipboard"
-msgstr "Копирај 3D слику у clipboard"
+msgstr "Копирај 3D слику у  привремену меморију"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:64
 msgid "Copy the current 3D image to the clipboard"
-msgstr "Копирај тренутну 3D слику у clipboard"
+msgstr "Копирај тренутну 3D слику у привремену меморију"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:71
-#, fuzzy
 msgid "Export Image..."
-msgstr "Уреди слику..."
+msgstr "Извези слику..."
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:72
 #, fuzzy
