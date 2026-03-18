@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 21:24+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/kicad/master-"
 "source/et/>\n"
 "Language: et\n"
@@ -343,7 +343,7 @@ msgstr "Ebapiisavad õigused faili '%s' salvestamiseks."
 #: pcbnew/drc/drc_item.cpp:233 pcbnew/pcb_marker.cpp:241
 #: pcbnew/widgets/appearance_controls.cpp:2833
 msgid "Error"
-msgstr "Eksimus"
+msgstr "Viga"
 
 #: 3d-viewer/3d_viewer/eda_3d_viewer_frame.cpp:981
 msgid "Failed to copy image to clipboard"
@@ -2755,7 +2755,7 @@ msgstr "Nimi"
 
 #: common/dialogs/dialog_configure_paths_base.cpp:40
 msgid "Path"
-msgstr "Asukoht"
+msgstr "Tee"
 
 #: common/dialogs/dialog_design_block_properties.cpp:102
 #, c-format
@@ -5233,7 +5233,7 @@ msgstr "Suumi"
 #: pcbnew/widgets/appearance_controls.cpp:2628
 #: pcbnew/widgets/appearance_controls.cpp:2647 pcbnew/zone.cpp:1877
 msgid "None"
-msgstr "Ei"
+msgstr "Puudub"
 
 #: common/dialogs/panel_mouse_settings_base.cpp:148
 msgid "Right button drag:"
@@ -15917,7 +15917,7 @@ msgstr ""
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:839
 #: pcbnew/drc/drc_test_provider_schematic_parity.cpp:184
 msgid "Do not populate"
-msgstr "Ära asusta"
+msgstr "Ära paigalda"
 
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:76
 #: eeschema/dialogs/dialog_sheet_properties_base.cpp:177
@@ -24297,7 +24297,7 @@ msgstr "Signaal"
 #: eeschema/sim/simulator_frame_ui_base.cpp:112
 #: pcbnew/dialogs/dialog_plot.cpp:246 pcbnew/dialogs/dialog_plot_base.h:154
 msgid "Plot"
-msgstr "Joonis"
+msgstr "Joonesta"
 
 #: eeschema/sim/simulator_frame_ui.cpp:742
 #: eeschema/sim/simulator_frame_ui_base.cpp:114
@@ -26806,7 +26806,7 @@ msgstr "Joonista teisene signaalrada (vool või faas) punktiirjoonega"
 
 #: eeschema/tools/sch_actions.cpp:1713
 msgid "Dark Mode Plots"
-msgstr "Tumeda režiimi graafikud"
+msgstr "Tumeda režiimi joonestused"
 
 #: eeschema/tools/sch_actions.cpp:1714
 msgid "Draw plots with a black background"
@@ -27473,7 +27473,7 @@ msgstr "Salvesta graafik pildina"
 
 #: eeschema/tools/simulator_control.cpp:294
 msgid "Save Plot Data"
-msgstr "Salvesta graafiku andmed"
+msgstr "Salvesta joonestusandmed"
 
 #: eeschema/tools/simulator_control.cpp:547
 msgid "SPICE Netlist"
@@ -35453,7 +35453,7 @@ msgstr "Vasktsoonide tesselleerimine..."
 #: pcbnew/widgets/panel_selection_filter.cpp:225
 #: pcbnew/widgets/panel_selection_filter_base.cpp:45
 msgid "Pads"
-msgstr "Jootepadi"
+msgstr "Jootepadid"
 
 #: pcbnew/board.cpp:2217 pcbnew/board_statistics_report.cpp:613
 #: pcbnew/dialogs/dialog_board_statistics_base.cpp:161
@@ -39391,7 +39391,7 @@ msgstr ""
 #: pcbnew/dialogs/panel_fp_editor_graphics_defaults_base.cpp:66
 #: pcbnew/dialogs/panel_setup_text_and_graphics_base.cpp:68
 msgid "Courtyards"
-msgstr "Hoovid"
+msgstr "Courtyard-alad"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:425
 msgid "Exempt from courtyard requirement"
@@ -40320,11 +40320,11 @@ msgstr "-- jäta muutmata --  "
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:187
 msgid "Via size:"
-msgstr "Läbiviik suurus:"
+msgstr "Läbiviigi suurus:"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:196
 msgid "Via annular rings:"
-msgstr "Läbiviik rõngad:"
+msgstr "Läbiviigi rõngad:"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:200
 #: pcbnew/dialogs/dialog_pad_properties.cpp:1228
@@ -40350,7 +40350,7 @@ msgstr "Ainult algus- ja lõppkihid"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:206
 msgid "Via protection features:"
-msgstr "Läbiviik kaitsefunktsioonid:"
+msgstr "Läbiviigi kaitsefunktsioonid:"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:213
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:394
@@ -42164,7 +42164,7 @@ msgstr "Väike märk"
 
 #: pcbnew/dialogs/dialog_print_pcbnew.cpp:237
 msgid "Real drill"
-msgstr "Tegelik puuri"
+msgstr "Tegelik puurauk"
 
 #: pcbnew/dialogs/dialog_print_pcbnew.cpp:254
 msgid "Print one page per layer"
@@ -42693,7 +42693,7 @@ msgstr "Jäta ühendusniidid muutmata"
 
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:1640
 msgid "Edit Track/Via Properties"
-msgstr "Muuda raja/läbiviik omadusi"
+msgstr "Muuda raja/läbiviigi omadusi"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:41
 msgid "Automatically update via nets"
@@ -42731,17 +42731,17 @@ msgstr ""
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:310
 #: pcbnew/dialogs/dialog_track_via_size_base.cpp:36
 msgid "Via diameter:"
-msgstr "Läbiviik läbimõõt:"
+msgstr "Läbiviigi läbimõõt:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:321
 #: pcbnew/dialogs/dialog_track_via_size_base.cpp:47
 msgid "Via hole:"
-msgstr "Läbiviik ava:"
+msgstr "Läbiviigi ava:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:351
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:77
 msgid "Via type:"
-msgstr "Läbiviik tüüp:"
+msgstr "Läbiviigi tüüp:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:355
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:63
@@ -43646,7 +43646,7 @@ msgstr ""
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:125
 msgid "Minimum via diameter:"
-msgstr "Minimaalne läbiviik läbimõõt:"
+msgstr "Minimaalne läbiviigi läbimõõt:"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:130
 msgid ""
@@ -43720,7 +43720,7 @@ msgstr "Mikroläbiviigud"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:271
 msgid "Minimum uVia diameter:"
-msgstr "Minimaalne mikroläbiviik läbimõõt:"
+msgstr "Minimaalne mikroläbiviigi läbimõõt:"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:276
 msgid ""
@@ -43732,7 +43732,7 @@ msgstr ""
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:287
 msgid "Minimum uVia hole:"
-msgstr "Minimaalne mikroläbiviik ava:"
+msgstr "Minimaalne mikroläbiviigi ava:"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:292
 msgid ""
@@ -45836,7 +45836,7 @@ msgstr "Ühiku viivitus"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:163
 msgid "Via Propagation"
-msgstr "Läbiviik levitamine"
+msgstr "Läbiviigi levitamine"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:170
 msgid "Global unit delay:"
@@ -45848,7 +45848,7 @@ msgstr "ps/cm"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:187
 msgid "Via delay overrides:"
-msgstr "Läbiviik viite ülekirjutused:"
+msgstr "Läbiviigi viite ülekirjutused:"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:204
 msgid "Signal Layer From"
@@ -46535,7 +46535,7 @@ msgstr "Ava suurus vahemikust väljas"
 
 #: pcbnew/drc/drc_item.cpp:141
 msgid "Via diameter"
-msgstr "Läbiviik läbimõõt"
+msgstr "Läbiviigi läbimõõt"
 
 #: pcbnew/drc/drc_item.cpp:145
 msgid "Padstack is questionable"
@@ -48543,7 +48543,7 @@ msgstr "kujundid"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2651
 msgid "pads"
-msgstr "jootepadi"
+msgstr "jootepadid"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2652
 msgid "vias"
