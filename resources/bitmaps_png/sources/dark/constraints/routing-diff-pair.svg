@@ -130,7 +130,7 @@
      inkscape:window-x="0"
      inkscape:window-y="34"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g9762" />
+     inkscape:current-layer="svg10653" />
   <title
      id="title1">SVG Image created as variants_footprint_03-B_Cu.svg date 2026-03-04T13:05:52 </title>
   <desc
@@ -228,14 +228,15 @@
        id="path1400" />
   </g>
   <g
-     style="fill:#f2eda1;fill-opacity:1;stroke:none"
+     style="fill:#f29100;fill-opacity:1;stroke:none"
      id="g1498"
      transform="translate(-155.64999,-63.150001)">
     <circle
        cx="159.5"
        cy="66.25"
        r="0.52719998"
-       id="circle1497" />
+       id="circle1497"
+       style="fill:#f29100;fill-opacity:1" />
   </g>
   <g
      style="fill:none;stroke:#ded3dd;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"

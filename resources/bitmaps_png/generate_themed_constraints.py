@@ -51,7 +51,7 @@ CONSTRAINT_FILES = {
     'minimum_via_diameter.svg': 'minimum-via-diameter.svg',
     'silk-to-soldermask-clearance.svg': 'silk-to-soldermask-clearance.svg',
     'silk-to-silk-clearance.svg': 'silk-to-silk-clearance.svg',
-    'minimum_soldermask_sliver.svg': 'minimum_soldermask_sliver.svg',
+    'minimum-soldermask-sliver.svg': 'minimum-soldermask-sliver.svg',
     'minimum-soldermask-silver.svg': 'minimum-soldermask-silver.svg',
     'soldermask-expansion.svg': 'soldermask-expansion.svg',
     'solderpaste-expansion.svg': 'solderpaste-expansion.svg',

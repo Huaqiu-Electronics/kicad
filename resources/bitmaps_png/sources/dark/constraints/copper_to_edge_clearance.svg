@@ -29,7 +29,7 @@
      id="namedview30"
      showgrid="true"
      inkscape:zoom="2.3075695"
-     inkscape:cx="81.687681"
+     inkscape:cx="81.68768"
      inkscape:cy="161.85861"
      inkscape:window-x="0"
      inkscape:window-y="34"
@@ -185,7 +185,7 @@
   </defs>
   <path
      id="rect4"
-     style="fill:#1a81c4;stroke:#1a81c4;stroke-width:0.1;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke;fill-opacity:1"
+     style="fill:#42b8eb;stroke:#1a81c4;stroke-width:0.1;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke;fill-opacity:1"
      d="m 18.849782,3.7031977 c -4.532828,-2.2702362 -9.656726,2.2929857 -15.9999995,0 -3.062288,7.6024473 3.390473,11.0667713 0,16.0000003 h 9.4999995 l 6.5,-6.5 z"
      sodipodi:nodetypes="cccccc" />
   <text
@@ -217,6 +217,6 @@
      sodipodi:nodetypes="cc" />
   <path
      d="m 15.849782,3.0508539 v 7.6875001 l -4.964844,4.964844 H 3.7950955 c -0.117369,-0.81713 -0.374846,-1.641855 -0.658204,-2.5 -0.262381,-0.794616 -0.543938,-1.616641 -0.763671,-2.5 H 8.814626 L 10.849782,8.6680414 V 3.8535883 c 0.856075,-0.1781593 1.688926,-0.3669821 2.5,-0.5195312 0.855447,-0.1608948 1.688758,-0.2783621 2.5,-0.2832032 z"
-     style="fill:#42b8eb;paint-order:markers fill stroke"
+     style="fill:#1a81c4;paint-order:markers fill stroke;fill-opacity:1"
      id="path8" />
 </svg>

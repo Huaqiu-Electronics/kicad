@@ -5,7 +5,7 @@
    height="163"
    viewBox="0 0 11.906251 7.9374998"
    id="svg89"
-   sodipodi:docname="silk_to_soldermask_clearance.svg"
+   sodipodi:docname="silk-to-soldermask-clearance.svg"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -65,15 +65,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="18.56181"
-     inkscape:cx="19.85259"
-     inkscape:cy="15.219421"
+     inkscape:zoom="9.9608571"
+     inkscape:cx="161.78327"
+     inkscape:cy="90.002295"
      inkscape:window-width="1512"
      inkscape:window-height="734"
      inkscape:window-x="0"
      inkscape:window-y="34"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g35" />
+     inkscape:current-layer="g22" />
   <title
      id="title1">SVG Image created as RuleCheckProject-B_Cu.svg date 2026-03-06T08:40:35 </title>
   <desc
@@ -87,7 +87,7 @@
        d="m 152.283,50.49 -0.0156,0.107 -0.0542,0.1109 -0.0873,0.0873 -0.1109,0.0542 -0.107,0.0156 h -1.25 l -0.107,-0.0156 -0.1109,-0.0542 -0.0873,-0.0873 -0.0542,-0.1109 -0.0156,-0.107 v -0.75 l 0.0156,-0.107 0.0542,-0.1109 0.0873,-0.0873 0.1109,-0.0542 0.107,-0.0156 h 1.25 l 0.107,0.0156 0.1109,0.0542 0.0873,0.0873 0.0542,0.1109 0.0156,0.107 z"
        id="path1" />
     <path
-       style="fill:#1a81c4;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       style="fill:#42b8eb;fill-opacity:1;fill-rule:evenodd;stroke:none"
        d="m 154.3715,46.1062 0.0458,0.0528 0.0112,0.0515 v 5.401 l -0.0197,0.067 -0.0528,0.0458 -0.0515,0.0112 h -5.123 l -0.067,-0.0197 -0.0458,-0.0528 -0.0112,-0.0515 v -1.9476 h 0.725 v 0.9022 0 l 0.003,0.0428 v 0 l 0.046,0.1848 0.0846,0.1706 v 0 l 0.1193,0.1484 v 0 l 0.1484,0.1193 v 0 l 0.1706,0.0846 v 0 0 l 0.1848,0.046 0.0428,0.0029 h 1.4022 l 0.0428,-0.0029 0.1848,-0.046 0.1706,-0.0846 0.1484,-0.1193 0.1193,-0.1484 0.0846,-0.1706 0.046,-0.1848 0.003,-0.0428 v -0.9022 l -0.003,-0.0428 -0.046,-0.1848 -0.003,-0.0052 -0.082,-0.1654 v 0 l -0.1193,-0.1484 v 0 L 152.382,48.998 v 0 l -0.1706,-0.0846 -0.1848,-0.046 -0.0214,-0.0015 -0.0214,-0.0014 v 0 h -1.4022 v 0 l -0.0428,0.0029 v 0 l -0.1848,0.046 -0.1706,0.0846 v 0 l -0.1484,0.1193 v 0 l -0.1193,0.1484 v 0 l -0.0846,0.1706 -0.046,0.1848 -0.003,0.0428 h -0.725 v -3.4534 l 0.0197,-0.067 0.0528,-0.0458 0.0515,-0.0112 h 5.123 z"
        id="path2" />
     <path
@@ -106,11 +106,11 @@
     <path
        d="m 151.62158,50.123 h 3.71795"
        id="path21"
-       style="stroke:#42b8eb;stroke-width:0.49966861;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#1a81c4;stroke-width:0.49966861;stroke-dasharray:none;stroke-opacity:1" />
     <path
        d="m 151.47277,50.122744 h 3.44421"
        id="path21-7"
-       style="fill:none;stroke:#42b8eb;stroke-width:0.499669;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:none;stroke:#1a81c4;stroke-width:0.499669;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
   </g>
   <g
      style="fill:none;stroke:#f2eda1;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
