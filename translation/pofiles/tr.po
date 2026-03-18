@@ -37,7 +37,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-14 23:19+0000\n"
+"PO-Revision-Date: 2026-03-19 00:23+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kicad/master-"
 "source/tr/>\n"
@@ -9709,7 +9709,7 @@ msgstr "Varsayılan Düzenleme"
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:142
 #: pcbnew/footprint.cpp:4825 pcbnew/widgets/search_handlers.cpp:140
 msgid "Reference"
-msgstr "Kaynak"
+msgstr "Referans"
 
 #: common/settings/bom_settings.cpp:147
 msgid "Grouped By Value"
@@ -36845,7 +36845,7 @@ msgstr "Ön"
 #: pcbnew/dialogs/dialog_render_job.cpp:37
 #: pcbnew/dialogs/panel_setup_mask_and_paste_base.cpp:122
 msgid "Back"
-msgstr "Önceki"
+msgstr "Arka"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:193
 msgid "Exclude locked footprints"
@@ -42736,7 +42736,7 @@ msgstr "Ayak İzi Referans Özellikleri"
 #: pcbnew/dialogs/dialog_text_properties.cpp:125
 #: pcbnew/dialogs/panel_assign_component_classes_base.cpp:159
 msgid "Reference:"
-msgstr "Kaynak:"
+msgstr "Referans:"
 
 #: pcbnew/dialogs/dialog_text_properties.cpp:129
 msgid "Footprint Value Properties"
@@ -48893,7 +48893,7 @@ msgstr "Kart Tarafı"
 
 #: pcbnew/footprint.cpp:2139
 msgid "Back (Flipped)"
-msgstr "Geri (Çevrilmiş)"
+msgstr "Arka (Çevrilmiş)"
 
 #: pcbnew/footprint.cpp:2160
 msgid "autoplaced"
