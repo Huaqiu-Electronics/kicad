@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:30+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/kicad/"
 "master-source/es_MX/>\n"
@@ -24328,7 +24328,7 @@ msgstr "Modelo IBIS inválido '%s'"
 
 #: eeschema/sim/sim_model_ibis.cpp:333
 msgid "Power supply"
-msgstr "Símbolo de alimentación"
+msgstr "Fuente de alimentación"
 
 #: eeschema/sim/sim_model_ibis.cpp:343
 msgid "Parasitic pin resistance"
@@ -34720,7 +34720,7 @@ msgstr "1"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:325
 msgid "Power Comment:"
-msgstr "Comentario de potencia:"
+msgstr "Comentario de alimentación:"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:337
 msgid "Copy to Clipboard"
