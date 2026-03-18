@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-16 16:23+0000\n"
+"PO-Revision-Date: 2026-03-18 20:46+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/ro/>\n"
@@ -78,7 +78,7 @@ msgstr "Simplific poligoane pe straturile de cupru"
 
 #: 3d-viewer/3d_canvas/create_layer_items.cpp:1684
 msgid "Calculating plated copper"
-msgstr "Calculez aria de cupru"
+msgstr "Se calculează cuprul placat"
 
 #: 3d-viewer/3d_canvas/create_layer_items.cpp:1734
 #, c-format
@@ -644,7 +644,7 @@ msgstr "Pastă de lipit"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:63
 msgid "Show solder paste"
-msgstr "Afișați pasta de sudură"
+msgstr "Afișați pasta de lipit"
 
 #: 3d-viewer/dialogs/appearance_controls_3D.cpp:64
 msgid "Show front silkscreen"
@@ -9834,7 +9834,7 @@ msgstr "Tabel bibliotecă bloc proiectare"
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1530
 #: pcbnew/footprint_edit_frame.cpp:230 pcbnew/footprint_edit_frame.cpp:1038
 msgid "Libraries"
-msgstr "Bibioteci"
+msgstr "Biblioteci"
 
 #: common/startwizard/startwizard_provider_privacy.cpp:76
 msgid "Updates && Privacy"
@@ -11687,7 +11687,7 @@ msgstr "Fișiere listă de rețea Allegro"
 
 #: common/wildcards_and_files_ext.cpp:340
 msgid "PADS netlist files"
-msgstr "Pad-uri listă de rețea fișiere"
+msgstr "Fișiere netlist PADS"
 
 #: common/wildcards_and_files_ext.cpp:346
 msgid "EasyEDA (JLCEDA) Std backup archive"
@@ -18840,7 +18840,7 @@ msgstr "Emitor deschis"
 
 #: eeschema/erc/erc.cpp:92 eeschema/erc/erc.cpp:109
 msgid "No Connection"
-msgstr "Nu Conexiune"
+msgstr "Fără Conexiune"
 
 #: eeschema/erc/erc.cpp:212 eeschema/erc/erc.cpp:231
 #: pcbnew/drc/drc_test_provider_misc.cpp:409
@@ -28454,11 +28454,11 @@ msgstr "Jos strat"
 
 #: gerbview/files.cpp:228
 msgid "Bottom solder resist"
-msgstr "Rezistență de lipit spate"
+msgstr "Mască de lipit spate"
 
 #: gerbview/files.cpp:229
 msgid "Top solder resist"
-msgstr "Rezistență de lipit față"
+msgstr "Mască de lipit față"
 
 #: gerbview/files.cpp:230
 msgid "Bottom overlay"
@@ -30302,7 +30302,7 @@ msgstr "Fișierul de schemă electrică nu există sau nu este accesibil\n"
 
 #: kicad/cli/command_sch_export_netlist.cpp:35
 msgid "Export a netlist"
-msgstr "Exportare un listă de rețea"
+msgstr "Exportare o listă de rețea"
 
 #: kicad/cli/command_sch_export_netlist.cpp:41
 msgid ""
@@ -31242,7 +31242,7 @@ msgstr "Importați schema și placa EasyEDA (JLCEDA) Professional"
 
 #: kicad/menubar.cpp:149
 msgid "PADS Project..."
-msgstr "Pad-uri Proiect..."
+msgstr "Proiect PADS..."
 
 #: kicad/menubar.cpp:150
 msgid "Import PADS Logic schematic and PADS ASCII PCB (*.asc, *.txt)"
@@ -35196,7 +35196,7 @@ msgstr "Se teselează copper zones..."
 #: pcbnew/widgets/panel_selection_filter.cpp:225
 #: pcbnew/widgets/panel_selection_filter_base.cpp:45
 msgid "Pads"
-msgstr "Terminale"
+msgstr "Pad-uri"
 
 #: pcbnew/board.cpp:2217 pcbnew/board_statistics_report.cpp:613
 #: pcbnew/dialogs/dialog_board_statistics_base.cpp:161
@@ -40560,7 +40560,7 @@ msgstr "Netezire colțuri:"
 #: pcbnew/dialogs/panel_setup_tuning_patterns_base.cpp:371
 #: pcbnew/dialogs/panel_zone_properties_base.cpp:333
 msgid "Chamfer"
-msgstr "Șanfreren"
+msgstr "Teșitură"
 
 #: pcbnew/dialogs/dialog_non_copper_zones_properties_base.cpp:94
 #: pcbnew/dialogs/dialog_tuning_pattern_properties_base.cpp:118
@@ -41047,7 +41047,7 @@ msgstr "Serigrafie spate"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:589
 msgid "Front solder mask"
-msgstr "Mască de sudură frontală"
+msgstr "Mască de lipit față"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:592
 msgid "Back solder mask"
@@ -46136,7 +46136,7 @@ msgstr "Zonele de cupru se intersectează"
 
 #: pcbnew/drc/drc_item.cpp:89
 msgid "Isolated copper fill"
-msgstr "Capătul traseului nu este centrat pe via"
+msgstr "Umplutură de cupru izolată"
 
 #: pcbnew/drc/drc_item.cpp:93
 msgid "Thermal relief connection to zone incomplete"
@@ -46216,11 +46216,11 @@ msgstr "Amprenta are zonă de curte malformată"
 
 #: pcbnew/drc/drc_item.cpp:169
 msgid "PTH inside courtyard"
-msgstr "Lipsă '('."
+msgstr "PTH în interiorul zonei de ocupare"
 
 #: pcbnew/drc/drc_item.cpp:173
 msgid "NPTH inside courtyard"
-msgstr "Lipsă ')'."
+msgstr "NPTH în interiorul zonei de ocupare"
 
 #: pcbnew/drc/drc_item.cpp:177
 msgid "Item on a disabled copper layer"
@@ -48202,7 +48202,7 @@ msgstr "Pad-uri"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2652
 msgid "vias"
-msgstr "treceri"
+msgstr "via-uri"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:2897
 #: pcbnew/exporters/step/step_pcb_model.cpp:2967
@@ -53124,7 +53124,7 @@ msgstr "Via %s pe %s"
 
 #: pcbnew/pcb_track.cpp:608
 msgid "removed annular ring"
-msgstr "inel anelar eliminat"
+msgstr "inel anular eliminat"
 
 #: pcbnew/pcb_track.cpp:1785
 msgid "Via diameter is too small."
