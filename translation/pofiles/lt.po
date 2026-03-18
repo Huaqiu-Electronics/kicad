@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KiCad 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-16 16:15+0000\n"
+"PO-Revision-Date: 2026-03-18 20:48+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/kicad/master-"
 "source/lt/>\n"
@@ -2078,7 +2078,7 @@ msgstr "Foninės užduotys"
 
 #: common/common.cpp:345 pcbnew/dialogs/dialog_board_reannotate.cpp:290
 msgid "unannotated footprint"
-msgstr "korporusas be anotacijos"
+msgstr "korpusas be anotacijos"
 
 #: common/common.cpp:511
 #, c-format
@@ -8843,7 +8843,7 @@ msgstr "Užrakinto elemento šešėlis"
 
 #: common/layer_id.cpp:156
 msgid "Courtyard collision shadow"
-msgstr "Kiemo susidūrimo šešėlis"
+msgstr "Courtyard zonos susidūrimo šešėlis"
 
 #: common/layer_id.cpp:157
 msgid "Board outline area"
@@ -19555,7 +19555,7 @@ msgstr "Importuoti vektorinės grafikos failą"
 #: eeschema/lib_symbol.cpp:457 eeschema/sch_symbol.cpp:522
 #, c-format
 msgid "Unit %s"
-msgstr "Blokas %s"
+msgstr "Vienetas %s"
 
 #: eeschema/lib_symbol.cpp:918 eeschema/sch_label.cpp:871
 #: eeschema/sch_sheet.cpp:291 eeschema/sch_symbol.cpp:1997
@@ -19585,7 +19585,7 @@ msgstr "Maitinimo vėliavėlė skiriasi."
 
 #: eeschema/lib_symbol.cpp:2029
 msgid "Unit count differs."
-msgstr "Blokų skaičius skiriasi."
+msgstr "Vienetų skaičius skiriasi."
 
 #: eeschema/lib_symbol.cpp:2068
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:952
@@ -19729,7 +19729,7 @@ msgstr "Simbolio blokų skaičius"
 
 #: eeschema/lib_symbol.cpp:2576
 msgid "Units are Interchangeable"
-msgstr "Blokai sukeičiami"
+msgstr "Vienetai sukeičiami"
 
 #: eeschema/libraries/legacy_symbol_library.cpp:583
 #, c-format
@@ -19970,7 +19970,7 @@ msgstr "Simbolio vienetas '%s' jau patalpintas (lape '%s')"
 
 #: eeschema/picksymbol.cpp:132
 msgid "Unit Already Placed"
-msgstr "Blokas jau patalpintas"
+msgstr "Vienetas jau patalpintas"
 
 #: eeschema/picksymbol.cpp:133
 #, c-format
@@ -19984,11 +19984,11 @@ msgstr "&Dubliuoti '%s'"
 
 #: eeschema/picksymbol.cpp:179
 msgid "Swap Units"
-msgstr "Sukeisti blokus"
+msgstr "Sukeisti vienetus"
 
 #: eeschema/picksymbol.cpp:181
 msgid "Change Unit"
-msgstr "Keisti bloką"
+msgstr "Keisti vienetą"
 
 #: eeschema/picksymbol.cpp:210 eeschema/tools/sch_edit_tool.cpp:2501
 msgid "Change Body Style"
@@ -37300,7 +37300,7 @@ msgstr "Naudoti centrinę liniją"
 #: pcbnew/dialogs/dialog_rule_area_properties.cpp:158
 #: pcbnew/tools/convert_tool.cpp:103
 msgid "Create bounding hull"
-msgstr "Kurti ribojantį korpusą"
+msgstr "Kurti ribojančią gaubiamąją"
 
 #: pcbnew/dialogs/dialog_copper_zones.cpp:149
 #: pcbnew/dialogs/dialog_non_copper_zones_properties.cpp:125
@@ -39517,7 +39517,7 @@ msgstr ""
 #: pcbnew/dialogs/panel_fp_editor_graphics_defaults_base.cpp:66
 #: pcbnew/dialogs/panel_setup_text_and_graphics_base.cpp:68
 msgid "Courtyards"
-msgstr "Kiemai"
+msgstr "Courtyard zonos"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:425
 msgid "Exempt from courtyard requirement"
@@ -40009,11 +40009,11 @@ msgstr "Atrakinti takeliai"
 
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:86
 msgid "Locked vias"
-msgstr "Užrakintos perkojus"
+msgstr "Užrakintos perkojos"
 
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:89
 msgid "Unlocked vias"
-msgstr "Atrakintos perkojus"
+msgstr "Atrakintos perkojos"
 
 #: pcbnew/dialogs/dialog_global_deletion_base.cpp:105
 #, c-format
@@ -41541,7 +41541,7 @@ msgstr "Aikštelės forma"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:897
 msgid "Pad convex hull"
-msgstr "Aikštelės išgaubtas korpusas"
+msgstr "Aikštelės išgaubtoji gaubiamoji"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:910
 msgid "Thermal Relief Overrides"
@@ -46683,7 +46683,7 @@ msgstr "Mikroperkojų skylės dydis už ribų"
 
 #: pcbnew/drc/drc_item.cpp:157
 msgid "Courtyards overlap"
-msgstr "Kiemai persidengia"
+msgstr "Courtyard zonos persidengia"
 
 #: pcbnew/drc/drc_item.cpp:161
 msgid "Footprint has no courtyard defined"
@@ -46695,11 +46695,11 @@ msgstr "Korpusas turi deformuotą kiemą"
 
 #: pcbnew/drc/drc_item.cpp:169
 msgid "PTH inside courtyard"
-msgstr "PTH kieme"
+msgstr "PTH Courtyard zonoje"
 
 #: pcbnew/drc/drc_item.cpp:173
 msgid "NPTH inside courtyard"
-msgstr "NPTH kieme"
+msgstr "NPTH Courtyard zonoje"
 
 #: pcbnew/drc/drc_item.cpp:177
 msgid "Item on a disabled copper layer"
@@ -47103,7 +47103,7 @@ msgstr "Tikrinami korpusų kiemai..."
 
 #: pcbnew/drc/drc_test_provider_courtyard_clearance.cpp:79
 msgid "Gathering footprint courtyards..."
-msgstr "Renkami korpusų kiemai..."
+msgstr "Renkami korpusų Courtyard plotai..."
 
 #: pcbnew/drc/drc_test_provider_courtyard_clearance.cpp:139
 msgid "Checking footprints for overlapping courtyards..."
@@ -54293,7 +54293,7 @@ msgstr ""
 
 #: pcbnew/router/router_tool.cpp:148
 msgid "Place Through Via"
-msgstr "Padėti kiaurai einančią perkojų"
+msgstr "Padėti kiaurai einančią perkoją"
 
 #: pcbnew/router/router_tool.cpp:149
 msgid "Adds a through-hole via at the end of currently routed track."
@@ -54301,7 +54301,7 @@ msgstr "Prideda kiaurai einančią perkojų rasavimo takelio gale."
 
 #: pcbnew/router/router_tool.cpp:159
 msgid "Place Blind/Buried Via"
-msgstr "Padėti aklą/paslėptą perkojų"
+msgstr "Padėti aklą/paslėptą perkoją"
 
 #: pcbnew/router/router_tool.cpp:160
 msgid "Adds a blind or buried via at the end of currently routed track."
@@ -58435,7 +58435,7 @@ msgstr "Rodyti šešėlį ant užrakintų elementų"
 
 #: pcbnew/widgets/appearance_controls.cpp:354
 msgid "Colliding Courtyards"
-msgstr "Susikertantys kiemai"
+msgstr "Susikertančios Courtyard zonos"
 
 #: pcbnew/widgets/appearance_controls.cpp:354
 msgid "Show colliding footprint courtyards"
@@ -59315,7 +59315,7 @@ msgstr "Kampų skaičius"
 
 #: pcbnew/zone.cpp:1060
 msgid "Teardrop Area"
-msgstr "Ašaros plotas"
+msgstr "Lašelio plotas"
 
 #: pcbnew/zone.cpp:1062
 msgid "Copper Zone"
@@ -59358,7 +59358,7 @@ msgstr "Taisyklių sritis '%s' %s"
 #: pcbnew/zone.cpp:1249
 #, c-format
 msgid "Teardrop %s %s"
-msgstr "Ašara %s %s"
+msgstr "Lašelis %s %s"
 
 #: pcbnew/zone.cpp:1257
 #, c-format
