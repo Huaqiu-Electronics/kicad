@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:30+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/kicad/master-"
 "source/el/>\n"
@@ -20753,7 +20753,7 @@ msgstr "Μετάβαση στη σελίδα %s (%s)"
 
 #: eeschema/sch_field.cpp:994
 msgid "Back to Previous Selected Sheet"
-msgstr "Δημιουργία Έδρας από Επιλεγμένα Σχήματα"
+msgstr "Επιστροφή στο προηγούμενο επιλεγμένο φύλλο"
 
 #: eeschema/sch_field.cpp:1695
 msgid "Show Field Name"
