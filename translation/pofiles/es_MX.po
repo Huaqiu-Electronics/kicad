@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 20:36+0000\n"
-"Last-Translator: Deleted User <noreply+109179@weblate.org>\n"
+"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/kicad/"
 "master-source/es_MX/>\n"
 "Language: es_MX\n"
@@ -5720,7 +5720,7 @@ msgstr "Espaciado del par diferencial"
 
 #: common/dialogs/panel_setup_netclasses_base.cpp:60
 msgid "Tuning Profile"
-msgstr "Perfil de sintonización"
+msgstr "Perfil de ajuste"
 
 #: common/dialogs/panel_setup_netclasses_base.cpp:61
 msgid "PCB Color"
@@ -11565,7 +11565,7 @@ msgstr "Eliminar alternativa asignada"
 
 #: common/widgets/widget_hotkey_list.cpp:452
 msgid "Restore Defaults"
-msgstr "Restablecer atajos predeterminados"
+msgstr "Restablecer valores predeterminados"
 
 #: common/widgets/widget_hotkey_list.cpp:510
 #, c-format
@@ -17720,7 +17720,7 @@ msgstr "Señales definidas por el usuario"
 
 #: eeschema/dialogs/dialog_wire_bus_properties.cpp:234
 msgid "Wire/Bus"
-msgstr "Cable/Bus"
+msgstr "Línea/Bus"
 
 #: eeschema/dialogs/dialog_wire_bus_properties.cpp:235
 msgid "Wires/Buses"
@@ -17728,7 +17728,7 @@ msgstr "Cables/Buses"
 
 #: eeschema/dialogs/dialog_wire_bus_properties_base.cpp:31
 msgid "Wire/bus width:"
-msgstr "Ancho de cable/bus:"
+msgstr "Ancho de línea/bus:"
 
 #: eeschema/dialogs/dialog_wire_bus_properties_base.cpp:91
 msgid "Set width to 0 to use netclass's wire/bus widths."
@@ -21986,7 +21986,7 @@ msgstr "Línea gráfica horizontal, longitud %s"
 #: eeschema/sch_line.cpp:772
 #, c-format
 msgid "Wire, length %s"
-msgstr "Hilo, longitud %s"
+msgstr "Línea, longitud %s"
 
 #: eeschema/sch_line.cpp:773
 #, c-format
@@ -29052,7 +29052,7 @@ msgstr "Maestro de pads superiores"
 
 #: gerbview/files.cpp:240
 msgid "Bottom Pad Master"
-msgstr "Maestro de pads superiores"
+msgstr "Maestro de pads inferiores"
 
 #: gerbview/files.cpp:246
 msgid "Open Gerber File(s)"
@@ -29447,7 +29447,7 @@ msgstr "Listar códigos D en archivos Gerber"
 
 #: gerbview/tools/gerbview_actions.cpp:90
 msgid "Show Source..."
-msgstr "Mostrar origen..."
+msgstr "Mostrar fuente..."
 
 #: gerbview/tools/gerbview_actions.cpp:91
 msgid "Show source file for the current layer"
@@ -33649,7 +33649,7 @@ msgstr "Coeficiente de temperatura"
 
 #: pcb_calculator/calculator_panels/panel_cable_size_base.cpp:26
 msgid "Wire properties"
-msgstr "Propiedades del alambre"
+msgstr "Propiedades de la línea"
 
 #: pcb_calculator/calculator_panels/panel_cable_size_base.cpp:34
 msgid "Standard Size:"
@@ -37305,7 +37305,7 @@ msgstr "Importar configuración de otra placa..."
 
 #: pcbnew/dialogs/dialog_board_setup.cpp:94
 msgid "Board Stackup"
-msgstr "Apilato de la placa"
+msgstr "Apilado de la placa"
 
 #: pcbnew/dialogs/dialog_board_setup.cpp:107
 msgid "Board Editor Layers"
@@ -41315,7 +41315,7 @@ msgstr "Redondeado"
 
 #: pcbnew/dialogs/dialog_non_copper_zones_properties_base.cpp:128
 msgid "Fill type:"
-msgstr "Typo de relleno:"
+msgstr "Tipo de relleno:"
 
 #: pcbnew/dialogs/dialog_non_copper_zones_properties_base.cpp:132
 #: pcbnew/zone.cpp:1888
@@ -43109,7 +43109,7 @@ msgstr "Ajustar el grosor del texto"
 
 #: pcbnew/dialogs/dialog_target_properties.cpp:109
 msgid "Edit Alignment Target"
-msgstr "Editar objetivo de alineación"
+msgstr "Editar mira de alineación"
 
 #: pcbnew/dialogs/dialog_target_properties_base.cpp:50
 msgid "Shape:"
@@ -49725,7 +49725,7 @@ msgstr "demasiado corto"
 #: pcbnew/generators/pcb_tuning_pattern.cpp:1263
 #: pcbnew/generators/pcb_tuning_pattern.cpp:1817
 msgid "tuned"
-msgstr "sintonización"
+msgstr "ajustado"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:1895
 #: pcbnew/generators/pcb_tuning_pattern.h:118
@@ -49921,7 +49921,7 @@ msgstr "Patrones de sintonización"
 
 #: pcbnew/generators/pcb_tuning_pattern.h:455
 msgid "Tuning"
-msgstr "Afinado"
+msgstr "Ajuste"
 
 #: pcbnew/import_gfx/dialog_import_graphics.cpp:181
 msgid "Please select a file to import."
@@ -53456,7 +53456,7 @@ msgstr "Celda de tabla %s"
 
 #: pcbnew/pcb_target.cpp:154
 msgid "PCB Target"
-msgstr "Objetivo de la placa"
+msgstr "Mira de la placa"
 
 #: pcbnew/pcb_text.cpp:297
 msgid "PCB Text"
@@ -56048,7 +56048,7 @@ msgstr "Se deben seleccionar al menos dos segmentos rectos de pista."
 #: pcbnew/tools/edit_tool.cpp:1484 pcbnew/tools/edit_tool.cpp:1638
 #: pcbnew/tools/pcb_actions.cpp:754
 msgid "Fillet Tracks"
-msgstr "Pistas de filete"
+msgstr "Redondear pistas"
 
 #: pcbnew/tools/edit_tool.cpp:1484 pcbnew/tools/edit_tool.cpp:1664
 msgid "Radius:"
@@ -58356,7 +58356,7 @@ msgstr "Intentos de completar la ruta actual hasta el extremo más cercano."
 
 #: pcbnew/tools/pcb_actions.cpp:2650
 msgid "Route Selected"
-msgstr "Ruta seleccionada"
+msgstr "Enrutar seleccionado"
 
 #: pcbnew/tools/pcb_actions.cpp:2651
 msgid "Sequentially route selected items from ratsnest anchor."
