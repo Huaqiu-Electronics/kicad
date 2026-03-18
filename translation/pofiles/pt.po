@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:24+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
@@ -3166,7 +3166,7 @@ msgstr "Papel"
 
 #: common/dialogs/dialog_page_settings.cpp:92
 msgid "Title Block"
-msgstr "Legenda"
+msgstr "Bloco de título"
 
 #: common/dialogs/dialog_page_settings.cpp:465
 #: eeschema/eeschema_jobs_handler.cpp:249 pagelayout_editor/files.cpp:254
@@ -25886,7 +25886,7 @@ msgstr "Remove o símbolo selecionado da respectiva biblioteca"
 
 #: eeschema/tools/sch_actions.cpp:256
 msgid "Paste Symbol"
-msgstr "Símbolo de alimentação"
+msgstr "Colar símbolo"
 
 #: eeschema/tools/sch_actions.cpp:262
 msgid "Import Symbol..."
@@ -34629,7 +34629,7 @@ msgstr "1"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:325
 msgid "Power Comment:"
-msgstr "Comentário sobre a potência:"
+msgstr "Comentário sobre a alimentação:"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:337
 msgid "Copy to Clipboard"
