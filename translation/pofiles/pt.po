@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-14 23:10+0000\n"
+"PO-Revision-Date: 2026-03-18 20:48+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kicad/master-"
 "source/pt/>\n"
@@ -5792,7 +5792,7 @@ msgstr "Padrão"
 #: eeschema/sch_field.cpp:1129 eeschema/sch_label.cpp:224
 #: pcbnew/board_connected_item.cpp:252 pcbnew/pad.cpp:3382 pcbnew/zone.cpp:1977
 msgid "Net Class"
-msgstr "Classes de Rede"
+msgstr "Classe de Rede"
 
 #: common/dialogs/panel_setup_severities.cpp:44 common/kidialog.cpp:123
 #: common/paths.cpp:569 eeschema/dialogs/dialog_erc.cpp:976
@@ -8819,7 +8819,7 @@ msgstr "Pistas"
 #: common/layer_id.cpp:130
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:38
 msgid "Through vias"
-msgstr "Através das vias"
+msgstr "Vias passantes"
 
 #: common/layer_id.cpp:131
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:52
@@ -8837,11 +8837,11 @@ msgstr "Micro vias"
 
 #: common/layer_id.cpp:134
 msgid "Via holes"
-msgstr "Furos através da via"
+msgstr "Furos da via"
 
 #: common/layer_id.cpp:135
 msgid "Via hole walls"
-msgstr "Através das paredes do furo"
+msgstr "Paredes do furo da via"
 
 #: common/layer_id.cpp:136
 msgid "Plated holes"
@@ -8865,7 +8865,7 @@ msgstr "Emaranhado"
 
 #: common/layer_id.cpp:140
 msgid "DRC warnings"
-msgstr "Advertências RDC"
+msgstr "Advertências DRC"
 
 #: common/layer_id.cpp:141
 msgid "DRC errors"
@@ -8877,11 +8877,11 @@ msgstr "Formas DRC"
 
 #: common/layer_id.cpp:143
 msgid "DRC exclusions"
-msgstr "Exclusões do RDC"
+msgstr "Exclusões DRC"
 
 #: common/layer_id.cpp:144
 msgid "DRC marker shadows"
-msgstr "Sombras do marcador RDC"
+msgstr "Sombras do marcador DRC"
 
 #: common/layer_id.cpp:152
 msgid "Grid axes"
@@ -13881,7 +13881,7 @@ msgstr "Símbolos de não-alimentação"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:116
 msgid "Power symbols"
-msgstr "Os símbolos com energia"
+msgstr "Símbolos de alimentação"
 
 #: eeschema/dialogs/dialog_global_edit_text_and_graphics_base.cpp:128
 msgid "By net:"
@@ -24145,7 +24145,7 @@ msgstr "tipos de registos esperados da simulação"
 
 #: eeschema/sim/legacy_workbook.cpp:210
 msgid "expecting trace count"
-msgstr "quantidade esperada de pistas"
+msgstr "quantidade esperada de traços"
 
 #: eeschema/sim/legacy_workbook.cpp:226
 msgid "expecting trace type"
@@ -40717,7 +40717,7 @@ msgstr "-- deixe inalterado --  "
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:187
 msgid "Via size:"
-msgstr "Tamanho da ilha:"
+msgstr "Tamanho da via:"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:196
 msgid "Via annular rings:"
@@ -43150,7 +43150,7 @@ msgstr "Diâmetro da via:"
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:321
 #: pcbnew/dialogs/dialog_track_via_size_base.cpp:47
 msgid "Via hole:"
-msgstr "Através do furo:"
+msgstr "Furo da via:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:351
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:77
@@ -43339,7 +43339,7 @@ msgstr "Restaurar todas as camadas"
 
 #: pcbnew/dialogs/dialog_unused_pad_layers.cpp:205
 msgid "Remove Unused Pads"
-msgstr "Remove as camadas não utilizadas"
+msgstr "Remover as ilhas não utilizadas"
 
 #: pcbnew/dialogs/dialog_unused_pad_layers_base.cpp:33
 msgid "&Selected only"
@@ -43610,7 +43610,7 @@ msgstr ""
 
 #: pcbnew/dialogs/panel_edit_options_base.cpp:80
 msgid "Track mouse-drag mode:"
-msgstr "Modo de rastreamento por arrastro do rato:"
+msgstr "Modo de arrasto de pista com o rato:"
 
 #: pcbnew/dialogs/panel_edit_options_base.cpp:87
 msgid "Drag (45 degree mode)"
@@ -46528,7 +46528,7 @@ msgstr "área de exclusão de %s"
 
 #: pcbnew/drc/drc_engine.cpp:600
 msgid "keepout area"
-msgstr "área de isolamento"
+msgstr "área de exclusão"
 
 #: pcbnew/drc/drc_engine.cpp:608
 #, c-format
@@ -46938,7 +46938,7 @@ msgstr "As regiões onde o cobre se cruzam"
 
 #: pcbnew/drc/drc_item.cpp:89
 msgid "Isolated copper fill"
-msgstr "Isolamento do preenchimento com cobre"
+msgstr "Preenchimento de cobre isolado"
 
 #: pcbnew/drc/drc_item.cpp:93
 msgid "Thermal relief connection to zone incomplete"
@@ -54616,7 +54616,7 @@ msgstr ""
 
 #: pcbnew/router/pns_kicad_iface.cpp:2798
 msgid "Routing"
-msgstr "A rotear"
+msgstr "Roteamento"
 
 #: pcbnew/router/pns_meander_skew_placer.cpp:59
 msgid "Please select a differential pair track you want to tune."
@@ -58839,7 +58839,7 @@ msgstr "As violações do DRC com gravidade de erro"
 
 #: pcbnew/widgets/appearance_controls.cpp:350
 msgid "DRC Exclusions"
-msgstr "Exclusões"
+msgstr "Exclusões DRC"
 
 #: pcbnew/widgets/appearance_controls.cpp:350
 msgid "DRC violations which have been individually excluded"
@@ -58944,7 +58944,7 @@ msgstr "Opções de exibição das camada"
 #: pcbnew/widgets/appearance_controls.cpp:1891
 #, c-format
 msgid "Inactive layers (%s):"
-msgstr "Ilhas inativas (%s):"
+msgstr "Camadas inativas (%s):"
 
 #: pcbnew/widgets/appearance_controls.cpp:637
 #: pcbnew/widgets/appearance_controls.cpp:1893
@@ -59545,7 +59545,7 @@ msgstr "Renomear a(s) net(s) selecionada(s)..."
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1114
 msgid "Delete Selected Net"
-msgstr "Apagar o(s) elemento(s) selecionado(s)"
+msgstr "Apagar a rede selecionada"
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1120
 msgid "Add Net..."
@@ -59941,7 +59941,7 @@ msgstr "Refaça o preenchimento das regiões após alterações feitas na placa"
 
 #: pcbnew/zone_manager/dialog_zone_manager_base.cpp:151
 msgid "Update Displayed Zones"
-msgstr "Atualizar as regiões apontadas"
+msgstr "Atualizar as zonas apresentadas"
 
 #: pcbnew/zone_manager/dialog_zone_manager_base.cpp:152
 msgid ""
