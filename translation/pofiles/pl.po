@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:30+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
@@ -26978,7 +26978,7 @@ msgstr "Przenieś się o jeden arkusz wyżej w hierarchii"
 
 #: eeschema/tools/sch_actions.cpp:1426
 msgid "Navigate Back"
-msgstr "Nawiguj w dół"
+msgstr "Nawiguj wstecz"
 
 #: eeschema/tools/sch_actions.cpp:1427
 msgid "Move backward in sheet navigation history"
