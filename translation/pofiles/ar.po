@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:23+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kicad/master-"
 "source/ar/>\n"
@@ -14472,7 +14472,7 @@ msgstr "استثناء من اللوحة"
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:1049
 #: eeschema/symbol_editor/symbol_editor.cpp:1742
 msgid "Power Symbol"
-msgstr "رمز المولد"
+msgstr "رمز الطاقة"
 
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:1050
 msgid "Local Power Symbol"
