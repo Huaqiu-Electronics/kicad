@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: KiCad Spanish Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:46+0000\n"
+"PO-Revision-Date: 2026-03-19 00:24+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kicad/master-"
 "source/es/>\n"
@@ -34705,7 +34705,7 @@ msgstr "1"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:325
 msgid "Power Comment:"
-msgstr "Comentario de potencia:"
+msgstr "Comentario de alimentación:"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:337
 msgid "Copy to Clipboard"
