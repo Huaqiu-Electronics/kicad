@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-16 16:19+0000\n"
+"PO-Revision-Date: 2026-03-18 20:46+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kicad/master-"
 "source/id/>\n"
@@ -36917,7 +36917,7 @@ msgstr "Pola Penyesuaian Panjang"
 #: pcbnew/dialogs/dialog_board_setup.cpp:206
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:84
 msgid "Tuning Profiles"
-msgstr "Profil Tuning"
+msgstr "Profil Penyetelan"
 
 #: pcbnew/dialogs/dialog_board_setup.cpp:228
 #: pcbnew/dialogs/dialog_multichannel_generate_rule_areas_base.cpp:29
@@ -43581,7 +43581,7 @@ msgstr "Zona tidak akan mengisi tembaga ke dalam area ini"
 
 #: pcbnew/dialogs/panel_rule_area_properties_keepout_base.cpp:38
 msgid "Keep out footprints"
-msgstr "Jaga keluar footprint"
+msgstr "Larang footprint"
 
 #: pcbnew/dialogs/panel_rule_area_properties_keepout_base.cpp:39
 msgid "Raise a DRC error if a footprint courtyard overlaps this area"
@@ -46103,7 +46103,7 @@ msgstr "kelas net '%s' (uvia)"
 #: pcbnew/drc/drc_engine.cpp:513 pcbnew/drc/drc_engine.cpp:534
 #, c-format
 msgid "tuning profile '%s'"
-msgstr "profil tuning '%s'"
+msgstr "profil penyetelan '%s'"
 
 #: pcbnew/drc/drc_engine.cpp:595
 #, c-format
@@ -46725,7 +46725,7 @@ msgstr "Teks tidak dicerminkan pada lapisan belakang"
 
 #: pcbnew/drc/drc_item.cpp:306
 msgid "Missing tuning profile"
-msgstr "Profil tuning tidak ditemukan"
+msgstr "Profil penyetelan tidak ditemukan"
 
 #: pcbnew/drc/drc_item.cpp:310
 msgid "Tuning profile track geometries"
@@ -54450,11 +54450,11 @@ msgstr "Netclass Diselesaikan: %s"
 #: pcbnew/router/router_tool.cpp:2936
 #, c-format
 msgid "Routing Track: %s"
-msgstr "Mengarahkan Trek: %s"
+msgstr "Merutekan Trek: %s"
 
 #: pcbnew/router/router_tool.cpp:2945
 msgid "Routing Track"
-msgstr "Mengarahkan Trek"
+msgstr "Merutekan Trek"
 
 #: pcbnew/router/router_tool.cpp:2946
 msgid "(no net)"
@@ -56063,7 +56063,7 @@ msgstr "Atur titik jangkar footprint"
 
 #: pcbnew/tools/pcb_actions.cpp:401
 msgid "Increase Line Width"
-msgstr "Tam"
+msgstr "Tambah Lebar Garis"
 
 #: pcbnew/tools/pcb_actions.cpp:408
 msgid "Decrease Line Width"
@@ -59283,11 +59283,11 @@ msgstr "Trek Area Larangan"
 
 #: pcbnew/zone.cpp:1990
 msgid "Keep Out Vias"
-msgstr "Jaga Keluar Via"
+msgstr "Larang Via"
 
 #: pcbnew/zone.cpp:1995
 msgid "Keep Out Pads"
-msgstr "Jaga Keluar Pad"
+msgstr "Larang Pad"
 
 #: pcbnew/zone.cpp:2000
 msgid "Keep Out Zone Fills"
@@ -59295,7 +59295,7 @@ msgstr "Pengisian Zona Area Larangan"
 
 #: pcbnew/zone.cpp:2005
 msgid "Keep Out Footprints"
-msgstr "Jaga Keluar Footprint"
+msgstr "Larang Footprint"
 
 #: pcbnew/zone.cpp:2018
 msgid "Source Type"
