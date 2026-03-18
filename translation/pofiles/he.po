@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-17 20:03+0000\n"
+"PO-Revision-Date: 2026-03-18 20:46+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/kicad/master-"
 "source/he/>\n"
@@ -8271,11 +8271,11 @@ msgstr "סכימה: ייצוא רשימת רשתות"
 
 #: common/jobs/job_export_sch_plot.cpp:191
 msgid "Schematic: Export SVG"
-msgstr "שרטוט סכימתי: יצוא ל SVG"
+msgstr "סכימה: ייצוא SVG"
 
 #: common/jobs/job_export_sch_plot.cpp:193
 msgid "Schematic: Export HPGL"
-msgstr "שרטוט סכימתי: יצוא ל HPGL"
+msgstr "סכימה: ייצוא HPGL"
 
 #: common/jobs/job_export_sch_plot.cpp:195
 msgid "Schematic: Export Postscript"
@@ -8283,11 +8283,11 @@ msgstr "סכימה: ייצוא Postscript"
 
 #: common/jobs/job_export_sch_plot.cpp:197
 msgid "Schematic: Export DXF"
-msgstr "שרטוט סכימתי: יצוא ל DXF"
+msgstr "סכימה: ייצוא DXF"
 
 #: common/jobs/job_export_sch_plot.cpp:199
 msgid "Schematic: Export PDF"
-msgstr "שרטוט סכימתי: יצוא ל PDF"
+msgstr "סכימה: ייצוא PDF"
 
 #: common/jobs/job_export_sch_pythonbom.cpp:35
 msgid "Schematic PythonBOM export"
@@ -15678,7 +15678,7 @@ msgstr "ייבא הגדרות מפרויקט אחר..."
 #: eeschema/dialogs/dialog_schematic_setup.cpp:72
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:440
 msgid "Annotation"
-msgstr "הערת שרטוט"
+msgstr "מספור"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:88
 msgid "BOM Presets"
@@ -16306,7 +16306,7 @@ msgstr "ימין:"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:892
 msgid "Plot Setup"
-msgstr "הגדרת גרף"
+msgstr "הגדרת שרטוט"
 
 #: eeschema/dialogs/dialog_sim_command_base.h:219
 msgid "Simulation Analysis"
@@ -17641,7 +17641,7 @@ msgstr "<ESC> ראשון בכלי הבחירה מנקה את הבחירה, הב�
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:71
 msgid "Automatically annotate symbols"
-msgstr "הערת סמלים אוטומטית"
+msgstr "מספור סמלים אוטומטי"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:74
 msgid "Allow unconstrained pin swaps"
@@ -26525,7 +26525,7 @@ msgstr "צייר עקבת אות משנית (זרם או פאזה) בקו מקו
 
 #: eeschema/tools/sch_actions.cpp:1713
 msgid "Dark Mode Plots"
-msgstr "גרפים במצב כהה"
+msgstr "שרטוטים במצב כהה"
 
 #: eeschema/tools/sch_actions.cpp:1714
 msgid "Draw plots with a black background"
@@ -27187,7 +27187,7 @@ msgstr "שמור תרשים כתמונה"
 
 #: eeschema/tools/simulator_control.cpp:294
 msgid "Save Plot Data"
-msgstr "שמור נתוני תרשים"
+msgstr "שמור נתוני שרטוט"
 
 #: eeschema/tools/simulator_control.cpp:547
 msgid "SPICE Netlist"
@@ -27681,7 +27681,7 @@ msgstr "מקם כקבוצה"
 #: eeschema/widgets/sch_design_block_pane.cpp:44
 #: pcbnew/widgets/pcb_design_block_pane.cpp:45
 msgid "Keep annotations"
-msgstr "שמור הערות"
+msgstr "שמור מספורים"
 
 #: eeschema/widgets/sch_design_block_pane.cpp:106
 #: pcbnew/widgets/pcb_design_block_pane.cpp:100
@@ -28062,7 +28062,7 @@ msgstr "שכבה גרפית %d"
 #: gerbview/dialogs/panel_gerbview_display_options_base.cpp:27
 #: pcbnew/dialogs/panel_display_options_base.cpp:106
 msgid "Annotations"
-msgstr "ביאורים"
+msgstr "מספורים"
 
 #: gerbview/dialogs/panel_gerbview_display_options_base.cpp:37
 msgid "Show D codes"
@@ -35549,7 +35549,7 @@ msgstr "כפיתה:"
 
 #: pcbnew/board_statistics_report.cpp:122
 msgid "Through vias:"
-msgstr "קדחי מעבר:"
+msgstr "קדחי מעבר חודרים:"
 
 #: pcbnew/board_statistics_report.cpp:123
 msgid "Blind vias:"
@@ -38607,7 +38607,7 @@ msgstr "היסט Y"
 #: pcbnew/dialogs/panel_fp_editor_field_defaults_base.cpp:56
 #: pcbnew/plot_board_layers.cpp:163
 msgid "Reference designator"
-msgstr "סמן הפניה"
+msgstr "מציין הפניה"
 
 #: pcbnew/dialogs/dialog_footprint_properties_base.cpp:150
 #: pcbnew/dialogs/dialog_render_job_base.cpp:130
@@ -41108,7 +41108,7 @@ msgstr "התיקייה '%s' אינה קיימת."
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:31
 msgid "Plot format:"
-msgstr "תבנית הדפסה:"
+msgstr "תבנית שרטוט:"
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:41
 msgid "Gerber"
@@ -58590,7 +58590,7 @@ msgstr "בירושה"
 
 #: pcbnew/zones.h:63
 msgid "thermal reliefs"
-msgstr "שחרורים תרמים"
+msgstr "שחרורים תרמיים"
 
 #: pcbnew/zones.h:64
 msgid "solid"
@@ -58750,7 +58750,7 @@ msgstr "תצורת רכיב KiCad"
 
 #: resources/linux/mime/kicad-kicad.xml.in:55
 msgid "KiCad Schematic Symbol"
-msgstr "סימן סכימטי KiCad"
+msgstr "סמל סכימטי KiCad"
 
 #: resources/linux/mime/kicad-kicad.xml.in:69
 msgid "KiCad Drawing Sheet"
