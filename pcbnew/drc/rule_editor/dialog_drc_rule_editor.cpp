@@ -626,23 +626,11 @@ std::vector<RULE_TREE_NODE> DIALOG_DRC_RULE_EDITOR::buildElectricalRuleTreeNodes
     result.push_back( buildRuleTreeNodeData( "Creepage distance", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, lastParentId,
                                              CREEPAGE_DISTANCE ) );
 
-    result.push_back( buildRuleTreeNodeData( "Connection Width", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
-    result.push_back( buildRuleTreeNodeData( "Minimum connection width", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, MINIMUM_CONNECTION_WIDTH ) );
-
-    result.push_back( buildRuleTreeNodeData( "Hole Clearance", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
-    result.push_back( buildRuleTreeNodeData( "Copper to hole clearance", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, COPPER_TO_HOLE_CLEARANCE ) );
-
-    result.push_back( buildRuleTreeNodeData( "Spoke Count", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
-    result.push_back( buildRuleTreeNodeData( "Minimum thermal relief spoke count",
-                                             DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, lastParentId,
+    result.push_back( buildRuleTreeNodeData( "Minimum connection width", CONSTRAINT, aParentId,
+                                             MINIMUM_CONNECTION_WIDTH ) );
+    result.push_back( buildRuleTreeNodeData( "Copper to hole clearance", CONSTRAINT, aParentId,
+                                             COPPER_TO_HOLE_CLEARANCE ) );
+    result.push_back( buildRuleTreeNodeData( "Minimum thermal relief spoke count", CONSTRAINT, aParentId,
                                              MINIMUM_THERMAL_RELIEF_SPOKE_COUNT ) );
 
     return result;
@@ -654,11 +642,9 @@ std::vector<RULE_TREE_NODE> DIALOG_DRC_RULE_EDITOR::buildManufacturabilityRuleTr
     std::vector<RULE_TREE_NODE> result;
     int                         lastParentId;
 
-    result.push_back( buildRuleTreeNodeData( "Annular Width", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
     result.push_back( buildRuleTreeNodeData( "Minimum annular width", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, MINIMUM_ANNULAR_WIDTH ) );
+                                              aParentId, MINIMUM_ANNULAR_WIDTH ) );
+
     result.push_back( buildRuleTreeNodeData( "Hole", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
     lastParentId = m_nodeId;
     result.push_back( buildRuleTreeNodeData( "Minimum drill size", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
@@ -668,33 +654,21 @@ std::vector<RULE_TREE_NODE> DIALOG_DRC_RULE_EDITOR::buildManufacturabilityRuleTr
     result.push_back(
             buildRuleTreeNodeData( "Via style", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, lastParentId, VIA_STYLE ) );
 
-    result.push_back( buildRuleTreeNodeData( "Text Geometry", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
     result.push_back( buildRuleTreeNodeData( "Minimum text height and thickness", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, MINIMUM_TEXT_HEIGHT_AND_THICKNESS ) );
-
-    result.push_back( buildRuleTreeNodeData( "Silkscreen Clearance", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
+                                             aParentId, MINIMUM_TEXT_HEIGHT_AND_THICKNESS ) );
 
     result.push_back( buildRuleTreeNodeData( "Silk to silk clearance", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, SILK_TO_SILK_CLEARANCE ) );
+                                             aParentId, SILK_TO_SILK_CLEARANCE ) );
     result.push_back( buildRuleTreeNodeData( "Silk to soldermask clearance", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, SILK_TO_SOLDERMASK_CLEARANCE ) );
-
-    result.push_back( buildRuleTreeNodeData( "Soldermask", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
+                                             aParentId, SILK_TO_SOLDERMASK_CLEARANCE ) );
 
     result.push_back( buildRuleTreeNodeData( "Minimum soldermask sliver", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, MINIMUM_SOLDERMASK_SLIVER ) );
+                                             aParentId, MINIMUM_SOLDERMASK_SLIVER ) );
     result.push_back( buildRuleTreeNodeData( "Soldermask expansion", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, SOLDERMASK_EXPANSION ) );
-
-    result.push_back( buildRuleTreeNodeData( "Solderpaste", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
+                                             aParentId, SOLDERMASK_EXPANSION ) );
 
     result.push_back( buildRuleTreeNodeData( "Solderpaste expansion", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT,
-                                             lastParentId, SOLDERPASTE_EXPANSION ) );
+                                             aParentId, SOLDERPASTE_EXPANSION ) );
 
     return result;
 }
@@ -722,24 +696,11 @@ std::vector<RULE_TREE_NODE> DIALOG_DRC_RULE_EDITOR::buildHighspeedDesignRuleTree
 std::vector<RULE_TREE_NODE> DIALOG_DRC_RULE_EDITOR::buildFootprintsRuleTreeNodes( int& aParentId )
 {
     std::vector<RULE_TREE_NODE> result;
-    int                         lastParentId;
-
-    result.push_back( buildRuleTreeNodeData( "Allowed Layers", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
-    result.push_back( buildRuleTreeNodeData( "Permitted layers", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, lastParentId,
+    result.push_back( buildRuleTreeNodeData( "Permitted layers", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, aParentId,
                                              PERMITTED_LAYERS ) );
-
-    result.push_back( buildRuleTreeNodeData( "Orientation", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
-    result.push_back( buildRuleTreeNodeData( "Allowed orientation", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, lastParentId,
+    result.push_back( buildRuleTreeNodeData( "Allowed orientation", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, aParentId,
                                              ALLOWED_ORIENTATION ) );
-
-    result.push_back( buildRuleTreeNodeData( "Via Placement", DRC_RULE_EDITOR_ITEM_TYPE::CATEGORY, aParentId ) );
-    lastParentId = m_nodeId;
-
-    result.push_back( buildRuleTreeNodeData( "Vias under SMD", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, lastParentId,
+    result.push_back( buildRuleTreeNodeData( "Vias under SMD", DRC_RULE_EDITOR_ITEM_TYPE::CONSTRAINT, aParentId,
                                              VIAS_UNDER_SMD ) );
 
     return result;
