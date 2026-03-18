@@ -98,6 +98,17 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
     Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_PANEL::OnError, this, m_browser->GetId() );
 
     m_initRetryTimer.Bind( wxEVT_TIMER, [this]( wxTimerEvent& ) { DoInitHandlers(); } );
+
+    m_browser->Bind( wxEVT_DESTROY, [this]( wxWindowDestroyEvent& evt )
+    {
+        if( evt.GetEventObject() == m_browser )
+        {
+            m_initRetryTimer.Stop();
+            m_browser = nullptr;
+        }
+
+        evt.Skip();
+    } );
 }
 
 WEBVIEW_PANEL::~WEBVIEW_PANEL()
@@ -152,7 +163,7 @@ bool WEBVIEW_PANEL::AddMessageHandler( const wxString& aName, MESSAGE_HANDLER aH
 
     m_msgHandlers.emplace( aName, std::move( aHandler ) );
 
-    if( m_initialized )
+    if( m_initialized && m_browser )
     {
         wxEventLoopBase* activeLoop = wxEventLoopBase::GetActive();
 
@@ -174,8 +185,11 @@ void WEBVIEW_PANEL::ClearMessageHandlers()
 {
     wxLogTrace( "webview", "Clearing all message handlers" );
 
-    for( const auto& handler : m_msgHandlers )
-        m_browser->RemoveScriptMessageHandler( handler.first );
+    if( m_browser )
+    {
+        for( const auto& handler : m_msgHandlers )
+            m_browser->RemoveScriptMessageHandler( handler.first );
+    }
 
     m_msgHandlers.clear();
 }
@@ -197,6 +211,9 @@ void WEBVIEW_PANEL::OnNavigationRequest( wxWebViewEvent& aEvt )
 
 void WEBVIEW_PANEL::DoInitHandlers()
 {
+    if( !m_browser )
+        return;
+
     // WebKit's AddScriptMessageHandler internally calls RunScript which yields the
     // event loop via wxGUIEventLoop::DoYieldFor. If we're inside a nested event loop
     // or the main loop is already mid-yield (e.g., wxProgressDialog pumping events),
