@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: 5.99\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:23+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kicad/"
 "master-source/nb_NO/>\n"
@@ -31194,7 +31194,7 @@ msgstr "Eksporter GLB (binær GLTF)"
 
 #: kicad/kicad_cli.cpp:134
 msgid "Export STEP"
-msgstr "Eksporter TRINN"
+msgstr "Eksporter STEP"
 
 #: kicad/kicad_cli.cpp:135
 msgid "Export BREP"
@@ -35551,7 +35551,7 @@ msgstr "Bunnloddemaske"
 
 #: pcbnew/board_stackup_manager/board_stackup.cpp:712
 msgid "Bottom Solder Paste"
-msgstr "Lim inn på loddetinn"
+msgstr "Bunn loddepasta"
 
 #: pcbnew/board_stackup_manager/board_stackup.cpp:720
 msgid "Bottom Silk Screen"
@@ -36828,7 +36828,7 @@ msgstr "Board Finish"
 #: pcbnew/dialogs/dialog_board_setup.cpp:130
 #: pcbnew/dialogs/dialog_plot.cpp:1370
 msgid "Solder Mask/Paste"
-msgstr "Loddemaske / Lim inn"
+msgstr "Loddemaske/loddepasta"
 
 #: pcbnew/dialogs/dialog_board_setup.cpp:139
 msgid "Zone Hatch Offsets"
@@ -40435,7 +40435,7 @@ msgstr "Kretskortlag og fysisk lagoppbygging"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:54
 msgid "Solder mask/paste defaults"
-msgstr "Loddemaske / lim inn standardinnstillinger"
+msgstr "Loddemaske/loddepasta standardinnstillinger"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:57
 msgid "Zone hatched fill offsets"
@@ -43943,7 +43943,7 @@ msgstr "signal"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:487
 msgid "power plane"
-msgstr "kraftfly"
+msgstr "kraftplan"
 
 #: pcbnew/dialogs/panel_setup_layers.cpp:488
 msgid "mixed"
@@ -48694,7 +48694,7 @@ msgstr "Board Side"
 
 #: pcbnew/footprint.cpp:2139
 msgid "Back (Flipped)"
-msgstr "Tilbake (Vendt)"
+msgstr "Bakside (vendt)"
 
 #: pcbnew/footprint.cpp:2160
 msgid "autoplaced"
@@ -58135,7 +58135,7 @@ msgstr "Vis fotavtrykk som er om bord foran"
 
 #: pcbnew/widgets/appearance_controls.cpp:341
 msgid "Footprints Back"
-msgstr "Fotavtrykk Tilbake"
+msgstr "Fotavtrykk bakside"
 
 #: pcbnew/widgets/appearance_controls.cpp:341
 msgid "Show footprints that are on board's back"
