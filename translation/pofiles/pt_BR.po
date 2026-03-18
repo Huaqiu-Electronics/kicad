@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 20:44+0000\n"
-"Last-Translator: brunofaus <brunofaus01@gmail.com>\n"
+"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -6819,7 +6819,7 @@ msgstr "Pino"
 
 #: common/eda_item.cpp:474 eeschema/sch_sheet_pin.h:87
 msgid "Sheet Pin"
-msgstr "Folha do pino"
+msgstr "Pino da folha"
 
 #: common/eda_item.cpp:475 eeschema/dialogs/dialog_migrate_buses.cpp:110
 #: pcbnew/tools/pcb_actions.cpp:2406
@@ -8830,7 +8830,7 @@ msgstr "Trilhas"
 #: common/layer_id.cpp:130
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:38
 msgid "Through vias"
-msgstr "Através das vias"
+msgstr "Vias passantes"
 
 #: common/layer_id.cpp:131
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:52
@@ -8848,11 +8848,11 @@ msgstr "Microvias"
 
 #: common/layer_id.cpp:134
 msgid "Via holes"
-msgstr "Furos através da via"
+msgstr "Furos de via"
 
 #: common/layer_id.cpp:135
 msgid "Via hole walls"
-msgstr "Através das paredes do furo"
+msgstr "Paredes do furo de via"
 
 #: common/layer_id.cpp:136
 msgid "Plated holes"
@@ -8876,7 +8876,7 @@ msgstr "Emaranhado"
 
 #: common/layer_id.cpp:140
 msgid "DRC warnings"
-msgstr "Advertências RDC"
+msgstr "Advertências DRC"
 
 #: common/layer_id.cpp:141
 msgid "DRC errors"
@@ -8888,11 +8888,11 @@ msgstr "Formas de DRC"
 
 #: common/layer_id.cpp:143
 msgid "DRC exclusions"
-msgstr "Exclusões do RDC"
+msgstr "Exclusões do DRC"
 
 #: common/layer_id.cpp:144
 msgid "DRC marker shadows"
-msgstr "Sombras do marcador RDC"
+msgstr "Sombras do marcador DRC"
 
 #: common/layer_id.cpp:152
 msgid "Grid axes"
@@ -8904,7 +8904,7 @@ msgstr "Sombra do item bloqueado"
 
 #: common/layer_id.cpp:156
 msgid "Courtyard collision shadow"
-msgstr "Sombra de colisão do pedaço"
+msgstr "Sombra de colisão do Courtyard"
 
 #: common/layer_id.cpp:157
 msgid "Board outline area"
@@ -16101,7 +16101,7 @@ msgstr ""
 #: pcbnew/drc/drc_test_provider_library_parity.cpp:839
 #: pcbnew/drc/drc_test_provider_schematic_parity.cpp:184
 msgid "Do not populate"
-msgstr "Não povoar"
+msgstr "Não montar"
 
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:76
 #: eeschema/dialogs/dialog_sheet_properties_base.cpp:177
@@ -18131,11 +18131,11 @@ msgstr "Itens repetidos"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:321
 msgid "&Horizontal pitch:"
-msgstr "Inclinação &horizontal:"
+msgstr "Passo &horizontal:"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:332
 msgid "&Vertical pitch:"
-msgstr "Inclinação &vertical:"
+msgstr "Passo &vertical:"
 
 #: eeschema/dialogs/panel_eeschema_editing_options_base.cpp:343
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:127
@@ -18890,7 +18890,7 @@ msgstr "Pino livre"
 
 #: eeschema/erc/erc.cpp:87 eeschema/erc/erc.cpp:104
 msgid "Unspecified Pin"
-msgstr "Pino não defino"
+msgstr "Pino não definido"
 
 #: eeschema/erc/erc.cpp:88 eeschema/erc/erc.cpp:105
 msgid "Power Input Pin"
@@ -22245,7 +22245,7 @@ msgstr "Fazer a exclusão da lista de materiais"
 #: pcbnew/widgets/pcb_properties_panel.cpp:601
 #: pcbnew/widgets/pcb_properties_panel.cpp:696
 msgid "Do not Populate"
-msgstr "Não popular"
+msgstr "Não montar"
 
 #: eeschema/sch_sheet_path.cpp:58 include/board_item.h:483
 msgid "(Deleted Item)"
@@ -25459,7 +25459,7 @@ msgstr "Adicionar a hierarquia da(s) etiqueta(s)"
 
 #: eeschema/sync_sheet_pin/panel_sync_sheet_pins_base.cpp:37
 msgid "Delete Sheet Pins"
-msgstr "Excluir a planilha de pinos"
+msgstr "Excluir os pinos da folha"
 
 #: eeschema/sync_sheet_pin/panel_sync_sheet_pins_base.cpp:59
 msgid "Sheet name"
@@ -25467,7 +25467,7 @@ msgstr "Nome da folha"
 
 #: eeschema/sync_sheet_pin/panel_sync_sheet_pins_base.cpp:69
 msgid "Add Sheet Pins"
-msgstr "Adicionar a planilha de pinos"
+msgstr "Adicionar pinos da folha"
 
 #: eeschema/sync_sheet_pin/panel_sync_sheet_pins_base.cpp:72
 msgid "Delete Hierarchical Labels"
@@ -27430,7 +27430,7 @@ msgstr "Função do pino"
 
 #: eeschema/tools/sch_edit_tool.cpp:246
 msgid "Pin Helpers"
-msgstr "Cabeçalhos do pino"
+msgstr "Auxiliares do pino"
 
 #: eeschema/tools/sch_edit_tool.cpp:696
 msgid "Transform Selection"
@@ -30389,7 +30389,7 @@ msgstr "Não gere os atributos netlist"
 
 #: kicad/cli/command_pcb_export_gerber.cpp:82
 msgid "Disable aperture macros"
-msgstr "Desativa as macros do diafragma"
+msgstr "Desativa as macros de abertura"
 
 #: kicad/cli/command_pcb_export_gerber.cpp:86
 #: pcbnew/dialogs/dialog_gen_footprint_position_file_base.cpp:119
@@ -35856,7 +35856,7 @@ msgstr "Posicionar footprints automaticamente"
 
 #: pcbnew/board.cpp:1152 pcbnew/drc/drc_cache_generator.cpp:214
 msgid "Tessellating copper zones..."
-msgstr "Isolamento entre as zonas cobreadas..."
+msgstr "Tesselando as zonas de cobre..."
 
 #: pcbnew/board.cpp:2216 pcbnew/board_statistics_report.cpp:604
 #: pcbnew/dialogs/dialog_board_statistics_base.cpp:79
@@ -39826,7 +39826,7 @@ msgstr ""
 #: pcbnew/dialogs/panel_fp_editor_graphics_defaults_base.cpp:66
 #: pcbnew/dialogs/panel_setup_text_and_graphics_base.cpp:68
 msgid "Courtyards"
-msgstr "Pedaços"
+msgstr "Courtyards"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:425
 msgid "Exempt from courtyard requirement"
@@ -40761,7 +40761,7 @@ msgstr "-- deixe inalterado --  "
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:187
 msgid "Via size:"
-msgstr "Tamanho da ilha:"
+msgstr "Tamanho da via:"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:196
 msgid "Via annular rings:"
@@ -43192,7 +43192,7 @@ msgstr "Diâmetro da via:"
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:321
 #: pcbnew/dialogs/dialog_track_via_size_base.cpp:47
 msgid "Via hole:"
-msgstr "Através do furo:"
+msgstr "Furo da via:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:351
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:77
@@ -43381,7 +43381,7 @@ msgstr "Restaurar todas as camadas"
 
 #: pcbnew/dialogs/dialog_unused_pad_layers.cpp:205
 msgid "Remove Unused Pads"
-msgstr "Remove as camadas não utilizadas"
+msgstr "Remove as ilhas não utilizadas"
 
 #: pcbnew/dialogs/dialog_unused_pad_layers_base.cpp:33
 msgid "&Selected only"
@@ -46959,7 +46959,7 @@ msgstr "As regiões onde o cobre se cruzam"
 
 #: pcbnew/drc/drc_item.cpp:89
 msgid "Isolated copper fill"
-msgstr "Isolamento do preenchimento com cobre"
+msgstr "Preenchimento de cobre isolado"
 
 #: pcbnew/drc/drc_item.cpp:93
 msgid "Thermal relief connection to zone incomplete"
@@ -47027,7 +47027,7 @@ msgstr "Furo da micro via além do limite"
 
 #: pcbnew/drc/drc_item.cpp:157
 msgid "Courtyards overlap"
-msgstr "Sobreposição do pedaço"
+msgstr "Sobreposição de Courtyards"
 
 #: pcbnew/drc/drc_item.cpp:161
 msgid "Footprint has no courtyard defined"
@@ -47039,11 +47039,11 @@ msgstr "Footprint com pedaço malformado"
 
 #: pcbnew/drc/drc_item.cpp:169
 msgid "PTH inside courtyard"
-msgstr "PTH dentro do pedaço"
+msgstr "PTH dentro do Courtyard"
 
 #: pcbnew/drc/drc_item.cpp:173
 msgid "NPTH inside courtyard"
-msgstr "NPTH dentro do pedaço"
+msgstr "NPTH dentro do Courtyard"
 
 #: pcbnew/drc/drc_item.cpp:177
 msgid "Item on a disabled copper layer"
@@ -47448,7 +47448,7 @@ msgstr "Verificando as definições do pedaço da ilha..."
 
 #: pcbnew/drc/drc_test_provider_courtyard_clearance.cpp:79
 msgid "Gathering footprint courtyards..."
-msgstr "Coletando os pedaços do footprint..."
+msgstr "Coletando os Courtyards do footprint..."
 
 #: pcbnew/drc/drc_test_provider_courtyard_clearance.cpp:139
 msgid "Checking footprints for overlapping courtyards..."
@@ -49639,7 +49639,7 @@ msgstr "Editar o padrão de ajuste"
 #: pcbnew/generators/pcb_tuning_pattern.cpp:1961
 #: pcbnew/generators/pcb_tuning_pattern.cpp:1963
 msgid "current skew"
-msgstr "inclinação atual"
+msgstr "desvio atual"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:1968
 msgid "current delay"
@@ -49686,7 +49686,7 @@ msgstr "Atraso Total"
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2119
 #, c-format
 msgid "Target Skew: %s"
-msgstr "Inclinação desejada: %s"
+msgstr "Desvio alvo: %s"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2120
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2154
@@ -49696,7 +49696,7 @@ msgstr "(das propriedades de ajuste do padrão)"
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2128
 #, c-format
 msgid "Skew Constraints: %s"
-msgstr "Restrições da inclinação: %s"
+msgstr "Restrições de desvio: %s"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2143
 #, c-format
@@ -49748,7 +49748,7 @@ msgstr "Par diferencial"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2536
 msgid "Diff pair skew"
-msgstr "Inclinação do par diferencial"
+msgstr "Desvio do par diferencial"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2574 pcbnew/pcb_shape.cpp:1124
 #: pcbnew/pcb_tablecell.cpp:285 pcbnew/pcb_textbox.cpp:864
@@ -49800,7 +49800,7 @@ msgstr "Atraso Alvo"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2675
 msgid "Target Skew"
-msgstr "Inclinação desejada"
+msgstr "Desvio alvo"
 
 #: pcbnew/generators/pcb_tuning_pattern.cpp:2681
 msgid "Target Skew Delay"
@@ -54641,7 +54641,7 @@ msgstr ""
 
 #: pcbnew/router/pns_kicad_iface.cpp:2798
 msgid "Routing"
-msgstr "Roteando"
+msgstr "Roteamento"
 
 #: pcbnew/router/pns_meander_skew_placer.cpp:59
 msgid "Please select a differential pair track you want to tune."
@@ -55177,7 +55177,7 @@ msgstr "Arquivo Specctra DSN"
 
 #: pcbnew/tools/board_editor_control.cpp:490
 msgid "Export Board Netlist"
-msgstr "Exportar a lista da placa"
+msgstr "Exportar a netlist da placa"
 
 #: pcbnew/tools/board_editor_control.cpp:491
 msgid "KiCad board netlist files"
@@ -58646,7 +58646,7 @@ msgstr ""
 #: pcbnew/tools/zone_filler_tool.cpp:266
 #, c-format
 msgid "Refill %d Zones"
-msgstr "Recarrega %d zonas"
+msgstr "Preenche %d zonas"
 
 #: pcbnew/tools/zone_filler_tool.cpp:275
 msgid "Auto-fill Zone(s)"
@@ -59106,7 +59106,7 @@ msgstr "Desmarque as faixas e as vias em %s"
 
 #: pcbnew/widgets/appearance_controls.cpp:953
 msgid "Show All Nets"
-msgstr "Exiba todas as camadas"
+msgstr "Exiba todas as redes"
 
 #: pcbnew/widgets/appearance_controls.cpp:955
 msgid "Hide All Other Nets"
@@ -59574,7 +59574,7 @@ msgstr "Renomear a(s) net(s) selecionada(s)..."
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1114
 msgid "Delete Selected Net"
-msgstr "Excluir o(s) item(s) selecionado(s)"
+msgstr "Excluir a rede selecionada"
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1120
 msgid "Add Net..."
