@@ -156,7 +156,7 @@ bool WEBVIEW_PANEL::AddMessageHandler( const wxString& aName, MESSAGE_HANDLER aH
     {
         wxEventLoopBase* activeLoop = wxEventLoopBase::GetActive();
 
-        if( activeLoop && !activeLoop->IsMain() )
+        if( activeLoop && ( !activeLoop->IsMain() || activeLoop->IsYielding() ) )
         {
             m_initRetryTimer.StartOnce( 200 );
         }
@@ -199,12 +199,12 @@ void WEBVIEW_PANEL::DoInitHandlers()
 {
     // WebKit's AddScriptMessageHandler internally calls RunScript which yields the
     // event loop via wxGUIEventLoop::DoYieldFor. If we're inside a nested event loop
-    // (e.g., a modal dialog opened by another component), this causes WebKit's JSC to
-    // crash in sanitizeStackForVM when creating a JS context. Re-defer until we're
-    // back at the main event loop.
+    // or the main loop is already mid-yield (e.g., wxProgressDialog pumping events),
+    // this causes WebKit's JSC to crash in sanitizeStackForVM when the reentrant
+    // yield tries to create a JS context. Re-defer until the loop is idle.
     wxEventLoopBase* activeLoop = wxEventLoopBase::GetActive();
 
-    if( activeLoop && !activeLoop->IsMain() )
+    if( activeLoop && ( !activeLoop->IsMain() || activeLoop->IsYielding() ) )
     {
         m_initRetryTimer.StartOnce( 200 );
         return;
