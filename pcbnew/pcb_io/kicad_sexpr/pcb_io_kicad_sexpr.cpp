@@ -2468,7 +2468,7 @@ void PCB_IO_KICAD_SEXPR::format( const PCB_GROUP* aGroup ) const
             memberIds.Add( member->m_Uuid.AsString() );
     }
 
-    if( memberIds.size() <= 1 )
+    if( memberIds.empty() )
         return;
 
     m_out->Print( "(group %s", m_out->Quotew( aGroup->GetName() ).c_str() );
