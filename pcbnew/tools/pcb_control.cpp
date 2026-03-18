@@ -2786,10 +2786,10 @@ int PCB_CONTROL::PlaceStackup( const TOOL_EVENT& aEvent )
 
 int PCB_CONTROL::FlipPcbView( const TOOL_EVENT& aEvent )
 {
-    view()->SetMirror( !view()->IsMirroredX(), false );
-    view()->RecacheAllItems();
-    m_frame->GetCanvas()->ForceRefresh();
-    m_frame->OnDisplayOptionsChanged();
+    PCB_DISPLAY_OPTIONS opts = m_frame->GetDisplayOptions();
+    opts.m_FlipBoardView = !opts.m_FlipBoardView;
+    m_frame->SetDisplayOptions( opts );
+
     return 0;
 }
 

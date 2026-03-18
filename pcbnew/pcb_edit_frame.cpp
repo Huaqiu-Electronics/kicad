@@ -1090,7 +1090,7 @@ void PCB_EDIT_FRAME::setupUIConditions()
     auto boardFlippedCond =
             [this]( const SELECTION& )
             {
-                return GetCanvas() && GetCanvas()->GetView()->IsMirroredX();
+                return GetDisplayOptions().m_FlipBoardView;
             };
 
     auto layerManagerCond =

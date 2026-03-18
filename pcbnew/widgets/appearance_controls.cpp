@@ -528,7 +528,7 @@ APPEARANCE_CONTROLS::APPEARANCE_CONTROLS( PCB_BASE_FRAME* aParent, wxWindow* aFo
                 passOnFocus();
             } );
 
-    m_cbFlipBoard->SetValue( m_frame->GetCanvas()->GetView()->IsMirroredX() );
+    m_cbFlipBoard->SetValue( m_frame->GetDisplayOptions().m_FlipBoardView );
     m_cbFlipBoard->Bind( wxEVT_CHECKBOX,
             [&]( wxCommandEvent& aEvent )
             {
@@ -1452,7 +1452,7 @@ void APPEARANCE_CONTROLS::UpdateDisplayOptions()
     case NET_COLOR_MODE::OFF:      m_rbNetColorOff->SetValue( true );      break;
     }
 
-    m_cbFlipBoard->SetValue( m_frame->GetCanvas()->GetView()->IsMirroredX() );
+    m_cbFlipBoard->SetValue( m_frame->GetDisplayOptions().m_FlipBoardView );
 
     if( !m_isFpEditor )
     {

@@ -1055,6 +1055,9 @@ void PCB_BASE_FRAME::SetDisplayOptions( const PCB_DISPLAY_OPTIONS& aOptions, boo
     KIGFX::PCB_VIEW*    view   = static_cast<KIGFX::PCB_VIEW*>( canvas->GetView() );
 
     view->UpdateDisplayOptions( aOptions );
+    view->SetMirror( aOptions.m_FlipBoardView, view->IsMirroredY() );
+    view->RecacheAllItems();
+
     canvas->SetHighContrastLayer( GetActiveLayer() );
     OnDisplayOptionsChanged();
 

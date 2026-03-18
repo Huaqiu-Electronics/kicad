@@ -1398,11 +1398,10 @@ void FOOTPRINT_EDIT_FRAME::setupUIConditions()
                 return GetDisplayOptions().m_ContrastModeDisplay != HIGH_CONTRAST_MODE::NORMAL;
             };
 
-    auto boardFlippedCond =
-            [this]( const SELECTION& )
-            {
-                return GetCanvas() && GetCanvas()->GetView()->IsMirroredX();
-            };
+    auto boardFlippedCond = [this]( const SELECTION& )
+    {
+        return GetDisplayOptions().m_FlipBoardView;
+    };
 
     auto libraryTreeCond =
             [this](const SELECTION& )

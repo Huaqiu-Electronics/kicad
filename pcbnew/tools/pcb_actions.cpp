@@ -1649,6 +1649,7 @@ TOOL_ACTION PCB_ACTIONS::flipBoard( TOOL_ACTION_ARGS()
         .Scope( AS_GLOBAL )
         .FriendlyName( _( "Flip Board View" ) )
         .Tooltip( _( "View board from the opposite side" ) )
+        .ToolbarState( TOOLBAR_STATE::TOGGLE )
         .Icon( BITMAPS::flip_board ) );
 
 TOOL_ACTION PCB_ACTIONS::rehatchShapes( TOOL_ACTION_ARGS()
