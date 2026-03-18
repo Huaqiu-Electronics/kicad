@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:46+0000\n"
+"PO-Revision-Date: 2026-03-19 00:24+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kicad/master-"
 "source/da/>\n"
@@ -36710,7 +36710,7 @@ msgstr "Standard er 1"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:238
 msgid "Back reference start:"
-msgstr "Tilbage reference start:"
+msgstr "Bagside reference start:"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:240
 msgid ""
@@ -36739,7 +36739,7 @@ msgstr "Valgfrit præfiks for komponentside-referencebetegnelser (f.eks. F_)"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:261
 msgid "Back prefix:"
-msgstr "Tilbage præfiks:"
+msgstr "Bagside præfiks:"
 
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:263
 #: pcbnew/dialogs/dialog_board_reannotate_base.cpp:268
@@ -48653,7 +48653,7 @@ msgstr "Printkortsside"
 
 #: pcbnew/footprint.cpp:2139
 msgid "Back (Flipped)"
-msgstr "Tilbage (vendt)"
+msgstr "Bagside (vendt)"
 
 #: pcbnew/footprint.cpp:2160
 msgid "autoplaced"
@@ -58106,7 +58106,7 @@ msgstr "Vis fodaftryk, der er på printkortets forside"
 
 #: pcbnew/widgets/appearance_controls.cpp:341
 msgid "Footprints Back"
-msgstr "Fodaftryk tilbage"
+msgstr "Fodaftryk bagside"
 
 #: pcbnew/widgets/appearance_controls.cpp:341
 msgid "Show footprints that are on board's back"
