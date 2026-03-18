@@ -260,6 +260,10 @@ bool MULTICHANNEL_TOOL::findOtherItemsInRuleArea( RULE_AREA* aRuleArea, std::set
             if( item->Type() == PCB_FOOTPRINT_T )
                 continue;
 
+            // TODO: Preserve nested groups when applying design block layout.
+            if( item->Type() == PCB_GROUP_T )
+                continue;
+
             if( BOARD_ITEM* boardItem = dynamic_cast<BOARD_ITEM*>( item ) )
             {
                 if( !boardItem->IsConnected() || boardItem->Type() == PCB_ZONE_T )
