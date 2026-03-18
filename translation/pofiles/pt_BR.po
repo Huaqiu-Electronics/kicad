@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 00:24+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
@@ -34667,7 +34667,7 @@ msgstr "1"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:325
 msgid "Power Comment:"
-msgstr "Comentário sobre a potência:"
+msgstr "Comentário sobre a alimentação:"
 
 #: pcb_calculator/calculator_panels/panel_regulator_base.cpp:337
 msgid "Copy to Clipboard"
@@ -35966,7 +35966,7 @@ msgstr "Serigrafia da parte de cima"
 
 #: pcbnew/board_stackup_manager/board_stackup.cpp:655
 msgid "Top Solder Paste"
-msgstr "Pasta de solda da parte de baixo"
+msgstr "Pasta de solda da parte de cima"
 
 #: pcbnew/board_stackup_manager/board_stackup.cpp:663
 msgid "Top Solder Mask"
