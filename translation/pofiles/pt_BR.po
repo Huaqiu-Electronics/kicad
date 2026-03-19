@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-19 00:24+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-19 17:34+0000\n"
+"Last-Translator: Hildo Guillardi Júnior <hildogjr@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kicad/master-source/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -9345,27 +9345,27 @@ msgstr "Não há notificações disponíveis"
 
 #: common/oauth/oauth_loopback_server.cpp:126
 msgid "Missing HTTP method in callback request."
-msgstr ""
+msgstr "Método HTTP não encontrado na solicitação de retorno de chamada."
 
 #: common/oauth/oauth_loopback_server.cpp:134
 msgid "Missing callback URL in request."
-msgstr ""
+msgstr "URL não encontrada na chamada."
 
 #: common/oauth/oauth_loopback_server.cpp:145
 msgid "Unexpected callback path."
-msgstr ""
+msgstr "Caminho de retorno de chamada inesperado."
 
 #: common/oauth/oauth_loopback_server.cpp:153
 msgid "OAuth callback state did not match."
-msgstr ""
+msgstr "Estado de retorno do OAuth não correspondente."
 
 #: common/oauth/oauth_loopback_server.cpp:163
 msgid "Authorization server returned an OAuth error."
-msgstr ""
+msgstr "O servidor de autorização retornou um erro de OAuth."
 
 #: common/oauth/oauth_loopback_server.cpp:171
 msgid "Missing authorization code in callback."
-msgstr ""
+msgstr "Código de autorização ausente no retorno de chamada."
 
 #: common/page_info.cpp:48
 msgid "A5 148 x 210mm"
@@ -9604,19 +9604,20 @@ msgstr "Erro: "
 
 #: common/remote_provider_client.cpp:287
 msgid "Sign in required for this provider."
-msgstr ""
+msgstr "É necessário fazer login para este provedor."
 
 #: common/remote_provider_client.cpp:329
 msgid "Provider metadata does not include a session bootstrap URL."
 msgstr ""
+"Os metadados do provedor não incluem uma URL de inicialização de sessão."
 
 #: common/remote_provider_client.cpp:352
 msgid "Bootstrap response did not include a nonce URL."
-msgstr ""
+msgstr "A resposta do Bootstrap não incluiu uma URL."
 
 #: common/remote_provider_client.cpp:371
 msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
-msgstr ""
+msgstr "A origem do URL de bootstrap não corresponde ao endpoint de bootstrap."
 
 #: common/remote_provider_client.cpp:407
 #, c-format
@@ -28233,11 +28234,11 @@ msgstr ""
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1437
 msgid "Remote provider sign-in was cancelled or failed."
-msgstr ""
+msgstr "O pagamento foi cancelado ou falhou."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1448
 msgid "Remote provider sign-in failed."
-msgstr ""
+msgstr "Falha no login do provedor remoto."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1464
 #, fuzzy
