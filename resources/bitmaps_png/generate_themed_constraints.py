@@ -60,6 +60,7 @@ CONSTRAINT_FILES = {
     "matched-length-diff-pair-v2.svg": "matched-length-diff-pair-v2.svg",
     'routing-diff-pair.svg': 'routing-diff-pair.svg',
     'routing-width.svg': 'routing-width.svg',
+    'courtyard-clearance.svg': 'courtyard-clearance.svg',
 }
 
 

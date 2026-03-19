@@ -55,10 +55,10 @@ class DRC_RE_COURTYARD_CLEARANCE_CONSTRAINT_DATA : public DRC_RE_NUMERIC_INPUT_C
 {
 public:
     using DRC_RE_NUMERIC_INPUT_CONSTRAINT_DATA::DRC_RE_NUMERIC_INPUT_CONSTRAINT_DATA;
-    BITMAPS GetOverlayBitmap() const override { return BITMAPS::constraint_clearance; }
+    BITMAPS GetOverlayBitmap() const override { return BITMAPS::constraint_courtyard_clearance; }
     std::vector<DRC_RE_FIELD_POSITION> GetFieldPositions() const override
     {
-        return { { 160 + DRC_RE_OVERLAY_XO, 200 + DRC_RE_OVERLAY_XO, 202 + DRC_RE_OVERLAY_YO, 1, wxS( "mm" ), LABEL_POSITION::RIGHT } };
+        return { { 260 + DRC_RE_OVERLAY_XO, 300 + DRC_RE_OVERLAY_XO, 117 + DRC_RE_OVERLAY_YO, 1, wxS( "mm" ), LABEL_POSITION::RIGHT } };
     }
 };
 
