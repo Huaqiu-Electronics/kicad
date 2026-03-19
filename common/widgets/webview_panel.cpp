@@ -103,7 +103,8 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
     {
         if( evt.GetEventObject() == m_browser )
         {
-            m_initRetryTimer.Stop();
+            // During panel teardown, wxWindow destroys children after C++ member
+            // destruction, so m_initRetryTimer may already be gone here.
             m_browser = nullptr;
         }
 
