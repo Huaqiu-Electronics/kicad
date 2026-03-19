@@ -23,69 +23,15 @@
 
 #include "dialog_restore_local_history.h"
 
-#include <wx/listctrl.h>
-#include <wx/textctrl.h>
-#include <wx/sizer.h>
 #include <wx/button.h>
-
-static wxString FormatChangedFileLine( const wxString& aLine )
-{
-    wxString filePart = aLine;
-    wxString statsPart;
-
-    if( aLine.AfterLast( ' ' ) != aLine )
-    {
-        filePart = aLine.BeforeLast( ' ' );
-        statsPart = aLine.AfterLast( ' ' );
-    }
-
-    wxArrayString stats = wxSplit( statsPart, '/' );
-
-    if( stats.size() == 3 )
-    {
-        long added = 0;
-        long removed = 0;
-        long updated = 0;
-
-        bool parsed = stats[0].ToLong( &added ) && stats[1].ToLong( &removed ) && stats[2].ToLong( &updated );
-
-        if( parsed )
-        {
-            wxString summary;
-
-            if( added > 0 )
-                summary << wxString::Format( _( "Added: %ld" ), added );
-
-            if( removed > 0 )
-            {
-                if( !summary.IsEmpty() )
-                    summary << ", ";
-
-                summary << wxString::Format( _( "Removed: %ld" ), removed );
-            }
-
-            if( updated > 0 )
-            {
-                if( !summary.IsEmpty() )
-                    summary << ", ";
-
-                summary << wxString::Format( _( "Updated: %ld" ), updated );
-            }
-
-            if( summary.IsEmpty() )
-                summary = _( "No line changes" );
-
-            return filePart + wxS( "  " ) + summary;
-        }
-    }
-
-    return aLine;
-}
+#include <wx/listctrl.h>
+#include <wx/sizer.h>
+#include <wx/textctrl.h>
 
 
 DIALOG_RESTORE_LOCAL_HISTORY::DIALOG_RESTORE_LOCAL_HISTORY(
         wxWindow* aParent, const std::vector<LOCAL_HISTORY_SNAPSHOT_INFO>& aSnapshots ) :
-        DIALOG_SHIM( aParent, wxID_ANY, _( "Restore Project from Local History" ) ),
+        DIALOG_SHIM( aParent, wxID_ANY, _( "Restore Project from Local History..." ) ),
         m_snapshots( aSnapshots )
 {
     BuildUi();
@@ -100,7 +46,7 @@ void DIALOG_RESTORE_LOCAL_HISTORY::BuildUi()
                              wxLC_HRULES | wxLC_REPORT | wxLC_SINGLE_SEL | wxLC_VRULES );
     m_list->AppendColumn( _( "Time" ) );
     m_list->AppendColumn( _( "Action" ) );
-    m_list->AppendColumn( _( "Files" ) );
+    m_list->AppendColumn( _( "Count" ) );
 
     m_details = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                 wxTE_MULTILINE | wxTE_READONLY );
@@ -132,9 +78,12 @@ void DIALOG_RESTORE_LOCAL_HISTORY::Populate()
     {
         const auto& snapshot = m_snapshots[i];
         long        row = m_list->InsertItem( m_list->GetItemCount(), snapshot.date.FormatISOCombined() );
+        wxString    countText =
+                snapshot.filesChanged > 0 ? wxString::Format( "%d", snapshot.filesChanged ) : wxString( "-" );
+
         m_list->SetItem( row, 1, snapshot.summary );
-        m_list->SetItem(
-                row, 2, snapshot.filesChanged > 0 ? wxString::Format( "%d", snapshot.filesChanged ) : wxString( "-" ) );
+
+        m_list->SetItem( row, 2, countText );
     }
 
     m_list->SetColumnWidth( 0, FromDIP( 170 ) );
@@ -158,13 +107,20 @@ void DIALOG_RESTORE_LOCAL_HISTORY::UpdateDetails( long aIndex )
     const auto& snapshot = m_snapshots[aIndex];
 
     wxString text;
-    text << _( "Action:" ) << " " << snapshot.summary << "\n";
-    text << _( "Time:" ) << " " << snapshot.date.FormatISOCombined() << "\n";
-    text << _( "Hash:" ) << " " << snapshot.hash << "\n\n";
-    text << _( "Changed files:" ) << "\n";
+    text << snapshot.summary << "\n";
+    text << snapshot.date.FormatISOCombined() << "\n";
+    text << snapshot.hash;
 
-    for( const wxString& line : snapshot.changedFiles )
-        text << FormatChangedFileLine( line ) << "\n";
+    if( !snapshot.changedFiles.empty() )
+        text << "\n\n";
+
+    for( size_t ii = 0; ii < snapshot.changedFiles.size(); ++ii )
+    {
+        if( ii > 0 )
+            text << "\n";
+
+        text << snapshot.changedFiles[ii];
+    }
 
     m_details->SetValue( text );
 }
