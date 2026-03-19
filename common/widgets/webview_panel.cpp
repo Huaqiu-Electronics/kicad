@@ -107,6 +107,7 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
 
 WEBVIEW_PANEL::~WEBVIEW_PANEL()
 {
+    m_initRetryTimer.Stop();
 }
 
 void WEBVIEW_PANEL::BindLoadedEvent()
