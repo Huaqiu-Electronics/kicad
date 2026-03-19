@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KiCad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-19 00:23+0000\n"
+"PO-Revision-Date: 2026-03-19 10:13+0000\n"
 "Last-Translator: Damjan Prerad <damjan@kipro-pcb.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sr/>\n"
@@ -40,7 +40,7 @@ msgstr "Креирање слојева"
 
 #: 3d-viewer/3d_canvas/board_adapter.cpp:1008
 msgid "No footprint loaded."
-msgstr "Подножје није учитано"
+msgstr "Подножје није учитано."
 
 #: 3d-viewer/3d_canvas/board_adapter.cpp:1023
 msgid ""
@@ -380,7 +380,7 @@ msgstr "Исцртај тренутни приказ коришћењем Raytra
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:63
 msgid "Copy 3D image to clipboard"
-msgstr "Копирај 3D слику у  привремену меморију"
+msgstr "Копирај 3D слику у привремену меморију"
 
 #: 3d-viewer/3d_viewer/tools/eda_3d_actions.cpp:64
 msgid "Copy the current 3D image to the clipboard"
