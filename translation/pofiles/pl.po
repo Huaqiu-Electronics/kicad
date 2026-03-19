@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-19 00:30+0000\n"
-"Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
+"PO-Revision-Date: 2026-03-19 10:13+0000\n"
+"Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
 "Language: pl\n"
@@ -9569,15 +9569,17 @@ msgstr "Wymagane logowanie dla tego dostawcy."
 
 #: common/remote_provider_client.cpp:329
 msgid "Provider metadata does not include a session bootstrap URL."
-msgstr ""
+msgstr "Metadane dostawcy nie obejmują adresu URL sesji bootstrap."
 
 #: common/remote_provider_client.cpp:352
 msgid "Bootstrap response did not include a nonce URL."
-msgstr ""
+msgstr "Odpowiedź bootstrap nie zawierała adresu URL typu nonce."
 
 #: common/remote_provider_client.cpp:371
 msgid "Bootstrap nonce URL origin does not match the bootstrap endpoint."
 msgstr ""
+"Pochodzenie adresu URL nonce bootstrap nie pasuje do punktu końcowego "
+"bootstrap."
 
 #: common/remote_provider_client.cpp:407
 #, c-format
@@ -9597,17 +9599,17 @@ msgstr "Zdalny dostawca zwrócił nieprawidłowy token JSON: %s"
 #: common/remote_provider_client.cpp:485
 #, c-format
 msgid "Remote provider token response was incomplete: %s"
-msgstr ""
+msgstr "Odpowiedź zdalnego dostawcy tokena była niekompletna: %s"
 
 #: common/remote_provider_metadata.cpp:53
 #, c-format
 msgid "Remote provider metadata schema '%s' is not readable."
-msgstr ""
+msgstr "Schemat metadanych dostawcy '%s' jest nie do odczytu."
 
 #: common/remote_provider_metadata.cpp:64
 #, c-format
 msgid "Remote provider metadata failed schema validation: %s"
-msgstr ""
+msgstr "Zdalne metadane dostawcy nie przeszły walidacji schematu: %s"
 
 #: common/remote_provider_metadata.cpp:124
 #, c-format
@@ -9638,23 +9640,23 @@ msgstr ""
 
 #: common/remote_provider_metadata.cpp:173
 msgid "api_base_url"
-msgstr ""
+msgstr "api_base_url"
 
 #: common/remote_provider_metadata.cpp:179
 msgid "panel_url"
-msgstr ""
+msgstr "panel_url"
 
 #: common/remote_provider_metadata.cpp:185
 msgid "session_bootstrap_url"
-msgstr ""
+msgstr "session_bootstrap_url"
 
 #: common/remote_provider_metadata.cpp:193
 msgid "session_bootstrap_url must share the same origin as panel_url."
-msgstr ""
+msgstr "session_bootstrap_url musi współdzielić ten sam początek jak panel_url."
 
 #: common/remote_provider_metadata.cpp:199
 msgid "auth.metadata_url"
-msgstr ""
+msgstr "auth.metadata_url"
 
 #: common/remote_provider_models.cpp:44
 #, c-format
@@ -9668,34 +9670,34 @@ msgstr ""
 
 #: common/remote_provider_models.cpp:55
 msgid "authorization_endpoint"
-msgstr ""
+msgstr "authorization_endpoint"
 
 #: common/remote_provider_models.cpp:60
 msgid "token_endpoint"
-msgstr ""
+msgstr "token_endpoint"
 
 #: common/remote_provider_models.cpp:66
 msgid "revocation_endpoint"
-msgstr ""
+msgstr "revocation_endpoint"
 
 #: common/remote_provider_models.cpp:98
 #, c-format
 msgid "Remote provider manifest schema '%s' is not readable."
-msgstr ""
+msgstr "Schemat manifestu zdalnego dostawcy '%s' jest niemożliwy do odczytania."
 
 #: common/remote_provider_models.cpp:109
 #, c-format
 msgid "Remote provider manifest failed schema validation: %s"
-msgstr ""
+msgstr "Zdalny manifest dostawcy nie przeszedł walidacji schematu: %s"
 
 #: common/remote_provider_models.cpp:136
 msgid "assets[].download_url"
-msgstr ""
+msgstr "assets[].download_url"
 
 #: common/remote_provider_models.cpp:147
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse remote provider manifest: %s"
-msgstr "Nie można przetworzyć repozytorium: %s"
+msgstr "Nie można przetworzyć zdalnego manifestu dostawcy: %s"
 
 #: common/remote_provider_utils.cpp:94
 #, c-format
@@ -13979,14 +13981,14 @@ msgid "Unable to find a plugin to read this library."
 msgstr "Nie można znaleźć wtyczki potrzebnej do załadowania tej biblioteki."
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:114
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot read symbol library '%s'."
-msgstr "Nie można zaimportować biblioteki symboli '%s'."
+msgstr "Nie można odczytać biblioteki symboli '%s'."
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:121
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol library '%s' is empty."
-msgstr "Plik biblioteki symboli '%s' jest pusty."
+msgstr "Biblioteka symboli '%s' jest pusta."
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:299
 #, c-format
@@ -13999,9 +14001,8 @@ msgid "%d symbols selected"
 msgstr "Wybrano %d symboli"
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:503
-#, fuzzy
 msgid "Resolve Import Conflicts"
-msgstr "Wyszarzaj konflikty"
+msgstr "Analiza konfliktów importu"
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:510
 msgid ""
@@ -14023,9 +14024,8 @@ msgid "Action"
 msgstr "Akcja"
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:532
-#, fuzzy
 msgid "Skip All"
-msgstr "Pomiń"
+msgstr "Pomiń wszystkie"
 
 #: eeschema/dialogs/dialog_import_symbol_select.cpp:533
 #: eeschema/symbol_editor/symbol_editor.cpp:987
@@ -14033,9 +14033,8 @@ msgid "Overwrite All"
 msgstr "Nadpisz wszsytkie"
 
 #: eeschema/dialogs/dialog_import_symbol_select_base.cpp:85
-#, fuzzy
 msgid "0 symbols selected"
-msgstr "Nie wybrano symbolu"
+msgstr "0 wybranych symboli"
 
 #: eeschema/dialogs/dialog_increment_annotations_base.cpp:28
 msgid "Start reference designator:"
@@ -14425,14 +14424,12 @@ msgstr "Tyko do odczytu"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1451
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:970
-#, fuzzy
 msgid "Highlight on Cross-probe"
-msgstr "Podświetl zaznaczone sieci"
+msgstr "Podświetlaj podczas sondowania"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1452
-#, fuzzy
 msgid "Highlight corresponding pin on canvas when it is selected in the table"
-msgstr "Podświetla symbole odpowiadające wybranym footprintom"
+msgstr "Podświetla odpowiednie piny na kanwie gdy są zaznaczone w tabeli"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table.cpp:1690
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:984
@@ -14495,9 +14492,8 @@ msgid "Group by name"
 msgstr "Grupuj wg nazw"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table_base.cpp:141
-#, fuzzy
 msgid "Group Selected Pins"
-msgstr "Grupuj wybrane"
+msgstr "Grupuj wybrane piny"
 
 #: eeschema/dialogs/dialog_lib_edit_pin_table_base.cpp:170
 msgid "Filter by unit:"
@@ -14601,15 +14597,13 @@ msgstr "Pokaż dokumentację w przeglądarce"
 
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:382
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:389
-#, fuzzy
 msgid "Expand left panel"
-msgstr "Rozwiń wszystko"
+msgstr "Rozwiń lewy panel"
 
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:387
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:394
-#, fuzzy
 msgid "Collapse left panel"
-msgstr "Zwiń wszystko"
+msgstr "Zwiń lewy panel"
 
 #: eeschema/dialogs/dialog_lib_fields_table.cpp:552
 #, c-format
@@ -14705,9 +14699,8 @@ msgstr "Lokalny symbol zasilania"
 #: eeschema/dialogs/dialog_lib_fields_table_base.cpp:49
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:56
 #: eeschema/fields_data_model.cpp:55
-#, fuzzy
 msgid "BOM Name"
-msgstr "Nazwa bazowa"
+msgstr "Nazwa BOM"
 
 #: eeschema/dialogs/dialog_lib_fields_table_base.cpp:50
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:57
@@ -14722,14 +14715,12 @@ msgid "Group By"
 msgstr "Grupuj według"
 
 #: eeschema/dialogs/dialog_lib_fields_table_base.cpp:110
-#, fuzzy
 msgid "Whole Library"
-msgstr "Nowa biblioteka"
+msgstr "Pełna biblioteka"
 
 #: eeschema/dialogs/dialog_lib_fields_table_base.cpp:110
-#, fuzzy
 msgid "Related Symbols Only"
-msgstr "Remapowanie symboli"
+msgstr "Tylko wykorzystane symbole"
 
 #: eeschema/dialogs/dialog_lib_fields_table_base.cpp:119
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:216
@@ -14770,7 +14761,7 @@ msgstr "Liczba części składowych w paczce:"
 #: eeschema/dialogs/dialog_lib_new_symbol_base.cpp:78
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:307
 msgid "All units are interchangeable"
-msgstr "Części składowe są zamienne"
+msgstr "Wszystkie jednostki są wymienne"
 
 #: eeschema/dialogs/dialog_lib_new_symbol_base.cpp:79
 msgid ""
@@ -14866,9 +14857,8 @@ msgid "Symbol must have at least 1 body style"
 msgstr "Symbol musi posiadać przynajmniej jeden styl prezentacji"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:529
-#, fuzzy
 msgid "Delete extra body styles from symbol?"
-msgstr "Usunąć dodatkowe części z symbolu?"
+msgstr "Usunąć dodatkowe reprezentacje z symbolu?"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties.cpp:553
 #: eeschema/symbol_editor/symbol_editor.cpp:364
@@ -15065,9 +15055,8 @@ msgid "Exclude from position files"
 msgstr "Wyklucz z plików położeń"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:287
-#, fuzzy
 msgid "Symbol Units"
-msgstr "Składnik symbolu"
+msgstr "Składniki symbolu"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:292
 msgid "Number of units:"
@@ -15097,14 +15086,12 @@ msgstr "Wyświetlane nazwy dla części składowych (opcjonalnie):"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:351
 #: eeschema/lib_symbol.cpp:2589
-#, fuzzy
 msgid "Body Styles"
-msgstr "Styl prezentacji"
+msgstr "Style prezentacji"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:353
-#, fuzzy
 msgid "Single body style"
-msgstr "Wspólny dla wszystkich stylów"
+msgstr "Pojedynczy styl prezentacji"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:359
 msgid "‘Standard’ and ‘Alternate’ De Morgan body styles"
@@ -15115,9 +15102,8 @@ msgid "Custom body styles:"
 msgstr "Własne style:"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:436
-#, fuzzy
 msgid "Units && Body Styles"
-msgstr "Styl prezentacji"
+msgstr "Jednostki oraz styl prezentacji"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:444
 msgid "Footprint filters:"
@@ -15150,22 +15136,19 @@ msgid "Footprint Filters"
 msgstr "Filtry footprintów"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:492
-#, fuzzy
 msgid "All pins with duplicate numbers are jumpers"
 msgstr "Wszystkie pola z powieloną numeracją traktuj jako zwory"
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:493
-#, fuzzy
 msgid ""
 "When enabled, this symbol can have more than one pin with the same number.  "
 "Pins with the same number will be considered to be jumpered together "
 "internally."
 msgstr ""
-"Gdy włączone, symbol może mieć więcej niż jeden pin o tym samym numerze, a "
-"piny o tym samym numerze będą traktowane jako wewnętrznie połączone."
+"Gdy włączone, symbol może mieć więcej niż jeden pin o tym samym numerze.  "
+"Piny o tym samym numerze będą traktowane jako wewnętrznie połączone."
 
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:500
-#, fuzzy
 msgid "Explicit jumper pin groups:"
 msgstr "Jawne grupy zworek:"
 
@@ -15256,11 +15239,12 @@ msgstr "Alternatywna nazwa pinu"
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:226
 #: eeschema/dialogs/dialog_symbol_properties.cpp:355
-#, fuzzy
 msgid ""
 "Alternate pin assignments are not available for symbols with multiple body "
 "styles."
-msgstr "Alternatywne definicje pinów nie są dostępne w symbolach De Morgan."
+msgstr ""
+"Alternatywne definicje pinów nie są dostępne w symbolach z wieloma stylami "
+"prezentacji."
 
 #: eeschema/dialogs/dialog_pin_properties.cpp:304
 msgid "Exit sync pins mode"
@@ -15364,9 +15348,8 @@ msgstr "Wspólne dla wszystkich elementów składowych symbolu"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:157
 #: eeschema/dialogs/dialog_shape_properties_base.cpp:254
-#, fuzzy
 msgid "Common to all body &styles"
-msgstr "Wspólny dla wszystkich stylów"
+msgstr "Wspólny dla wszystkich stylów prezentacji"
 
 #: eeschema/dialogs/dialog_pin_properties_base.cpp:163
 msgid "&Visible"
@@ -15593,29 +15576,27 @@ msgid "Plot Schematic"
 msgstr "Rysuj schemat"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:43
-#, fuzzy
 msgid "Remote Symbol Settings"
-msgstr "Importuj ustawienia"
+msgstr "Ustawienia symboli zdalnych"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:66
-#, fuzzy
 msgid ""
 "Configure remote symbol providers and where downloaded libraries are stored."
-msgstr "Ustala gdzie pobrać zdalne biblioteki i jak zostaną one nazwane."
+msgstr ""
+"Skonfiguruj zdalnych dostawców symboli i miejsce przechowywania pobranych "
+"bibliotek."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:70
 msgid "Providers"
 msgstr "Dostawcy"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:78
-#, fuzzy
 msgid "Add / Update"
-msgstr "Uaktualnienie"
+msgstr "Dodaj / Uaktualnij"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:80
-#, fuzzy
 msgid "Refresh Metadata"
-msgstr "Przeszukuj metadane"
+msgstr "Odśwież metadane"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:81
 msgid "Sign Out"
@@ -15626,21 +15607,18 @@ msgid "Metadata URL:"
 msgstr "Metadane URL:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:95
-#, fuzzy
 msgid "Display name:"
-msgstr "Nazwa pliku:"
+msgstr "Nazwa wyświetlana:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:99
-#, fuzzy
 msgid "Last account:"
-msgstr "Liczba pól lut:"
+msgstr "Ostatnie konto:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:101
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:462
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:471
-#, fuzzy
 msgid "Not signed in"
-msgstr "Nieokreślony"
+msgstr "Niezalogowany"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:103
 msgid "Auth status:"
@@ -15648,14 +15626,12 @@ msgstr "Status autoryzacji:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:105
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:463
-#, fuzzy
 msgid "Not configured"
-msgstr "Niezakryte"
+msgstr "Nie skonfigurowane"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:114
-#, fuzzy
 msgid "Destination directory:"
-msgstr "Ścieżka docelowa:"
+msgstr "Folder docelowy:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:121
 msgid ""
@@ -15670,9 +15646,8 @@ msgid "Browse..."
 msgstr "Przeglądaj..."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:128
-#, fuzzy
 msgid "Library prefix:"
-msgstr "Prefiks nazwy skrótowej biblioteki:"
+msgstr "Prefiks biblioteki:"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:131
 msgid "Prefix that will be applied to the generated libraries."
@@ -15703,14 +15678,12 @@ msgid "Restore the default destination and prefix."
 msgstr "Przywraca domyślne wartości docelowe i prefix."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:208
-#, fuzzy
 msgid "Please choose a destination directory."
-msgstr "Proszę wybrać poprawny plik z listą sieci."
+msgstr "Proszę wybrać folder docelowy."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:216
-#, fuzzy
 msgid "Please enter a library prefix."
-msgstr "Proszę wybrać bibliotekę do usunięcia."
+msgstr "Proszę wpisać prefiks biblioteki."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:252
 msgid "Select Destination Directory"
@@ -15718,7 +15691,7 @@ msgstr "Wybierz folder docelowy"
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:313
 msgid "Enter a provider metadata URL first."
-msgstr ""
+msgstr "Wprowadź najpierw metadane URL dostawcy."
 
 #: eeschema/dialogs/dialog_remote_symbol_config.cpp:384
 msgid "Provider metadata refreshed."
@@ -15928,9 +15901,8 @@ msgid "Formatting preferences"
 msgstr "Właściwości formatowania"
 
 #: eeschema/dialogs/dialog_sch_import_settings_base.cpp:51
-#, fuzzy
 msgid "Annotation preferences"
-msgstr "Właściwości formatowania"
+msgstr "Właściwości numeracji"
 
 #: eeschema/dialogs/dialog_sch_import_settings_base.cpp:54
 msgid "Field name templates"
@@ -16922,9 +16894,8 @@ msgid "Field name %s already exists."
 msgstr "Nazwa pola %s już istnieje."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:956
-#, fuzzy
 msgid "Include 'DNP' Symbols"
-msgstr "Odzyskaj symbole"
+msgstr "Uwzględnij symbole 'Nie umieszczone'"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:957
 msgid ""
@@ -16935,9 +16906,8 @@ msgstr ""
 "kontroluje również czy symbole tak oznaczone pojawią się podczas eksportu."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:962
-#, fuzzy
 msgid "Include 'Exclude from BOM' Symbols"
-msgstr "Pokaż 'Wykluczone z BOM'"
+msgstr "Uwzględnij symbole 'Wykluczone z BOM'"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:963
 msgid ""
@@ -16949,19 +16919,16 @@ msgstr ""
 "eksportu."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:971
-#, fuzzy
 msgid "Highlight corresponding item on canvas when it is selected in the table"
-msgstr "Podświetla symbole odpowiadające wybranym footprintom"
+msgstr "Podświetl odpowiadający element na kanwie po jego wybraniu w tabeli"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:975
-#, fuzzy
 msgid "Select on Cross-probe"
-msgstr "Tylko zaznaczone"
+msgstr "Wybierz przy sondowaniu"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:976
-#, fuzzy
 msgid "Select corresponding item on canvas when it is selected in the table"
-msgstr "Zaznacza tożsame elementy w edytorze schematów"
+msgstr "Wybiera odpowiedni element na kanwie, gdy jest on zaznaczony w tabeli"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:1162
 msgid "The Quantity column cannot be grouped by."
@@ -17036,43 +17003,39 @@ msgstr ""
 "Proszę użyć innej nazwy."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2745
-#, fuzzy
 msgid "Cannot delete the default variant."
-msgstr "Nie można określić obrysu płytki."
+msgstr "Nie można usunąć podstawowego wariantu."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2785
 msgid "Cannot rename the default variant."
 msgstr "Nie można zmienić nazwy domyślnego wariantu."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
-#, fuzzy
 msgid "Enter new variant name:"
-msgstr "Wpisz nazwę footprintu:"
+msgstr "Wpisz nową nazwę wariantu:"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2792
-#, fuzzy
 msgid "Rename Design Variant"
 msgstr "Zmień nazwę wariantu"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2803
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2877
 #: eeschema/toolbars_sch_editor.cpp:430
-#, fuzzy
 msgid "Variant name cannot be empty."
-msgstr "Nazwa zmiennej nie może być pusta."
+msgstr "Nazwa wariantu nie może być pusta."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2810
 #: eeschema/toolbars_sch_editor.cpp:437
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' is a reserved variant name."
-msgstr "'%s' to zarezerwowany skrót klawiszowy i nie może być przypisany."
+msgstr "'%s' to zarezerwowana nazwa wariantu."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2826
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2884
 #: eeschema/toolbars_sch_editor.cpp:448
-#, fuzzy, c-format
+#, c-format
 msgid "Variant '%s' already exists."
-msgstr "'%s' już istnieje."
+msgstr "Wariant '%s' już istnieje."
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2859
 msgid "Cannot copy the default variant."
@@ -17083,9 +17046,8 @@ msgid "Enter name for the copied variant:"
 msgstr "Wprowadź nazwę dla skopiowanego wariantu:"
 
 #: eeschema/dialogs/dialog_symbol_fields_table.cpp:2866
-#, fuzzy
 msgid "Copy Design Variant"
-msgstr "Twórcy bibliotek"
+msgstr "Kopiuj wariant"
 
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:79
 msgid "Add a new field"
@@ -17108,19 +17070,16 @@ msgid "Schematic variants:"
 msgstr "Warianty schematu:"
 
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:207
-#, fuzzy
 msgid "Entire Project"
 msgstr "Pełen projekt"
 
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:207
-#, fuzzy
 msgid "Current Sheet Only"
 msgstr "Tylko bieżący arkusz"
 
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:207
-#, fuzzy
 msgid "Current Sheet and Down"
-msgstr "Tylko bieżący arkusz"
+msgstr "Tylko bieżący arkusz i pochodne"
 
 #: eeschema/dialogs/dialog_symbol_fields_table_base.cpp:266
 msgid "Edit"
@@ -17186,7 +17145,6 @@ msgid "Alternate Assignment"
 msgstr "Alternatywne przypisanie"
 
 #: eeschema/dialogs/dialog_symbol_properties.cpp:408
-#, fuzzy
 msgid " Design Variant"
 msgstr " Wariant"
 
@@ -17607,9 +17565,10 @@ msgid "Net names"
 msgstr "Nazwy sieci"
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:73
-#, fuzzy
 msgid "Update schematic net labels to match net names from the PCB editor."
-msgstr "Uaktualnia wartości symboli, które zostały zamienione w edytorze PCB."
+msgstr ""
+"Zaktualizuj etykiety sieci schematu, aby odpowiadały nazwom sieci z edytora "
+"PCB."
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:79
 msgid ""
@@ -17751,9 +17710,8 @@ msgid "_1"
 msgstr "_1"
 
 #: eeschema/dialogs/panel_eeschema_annotation_options_base.cpp:113
-#, fuzzy
 msgid "Allow reference reuse"
-msgstr "Preferencje"
+msgstr "Zezwól na ponowne użycie oznaczeń"
 
 #: eeschema/dialogs/panel_eeschema_color_settings.cpp:147
 msgid ""
@@ -17839,7 +17797,6 @@ msgid "Show hidden fields"
 msgstr "Pokaż ukryte pola"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:116
-#, fuzzy
 msgid "Show directive labels"
 msgstr "Pokaż etykiety z dyrektywami"
 
@@ -17897,9 +17854,8 @@ msgid "(selection color can be edited in the \"Colors\" page)"
 msgstr "(kolor podświetlenia można zmienić na stronie \"Kolory\")"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:192
-#, fuzzy
 msgid "Net collision marker width:"
-msgstr "Domyślna szerokość linii:"
+msgstr "Szerokość znacznika kolizji sieci:"
 
 #: eeschema/dialogs/panel_eeschema_display_options_base.cpp:200
 msgid "Highlight thickness:"
@@ -18155,9 +18111,8 @@ msgstr ""
 "dostawcami danych."
 
 #: eeschema/dialogs/panel_sch_data_sources.cpp:64
-#, fuzzy
 msgid "Manage Data Sources..."
-msgstr "Zarządzaj bibliotekami symboli..."
+msgstr "Zarządzaj źródłami danych..."
 
 #: eeschema/dialogs/panel_sch_data_sources.cpp:124
 msgid "No data sources are currently installed."
@@ -18194,9 +18149,8 @@ msgid "Members of '%s'"
 msgstr "Członkowie '%s'"
 
 #: eeschema/dialogs/panel_setup_buses_base.cpp:114
-#, fuzzy
 msgid "Net or Nested Bus Name"
-msgstr "Nazwa sieci / nazwa zagnieżdżonej magistrali"
+msgstr "Sieci lub nazwy zagnieżdżonych magistral"
 
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:33
 #: eeschema/dialogs/panel_sym_editing_options_base.cpp:51
@@ -18564,14 +18518,12 @@ msgid "Keep pins attached when dragging edges"
 msgstr "Zachowaj piny na pozycjach w czasie przeciągania krawędzi"
 
 #: eeschema/dialogs/panel_sym_lib_table.cpp:124
-#, fuzzy
 msgid "Symbol Library Tables"
-msgstr "Tabela bibliotek symboli"
+msgstr "Tabele bibliotek symboli"
 
 #: eeschema/dialogs/panel_sym_lib_table.cpp:398
-#, fuzzy
 msgid "folder with .kicad_sym files"
-msgstr "folder z %s plikami"
+msgstr "folder z plikami .kicad_sym"
 
 #: eeschema/dialogs/panel_sym_lib_table.cpp:447
 #: pcbnew/dialogs/panel_fp_lib_table.cpp:437
@@ -18857,9 +18809,8 @@ msgstr "Bloki projektowe"
 
 #: eeschema/eeschema_settings.cpp:159 eeschema/menubar.cpp:191
 #: eeschema/sch_edit_frame.cpp:2040 eeschema/tools/sch_actions.cpp:130
-#, fuzzy
 msgid "Remote Symbols"
-msgstr "Remapowanie symboli"
+msgstr "Symbole zdalne"
 
 #: eeschema/erc/erc.cpp:81 eeschema/erc/erc.cpp:98
 msgid "Input Pin"
@@ -19076,9 +19027,8 @@ msgid "Checking for unresolved variables..."
 msgstr "Sprawdzanie w poszukiwaniu nierozwiązanych zmiennych..."
 
 #: eeschema/erc/erc.cpp:2158
-#, fuzzy
 msgid "Checking field names..."
-msgstr "Sprawdzanie nazw arkuszy..."
+msgstr "Sprawdzanie nazw pól..."
 
 #: eeschema/erc/erc.cpp:2166
 msgid "Checking SPICE models..."
@@ -19176,14 +19126,12 @@ msgid "Unconnected \"no connection\" flag"
 msgstr "Niepoprawnie umieszczona flaga \"Niepołączone\""
 
 #: eeschema/erc/erc_item.cpp:105
-#, fuzzy
 msgid "Label not connected"
-msgstr "Pin nie jest podłączony"
+msgstr "Etykieta nie jest podłączona"
 
 #: eeschema/erc/erc_item.cpp:109
-#, fuzzy
 msgid "Label connected to only one pin"
-msgstr "Etykieta nie jest z niczym połączona"
+msgstr "Etykieta połączona tylko z jednym pinem"
 
 #: eeschema/erc/erc_item.cpp:113
 msgid "Labels are similar (lower/upper case difference only)"
@@ -19243,9 +19191,8 @@ msgid "Invalid connection between bus and net items"
 msgstr "Nieprawidłowe połączenie pomiędzy magistralą a siecią"
 
 #: eeschema/erc/erc_item.cpp:161
-#, fuzzy
 msgid "Ground pin not connected to ground net"
-msgstr "Nie można połączyć się ze zdalnym"
+msgstr "Pin masy nie połączony z siecią masy"
 
 #: eeschema/erc/erc_item.cpp:165
 msgid "Pin name resembles stacked pin"
@@ -19451,9 +19398,8 @@ msgid "Do not show this dialog again."
 msgstr "Nie pokazuj ponownie tego okna."
 
 #: eeschema/files-io.cpp:550
-#, fuzzy
 msgid "Legacy project cache library"
-msgstr "Pliki bibliotek starszego typu"
+msgstr "Bufor plików bibliotek starszego typu"
 
 #: eeschema/files-io.cpp:628
 #, c-format
@@ -19784,9 +19730,8 @@ msgid "Missing field in schematic symbol: %s."
 msgstr "Brakujące pole w symbolu schematu: %s."
 
 #: eeschema/lib_symbol.cpp:2195
-#, fuzzy
 msgid "Footprint filter count differs."
-msgstr "Filtry footprintów różnią się."
+msgstr "Ilość filtrów footprintów różni się."
 
 #: eeschema/lib_symbol.cpp:2207
 msgid "Footprint filters differ."
@@ -19821,48 +19766,40 @@ msgid "Exclude from board settings differ."
 msgstr "Ustawienia wykluczeń z płytki różnią się."
 
 #: eeschema/lib_symbol.cpp:2283
-#, fuzzy
 msgid "Exclude from position files settings differ."
-msgstr "Ustawienia wykluczeń z symulacji różnią się."
+msgstr "Ustawienia wykluczania z plików pozycji różnią się."
 
 #: eeschema/lib_symbol.cpp:2518 eeschema/symbol_editor/symbol_editor.cpp:1751
 msgid "Datasheet"
 msgstr "Dokumentacja"
 
 #: eeschema/lib_symbol.cpp:2525
-#, fuzzy
 msgid "Symbol Definition"
-msgstr "Składnik symbolu"
+msgstr "Definicja symbolu"
 
 #: eeschema/lib_symbol.cpp:2527
-#, fuzzy
 msgid "Define as Power Symbol"
-msgstr "Utwórz symbol jako symbol zasilania"
+msgstr "Zdefiniuj jako symbol zasilania"
 
 #: eeschema/lib_symbol.cpp:2531
-#, fuzzy
 msgid "Define as Local Power Symbol"
-msgstr "Utwórz jako lokalny symbol zasilania"
+msgstr "Zdefiniuj jako lokalny symbol zasilania"
 
 #: eeschema/lib_symbol.cpp:2536
-#, fuzzy
 msgid "Pin Display"
-msgstr "Pokazuj siatkę"
+msgstr "Wyświetlanie pinów"
 
 #: eeschema/lib_symbol.cpp:2538
-#, fuzzy
 msgid "Show Pin Number"
 msgstr "Pokaż numery pinów"
 
 #: eeschema/lib_symbol.cpp:2541
-#, fuzzy
 msgid "Show Pin Name"
-msgstr "Pokaż nazwę pinu"
+msgstr "Pokaż nazwy pinów"
 
 #: eeschema/lib_symbol.cpp:2544
-#, fuzzy
 msgid "Place Pin Names Inside"
-msgstr "Umieść nazwę pinu wewnątrz"
+msgstr "Umieść nazwy pinów wewnątrz"
 
 #: eeschema/lib_symbol.cpp:2548
 msgid "Pin Name Position Offset"
@@ -19881,24 +19818,20 @@ msgid "Exclude from Bill of Materials"
 msgstr "Wyklucz z listy materiałowej"
 
 #: eeschema/lib_symbol.cpp:2566
-#, fuzzy
 msgid "Exclude from Position Files"
 msgstr "Wyklucz z plików położeń"
 
 #: eeschema/lib_symbol.cpp:2571
-#, fuzzy
 msgid "Units and Body Styles"
-msgstr "Styl prezentacji"
+msgstr "Jednostki oraz style prezentacji"
 
 #: eeschema/lib_symbol.cpp:2573
-#, fuzzy
 msgid "Number of Symbol Units"
-msgstr "Liczba bitów"
+msgstr "Liczba jednostek składowych"
 
 #: eeschema/lib_symbol.cpp:2576
-#, fuzzy
 msgid "Units are Interchangeable"
-msgstr "Części składowe nie są zamienne"
+msgstr "Części składowe są zamienne"
 
 #: eeschema/libraries/legacy_symbol_library.cpp:583
 #, c-format
@@ -19938,9 +19871,8 @@ msgid "Netlist..."
 msgstr "Lista sieci..."
 
 #: eeschema/menubar.cpp:121
-#, fuzzy
 msgid "Symbols..."
-msgstr "Symbol..."
+msgstr "Symbole..."
 
 #: eeschema/menubar.cpp:181
 #: eeschema/symbol_editor/menubar_symbol_editor.cpp:124 kicad/menubar.cpp:194
@@ -19956,9 +19888,8 @@ msgstr ""
 "zweryfikowane biblioteki."
 
 #: eeschema/menubar.cpp:330
-#, fuzzy
 msgid "Variants"
-msgstr "Twórcy bibliotek"
+msgstr "Warianty"
 
 #: eeschema/menubar.cpp:358
 #: eeschema/symbol_editor/menubar_symbol_editor.cpp:187
@@ -19987,14 +19918,14 @@ msgid "P&references"
 msgstr "Ustawienia"
 
 #: eeschema/net_navigator.cpp:65
-#, fuzzy, c-format
+#, c-format
 msgid "Wire from (%s, %s) to (%s, %s)"
-msgstr "Linia z (%s, %s) do (%s, %s)"
+msgstr "Połączenie z (%s, %s) do (%s, %s)"
 
 #: eeschema/net_navigator.cpp:73
-#, fuzzy, c-format
+#, c-format
 msgid "Bus from (%s, %s) to (%s, %s)"
-msgstr "Magistrala z %s, %s do %s, %s"
+msgstr "Magistrala z (%s, %s) do (%s, %s)"
 
 #: eeschema/net_navigator.cpp:81
 msgid "Graphic line not connectable"
@@ -20011,44 +19942,44 @@ msgid "Sheet '%s' pin '%s'"
 msgstr "Arkusz '%s' pin '%s'"
 
 #: eeschema/net_navigator.cpp:121
-#, fuzzy, c-format
+#, c-format
 msgid "Label '%s' at (%s, %s)"
-msgstr "Etykieta '%s' na pozycji %s, %s"
+msgstr "Etykieta '%s' na pozycji (%s, %s)"
 
 #: eeschema/net_navigator.cpp:131
-#, fuzzy, c-format
+#, c-format
 msgid "Global label '%s' at (%s, %s)"
-msgstr "Etykieta globalna '%s' na pozycji %s, %s"
+msgstr "Etykieta globalna '%s' na pozycji (%s, %s)"
 
 #: eeschema/net_navigator.cpp:141
-#, fuzzy, c-format
+#, c-format
 msgid "Hierarchical label '%s' at (%s, %s)"
-msgstr "Etykieta hierarchiczna '%s' na pozycji %s, %s"
+msgstr "Etykieta hierarchiczna '%s' na pozycji (%s, %s)"
 
 #: eeschema/net_navigator.cpp:151
-#, fuzzy, c-format
+#, c-format
 msgid "Junction at (%s, %s)"
-msgstr "Łącze na pozycji %s, %s"
+msgstr "Łącze na pozycji (%s, %s)"
 
 #: eeschema/net_navigator.cpp:160
-#, fuzzy, c-format
+#, c-format
 msgid "No-Connect at (%s, %s)"
-msgstr "Niepołączone na poz %s, %s"
+msgstr "Niepołączone na pozycji (%s, %s)"
 
 #: eeschema/net_navigator.cpp:169
-#, fuzzy, c-format
+#, c-format
 msgid "Bus to wire entry from (%s, %s) to (%s, %s)"
-msgstr "Wejście magistrali z %s, %s do %s, %s"
+msgstr "Wejście magistrali z (%s, %s) do (%s, %s)"
 
 #: eeschema/net_navigator.cpp:180
-#, fuzzy, c-format
+#, c-format
 msgid "Bus to bus entry from (%s, %s) to (%s, %s)"
-msgstr "Wejście magistrali do magistrali z %s, %s do %s, %s"
+msgstr "Wejście magistrali do magistrali z (%s, %s) do (%s, %s)"
 
 #: eeschema/net_navigator.cpp:191
-#, fuzzy, c-format
+#, c-format
 msgid "Netclass label '%s' at (%s, %s)"
-msgstr "Etykieta sieci '%s' na pozycji %s, %s"
+msgstr "Etykieta sieci '%s' na pozycji (%s, %s)"
 
 #: eeschema/net_navigator.cpp:198
 #, c-format
@@ -20312,16 +20243,16 @@ msgstr "Następujące biblioteki nie zostały znalezione:"
 
 #: eeschema/remote_symbol_download_manager.cpp:35
 msgid "Remote asset URL"
-msgstr ""
+msgstr "URL zdalnego zasobu"
 
 #: eeschema/remote_symbol_download_manager.cpp:49
 msgid "Remote asset URL origin must match the selected provider."
-msgstr ""
+msgstr "ULR zdalnego zasobu musi odpowiadać wybranemu dostawcy."
 
 #: eeschema/remote_symbol_download_manager.cpp:66
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to set download URL '%s'."
-msgstr "Nie można utworzyć '%s'."
+msgstr "Nie można ustawić adresu URL pobierania '%s'."
 
 #: eeschema/remote_symbol_download_manager.cpp:124
 msgid "Remote asset manifest declared an invalid size."
@@ -20363,14 +20294,12 @@ msgstr ""
 "manifeście."
 
 #: eeschema/remote_symbol_import_job.cpp:44
-#, fuzzy
 msgid "Downloaded symbol payload was empty."
-msgstr "Plik biblioteki symboli '%s' jest pusty."
+msgstr "Pobrany ładunek symboli jest pusty."
 
 #: eeschema/remote_symbol_import_job.cpp:52
-#, fuzzy
 msgid "Downloaded symbol payload was not a KiCad symbol library."
-msgstr "Nie znaleziono symbolu %s w tabeli bibliotek symboli."
+msgstr "Pobrany ładunek symboli nie był biblioteką symboli programu KiCad."
 
 #: eeschema/remote_symbol_import_job.cpp:62
 #, c-format
@@ -20385,9 +20314,8 @@ msgid "Unable to load schematic settings."
 msgstr "Nie można załadować ustawień schematu."
 
 #: eeschema/remote_symbol_import_job.cpp:234
-#, fuzzy
 msgid "No symbol asset was available to place."
-msgstr "Nie ma dostępnego edytora schematu by umieścić."
+msgstr "Nie było dostępnego zasobu symbolu by umieścić."
 
 #: eeschema/remote_symbol_import_utils.cpp:76
 msgid "Payload was empty."
@@ -20399,62 +20327,56 @@ msgid "Unable to create '%s'."
 msgstr "Nie można utworzyć '%s'."
 
 #: eeschema/remote_symbol_import_utils.cpp:93
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to open '%s' for writing."
-msgstr "Nie można otworzyć '%s' dla odczytu."
+msgstr "Nie można otworzyć '%s' do zapisu."
 
 #: eeschema/remote_symbol_import_utils.cpp:99
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write '%s'."
-msgstr "Nie można zapisywać do pliku '%s'."
+msgstr "Nie można zapisać '%s'."
 
 #: eeschema/remote_symbol_import_utils.cpp:128
 msgid "Destination directory is not configured."
 msgstr "Folder docelowy nie jest skonfigurowany."
 
 #: eeschema/remote_symbol_import_utils.cpp:137
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create directory '%s'."
 msgstr "Nie można utworzyć folderu '%s'."
 
 #: eeschema/remote_symbol_import_utils.cpp:158
-#, fuzzy
 msgid "Unable to access the library table."
-msgstr "Nie dało się utworzyć pliku bibliotek symboli '%s'."
+msgstr "Nie można uzyskać dostępu do tabeli bibliotek."
 
 #: eeschema/remote_symbol_import_utils.cpp:178
-#, fuzzy
 msgid "Failed to update the library table."
-msgstr "Nie dało się utworzyć pliku bibliotek symboli '%s'."
+msgstr "Nie dało się uaktualnić tabeli bibliotek."
 
 #: eeschema/remote_symbol_import_utils.cpp:192
-#, fuzzy
 msgid "Remote download"
-msgstr "Zachowaj pobrany plik"
+msgstr "Pobieranie zdalne"
 
 #: eeschema/remote_symbol_import_utils.cpp:197
-#, fuzzy
 msgid "Failed to save the library table."
-msgstr "Nie można było zapisać pliku biblioteki symboli '%s'."
+msgstr "Nie można było zapisać tabeli bibliotek."
 
 #: eeschema/remote_symbol_import_utils.cpp:210
 msgid "No schematic editor is available for placement."
 msgstr "Nie ma dostępnego edytora schematu by umieścić."
 
 #: eeschema/remote_symbol_import_utils.cpp:222
-#, fuzzy
 msgid "Unable to load the downloaded symbol for placement."
-msgstr "Nie można zaokrąglić wybranych segmentów ścieżki."
+msgstr "Nie można załadować pobranego symbolu w celu jego umieszczenia."
 
 #: eeschema/remote_symbol_import_utils.cpp:237
-#, fuzzy
 msgid "Unable to access the schematic placement tools."
-msgstr "Nie można zaokrąglić wybranych segmentów ścieżki."
+msgstr ""
+"Nie można uzyskać dostępu do narzędzi umieszczania elementów na schemacie."
 
 #: eeschema/sch_base_frame.cpp:746
-#, fuzzy
 msgid "Create New Library"
-msgstr "Utwórz nowy folder"
+msgstr "Utwórz nową bibliotekę"
 
 #: eeschema/sch_base_frame.cpp:761
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1174
@@ -20506,12 +20428,10 @@ msgid "Transform Offset Y"
 msgstr "Przesunięcie w osi Y przekształcenia"
 
 #: eeschema/sch_bus_entry.cpp:422
-#, fuzzy
 msgid "Bus to wire entry"
-msgstr "Wejście połączenia do magistrali"
+msgstr "Wyjście połączenia z magistrali"
 
 #: eeschema/sch_bus_entry.cpp:428
-#, fuzzy
 msgid "Bus to bus entry"
 msgstr "Wejście magistrali do magistrali"
 
@@ -28229,7 +28149,7 @@ msgstr "Nie można odczytać pliku danych '%s'."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:696
 msgid "A remote provider sign-in flow is already in progress."
-msgstr ""
+msgstr "Proces logowania zdalnego dostawcy jest już w toku."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:728
 #, fuzzy
@@ -28258,7 +28178,7 @@ msgstr "Brak informacji o numerze wersji."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:824
 msgid "Session identifier did not match the active provider session."
-msgstr ""
+msgstr "Identyfikator sesji nie pasuje do aktywnej sesji dostawcy."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:912
 msgid "No remote provider is currently selected."
@@ -28326,21 +28246,23 @@ msgstr "Nie załadowano footprintu."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1371
 msgid "Remote provider metadata is not loaded."
-msgstr ""
+msgstr "Metadane zdalnego dostawcy nie są załadowane."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1401
 msgid ""
 "Manifest assets require asset_type, content_type, size_bytes, and "
 "download_url."
 msgstr ""
+"Zasoby manifestu wymagają asset_type, content_type, size_bytes, oraz "
+"download_url."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1437
 msgid "Remote provider sign-in was cancelled or failed."
-msgstr ""
+msgstr "Logowanie do zdalnego dostawcy zostało przerwane lub nie powiodło się."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1448
 msgid "Remote provider sign-in failed."
-msgstr ""
+msgstr "Logowanie do zdalnego dostawcy nie powiodło się."
 
 #: eeschema/widgets/panel_remote_symbol.cpp:1464
 #, fuzzy
@@ -36972,17 +36894,17 @@ msgstr "Komponent %s posiada %d pól lecz kandydat %s posiada %d."
 msgid ""
 "Reference prefix mismatch: %s uses prefix '%s' but candidate %s uses '%s'."
 msgstr ""
+"Niezgodny prefiks oznaczenia: %s używa '%s' choć kandydat %s używa '%s'."
 
 #: pcbnew/connectivity/topo_match.cpp:1098
 #: pcbnew/connectivity/topo_match.cpp:1101
-#, fuzzy
 msgid "(no library ID)"
-msgstr "Niepoprawny identyfikator biblioteki"
+msgstr "(brak ID biblioteki)"
 
 #: pcbnew/connectivity/topo_match.cpp:1104
 #, c-format
 msgid "Library link mismatch: %s expects '%s' but candidate %s is '%s'."
-msgstr ""
+msgstr "Niezgodny odnośnik biblioteki: %s wymaga '%s' choć kandydat %s to '%s'."
 
 #: pcbnew/connectivity/topo_match.cpp:1119
 #, fuzzy, c-format
@@ -37083,39 +37005,39 @@ msgstr "Marginesy:"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:181
 msgid "Code 39 (ISO 16388)"
-msgstr ""
+msgstr "Code 39 (ISO 16388)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:181
 msgid "Code 128 (ISO 15417)"
-msgstr ""
+msgstr "Code 128 (ISO 15417)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:181
 msgid "Data Matrix (ECC 200)"
-msgstr ""
+msgstr "Data Matrix (ECC 200)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:181
 msgid "QR Code (ISO 18004)"
-msgstr ""
+msgstr "Kod QR (ISO 18004)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:181
 msgid "Micro QR Code"
-msgstr ""
+msgstr "Kod Micro QR"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:187
 msgid "~20% (Level L)"
-msgstr ""
+msgstr "~20% (Poziom L)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:187
 msgid "~37% (Level M)"
-msgstr ""
+msgstr "~37% (Poziom M)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:187
 msgid "~55% (Level Q)"
-msgstr ""
+msgstr "~55% (Poziom Q)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:187
 msgid "~65% (Level H)"
-msgstr ""
+msgstr "~65% (Poziom H)"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.cpp:189
 #: pcbnew/pcb_barcode.cpp:837
@@ -37125,23 +37047,20 @@ msgstr "Kierunek strzałki"
 
 #: pcbnew/dialogs/dialog_barcode_properties_base.h:98
 #: pcbnew/pcb_barcode.cpp:773
-#, fuzzy
 msgid "Barcode Properties"
-msgstr "Właściwości ramki"
+msgstr "Właściwości kodu kreskowego"
 
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:93
-#, fuzzy
 msgid "(not updated)"
-msgstr "(nie aktywny)"
+msgstr "(nie zauktalizowany)"
 
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:94
 msgid "(unannotated; not updated)"
-msgstr ""
+msgstr "(nieopisany; nie zaktualizowany)"
 
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:95
-#, fuzzy
 msgid "(excluded)"
-msgstr "Wykluczony"
+msgstr "(wykluczony)"
 
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:117
 msgid "Reannotate PCB"
@@ -38863,6 +38782,8 @@ msgid ""
 "Revision string for the BOM section. Auto-populated from schematic title "
 "block revision"
 msgstr ""
+"Ciąg z numerem rewizji dla sekcji BOM. Automatycznie uzupełniony na "
+"podstawie rewizji z tabliczki tytułowej schematu"
 
 #: pcbnew/dialogs/dialog_export_2581_base.cpp:119
 msgid "BOM Columns"
@@ -39092,7 +39013,7 @@ msgstr "Pliki STL"
 
 #: pcbnew/dialogs/dialog_export_step.cpp:300
 msgid "Universal 3D files"
-msgstr ""
+msgstr "Uniwersalne pliki 3D"
 
 #: pcbnew/dialogs/dialog_export_step.cpp:302
 #, fuzzy
@@ -39151,7 +39072,7 @@ msgstr "STPZ"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:27
 msgid "U3D"
-msgstr ""
+msgstr "U3D"
 
 #: pcbnew/dialogs/dialog_export_step_base.cpp:33
 msgid "Variant:"
@@ -39599,6 +39520,10 @@ msgid ""
 "(e.g., -0.1mm - 5%).\n"
 "If blank, the global value is used."
 msgstr ""
+"Lokalny odstęp pasty lutowniczej dla tego footprintu.\n"
+"Wprowadź wartość bezwzględną (np. -0,1 mm), procentową (np. -5%) lub obie "
+"(np. -0,1 mm - 5%).\n"
+"Jeśli pole jest puste, używana jest wartość globalna."
 
 #: pcbnew/dialogs/dialog_footprint_properties.cpp:286
 #, fuzzy
@@ -39909,11 +39834,13 @@ msgid ""
 "You are trying to remove layers that are used by the footprint: %s.\n"
 "Please remove the objects that use these layers first."
 msgstr ""
+"Napotkano próbę usunięcia warstwy używanej przez footprint: %s.\n"
+"Najpierw należy usunąć obiekty korzystające z tych warstw."
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor.cpp:891
 #, c-format
 msgid "Pad '%s' in jumper pad group %d does not exist in this footprint."
-msgstr ""
+msgstr "Pole lutownicze '%s' w grupie zworek %d nie istnieje w tym footprincie."
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:60
 msgid "Unconstrained"
@@ -41103,7 +41030,7 @@ msgstr "Domyślne ustawienia soldermaski/pasty"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:57
 msgid "Zone hatched fill offsets"
-msgstr ""
+msgstr "Przesunięcia wypełnienia kreskowego"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:60
 msgid "Text && graphics default properties"
@@ -41315,7 +41242,7 @@ msgstr "Tworzy wielokanałowe strefy z regułami"
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout.cpp:190
 #, c-format
 msgid "Rule area topologies do not match: %s"
-msgstr ""
+msgstr "Niepasująca topologia strefy z regułami: %s"
 
 #: pcbnew/dialogs/dialog_multichannel_repeat_layout_base.cpp:34
 msgid "Reference rule area:"
@@ -41627,6 +41554,10 @@ msgid ""
 "(e.g., -0.1mm - 5%).\n"
 "If blank, the footprint or global value is used."
 msgstr ""
+"Lokalny odstęp pasty lutowniczej dla tego pola.\n"
+"Wprowadź wartość bezwzględną (np. -0,1 mm), wartość procentową (np. -5%) lub "
+"obie (np. -0,1 mm - 5%).\n"
+"Jeśli pole jest puste, używana jest wartość footprintu lub wartość globalna."
 
 #: pcbnew/dialogs/dialog_pad_properties.cpp:673
 #, c-format
@@ -41654,6 +41585,8 @@ msgid ""
 "Switching to non-circular hole will disable backdrills and post-machining. "
 "Continue?"
 msgstr ""
+"Przejście na otwór o kształcie innym niż owalny uniemożliwi nawiercanie "
+"wsteczne i obróbkę końcową. Kontynuować?"
 
 #: pcbnew/dialogs/dialog_pad_properties.cpp:1229
 #, c-format
@@ -41703,7 +41636,7 @@ msgstr "w"
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:1925
 #: pcbnew/dialogs/dialog_track_via_properties.cpp:1962
 msgid "Depth:"
-msgstr ""
+msgstr "Głębokość:"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:35
 msgid "Pad type:"
@@ -43142,7 +43075,7 @@ msgstr "Grubość linii musi być większa niż zero dla niewypełnionego prosto
 
 #: pcbnew/dialogs/dialog_shape_properties.cpp:1263
 msgid "Corner radius must be less than or equal to half the smaller side."
-msgstr ""
+msgstr "Promień narożnika musi być mniejszy lub równy połowie mniejszej strony."
 
 #: pcbnew/dialogs/dialog_shape_properties.cpp:1272
 msgid "Line width must be greater than zero for an unfilled polygon."
@@ -43411,7 +43344,7 @@ msgstr "Mikroprzelotka"
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:65
 #: pcbnew/pcb_track.cpp:2879
 msgid "Blind"
-msgstr ""
+msgstr "Ślepa"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:355
 #: pcbnew/drc/rule_editor/drc_re_via_style_overlay_panel.cpp:66
@@ -43441,7 +43374,7 @@ msgstr "Wiercenie wsteczne:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:430
 msgid "Both"
-msgstr ""
+msgstr "Obie"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:511
 #, fuzzy
@@ -43757,7 +43690,7 @@ msgstr "Nazwa arku&sza:"
 
 #: pcbnew/dialogs/panel_display_options_base.cpp:41
 msgid "Use via color for normal through hole padstacks"
-msgstr ""
+msgstr "Użyj koloru przelotki dla przelotek na wylot z normalnym stosem warstw"
 
 #: pcbnew/dialogs/panel_display_options_base.cpp:47
 msgid "Clearance Outlines"
@@ -44908,7 +44841,7 @@ msgstr "BŁĄD:"
 #: pcbnew/dialogs/panel_setup_rules.cpp:780
 #, c-format
 msgid "Rules '%s' and '%s' share the same condition."
-msgstr ""
+msgstr "Reguły '%s' oraz '%s' współdzielą ten sam warunek."
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:800
 #, fuzzy, c-format
@@ -45564,6 +45497,42 @@ msgid ""
 "<br><br><br>\n"
 "\n"
 msgstr ""
+"### Uwagi\n"
+"\n"
+"Klauzula „Version” musi być pierwszą klauzulą.  Wskazuje ona wersję składni "
+"pliku, aby\n"
+"przyszłe parsery reguł mogły przeprowadzać automatyczne aktualizacje. "
+"Powinna być\n"
+"ustawiona na \"1\".\n"
+"\n"
+"Reguły powinny być uporządkowane według specyfiki.  Późniejsze reguły mają\n"
+"pierwszeństwo przed wcześniejszymi; po znalezieniu pasującej reguły\n"
+"nie będą sprawdzane żadne dalsze reguły.\n"
+"\n"
+"Użyj Ctrl+/, aby skomentować lub usunąć komentarz z wiersza/wierszy.\n"
+"\n"
+"### Graficzny edytor reguł\n"
+"\n"
+"Podczas ładowania reguł do edytora graficznego ograniczenia są "
+"automatycznie\n"
+"mapowane na odpowiednie panele edycyjne. Reguły z wieloma ograniczeniami "
+"mogą być\n"
+"rozdzielone na panele, z których każdy będzie pokazywał podzbiór ograniczeń "
+"reguły.\n"
+"\n"
+"Panele z wieloma ograniczeniami, takie jak Styl przelotki (`via_diameter` + "
+"`hole_size`) i\n"
+"Trasowanie par różnicowych (`track_width` + `diff_pair_gap`), są "
+"dopasowywane jako pierwsze.\n"
+"Panele z pojedynczym ograniczeniem obsługują resztę. Niezmapowane "
+"ograniczenia pojawiają się\n"
+"w panelu Reguły niestandardowe.\n"
+"\n"
+"Reguły, które nie są modyfikowane w edytorze graficznym, zachowują swoje "
+"oryginalne\n"
+"formatowanie tekstu po zapisaniu.\n"
+"<br><br><br>\n"
+"\n"
 
 #: pcbnew/dialogs/panel_setup_rules_help_7properties.h:2
 msgid ""
@@ -46305,7 +46274,7 @@ msgstr "Profil dostrojenia musi posiadać nazwę"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:845
 msgid "Duplicated signal layer configuration in tuning profile"
-msgstr ""
+msgstr "Powielona konfiguracja warstwy sygnałowej w profilu strojenia"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:873
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:884
@@ -46318,6 +46287,7 @@ msgstr "Nazwy sygnałów nie mogą zawierać spacji"
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:879
 msgid "Internal error: Microstrip can only be on an outer copper layer"
 msgstr ""
+"Błąd wewnętrzny: Linia mikropaskowa może być tylko na zewnętrznych warstwach"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:890
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:952
@@ -46330,7 +46300,7 @@ msgstr "Warstwa odnośników nie została znaleziona w stosie warstw"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:907
 msgid "Reference layer must be different to signal layer"
-msgstr ""
+msgstr "Warstwa odniesienia musi być inna niż warstwa sygnałowa"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:918
 #, fuzzy
@@ -46339,19 +46309,23 @@ msgstr "Kąt łuku musi być większy niż zero"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:958
 msgid "Top reference layer not found in stackup"
-msgstr ""
+msgstr "Górna warstwa odniesienia nie została znaleziona w stosie warstw"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:964
 msgid "Top reference layer must be above signal layer in board stackup"
 msgstr ""
+"Górna warstwa sygnałowa musi być powyżej warstwy sygnałowej w stosie warstw "
+"płytki"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:970
 msgid "Bottom reference layer not found in stackup"
-msgstr ""
+msgstr "Dolna warstwa odniesienia nie została znaleziona w stosie warstw"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:976
 msgid "Bottom reference layer must be below signal layer in board stackup"
 msgstr ""
+"Dolna warstwa sygnałowa musi być poniżej warstwy sygnałowej w stosie warstw "
+"płytki"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:999
 #, fuzzy
@@ -46370,16 +46344,15 @@ msgstr "Kąt łuku musi być większy niż zero"
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1148
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1245
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1346
-#, fuzzy
 msgid "Width calculation failed"
-msgstr "Modyfikuj plik z przydziałem footprintów"
+msgstr "Kalkulacja szerokości nie powiodła się"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1076
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1151
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1251
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1352
 msgid "Delay calculation failed"
-msgstr ""
+msgstr "Kalkulacja opóźnień nie powiodła się"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1189
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1291
@@ -46397,6 +46370,8 @@ msgstr "Grubość musi być większa niż zero by określić dystans pary różn
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1305
 msgid "Width and diff pair gap must be greater than 0 to calculate delay"
 msgstr ""
+"Aby obliczyć opóźnienie, odstęp oraz szerokość pary różnicowej musi być "
+"większa niż 0"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1248
 #: pcbnew/dialogs/panel_setup_tuning_profile_info.cpp:1349
@@ -46415,11 +46390,11 @@ msgstr "Docelowe strefy:"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:69
 msgid "ohms"
-msgstr ""
+msgstr "omów"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:81
 msgid "Enable time domain tuning"
-msgstr ""
+msgstr "Włącz strojenie domeny czasowej"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:101
 #, fuzzy
@@ -46463,7 +46438,7 @@ msgstr "Jednostki globalnego opóźnienia:"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:177
 msgid "ps/cm"
-msgstr ""
+msgstr "ps/cm"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:187
 #, fuzzy
@@ -46484,16 +46459,15 @@ msgstr "Przelotka z warstwy"
 
 #: pcbnew/dialogs/panel_setup_tuning_profile_info_base.cpp:207
 msgid "Via Layer To"
-msgstr "Przelotka do warstwy"
+msgstr "Przelotka na warstwę"
 
 #: pcbnew/dialogs/panel_setup_zone_hatch_offsets_base.cpp:19
 msgid "Zone Hatched Fill Offsets"
-msgstr ""
+msgstr "Przesunięcia wypełnienia kreskowego"
 
 #: pcbnew/dialogs/panel_setup_zones_base.cpp:16
-#, fuzzy
 msgid "Default Properties for New Zones"
-msgstr "Domyślne ustawienia dla nowych wymiarowań"
+msgstr "Domyślne ustawienia dla nowych stref"
 
 #: pcbnew/dialogs/panel_zone_properties.cpp:237
 #: pcbnew/dialogs/panel_zone_properties_base.cpp:339
@@ -46662,13 +46636,12 @@ msgid "board setup constraints courtyard"
 msgstr "ograniczenia w konfiguracji płytki dla pól zajętości"
 
 #: pcbnew/drc/drc_engine.cpp:240
-#, fuzzy
 msgid "board setup constraints micro-via"
-msgstr "ograniczenia w konfiguracji płytki"
+msgstr "ograniczenia w konfiguracji mikroprzelotek"
 
 #: pcbnew/drc/drc_engine.cpp:255
 msgid "barcode visual separation default"
-msgstr ""
+msgstr "domyślne oddzielenie wizualne kodów kreskowych"
 
 #: pcbnew/drc/drc_engine.cpp:275 pcbnew/drc/drc_engine.cpp:296
 #: pcbnew/drc/drc_engine.cpp:366 pcbnew/drc/drc_engine.cpp:383
@@ -47326,7 +47299,7 @@ msgstr "Ta nazwa profilu dostrojenia już jest używana"
 
 #: pcbnew/drc/drc_item.cpp:314
 msgid "Track connected to post-machined or backdrilled layer"
-msgstr ""
+msgstr "Ścieżka połączona z warstwą poddaną obróbce mechanicznej lub nawierconą"
 
 #: pcbnew/drc/drc_item.cpp:318
 #, fuzzy
@@ -48396,6 +48369,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Nie można zapisać z powodu błędów walidacji reguły '%s':\n"
+"\n"
+"%s"
 
 #: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:588
 #, fuzzy
@@ -48407,6 +48383,8 @@ msgid ""
 "Multiple rules with the same name have different conditions. Rules with the "
 "same name must have identical conditions to be merged."
 msgstr ""
+"Wiele reguł o tej samej nazwie posiada różne warunki. Reguły o tej samej "
+"nazwie muszą posiadać identyczne warunki, aby mogły zostać scalone."
 
 #: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1241
 #, fuzzy
@@ -48442,7 +48420,7 @@ msgstr "Promień musi być większy niż zero"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:91
 msgid "Tolerance is too large: resulting minimum length is not positive"
-msgstr ""
+msgstr "Tolerancja jest zbyt duża: wynikowa minimalna długość nie jest dodatnia"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:210
 #, fuzzy
@@ -48456,19 +48434,19 @@ msgstr "Promień musi być większy niż zero"
 
 #: pcbnew/drc/rule_editor/drc_re_allowed_orientation_constraint_data.h:64
 msgid "Allow 0°"
-msgstr ""
+msgstr "Dopuszczaj 0°"
 
 #: pcbnew/drc/rule_editor/drc_re_allowed_orientation_constraint_data.h:65
 msgid "Allow 90°"
-msgstr ""
+msgstr "Dopuszczaj 90°"
 
 #: pcbnew/drc/rule_editor/drc_re_allowed_orientation_constraint_data.h:66
 msgid "Allow 180°"
-msgstr ""
+msgstr "Dopuszczaj 180°"
 
 #: pcbnew/drc/rule_editor/drc_re_allowed_orientation_constraint_data.h:67
 msgid "Allow 270°"
-msgstr ""
+msgstr "Dopuszczaj 270°"
 
 #: pcbnew/drc/rule_editor/drc_re_allowed_orientation_constraint_data.h:68
 #, fuzzy
@@ -48486,11 +48464,11 @@ msgstr "Wyłączony"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:49
 msgid "Where conditions match:"
-msgstr ""
+msgstr "Gdy warunki są zgodne:"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:50
 msgid "Where object matches:"
-msgstr ""
+msgstr "Gdy obiekty są zgodne:"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:56
 #, fuzzy
@@ -48499,30 +48477,27 @@ msgstr "Dodaje wymiar centralny"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:205
 msgid "AND"
-msgstr ""
+msgstr "AND"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:206
-#, fuzzy
 msgid "OR"
-msgstr "R"
+msgstr "OR"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:207
 msgid "AND NOT"
-msgstr ""
+msgstr "AND NOT"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_group_panel.cpp:208
 msgid "OR NOT"
-msgstr ""
+msgstr "OR NOT"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:59
-#, fuzzy
 msgid "Object A"
-msgstr "Obiekty"
+msgstr "Obiekt A"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:60
-#, fuzzy
 msgid "Object B"
-msgstr "Obiekty"
+msgstr "Obiekt B"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:71
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:26
@@ -48577,11 +48552,11 @@ msgstr "Reguły użytkownika"
 #: pcbnew/drc/rule_editor/drc_re_custom_rule_panel.cpp:346
 #, c-format
 msgid "ERROR at line %d, column %d: %s"
-msgstr ""
+msgstr "BŁĄD w linii %d, kolumna %d: %s"
 
 #: pcbnew/drc/rule_editor/drc_re_custom_rule_panel.cpp:361
 msgid "Syntax check passed with warnings:\n"
-msgstr ""
+msgstr "Sprawdzono składnię ale wystąpiły ostrzeżenia:\n"
 
 #: pcbnew/drc/rule_editor/drc_re_custom_rule_panel.cpp:365
 #, fuzzy
@@ -48645,7 +48620,7 @@ msgstr "Promień musi być większy niż zero"
 
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:99
 msgid "Gap Tolerance must be less than Optimum Gap"
-msgstr ""
+msgstr "Tolerancja przerwy musi być mniejsza niż Optymalna przerwa"
 
 #: pcbnew/drc/rule_editor/drc_re_rtg_diff_pair_constraint_data.h:103
 #, fuzzy
@@ -48685,6 +48660,8 @@ msgstr "Promień musi być większy niż zero"
 #: pcbnew/drc/rule_editor/drc_re_via_style_constraint_data.h:109
 msgid "Minimum Via Hole Size cannot be greater than Maximum Via Hole Size"
 msgstr ""
+"Minimalny rozmiar otworu przelotki nie może być większy niż Maksymalny "
+"rozmiar otworu przelotki"
 
 #: pcbnew/drc/rule_editor/drc_re_vias_under_smd_constraint_data.h:73
 #, fuzzy
@@ -48764,7 +48741,7 @@ msgstr "Wymagany jest wybór warstwy."
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:939
 msgid "ERROR: No condition text provided for validation."
-msgstr ""
+msgstr "BŁĄD: Nie podano tekstu warunku umożliwiającego walidację."
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 #, fuzzy
@@ -48787,18 +48764,16 @@ msgid "Show Matches"
 msgstr "Pokaż ścieżkę"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1126
-#, fuzzy
 msgid "outer"
-msgstr "Niepołączone"
+msgstr "zewnętrzne"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1128
 msgid "inner"
-msgstr ""
+msgstr "wewnętrzne"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor_base.cpp:55
-#, fuzzy
 msgid "Constraint"
-msgstr "Ograniczenia"
+msgstr "Ograniczenie"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor_base.cpp:76
 msgid "Conditions"
@@ -48809,9 +48784,8 @@ msgid "Edit Zone Properties"
 msgstr "Edycja właściwości strefy"
 
 #: pcbnew/exporters/export_d356.cpp:414
-#, fuzzy
 msgid "Do not export unconnected pads"
-msgstr "Podziel na niezłączone segmenty"
+msgstr "Nie eksportuj niepodłączonych pól"
 
 #: pcbnew/exporters/export_d356.cpp:444 pcbnew/tools/pcb_actions.cpp:1294
 msgid "Generate IPC-D-356 netlist file"
@@ -48959,6 +48933,12 @@ msgid ""
 "Try disabling 'Fuse Shapes' option, reducing board complexity, or freeing up "
 "system memory.\n"
 msgstr ""
+"\n"
+"** Brak pamięci podczas eksportowania pliku %s. **\n"
+"Płytka może zawierać zbyt wiele obiektów (np. przelotki, ścieżki, "
+"komponenty) do przetworzenia z dostępną pamięcią systemową.\n"
+"Spróbuj wyłączyć opcję 'Łączenie kształtów', zmniejszyć złożoność płytki lub "
+"zwolnić pamięć systemową.\n"
 
 #: pcbnew/exporters/step/exporter_step.cpp:1352
 #, c-format
@@ -48974,6 +48954,9 @@ msgid ""
 "This error may indicate insufficient memory. Consider disabling 'Fuse "
 "Shapes', reducing the number of vias/components, or freeing system memory.\n"
 msgstr ""
+"Ten błąd może wskazywać na niewystarczającą ilość pamięci. Rozważ wyłączenie "
+"funkcji 'Łączenie kształtów', zmniejszenie liczby przelotek/komponentów lub "
+"zwolnienie pamięci systemowej.\n"
 
 #: pcbnew/exporters/step/exporter_step.cpp:1365
 #, c-format
@@ -48990,6 +48973,13 @@ msgid ""
 "Try disabling 'Fuse Shapes', reducing board complexity, or freeing up system "
 "memory.\n"
 msgstr ""
+"\n"
+"** Nieoczekiwany błąd podczas eksportowania pliku %s. **\n"
+"Może to być spowodowane niewystarczającą ilością pamięci systemowej, "
+"szczególnie podczas eksportowania płytek z wieloma przelotkami lub "
+"komponentów z włączoną funkcją 'Łączenie kształtów'.\n"
+"Spróbuj wyłączyć funkcję 'Łączenie kształtów', zmniejszyć złożoność płytki "
+"lub zwolnić pamięć systemową.\n"
 
 #: pcbnew/exporters/step/exporter_step.cpp:1386
 #, c-format
@@ -49005,6 +48995,9 @@ msgid ""
 "Out of memory while fusing shapes. Consider disabling shape fusing, reducing "
 "the number of objects (e.g., vias), or freeing system memory."
 msgstr ""
+"Brak pamięci podczas łączenia kształtów. Rozważ wyłączenie łączenia "
+"kształtów, zmniejszenie liczby obiektów (np. przelotek) lub zwolnienie "
+"pamięci systemowej."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:676
 #, c-format
@@ -49013,12 +49006,17 @@ msgid ""
 "This may indicate insufficient memory. Consider disabling shape fusing or "
 "reducing board complexity."
 msgstr ""
+"Błąd OpenCASCADE podczas łączenia kształtów: %s\n"
+"Może to oznaczać niewystarczającą ilość pamięci. Rozważ wyłączenie łączenia "
+"kształtów lub zmniejsz skomplikowanie płytki."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:686
 msgid ""
 "Problems encountered while fusing shapes. This operation is memory-"
 "intensive; insufficient memory may cause failures."
 msgstr ""
+"Wystąpiły problemy podczas łączenia kształtów. Ta operacja jest "
+"pamięciożerna; niewystarczająca ilość pamięci może generować błędy."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:692
 #: pcbnew/exporters/step/step_pcb_model.cpp:2598
@@ -49039,11 +49037,13 @@ msgid ""
 "Out of memory while unifying shape domains. Consider disabling shape fusing "
 "or reducing the number of objects."
 msgstr ""
+"Brak pamięci podczas łączenia domen kształtów. Rozważ wyłączenie łączenia "
+"kształtów lub zmniejszenie liczby obiektów."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:743
 #, c-format
 msgid "OpenCASCADE error while unifying shapes: %s"
-msgstr ""
+msgstr "Błąd OpenCASCADE podczas unifikacji kształtów: %s"
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:999
 msgid "OCC error adding pad/via polygon."
@@ -49251,6 +49251,7 @@ msgstr "Nie można zmienić nazwy pliku tymczasowego '%s' na '%s'."
 #: pcbnew/exporters/step/step_pcb_model.cpp:3515
 msgid "Cannot use VRML models when exporting to non-mesh formats."
 msgstr ""
+"Nie można użyć modeli VRML podczas eksportowania do formatów niemeshowych."
 
 #: pcbnew/exporters/step/step_pcb_model.cpp:3525
 #, c-format
@@ -50642,7 +50643,7 @@ msgstr "Nieznany ID footprintu '%s' dla wariantu '%s' na %s."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1394
 #, c-format
 msgid "Add %s '%s' attribute to variant %s (footprint %s)."
-msgstr ""
+msgstr "Dodaj atrybut %s '%s' do wariantu %s (footprint %s)."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1395
 #, c-format
@@ -50672,7 +50673,7 @@ msgstr "Usunięto %s atrybutów '%s' z wariantu %s (footprint %s)."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1423
 #, c-format
 msgid "Added %s '%s' attribute to variant %s."
-msgstr ""
+msgstr "Dodano atrybut %s '%s' do wariantu %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1424
 #, c-format
@@ -50712,12 +50713,12 @@ msgstr "Zmieniam pole %s:%s '%s' na '%s'."
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1573
 #, c-format
 msgid "Remove variant %s:%s no longer associated with footprint %s."
-msgstr ""
+msgstr "Usunięcie wariantu %s:%s nie jest już skojarzony z footprintem %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1580
 #, c-format
 msgid "Removed variant %s:%s no longer associated with footprint %s."
-msgstr ""
+msgstr "Uwunięto wariant %s:%s nie jest już skojarzony z footprintem %s."
 
 #: pcbnew/netlist_reader/board_netlist_updater.cpp:1668
 #, c-format
@@ -51033,34 +51034,31 @@ msgstr ""
 
 #: pcbnew/pad.cpp:2826
 msgid "('fiducial' pads are normally plated)"
-msgstr ""
+msgstr "(pola 'fiducials' zwykle są pokryte)"
 
 #: pcbnew/pad.cpp:2830
 msgid "('testpoint' pads are normally plated)"
-msgstr ""
+msgstr "(pola 'testowe' zwykle są pokryte)"
 
 #: pcbnew/pad.cpp:2833
 msgid "('heatsink' pads are normally plated)"
-msgstr ""
+msgstr "(pola 'radiator' zwykle są pokryte)"
 
 #: pcbnew/pad.cpp:2836
-#, fuzzy
 msgid "('castellated' pads are normally PTH)"
-msgstr "(właściwość 'castellated' jest używana tylko dla padów PTH)"
+msgstr "(pola 'z kastelacją' są zwykle z otworem)"
 
 #: pcbnew/pad.cpp:2839
 msgid "('BGA' property is for SMD pads)"
-msgstr "Właściwość BGA jest używana tylko dla pól SMD"
+msgstr "(właściwość 'BGA' jest dla pól SMD)"
 
 #: pcbnew/pad.cpp:2842
-#, fuzzy
 msgid "('mechanical' pads are normally PTH)"
-msgstr "(właściwość 'mechaniczne' jest używana tylko dla pól PTH)"
+msgstr "(pola 'mechaniczne' są zwykle z otworem)"
 
 #: pcbnew/pad.cpp:2847
-#, fuzzy
 msgid "('press-fit' pads are normally PTH with round holes)"
-msgstr "(właściwość 'mechaniczne' jest używana tylko dla pól PTH)"
+msgstr "(pola 'press-fit' są zwykle z okrągłym otworem)"
 
 #: pcbnew/pad.cpp:2864
 msgid "(connector pads normally have no solder paste; use a SMD pad instead)"
@@ -51205,11 +51203,11 @@ msgstr "Nawiercanie od spodu"
 
 #: pcbnew/pad.cpp:3317
 msgid "Backdrill top"
-msgstr ""
+msgstr "Nawiercenie od góry"
 
 #: pcbnew/pad.cpp:3318
 msgid "Backdrill both"
-msgstr ""
+msgstr "Nawiercenie z obu stron"
 
 #: pcbnew/pad.cpp:3337
 msgid "Front, back and connected layers"
@@ -51291,14 +51289,12 @@ msgid "Bottom Countersink Angle"
 msgstr ""
 
 #: pcbnew/pad.cpp:3622 pcbnew/pcb_track.cpp:3231
-#, fuzzy
 msgid "Backdrill Mode"
-msgstr "Tryb wypełnienia"
+msgstr "Tryb nawiercania"
 
 #: pcbnew/pad.cpp:3625 pcbnew/pcb_track.cpp:3235
-#, fuzzy
 msgid "Bottom Backdrill Size"
-msgstr "Opisowa dolna"
+msgstr "Rozmiar dolnego nawiercenia"
 
 #: pcbnew/pad.cpp:3642 pcbnew/pcb_track.cpp:3249
 #: pcbnew/widgets/pcb_properties_panel.cpp:651
@@ -51309,7 +51305,7 @@ msgstr "Dolna Pad Master"
 
 #: pcbnew/pad.cpp:3659 pcbnew/pcb_track.cpp:3262
 msgid "Top Backdrill Size"
-msgstr ""
+msgstr "Rozmiar górnego nawiercenia"
 
 #: pcbnew/pad.cpp:3676 pcbnew/pcb_track.cpp:3276
 #: pcbnew/widgets/pcb_properties_panel.cpp:652
@@ -51338,69 +51334,65 @@ msgid ""
 "This barcode type does not support international characters. Use QR Code or "
 "Data Matrix instead."
 msgstr ""
+"Ten typ kodu kreskowego nie obsługuje znaków międzynarodowych. Zamiast tego "
+"użyj kodu QR lub Data Matrix."
 
 #: pcbnew/pcb_barcode.cpp:526
-#, fuzzy, c-format
+#, c-format
 msgid "Barcode '%s' on %s"
-msgstr "Pole %s na %s"
+msgstr "Kod kreskowy '%s' na %s"
 
 #: pcbnew/pcb_barcode.cpp:779
 msgid "CODE_39"
-msgstr ""
+msgstr "CODE_39"
 
 #: pcbnew/pcb_barcode.cpp:780
 msgid "CODE_128"
-msgstr ""
+msgstr "CODE_128"
 
 #: pcbnew/pcb_barcode.cpp:781
 msgid "DATA_MATRIX"
-msgstr ""
+msgstr "DATA_MATRIX"
 
 #: pcbnew/pcb_barcode.cpp:782
 msgid "QR_CODE"
-msgstr ""
+msgstr "QR_CODE"
 
 #: pcbnew/pcb_barcode.cpp:783
 msgid "MICRO_QR_CODE"
-msgstr ""
+msgstr "MICRO_QR_CODE"
 
 #: pcbnew/pcb_barcode.cpp:790 pcbnew/pcb_barcode.cpp:846
 msgid "L (Low)"
-msgstr ""
+msgstr "L (Niska)"
 
 #: pcbnew/pcb_barcode.cpp:791 pcbnew/pcb_barcode.cpp:847
-#, fuzzy
 msgid "M (Medium)"
-msgstr "Średni"
+msgstr "M (średnia)"
 
 #: pcbnew/pcb_barcode.cpp:792 pcbnew/pcb_barcode.cpp:848
 msgid "Q (Quartile)"
-msgstr ""
+msgstr "Q (kwartyl)"
 
 #: pcbnew/pcb_barcode.cpp:793 pcbnew/pcb_barcode.cpp:852
-#, fuzzy
 msgid "H (High)"
-msgstr "Wysokie"
+msgstr "H (wysokie)"
 
 #: pcbnew/pcb_barcode.cpp:807
-#, fuzzy
 msgid "Show Text"
-msgstr "Pokaż ścieżkę"
+msgstr "Pokaż tekst"
 
 #: pcbnew/pcb_barcode.cpp:825
-#, fuzzy
 msgid "Barcode Type"
-msgstr "Typ pola"
+msgstr "Typ kodu"
 
 #: pcbnew/pcb_barcode.cpp:860
-#, fuzzy
 msgid "Margin X"
-msgstr "Marginesu"
+msgstr "Margines X"
 
 #: pcbnew/pcb_barcode.cpp:864
-#, fuzzy
 msgid "Margin Y"
-msgstr "Marginesu"
+msgstr "Margines Y"
 
 #: pcbnew/pcb_base_edit_frame.cpp:384 pcbnew/toolbars_footprint_editor.cpp:199
 #: pcbnew/toolbars_pcb_editor.cpp:718
@@ -51408,9 +51400,8 @@ msgid "+/- to switch"
 msgstr "+/- aby zmienić"
 
 #: pcbnew/pcb_base_edit_frame.cpp:447
-#, fuzzy
 msgid "Edit Vertices"
-msgstr "Edycja właściwości"
+msgstr "Edytuj wierzchołki"
 
 #: pcbnew/pcb_base_frame.cpp:1220
 msgid ""
@@ -51631,7 +51622,7 @@ msgstr "W punkcie centralnym footprintu"
 
 #: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2476
 msgid "Parsing Allegro objects"
-msgstr ""
+msgstr "Przetwarzam obiekty Allegro"
 
 #: pcbnew/pcb_io/allegro/convert/allegro_parser.cpp:2691
 #, c-format
@@ -51642,6 +51633,12 @@ msgid ""
 "To import this design, open it in Cadence Allegro PCB Editor version 16.0 or "
 "later and re-save, then import the resulting file."
 msgstr ""
+"Ten plik został utworzony za pomocą %s, który wykorzystuje format binarny "
+"starszy niż Allegro 16.0 i nie jest obsługiwany przez ten importer.\n"
+"\n"
+"Aby zaimportować ten projekt, otwórz go w Cadence Allegro PCB Editor w "
+"wersji 16.0 lub nowszej i zapisz ponownie, a następnie zaimportuj plik "
+"wynikowy."
 
 #: pcbnew/pcb_io/allegro/pcb_io_allegro.cpp:181
 #, fuzzy
@@ -52904,7 +52901,7 @@ msgstr "Token \"Element\" zawiera %d parametrów."
 
 #: pcbnew/pcb_io/geda/pcb_io_geda.h:68
 msgid "gEDA / Lepton EDA PCB board file"
-msgstr ""
+msgstr "Plik z płytką gEDA / Lepton EDA PCB"
 
 #: pcbnew/pcb_io/geda/pcb_io_geda.h:82
 #, fuzzy
@@ -53230,17 +53227,19 @@ msgstr ""
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:5698
 #, c-format
 msgid "Invalid stackup in footprint: odd number of copper layers (%d)."
-msgstr ""
+msgstr "Niepoprawny stos w footprincie: nieparzysta liczba warstw miedzi (%d)."
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:5706
 msgid "Invalid stackup in footprint: copper layers are not contiguous."
-msgstr ""
+msgstr "Niepoprawny stos w footprincie: warstwy miedzi nie są przylegające."
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:5712
 msgid ""
 "Invalid stackup in footprint: technology layers are implicit in footprints "
 "and should not be specified in the stackup."
 msgstr ""
+"Nieprawidłowy stos w footprincie: warstwy technologiczne są domyślnie "
+"zawarte w footprintach i nie powinny być określone w stosie."
 
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr_parser.cpp:6017
 #, c-format
@@ -53342,7 +53341,7 @@ msgstr "Plik produkcyjny ODB++"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:129
 msgid "Starting PADS PCB import"
-msgstr ""
+msgstr "Rozpoczynam import PADS PCB"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:530
 #, c-format
@@ -53353,13 +53352,13 @@ msgstr ""
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:1050
 #, c-format
 msgid "Skipping decal item on unmapped layer %d"
-msgstr ""
+msgstr "Pomijam element decala na niezmapowanej warstwie %d"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:1311
 #: pcbnew/pcb_io/pads/pcb_io_pads_binary.cpp:508
 #, c-format
 msgid "Text on unmapped layer %d assigned to Comments layer"
-msgstr ""
+msgstr "Tekst na niezmapowanej warstwie %d przypisano do warstwy komentarzy"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:1388
 #: pcbnew/pcb_io/pads/pcb_io_pads_binary.cpp:409
@@ -53371,31 +53370,35 @@ msgstr "Pomijam ścieżkę na warstwie nie sygnałowej %d"
 #, c-format
 msgid "COPPER item on unmapped layer %d defaulting to F.Cu"
 msgstr ""
+"Element miedzi na niezmapowanej warstwie %d automatycznie przeniesiono na "
+"F.Cu"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:1867
 #: pcbnew/pcb_io/pads/pcb_io_pads_binary.cpp:580
 #, c-format
 msgid "Skipping pour on unmapped layer %d"
-msgstr ""
+msgstr "Pomijam wypełnienia na niezmapowanej warstwie %d"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:2163
 #, c-format
 msgid "Skipping keepout on unmapped layer %d"
-msgstr ""
+msgstr "Pomijam obszary ograniczenia na niezmapowanej warstwie %d"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:2187
 msgid "Skipping keepout with no valid layers"
-msgstr ""
+msgstr "Pomijam obszary ograniczenia bez przypisanej prawidłowej warstwy"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads.cpp:2384
 #: pcbnew/pcb_io/pads/pcb_io_pads_binary.cpp:652
 #, c-format
 msgid "Imported %zu footprints, %d nets, %zu tracks, %zu vias, %zu zones"
 msgstr ""
+"Zaimportowano %zu footprintów, %d sieci, %zu ścieżek, %zu przelotek, %zu "
+"stref"
 
 #: pcbnew/pcb_io/pads/pcb_io_pads_binary.cpp:109
 msgid "Starting PADS binary PCB import"
-msgstr ""
+msgstr "Rozpoczynam import PADS binary PCB"
 
 #: pcbnew/pcb_io/pcad/pcad_pcb.cpp:48 pcbnew/pcb_io/pcad/pcad_pcb.cpp:59
 #: pcbnew/pcb_io/pcad/pcad_pcb.cpp:70
@@ -53920,7 +53923,7 @@ msgstr "Warstwa przelotki musi być warstwą sygnałową."
 
 #: pcbnew/pcb_track.cpp:1846
 msgid "Via layer is outside the board stack."
-msgstr ""
+msgstr "Warstwa przelotki jest spoza stosu warstw."
 
 #: pcbnew/pcb_track.cpp:1864
 msgid "Via start layer and end layer cannot be the same"
@@ -54365,6 +54368,8 @@ msgstr "Nie można utworzyć pliku IPC-D-356\n"
 #: pcbnew/pcbnew_jobs_handler.cpp:2747
 msgid "Successfully saved board file using the latest format\n"
 msgstr ""
+"Zapisywanie pliku płytki z użyciem najnowszego formatu zakończone "
+"powodzeniem\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2751
 #, fuzzy
@@ -54389,7 +54394,7 @@ msgstr "Nie odnaleziono wtyczki do obsługi plików typu '%s'\n"
 #: pcbnew/pcbnew_jobs_handler.cpp:2930
 #, c-format
 msgid "Importing '%s' using %s format...\n"
-msgstr ""
+msgstr "Importowanie '%s' używając formatu %s...\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2946
 #, c-format
@@ -54607,6 +54612,10 @@ msgid ""
 "spacing. Adjust the differential pair settings or start from a location with "
 "the correct gap."
 msgstr ""
+"Odstęp pary różnicowej w punkcie początkowym nie odpowiada skonfigurowanemu "
+"odstępowi. Może to wystąpić w obszarach zwężenia, gdzie tory mają mniejszą "
+"szerokość i odstępy. Dostosuj ustawienia pary różnicowych lub rozpocznij od "
+"miejsca z prawidłowym odstępem."
 
 #: pcbnew/router/router_tool.cpp:148
 msgid "Place Through Via"
@@ -55971,12 +55980,16 @@ msgid ""
 "%zu unselected pad(s) are connected to these nets. How do you want to "
 "proceed?"
 msgstr ""
+"%zu niezaznaczonych padów jest połączonych z tymi sieciami. Jak mam to "
+"przetworzyć?"
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:79
 msgid ""
 "Connected tracks, vias, and other non-zone copper items will still swap nets "
 "even if you ignore the unselected pads."
 msgstr ""
+"Połączone ścieżki, przelotki i inne elementy miedzi nienależące do strefy "
+"nadal będą zamieniać się sieciami, nawet jeśli zignorujesz niewybrane pady."
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:82
 #, fuzzy
@@ -56003,18 +56016,24 @@ msgstr "Pokaż sieci niepołączonych pól"
 msgid ""
 "Gate swapping must be performed on pads within one multi-gate footprint."
 msgstr ""
+"Zamiana bramek musi być wykonywana na padach znajdujących się w obrębie "
+"jednego wielobramkowego footprintu."
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:493
 msgid "Gate swapping must be performed on gates with equal pin counts."
 msgstr ""
+"Zamiana bramek musi być wykonywana w przypadku bramek o takiej samej liczbie "
+"pinów."
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:514
 msgid "Gate swapping failed: pad in unit missing from footprint."
-msgstr ""
+msgstr "Nie udało się zamienić bramek: brakuje pól w jednostkowym footprincie."
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:542
 msgid "Gate swapping has no effect: all selected gates have identical nets."
 msgstr ""
+"Zamiana bramek nie dała rezultatu: wszystkie zaznaczone bramki mają "
+"identyczne sieci."
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:615
 #: pcbnew/tools/edit_tool_move_fct.cpp:657 pcbnew/tools/pcb_actions.cpp:710
@@ -56028,11 +56047,11 @@ msgstr "Pakowanie footprintów"
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:847
 msgid "Angle snap lines: 45°"
-msgstr ""
+msgstr "Linie przyciągania pod kątem: 45°"
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:851
 msgid "Angle snap lines: 90°"
-msgstr ""
+msgstr "Linie przyciągania pod kątem: 90°"
 
 #: pcbnew/tools/edit_tool_move_fct.cpp:865
 #, c-format
@@ -56221,12 +56240,12 @@ msgstr "Sprawdzanie stref z regułami..."
 #: pcbnew/tools/multichannel_tool.cpp:750
 #, c-format
 msgid "Resolving topology %d of %d (%d/%d components)"
-msgstr ""
+msgstr "Analiza topologii %d w %d (%d/%d komponentów)"
 
 #: pcbnew/tools/multichannel_tool.cpp:785
 #, c-format
 msgid "Rule Area topologies do not match: %s"
-msgstr ""
+msgstr "Topologie obszarów reguł nie pasują do siebie: %s"
 
 #: pcbnew/tools/multichannel_tool.cpp:805
 #: pcbnew/tools/multichannel_tool.cpp:865
@@ -56238,7 +56257,7 @@ msgstr ""
 
 #: pcbnew/tools/multichannel_tool.cpp:823
 msgid "Target group does not have a group."
-msgstr ""
+msgstr "Grupa docelowa nie ma grupy."
 
 #: pcbnew/tools/multichannel_tool.cpp:839
 #: pcbnew/tools/multichannel_tool.cpp:902
@@ -56253,7 +56272,7 @@ msgstr "Skopiowano do %d stref z z regułami."
 #: pcbnew/tools/multichannel_tool.cpp:1498
 #, c-format
 msgid "Reference area total components: %d"
-msgstr ""
+msgstr "Łączna liczba składników obszaru odniesienia: %d"
 
 #: pcbnew/tools/multichannel_tool.cpp:1499
 #, c-format
@@ -56689,11 +56708,11 @@ msgstr "Odbija wybrane elementy względem osi X"
 
 #: pcbnew/tools/pcb_actions.cpp:704
 msgid "Swap nets between two selected pads and their connected copper"
-msgstr ""
+msgstr "Zamień sieci między dwoma wybranymi padami i ich połączeniem miedzią"
 
 #: pcbnew/tools/pcb_actions.cpp:711
 msgid "Swap nets between gates of a footprint and their connected copper"
-msgstr ""
+msgstr "Zamień sieci między bramami footprintu i ich połączeniami miedzią"
 
 #: pcbnew/tools/pcb_actions.cpp:719
 msgid "Pack and Move Footprints"
@@ -56766,7 +56785,7 @@ msgstr "Edycja opcji..."
 
 #: pcbnew/tools/pcb_actions.cpp:787
 msgid "Edit polygon corners using a table"
-msgstr ""
+msgstr "Edycja wierzchołków linii łamanej z użyciem tabeli"
 
 #: pcbnew/tools/pcb_actions.cpp:794
 msgid ""
@@ -59694,11 +59713,11 @@ msgstr "Wiercenie"
 
 #: pcbnew/widgets/vertex_editor_pane.cpp:56
 msgid "X coord"
-msgstr ""
+msgstr "wsp. X"
 
 #: pcbnew/widgets/vertex_editor_pane.cpp:57
 msgid "Y coord"
-msgstr ""
+msgstr "wsp. Y"
 
 #: pcbnew/widgets/vertex_editor_pane.cpp:321
 #, fuzzy
