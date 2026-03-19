@@ -499,9 +499,9 @@ bool LOCAL_HISTORY::Init( const wxString& aProjectPath )
 // Helper function to commit files using an already-acquired lock
 enum class SNAPSHOT_COMMIT_RESULT
 {
-    ERROR,
-    NO_CHANGES,
-    COMMITTED
+    Error,
+    NoChanges,
+    Committed
 };
 
 
@@ -551,7 +551,7 @@ static SNAPSHOT_COMMIT_RESULT commitSnapshotWithLock( git_repository* repo, git_
     if( filesArrStr.size() == 0 )
     {
         wxLogTrace( traceAutoSave, wxS( "No changes, skipping" ) );
-        return SNAPSHOT_COMMIT_RESULT::NO_CHANGES;
+        return SNAPSHOT_COMMIT_RESULT::NoChanges;
     }
 
     int rc = git_index_add_all( index, &filesArrGit, GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH | GIT_INDEX_ADD_FORCE, NULL,
@@ -559,11 +559,11 @@ static SNAPSHOT_COMMIT_RESULT commitSnapshotWithLock( git_repository* repo, git_
     wxLogTrace( traceAutoSave, wxS( "Adding %zu files, rc %d" ), filesArrStr.size(), rc );
 
     if( rc != 0 )
-        return SNAPSHOT_COMMIT_RESULT::ERROR;
+        return SNAPSHOT_COMMIT_RESULT::Error;
 
     git_oid tree_id;
     if( git_index_write_tree( &tree_id, index ) != 0 )
-        return SNAPSHOT_COMMIT_RESULT::ERROR;
+        return SNAPSHOT_COMMIT_RESULT::Error;
 
     git_tree* rawTree = nullptr;
     git_tree_lookup( &rawTree, repo, &tree_id );
@@ -603,7 +603,7 @@ static SNAPSHOT_COMMIT_RESULT commitSnapshotWithLock( git_repository* repo, git_
     if( numChangedFiles == 0 )
     {
         wxLogTrace( traceAutoSave, wxS( "No actual changes in tree, skipping commit" ) );
-        return SNAPSHOT_COMMIT_RESULT::NO_CHANGES;
+        return SNAPSHOT_COMMIT_RESULT::NoChanges;
     }
 
     wxString msg;
@@ -636,11 +636,11 @@ static SNAPSHOT_COMMIT_RESULT commitSnapshotWithLock( git_repository* repo, git_
                            parents, parentPtr ? &constParentPtr : nullptr )
         != 0 )
     {
-        return SNAPSHOT_COMMIT_RESULT::ERROR;
+        return SNAPSHOT_COMMIT_RESULT::Error;
     }
 
     git_index_write( index );
-    return SNAPSHOT_COMMIT_RESULT::COMMITTED;
+    return SNAPSHOT_COMMIT_RESULT::Committed;
 }
 
 
@@ -665,7 +665,7 @@ bool LOCAL_HISTORY::CommitSnapshot( const std::vector<wxString>& aFiles, const w
     git_repository* repo = lock.GetRepository();
     git_index* index = lock.GetIndex();
 
-    return commitSnapshotWithLock( repo, index, hist, proj, aFiles, aTitle ) == SNAPSHOT_COMMIT_RESULT::COMMITTED;
+    return commitSnapshotWithLock( repo, index, hist, proj, aFiles, aTitle ) == SNAPSHOT_COMMIT_RESULT::Committed;
 }
 
 
@@ -1868,7 +1868,7 @@ bool LOCAL_HISTORY::RestoreCommit( const wxString& aProjectPath, const wxString&
         SNAPSHOT_COMMIT_RESULT backupResult = commitSnapshotWithLock( repo, lock.GetIndex(), hist, aProjectPath,
                                                                       backupFiles, wxS( "Pre-restore backup" ) );
 
-        if( backupResult == SNAPSHOT_COMMIT_RESULT::ERROR )
+        if( backupResult == SNAPSHOT_COMMIT_RESULT::Error )
         {
             wxLogTrace( traceAutoSave,
                        wxS( "[history] RestoreCommit: Failed to create pre-restore backup" ) );
@@ -1877,7 +1877,7 @@ bool LOCAL_HISTORY::RestoreCommit( const wxString& aProjectPath, const wxString&
             return false;
         }
 
-        if( backupResult == SNAPSHOT_COMMIT_RESULT::NO_CHANGES )
+        if( backupResult == SNAPSHOT_COMMIT_RESULT::NoChanges )
         {
             wxLogTrace( traceAutoSave, wxS( "[history] RestoreCommit: Current state already matches HEAD; "
                                             "continuing without a new backup commit" ) );
