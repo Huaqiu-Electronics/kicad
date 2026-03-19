@@ -169,20 +169,18 @@ std::optional<REMOTE_PROVIDER_METADATA> REMOTE_PROVIDER_METADATA::FromJson(
         return std::nullopt;
     }
 
-    if( !ValidateRemoteUrlSecurity( metadata.api_base_url, metadata.allow_insecure_localhost, aError,
-                              _( "api_base_url" ) ) )
+    if( !ValidateRemoteUrlSecurity( metadata.api_base_url, metadata.allow_insecure_localhost, aError, "api_base_url" ) )
     {
         return std::nullopt;
     }
 
-    if( !ValidateRemoteUrlSecurity( metadata.panel_url, metadata.allow_insecure_localhost, aError,
-                              _( "panel_url" ) ) )
+    if( !ValidateRemoteUrlSecurity( metadata.panel_url, metadata.allow_insecure_localhost, aError, "panel_url" ) )
     {
         return std::nullopt;
     }
 
     if( !ValidateRemoteUrlSecurity( metadata.session_bootstrap_url, metadata.allow_insecure_localhost, aError,
-                              _( "session_bootstrap_url" ) ) )
+                                    "session_bootstrap_url" ) )
     {
         return std::nullopt;
     }
@@ -195,8 +193,8 @@ std::optional<REMOTE_PROVIDER_METADATA> REMOTE_PROVIDER_METADATA::FromJson(
     }
 
     if( metadata.auth.type == REMOTE_PROVIDER_AUTH_TYPE::OAUTH2
-        && !ValidateRemoteUrlSecurity( metadata.auth.metadata_url, metadata.allow_insecure_localhost,
-                                 aError, _( "auth.metadata_url" ) ) )
+        && !ValidateRemoteUrlSecurity( metadata.auth.metadata_url, metadata.allow_insecure_localhost, aError,
+                                       "auth.metadata_url" ) )
     {
         return std::nullopt;
     }
