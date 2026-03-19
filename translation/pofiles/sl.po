@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-13 21:05+0000\n"
-"Last-Translator: Sašo Domadenik <saso.doma@gmail.com>\n"
+"PO-Revision-Date: 2026-03-19 10:13+0000\n"
+"Last-Translator: Mitja Nemec <mitja.nemec@fe.uni-lj.si>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/kicad/master-"
 "source/sl/>\n"
 "Language: sl\n"
@@ -24750,9 +24750,8 @@ msgid "Simulation"
 msgstr "Simulacija"
 
 #: eeschema/sch_sheet.cpp:1015 eeschema/sch_symbol.cpp:2643
-#, fuzzy
 msgid "BOM"
-msgstr "BOM ..."
+msgstr "Kosovnica"
 
 #: eeschema/sch_sheet.cpp:1027 eeschema/sch_symbol.cpp:2655
 #: eeschema/sch_text.cpp:634 eeschema/sch_textbox.cpp:463
