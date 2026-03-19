@@ -4238,6 +4238,30 @@ bool CONNECTION_GRAPH::ercCheckLabels( const CONNECTION_SUBGRAPH* aSubgraph )
         {
             size_t allPins = pinCount;
             size_t localPins = pinCount;
+            bool   hasLocalHierarchy = false;
+
+            // A label that bridges a local hierarchical connection (sheet
+            // pin) to a bus with hierarchical routing is serving a valid
+            // purpose even without local component pins.
+            if( !aSubgraph->m_hier_pins.empty() || !aSubgraph->m_hier_ports.empty() )
+            {
+                for( auto& [connection, busParents] : aSubgraph->m_bus_parents )
+                {
+                    for( const CONNECTION_SUBGRAPH* busParent : busParents )
+                    {
+                        if( busParent->m_sheet == sheet
+                            && ( !busParent->m_hier_pins.empty()
+                                 || !busParent->m_hier_ports.empty() ) )
+                        {
+                            hasLocalHierarchy = true;
+                            break;
+                        }
+                    }
+
+                    if( hasLocalHierarchy )
+                        break;
+                }
+            }
 
             auto it = m_net_name_to_subgraphs_map.find( netName );
 
@@ -4255,7 +4279,15 @@ bool CONNECTION_GRAPH::ercCheckLabels( const CONNECTION_SUBGRAPH* aSubgraph )
                     allPins += neighborPins;
 
                     if( neighbor->m_sheet == sheet )
+                    {
                         localPins += neighborPins;
+
+                        if( !neighbor->m_hier_pins.empty()
+                            || !neighbor->m_hier_ports.empty() )
+                        {
+                            hasLocalHierarchy = true;
+                        }
+                    }
                 }
             }
 
@@ -4265,11 +4297,13 @@ bool CONNECTION_GRAPH::ercCheckLabels( const CONNECTION_SUBGRAPH* aSubgraph )
                 ok = false;
             }
 
-            // A local label should connect to at least one component pin on its own
-            // sheet. A label that only reaches pins through hierarchy (sheet pins or
-            // buses) serves no local purpose and is likely mislabeled.
+            // A local label that connects to other subgraphs with
+            // hierarchical connections on the same sheet (through bus
+            // parents or net-name neighbors) is routing signals and should
+            // not be flagged even without local component pins.
             if( allPins == 0
-                || ( type == SCH_LABEL_T && localPins == 0 && allPins > 1 && !has_nc ) )
+                || ( type == SCH_LABEL_T && localPins == 0 && allPins > 1
+                     && !has_nc && !hasLocalHierarchy ) )
             {
                 reportError( text, ERCE_LABEL_NOT_CONNECTED );
                 ok = false;
