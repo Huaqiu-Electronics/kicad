@@ -23,11 +23,26 @@
 #include <wx/panel.h>
 #include <wx/timer.h>
 #include <wx/webview.h>
+#include <wx/weakref.h>
 #include <functional>
 #include <map>
 
 class TOOL_MANAGER;
 class TOOL_BASE;
+
+namespace WEBVIEW_PANEL_DETAIL
+{
+template<typename T>
+T* GetLiveWindow( const wxWeakRef<T>& aWindowRef )
+{
+    T* window = aWindowRef.get();
+
+    if( window && !window->IsBeingDeleted() )
+        return window;
+
+    return nullptr;
+}
+} // namespace WEBVIEW_PANEL_DETAIL
 
 class WEBVIEW_PANEL : public wxPanel
 {
@@ -39,7 +54,7 @@ public:
                             TOOL_MANAGER* aToolManager = nullptr, TOOL_BASE* aTool = nullptr );
     ~WEBVIEW_PANEL() override;
 
-    wxWebView* GetWebView() const { return m_browser; }
+    wxWebView* GetWebView() const { return WEBVIEW_PANEL_DETAIL::GetLiveWindow( m_browser ); }
     const wxString& GetBackend() const { return m_backend; }
 
     void LoadURL( const wxString& url );
@@ -53,7 +68,8 @@ public:
 
     void RunScriptAsync( const wxString& aScript, void* aClientData = nullptr ) const
     {
-        m_browser->RunScriptAsync( aScript, aClientData );
+        if( wxWebView* browser = GetWebView() )
+            browser->RunScriptAsync( aScript, aClientData );
     }
 
     bool HasLoadError() const { return m_loadError; }
@@ -76,7 +92,7 @@ private:
     bool                                m_handleExternalLinks;
     bool                                m_loadError;
     bool                                m_loadedEventBound;
-    wxWebView*                          m_browser;
+    wxWeakRef<wxWebView>                m_browser;
     wxString                            m_backend;
     std::map<wxString, MESSAGE_HANDLER> m_msgHandlers;
     TOOL_MANAGER*                       m_toolManager;
