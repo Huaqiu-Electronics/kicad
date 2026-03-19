@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-19 17:36+0000\n"
+"PO-Revision-Date: 2026-03-19 20:26+0000\n"
 "Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
@@ -25416,9 +25416,8 @@ msgid "Current variant"
 msgstr "Bieżący wariant"
 
 #: eeschema/toolbars_sch_editor.cpp:56
-#, fuzzy
 msgid "Selects the current schematic variant"
-msgstr "Kontrolka służąca do wyboru szerokości ścieżki"
+msgstr "Wybiera obecny wariant schematu"
 
 #: eeschema/toolbars_sch_editor.cpp:94 pcbnew/toolbars_footprint_editor.cpp:75
 #: pcbnew/toolbars_pcb_editor.cpp:172
@@ -25427,32 +25426,28 @@ msgstr "Tryby lini"
 
 #: eeschema/toolbars_sch_editor.cpp:112 pcbnew/toolbars_footprint_editor.cpp:96
 #: pcbnew/toolbars_pcb_editor.cpp:211
-#, fuzzy
 msgid "Selection modes"
-msgstr "Skopiowano zaznaczenie"
+msgstr "Tryby zaznaczenia"
 
 #: eeschema/toolbars_sch_editor.cpp:243 pcbnew/toolbars_pcb_editor.cpp:442
 msgid "Select the current variant to display and edit."
 msgstr "Wybiera aktualną wersję, którą chcemy wyświetlić i edytować."
 
 #: eeschema/toolbars_sch_editor.cpp:305
-#, fuzzy
 msgid "Add New Design Variant..."
-msgstr "Dodaj sieć..."
+msgstr "Dodaj nowy wariant projektu..."
 
 #: eeschema/toolbars_sch_editor.cpp:385
-#, fuzzy
 msgid "New Design Variant"
-msgstr "Nowy footprint"
+msgstr "Nowy wariant projektu"
 
 #: eeschema/toolbars_sch_editor.cpp:391
 msgid "Variant name:"
 msgstr "Nazwa wariantu:"
 
 #: eeschema/toolbars_sch_editor.cpp:400
-#, fuzzy
 msgid "Description (optional):"
-msgstr "Opis:"
+msgstr "Opis (opcjonalny):"
 
 #: eeschema/toolbars_symbol_viewer.cpp:139
 msgid "Symbol Viewer"
@@ -25536,9 +25531,9 @@ msgid "Footprint re-linking canceled by user."
 msgstr "Ponowne przypisanie footprintu zostało anulowane przez użytkownika."
 
 #: eeschema/tools/backannotate.cpp:754
-#, fuzzy, c-format
+#, c-format
 msgid "Swap %s unit %s with unit %s."
-msgstr "Dodaj pole %s '%s' z wartością '%s'."
+msgstr "Zamień %s jednostek %s na jednostki %s."
 
 #: eeschema/tools/backannotate.cpp:804
 msgid "true"
@@ -25710,7 +25705,6 @@ msgid "Select/Expand Connection"
 msgstr "Zaznacz/rozszerz połączenie"
 
 #: eeschema/tools/sch_actions.cpp:112
-#, fuzzy
 msgid ""
 "Selects a connection or expands an existing selection to pins, symbols, or "
 "entire connections"
@@ -25723,9 +25717,8 @@ msgid "Show/hide design blocks library"
 msgstr "Pokaż/Ukryj bibliotekę bloków projektowych"
 
 #: eeschema/tools/sch_actions.cpp:131
-#, fuzzy
 msgid "Show/hide the remote symbol panel"
-msgstr "Pokazuje lub ukrywa panel wyszukiwania"
+msgstr "Pokazuje lub ukrywa panel symboli zdalnych"
 
 #: eeschema/tools/sch_actions.cpp:137
 msgid "Save Current Sheet as Design Block..."
@@ -25744,9 +25737,8 @@ msgid "Create a new design block from the current selection"
 msgstr "Tworzy nowy blok projektowy na podstawie zaznaczenia"
 
 #: eeschema/tools/sch_actions.cpp:151
-#, fuzzy
 msgid "Update Design Block from Current Sheet"
-msgstr "Tworzy nowy blok projektowy z aktualnego arkusza"
+msgstr "Aktualizuje blok projektowy z aktualnego arkusza"
 
 #: eeschema/tools/sch_actions.cpp:152
 #, fuzzy
