@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-19 17:34+0000\n"
+"PO-Revision-Date: 2026-03-19 17:36+0000\n"
 "Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
@@ -23887,9 +23887,8 @@ msgid "Failed to read a matrix element."
 msgstr "Nie można odczytać elementu matrycy."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:2061
-#, fuzzy
 msgid "Failed to read a matrix pin name."
-msgstr "Nie można odczytać danych obrazu."
+msgstr "Niepowodzenie przy odczycie matrycy nazw pinów."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:2236
 msgid "Typ-Min-Max Values requires at least Typ."
@@ -24377,12 +24376,11 @@ msgid "Simulator requires a fully annotated schematic."
 msgstr "Symulator wymaga by elementy na schemacie zostały w pełni ponumerowane."
 
 #: eeschema/sim/simulator_frame.cpp:423
-#, fuzzy
 msgid ""
 "You must run a TRAN simulation first; its results will be used for the fast "
 "Fourier transform."
 msgstr ""
-"Musisz najpierw uruchomić symulację przejścia; jej rezultaty będą użyte do "
+"Musisz najpierw uruchomić symulację TRAN; jej rezultaty będą użyte do "
 "transformacji Fouiera."
 
 #: eeschema/sim/simulator_frame.cpp:455
@@ -24991,14 +24989,12 @@ msgid "Copy library"
 msgstr "Skopiuj bibliotekę"
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1148
-#, fuzzy
 msgid "New Symbol Library"
-msgstr "Utwórz bibliotekę symboli"
+msgstr "Nowa biblioteka symboli"
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1148
-#, fuzzy
 msgid "Add Symbol Library"
-msgstr "Utwórz bibliotekę symboli"
+msgstr "Dodaj bibliotekę symboli"
 
 #: eeschema/symbol_editor/symbol_edit_frame.cpp:1182
 #, c-format
@@ -25235,9 +25231,8 @@ msgid " (base)\n"
 msgstr " (baza)\n"
 
 #: eeschema/symbol_editor/symbol_editor.cpp:1276
-#, fuzzy
 msgid "Delete All Listed Symbols"
-msgstr "Usuń symbol"
+msgstr "Usuń wszystkie wylistowane symbole"
 
 #: eeschema/symbol_editor/symbol_editor.cpp:1418 pcbnew/files.cpp:315
 #: pcbnew/footprint_libraries_utils.cpp:1193
@@ -25312,9 +25307,9 @@ msgid "Imported %d symbol(s), skipped %d."
 msgstr "Zaimportowano %d symboli, pominięto %d."
 
 #: eeschema/symbol_library_manager.cpp:197
-#, fuzzy, c-format
+#, c-format
 msgid "Error deleting symbol %s from library '%s'."
-msgstr "Wystąpił błąd podczas ładowania symbolu %s z biblioteki '%s'."
+msgstr "Wystąpił błąd podczas usuwaniu symbolu %s z biblioteki '%s'."
 
 #: eeschema/symbol_library_manager.cpp:403
 msgid "Symbol not found."
@@ -25417,9 +25412,8 @@ msgid "Break sheet pin and hierarchical label association(s)"
 msgstr "Łamie przypisania pomiędzy pinami a etykietami hierarchicznymi"
 
 #: eeschema/toolbars_sch_editor.cpp:55 pcbnew/toolbars_pcb_editor.cpp:134
-#, fuzzy
 msgid "Current variant"
-msgstr "Bieżąca siatka"
+msgstr "Bieżący wariant"
 
 #: eeschema/toolbars_sch_editor.cpp:56
 #, fuzzy
