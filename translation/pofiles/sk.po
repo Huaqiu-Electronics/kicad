@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-18 20:48+0000\n"
+"PO-Revision-Date: 2026-03-19 20:26+0000\n"
 "Last-Translator: Seth Hillbrand <seth@kipro-pcb.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kicad/master-"
 "source/sk/>\n"
@@ -64,7 +64,7 @@ msgstr ""
 #: 3d-viewer/3d_canvas/board_adapter.cpp:1032
 msgid "Board outline is missing or malformed. Run DRC for a full analysis."
 msgstr ""
-"Chýbajúci obrys dosky alebo má nesprávny tvar. Spustením KDR získate úplnú "
+"Chýbajúci obrys dosky alebo má nesprávny tvar. Spustením DRC získate úplnú "
 "analýzu."
 
 #: 3d-viewer/3d_canvas/create_layer_items.cpp:315
@@ -127,7 +127,7 @@ msgstr "Chyba OpenGL počas vykresľovania mimo obrazovky: 0x%04X\n"
 #: 3d-viewer/3d_canvas/eda_3d_canvas.cpp:977
 #, c-format
 msgid "Net %s\tNet class %s"
-msgstr "Sieť %s\tTriedy siete %s"
+msgstr "Sieť %s\tTriedy spojov %s"
 
 #: 3d-viewer/3d_canvas/eda_3d_canvas.cpp:1000
 #, c-format
@@ -2587,19 +2587,19 @@ msgstr "Vzor:"
 
 #: common/dialogs/dialog_assign_netclass_base.cpp:33
 msgid "Net class:"
-msgstr "Trieda siete:"
+msgstr "Trieda spojov:"
 
 #: common/dialogs/dialog_assign_netclass_base.cpp:51
 msgid ""
 "Note: complete netclass assignments can be edited in Schematic Setup > "
 "Project."
 msgstr ""
-"Poznámka: Kompletné priradenia tried siete je možné upraviť v časti "
+"Poznámka: Kompletné priradenia tried spojov je možné upraviť v časti "
 "Nastavenie schémy > Projekt."
 
 #: common/dialogs/dialog_assign_netclass_base.h:55
 msgid "Add Netclass Assignment"
-msgstr "Pridať priradenie triedy siete"
+msgstr "Pridať priradenie triedy spojov"
 
 #: common/dialogs/dialog_color_picker.cpp:102
 msgid "Clear Color"
@@ -3592,7 +3592,7 @@ msgstr "Testovať zhodu medzi DPS a schémou"
 #: common/dialogs/dialog_rc_job_base.cpp:86
 #: pcbnew/dialogs/dialog_drc_base.cpp:45
 msgid "Refill all zones before performing DRC"
-msgstr "Pred vykonaním KDR znova naplňte všetky zóny"
+msgstr "Pred vykonaním DRC znova naplňte všetky zóny"
 
 #: common/dialogs/dialog_text_entry_base.cpp:20
 #: common/dialogs/dialog_unit_entry_base.cpp:21
@@ -5554,16 +5554,16 @@ msgid ""
 "The netclasses have been changed outside the Setup dialog.\n"
 "Do you wish to reload them?"
 msgstr ""
-"Triedy siete byli zmenené mimo dialógu Nastavenia.\n"
+"Triedy spojov byli zmenené mimo dialógu Nastavenia.\n"
 "Chcete ich znova načítať?"
 
 #: common/dialogs/panel_setup_netclasses.cpp:556
 msgid "Netclass must have a name."
-msgstr "Trieda siete musí mať meno."
+msgstr "Trieda spojov musí mať meno."
 
 #: common/dialogs/panel_setup_netclasses.cpp:565
 msgid "Netclass name already in use."
-msgstr "Názov triedy siete sa už používa."
+msgstr "Názov triedy spojov sa už používa."
 
 #: common/dialogs/panel_setup_netclasses.cpp:585
 #, c-format
@@ -5620,11 +5620,11 @@ msgstr "Štýl čiary schémy"
 
 #: common/dialogs/panel_setup_netclasses.cpp:714
 msgid "PCB netclass color"
-msgstr "farba triedy siete DPS"
+msgstr "farba triedy spojov DPS"
 
 #: common/dialogs/panel_setup_netclasses.cpp:759
 msgid "The default net class is required."
-msgstr "Vyžaduje sa predvolená trieda siete."
+msgstr "Vyžaduje sa predvolená trieda spojov."
 
 #: common/dialogs/panel_setup_netclasses.cpp:915
 #, c-format
@@ -5633,7 +5633,7 @@ msgstr "<b>Siete zodpovedajúce '%s':</b>"
 
 #: common/dialogs/panel_setup_netclasses_base.cpp:32
 msgid "Netclasses"
-msgstr "Triedy siete"
+msgstr "Triedy spojov"
 
 #: common/dialogs/panel_setup_netclasses_base.cpp:52
 #: pcbnew/tools/board_inspection_tool.cpp:809
@@ -5731,7 +5731,7 @@ msgstr "Importuj farby zo schémy"
 
 #: common/dialogs/panel_setup_netclasses_base.cpp:123
 msgid "Netclass Assignments"
-msgstr "Priradenie triedy siete"
+msgstr "Priradenie triedy spojov"
 
 #: common/dialogs/panel_setup_netclasses_base.cpp:147
 msgid "Pattern"
@@ -5741,7 +5741,7 @@ msgstr "Vzor"
 #: eeschema/sch_field.cpp:1129 eeschema/sch_label.cpp:224
 #: pcbnew/board_connected_item.cpp:252 pcbnew/pad.cpp:3382 pcbnew/zone.cpp:1977
 msgid "Net Class"
-msgstr "Triedy siete"
+msgstr "Triedy spojov"
 
 #: common/dialogs/panel_setup_severities.cpp:44 common/kidialog.cpp:123
 #: common/paths.cpp:569 eeschema/dialogs/dialog_erc.cpp:976
@@ -8254,7 +8254,7 @@ msgstr "DPS: Export IPC-2581"
 
 #: common/jobs/job_export_pcb_ipcd356.cpp:35
 msgid "Export IPC-D-356"
-msgstr "Exportovať IPC-D-356"
+msgstr "Export IPC-D-356"
 
 #: common/jobs/job_export_pcb_ipcd356.cpp:41
 msgid "Export IPC-D-356 Job Settings"
@@ -8267,7 +8267,7 @@ msgstr "DPS: Export IPC-D-356"
 #: common/jobs/job_export_pcb_odb.cpp:57
 #: pcbnew/dialogs/dialog_export_odbpp_base.h:65
 msgid "Export ODB++"
-msgstr "Exportovať ODB++"
+msgstr "Export ODB++"
 
 #: common/jobs/job_export_pcb_odb.cpp:63
 msgid "Export ODB++ Job Settings"
@@ -8393,15 +8393,15 @@ msgstr "Export PythonBOM schémy"
 
 #: common/jobs/job_pcb_drc.cpp:42
 msgid "Perform DRC"
-msgstr "Vykonať KDR"
+msgstr "Vykonať DRC"
 
 #: common/jobs/job_pcb_drc.cpp:48 pcbnew/dialogs/dialog_drc_job_config.cpp:24
 msgid "DRC Job Settings"
-msgstr "Nastavenia úlohy KDR"
+msgstr "Nastavenia úlohy DRC"
 
 #: common/jobs/job_pcb_drc.cpp:52
 msgid "PCB: Perform DRC"
-msgstr "DPS: Vykonať KDR"
+msgstr "DPS: Vykonať DRC"
 
 #: common/jobs/job_pcb_import.cpp:57
 msgid "Import PCB"
@@ -8572,7 +8572,7 @@ msgstr "Referencie listov"
 
 #: common/layer_id.cpp:84
 msgid "Net class references"
-msgstr "Referencie triedy siete"
+msgstr "Referencie triedy spojov"
 
 #: common/layer_id.cpp:85
 msgid "Rule areas"
@@ -8799,23 +8799,23 @@ msgstr "Vzdušné prepojenia"
 
 #: common/layer_id.cpp:140
 msgid "DRC warnings"
-msgstr "Varovania KDR"
+msgstr "Varovania DRC"
 
 #: common/layer_id.cpp:141
 msgid "DRC errors"
-msgstr "Chyby KDR"
+msgstr "Chyby DRC"
 
 #: common/layer_id.cpp:142
 msgid "DRC shapes"
-msgstr "KDR obrysy"
+msgstr "DRC obrysy"
 
 #: common/layer_id.cpp:143
 msgid "DRC exclusions"
-msgstr "Vylúčenia KDR"
+msgstr "Vylúčenia DRC"
 
 #: common/layer_id.cpp:144
 msgid "DRC marker shadows"
-msgstr "Tiene značiek KDR"
+msgstr "Tiene značiek DRC"
 
 #: common/layer_id.cpp:152
 msgid "Grid axes"
@@ -9416,7 +9416,7 @@ msgstr "Zlyhalo otvorenie súboru 3D modelu: %s"
 
 #: common/project/net_settings.cpp:68 pcbnew/board.cpp:147
 msgid "This is the default net class."
-msgstr "Toto je predvolená trieda siete."
+msgstr "Toto je predvolená trieda spojov."
 
 #: common/project/project_archiver.cpp:87
 #: common/project/project_archiver.cpp:120 kicad/pcm/pcm_task_manager.cpp:329
@@ -11661,7 +11661,7 @@ msgstr "Zálohovací archív EasyEDA (JLCEDA) Std"
 #: eeschema/sch_io/easyedapro/sch_io_easyedapro.h:51
 #: pcbnew/pcb_io/easyedapro/pcb_io_easyedapro.h:51
 msgid "EasyEDA (JLCEDA) Pro files"
-msgstr "EasyEDA (JLCEDA) Pre súbory"
+msgstr "EasyEDA (JLCEDA) Pro súbory"
 
 #: common/wildcards_and_files_ext.cpp:358
 #: pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.h:328
@@ -12541,8 +12541,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_bom_base.cpp:115
 msgid "Reset the list of BOM generator scripts to the default settings"
 msgstr ""
-"Obnoviť predvolené nastavenia pre zoznam skriptov generátora zoznamu "
-"materiálu"
+"Obnoviť zoznam skriptov generátora zoznamu materiálu na predvolené nastavenia"
 
 #: eeschema/dialogs/dialog_bom_base.h:81
 msgid "Bill of Materials"
@@ -14111,7 +14110,7 @@ msgstr "Pomoc so syntaxou"
 #: pcbnew/dialogs/dialog_textbox_properties.cpp:89
 #: pcbnew/dialogs/panel_setup_rules_base.cpp:31
 msgid "Show syntax help window"
-msgstr "Zobraziť okno pomocníka syntax."
+msgstr "Zobraziť okno pomocníka syntaxe."
 
 #: eeschema/dialogs/dialog_label_properties_base.cpp:81
 #: eeschema/dialogs/dialog_lib_symbol_properties_base.cpp:31
@@ -15749,7 +15748,7 @@ msgstr "Regulárny výraz"
 
 #: eeschema/dialogs/dialog_sch_find_base.cpp:93
 msgid "Search pin &names and numbers"
-msgstr "Hľadať &názvy a čísla vývodov"
+msgstr "Hľadať názvy a čísla vývodov"
 
 #: eeschema/dialogs/dialog_sch_find_base.cpp:96
 #: pcbnew/dialogs/dialog_find_base.cpp:92
@@ -15888,7 +15887,7 @@ msgstr "Projekt"
 #: pcbnew/widgets/search_handlers.cpp:514
 #: pcbnew/widgets/search_handlers.cpp:602
 msgid "Net Classes"
-msgstr "Triedy siete"
+msgstr "Triedy spojov"
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:126
 msgid "Bus Alias Definitions"
@@ -15907,7 +15906,7 @@ msgstr "Dáta schémy"
 #: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:98
 msgid "Project is missing or read-only. Settings will not be editable."
 msgstr ""
-"Chýbajúci projekt alebo je iba na čítanie. Nastavenia nebude možné upravovať."
+"Projekt chýba alebo je len na čítanie. Nastavenia nebude možné upravovať."
 
 #: eeschema/dialogs/dialog_schematic_setup.cpp:191
 #, c-format
@@ -16425,7 +16424,7 @@ msgstr "Príkaz SPICE"
 #: eeschema/dialogs/dialog_sim_command_base.cpp:765
 #, c-format
 msgid "Fixed %s scale"
-msgstr "Pevná %s mierka"
+msgstr "Pevná %s stupnica"
 
 #: eeschema/dialogs/dialog_sim_command_base.cpp:700
 #: eeschema/dialogs/dialog_sim_command_base.cpp:739
@@ -17482,7 +17481,7 @@ msgstr ""
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:79
 msgid ""
 "Update symbol attribute flags like Do Not Populate to match the footprint."
-msgstr "Aktualizovať atribút symbolu ako \"Neosadzovať\" aby zodpovedal puzdro."
+msgstr "Aktualizovať atribút symbolu ako \"Neosadzovať\" aby zodpovedal puzdru."
 
 #: eeschema/dialogs/dialog_update_from_pcb_base.cpp:83
 msgid "Prefer symbol unit swaps over label swaps"
@@ -17574,7 +17573,7 @@ msgstr "Šírka cesty/zbernice:"
 msgid "Set width to 0 to use netclass's wire/bus widths."
 msgstr ""
 "Nastaviť šírku na 0 pre použitie šírky spoja/zbernice z nastavení triedy "
-"siete."
+"spojov."
 
 #: eeschema/dialogs/dialog_wire_bus_properties_base.h:69
 msgid "Wire & Bus Properties"
@@ -18151,7 +18150,7 @@ msgstr "Skrátené (1..3)"
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:207
 #: pcbnew/dialogs/dialog_dimension_properties_base.cpp:130
 msgid "Prefix:"
-msgstr "Predpona:"
+msgstr "Prefix:"
 
 #: eeschema/dialogs/panel_setup_formatting_base.cpp:211
 msgid "["
@@ -18658,7 +18657,7 @@ msgstr "Knižnica symbolov nebola aktualizovaná\n"
 #: eeschema/eeschema_jobs_handler.cpp:1323 pcbnew/pcbnew_jobs_handler.cpp:2445
 #, c-format
 msgid "Found %d violations\n"
-msgstr "Nájdených %d porušenie\n"
+msgstr "Nájdených %d porušení\n"
 
 #: eeschema/eeschema_jobs_handler.cpp:1337
 #, c-format
@@ -18801,7 +18800,7 @@ msgstr "Symbol %s má neumiestnené obojsmerné napájacie vývody, v jednotkác
 #: eeschema/erc/erc.cpp:719
 #, c-format
 msgid "Netclass %s is not defined"
-msgstr "Trieda siete  %s nie je definovaná"
+msgstr "Trieda spojov  %s nie je definovaná"
 
 #: eeschema/erc/erc.cpp:796
 #, c-format
@@ -18956,7 +18955,7 @@ msgstr "Kontrolujú sa označenia na viacerých spojoch..."
 
 #: eeschema/erc/erc.cpp:2231
 msgid "Checking for undefined netclasses..."
-msgstr "Kontrolujú sa nedefinované triedy siete..."
+msgstr "Kontrolujú sa nedefinované triedy spojov..."
 
 #: eeschema/erc/erc_item.cpp:40
 msgid "Conflicts"
@@ -19037,7 +19036,7 @@ msgstr ""
 #: eeschema/erc/erc_item.cpp:121
 msgid "Power pin and label are similar (lower/upper case difference only)"
 msgstr ""
-"Napájací vývod a označenie sú podobné (iba rozdiel medzi malými a veľkými "
+"Vývod napájania a označenie sú podobné (iba rozdiel medzi malými a veľkými "
 "písmenami)"
 
 #: eeschema/erc/erc_item.cpp:125
@@ -19095,7 +19094,7 @@ msgstr "Nezistená textová premenná"
 
 #: eeschema/erc/erc_item.cpp:177
 msgid "Undefined netclass"
-msgstr "Nedefinovaná trieda siete"
+msgstr "Nedefinovaná trieda spojov"
 
 #: eeschema/erc/erc_item.cpp:181
 msgid "SPICE model issue"
@@ -19504,7 +19503,7 @@ msgstr "O"
 #: eeschema/import_gfx/dialog_import_gfx_sch_base.cpp:74
 #: pcbnew/import_gfx/dialog_import_graphics_base.cpp:115
 msgid "DXF origin on PCB Grid, X Coordinate"
-msgstr "Počiatok DXF na mriežke DPS, súradnica X"
+msgstr "Počiatok DXF na mriežke PCB, súradnica X"
 
 #: eeschema/import_gfx/dialog_import_gfx_sch_base.cpp:95
 #: pcbnew/import_gfx/dialog_import_graphics_base.cpp:132
@@ -19858,7 +19857,7 @@ msgstr "Pripojenie zbernice k zbernici (%s,%s) do (%s,%s)"
 #: eeschema/net_navigator.cpp:191
 #, c-format
 msgid "Netclass label '%s' at (%s, %s)"
-msgstr "Označenie triedy siete '%s' na (%s, %s)"
+msgstr "Označenie triedy spojov '%s' na (%s, %s)"
 
 #: eeschema/net_navigator.cpp:198
 #, c-format
@@ -20328,7 +20327,7 @@ msgstr "Typ pripojenia zbernice"
 #: pcbnew/pcb_track.cpp:2466 pcbnew/tools/pcb_control.cpp:2549
 #: pcbnew/zone.cpp:936
 msgid "Resolved Netclass"
-msgstr "Zistená trieda siete"
+msgstr "Zistená trieda spojov"
 
 #: eeschema/sch_connection.cpp:455
 msgid "Connection Name"
@@ -20993,7 +20992,7 @@ msgid ""
 "Unable to read file '%s'.\n"
 "'%s' at line %d, column %d, offset %d"
 msgstr ""
-"Nepodarilo sa načítať súbor '%s'.\n"
+"Nepodarilo sa prečítať súbor '%s'.\n"
 "'%s' na riadku %d, v stĺpci %d, offset %d"
 
 #: eeschema/sch_io/eagle/sch_io_eagle.cpp:1063
@@ -21684,7 +21683,7 @@ msgstr "Síť"
 #: eeschema/sch_label.cpp:1548 eeschema/sch_line.cpp:922
 #: eeschema/sch_rule_area.cpp:405
 msgid "Resolved netclass"
-msgstr "Zistená trieda siete"
+msgstr "Zistená trieda spojov"
 
 #: eeschema/sch_label.cpp:1563
 msgid "Hierarchical Labels"
@@ -21778,7 +21777,7 @@ msgstr "Typ čiary"
 
 #: eeschema/sch_line.cpp:964
 msgid "from netclass"
-msgstr "z triedy siete"
+msgstr "z triedy spojov"
 
 #: eeschema/sch_marker.cpp:359 pcbnew/pcb_marker.cpp:230
 msgid "Violation"
@@ -22828,7 +22827,7 @@ msgstr ""
 "    <tr>\n"
 "        <td>&nbsp;<br><samp>${refdes:NET_CLASS(vývod)}</samp></td>\n"
 "        <td></td>\n"
-"        <td>&nbsp;<br><samp>Trieda siete pre vývod</samp></td>\n"
+"        <td>&nbsp;<br><samp>Trieda spojov pre vývod</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
 "        <td>&nbsp;<br><samp>${J1:NET_CLASS(1)}</samp></td>\n"
@@ -27324,7 +27323,7 @@ msgstr "Žiadne siete nie sú vybrané."
 msgid "All selected nets must be labeled to assign a netclass."
 msgstr ""
 "Všetky vybrané spoje musia byť označené, aby mohli byť priradené k triede "
-"siete."
+"spojov."
 
 #: eeschema/tools/sch_editor_control.cpp:1361
 msgid "No connected net selected."
@@ -29609,7 +29608,7 @@ msgstr ""
 #: kicad/cli/command_pcb_drc.cpp:49
 msgid "Runs the Design Rules Check (DRC) on the PCB and creates a report"
 msgstr ""
-"Spustí kontrolu pravidiel návrhu (KDR) na doske plošných spojov a vytvorí "
+"Spustí kontrolu pravidiel návrhu (DRC) na doske plošných spojov a vytvorí "
 "protokol"
 
 #: kicad/cli/command_pcb_drc.cpp:54 kicad/cli/command_pcb_export_stats.cpp:40
@@ -29626,7 +29625,7 @@ msgid ""
 "Report all DRC violations, this is equivalent to including all the other "
 "severity arguments"
 msgstr ""
-"Hlásiť všetky porušenia KDR, čo je ekvivalentné zahrnutiu všetkých ostatných "
+"Hlásiť všetky porušenia DRC, čo je ekvivalentné zahrnutiu všetkých ostatných "
 "argumentov závažnosti porušenie"
 
 #: kicad/cli/command_pcb_drc.cpp:76
@@ -29634,7 +29633,7 @@ msgid ""
 "Report all DRC error level violations, this can be combined with the other "
 "severity arguments"
 msgstr ""
-"Hlásiť všetky porušenia KDR úrovne chyby, toto je možné kombinovať s "
+"Hlásiť všetky porušenia DRC úrovne chyby, toto je možné kombinovať s "
 "ostatnými argumentmi závažnosti"
 
 #: kicad/cli/command_pcb_drc.cpp:81
@@ -29642,7 +29641,7 @@ msgid ""
 "Report all DRC warning level violations, this can be combined with the other "
 "severity arguments"
 msgstr ""
-"Hlásiť všetky porušenia KDR úrovne varovania, toto je možné kombinovať s "
+"Hlásiť všetky porušenia DRC úrovne varovania, toto je možné kombinovať s "
 "ostatnými argumentmi závažnosti"
 
 #: kicad/cli/command_pcb_drc.cpp:86
@@ -29650,20 +29649,20 @@ msgid ""
 "Report all excluded DRC violations, this can be combined with the other "
 "severity arguments"
 msgstr ""
-"Hlásiť všetky vylúčené porušenia KDR, toto je možné kombinovať s ostatnými "
+"Hlásiť všetky vylúčené porušenia DRC, toto je možné kombinovať s ostatnými "
 "argumentmi závažnosti"
 
 #: kicad/cli/command_pcb_drc.cpp:91
 msgid "Return a nonzero exit code if DRC violations exist"
-msgstr "Vrátiť nenulový návratový kód, ak existujú porušenia KDR"
+msgstr "Vrátiť nenulový návratový kód, ak existujú porušenia DRC"
 
 #: kicad/cli/command_pcb_drc.cpp:95
 msgid "Refill zones before running DRC"
-msgstr "Pred spustením KDR znovu vyplniť zóny"
+msgstr "Pred spustením DRC znovu vyplniť zóny"
 
 #: kicad/cli/command_pcb_drc.cpp:99
 msgid "Save the board after DRC, must be used with --refill-zones"
-msgstr "Uložiť DPS po KDR, musí sa použiť s --refill-zones"
+msgstr "Uložiť DPS po DRC, musí sa použiť s --refill-zones"
 
 #: kicad/cli/command_pcb_drc.cpp:156 kicad/cli/command_pcb_export_3d.cpp:309
 #: kicad/cli/command_pcb_export_drill.cpp:166
@@ -35531,7 +35530,7 @@ msgstr "Nenaroutované"
 
 #: pcbnew/board_connected_item.cpp:260
 msgid "NetClass"
-msgstr "Trieda siete"
+msgstr "Trieda spojov"
 
 #: pcbnew/board_connected_item.cpp:267
 msgid "NetName"
@@ -35543,11 +35542,11 @@ msgstr "Názov siete"
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:115
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:638
 msgid "Teardrops"
-msgstr "Slzičky"
+msgstr "Teardropy"
 
 #: pcbnew/board_connected_item.cpp:303
 msgid "Enable Teardrops"
-msgstr "Povoliť slzičky"
+msgstr "Povoliť teardropy"
 
 #: pcbnew/board_connected_item.cpp:309
 msgid "Best Length Ratio"
@@ -35567,7 +35566,7 @@ msgstr "Max. šírka"
 
 #: pcbnew/board_connected_item.cpp:335
 msgid "Curved Teardrops"
-msgstr "Zaoblené slzičky"
+msgstr "Zaoblené teardropy"
 
 #: pcbnew/board_connected_item.cpp:341
 msgid "Prefer Zone Connections"
@@ -35575,7 +35574,7 @@ msgstr "Uprednostniť prepojenia zón"
 
 #: pcbnew/board_connected_item.cpp:347
 msgid "Allow Teardrops To Span Two Tracks"
-msgstr "Povoliť slzičkám preklenúť dva spoje"
+msgstr "Povoliť teardropom preklenúť dva spoje"
 
 #: pcbnew/board_connected_item.cpp:353
 msgid "Max Width Ratio"
@@ -36673,7 +36672,7 @@ msgid ""
 "You may wish to run DRC with 'Test for parity between PCB and schematic' "
 "checked."
 msgstr ""
-"Možno budete chcieť spustiť KDR s možnosťou 'Testovať zhodu medzi DPS a "
+"Možno budete chcieť spustiť DRC s možnosťou 'Testovať zhodu medzi DPS a "
 "schémou'."
 
 #: pcbnew/dialogs/dialog_board_reannotate.cpp:414
@@ -37193,7 +37192,7 @@ msgstr "Filtrovať položky podľa siete:"
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:64
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:85
 msgid "Filter items by net class:"
-msgstr "Filtrovať položky podľa triedy siete:"
+msgstr "Filtrovať položky podľa triedy spojov:"
 
 #: pcbnew/dialogs/dialog_cleanup_tracks_and_vias_base.cpp:105
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:78
@@ -37211,7 +37210,7 @@ msgstr "Vyčistiť spoje a prekovy"
 
 #: pcbnew/dialogs/dialog_copper_zones.cpp:135
 msgid "Legacy Teardrop Properties"
-msgstr "Vlastnosti slzičiek staršej verzie"
+msgstr "Vlastnosti staršej verzie teardrop"
 
 #: pcbnew/dialogs/dialog_copper_zones.cpp:139
 #: pcbnew/dialogs/dialog_non_copper_zones_properties.cpp:115
@@ -37492,7 +37491,7 @@ msgstr "Prírastok číslovania podložiek:"
 
 #: pcbnew/dialogs/dialog_create_array_base.cpp:294
 msgid "Grid Array"
-msgstr "Mriežkové pole"
+msgstr "Pole mriežky"
 
 #: pcbnew/dialogs/dialog_create_array_base.cpp:303
 msgid "Center position"
@@ -37959,7 +37958,7 @@ msgstr "Vlastnosti kóty"
 
 #: pcbnew/dialogs/dialog_drc.cpp:154
 msgid "Run DRC"
-msgstr "Spustite KDR"
+msgstr "Spustite DRC"
 
 #: pcbnew/dialogs/dialog_drc.cpp:280
 msgid "Report All Errors for Each Track"
@@ -37971,11 +37970,11 @@ msgstr "Ak nie je začiarknuté, bude hlásená iba prvá chyba pre každý spoj
 
 #: pcbnew/dialogs/dialog_drc.cpp:288
 msgid "Highlight corresponding items on canvas when selected in the DRC list"
-msgstr "Zvýrazniť zodpovedajúce položky na ploche pri vybraní v zozname KDR"
+msgstr "Zvýrazniť zodpovedajúce položky na ploche pri vybraní v zozname DRC"
 
 #: pcbnew/dialogs/dialog_drc.cpp:371
 msgid "DRC incomplete: could not compile custom design rules."
-msgstr "KDR neúplné: nepodarilo sa skompilovať vlastné pravidlá návrhu."
+msgstr "DRC neúplné: nepodarilo sa skompilovať vlastné pravidlá návrhu."
 
 #: pcbnew/dialogs/dialog_drc.cpp:373 pcbnew/tools/board_inspection_tool.cpp:417
 msgid "Show design rules."
@@ -37983,7 +37982,7 @@ msgstr "Zobraziť pravidlá návrhu."
 
 #: pcbnew/dialogs/dialog_drc.cpp:426
 msgid "-------- DRC canceled by user.<br><br>"
-msgstr "-------- KDR zrušené používateľom.<br><br>"
+msgstr "-------- DRC zrušené používateľom.<br><br>"
 
 #: pcbnew/dialogs/dialog_drc.cpp:743
 #, c-format
@@ -38552,7 +38551,7 @@ msgid ""
 "Run DRC for a full analysis."
 msgstr ""
 "Chýbajúci obrys dosky alebo nie je uzavretý s použitím %.3f tolerancie.\n"
-"Spustením KDR získate úplnú analýzu."
+"Spustením DRC získate úplnú analýzu."
 
 #: pcbnew/dialogs/dialog_export_step.cpp:435
 msgid "STEP/GLTF Export"
@@ -38958,7 +38957,7 @@ msgstr "Hľadať referenčné &označenia puzdier"
 
 #: pcbnew/dialogs/dialog_find_base.cpp:80
 msgid "Search DRC &markers"
-msgstr "Hľadať &značky KDR"
+msgstr "Hľadať &značky DRC"
 
 #: pcbnew/dialogs/dialog_find_base.cpp:84
 msgid "Search footprint &values"
@@ -39199,7 +39198,7 @@ msgid ""
 "This value can be superseded by a pad local value."
 msgstr ""
 "Toto je lokálna minimálna vzdialenosť od spoja pre všetky plôšky puzdra\n"
-"Ak je 0, použijú sa hodnoty nastavenia triedy siete\n"
+"Ak je 0, použijú sa hodnoty nastavenia triedy spojov\n"
 "Táto hodnota môže byť nahradená lokálnou hodnotou plôšky."
 
 #: pcbnew/dialogs/dialog_footprint_properties_base.cpp:286
@@ -39383,7 +39382,7 @@ msgstr "Súkromné vrstvy"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:329
 msgid "Leave values blank to use netclass values."
-msgstr "Ponechajte hodnoty prázdne pre použitie hodnôt triedy siete."
+msgstr "Ponechajte hodnoty prázdne pre použitie hodnôt triedy spojov."
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:341
 msgid ""
@@ -39394,7 +39393,7 @@ msgid ""
 msgstr ""
 "Toto je lokálna min. vzdialenosť od spojov pre všetky plôšky pre toto "
 "puzdro.\n"
-"Ak je 0, použijú sa hodnoty z nastavenia triedy siete.\n"
+"Ak je 0, použijú sa hodnoty z nastavenia triedy spojov.\n"
 "Táto hodnota môže byť prepísaná v lokálnych nastaveniach jednotlivých "
 "plôšok\n"
 "v karte Odstup a nastavenia vo vlastnostiach plôšky."
@@ -39453,7 +39452,7 @@ msgstr "Vyňať z požiadavky na nádvorie"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:426
 msgid "Will not generate \"missing courtyard\" DRC violations"
-msgstr "Negenerovať porušenie KDR - „chýbajúci courtyard“"
+msgstr "Negenerovať porušenie DRC - „chýbajúci courtyard“"
 
 #: pcbnew/dialogs/dialog_footprint_properties_fp_editor_base.cpp:437
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:976
@@ -39959,21 +39958,21 @@ msgstr "Zmazať položky"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:95
 msgid "Set teardrops to default values for shape"
-msgstr "Nastaviť slzičky na predvolené hodnoty pre tvar"
+msgstr "Nastaviť teardropy na predvolené hodnoty pre tvar"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:96
 msgid "Set teardrops to specified values:"
-msgstr "Nastaviť slzičky na zadané hodnoty:"
+msgstr "Nastaviť teardropy na zadané hodnoty:"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:100
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:127
 msgid "Add teardrops with default values for shape"
-msgstr "Pridať slzičky s predvolenými hodnotami pre tvar"
+msgstr "Pridať teardropy s predvolenými hodnotami pre tvar"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:101
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:137
 msgid "Add teardrops with specified values:"
-msgstr "Pridať slzičky so zadanými hodnotami:"
+msgstr "Pridať teardropy so zadanými hodnotami:"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:154
 #: pcbnew/dialogs/dialog_global_edit_text_and_graphics.cpp:160
@@ -39986,7 +39985,7 @@ msgstr "Použiť a zavrieť"
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:451
 #: pcbnew/dialogs/dialog_global_edit_teardrops.cpp:470
 msgid "Edit Teardrops"
-msgstr "Upraviť slzičky"
+msgstr "Upraviť teardropy"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:27
 msgid "PTH pads"
@@ -40006,23 +40005,23 @@ msgstr "Iba okrúhle podložky"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:99
 msgid "Existing teardrops only"
-msgstr "Iba existujúce slzičky"
+msgstr "Iba existujúce teardropy"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:114
 msgid "Remove teardrops"
-msgstr "Odstrániť slzičky"
+msgstr "Odstrániť teardropy"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:115
 msgid "Remove teardrops according to filtering options"
-msgstr "Odstrániť slzičky podľa možností filtrovania"
+msgstr "Odstrániť teardropy podľa možností filtrovania"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:119
 msgid "Remove all teardrops"
-msgstr "Odstrániť všetky slzičky"
+msgstr "Odstrániť všetky teardropy"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:120
 msgid "Remove all teardrops, regardless of filtering options"
-msgstr "Odstrániť všetky slzičky bez ohľadu na možnosti filtrovania"
+msgstr "Odstrániť všetky teardropy bez ohľadu na možnosti filtrovania"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:131
 msgid "Edit default values in Board Setup"
@@ -40043,13 +40042,13 @@ msgid ""
 "Do not create teardrops on tracks connected to pads that are also connected "
 "to a copper zone."
 msgstr ""
-"Nevytvárať slzičky na spojoch podložiek, ktoré sú tiež prepojené s medenou "
+"Nevytvárať teardropy na spojoch podložiek, ktoré sú tiež prepojené s medenou "
 "zónou."
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:154
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:658
 msgid "Allow teardrops to span two track segments"
-msgstr "Povoliť slzičke presahovať dva segmenty spoja"
+msgstr "Povoliť teardropu presahovať dva segmenty spoja"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:155
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:659
@@ -40060,8 +40059,8 @@ msgid ""
 "Allows a teardrop to extend over the first 2 connected track segments if the "
 "first track segment is too short to accommodate the best length."
 msgstr ""
-"Umožňuje slzičke presiahnuť cez prvé 2 pripojené segmenty spoja, ak je prvý "
-"segment príliš krátky pre optimálnu dĺžku."
+"Umožňuje teardropu presiahnuť cez prvé 2 pripojené segmenty spoja, ak je "
+"prvý segment príliš krátky pre optimálnu dĺžku."
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:171
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:695
@@ -40080,14 +40079,16 @@ msgid ""
 "Max pad/via size to track width ratio to create a teardrop.\n"
 "100 always creates a teardrop."
 msgstr ""
-"Max. pomer veľkosti podložky/prekovu k šírke spoja pre vytvorenie slzičky.\n"
-"100 vždy vytvorí slzičku."
+"Max. pomer veľkosti podložky/prekovu k šírke spoja pre vytvorenie "
+"teardropu.\n"
+"100 vždy vytvorí teardrop."
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:178
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:144
 msgid ""
 "Tracks which are similar in size to the pad or via do not need teardrops."
-msgstr "Spoje podobnej veľkosti ako podložka alebo prekov nepotrebujú slzičky."
+msgstr ""
+"Spoje podobnej veľkosti ako podložka alebo prekov nepotrebujú teardropy."
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.cpp:189
 msgid "(as a percentage of pad/via minor dimension)"
@@ -40194,7 +40195,7 @@ msgstr "Zaoblené hrany"
 
 #: pcbnew/dialogs/dialog_global_edit_teardrops_base.h:107
 msgid "Set Teardrops"
-msgstr "Nastaviť slzičky"
+msgstr "Nastaviť teardropy"
 
 #: pcbnew/dialogs/dialog_global_edit_text_and_graphics.cpp:129
 msgid "Text items"
@@ -40409,7 +40410,7 @@ msgstr "Vyberte ochranný prvok podľa IPC-4761, ktorý má prekov mať."
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.cpp:220
 msgid "Set to net class / custom rule values"
-msgstr "Nastaviť na hodnoty triedy siete / vlastného pravidla"
+msgstr "Nastaviť na hodnoty triedy spojov / vlastného pravidla"
 
 #: pcbnew/dialogs/dialog_global_edit_tracks_and_vias_base.h:94
 msgid "Set Track and Via Properties"
@@ -40533,7 +40534,7 @@ msgstr "Preddefinované rozmery spoja a prekovu"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:72
 msgid "Teardrop defaults"
-msgstr "Predvolené hodnoty slzičiek"
+msgstr "Predvolené hodnoty teardropov"
 
 #: pcbnew/dialogs/dialog_import_settings_base.cpp:75
 msgid "Length-tuning pattern defaults"
@@ -41415,37 +41416,37 @@ msgstr "Zalisovanie (iba okrúhle TH)"
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:648
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:629
 msgid "Board contains legacy teardrops."
-msgstr "Doska obsahuje slzičky staršej verzie."
+msgstr "Doska obsahuje teardropy staršej verzie."
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:652
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:633
 msgid "Use Edit > Edit Teardrops to apply automatic teardrops."
-msgstr "Použite Upraviť > Upraviť slzičky na automatické použitie slzičiek."
+msgstr "Použite Upraviť > Upraviť teardropy na automatické použitie teardropov."
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:668
 msgid "Add teardrops on pad's track connections"
-msgstr "Pridať slzičky na prepojenia spoja s podložkou"
+msgstr "Pridať teardropy na prepojenia spoja s podložkou"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:677
 msgid "Allow teardrops to span 2 track segments"
-msgstr "Povoliť slzičke presahovať 2 segmenty spoja"
+msgstr "Povoliť teardropu presahovať 2 segmenty spoja"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:679
 msgid ""
 "Allows a teardrop to spread over 2 tracks if the first track segment is too "
 "short"
 msgstr ""
-"Umožňuje slzičke presahovať na 2 spoje, ak je prvý segment spoja príliš "
+"Umožňuje rozšíriť \"teardrop\" na 2 spoje, ak je prvý segment spoja príliš "
 "krátky"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:703
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:314
 msgid "Tracks which are similar in size to the pad do not need teardrops."
-msgstr "Spoje podobnej veľkosti ako podložka nepotrebujú slzičky."
+msgstr "Spoje podobnej veľkosti ako podložka nepotrebujú teardropy."
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:733
 msgid "Teardrop Shape"
-msgstr "Tvar slzičky"
+msgstr "Tvar teardropu"
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:883
 msgid "Pad connection:"
@@ -41510,7 +41511,7 @@ msgid ""
 "If 0, the footprint local value or the Netclass value is used."
 msgstr ""
 "Toto je lokálna vzdialenosť od spoja pre túto plôšku.\n"
-"Ak je 0, použije sa lokálna hodnota alebo hodnota z nastavenia triedy siete."
+"Ak je 0, použije sa lokálna hodnota alebo hodnota z nastavenia triedy spojov."
 
 #: pcbnew/dialogs/dialog_pad_properties_base.cpp:1012
 msgid ""
@@ -41958,12 +41959,12 @@ msgstr "Generovať vyskakovacie okná vlastností pre zadné puzdrá"
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:470
 msgid "Run DRC..."
-msgstr "Spustiť KDR..."
+msgstr "Spustiť DRC..."
 
 #: pcbnew/dialogs/dialog_plot_base.cpp:473
 #, c-format
 msgid "(%d known DRC violations; %d exclusions)"
-msgstr "(%d známe porušenia KDR; %d vylúčenia)"
+msgstr "(%d známe porušenia DRC; %d vylúčenia)"
 
 #: pcbnew/dialogs/dialog_pns_diff_pair_dimensions.cpp:55
 msgid "Track gap must be greater than 0."
@@ -42009,7 +42010,7 @@ msgstr "Režim voľného uhla"
 
 #: pcbnew/dialogs/dialog_pns_settings_base.cpp:34
 msgid "Allow DRC violations"
-msgstr "Povoliť porušenie KDR"
+msgstr "Povoliť porušenie DRC"
 
 #: pcbnew/dialogs/dialog_pns_settings_base.cpp:35
 msgid ""
@@ -42017,7 +42018,7 @@ msgid ""
 "is violating the DRC rules."
 msgstr ""
 "(Iba režim kolízií zvýraznenia) - umožňuje človeku vytvoriť trasu, aj keď "
-"porušuje pravidlá KDR."
+"porušuje pravidlá DRC."
 
 #: pcbnew/dialogs/dialog_pns_settings_base.cpp:45
 #: pcbnew/router/router_tool.cpp:2975
@@ -42445,7 +42446,7 @@ msgstr "Názov oblasti:"
 #: pcbnew/dialogs/dialog_rule_area_properties_base.cpp:51
 msgid "A unique name for this rule area for use in DRC rules"
 msgstr ""
-"Jedinečný názov pre túto oblasť pravidiel, ktorý sa používa v pravidlách KDR"
+"Jedinečný názov pre túto oblasť pravidiel, ktorý sa používa v pravidlách DRC"
 
 #: pcbnew/dialogs/dialog_rule_area_properties_base.cpp:71
 #: pcbnew/dialogs/panel_zone_properties_base.cpp:155
@@ -42839,7 +42840,7 @@ msgstr "Následné opracovanie otvoru"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:655
 msgid "Add teardrops on via's track connections"
-msgstr "Pridať slzičky na prepojenia spoja s prekovom"
+msgstr "Pridať teardropy na prepojenia spoja s prekovom"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:675
 msgid "Maximum track width:"
@@ -42847,7 +42848,7 @@ msgstr "Maximálna šírka spoja:"
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:682
 msgid "Tracks which are similar in size to the via do not need teardrops."
-msgstr "Spoje podobnej veľkosti ako prekov nepotrebujú slzičky."
+msgstr "Spoje podobnej veľkosti ako prekov nepotrebujú teardropy."
 
 #: pcbnew/dialogs/dialog_track_via_properties_base.cpp:696
 msgid "(as a percentage of pad/via/track size)"
@@ -42975,7 +42976,7 @@ msgstr "&Len vybrané"
 
 #: pcbnew/dialogs/dialog_unused_pad_layers_base.cpp:36
 msgid "Keep &outside layers"
-msgstr "Ponechať &vonkajšie vrstvy"
+msgstr "Zachovať vonkajšie vrstvy"
 
 #: pcbnew/dialogs/dialog_unused_pad_layers_base.h:57
 msgid "Unused Pads"
@@ -43576,7 +43577,7 @@ msgstr "Držať mimo plôšky"
 
 #: pcbnew/dialogs/panel_rule_area_properties_keepout_base.cpp:29
 msgid "Raise a DRC error if a pad overlaps this area"
-msgstr "Nahlásit chybu KDR, pokud ploška překrývá tuto oblast"
+msgstr "Nahlásit chybu DRC, pokud ploška překrývá tuto oblast"
 
 #: pcbnew/dialogs/panel_rule_area_properties_keepout_base.cpp:33
 msgid "Keep out zone fills"
@@ -43592,7 +43593,7 @@ msgstr "Držať mimo puzdrá"
 
 #: pcbnew/dialogs/panel_rule_area_properties_keepout_base.cpp:39
 msgid "Raise a DRC error if a footprint courtyard overlaps this area"
-msgstr "Nahlásit chybu KDR pokud pole obsazenosti pouzdra překrývá tuto oblast"
+msgstr "Nahlásit chybu DRC pokud pole obsazenosti pouzdra překrývá tuto oblast"
 
 #: pcbnew/dialogs/panel_rule_area_properties_placement_base.cpp:20
 msgid "No placement"
@@ -43722,7 +43723,7 @@ msgstr "Minimálna drážka pre tečúci prúd:"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:178
 msgid "The minimum slot width from DRC creepage checks"
-msgstr "Minimálna šírka drážky z kontrol KDR tečúceho prúdu"
+msgstr "Minimálna šírka drážky z kontrol DRC tečúceho prúdu"
 
 #: pcbnew/dialogs/panel_setup_constraints_base.cpp:186
 msgid "Holes"
@@ -44203,7 +44204,7 @@ msgid ""
 msgstr ""
 "Minimálna vzdialenosť medzi otvorom spájkovacej masky a medeným objektom s "
 "iným spojom, ako má otvor masky na spájkovanie.\n"
-"Vzdialenosti menšie ako toto minimum spôsobia chybu KDR."
+"Vzdialenosti menšie ako toto minimum spôsobia chybu DRC."
 
 #: pcbnew/dialogs/panel_setup_mask_and_paste_base.cpp:105
 msgid "Allow bridged solder mask apertures between pads within footprints"
@@ -44216,7 +44217,7 @@ msgid ""
 "Disable DRC error checking for solder mask aperture bridging between pads in "
 "the same footprint."
 msgstr ""
-"Vypnúť kontrolu chýb KDR pre apertúry spájkovacej masky mostíkov medzi "
+"Vypnúť kontrolu chýb DRC pre apertúry spájkovacej masky mostíkov medzi "
 "plôškami v tom istom puzdre."
 
 #: pcbnew/dialogs/panel_setup_mask_and_paste_base.cpp:113
@@ -44259,7 +44260,7 @@ msgstr "Zrušiť zmeny?"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:737
 msgid "DRC rules"
-msgstr "Pravidlá KDR"
+msgstr "Pravidlá DRC"
 
 #: pcbnew/dialogs/panel_setup_rules.cpp:745
 #: pcbnew/drc/drc_rule_condition.cpp:64
@@ -44288,7 +44289,7 @@ msgstr "Pravidlá pre dizajn sa nedajú pridať bez projektu"
 
 #: pcbnew/dialogs/panel_setup_rules_base.cpp:23
 msgid "DRC Rules"
-msgstr "Pravidlá KDR"
+msgstr "Pravidlá DRC"
 
 #: pcbnew/dialogs/panel_setup_rules_base.cpp:77
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor_base.cpp:133
@@ -44640,7 +44641,7 @@ msgstr ""
 "`graphic`<br>`hole`<br>`footprint`<br> | Určite jeden alebo viac typov "
 "objektov na zakázanie, oddelených medzerami. Napríklad `(constraint disallow "
 "track)` alebo `(constraint disallow track via pad)`. Ak objekt tohto typu "
-"zodpovedá podmienke pravidla, vytvorí sa chyba KDR.<br><br>Toto obmedzenie "
+"zodpovedá podmienke pravidla, vytvorí sa chyba DRC.<br><br>Toto obmedzenie "
 "je v podstate rovnaké ako zakázaná oblasť, ale umožňuje vytvoriť "
 "špecifickejšie obmedzenia.<br>"
 "                                                                                      "
@@ -45201,7 +45202,7 @@ msgstr ""
 "    A.hasNetclass('<netclass_name>')\n"
 "```\n"
 "> Pravda, ak `A` má priradenú danú triedu siete, buď explicitným štítkom "
-"triedy siete\n"
+"triedy spojov\n"
 "alebo cez priradenie podľa vzoru.\n"
 "\n"
 "\n"
@@ -45644,7 +45645,7 @@ msgstr "Predvolené vlastnosti pre okrúhle tvary"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:171
 msgid "Allow teardrop to span two track segments"
-msgstr "Povoliť slzičke presahovať dva segmenty spoja"
+msgstr "Povoliť teardropu presahovať dva segmenty spoja"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:189
 msgid "Default Properties for Rectangular Shapes"
@@ -45653,23 +45654,23 @@ msgstr "Predvolené vlastnosti pre obdĺžnikové tvary"
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:341
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:506
 msgid "Allow teardrop to span track segments"
-msgstr "Povoliť slzičke presahovať segmenty spoja"
+msgstr "Povoliť teardropu presahovať segmenty spoja"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:359
 msgid "Properties for Track-to-Track Teardrops"
-msgstr "Vlastnosti slzičiek spoj-spoj"
+msgstr "Vlastnosti teardropov spoj-spoj"
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:473
 msgid ""
 "Max track width ratio to create a teardrop.\n"
 "100 always creates a teardrop."
 msgstr ""
-"Max. pomer šírky spoja pre vytvorenie slzičky.\n"
-"100 vždy vytvorí slzičku."
+"Max. pomer šírky spoja pre vytvorenie teardropu.\n"
+"100 vždy vytvorí teardrop."
 
 #: pcbnew/dialogs/panel_setup_teardrops_base.cpp:479
 msgid "Tracks which are similar in size do not need teardrops."
-msgstr "Spoje podobnej veľkosti slzičky nepotrebujú."
+msgstr "Spoje podobnej veľkosti teardropy nepotrebujú."
 
 #: pcbnew/dialogs/panel_setup_text_and_graphics_base.cpp:20
 msgid "Default Properties for New Graphics and Text"
@@ -46078,18 +46079,18 @@ msgstr "predvolené vizuálne oddelenie čiarového kódu"
 #: pcbnew/drc/drc_engine.cpp:366 pcbnew/drc/drc_engine.cpp:383
 #, c-format
 msgid "netclass '%s'"
-msgstr "trieda siete '%s'"
+msgstr "trieda spojov '%s'"
 
 #: pcbnew/drc/drc_engine.cpp:313 pcbnew/drc/drc_engine.cpp:330
 #: pcbnew/drc/drc_engine.cpp:347
 #, c-format
 msgid "netclass '%s' (diff pair)"
-msgstr "trieda siete '%s' (diff pár)"
+msgstr "trieda spojov '%s' (diff pár)"
 
 #: pcbnew/drc/drc_engine.cpp:400 pcbnew/drc/drc_engine.cpp:417
 #, c-format
 msgid "netclass '%s' (uvia)"
-msgstr "trieda siete '%s' (uPrekov)"
+msgstr "trieda spojov '%s' (uPrekov)"
 
 #: pcbnew/drc/drc_engine.cpp:469 pcbnew/drc/drc_engine.cpp:495
 #: pcbnew/drc/drc_engine.cpp:513 pcbnew/drc/drc_engine.cpp:534
@@ -47818,7 +47819,7 @@ msgstr ""
 #: pcbnew/drc/rule_editor/dialog_drc_rule_editor.cpp:1413
 #, c-format
 msgid "Failed to reload DRC rules: %s"
-msgstr "Nepodarilo sa znovu načítať pravidlá KDR: %s"
+msgstr "Nepodarilo sa znovu načítať pravidlá DRC: %s"
 
 #: pcbnew/drc/rule_editor/drc_re_abs_length_two_constraint_data.h:83
 msgid "Optimum Length must be greater than 0"
@@ -47916,7 +47917,7 @@ msgstr "Ľubovoľný"
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:113
 #: pcbnew/widgets/pcb_net_inspector_panel_data_model.h:844
 msgid "Netclass"
-msgstr "Trieda siete"
+msgstr "Trieda spojov"
 
 #: pcbnew/drc/rule_editor/drc_re_condition_row_panel.cpp:74
 #: pcbnew/drc/rule_editor/drc_re_object_selector_panel.cpp:29
@@ -48128,7 +48129,7 @@ msgstr "CHYBA: nie je poskytnutá textová podmienka pre overenie."
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:950
 msgid "DRC rule"
-msgstr "Pravidlo KDR"
+msgstr "Pravidlo DRC"
 
 #: pcbnew/drc/rule_editor/panel_drc_rule_editor.cpp:1058
 msgid "Show Matches (error)"
@@ -48194,7 +48195,7 @@ msgstr "Exportovať do GenCAD"
 #: pcbnew/exporters/step/exporter_step.cpp:1117
 #: pcbnew/specctra_import_export/specctra_export.cpp:123
 msgid "Board outline is malformed. Run DRC for a full analysis."
-msgstr "Obrys dosky je nesprávne tvarovaný. Spustite KDR pre úplnú analýzu."
+msgstr "Obrys dosky je nesprávne tvarovaný. Spustite DRC pre úplnú analýzu."
 
 #: pcbnew/exporters/export_hyperlynx.cpp:178
 msgid ""
@@ -50967,7 +50968,7 @@ msgstr "Nepodarilo sa zostaviť DPS z dát Allegro"
 
 #: pcbnew/pcb_io/allegro/pcb_io_allegro.h:39
 msgid "Allegro PCB files"
-msgstr "Allegro DPS súbory"
+msgstr "Allegro PCB súbory"
 
 #: pcbnew/pcb_io/altium/altium_parser_pcb.cpp:177
 #, c-format
@@ -51055,7 +51056,7 @@ msgstr "Vrstvu '%s' sa nepodarilo namapovať, bude preskočená."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:1435
 msgid "Loading netclasses..."
-msgstr "Načítavanie tried siete..."
+msgstr "Načítavanie tried spojov..."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:1461
 #, c-format
@@ -51063,7 +51064,7 @@ msgid ""
 "More than one Altium netclass with name '%s' found. Only the first one will "
 "be imported."
 msgstr ""
-"Nájdená viac ako jedna trieda siete Altium s názvom '%s'. Importovaná bude "
+"Nájdená viac ako jedna trieda spojov Altium s názvom '%s'. Importovaná bude "
 "iba prvá."
 
 #: pcbnew/pcb_io/altium/altium_pcb.cpp:1499
@@ -51413,7 +51414,7 @@ msgid ""
 "of the zone priorities is required."
 msgstr ""
 "Nepodarilo sa určiť priority vyplnenia zóny pre vrstvu '%s'. Bol urobený "
-"najlepší pokus, ale je možné, že existujú chyby KDR a že je potrebná "
+"najlepší pokus, ale je možné, že existujú chyby DRC a že je potrebná "
 "manuálna úprava priorít zón."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:148
@@ -51440,7 +51441,7 @@ msgid ""
 "elements carefully and correct manually if required."
 msgstr ""
 "Písma CADSTAR sa líšia od tých v KiCadu. To pravděpodobně povede k problémům "
-"se zarovnáním, ktoré mohou způsobit chyby KDR. Pečlivě zkontrolujte "
+"se zarovnáním, ktoré mohou způsobit chyby DRC. Pečlivě zkontrolujte "
 "importované textové prvky a v případě potřeby opravte ručně."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:243
@@ -51736,8 +51737,8 @@ msgid ""
 "The CADSTAR design contains teardrops. This importer does not yet support "
 "them, so the teardrops in the design have been ignored."
 msgstr ""
-"Návrh CADSTAR obsahuje slzičky. Tento importér ich zatiaľ nepodporuje, takže "
-"slzičky v návrhu boli ignorované."
+"Návrh CADSTAR obsahuje teardropy. Tento importér ich zatiaľ nepodporuje, "
+"takže teardropy v návrhu boli ignorované."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:2546
 #, c-format
@@ -51814,8 +51815,8 @@ msgid ""
 msgstr ""
 "Dizajn CADSTAR obsahuje spoje s priradenou triedou siete. KiCad nemá "
 "ekvivalent k čistej triede CADSTAR, takže tieto prvky neboli importované. "
-"Poznámka: KiCad verzia triedy siete je bližšia k 'CAD Route Code' (ktorý bol "
-"importovaný pre všetky spoje) programu CADSTAR."
+"Poznámka: KiCad verzia triedy spojov je bližšia k 'CAD Route Code' (ktorý "
+"bol importovaný pre všetky spoje) programu CADSTAR."
 
 #: pcbnew/pcb_io/cadstar/cadstar_pcb_archive_loader.cpp:3913
 msgid ""
@@ -51831,7 +51832,7 @@ msgstr ""
 
 #: pcbnew/pcb_io/cadstar/pcb_io_cadstar_archive.h:37
 msgid "CADSTAR PCB Archive files"
-msgstr "DPS CADSTAR archívne súbory"
+msgstr "PCB CADSTAR archívne súbory"
 
 #: pcbnew/pcb_io/eagle/pcb_io_eagle.cpp:1218
 #, c-format
@@ -52188,7 +52189,7 @@ msgstr "Súbor DPS gEDA / Lepton EDA"
 
 #: pcbnew/pcb_io/geda/pcb_io_geda.h:82
 msgid "gEDA / Lepton EDA PCB footprint file"
-msgstr "gEDA / Lepton EDA DPS súbor puzdra"
+msgstr "gEDA / Lepton EDA PCB súbor puzdra"
 
 #: pcbnew/pcb_io/geda/pcb_io_geda.h:87
 msgid "gEDA / Lepton EDA PCB footprint library directory"
@@ -52227,7 +52228,7 @@ msgstr "Generovanie CAD dát"
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:2747
 msgid "Board outline is invalid or missing.  Please run DRC."
-msgstr "Obrys DPS je neplatný alebo chýba. Spustite KDR."
+msgstr "Obrys DPS je neplatný alebo chýba. Spustite DRC."
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:3204
 msgid ""
@@ -52254,7 +52255,7 @@ msgid ""
 "Teardrops are not supported in IPC-2581 revision B; they were exported as "
 "zones."
 msgstr ""
-"Slzičky nie sú podporované v revízii B IPC-2581; boli exportované ako zóny."
+"Teardropy nie sú podporované v revízii B IPC-2581; boli exportované ako zóny."
 
 #: pcbnew/pcb_io/ipc2581/pcb_io_ipc2581.cpp:4072
 msgid "Generating logistic section"
@@ -53264,7 +53265,7 @@ msgstr ""
 "    <tr>\n"
 "        <td>&nbsp;<br><samp>${refdes:NET_CLASS(pad)}</samp></td>\n"
 "        <td></td>\n"
-"        <td>&nbsp;<br><samp>Trieda siete pre podložku</samp></td>\n"
+"        <td>&nbsp;<br><samp>Trieda spojov pre podložku</samp></td>\n"
 "    </tr>\n"
 "    <tr>\n"
 "        <td>&nbsp;<br><samp>${J1:NET_CLASS(1)}</samp></td>\n"
@@ -53746,11 +53747,11 @@ msgstr "Chýba argument názvu poľa pre %s."
 
 #: pcbnew/pcbexpr_functions.cpp:1364
 msgid "Missing netclass name argument to hasNetclass()"
-msgstr "Chýba argument názvu triedy siete pre hasNetclass()"
+msgstr "Chýba argument názvu triedy spojov pre hasNetclass()"
 
 #: pcbnew/pcbexpr_functions.cpp:1403
 msgid "Missing netclass name argument to hasExactNetclass()"
-msgstr "Chýba argument názvu triedy siete pre hasExactNetclass()"
+msgstr "Chýba argument názvu triedy spojov pre hasExactNetclass()"
 
 #: pcbnew/pcbexpr_functions.cpp:1464
 msgid "Missing component class name argument to hasComponentClass()"
@@ -53870,7 +53871,7 @@ msgstr "Nepodarilo sa získať netlist schémy pre testy parity.\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2427 pcbnew/tools/drc_tool.cpp:208
 msgid "DRC"
-msgstr "KDR"
+msgstr "DRC"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2448
 #, c-format
@@ -53885,12 +53886,12 @@ msgstr "Nájdených %d problémov parity schémy\n"
 #: pcbnew/pcbnew_jobs_handler.cpp:2470
 #, c-format
 msgid "Unable to save DRC report to %s\n"
-msgstr "Nepodaril sa uložiť protokol KDR do %s\n"
+msgstr "Nepodaril sa uložiť protokol DRC do %s\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2475
 #, c-format
 msgid "Saved DRC Report to %s\n"
-msgstr "Uložený súbor protokolu KDR do %s\n"
+msgstr "Uložený súbor protokolu DRC do %s\n"
 
 #: pcbnew/pcbnew_jobs_handler.cpp:2482
 msgid "Saved board\n"
@@ -54086,7 +54087,7 @@ msgstr "existujúci spoj"
 
 #: pcbnew/router/pns_kicad_iface.cpp:1045
 msgid "netclass 'Default'"
-msgstr "trieda siete 'Default'"
+msgstr "trieda spojov 'Default'"
 
 #: pcbnew/router/pns_kicad_iface.cpp:1747
 #, c-format
@@ -54142,7 +54143,7 @@ msgstr "Smerovanie nemôže začať z textového prvku."
 
 #: pcbnew/router/pns_router.cpp:333 pcbnew/router/pns_router.cpp:421
 msgid "The routing start point violates DRC."
-msgstr "Počiatočný bod smerovania porušuje KDR."
+msgstr "Počiatočný bod smerovania porušuje DRC."
 
 #: pcbnew/router/pns_router.cpp:342
 msgid "Cannot start a differential pair in the middle of nowhere."
@@ -54293,7 +54294,7 @@ msgstr "Použite hodnoty čistej triedy"
 
 #: pcbnew/router/router_tool.cpp:310
 msgid "Use track and via sizes from the net class"
-msgstr "Použiť veľkosti spoja a prekovu z triedy siete"
+msgstr "Použiť veľkosti spoja a prekovu z triedy spojov"
 
 #: pcbnew/router/router_tool.cpp:314 pcbnew/router/router_tool.cpp:439
 #: pcbnew/tools/drawing_tool.cpp:122
@@ -54315,7 +54316,7 @@ msgstr "Spoje %s"
 
 #: pcbnew/router/router_tool.cpp:342
 msgid "Via netclass values"
-msgstr "Hodnoty prekovu z triedy siete"
+msgstr "Hodnoty prekovu z triedy spojov"
 
 #: pcbnew/router/router_tool.cpp:347 pcbnew/tools/drawing_tool.cpp:134
 #, c-format
@@ -54333,7 +54334,7 @@ msgstr "Vybrať rozmery diferenciálneho páru"
 
 #: pcbnew/router/router_tool.cpp:435
 msgid "Use differential pair dimensions from the net class"
-msgstr "Použiť rozmery diferenciálneho páru z triedy siete"
+msgstr "Použiť rozmery diferenciálneho páru z triedy spojov"
 
 #: pcbnew/router/router_tool.cpp:440
 msgid "Specify custom differential pair dimensions"
@@ -54394,7 +54395,7 @@ msgstr "(%s aj tak commit-núť.)"
 
 #: pcbnew/router/router_tool.cpp:2128 pcbnew/router/router_tool.cpp:2678
 msgid "Track violates DRC."
-msgstr "Spoj porušuje KDR."
+msgstr "Spoj porušuje DRC."
 
 #: pcbnew/router/router_tool.cpp:2835 pcbnew/tools/pcb_actions.cpp:2682
 msgid "Break Track"
@@ -54408,7 +54409,7 @@ msgstr "Smerovanie diferenciálneho páru: %s"
 #: pcbnew/router/router_tool.cpp:2929 pcbnew/router/router_tool.cpp:2940
 #, c-format
 msgid "Resolved Netclass: %s"
-msgstr "Zistená trieda siete: %s"
+msgstr "Zistená trieda spojov: %s"
 
 #: pcbnew/router/router_tool.cpp:2936
 #, c-format
@@ -54605,7 +54606,7 @@ msgstr "Upraviť preddefinované veľkosti..."
 
 #: pcbnew/toolbars_pcb_editor.cpp:670
 msgid "Via: use netclass sizes"
-msgstr "Prekov: použiť veľkosti z triedy siete"
+msgstr "Prekov: použiť veľkosti z triedy spojov"
 
 #: pcbnew/toolbars_pcb_editor.cpp:693
 #, c-format
@@ -55184,7 +55185,7 @@ msgstr ""
 #: pcbnew/tools/board_inspection_tool.cpp:1772
 #: pcbnew/tools/board_inspection_tool.cpp:1796
 msgid "Run DRC for a full analysis."
-msgstr "Spustením KDR získate úplnú analýzu."
+msgstr "Spustením DRC získate úplnú analýzu."
 
 #: pcbnew/tools/board_inspection_tool.cpp:1779
 msgid "Item <b>disallowed</b> at current location."
@@ -55309,7 +55310,7 @@ msgstr "Vybrať sieť:"
 
 #: pcbnew/tools/drawing_tool.cpp:4281
 msgid "Via location violates DRC."
-msgstr "Poloha prekovu porušuje KDR."
+msgstr "Poloha prekovu porušuje DRC."
 
 #: pcbnew/tools/drawing_tool.cpp:4371
 msgid "Place via"
@@ -56458,11 +56459,11 @@ msgstr "Upraviť vlastnosti textu a grafiky globálne cez celú dosku"
 
 #: pcbnew/tools/pcb_actions.cpp:1038
 msgid "Edit Teardrops..."
-msgstr "Upraviť slzičky..."
+msgstr "Upraviť teardropy..."
 
 #: pcbnew/tools/pcb_actions.cpp:1039
 msgid "Add, remove or edit teardrops globally across board"
-msgstr "Globálne pridať, odstrániť alebo upraviť slzičky na celej DPS"
+msgstr "Globálne pridať, odstrániť alebo upraviť teardropy na celej DPS"
 
 #: pcbnew/tools/pcb_actions.cpp:1045
 msgid "Global Deletions..."
@@ -56904,11 +56905,11 @@ msgstr "Otvoriť schému v editore schém"
 
 #: pcbnew/tools/pcb_actions.cpp:1583
 msgid "DRC Rule Editor"
-msgstr "Editor pravidiel KDR"
+msgstr "Editor pravidiel DRC"
 
 #: pcbnew/tools/pcb_actions.cpp:1584
 msgid "Open DRC rule editor window"
-msgstr "Otvoriť okno editora pravidiel KDR"
+msgstr "Otvoriť okno editora pravidiel DRC"
 
 #: pcbnew/tools/pcb_actions.cpp:1592
 msgid "Local Ratsnest"
@@ -56978,8 +56979,8 @@ msgid ""
 "Cycle between using net and netclass colors for all nets, just ratsnests, "
 "and none"
 msgstr ""
-"Prepínanie medzi farebným nastavením spojov a triedy siete pre všetky spoje, "
-"iba vzdušné spoje a žiadne"
+"Prepínanie medzi farebným nastavením spojov a triedy spojov pre všetky "
+"spoje, iba vzdušné spoje a žiadne"
 
 #: pcbnew/tools/pcb_actions.cpp:1684
 msgid "Sketch Tracks"
@@ -58039,7 +58040,7 @@ msgstr "Vyplniť zóny"
 
 #: pcbnew/tools/zone_filler_tool.cpp:147 pcbnew/tools/zone_filler_tool.cpp:240
 msgid "Show DRC rules"
-msgstr "Zobraziť pravidlá KDR"
+msgstr "Zobraziť pravidlá DRC"
 
 #: pcbnew/tools/zone_filler_tool.cpp:153 pcbnew/tools/zone_filler_tool.cpp:246
 msgid "Rules"
@@ -58047,7 +58048,7 @@ msgstr "Pravidlá"
 
 #: pcbnew/tools/zone_filler_tool.cpp:159 pcbnew/tools/zone_filler_tool.cpp:252
 msgid "Zone fills may be inaccurate.  DRC rules contain errors."
-msgstr "Zónové výplne môžu byť nepresné. Pravidlá KDR obsahujú chyby."
+msgstr "Zónové výplne môžu byť nepresné. Pravidlá DRC obsahujú chyby."
 
 #: pcbnew/tools/zone_filler_tool.cpp:266
 #, c-format
@@ -58257,27 +58258,27 @@ msgstr "Zobraziť nepripojené spoje ako vzdušné spoje"
 
 #: pcbnew/widgets/appearance_controls.cpp:348
 msgid "DRC Warnings"
-msgstr "Varovania KDR"
+msgstr "Varovania DRC"
 
 #: pcbnew/widgets/appearance_controls.cpp:348
 msgid "DRC violations with a Warning severity"
-msgstr "Porušenia KDR s prísnosťou Varovania"
+msgstr "Porušenia DRC s prísnosťou Varovania"
 
 #: pcbnew/widgets/appearance_controls.cpp:349
 msgid "DRC Errors"
-msgstr "Chyby KDR"
+msgstr "Chyby DRC"
 
 #: pcbnew/widgets/appearance_controls.cpp:349
 msgid "DRC violations with an Error severity"
-msgstr "Porušenia KDR so závažnosťou chyby"
+msgstr "Porušenia DRC so závažnosťou chyby"
 
 #: pcbnew/widgets/appearance_controls.cpp:350
 msgid "DRC Exclusions"
-msgstr "Vylúčenia KDR"
+msgstr "Vylúčenia DRC"
 
 #: pcbnew/widgets/appearance_controls.cpp:350
 msgid "DRC violations which have been individually excluded"
-msgstr "Porušenia KDR, ktoré boli jednotlivo vylúčené"
+msgstr "Porušenia DRC, ktoré boli jednotlivo vylúčené"
 
 #: pcbnew/widgets/appearance_controls.cpp:351
 msgid "Show footprint and text origins as a cross"
@@ -58439,7 +58440,7 @@ msgstr "Sieť a farby netclass sú zobrazené na všetkých medených predmetoch
 #: pcbnew/widgets/appearance_controls.cpp:734
 #: pcbnew/widgets/appearance_controls.cpp:2626
 msgid "Net and netclass colors are shown on the ratsnest only"
-msgstr "Farby spojov a triedy siete použiť iba na vzdušné spoje"
+msgstr "Farby spojov a triedy spojov použiť iba na vzdušné spoje"
 
 #: pcbnew/widgets/appearance_controls.cpp:741
 #: pcbnew/widgets/appearance_controls.cpp:2629
@@ -58851,7 +58852,7 @@ msgstr "Nastaviť nepriehľadnosť %s"
 
 #: pcbnew/widgets/appearance_controls.cpp:2454
 msgid "Set Netclass Color"
-msgstr "Nastaviť farbu triedy siete"
+msgstr "Nastaviť farbu triedy spojov"
 
 #: pcbnew/widgets/appearance_controls.cpp:2458
 msgid "Use Color from Schematic"
@@ -58859,7 +58860,7 @@ msgstr "Použiť farbu zo schémy"
 
 #: pcbnew/widgets/appearance_controls.cpp:2467
 msgid "Clear Netclass Color"
-msgstr "Vymazať farbu triedy siete"
+msgstr "Vymazať farbu triedy spojov"
 
 #: pcbnew/widgets/appearance_controls.cpp:2475
 #, c-format
@@ -58868,11 +58869,11 @@ msgstr "Zvýrazniť siete v %s"
 
 #: pcbnew/widgets/appearance_controls.cpp:2486
 msgid "Show All Netclasses"
-msgstr "Zobraziť všetky triedy siete"
+msgstr "Zobraziť všetky triedy spojov"
 
 #: pcbnew/widgets/appearance_controls.cpp:2488
 msgid "Hide All Other Netclasses"
-msgstr "Skryť všetky ostatné triedy siete"
+msgstr "Skryť všetky ostatné triedy spojov"
 
 #: pcbnew/widgets/appearance_controls.cpp:2550
 #, c-format
@@ -59022,11 +59023,11 @@ msgstr "Filtrovať podľa názvu siete"
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1252
 msgid "Filter by Netclass"
-msgstr "Filtrovať podľa triedy siete"
+msgstr "Filtrovať podľa triedy spojov"
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1266
 msgid "Group by Netclass"
-msgstr "Zoskupiť podľa triedy siete"
+msgstr "Zoskupiť podľa triedy spojov"
 
 #: pcbnew/widgets/pcb_net_inspector_panel.cpp:1273
 msgid "Add Custom Group..."
@@ -59178,7 +59179,7 @@ msgstr "Počet rohov"
 
 #: pcbnew/zone.cpp:1060
 msgid "Teardrop Area"
-msgstr "Oblasť slzičky"
+msgstr "Oblasť teardropu"
 
 #: pcbnew/zone.cpp:1062
 msgid "Copper Zone"
@@ -59221,7 +59222,7 @@ msgstr "Oblasť pravidiel '%s' %s"
 #: pcbnew/zone.cpp:1249
 #, c-format
 msgid "Teardrop %s %s"
-msgstr "Slzička %s %s"
+msgstr "Teardrop %s %s"
 
 #: pcbnew/zone.cpp:1257
 #, c-format
