@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: kicad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-13 11:19-0700\n"
-"PO-Revision-Date: 2026-03-19 10:13+0000\n"
+"PO-Revision-Date: 2026-03-19 17:34+0000\n"
 "Last-Translator: ZbeeGin <zbeegin@op.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kicad/master-"
 "source/pl/>\n"
@@ -20514,9 +20514,8 @@ msgstr ""
 #: eeschema/sch_design_block_utils.cpp:441
 #: eeschema/sch_design_block_utils.cpp:604
 #: pcbnew/pcb_design_block_utils.cpp:471 pcbnew/pcb_design_block_utils.cpp:553
-#, fuzzy
 msgid "Set Group Design Block Link"
-msgstr "Rysuj arkusz na podstawie bloku projektowego"
+msgstr "Ustaw łącze do grupy bloku projektowego"
 
 #: eeschema/sch_edit_frame.cpp:186
 #: resources/linux/metainfo/org.kicad.kicad.metainfo.xml.in:57
@@ -20542,7 +20541,6 @@ msgid "Save changes to '%s' before closing?"
 msgstr "Zapisać zmiany w '%s' przed zamknięciem?"
 
 #: eeschema/sch_edit_frame.cpp:1322
-#, fuzzy
 msgid ""
 "Cannot update the PCB because the Schematic Editor is opened in stand-alone "
 "mode. In order to create/update PCBs from schematics, launch the main KiCad "
@@ -20608,19 +20606,16 @@ msgid "Filter nets"
 msgstr "Filtruj sieci"
 
 #: eeschema/sch_edit_frame.cpp:2511
-#, fuzzy
 msgid "Wildcard Search"
-msgstr "Podciąg znaków wieloznacznych"
+msgstr "Wyszukiwanie z użyciem znaków wieloznacznych"
 
 #: eeschema/sch_edit_frame.cpp:2513
-#, fuzzy
 msgid "Regex Search"
-msgstr "Zrestartuj wyszukiwanie"
+msgstr "Wyszukiwanie z użyciem wyrażeń regularnych"
 
 #: eeschema/sch_edit_frame.cpp:2661
-#, fuzzy
 msgid "Find in Net Inspector"
-msgstr "Inspekcja sieci"
+msgstr "Szukaj w Inspektorze sieci"
 
 #: eeschema/sch_edit_frame.cpp:3030
 msgid "Select variant name to remove:"
@@ -20760,10 +20755,10 @@ msgid "Unknown or unexpected record id %d found in %s."
 msgstr "Odnaleziono nieznany lub niespodziewany rekord ID %d w %s."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1755
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol '%s' in sheet '%s' at index %d replaced with symbol \"%s\"."
 msgstr ""
-"Symbol \"%s\" na arkuszu \"%s\" o indeksie %d zastąpiony przez symbol \"%s\"."
+"Symbol '%s' na arkuszu '%s' o indeksie %d zastąpiony przez symbol \"%s\"."
 
 #: eeschema/sch_io/altium/sch_io_altium.cpp:1941
 #: eeschema/sch_io/altium/sch_io_altium.cpp:4112
@@ -21260,9 +21255,9 @@ msgid "File '%s' is empty."
 msgstr "Plik \"%s\"jest pusty."
 
 #: eeschema/sch_io/geda/sch_io_geda.cpp:4713
-#, fuzzy, c-format
+#, c-format
 msgid "File '%s' is not a valid gEDA schematic."
-msgstr "'%s' to nie jest poprawna wartość programu SPICE."
+msgstr "Plik '%s' to nie jest poprawny schemat gEDA."
 
 #: eeschema/sch_io/geda/sch_io_geda.cpp:4868
 #, c-format
@@ -21270,9 +21265,8 @@ msgid "Failed to load page '%s': %s"
 msgstr "Nie można załadować strony '%s':%s"
 
 #: eeschema/sch_io/geda/sch_io_geda.h:81 kicad/import_proj.cpp:482
-#, fuzzy
 msgid "gEDA / Lepton EDA schematic files"
-msgstr "Pliki schematów programu EAGLE XML"
+msgstr "Pliki schematów programu gEDA / Lepton EDA"
 
 #: eeschema/sch_io/http_lib/sch_io_http_lib.cpp:212
 #, c-format
@@ -21309,7 +21303,7 @@ msgid "Could not connect to %s. Errors: %s"
 msgstr "Nie można połączyć się z %s. Błędy: %s"
 
 #: eeschema/sch_io/http_lib/sch_io_http_lib.cpp:326
-#, fuzzy, c-format
+#, c-format
 msgid "Error retrieving data from HTTP library %s: %s"
 msgstr "Wystąpił błąd podczas pobierania danych z biblioteki HTTP %s: %s"
 
@@ -21444,24 +21438,24 @@ msgid "Save Anyway"
 msgstr "Zapisz mimo to"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1797
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol library file '%s' already exists."
-msgstr "Biblioteka '%s' już istnieje."
+msgstr "Biblioteka symboli '%s' już istnieje."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1802
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol library path '%s' already exists."
-msgstr "Biblioteka '%s' już istnieje."
+msgstr "Ścieżka do biblioteki '%s' już istnieje."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1832
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol library file '%s' cannot be deleted."
-msgstr "Biblioteka symboli '%s' nie może zostać usunięta."
+msgstr "Plik biblioteki symboli '%s' nie może być usunięty."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr.cpp:1842
-#, fuzzy, c-format
+#, c-format
 msgid "Symbol library folder '%s' cannot be deleted."
-msgstr "Biblioteka symboli '%s' nie może zostać usunięta."
+msgstr "Folder biblioteki symboli '%s' nie może zostać usunięty."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_lib_cache.cpp:99
 #, c-format
@@ -21509,9 +21503,9 @@ msgstr ""
 "Proszę naprawić plik biblioteki ręcznie przed zapisaniem."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_lib_cache.cpp:272
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create symbol library path '%s'."
-msgstr "Nie można utworzyć globalnej tabeli bibliotek w ścieżce '%s'."
+msgstr "Nie można utworzyć ścieżki '%s' prowadzącej do biblioteki symboli."
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_lib_cache.cpp:832
 #, c-format
@@ -21570,9 +21564,9 @@ msgid "Invalid symbol unit number %s"
 msgstr "Niepoprawny numer jednostki %s symbolu"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:527
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid symbol body style number %s"
-msgstr "Niepoprawny numer jednostki %s symbolu"
+msgstr "Niepoprawny numer stylu reprezentacji symbolu %s"
 
 #: eeschema/sch_io/kicad_sexpr/sch_io_kicad_sexpr_parser.cpp:875
 #, c-format
@@ -21751,24 +21745,22 @@ msgid "LTspice schematic files"
 msgstr "Pliki schematu programu LTSpice"
 
 #: eeschema/sch_io/pads/sch_io_pads.h:47
-#, fuzzy
 msgid "PADS Logic schematic files"
-msgstr "Pliki schematu programu LTSpice"
+msgstr "Pliki schematu programu PADS Logic"
 
 #: eeschema/sch_io/pads/sch_io_pads.h:52
-#, fuzzy
 msgid "PADS Logic library files"
-msgstr "Pliki bibliotek programu EAGLE XML"
+msgstr "Pliki bibliotek programu PADS Logic"
 
 #: eeschema/sch_io/sch_io_mgr.cpp:47 pcbnew/pcb_io/pcb_io_mgr.cpp:56
-#, fuzzy, c-format
+#, c-format
 msgid "Plugin '%s' does not implement the '%s' function."
-msgstr "Wtyczka \"%s\" nie posiada zaimplementowanej funkcji \"%s\"."
+msgstr "Wtyczka '%s' nie posiada zaimplementowanej funkcji '%s'."
 
 #: eeschema/sch_io/sch_io_mgr.cpp:48 pcbnew/pcb_io/pcb_io_mgr.cpp:57
-#, fuzzy, c-format
+#, c-format
 msgid "Plugin type '%s' is not found."
-msgstr "Wtyczka \"%s\" nie została znaleziona."
+msgstr "Typ wtyczki '%s' nie został znaleziony."
 
 #: eeschema/sch_io/sch_io_mgr.cpp:109
 #, c-format
@@ -22154,9 +22146,9 @@ msgid "Exclude from"
 msgstr "Wyklucz z"
 
 #: eeschema/sch_sheet.cpp:1338
-#, fuzzy, c-format
+#, c-format
 msgid "Hierarchical Sheet '%s'"
-msgstr "Arkusz hierarchiczny %s"
+msgstr "Arkusz hierarchiczny '%s'"
 
 #: eeschema/sch_sheet.cpp:2144 eeschema/sch_table.cpp:548
 #: pcbnew/pcb_table.cpp:860 pcbnew/pcb_tablecell.cpp:293
@@ -22194,9 +22186,9 @@ msgid "(Deleted Item)"
 msgstr "(Element usunięty)"
 
 #: eeschema/sch_sheet_pin.cpp:333
-#, fuzzy, c-format
+#, c-format
 msgid "Hierarchical Sheet Pin '%s'"
-msgstr "Hierarchiczny pin arkusza %s"
+msgstr "Hierarchiczny pin arkusza '%s'"
 
 #: eeschema/sch_symbol.cpp:2666
 msgid "Power symbol"
@@ -23164,9 +23156,9 @@ msgstr ""
 "\n"
 
 #: eeschema/sch_textbox.cpp:363
-#, fuzzy, c-format
+#, c-format
 msgid "Text box '%s'"
-msgstr "Tekst '%s'"
+msgstr "Ramka tekstowa '%s'"
 
 #: eeschema/sch_textbox.cpp:473 pcbnew/pcb_textbox.cpp:514
 msgid "Box Width"
@@ -23444,19 +23436,16 @@ msgid "There are NaN elements in a matrix."
 msgstr "Istnieją elementy NaN w matrycy."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:137
-#, fuzzy
 msgid "Missing or invalid R_pkg value."
-msgstr "Niepoprawna wartość R_pkg."
+msgstr "Brak lub niepoprawna wartość R_pkg."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:143
-#, fuzzy
 msgid "Missing or invalid L_pkg value."
-msgstr "Niepoprawna wartość L_pkg."
+msgstr "Brak lub niepoprawna wartość L_pkg."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:149
-#, fuzzy
 msgid "Missing or invalid C_pkg value."
-msgstr "Niepoprawna wartość C_pkg."
+msgstr "Brak lub niepoprawna wartość C_pkg."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:164
 msgid "Checking pin "
@@ -23567,9 +23556,8 @@ msgid "Invalid V_meas value."
 msgstr "Niepoprawna wartość V_meas."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:537
-#, fuzzy
 msgid "Missing or invalid C_comp value."
-msgstr "Brakuje opcjonalnej wartości."
+msgstr "Brak lub niepoprawna wartość C_comp."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:546
 msgid "Missing or invalid C_comp_gnd_clamp value."
@@ -23592,9 +23580,8 @@ msgid "No C_comp values are available."
 msgstr "Brak dostępnych wartości C_comp."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:592
-#, fuzzy
 msgid "Missing or invalid Temperature Range value."
-msgstr "Zakres temperatury jest niepoprawny."
+msgstr "Brak lub niepoprawna wartość Zakres temperatury."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:601
 msgid "Missing or invalid Voltage Range value."
@@ -23617,31 +23604,26 @@ msgid "Missing or invalid POWER Clamp Reference value."
 msgstr "Brak lub niepoprawna wartość POWER Clamp Reference."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:647
-#, fuzzy
 msgid "Voltage Range or Reference is missing."
-msgstr "Zakres napięcia jest niepoprawny."
+msgstr "Brak Zakres napięcia lub Odnośnik."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:653
 #: eeschema/sim/kibis/ibis_parser.cpp:758
-#, fuzzy
 msgid "Invalid Pulldown table."
-msgstr "Nieprawidłowy pulldown."
+msgstr "Nieprawidłowa tabela Pulldown."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:659
 #: eeschema/sim/kibis/ibis_parser.cpp:753
-#, fuzzy
 msgid "Invalid Pullup table."
-msgstr "Nieprawidłowy pullup."
+msgstr "Nieprawidłowa tabela Pullup."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:665
-#, fuzzy
 msgid "Invalid ISSO_PD table."
-msgstr "Niepoprawna wartość R_pkg."
+msgstr "Nieprawidłowa tabela ISSO_PD."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:671
-#, fuzzy
 msgid "Invalid ISSO_PU table."
-msgstr "Niepoprawna wartość R_pkg."
+msgstr "Nieprawidłowa tabela ISSO_PU."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:677
 msgid "Invalid Composite Current table."
@@ -23649,15 +23631,13 @@ msgstr "Niepoprawna tabela Prąd Skompensowany."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:683
 #: eeschema/sim/kibis/ibis_parser.cpp:768
-#, fuzzy
 msgid "Invalid POWER Clamp table."
-msgstr "Nieprawidłowy POWER clamp."
+msgstr "Nieprawidłowa tabela POWER Clamp."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:689
 #: eeschema/sim/kibis/ibis_parser.cpp:763
-#, fuzzy
 msgid "Invalid GND Clamp table."
-msgstr "Nieprawidłowy GND clamp."
+msgstr "Nieprawidłowa tabela GND Clamp."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:698
 #: eeschema/sim/kibis/ibis_parser.cpp:783
@@ -23665,52 +23645,46 @@ msgid "Invalid Ramp specification."
 msgstr "Nieprawidłowa specyfikacja rampy."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:711
-#, fuzzy
 msgid "Submodel name cannot be empty."
-msgstr "Nazwa modelu nie może być pusta."
+msgstr "Nazwa podmodelu nie może być pusta."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:716
-#, fuzzy
 msgid "Checking submodel "
-msgstr "Sprawdzanie modelu "
+msgstr "Sprawdzanie podmodelu "
 
 #: eeschema/sim/kibis/ibis_parser.cpp:723
-#, fuzzy
 msgid "The submodel has no type."
-msgstr "Ten symbol posiada tylko jedną część składową."
+msgstr "Podmodel nie ma typu."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:732
-#, fuzzy
 msgid "Missing or invalid V_trigger_r value."
-msgstr "Niepoprawna wartość V_ref."
+msgstr "Brak lub niepoprawna wartość V_trigger_r."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:740
-#, fuzzy
 msgid "Missing or invalid V_trigger_f value."
-msgstr "Niepoprawna wartość V_ref."
+msgstr "Brak lub niepoprawna wartość V_trigger_f."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:748
 msgid "Missing or invalid Off_delay value."
 msgstr "Brak lub niepoprawna wartość Off_delay."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:773
-#, fuzzy
 msgid "Invalid GND Pulse table."
-msgstr "Nieprawidłowy GND clamp."
+msgstr "Nieprawidłowa tabela GND Pulse."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:778
-#, fuzzy
 msgid "Invalid POWER Pulse table."
-msgstr "Nieprawidłowy POWER clamp."
+msgstr "Nieprawidłowa tabela POWER Pulse."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:795
 msgid " submodels are not yet supported."
 msgstr " modele podrzędne nie są obecnie obsługiwane."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:801
-#, fuzzy
 msgid "Triggered mode dynamic clamp submodels are not yet supported."
-msgstr "Ignoruję kod kreskowy na warstwie Altium %d (obecnie nie wspierany)."
+msgstr ""
+"Podmodele dynamicznego odcięcia w trybie wyzwalanym nie są jeszcze "
+"obsługiwane."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:813
 msgid "Checking Header..."
@@ -23891,14 +23865,12 @@ msgid "Unexpected [Bandwidth] keyword."
 msgstr "Niespodziewane wystąpienie klucza [Bandwidth]."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:1992
-#, fuzzy
 msgid "Matrix bandwidth must be >= 0."
-msgstr "Szerokość tekstu musi być co najwyżej %s."
+msgstr "Matryca przepustowości musi być >= 0."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:2007
-#, fuzzy
 msgid "Unexpected [Row] keyword."
-msgstr "Niespodziewany koniec pliku."
+msgstr "Niespodziewane słowo kluczowe [Row]."
 
 #: eeschema/sim/kibis/ibis_parser.cpp:2037
 msgid "Too much data for this matrix row."
