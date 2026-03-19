@@ -33,6 +33,8 @@
 #include <map>
 #include <functional>
 #include <string>
+#include <wx/arrstr.h>
+#include <wx/datetime.h>
 #include <wx/string.h>
 #include <wx/window.h>
 
@@ -48,6 +50,16 @@ struct KICOMMON_API HISTORY_FILE_DATA
     wxString    sourcePath;     ///< For file-copy savers (small files like .kicad_pro)
     bool        prettify = false;
     KICAD_FORMAT::FORMAT_MODE formatMode = KICAD_FORMAT::FORMAT_MODE::NORMAL;
+};
+
+struct KICOMMON_API LOCAL_HISTORY_SNAPSHOT_INFO
+{
+    wxString      hash;
+    wxDateTime    date;
+    wxString      summary;
+    wxString      message;
+    int           filesChanged = 0;
+    wxArrayString changedFiles;
 };
 
 /**
@@ -126,6 +138,8 @@ public:
     void ShowRestoreDialog( const wxString& aProjectPath, wxWindow* aParent );
 
 private:
+    std::vector<LOCAL_HISTORY_SNAPSHOT_INFO> LoadSnapshots( const wxString& aProjectPath );
+
     /** Execute file writes and git commit on a background thread. */
     bool commitInBackground( const wxString& aProjectPath, const wxString& aTitle,
                              const std::vector<HISTORY_FILE_DATA>& aFileData );

@@ -198,6 +198,7 @@ set( KICOMMON_SRCS
 
     dialogs/dialog_rc_job.cpp
     dialogs/dialog_rc_job_base.cpp
+    dialogs/dialog_restore_local_history.cpp
     dialogs/dialog_HTML_reporter_base.cpp
     dialogs/panel_startwizard_libraries_base.cpp
     dialogs/panel_startwizard_privacy_base.cpp

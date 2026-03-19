@@ -22,6 +22,7 @@
  */
 
 #include <local_history.h>
+#include <dialogs/dialog_restore_local_history.h>
 #include <history_lock.h>
 #include <io/kicad/kicad_io_utils.h>
 #include <lockfile.h>
@@ -40,7 +41,6 @@
 #include <wx/datetime.h>
 #include <wx/log.h>
 #include <wx/msgdlg.h>
-#include <wx/choicdlg.h>
 
 #include <vector>
 #include <string>
@@ -497,9 +497,17 @@ bool LOCAL_HISTORY::Init( const wxString& aProjectPath )
 
 
 // Helper function to commit files using an already-acquired lock
-static bool commitSnapshotWithLock( git_repository* repo, git_index* index,
-                                    const wxString& aHistoryPath, const wxString& aProjectPath,
-                                    const std::vector<wxString>& aFiles, const wxString& aTitle )
+enum class SNAPSHOT_COMMIT_RESULT
+{
+    ERROR,
+    NO_CHANGES,
+    COMMITTED
+};
+
+
+static SNAPSHOT_COMMIT_RESULT commitSnapshotWithLock( git_repository* repo, git_index* index,
+                                                      const wxString& aHistoryPath, const wxString& aProjectPath,
+                                                      const std::vector<wxString>& aFiles, const wxString& aTitle )
 {
     std::vector<std::string> filesArrStr;
 
@@ -543,7 +551,7 @@ static bool commitSnapshotWithLock( git_repository* repo, git_index* index,
     if( filesArrStr.size() == 0 )
     {
         wxLogTrace( traceAutoSave, wxS( "No changes, skipping" ) );
-        return false;
+        return SNAPSHOT_COMMIT_RESULT::NO_CHANGES;
     }
 
     int rc = git_index_add_all( index, &filesArrGit, GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH | GIT_INDEX_ADD_FORCE, NULL,
@@ -551,11 +559,11 @@ static bool commitSnapshotWithLock( git_repository* repo, git_index* index,
     wxLogTrace( traceAutoSave, wxS( "Adding %zu files, rc %d" ), filesArrStr.size(), rc );
 
     if( rc != 0 )
-        return false;
+        return SNAPSHOT_COMMIT_RESULT::ERROR;
 
     git_oid tree_id;
     if( git_index_write_tree( &tree_id, index ) != 0 )
-        return false;
+        return SNAPSHOT_COMMIT_RESULT::ERROR;
 
     git_tree* rawTree = nullptr;
     git_tree_lookup( &rawTree, repo, &tree_id );
@@ -595,7 +603,7 @@ static bool commitSnapshotWithLock( git_repository* repo, git_index* index,
     if( numChangedFiles == 0 )
     {
         wxLogTrace( traceAutoSave, wxS( "No actual changes in tree, skipping commit" ) );
-        return false;
+        return SNAPSHOT_COMMIT_RESULT::NO_CHANGES;
     }
 
     wxString msg;
@@ -624,11 +632,15 @@ static bool commitSnapshotWithLock( git_repository* repo, git_index* index,
     git_oid commit_id;
     git_commit* parentPtr = parent.get();
     const git_commit* constParentPtr = parentPtr;
-    git_commit_create( &commit_id, repo, "HEAD", sig.get(), sig.get(), nullptr,
-                       msg.mb_str().data(), tree.get(), parents,
-                       parentPtr ? &constParentPtr : nullptr );
+    if( git_commit_create( &commit_id, repo, "HEAD", sig.get(), sig.get(), nullptr, msg.mb_str().data(), tree.get(),
+                           parents, parentPtr ? &constParentPtr : nullptr )
+        != 0 )
+    {
+        return SNAPSHOT_COMMIT_RESULT::ERROR;
+    }
+
     git_index_write( index );
-    return true;
+    return SNAPSHOT_COMMIT_RESULT::COMMITTED;
 }
 
 
@@ -653,7 +665,7 @@ bool LOCAL_HISTORY::CommitSnapshot( const std::vector<wxString>& aFiles, const w
     git_repository* repo = lock.GetRepository();
     git_index* index = lock.GetIndex();
 
-    return commitSnapshotWithLock( repo, index, hist, proj, aFiles, aTitle );
+    return commitSnapshotWithLock( repo, index, hist, proj, aFiles, aTitle ) == SNAPSHOT_COMMIT_RESULT::COMMITTED;
 }
 
 
@@ -1853,14 +1865,22 @@ bool LOCAL_HISTORY::RestoreCommit( const wxString& aProjectPath, const wxString&
     if( !backupFiles.empty() )
     {
         wxString hist = historyPath( aProjectPath );
-        if( !commitSnapshotWithLock( repo, lock.GetIndex(), hist, aProjectPath, backupFiles,
-                                     wxS( "Pre-restore backup" ) ) )
+        SNAPSHOT_COMMIT_RESULT backupResult = commitSnapshotWithLock( repo, lock.GetIndex(), hist, aProjectPath,
+                                                                      backupFiles, wxS( "Pre-restore backup" ) );
+
+        if( backupResult == SNAPSHOT_COMMIT_RESULT::ERROR )
         {
             wxLogTrace( traceAutoSave,
                        wxS( "[history] RestoreCommit: Failed to create pre-restore backup" ) );
             git_tree_free( tree );
             git_commit_free( commit );
             return false;
+        }
+
+        if( backupResult == SNAPSHOT_COMMIT_RESULT::NO_CHANGES )
+        {
+            wxLogTrace( traceAutoSave, wxS( "[history] RestoreCommit: Current state already matches HEAD; "
+                                            "continuing without a new backup commit" ) );
         }
     }
 
@@ -1967,46 +1987,87 @@ void LOCAL_HISTORY::ShowRestoreDialog( const wxString& aProjectPath, wxWindow* a
     if( !HistoryExists( aProjectPath ) )
         return;
 
+    std::vector<LOCAL_HISTORY_SNAPSHOT_INFO> snapshots = LoadSnapshots( aProjectPath );
+
+    if( snapshots.empty() )
+        return;
+
+    DIALOG_RESTORE_LOCAL_HISTORY dlg( aParent, snapshots );
+
+    if( dlg.ShowModal() == wxID_OK )
+    {
+        wxString selectedHash = dlg.GetSelectedHash();
+
+        if( !selectedHash.IsEmpty() )
+            RestoreCommit( aProjectPath, selectedHash, aParent );
+    }
+}
+
+std::vector<LOCAL_HISTORY_SNAPSHOT_INFO> LOCAL_HISTORY::LoadSnapshots( const wxString& aProjectPath )
+{
+    std::vector<LOCAL_HISTORY_SNAPSHOT_INFO> snapshots;
+
     wxString hist = historyPath( aProjectPath );
     git_repository* repo = nullptr;
 
     if( git_repository_open( &repo, hist.mb_str().data() ) != 0 )
-        return;
+        return snapshots;
 
     git_revwalk* walk = nullptr;
-    git_revwalk_new( &walk, repo );
+    if( git_revwalk_new( &walk, repo ) != 0 )
+    {
+        git_repository_free( repo );
+        return snapshots;
+    }
+
     git_revwalk_push_head( walk );
 
-    std::vector<wxString> choices;
-    std::vector<wxString> hashes;
     git_oid oid;
 
     while( git_revwalk_next( &oid, walk ) == 0 )
     {
         git_commit* commit = nullptr;
-        git_commit_lookup( &commit, repo, &oid );
 
-        git_time_t t = git_commit_time( commit );
-        wxDateTime dt( (time_t) t );
-        wxString   line;
+        if( git_commit_lookup( &commit, repo, &oid ) != 0 )
+            continue;
 
-        line.Printf( wxS( "%s %s" ), dt.FormatISOCombined().c_str(),
-                     wxString::FromUTF8( git_commit_summary( commit ) ) );
-        choices.push_back( line );
-        hashes.push_back( wxString::FromUTF8( git_oid_tostr_s( &oid ) ) );
+        LOCAL_HISTORY_SNAPSHOT_INFO info;
+        info.hash = wxString::FromUTF8( git_oid_tostr_s( &oid ) );
+        info.date = wxDateTime( static_cast<time_t>( git_commit_time( commit ) ) );
+        info.message = wxString::FromUTF8( git_commit_message( commit ) );
+
+        wxString firstLine = info.message.BeforeFirst( '\n' );
+
+        long     parsedCount = 0;
+        wxString remainder;
+        firstLine.BeforeFirst( ':', &remainder );
+        remainder.Trim( true ).Trim( false );
+
+        if( remainder.EndsWith( wxS( "files changed" ) ) )
+        {
+            wxString countText = remainder.BeforeFirst( ' ' );
+
+            if( countText.ToLong( &parsedCount ) )
+                info.filesChanged = static_cast<int>( parsedCount );
+        }
+
+        info.summary = firstLine.BeforeFirst( ':' );
+
+        wxString rest;
+        info.message.BeforeFirst( '\n', &rest );
+        wxArrayString lines = wxSplit( rest, '\n', '\0' );
+
+        for( const wxString& line : lines )
+        {
+            if( !line.IsEmpty() )
+                info.changedFiles.Add( line );
+        }
+
+        snapshots.push_back( std::move( info ) );
         git_commit_free( commit );
     }
 
     git_revwalk_free( walk );
     git_repository_free( repo );
-
-    if( choices.empty() )
-        return;
-
-    int index = wxGetSingleChoiceIndex( _( "Select snapshot" ), _( "Restore" ),
-                                        (int) choices.size(), &choices[0], aParent );
-
-    if( index != wxNOT_FOUND )
-        RestoreCommit( aProjectPath, hashes[index] );
+    return snapshots;
 }
-
