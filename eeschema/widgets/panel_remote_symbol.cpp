@@ -258,21 +258,6 @@ PANEL_REMOTE_SYMBOL::PANEL_REMOTE_SYMBOL( SCH_EDIT_FRAME* aParent ) :
     controlsSizer->Add( m_configButton, 0, wxALIGN_CENTER_VERTICAL );
 
     topSizer->Add( controlsSizer, 0, wxEXPAND | wxALL, FromDIP( 4 ) );
-
-    m_webView = new WEBVIEW_PANEL( this );
-    m_webView->AddMessageHandler( wxS( "kicad" ),
-                                  [this]( const wxString& aPayload )
-                                  {
-                                      onKicadMessage( aPayload );
-                                  } );
-    m_webView->SetHandleExternalLinks( true );
-    m_webView->BindLoadedEvent();
-
-    if( wxWebView* browser = m_webView->GetWebView() )
-        browser->Bind( wxEVT_WEBVIEW_LOADED, &PANEL_REMOTE_SYMBOL::onWebViewLoaded, this );
-
-    topSizer->Add( m_webView, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, FromDIP( 2 ) );
-
     SetSizer( topSizer );
 
     m_dataSourceChoice->Bind( wxEVT_CHOICE, &PANEL_REMOTE_SYMBOL::onDataSourceChanged, this );
@@ -289,6 +274,35 @@ PANEL_REMOTE_SYMBOL::~PANEL_REMOTE_SYMBOL()
 {
     SaveCookies();
     Unbind( wxEVT_SYS_COLOUR_CHANGED, wxSysColourChangedEventHandler( PANEL_REMOTE_SYMBOL::onDarkModeToggle ), this );
+}
+
+
+void PANEL_REMOTE_SYMBOL::Activate()
+{
+    ensureWebView();
+    RefreshDataSources();
+}
+
+
+void PANEL_REMOTE_SYMBOL::ensureWebView()
+{
+    if( m_webView )
+        return;
+
+    m_webView = new WEBVIEW_PANEL( this );
+    m_webView->AddMessageHandler( wxS( "kicad" ),
+                                  [this]( const wxString& aPayload )
+                                  {
+                                      onKicadMessage( aPayload );
+                                  } );
+    m_webView->SetHandleExternalLinks( true );
+    m_webView->BindLoadedEvent();
+
+    if( wxWebView* browser = m_webView->GetWebView() )
+        browser->Bind( wxEVT_WEBVIEW_LOADED, &PANEL_REMOTE_SYMBOL::onWebViewLoaded, this );
+
+    GetSizer()->Add( m_webView, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, FromDIP( 2 ) );
+    Layout();
 }
 
 
@@ -376,7 +390,10 @@ void PANEL_REMOTE_SYMBOL::RefreshDataSources()
     if( m_providerEntries.empty() )
     {
         m_dataSourceChoice->Enable( false );
-        showMessage( _( "No remote providers configured." ) );
+
+        if( m_webView )
+            showMessage( _( "No remote providers configured." ) );
+
         return;
     }
 
@@ -397,7 +414,9 @@ void PANEL_REMOTE_SYMBOL::RefreshDataSources()
     }
 
     m_dataSourceChoice->SetSelection( selected );
-    loadProvider( selected );
+
+    if( m_webView )
+        loadProvider( selected );
 }
 
 

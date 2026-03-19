@@ -56,6 +56,7 @@ public:
     explicit PANEL_REMOTE_SYMBOL( SCH_EDIT_FRAME* aParent );
     ~PANEL_REMOTE_SYMBOL() override;
 
+    void Activate();
     void RefreshDataSources();
     bool HasDataSources() const { return !m_providerEntries.empty(); }
     void BindWebViewLoaded();
@@ -63,6 +64,7 @@ public:
     void LoadCookies();
 
 private:
+    void ensureWebView();
     void onDataSourceChanged( wxCommandEvent& aEvent );
     void onConfigure( wxCommandEvent& aEvent );
     void onRefresh( wxCommandEvent& aEvent );
