@@ -245,14 +245,14 @@ BOOST_AUTO_TEST_CASE( HealthyGroups )
 }
 
 
-BOOST_AUTO_TEST_CASE( SingleMemberGroupsNotSaved )
+BOOST_AUTO_TEST_CASE( SingleMemberGroupsSaved )
 {
     std::unique_ptr<BOARD> board1 = createBoard( { { TEXT0 } } );
     auto path = std::filesystem::temp_directory_path() / "group_saveload_tst.kicad_pcb";
     ::KI_TEST::DumpBoardToFile( *board1, path.string() );
 
     std::unique_ptr<BOARD> board2 = ::KI_TEST::ReadBoardFromFileOrStream( path.string() );
-    BOOST_CHECK_EQUAL( board2->Groups().size(), 0u );
+    BOOST_CHECK_EQUAL( board2->Groups().size(), 1u );
 }
 
 
