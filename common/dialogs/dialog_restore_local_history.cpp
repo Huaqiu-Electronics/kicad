@@ -133,8 +133,8 @@ void DIALOG_RESTORE_LOCAL_HISTORY::Populate()
         const auto& snapshot = m_snapshots[i];
         long        row = m_list->InsertItem( m_list->GetItemCount(), snapshot.date.FormatISOCombined() );
         m_list->SetItem( row, 1, snapshot.summary );
-        m_list->SetItem( row, 2,
-                         snapshot.filesChanged > 0 ? wxString::Format( "%d", snapshot.filesChanged ) : wxS( "-" ) );
+        m_list->SetItem(
+                row, 2, snapshot.filesChanged > 0 ? wxString::Format( "%d", snapshot.filesChanged ) : wxString( "-" ) );
     }
 
     m_list->SetColumnWidth( 0, FromDIP( 170 ) );
