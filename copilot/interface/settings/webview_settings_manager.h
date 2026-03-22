@@ -92,8 +92,6 @@ public:
 
     std::string get_add_component_type_url() const;
 
-    std::string get_login_url() const;
-
     std::string get_pcb_quote_path() const;
 
     std::string get_smt_quote_path() const;

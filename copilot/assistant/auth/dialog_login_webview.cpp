@@ -24,18 +24,68 @@
 
 #include <auth/dialog_login_webview.h>
 
+#include <nlohmann/json_fwd.hpp>
 #include <settings/webview_settings_manager.h>
 #include <webview/webview_controller.h>
+#include <utils/httplib_wrapper.h>
+
+struct WEBVIEW_LOGIN_SETTINGS
+{
+    int         width = 320;
+    int         height = 424;
+    std::string url = "https://www.eda.cn/login";
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( WEBVIEW_LOGIN_SETTINGS, width, height, url )
+};
+
+
+struct KICAD_WEBVIEW_LOGIN_SETTINGS
+{
+    WEBVIEW_LOGIN_SETTINGS kicad_10_0_0;
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( KICAD_WEBVIEW_LOGIN_SETTINGS, kicad_10_0_0 )
+};
+
+class WEBVIEW_LOGIN_SETTINGS_MGR
+{
+    WEBVIEW_LOGIN_SETTINGS _settings;
+
+public:
+    static WEBVIEW_LOGIN_SETTINGS_MGR& get_instance()
+    {
+        static WEBVIEW_LOGIN_SETTINGS_MGR instance;
+        return instance;
+    }
+
+
+    WEBVIEW_LOGIN_SETTINGS_MGR()
+    {
+        try
+        {
+            httplib::SSLClient           client( "kicad.eda.cn", 443 );
+            KICAD_WEBVIEW_LOGIN_SETTINGS settings;
+            nlohmann::json::parse( client.Get( "/webview_login_settings.json" ) ).get_to( settings );
+            _settings = settings.kicad_10_0_0;
+        }
+        catch( ... )
+        {
+        }
+    }
+
+    wxSize   GetSize() const { return wxSize{ _settings.width, _settings.height }; }
+    wxString GetUrl() const { return _settings.url; }
+};
+
 
 DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent ) :
         DIALOG_WEBVIEW( host_version_info, aParent,
                         _( "Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in directly" ),
                         "DIALOG_LOGIN_WEBVIEW",
-                        aParent ? aParent->FromDIP( wxSize{ WIDTH, HEIGHT } ) : wxSize{ WIDTH, HEIGHT } )
+                        aParent ? aParent->FromDIP( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetSize() )
+                                : WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetSize() )
 {
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( GetWebviewContainer() );
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
-    LoadUrl( WEBVIEW_SETTINGS_MANAGER::get_instance().get_login_url() );
+    LoadUrl( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetUrl() );
 }
 
 DIALOG_LOGIN_WEBVIEW::~DIALOG_LOGIN_WEBVIEW()

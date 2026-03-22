@@ -73,11 +73,6 @@ std::string WEBVIEW_SETTINGS_MANAGER::get_add_component_url() const
     return get_eda_cn_url_from_path( _site_env->site_paths.add_component );
 }
 
-std::string WEBVIEW_SETTINGS_MANAGER::get_login_url() const
-{
-    return get_eda_cn_url_from_path( _site_env->site_paths.login );
-}
-
 std::string WEBVIEW_SETTINGS_MANAGER::get_pcb_quote_path() const
 {
     return _site_env->site_paths.pcb_quote;

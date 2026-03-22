@@ -31,7 +31,6 @@
 struct SITE_PATHS
 {
     std::string library = "/library";
-    std::string login = "/login";
 
     std::string add_component = "/addSymbolDevice";
     std::string add_design_block = "/addFragment";
@@ -43,7 +42,7 @@ struct SITE_PATHS
     std::string smt_quote = "/openapi/pcba/saveDfmTmpOrder";
     std::string news_url = "/news/page/bottomNotice/index.html";
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SITE_PATHS, library, login, add_component, add_design_block, add_component_type,
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( SITE_PATHS, library, add_component, add_design_block, add_component_type,
                                     add_design_block_type, pcb_quote, smt_quote, news_url )
 };
 
