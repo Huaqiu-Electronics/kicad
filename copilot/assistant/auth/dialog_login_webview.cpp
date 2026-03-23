@@ -68,7 +68,7 @@ public:
         {
             httplib::SSLClient           client( "www.eda.cn", 443 );
             KICAD_WEBVIEW_LOGIN_SETTINGS settings;
-            auto                         result = client.Get( "/webview_login_settings.json" );
+            auto                         result = client.Get( "/all/webview_login_settings.json" );
 
             if( !result || result->status != 200 )
             {
