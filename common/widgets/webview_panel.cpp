@@ -82,6 +82,12 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
     if( !browser )
         return;
 
+#ifdef DEBUG
+
+    browser->EnableAccessToDevTools(true);
+    
+#endif // DEBUG        
+
 #ifdef __WXMAC__
     browser->RegisterHandler( wxSharedPtr<wxWebViewHandler>( new wxWebViewArchiveHandler( "wxfs" ) ) );
     browser->RegisterHandler( wxSharedPtr<wxWebViewHandler>( new wxWebViewFSHandler( "memory" ) ) );
