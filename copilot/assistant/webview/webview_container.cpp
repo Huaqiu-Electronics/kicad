@@ -56,6 +56,14 @@
 #include <utils/query_string_cache_busting.h>
 #include <settings/copilot_config_version.h>
 #include <context/copilot_project_holder.h>
+
+
+#if wxUSE_WEBVIEW_EDGE
+// note webview2 is available on Windows, but not on MINGW (only webview available)
+#include <webview2EnvironmentOptions.h>
+#endif
+
+
 using json = nlohmann::json;
 
 
@@ -75,12 +83,34 @@ inline auto ensure_load_page_from_srv( std::string const& url )
 WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info, wxWindow* parent,
                                       std::optional<std::string> url, HOST_COPILOT_HANDLES host_copilot_handles,
                                       std::optional<std::string> data_buried_point ) :
-        wxPanel( parent ), _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
+        wxPanel( parent ),
+        _impl( std::make_unique<WEBVIEW_CONTAINER_IMPL>() )
 
 {
     _impl->_host_copilot_handles = host_copilot_handles;
     _impl->_primary_url = std::move( url );
+
+#if wxCHECK_VERSION( 3, 3, 0 )
+    wxWebViewConfiguration config = wxWebView::NewConfiguration();
+
+#if wxUSE_WEBVIEW_EDGE
+    if( config.GetBackend() == wxWebViewBackendEdge )
+    {
+        ICoreWebView2EnvironmentOptions* webViewOptions =
+                (ICoreWebView2EnvironmentOptions*) config.GetNativeConfiguration();
+
+        // Disable gesture navigation features
+        webViewOptions->put_AdditionalBrowserArguments( L"--disable-features=msEdgeMouseGestureSupported,"
+                                                        L"msEdgeMouseGestureDefaultEnabled,OverscrollHistoryNavigation "
+                                                        L"--enable-features=kEdgeMouseGestureDisabledInCN" );
+    }
+#endif
+
+    _impl->_browser = wxWebView::New( config );
+#else
     _impl->_browser = wxWebView::New();
+#endif
+
     _impl->host_version_info = host_version_info;
 
 
