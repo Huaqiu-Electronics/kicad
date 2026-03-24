@@ -114,7 +114,7 @@ public:
      *
      * @return int status of the process
      */
-    PCM_TASK_MANAGER::STATUS InstallFromFile( wxWindow* aParent, const wxString& aFilePath );
+    PCM_TASK_MANAGER::STATUS InstallFromFile( wxWindow* aParent, const wxString& aFilePath , bool aOverride = false);
 
     /**
      * @return types of packages that were installed/uninstalled by the task manager

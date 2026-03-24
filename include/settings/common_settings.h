@@ -180,7 +180,8 @@ public:
 
     struct HQ_PLUGINS
     {
-        bool is_installed;
+        // The KiCad build version while installing the plugins
+        wxString kicad_version_on_install;
     };
 
     struct WarnMicrosoftPinYinCompatibilityMode

@@ -1406,7 +1406,7 @@ void KICAD_MANAGER_FRAME::OnIdle( wxIdleEvent& aEvent )
     KICAD_SETTINGS* settings = kicadSettings();
 
 
-    if( !Pgm().GetCommonSettings()->m_HqPlugins.is_installed )
+    if( Pgm().GetCommonSettings()->m_HqPlugins.kicad_version_on_install != GetSemanticVersion())
     {
         if( !m_pcm )
             CreatePCM();
@@ -1421,11 +1421,11 @@ void KICAD_MANAGER_FRAME::OnIdle( wxIdleEvent& aEvent )
 
         for( const wxString& file : files )
         {
-            task_manager.InstallFromFile( this, file );
+            task_manager.InstallFromFile( this, file , true);
 
         }
 
-        Pgm().GetCommonSettings()->m_HqPlugins.is_installed = true;
+        Pgm().GetCommonSettings()->m_HqPlugins.kicad_version_on_install = GetSemanticVersion();
     }
 
 

@@ -320,7 +320,9 @@ bool PCM_TASK_MANAGER::extract( const wxString& aFilePath, const wxString& aPack
 
 
 PCM_TASK_MANAGER::STATUS PCM_TASK_MANAGER::InstallFromFile( wxWindow*       aParent,
-                                                            const wxString& aFilePath )
+                                                            const wxString& aFilePath,
+                                                            bool aOverride 
+                                                        )
 {
     wxFFileInputStream stream( aFilePath );
 
@@ -379,7 +381,7 @@ PCM_TASK_MANAGER::STATUS PCM_TASK_MANAGER::InstallFromFile( wxWindow*       aPar
         return PCM_TASK_MANAGER::STATUS::FAILED;
     }
 
-    if( !package.versions[0].compatible
+    if( !aOverride && !package.versions[0].compatible
         && wxMessageBox( _( "This package version is incompatible with your KiCad version or "
                             "platform. Are you sure you want to install it anyway?" ),
                          _( "Install package" ), wxICON_EXCLAMATION | wxYES_NO, aParent )
