@@ -135,6 +135,15 @@ private:
 
     HANDLER_RESULT<NetsResponse> handleGetNets( const HANDLER_CONTEXT<GetNets>& aCtx );
 
+    HANDLER_RESULT<commands::GetItemsResponse> handleGetConnectedItems(
+            const HANDLER_CONTEXT<GetConnectedItems>& aCtx );
+
+    HANDLER_RESULT<commands::GetItemsResponse> handleGetItemsByNet(
+            const HANDLER_CONTEXT<GetItemsByNet>& aCtx );
+
+    HANDLER_RESULT<commands::GetItemsResponse> handleGetItemsByNetClass(
+            const HANDLER_CONTEXT<GetItemsByNetClass>& aCtx );
+
     HANDLER_RESULT<NetClassForNetsResponse> handleGetNetClassForNets(
             const HANDLER_CONTEXT<GetNetClassForNets>& aCtx );
 
@@ -192,6 +201,9 @@ private:
             const google::protobuf::RepeatedPtrField<google::protobuf::Any>& aItems,
             std::function<void(commands::ItemStatus, google::protobuf::Any)> aItemHandler )
             override;
+
+    std::vector<KICAD_T> parseRequestedItemTypes( const google::protobuf::RepeatedField<int>& aTypes );
+
 
 
 public:
