@@ -106,6 +106,7 @@ WEBVIEW_CONTAINER::WEBVIEW_CONTAINER( HOST_VERSION_INFO const& host_version_info
     }
 #endif
 
+    // NOTE we must use the same config as the KiCad Official's wrapper @WEBVIEW_PANEL
     _impl->_browser = wxWebView::New( config );
 #else
     _impl->_browser = wxWebView::New();
