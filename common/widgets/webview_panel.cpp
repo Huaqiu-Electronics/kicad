@@ -80,13 +80,7 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
     wxWebView* browser = GetWebView();
 
     if( !browser )
-        return;
-
-#ifdef DEBUG
-
-    browser->EnableAccessToDevTools(true);
-    
-#endif // DEBUG        
+        return;   
 
 #ifdef __WXMAC__
     browser->RegisterHandler( wxSharedPtr<wxWebViewHandler>( new wxWebViewArchiveHandler( "wxfs" ) ) );
@@ -109,6 +103,13 @@ WEBVIEW_PANEL::WEBVIEW_PANEL( wxWindow* aParent, wxWindowID aId, const wxPoint& 
     Bind( wxEVT_WEBVIEW_ERROR, &WEBVIEW_PANEL::OnError, this, browser->GetId() );
 
     m_initRetryTimer.Bind( wxEVT_TIMER, [this]( wxTimerEvent& ) { DoInitHandlers(); } );
+
+#ifdef DEBUG
+
+    browser->EnableAccessToDevTools(true);
+    
+#endif // DEBUG 
+
 }
 
 WEBVIEW_PANEL::~WEBVIEW_PANEL()
