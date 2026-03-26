@@ -28,7 +28,7 @@
 #include <vector>
 #include <string>
 #include <map>
-inline std::string get_pcb_thickness( int aLayer, double aBrdThickness )
+inline std::string get_pcb_thickness(int aLayer, double aBrdThickness)
 {
     static const std::map<int, std::vector<std::pair<std::string, double>>> THICKNESS_SETTING = {
         { 1, { { "0.6", 0.6 }, { "0.8", 0.8 }, { "1.0", 1.0 }, { "1.2", 1.2 }, { "1.6", 1.6 }, { "2.0", 2.0 } } },
@@ -44,19 +44,33 @@ inline std::string get_pcb_thickness( int aLayer, double aBrdThickness )
         { 20, { { "2.0", 2.0 }, { "2.5", 2.5 }, { "3.0", 3.0 }, { "3.2", 3.2 } } }
     };
 
-    if( auto setting = THICKNESS_SETTING.find( aLayer ); setting != THICKNESS_SETTING.end() )
+    if (auto setting = THICKNESS_SETTING.find(aLayer); setting != THICKNESS_SETTING.end())
     {
-        const auto& available_thicknesses = setting->second;
-        
-        for( const auto& thickness : available_thicknesses )
+        const auto& available = setting->second;
+
+        // ✅ Step 1: 优先匹配 ±10% 容差
+        for (const auto& thickness : available)
         {
-            if( thickness.second >= aBrdThickness )
+            double nominal = thickness.second;
+            double lower = nominal * 0.9;
+            double upper = nominal * 1.1;
+
+            if (aBrdThickness >= lower && aBrdThickness <= upper)
             {
                 return thickness.first;
             }
         }
 
-        return available_thicknesses.back().first;
+        // ✅ Step 2: fallback 到原来的向上取整
+        for (const auto& thickness : available)
+        {
+            if (thickness.second >= aBrdThickness)
+            {
+                return thickness.first;
+            }
+        }
+
+        return available.back().first;
     }
 
     return "3.2";
