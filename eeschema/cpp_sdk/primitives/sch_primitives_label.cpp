@@ -84,9 +84,10 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_LABEL::CreateClassLabel( const VECTOR2I& posit
     SCHEMATIC_SETTINGS&  settings = schematic->Settings();
     SCH_DIRECTIVE_LABEL* label = new SCH_DIRECTIVE_LABEL( position );
     label->SetShape( LABEL_FLAG_SHAPE::F_ROUND );
-    // FIXME
     // label->GetFields().emplace_back( SCH_FIELD( { 0, 0 }, 0, label, wxT( "Netclass" ) ) );
     // label->GetFields().emplace_back( SCH_FIELD( { 0, 0 }, 0, label, wxT( "Component Class" ) ) );
+    label->GetFields().emplace_back( SCH_FIELD( label , FIELD_T::USER, wxT( "Netclass" ) ) );
+    label->GetFields().emplace_back( SCH_FIELD( label , FIELD_T::USER, wxT( "Component Class" ) ) );
     label->GetFields().back().SetItalic( true );
     label->GetFields().back().SetVisible( true );
 

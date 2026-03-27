@@ -345,6 +345,7 @@ KI_SDK_EXEC_RESULT  PCB_PRIMITIVES_TRACK::DeleteAllTracks()
     board->RemoveAll({PCB_TRACE_T});
     for( PCB_TRACK* track : tracks )
     {
+        // if( PCB_GROUP* group = track->GetParentGroup() )
         if( EDA_GROUP* group = track->GetParentGroup() )
         {
             group->RemoveItem( track );
@@ -377,7 +378,8 @@ KI_SDK_EXEC_RESULT  PCB_PRIMITIVES_TRACK::DeleteTrackByKIID(const std::string& a
         return status;
     }
 
-    if( auto group = track->GetParentGroup() )
+    // if( PCB_GROUP* group = track->GetParentGroup() )
+    if( EDA_GROUP* group = track->GetParentGroup() )
     {
         group->RemoveItem( track );
     }

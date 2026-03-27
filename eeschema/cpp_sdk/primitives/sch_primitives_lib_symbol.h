@@ -105,7 +105,7 @@ public:
 
     KI_SDK_EXEC_RESULT SetLibSymbolUnit( const int& aUnit );
 
-    KI_SDK_EXEC_RESULT SetLibSymbolUnitName( const int& aUnit, const std::string& aUnitName );
+    // KI_SDK_EXEC_RESULT SetLibSymbolUnitName( const int& aUnit, const std::string& aUnitName );
 
     KI_SDK_EXEC_RESULT AddLibSymbolField( const std::string& aFieldName, const std::string& aFieldText );
 
@@ -143,7 +143,7 @@ public:
 
     KI_SDK_EXEC_RESULT GetLibSymbolAlternateBodyStyle( bool& aStyle );
 
-    KI_SDK_EXEC_RESULT SetLibSymbolAlternateBodyStyle( const bool& aStyle );
+    // KI_SDK_EXEC_RESULT SetLibSymbolAlternateBodyStyle( const bool& aStyle );
 };
 
 
