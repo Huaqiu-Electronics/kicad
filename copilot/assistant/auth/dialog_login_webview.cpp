@@ -99,8 +99,10 @@ DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( HOST_VERSION_INFO const& host_versio
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
     auto info_cp = host_version_info;
     info_cp.scale = GetDPIScaleFactor();
-    const auto final_url = add_parameter_to_url( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetUrl().ToStdString(),
-                                                 host_version_info );
+    const auto final_url = add_parameter_to_url(
+            add_parameter_to_url( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetUrl().ToStdString(),
+                                  host_version_info ),
+            std::map<std::string, std::string>{ "fill", "full" } );
     LoadUrl( final_url );
 
     // We prefer the fixed size
