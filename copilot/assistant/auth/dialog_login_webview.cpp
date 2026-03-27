@@ -26,9 +26,11 @@
 
 #include <nlohmann/json_fwd.hpp>
 #include <settings/webview_settings_manager.h>
+#include <string>
 #include <webview/webview_controller.h>
 #include <utils/httplib_wrapper.h>
-
+#include <utils/add_parameter_to_url.h>
+#include <host_version_info.h>
 
 class WEBVIEW_LOGIN_SETTINGS_MGR
 {
@@ -91,13 +93,19 @@ public:
 DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent ) :
         DIALOG_WEBVIEW( host_version_info, aParent,
                         _( "Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in directly" ),
-                        "DIALOG_LOGIN_WEBVIEW",
-                        aParent ? aParent->FromDIP( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetSize() )
-                                : WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetSize() )
+                        "DIALOG_LOGIN_WEBVIEW" )
 {
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( GetWebviewContainer() );
     SetWindowStyle( wxDEFAULT_DIALOG_STYLE | wxBORDER_NONE );
-    LoadUrl( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetUrl() );
+    auto info_cp = host_version_info;
+    info_cp.scale = GetDPIScaleFactor();
+    const auto final_url = add_parameter_to_url( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetUrl().ToStdString(),
+                                                 host_version_info );
+    LoadUrl( final_url );
+
+    // We prefer the fixed size
+    SetSize( aParent ? aParent->FromDIP( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetSize() )
+                     : WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetSize() );
 }
 
 DIALOG_LOGIN_WEBVIEW::~DIALOG_LOGIN_WEBVIEW()

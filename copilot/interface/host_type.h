@@ -42,7 +42,11 @@ struct HOST_TYPE
     // Used by the the server to identify the user session
     std::string chat_id;
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale, host_version )
+    std::string theme = "auto";
+    double      scale = 1.0;
+
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE( HOST_TYPE, host_name, editor_name, session_id, chat_id, locale, host_version, theme,
+                                    scale )
 };
 
 #endif

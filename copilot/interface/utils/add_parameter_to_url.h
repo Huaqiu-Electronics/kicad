@@ -55,8 +55,14 @@ inline auto add_parameter_to_url( std::string const& url, std::optional<HOST_TYP
         return url;
 
     std::map<std::string, std::string> parameters{
-        { "host_name", host->host_name }, { "host_version", host->host_version }, { "editor_name", host->editor_name },
-        { "locale", host->locale },       { "session_id", host->session_id },     { "chat_id", host->chat_id },
+        { "host_name", host->host_name },
+        { "host_version", host->host_version },
+        { "editor_name", host->editor_name },
+        { "locale", host->locale },
+        { "session_id", host->session_id },
+        { "chat_id", host->chat_id },
+        { "theme", host->theme },
+        { "scale", std::to_string( host->scale ) },
     };
 
 

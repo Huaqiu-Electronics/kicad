@@ -25,6 +25,7 @@
 #include <get_copilot_host_version.h>
 #include <pgm_base.h>
 #include <magic_enum.hpp>
+#include <wx/settings.h>
 
 #include "get_kicad_version_info.h"
 #include "host_version_info.h"
@@ -57,9 +58,14 @@ HOST_VERSION_INFO get_copilot_host_version( KICAD_COPILOT_EDITORS editor )
         langCode = "zh"; // fallback again if split fails
 
 
-    const auto details = get_kicad_version_info();
-
-    return HOST_VERSION_INFO{ { "kicad_desktop", details.KiCadBuildVersion, magic_enum::enum_name( editor ).data(),
-                                langCode.ToStdString() },
-                              details };
+    const auto        details = get_kicad_version_info();
+    HOST_VERSION_INFO info;
+    info.host_name = "kicad_desktop";
+    info.host_version = details.KiCadBuildVersion;
+    info.editor_name = magic_enum::enum_name( editor ).data();
+    info.locale = langCode.ToStdString();
+    info.details = details;
+    wxSystemAppearance appearance = wxSystemSettings::GetAppearance();
+    info.theme = appearance.IsDark() ? "dark" : "light";
+    return info;
 }
