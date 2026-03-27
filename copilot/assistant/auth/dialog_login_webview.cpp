@@ -102,7 +102,7 @@ DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( HOST_VERSION_INFO const& host_versio
     const auto final_url = add_parameter_to_url(
             add_parameter_to_url( WEBVIEW_LOGIN_SETTINGS_MGR::get_instance().GetUrl().ToStdString(),
                                   host_version_info ),
-            std::map<std::string, std::string>{ "fill", "full" } );
+            std::map<std::string, std::string>{ { "fill", "full" } } );
     LoadUrl( final_url );
 
     // We prefer the fixed size
