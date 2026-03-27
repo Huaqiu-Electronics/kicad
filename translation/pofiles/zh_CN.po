@@ -45,8 +45,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KiCad_zh_CN_Master_v0.0.32\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-21 18:19+0800\n"
-"PO-Revision-Date: 2026-03-21 18:26+0800\n"
+"POT-Creation-Date: 2026-03-27 17:37+0800\n"
+"PO-Revision-Date: 2026-03-27 17:42+0800\n"
 "Last-Translator: CloverGit <w991593239@163.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/projects/kicad/master-source/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -2067,6 +2067,7 @@ msgid "No shape in black and white image to convert: no outline created."
 msgstr "黑白图像中没有可转换的形状: 未创建轮廓。"
 
 #: common/api/api_design_resource_mgr.cpp:214
+#, c-format
 msgid "Cannot create project resource path '%s'."
 msgstr "无法创建项目资源路径 '%s'。"
 
@@ -4564,6 +4565,7 @@ msgstr ""
 #: common/dialogs/panel_design_block_lib_table.cpp:838
 #: common/dialogs/panel_design_block_lib_table.cpp:857
 #: common/lib_table_notebook_panel.cpp:137
+#: eeschema/cpp_sdk/primitives/sch_primitives_lib_symbol.cpp:96
 #: eeschema/dialogs/panel_sym_lib_table.cpp:862
 #: eeschema/dialogs/panel_sym_lib_table.cpp:881
 #: eeschema/project_rescue.cpp:854 eeschema/sheet.cpp:808
@@ -9387,11 +9389,11 @@ msgid "This is the default net class."
 msgstr "这是默认网络类。"
 
 #: common/project/project_archiver.cpp:87
-#: common/project/project_archiver.cpp:120 kicad/pcm/pcm_task_manager.cpp:329
+#: common/project/project_archiver.cpp:120 kicad/pcm/pcm_task_manager.cpp:331
 msgid "Could not open archive file."
 msgstr "无法打开归档文件。"
 
-#: common/project/project_archiver.cpp:129 kicad/pcm/pcm_task_manager.cpp:337
+#: common/project/project_archiver.cpp:129 kicad/pcm/pcm_task_manager.cpp:339
 msgid "Invalid archive file format."
 msgstr "无效的归档文件格式。"
 
@@ -11759,11 +11761,9 @@ msgstr "快捷键文件"
 msgid "KiCad jobset files"
 msgstr "KiCad 作业集文件"
 
-#: copilot/assistant/auth/dialog_login_webview.cpp:32
-msgid ""
-"Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in "
-"directly"
-msgstr "电子发烧友/华秋电子/华秋商城账号可以直接登录"
+#: copilot/assistant/auth/dialog_login_webview.cpp:95
+msgid "Huaqiu accounts can log in directly"
+msgstr "华秋账号可以直接登录"
 
 #: copilot/assistant/webview/webview_container_script_msg_handle.cpp:134
 msgid "Image Viewer"
@@ -12338,13 +12338,21 @@ msgstr "解释符号引脚"
 msgid "Check unconnected pins"
 msgstr "检查未连接的引脚"
 
-#: eeschema/cpp_sdk/primitives/sch_primitives_lib_symbol.cpp:102
+#: eeschema/cpp_sdk/primitives/sch_primitives_lib_symbol.cpp:96
+#: eeschema/sheet.cpp:808 eeschema/symbol_editor/symbol_edit_frame.cpp:1219
+#: eeschema/symbol_editor/symbol_edit_frame.cpp:1269
+#: eeschema/symbol_editor/symbol_edit_frame.cpp:2037
+#: eeschema/symbol_editor/symbol_edit_frame.cpp:2106
+msgid "Error saving library table."
+msgstr "保存库表时出错。"
+
+#: eeschema/cpp_sdk/primitives/sch_primitives_lib_symbol.cpp:132
 #, fuzzy, c-format
 #| msgid "Symbol library '%s' not found."
 msgid "Symbol Library '%s' not found."
 msgstr "符号库 '%s' 未找到。"
 
-#: eeschema/cpp_sdk/primitives/sch_primitives_lib_symbol.cpp:109
+#: eeschema/cpp_sdk/primitives/sch_primitives_lib_symbol.cpp:139
 #, fuzzy, c-format
 #| msgid "Library '%s' is read only."
 msgid "Symol Library '%s' is ReadOnly."
@@ -12355,13 +12363,13 @@ msgstr "'%s' 库为只读。"
 msgid "Junction location contains no joinable wires and/or pins."
 msgstr "结点位置不包含可连接的电线/引脚。"
 
-#: eeschema/cpp_sdk/primitives/sch_primitives_symbol.cpp:125
+#: eeschema/cpp_sdk/primitives/sch_primitives_symbol.cpp:130
 #, fuzzy, c-format
 #| msgid "Failed to load kiface library '%s'."
 msgid "Failed to load library %s. %s"
 msgstr "加载 kiface 库 '%s' 失败。"
 
-#: eeschema/cpp_sdk/primitives/sch_primitives_symbol.cpp:130
+#: eeschema/cpp_sdk/primitives/sch_primitives_symbol.cpp:135
 #, fuzzy, c-format
 #| msgid "Failed to load kiface library '%s'."
 msgid "Failed to load library %s."
@@ -22502,13 +22510,6 @@ msgstr ""
 "\n"
 "是否要继续?"
 
-#: eeschema/sheet.cpp:808 eeschema/symbol_editor/symbol_edit_frame.cpp:1219
-#: eeschema/symbol_editor/symbol_edit_frame.cpp:1269
-#: eeschema/symbol_editor/symbol_edit_frame.cpp:2037
-#: eeschema/symbol_editor/symbol_edit_frame.cpp:2106
-msgid "Error saving library table."
-msgstr "保存库表时出错。"
-
 #: eeschema/sheet.cpp:946 eeschema/tools/sch_editor_control.cpp:3077
 msgid "Cannot create the schematic image"
 msgstr "无法创建原理图图像"
@@ -30861,14 +30862,14 @@ msgid "Keep downloaded file"
 msgstr "保留已下载文件"
 
 #: kicad/pcm/dialogs/panel_packages_view.cpp:598
-#: kicad/pcm/pcm_task_manager.cpp:383
+#: kicad/pcm/pcm_task_manager.cpp:385
 msgid ""
 "This package version is incompatible with your KiCad version or platform. "
 "Are you sure you want to install it anyway?"
 msgstr "此扩展内容包版本与您的 KiCad 版本或操作系统不兼容。仍要继续安装?"
 
 #: kicad/pcm/dialogs/panel_packages_view.cpp:600
-#: kicad/pcm/pcm_task_manager.cpp:385
+#: kicad/pcm/pcm_task_manager.cpp:387
 msgid "Install package"
 msgstr "安装扩展内容包"
 
@@ -31028,7 +31029,7 @@ msgid ""
 "to repository maintainers."
 msgstr "扩展内容包 %s 的已下载文件 HASH 与仓库记录不匹配。这可能表明扩展内容包有问题, 如果问题仍然存在, 请将此报告给仓库维护者。"
 
-#: kicad/pcm/pcm_task_manager.cpp:206 kicad/pcm/pcm_task_manager.cpp:426
+#: kicad/pcm/pcm_task_manager.cpp:206 kicad/pcm/pcm_task_manager.cpp:428
 #, c-format
 msgid "Removing previous version of package '%s'."
 msgstr "移除先前版本的扩展内容包 '%s'。"
@@ -31042,7 +31043,7 @@ msgstr "正在安装扩展内容包 '%s'。"
 msgid "Aborting package installation."
 msgstr "正在中止扩展内容包安装。"
 
-#: kicad/pcm/pcm_task_manager.cpp:360
+#: kicad/pcm/pcm_task_manager.cpp:362
 #, c-format
 msgid ""
 "Unable to parse package metadata:\n"
@@ -31053,50 +31054,50 @@ msgstr ""
 "\n"
 "%s"
 
-#: kicad/pcm/pcm_task_manager.cpp:369
+#: kicad/pcm/pcm_task_manager.cpp:371
 msgid "Archive does not contain a valid metadata.json file"
 msgstr "归档文件中缺少有效的 metadata.json 文件"
 
-#: kicad/pcm/pcm_task_manager.cpp:378
+#: kicad/pcm/pcm_task_manager.cpp:380
 msgid "Archive metadata must have a single version defined"
 msgstr "归档文件的元数据必须定义且仅定义一个版本"
 
-#: kicad/pcm/pcm_task_manager.cpp:405
+#: kicad/pcm/pcm_task_manager.cpp:407
 #, c-format
 msgid ""
 "Package with identifier %s is already installed. Would you like to update it"
 " to the version from selected file?"
 msgstr "已安装标识符为 %s 的扩展内容包。是否将其更新为所选文件中的版本?"
 
-#: kicad/pcm/pcm_task_manager.cpp:408
+#: kicad/pcm/pcm_task_manager.cpp:410
 msgid "Update package"
 msgstr "更新扩展内容包"
 
-#: kicad/pcm/pcm_task_manager.cpp:507
+#: kicad/pcm/pcm_task_manager.cpp:509
 #, c-format
 msgid "Removing directory %s"
 msgstr "正在移除目录 %s"
 
-#: kicad/pcm/pcm_task_manager.cpp:515
+#: kicad/pcm/pcm_task_manager.cpp:517
 #, c-format
 msgid "Failed to remove directory %s"
 msgstr "目录 %s 移除失败"
 
-#: kicad/pcm/pcm_task_manager.cpp:619
+#: kicad/pcm/pcm_task_manager.cpp:621
 #, c-format
 msgid "Package %s uninstalled"
 msgstr "已卸载扩展内容包 %s"
 
-#: kicad/pcm/pcm_task_manager.cpp:705
+#: kicad/pcm/pcm_task_manager.cpp:707
 #, c-format
 msgid "%d out of %d operations failed."
 msgstr "%d 个操作中有 %d 个失败。"
 
-#: kicad/pcm/pcm_task_manager.cpp:712
+#: kicad/pcm/pcm_task_manager.cpp:714
 msgid "All operations completed successfully."
 msgstr "所有操作已顺利完成。"
 
-#: kicad/pcm/pcm_task_manager.cpp:717
+#: kicad/pcm/pcm_task_manager.cpp:719
 #, c-format
 msgid "%d out of %d operations were initialized but not successful."
 msgstr "已初始化 %d 个操作中的 %d 个, 但未成功。"
@@ -35505,6 +35506,14 @@ msgstr "(线段长度过小或为空: %d nm)"
 #, c-format
 msgid "(arc has null or very small size: %d nm)"
 msgstr "(弧的尺寸过小或为空: %d nm)"
+
+#: pcbnew/cpp_sdk/primitives/pcb_primitives_footprint.cpp:534
+#: pcbnew/tools/footprint_editor_control.cpp:193
+#, c-format
+msgid ""
+"The footprint could not be added to the selected library ('%s'). This "
+"library is read-only."
+msgstr "封装无法添加到选定的库 ('%s')。该库是只读的。"
 
 #: pcbnew/cross-probing.cpp:108 pcbnew/dialogs/dialog_board_setup.cpp:236
 #: pcbnew/dialogs/dialog_drc.cpp:317 pcbnew/pcb_edit_frame.cpp:3069
@@ -53467,13 +53476,6 @@ msgstr "%s 焊盘 %s"
 #: pcbnew/tools/edit_tool_move_fct.cpp:921
 msgid "Select reference point for move..."
 msgstr "选择要移动的参考点..."
-
-#: pcbnew/tools/footprint_editor_control.cpp:193
-#, c-format
-msgid ""
-"The footprint could not be added to the selected library ('%s'). This "
-"library is read-only."
-msgstr "封装无法添加到选定的库 ('%s')。该库是只读的。"
 
 #: pcbnew/tools/footprint_editor_control.cpp:464
 msgid "Change Footprint Name"
