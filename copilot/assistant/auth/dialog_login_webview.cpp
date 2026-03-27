@@ -92,7 +92,7 @@ public:
 
 DIALOG_LOGIN_WEBVIEW::DIALOG_LOGIN_WEBVIEW( HOST_VERSION_INFO const& host_version_info, wxWindow* aParent ) :
         DIALOG_WEBVIEW( host_version_info, aParent,
-                        _( "Electronic Enthusiasts/Huaqiu Circuit/Huaqiu Mall accounts can log in directly" ),
+                        _( "Huaqiu accounts can log in directly" ),
                         "DIALOG_LOGIN_WEBVIEW" )
 {
     WEBVIEW_CONTROLLER::Get().RemoveWebviewContainer( GetWebviewContainer() );
