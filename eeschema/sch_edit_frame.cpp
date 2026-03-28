@@ -2023,7 +2023,7 @@ void SCH_EDIT_FRAME::CommonSettingsChanged( int aFlags )
         {
             SCH_LINE* line = static_cast<SCH_LINE*>( item );
 
-            if( line->IsWire() )
+            if( line->IsWire() || line->IsBus() )
                 UpdateHopOveredWires( line );
         }
     }
