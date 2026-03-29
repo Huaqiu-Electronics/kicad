@@ -37,6 +37,8 @@
 #include <eda_base_frame.h>
 #include <project_sch.h>
 #include <vector>
+#include <wx/file.h>
+#include <wx/filename.h>
 #include <wx/log.h>
 #include <symbol_library_manager.h>
 #include "api_sch_design_resource_mgr.h"
@@ -128,6 +130,8 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
         SYMBOL_LIBRARY_ADAPTER* adapter = PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() );
 
 
+        auto lib_name = wxFileName( aLibFile ).GetName();
+
         if( !m_libMgr->AddLibrary( fn.GetFullPath(), LIBRARY_TABLE_SCOPE::PROJECT ) )
         {
             return {};
@@ -177,7 +181,8 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
         return {};
     }
 
-    auto lib_sym = do_AddLibrary( full_symbol_file_path, *lib_id );
+    auto existing_sym = PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() )->LoadSymbol( *lib_id );
+    auto lib_sym = existing_sym ? existing_sym : do_AddLibrary( full_symbol_file_path, *lib_id );
 
 
     if( !UpdateLibTable( LIBRARY_TABLE_TYPE::FOOTPRINT, GetAPIFootprintPrettyName(), GetProjectApiFpUri() ) )
