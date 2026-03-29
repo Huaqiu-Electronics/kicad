@@ -181,6 +181,7 @@ LIB_SYMBOL* API_SCH_DESIGN_RESOURCE_MGR::SaveComponentToProject( COMPONENT_CONTE
         return {};
     }
 
+    // TODO check if the symbol exists earlier
     auto existing_sym = PROJECT_SCH::SymbolLibAdapter( &m_frame.Prj() )->LoadSymbol( *lib_id );
     auto lib_sym = existing_sym ? existing_sym : do_AddLibrary( full_symbol_file_path, *lib_id );
 
