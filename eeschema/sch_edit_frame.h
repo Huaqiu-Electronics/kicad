@@ -836,9 +836,6 @@ public:
 
     const BOX2I GetDocumentExtents( bool aIncludeAllVisible = true ) const override;
 
-    int GetSchematicJunctionSize();
-    double GetSchematicHopOverScale();
-
     void FocusOnItem( EDA_ITEM* aItem, bool aAllowScroll = true ) override;
 
     bool IsSyncingSelection() { return m_syncingPcbToSchSelection; }
