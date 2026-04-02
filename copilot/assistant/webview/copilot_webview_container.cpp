@@ -128,7 +128,11 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
     }
     catch( std::exception& e )
     {
-        wxLogError( "Failed to parse MCP message: %s", e.what() );
+
+#ifdef DEBUG
+        wxLogError( "Failed to parse WebView message: %s", e.what() );
+#endif // DEBUG
+
     }
 }
 
