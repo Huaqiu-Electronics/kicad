@@ -395,7 +395,7 @@ static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
             for( ACTION_TOOLBAR_CONTROL* control : ACTION_TOOLBAR::GetCustomControlList( FRAME_FOOTPRINT_EDITOR ) )
                 controls.push_back( control );
 
-            return new PANEL_TOOLBAR_CUSTOMIZATION( aParent, cfg, tb, FRAME_FOOTPRINT_EDITOR, actions, controls );
+            return new PANEL_TOOLBAR_CUSTOMIZATION( aParent, cfg, tb, actions, controls );
         }
 
         case PANEL_FP_COLORS:
@@ -466,7 +466,7 @@ static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
             for( ACTION_TOOLBAR_CONTROL* control : ACTION_TOOLBAR::GetCustomControlList( FRAME_PCB_EDITOR ) )
                 controls.push_back( control );
 
-            return new PANEL_TOOLBAR_CUSTOMIZATION( aParent, cfg, tb, FRAME_PCB_EDITOR, actions, controls );
+            return new PANEL_TOOLBAR_CUSTOMIZATION( aParent, cfg, tb, actions, controls );
         }
 
         case PANEL_PCB_ACTION_PLUGINS:
@@ -495,7 +495,7 @@ static struct IFACE : public KIFACE_BASE, public UNITS_PROVIDER
             for( ACTION_TOOLBAR_CONTROL* control : ACTION_TOOLBAR::GetCustomControlList( FRAME_PCB_DISPLAY3D ) )
                 controls.push_back( control );
 
-            return new PANEL_TOOLBAR_CUSTOMIZATION( aParent, cfg, tb, FRAME_PCB_DISPLAY3D, actions, controls );
+            return new PANEL_TOOLBAR_CUSTOMIZATION( aParent, cfg, tb, actions, controls );
         }
 
         default:
