@@ -282,6 +282,8 @@ public:
 
     void RemoveVariant();
 
+    void EditVariantDescription();
+
     /**
      * Update the variant name control on the main toolbar.
      *
