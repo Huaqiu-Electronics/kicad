@@ -1000,7 +1000,7 @@ private:
     void OnExit( wxCommandEvent& event );
 
     void OnLoadFile( wxCommandEvent& event );
-    void OnImportProject( wxCommandEvent& event );
+    void OnImportProject();
 
     void OnClearFileHistory( wxCommandEvent& aEvent );
 
