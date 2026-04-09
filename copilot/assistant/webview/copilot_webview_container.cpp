@@ -60,8 +60,9 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
 
     if( WEBVIEW_SETTINGS_MANAGER::get_instance().mcp_enabled() )
     {
-        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( gen_nng_addr(), *this,
-                                                                      _impl->mcpClientRequestQueue, sdk_listen_addr );
+        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( gen_nng_addr( host_version_info.editor_name ),
+                                                                      *this, _impl->mcpClientRequestQueue,
+                                                                      sdk_listen_addr, host_version_info.editor_name );
         Bind( EVT_MCP_AGENT_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage, this );
     }
 }
@@ -128,11 +129,9 @@ void COPILOT_WEBVIEW_CONTAINER::HandleScriptMessage( std::string const& aMessage
     }
     catch( std::exception& e )
     {
-
 #ifdef DEBUG
         wxLogError( "Failed to parse WebView message: %s", e.what() );
 #endif // DEBUG
-
     }
 }
 

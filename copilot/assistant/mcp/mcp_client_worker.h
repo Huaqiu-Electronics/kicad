@@ -41,11 +41,11 @@ class MCP_CLIENT_WORKER
 {
 public:
     MCP_CLIENT_WORKER( std::string const& aPairUrl, WEBVIEW_CONTAINER& eventSink,
-                       MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string const& aSdkURL );
+                       MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string const& aSdkURL, std::string const& aEditor );
 
     ~MCP_CLIENT_WORKER();
 
-    static long launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress );
+    static long launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress , std::string const& editor );
 
     void Stop();
 

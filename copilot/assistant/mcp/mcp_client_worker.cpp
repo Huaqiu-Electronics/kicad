@@ -69,7 +69,8 @@ inline auto get_py_exe_path()
     return py_exe_path;
 }
 
-long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress )
+long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress,
+                                              std::string const& editor )
 {
     auto py_exe = get_py_exe_path();
 
@@ -84,7 +85,7 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::strin
 
 #endif
 
-    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" \"%s\"", py_exe, script_path, url, sdkServerAddress );
+    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" \"%s\" \"%s\"", py_exe, script_path, url, sdkServerAddress, editor );
 
     long pid = wxExecute( cmd,
 
@@ -136,13 +137,16 @@ inline auto nng_send( nng_socket& sock, std::string const& msg )
 }
 
 MCP_CLIENT_WORKER::MCP_CLIENT_WORKER( std::string const& aPairUrl, WEBVIEW_CONTAINER& eventSink,
-                                      MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string const& aSdkURL ) :
-        m_eventSink( eventSink ), m_requestQueue( requestQueue ),
-        m_pyMcpClientPid( launch_mcp_py_client( aPairUrl, aSdkURL ) ), m_thread(
-                                                                               [this, aPairUrl]
-                                                                               {
-                                                                                   Run( aPairUrl );
-                                                                               } )
+                                      MCP_CLIENT_REQUEST_QUEUE& requestQueue, std::string const& aSdkURL,
+                                      std::string const& aEditor ) :
+        m_eventSink( eventSink ),
+        m_requestQueue( requestQueue ),
+        m_pyMcpClientPid( launch_mcp_py_client( aPairUrl, aSdkURL, aEditor ) ),
+        m_thread(
+                [this, aPairUrl]
+                {
+                    Run( aPairUrl );
+                } )
 {
 }
 
