@@ -72,41 +72,49 @@ inline auto get_py_exe_path()
 long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::string const& sdkServerAddress,
                                               std::string const& editor )
 {
-    auto py_exe = get_py_exe_path();
+    wxString py_exe = get_py_exe_path();
+
+    wxString script_path;
 
 #ifdef NDEBUG
-
-    wxString script_path = get_exe_dir() + wxFileName::GetPathSeparator() + "kicad-mcp-client";
-
+    script_path = get_exe_dir() + wxFileName::GetPathSeparator() + "kicad-mcp-client";
 #else
-
-    wxString script_path = "C:/code/kicad-mcp-client";
-
-
+    script_path = "C:/code/kicad-mcp-client";
 #endif
 
-    wxString cmd = wxString::Format( "\"%s\" \"%s\" \"%s\" \"%s\" \"%s\"", py_exe, script_path, url, sdkServerAddress, editor );
-
-    long pid = wxExecute( cmd,
+    int flags = wxEXEC_ASYNC;
 
 #ifdef NDEBUG
+    flags |= wxEXEC_HIDE_CONSOLE;
+#endif
 
-                          wxEXEC_ASYNC | wxEXEC_HIDE_CONSOLE
-#else
-                          wxEXEC_ASYNC
+    // clang-format off
 
-#endif // !NDEBUG
-
+    wxString cmd = wxString::Format(
+        "\"%s\" \"%s\" \"%s\" \"%s\" \"%s\"",
+        py_exe,
+        script_path,
+        url,
+        sdkServerAddress,
+        editor
     );
+
+    // clang-format on
+
+    long pid = wxExecute( cmd, flags );
 
     if( pid == 0 )
     {
-        wxLogDebug( "Failed to launch MCP Python client: %s", cmd );
+        wxLogDebug( "Failed to launch MCP Python client" );
+        wxLogDebug( "py_exe: %s", py_exe );
+        wxLogDebug( "script: %s", script_path );
+        wxLogDebug( "url: %s", url );
+        wxLogDebug( "sdk: %s", sdkServerAddress );
+        wxLogDebug( "editor: %s", editor );
     }
 
     return pid;
 }
-
 
 inline auto recv_result( nng_socket& sock )
 {
