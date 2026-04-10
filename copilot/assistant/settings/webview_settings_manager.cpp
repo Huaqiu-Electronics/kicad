@@ -41,8 +41,10 @@ constexpr auto kSitEnv = "site_env.json";
 
 
 WEBVIEW_SETTINGS_MANAGER::WEBVIEW_SETTINGS_MANAGER() :
-        _immutable_settings( new IMMUTABLE_SETTINGS ), _mutable_settings( new MUTABLE_SETTINGS ),
-        _access_token( new nlohmann::json ), _site_env( new SITE_ENV )
+        _immutable_settings( new IMMUTABLE_SETTINGS ),
+        _mutable_settings( new MUTABLE_SETTINGS ),
+        _access_token( new nlohmann::json ),
+        _site_env( new SITE_ENV )
 {
     load_cnf( get_copilot_setting_path( kImmutableSettingsFileName ), *_immutable_settings, kConfigVersion );
     load_cnf( get_copilot_setting_path( kMutableSettingsFileName ), *_mutable_settings, kConfigVersion );
@@ -220,9 +222,17 @@ void WEBVIEW_SETTINGS_MANAGER::clear_token()
 
 bool WEBVIEW_SETTINGS_MANAGER::webview_dev_tool_enabled() const
 {
-    return COPILOT_DEV_FEATURES_ENABLED || _immutable_settings->enable_webview_dev_tool;
-}
+    static const bool env_enabled = []()
+    {
+        wxString value;
+        if( !wxGetEnv( "KICAD_HQ_DEBUG_WEBVIEW", &value ) )
+            return false;
 
+        return value == "1" || value == "true" || value == "TRUE";
+    }();
+
+    return COPILOT_DEV_FEATURES_ENABLED || _immutable_settings->enable_webview_dev_tool || env_enabled;
+}
 
 bool WEBVIEW_SETTINGS_MANAGER::mcp_enabled() const
 {

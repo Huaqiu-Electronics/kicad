@@ -84,9 +84,19 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::strin
 
     int flags = wxEXEC_ASYNC;
 
-#ifdef NDEBUG
-    flags |= wxEXEC_HIDE_CONSOLE;
-#endif
+    static const bool debug_copilot = []()
+    {
+        wxString value;
+        if( !wxGetEnv( "KICAD_HQ_DEBUG_COPILOT", &value ) )
+            return false;
+
+        return value == "1" || value == "true" || value == "TRUE";
+    }();
+
+    if( debug_copilot )
+    {
+        flags |= wxEXEC_HIDE_CONSOLE;
+    }
 
     // clang-format off
 

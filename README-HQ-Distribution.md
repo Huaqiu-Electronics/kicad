@@ -28,3 +28,9 @@
 pip install polib
 python ./translation/apply_distribution_json.py ./translation/distribution.json   ./translation/pofiles/zh_CN.po
 ```
+
+## Debug HQ Features env vars:
+
+- KICAD_HQ_DEBUG_WEBVIEW : Enable the webview debug tool
+- KICAD_HQ_DEBUG_COPILOT : Enable the copilot debug console
+
