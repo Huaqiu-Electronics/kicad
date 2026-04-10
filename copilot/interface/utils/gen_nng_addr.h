@@ -38,12 +38,13 @@
 
 // We expect to expose a deterministic address to the MCP client so that it can connect to our SDK server, and we want to avoid potential conflicts with other instances of the client or server that may be running. On Windows, we can use the process ID and an optional editor name to create a unique address. On Unix-like systems, we can use a similar approach but with a file in the /tmp directory. The editor name is optional but can help further distinguish between different instances, especially if multiple editors are running on the same machine.
 
-inline auto gen_nng_addr( std::optional<std::string> const& editor_name = {} )
+inline auto gen_nng_addr( std::string const& category, std::optional<std::string> const& editor_name = {} )
 {
 #ifdef _WIN32
-    return fmt::format( "ipc://kicad_copilot_pair-{}-{}", _getpid(), editor_name.value_or( generate_uuid() ) );
+    return fmt::format( "ipc://kicad_{}_pair-{}-{}", category, _getpid(), editor_name.value_or( generate_uuid() ) );
 #else
-    return fmt::format( "ipc:///tmp/kicad_copilot_pair-{}-{}.ipc", getpid(), editor_name.value_or( generate_uuid() ) );
+    return fmt::format( "ipc:///tmp/kicad_{}_pair-{}-{}.ipc", category, getpid(),
+                        editor_name.value_or( generate_uuid() ) );
 #endif
 }
 #endif

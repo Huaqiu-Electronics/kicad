@@ -55,14 +55,16 @@ COPILOT_WEBVIEW_CONTAINER::COPILOT_WEBVIEW_CONTAINER( HOST_VERSION_INFO const& h
         WEBVIEW_CONTAINER( host_version_info, parent, url, host_copilot_handles, kDataBuriedPoint ),
         _impl( new COPILOT_WEBVIEW_CONTAINER_IMPL )
 {
-    auto sdk_listen_addr = gen_nng_addr();
+    // We need a fixed pattern to generate the sdk adder so that the third-party mcp client can compute it with pid + editor name
+    auto sdk_listen_addr = gen_nng_addr( "sdk", host_version_info.editor_name );
     _impl->sdkServer = std::make_unique<KICAD_SDK_SERVER>( host_copilot_handles, this, sdk_listen_addr );
 
     if( WEBVIEW_SETTINGS_MANAGER::get_instance().mcp_enabled() )
     {
-        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>( gen_nng_addr( host_version_info.editor_name ),
-                                                                      *this, _impl->mcpClientRequestQueue,
-                                                                      sdk_listen_addr, host_version_info.editor_name );
+        // This mcp worker is tightly coupled with our own copilot panel , so a random addr is OK
+        const auto mcp_worker_addr = gen_nng_addr( "mcp" );
+        _impl->mcpClientWorker = std::make_unique<MCP_CLIENT_WORKER>(
+                mcp_worker_addr, *this, _impl->mcpClientRequestQueue, sdk_listen_addr, host_version_info.editor_name );
         Bind( EVT_MCP_AGENT_MSG, &COPILOT_WEBVIEW_CONTAINER::OnMcpAgentMessage, this );
     }
 }
