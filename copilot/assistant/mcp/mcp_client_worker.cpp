@@ -93,7 +93,7 @@ long MCP_CLIENT_WORKER::launch_mcp_py_client( std::string const& url, std::strin
         return value == "1" || value == "true" || value == "TRUE";
     }();
 
-    if( debug_copilot )
+    if( !debug_copilot )
     {
         flags |= wxEXEC_HIDE_CONSOLE;
     }
