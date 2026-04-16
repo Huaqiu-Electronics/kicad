@@ -109,7 +109,7 @@ void SCH_COPILOT_PANEL_CONTAINER::UpdateCopilotContextCache()
     m_copilotContextCache.designators = ([this]{
         decltype( m_copilotContextCache.designators)   designators;
         SCH_REFERENCE_LIST referenceList;
-         self()->Schematic().Hierarchy().GetSymbols( referenceList, false, false );
+         self()->Schematic().Hierarchy().GetSymbols( referenceList, SYMBOL_FILTER::SYMBOL_FILTER_ALL, false );
         const auto instances = referenceList.GetSymbolInstances();
 
         for( const auto& instance : instances )

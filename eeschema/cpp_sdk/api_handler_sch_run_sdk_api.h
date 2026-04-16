@@ -178,11 +178,6 @@ void API_CPP_SDK_RUN_ACTION_SCH::runSdkApi( EDA_DRAW_FRAME* aFrame, CPP_SDK_API_
             api_drawer.SetSymbolReference( params );
             break;
         }
-        case API_CPP_SDK_TYPE::importNonKicadSch:
-        {
-            api_drawer.ImportNonKicadSchematic();
-            break;
-        }
         case API_CPP_SDK_TYPE::importVectorGraphic:
         {
             api_drawer.ImportVectorGraphicFile();

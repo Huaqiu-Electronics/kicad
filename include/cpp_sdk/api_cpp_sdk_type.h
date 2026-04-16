@@ -102,7 +102,6 @@ enum class API_CPP_SDK_TYPE : int
     openFrame,
     saveFrame,
     saveAs,
-    importNonKicadSch,
     importVectorGraphic,
     exportNetlist,
     schematicSetup,

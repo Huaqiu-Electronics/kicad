@@ -63,9 +63,6 @@ public:
 
     void CreateLibSymbolPin( API_LIB_SYMBOL_PIN const& aParams);
     
-    //
-    void ImportNonKicadSchematic();
-
     void ImportVectorGraphicFile();
 
     void ExportNetlist();

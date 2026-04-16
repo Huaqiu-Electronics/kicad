@@ -31,7 +31,7 @@ KI_SDK_EXEC_RESULT FindSymbolByKIID( const std::string& aKID, SCH_SYMBOL*& aSymb
         return KI_SDK_EXEC_RESULT::KI_SDK_FRAME_ERROR;
 
     SCH_REFERENCE_LIST references;
-    frame->Schematic().Hierarchy().GetSymbols( references );
+    frame->Schematic().Hierarchy().GetSymbols( references, {} );
     for( size_t i = 0; i < references.GetCount(); i++ )
     {
         SCH_SYMBOL* item = references[i].GetSymbol();
@@ -80,7 +80,7 @@ KI_SDK_EXEC_RESULT GetSymbolSheetByKIID( const std::string& aKID, SCH_SHEET_PATH
     //     return KI_SDK_EXEC_RESULT::KI_SDK_NOT_FOUND;
 
     SCH_REFERENCE_LIST references;
-    frame->Schematic().Hierarchy().GetSymbols( references );
+    frame->Schematic().Hierarchy().GetSymbols( references , {} );
     for( size_t i = 0; i < references.GetCount(); i++ )
     {
         SCH_SYMBOL* item = references[i].GetSymbol();
@@ -196,7 +196,7 @@ KI_SDK_EXEC_RESULT SCH_PRIMITIVES_SYMBOL::GetSymbolKIIDByReference( const std::s
 
     wxString           w_reference = wxString::FromUTF8( reference );
     SCH_REFERENCE_LIST references;
-    frame->Schematic().Hierarchy().GetSymbols( references );
+    frame->Schematic().Hierarchy().GetSymbols( references , {});
     for( size_t i = 0; i < references.GetCount(); i++ )
     {
         SCH_SYMBOL* item = references[i].GetSymbol();

@@ -376,7 +376,7 @@ int SCH_DRAWING_TOOLS::DrawSheetFromAPI( const TOOL_EVENT& aEvent )
                                       schSettings.m_AnnotateStartNum, true,                 /* reset */
                                       false,                                                /* regroup */
                                       false,                                                /* repair */
-                                      reporter );
+                                      reporter , SYMBOL_FILTER_ALL);
             c.Push( "API Place Sheet" );
 
             m_selectionTool->AddItemToSel( sheet );

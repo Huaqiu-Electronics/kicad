@@ -906,18 +906,6 @@ void API_PRIMITIVE_SCH_DRAWER::CreateLibSymbolPin( API_LIB_SYMBOL_PIN const& aPa
 }
 
 
-void API_PRIMITIVE_SCH_DRAWER::ImportNonKicadSchematic()
-{
-    wxCommandEvent menuEvent( wxEVT_MENU, ID_IMPORT_NON_KICAD_SCH );
-
-    SCH_EDIT_FRAME* frame = dynamic_cast<SCH_EDIT_FRAME*>( m_frame );
-    if( frame )
-    {
-        frame->GetEventHandler()->ProcessEvent( menuEvent );
-    }
-}
-
-
 void API_PRIMITIVE_SCH_DRAWER::ImportVectorGraphicFile()
 {
     m_frame->GetToolManager()->RunAction( SCH_ACTIONS::importGraphics );
