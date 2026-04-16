@@ -14,14 +14,7 @@
         "python3",
         "opencascade",
         "wxpython-33",
-        "wxwidgets-33"
-      ]
-    },
-    {
-      "kind": "git",
-      "repository": "https://gitlab.com/Liangtie/kicad-vcpkg-registry.git",
-      "baseline": "7f1de4649e0fc21021dfd3766b184e36c44f7512",
-      "packages": [
+        "wxwidgets-33",
         "ngspice"
       ]
     }
