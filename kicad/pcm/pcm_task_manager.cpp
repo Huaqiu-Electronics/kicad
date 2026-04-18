@@ -393,7 +393,7 @@ PCM_TASK_MANAGER::STATUS PCM_TASK_MANAGER::InstallFromFile( wxWindow*       aPar
         return PCM_TASK_MANAGER::STATUS::FAILED;
     }
 
-    if( !aOverride && !package.versions[0].compatible
+    if( !package.versions[0].compatible
         && wxMessageBox( _( "This package version is incompatible with your KiCad version or "
                             "platform. Are you sure you want to install it anyway?" ),
                          _( "Install package" ), wxICON_EXCLAMATION | wxYES_NO, aParent )
@@ -414,7 +414,7 @@ PCM_TASK_MANAGER::STATUS PCM_TASK_MANAGER::InstallFromFile( wxWindow*       aPar
                       } )
         != installed_packages.end() )
     {
-        if( wxMessageBox(
+        if( !aOverride &&  wxMessageBox(
                     wxString::Format(
                             _( "Package with identifier %s is already installed. "
                                "Would you like to update it to the version from selected file?" ),
